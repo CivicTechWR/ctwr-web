@@ -1,0 +1,27 @@
+[
+    {
+        "name": "ConnectedKW",
+        "year": [2024],
+        "role": ["Speakers", "Joint events"],
+        "logo": "images/connected-kw.png",
+        "url": "https://www.connectedkw.com/",
+        "github": "https://github.com/CivicTechWR"
+    },
+    {
+        "name": "Waterloo Region Votes",
+        "year": [2018],
+        "role": ["Software", "Sponsor"],
+        "logo": "images/regionvotes.png",
+        "url": "https://www.waterlooregionvotes.org/",
+        "github": "https://github.com/CivicTechWR"
+    },
+    {
+        "name": "CouncilBot",
+        "year": [2024],
+        "role": ["Sponsor"],
+        "logo": "images/councilbot.png",
+        "url": "https://councilbot.netlify.app/",
+        "github": "https://github.com/CivicTechWR"
+    }
+    
+]

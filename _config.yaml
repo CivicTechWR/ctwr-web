@@ -1,0 +1,23 @@
+# Basic site settings
+title: "CivicTech WR"
+description: "CivicTech's front facing website"
+baseurl: "" # The subpath of your site, e.g., /blog
+url: "http://localhost:4000" # The base URL of your site
+
+# Exclusions
+exclude:
+  - ".sass-cache"
+  - ".jekyll-cache"
+  - "node_modules"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "vendor"
+  - "README.md"
+  - "LICENSE.txt"
+
+# Includes
+include:
+  - ".htaccess"
+  - "_data"
+
+# Build settings
