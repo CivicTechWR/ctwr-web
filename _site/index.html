@@ -9,7 +9,7 @@
     <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
     <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
 
-    <title>CivicTechWR</title>
+    <title>Civic Tech Waterloo Region</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,21 +48,27 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-5">
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_1">Home</a>
+                    
+                      <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/#section_1">Home</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_2">About</a>
+                    
+                      <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/#section_2">About</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_3">Projects</a>
+                    
+                      <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/#section_3">Projects</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_4">Sponsors</a>
+                    
+                      <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/#section_4">Sponsors</a>
                     </li>
+                    
+                      <li class="nav-item">
+                        <a class="nav-link click-scroll" href="https://github.com/CivicTechWR">Github</a>
+                    </li>
+                    
                 </ul>
 
          
@@ -106,7 +112,7 @@
                 <div class="row">
 
                     <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight1.jpg" class="about-image img-fluid" alt="">
+                        <img src="/images/hacknight-1.jpg" class="about-image img-fluid" alt="">
                     </div>
 
                     <div class="col-lg-6 col-12 mt-5 mt-lg-0">
@@ -151,7 +157,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight7.jpg" class="about-image img-fluid" alt="">
+                        <img src="/images/hacknight-7.jpg" class="about-image img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -198,7 +204,7 @@
                     </div>
 
                     <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight8.jpg" class="about-image img-fluid" alt="">
+                        <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="">
                     </div>
 
                 </div>
@@ -217,39 +223,57 @@
 
             <div class="clearfix"></div>
 
-            <div id="project-container" class="row"></div>
+            <div id="project-container" class="row">
+                
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="projects-thumb">
+                        <div class="projects-info">
+                             
+                            
+                            <a href="https://github.com/CivicTechWR" class="github-btn btn" target="_blank">GitHub</a>
+                            <h4 class="projects-title">ConnectedKW</h4>
+                           <small class="projects-tag">Year: 2024</small>
+                        </div>
+                        <a href="https://www.connectedkw.com/">
+                            <img src="/images/connected-kw.png" class="projects-image img-fluid" alt="ConnectedKW">
+                        </a>
+                    </div>
+                </div>
+                
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="projects-thumb">
+                        <div class="projects-info">
+                             
+                            
+                            <a href="https://github.com/CivicTechWR" class="github-btn btn" target="_blank">GitHub</a>
+                            <h4 class="projects-title">Waterloo Region Votes</h4>
+                           <small class="projects-tag">Year: 2018</small>
+                        </div>
+                        <a href="https://www.waterlooregionvotes.org/">
+                            <img src="/images/regionvotes.png" class="projects-image img-fluid" alt="Waterloo Region Votes">
+                        </a>
+                    </div>
+                </div>
+                
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="projects-thumb">
+                        <div class="projects-info">
+                             
+                            
+                            <a href="https://github.com/CivicTechWR" class="github-btn btn" target="_blank">GitHub</a>
+                            <h4 class="projects-title">CouncilBot</h4>
+                           <small class="projects-tag">Year: 2024</small>
+                        </div>
+                        <a href="https://councilbot.netlify.app/">
+                            <img src="/images/councilbot.png" class="projects-image img-fluid" alt="CouncilBot">
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </div>
 </section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('/partners.json')
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById('project-container');
-                data.forEach(partner => {
-                    container.innerHTML += `
-                        <div class="col-lg-4 col-md-6 col-12 mb-4">
-                            <div class="projects-thumb">
-                                <div class="projects-info">
-                                     
-                                    
-                                    <a href="${partner.github}" class="github-btn btn" target="_blank">GitHub</a>
-                                    <h4 class="projects-title">${partner.name}</h4>
-                                   <small class="projects-tag">Year: ${partner.year}</small>
-                                </div>
-                                <a href="${partner.url}">
-                                    <img src="${partner.logo}" class="projects-image img-fluid" alt="${partner.name}">
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                });
-            });
-    });
-</script>
-
         
 
 
@@ -257,30 +281,30 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-12">
-                <h3 class="text-center mb-5">Our Sponsors</h3>
+                <h3 class="text-center mb-5">Our Partners</h3>
             </div>
-            <div id="sponsor-container" class="row"></div>
+            <div id="sponsor-container" class="row">
+                
+                    <div class="col-lg-3 col-6 sponsors-item-height">
+                        <img src="/images/sponsors/buildersclub.webp" class="sponsors-image img-fluid" alt="Builders Club">
+                    </div>
+                
+                    <div class="col-lg-3 col-6 sponsors-item-height">
+                        <img src="/images/sponsors/dreamsidelogo.png" class="sponsors-image img-fluid" alt="Dreamside Digital">
+                    </div>
+                
+                    <div class="col-lg-3 col-6 sponsors-item-height">
+                        <img src="/images/sponsors/foxxwoodlogo.png" class="sponsors-image img-fluid" alt="Foxxwood">
+                    </div>
+                
+                    <div class="col-lg-3 col-6 sponsors-item-height">
+                        <img src="/images/sponsors/tinyhometakeout.png" class="sponsors-image img-fluid" alt="Tiny Home Takeout">
+                    </div>
+                
+            </div>
         </div>
     </div>
 </section>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('/sponsors.json')
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById('sponsor-container');
-                data.forEach(sponsor => {
-                    container.innerHTML += `
-                        <div class="col-lg-2 col-4 sponsors-item-height">
-                            <img src="${sponsor.logo}" class="sponsors-image img-fluid" alt="${sponsor.name}">
-                        </div>
-                    `;
-                });
-            });
-    });
-</script>
 
     </main>
 
@@ -291,28 +315,27 @@
                             class="contact-info contact-info-border-start d-flex flex-column justify-content-center align-items-center">
 
                             <ul class="social-icon">
-                                <li class="social-icon-item"><a href="https://facebook.com/civictechwr"
-                                        class="social-icon-link bi-facebook"></a></li>
-
-                                <li class="social-icon-item"><a href="https://twitter.com/civictechwr"
-                                        class="social-icon-link bi-twitter"></a></li>
-
-                                <li class="social-icon-item"><a href="https://instagram.com/civictechwr"
-                                        class="social-icon-link bi-instagram"></a></li>
-
-                                <li class="social-icon-item"><a href="https://civictechwr.slack.com"
-                                        class="social-icon-link bi-slack"></a></li>
-
-                                <li class="social-icon-item"><a href="https://medium.com/civictechwr"
-                                        class="social-icon-link bi-medium"></a></li>
-
-                                <li class="social-icon-item"><a href="mailto:civictechwr@gmail.com"
-                                        class="social-icon-link bi-envelope-fill"></a></li>
-
                                 <li class="social-icon-item"><a href="https://www.meetup.com/civictechwr"
                                         title="meetup icons" class="social-icon-link"><img width="30" height="30"
                                             src="https://img.icons8.com/ios-filled/50/meetup.png"
                                             alt="civictechwr-meetup" /></a></li>
+
+                                <li class="social-icon-item"><a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw"
+                                        class="social-icon-link bi-slack"></a></li>
+
+                                <li class="social-icon-item"><a href="https://instagram.com/civictechwr"
+                                        class="social-icon-link bi-instagram"></a></li>
+
+                                <li class="social-icon-item"><a href="https://twitter.com/civictechwr"
+                                        class="social-icon-link bi-twitter"></a></li>
+
+                                <li class="social-icon-item"><a href="https://facebook.com/civictechwr"
+                                        class="social-icon-link bi-facebook"></a></li>
+
+                                <li class="social-icon-item"><a href="mailto:civictechwr@gmail.com"
+                                        class="social-icon-link bi-envelope-fill"></a></li>
+
+                                
                             </ul>
 
                     

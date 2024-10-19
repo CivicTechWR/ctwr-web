@@ -1,8 +1,18 @@
 # Basic site settings
-title: "CivicTech WR"
-description: "CivicTech's front facing website"
+title: Civic Tech Waterloo Region
+email: civictechwr@gmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions.
 baseurl: "" # The subpath of your site, e.g., /blog
-url: "http://localhost:4000" # The base URL of your site
+url: "" # The base URL of your site
+
+# Socials
+slack_invite: https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw
+instagram: https://instagram.com/civictechwr
+meetup: https://www.meetup.com/civictechwr
+twitter: https://twitter.com/civictechwr
+facebook: https://facebook.com/civictechwr
+
 
 # Exclusions
 exclude:
@@ -21,3 +31,4 @@ include:
   - "_data"
 
 # Build settings
+

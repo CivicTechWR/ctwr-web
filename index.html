@@ -1,3 +1,8 @@
+---
+
+---
+
+
 <!doctype html>
 <html lang="en">
 
@@ -9,7 +14,7 @@
     <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
     <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
 
-    <title>CivicTechWR</title>
+    <title>{{ site.title }}</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,21 +53,11 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-5">
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_1">Home</a>
+                    {% for link in site.data.navigation %}
+                      <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{{link.url}}">{{link.text}}</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_2">About</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_3">Projects</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_4">Sponsors</a>
-                    </li>
+                    {% endfor %}
                 </ul>
 
          
@@ -106,7 +101,7 @@
                 <div class="row">
 
                     <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight1.jpg" class="about-image img-fluid" alt="">
+                        <img src="/images/hacknight-1.jpg" class="about-image img-fluid" alt="">
                     </div>
 
                     <div class="col-lg-6 col-12 mt-5 mt-lg-0">
@@ -151,7 +146,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight7.jpg" class="about-image img-fluid" alt="">
+                        <img src="/images/hacknight-7.jpg" class="about-image img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -198,7 +193,7 @@
                     </div>
 
                     <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight8.jpg" class="about-image img-fluid" alt="">
+                        <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="">
                     </div>
 
                 </div>
@@ -217,39 +212,27 @@
 
             <div class="clearfix"></div>
 
-            <div id="project-container" class="row"></div>
+            <div id="project-container" class="row">
+                {% for project in site.data.projects %}
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="projects-thumb">
+                        <div class="projects-info">
+                             
+                            
+                            <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
+                            <h4 class="projects-title">{{project.name}}</h4>
+                           <small class="projects-tag">Year: {{project.year}}</small>
+                        </div>
+                        <a href="{{project.url}}">
+                            <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}">
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('/partners.json')
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById('project-container');
-                data.forEach(partner => {
-                    container.innerHTML += `
-                        <div class="col-lg-4 col-md-6 col-12 mb-4">
-                            <div class="projects-thumb">
-                                <div class="projects-info">
-                                     
-                                    
-                                    <a href="${partner.github}" class="github-btn btn" target="_blank">GitHub</a>
-                                    <h4 class="projects-title">${partner.name}</h4>
-                                   <small class="projects-tag">Year: ${partner.year}</small>
-                                </div>
-                                <a href="${partner.url}">
-                                    <img src="${partner.logo}" class="projects-image img-fluid" alt="${partner.name}">
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                });
-            });
-    });
-</script>
-
         
 
 
@@ -257,30 +240,18 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-12">
-                <h3 class="text-center mb-5">Our Sponsors</h3>
+                <h3 class="text-center mb-5">Our Partners</h3>
             </div>
-            <div id="sponsor-container" class="row"></div>
+            <div id="sponsor-container" class="row">
+                {% for partner in site.data.partners %}
+                    <div class="col-lg-3 col-6 sponsors-item-height">
+                        <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}">
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </section>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('/sponsors.json')
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById('sponsor-container');
-                data.forEach(sponsor => {
-                    container.innerHTML += `
-                        <div class="col-lg-2 col-4 sponsors-item-height">
-                            <img src="${sponsor.logo}" class="sponsors-image img-fluid" alt="${sponsor.name}">
-                        </div>
-                    `;
-                });
-            });
-    });
-</script>
 
     </main>
 
@@ -291,28 +262,27 @@
                             class="contact-info contact-info-border-start d-flex flex-column justify-content-center align-items-center">
 
                             <ul class="social-icon">
-                                <li class="social-icon-item"><a href="https://facebook.com/civictechwr"
-                                        class="social-icon-link bi-facebook"></a></li>
-
-                                <li class="social-icon-item"><a href="https://twitter.com/civictechwr"
-                                        class="social-icon-link bi-twitter"></a></li>
-
-                                <li class="social-icon-item"><a href="https://instagram.com/civictechwr"
-                                        class="social-icon-link bi-instagram"></a></li>
-
-                                <li class="social-icon-item"><a href="https://civictechwr.slack.com"
-                                        class="social-icon-link bi-slack"></a></li>
-
-                                <li class="social-icon-item"><a href="https://medium.com/civictechwr"
-                                        class="social-icon-link bi-medium"></a></li>
-
-                                <li class="social-icon-item"><a href="mailto:civictechwr@gmail.com"
-                                        class="social-icon-link bi-envelope-fill"></a></li>
-
-                                <li class="social-icon-item"><a href="https://www.meetup.com/civictechwr"
+                                <li class="social-icon-item"><a href="{{site.meetup}}"
                                         title="meetup icons" class="social-icon-link"><img width="30" height="30"
                                             src="https://img.icons8.com/ios-filled/50/meetup.png"
                                             alt="civictechwr-meetup" /></a></li>
+
+                                <li class="social-icon-item"><a href="{{ site.slack_invite }}"
+                                        class="social-icon-link bi-slack"></a></li>
+
+                                <li class="social-icon-item"><a href="{{ site.instagram }}"
+                                        class="social-icon-link bi-instagram"></a></li>
+
+                                <li class="social-icon-item"><a href="{{ site.twitter }}"
+                                        class="social-icon-link bi-twitter"></a></li>
+
+                                <li class="social-icon-item"><a href="{{ site.facebook }}"
+                                        class="social-icon-link bi-facebook"></a></li>
+
+                                <li class="social-icon-item"><a href="mailto:{{ site.email }}"
+                                        class="social-icon-link bi-envelope-fill"></a></li>
+
+                                
                             </ul>
 
                     
