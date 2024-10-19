@@ -30,10 +30,35 @@ async function getRepoVariables(repo) {
       console.log(properties)
       const publishProp = properties.find(prop => prop.property_name === "publish-on-website")
       const featuredProp = properties.find(prop => prop.property_name === "featured-project")
+      const publicNameProp = properties.find(prop => prop.property_name === "public-name")
+      const imageProp = properties.find(prop => prop.property_name === "image")
       const publish = publishProp?.value === "true"
       const featured = featuredProp?.value === "true"
+      const publicName = publicNameProp?.value
+      const imageUrl = imageProp?.value
 
       if (publish) {
+        const container = document.getElementById('project-container');
+        const createdDate = new Date(repo.created_at)
+        const year = createdDate.getFullYear()
+        const markup = `
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="projects-thumb">
+                    <div class="projects-info">
+                         
+                        
+                        <a href="${repo.html_url}" class="github-btn btn" target="_blank">GitHub</a>
+                        <h4 class="projects-title">${publicName ? publicName : repo.name}</h4>
+                       <small class="projects-tag">Year: ${year}</small>
+                       <p class="text-sm">${repo.description}</p>
+                    </div>
+                    <a href="${repo.homepage}">
+                        <img src="${imageUrl}" class="projects-image img-fluid" alt="${repo.name}">
+                    </a>
+                </div>
+            </div>
+        `
+        container.innerHTML += markup
         
       }
       console.log({publish})
