@@ -523,7 +523,7 @@ strong {
 
 .hero-text {
   position: relative;
-  z-index: 22;
+  z-index: 0;
   top: 70px;
 }
 
