@@ -41,10 +41,13 @@
     </section>
 
     <nav class="navbar navbar-expand-lg">
-         <a class="mx-auto mx-lg-5" href="/">
-            <img src="/images/logos/civictechwr_logo_white.png" alt="Civic Tech WR" class="logo">
-        </a> 
-        <div class="container" style="max-width: fit-content;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logos/civictechwr_logo_white.png" alt="Civic Tech WR" class="logo">
+                    <span class="brand-name">CivicTech Waterloo Region</span>
+                </a>
+            </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,43 +55,49 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-lg-5">
+                <ul class="navbar-nav">
                     {% for link in site.data.navigation %}
-                      <li class="nav-item">
-                        <a class="nav-link click-scroll" href="{{link.url}}">{{link.text}}</a>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{{link.url}}">
+                            <span class="nav-link-title">{{link.text}}</span>
+                        </a>
                     </li>
                     {% endfor %}
                 </ul>
 
          
             </div>
-
         </div>
     </nav>
+
 
     <main>
 
         <section class="hero d-flex justify-content-center align-items-center" id="section_1">
+            <div class="hero-background">
+                <div class="hero-background-layer"></div>
+                <div class="hero-background-pattern"></div>
+            </div>
             <div class="container">
                 <div class="row d-flex justify-content-center align-items-center">
-
                     <div class="col-lg-7 col-12">
                         <div class="hero-text">
-                            <h2 class="mb-4">&lt;/&gt;Welcome to CivicTechWR</h2>
-                            <div class="hero-title-zwrap d-flex align-items-center mb-4">
-                                <h1 class="hero-title mb-0">Tech & Design for Civic Impact  </h1>
+                            <div class="hero-badge">
+                                <span class="badge-icon">&lt;/&gt;</span>
+                                <span class="badge-text">Welcome to CivicTechWR</span>
                             </div>
-
-                            
-                            
-                            <p class="mb-4"><a class="custom-btn btn custom-link" href="#section_2">Join us!</a></p>
+                            <h1 class="hero-title">Tech & Design for Civic Impact</h1>
+                            <p class="hero-description">
+                                Join our community of tech enthusiasts and designers working together to solve local challenges
+                            </p>
+                            <div class="hero-actions">
+                                <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary">Join Our Community</a>
+                                <a href="#section_2" class="btn btn-outline">Learn More</a>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-
-          
         </section> 
         
         
@@ -243,6 +252,7 @@
 
     </main>
 
+    <!--
     <footer class="site-footer">
         <div class="container">
             <div class="row">
@@ -279,6 +289,112 @@
             </div>
         </div>
     </footer>
+-->
+
+<footer class="footer">
+    <div class="footer-content">
+  
+      <div class="footer-content-column">
+        <div class="footer-logo">
+          <a class="footer-logo-link">
+            <!-- <span class="hidden-link-text">CTWRLOGO</span> -->
+            <img src="{{ base_url }}/images/logos/civictechwr_logo_black.png" class="footer-logo-image" width="180" alt="CivicTechWR Logo" />
+            <!-- <h1 style="font-size: 1.5em;">CIVIC TECH WATERLOO REGION</h1> -->
+          </a>
+          <p>We're a community group that brings together people from different sectors and industries to actively solve issues facing our local community using design and technology</p>
+        </div>
+      </div>
+  
+      <div class="footer-content-column">
+        <div class="footer-menu">
+          <h2 class="footer-menu-name">Our previous projects</h2>
+          <ul id="menu-get-started" class="footer-menu-list">
+            <li class="menu-item">
+              <a href="https://www.cbc.ca/news/canada/kitchener-waterloo/waterloo-region-organizations-voter-information-surveys-1.4870468">CBC - Oct 20, 2018</a>
+            </li>
+            <li class="menu-item">
+              <a href="https://www.waterloochronicle.ca/community-story/8943235-waterlooregionvotes-org-helps-voters-inform-themselves-before-municipal-election/">Waterloo Chronicle - Oct 03, 2018</a>
+            </li>
+            <li class="menu-item">
+              <a href="https://www.therecord.com/news-story/8847728-techies-mobilizing-for-this-fall-s-municipal-elections-in-waterloo-region/">The Record - Aug 19, 2018</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="footer-content-column">
+        <div class="footer-menu">
+          <h2 class="footer-menu-name">Quick Links</h2>
+          <ul id="menu-quick-links" class="footer-menu-list">
+            <li class="menu-item">
+              <a href="{{ base_url }}">Home</a>
+            </li>
+            <li class="menu-item">
+              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/FAQ">Frequently Asked Questions (FAQ)</a>
+            </li>
+            <li class="menu-item">
+              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/Guidelines_&_Templates">Guidelines & Templates</a>
+            </li>
+            <li class="menu-item">
+              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/policies/Code_of_Conduct">Code of Conduct</a>
+            </li>
+            <li class="menu-item">
+              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/policies/Diversity_and_Inclusion_Policy">Diversity and Inclusion Policy</a>
+            </li>
+            <li class="menu-item">
+              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/blog">Recaps</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="footer-content-column">
+        <div class="footer-call-to-action">
+          <h2 class="footer-call-to-action-title">Want to Get Involved?</h2>
+          <a class="footer-call-to-action-button" href="https://www.meetup.com/civictechwr/" target="_blank">Join Us in our next Meetup</a>
+          <a class="footer-call-to-action-button" href="https://join.slack.com/t/civictechwr/shared_invite/zt-2ldijjy0i-gaGvPkuafPt9Zpn7jml70w" target="_blank">Say hello to us on Slack</a>
+          <a class="footer-call-to-action-button" href="https://github.com/CivicTechWR" target="_blank">Contribute to projects on GitHub</a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-copyright">
+      <div class="contact-info">
+        <ul class="social-icon">
+          <li class="social-icon-item">
+            <a href="https://www.meetup.com/civictechwr/" target="_blank" class="social-icon-link">
+              <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/meetup.png" alt="meetup" />
+            </a>
+          </li>
+          <li class="social-icon-item">
+            <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" target="_blank" class="social-icon-link bi-slack"></a>
+          </li>
+          <li class="social-icon-item">
+            <a href="https://instagram.com/civictechwr" target="_blank" class="social-icon-link bi-instagram"></a>
+          </li>
+          <li class="social-icon-item">
+            <a href="https://twitter.com/civictechwr" target="_blank" class="social-icon-link bi-twitter"></a>
+          </li>
+          <li class="social-icon-item">
+            <a href="https://facebook.com/civictechwr" target="_blank" class="social-icon-link bi-facebook"></a>
+          </li>
+          <li class="social-icon-item">
+            <a href="https://medium.com/civictechwr" target="_blank" class="social-icon-link bi-medium"></a>
+          </li>
+          <li class="social-icon-item">
+            <a href="mailto:civictechwr@gmail.com" class="social-icon-link bi-envelope-fill"></a>
+          </li>
+        </ul>
+      </div>
+  
+      <div class="footer-copyright-wrapper">
+        <p style="font-size: 13px;">Civic Tech Waterloo Region | All rights reserved</p>
+      </div>
+      
+    </div>
+
+  </footer>
 
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
