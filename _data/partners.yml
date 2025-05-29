@@ -1,8 +1,84 @@
+# Current Partners
 - name: Builders Club
   logo: /images/sponsors/buildersclub.webp
+  current: true
 - name: Dreamside Digital
   logo: /images/sponsors/dreamsidelogo.png
+  current: true
 - name: Foxxwood
   logo: /images/sponsors/foxxwoodlogo.png
+  current: true
 - name: Tiny Home Takeout
   logo: /images/sponsors/tinyhometakeout.png
+  current: true
+- name: DEN
+  logo: /images/sponsors/denlogo.png
+  current: true
+- name: Smart Waterloo Region
+  logo: /images/sponsors/swrllogo.png
+  current: true
+
+# Previous Partners
+- name: Open Food Network
+  logo: /images/sponsors/previous/OFN.png
+  current: false
+- name: Axonify
+  logo: /images/sponsors/previous/axonify.png
+  current: false
+- name: Calgary
+  logo: /images/sponsors/previous/calgary.jpg
+  current: false
+- name: Chalk
+  logo: /images/sponsors/previous/chalk.png
+  current: false
+- name: City of Kitchener
+  logo: /images/sponsors/previous/city-of-kitchener.svg
+  current: false
+- name: City of Waterloo
+  logo: /images/sponsors/previous/city-of-waterloo.png
+  current: false
+- name: Communitech
+  logo: /images/sponsors/previous/communitech.jpg
+  current: false
+- name: CivicTech Toronto
+  logo: /images/sponsors/previous/ctto.png
+  current: false
+- name: Edmonton
+  logo: /images/sponsors/previous/edmonton.png
+  current: false
+- name: Fredericton
+  logo: /images/sponsors/previous/fredericton.jpg
+  current: false
+- name: House of Friendship
+  logo: /images/sponsors/previous/house-of-friendship.png
+  current: false
+- name: Idea Exchange
+  logo: /images/sponsors/previous/idea-exchange.jpg
+  current: false
+- name: Kitchener Public Library
+  logo: /images/sponsors/previous/kpl.png
+  current: false
+- name: London
+  logo: /images/sponsors/previous/london.jpg
+  current: false
+- name: Ottawa
+  logo: /images/sponsors/previous/ottawa.jpg
+  current: false
+- name: Smart Waterloo Region (Previous)
+  logo: /images/sponsors/previous/smart-waterloo-region.jpg
+  current: false
+- name: Smile
+  logo: /images/sponsors/previous/smile.svg
+  current: false
+- name: Sortable
+  logo: /images/sponsors/previous/sortable.png
+  current: false
+- name: TextNow
+  logo: /images/sponsors/previous/textnow.jpg
+  current: false
+- name: Tulip
+  logo: /images/sponsors/previous/tulip.svg
+  current: false
+- name: Vancouver
+  logo: /images/sponsors/previous/vancouver.jpg
+  current: false

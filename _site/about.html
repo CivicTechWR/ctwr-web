@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Civic Tech Waterloo Region</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/abstract-shapes.css">
+    <style>
+        .organizers-section {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+        .organizers-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+        .organizers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+            align-items: start;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .organizer-card {
+            background: none;
+            box-shadow: none;
+            border-radius: 0;
+            text-align: center;
+            padding: 0;
+            width: 100%;
+            max-width: 180px;
+        }
+        .organizer-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 0.8rem;
+            background: #f2f2f2;
+            border: 1px solid #222;
+        }
+        .organizer-name {
+            /*font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;*/
+            color: #000;
+        }
+        .organizer-contact {
+            /*margin-top: 0.2rem;
+            font-size: 0.9rem;*/
+        }
+        .organizer-contact a {
+            color: inherit;
+            text-decoration: underline;
+        }
+        .about-section {
+            padding: 2rem 1rem;
+        }
+        .shoutout-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .shoutout-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .shoutout-list {
+            flex-direction: column;
+            gap: 0.5rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        .shoutout-member {
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            min-width: auto;
+            text-align: left;
+        }
+        .shoutout-member-name {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+        .shoutout-member-name a {
+            text-align: center;
+            color: inherit;
+            text-decoration: underline;
+        }
+        .organizer-card {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .organizer-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 1px solid #222;
+        }
+        .organizer-contact {
+            /*margin-top: 0.5rem;
+            font-size: 1.25em;*/
+        }
+    .about-main-centered {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+.section-padding {
+    padding: 8em 0em;
+}
+</style>
+</head>
+<body>
+    
+    <div id="header-container"></div>
+    <script>
+        // Load the header content
+        fetch('/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
+    <main class="about-main-centered shape-container">
+        <!-- Abstract Shapes for About Section -->
+        <div class="abstract-shape shape-circle" style="left: 5%; top: 10%;"></div>
+        <div class="abstract-shape shape-donut" style="right: 8%; top: 15%;"></div>
+        <div class="abstract-shape shape-star" style="left: 12%; bottom: 25%;"></div>
+        <div class="abstract-shape shape-wave" style="right: 15%; bottom: 20%;"></div>
+
+        <div class="organizers-title">Our Impact</div>
+        <section class="mt-4">
+            <p>
+                Civic Tech Waterloo Region (CTWR) has been a driving force for positive change in the Tri-City area (Kitchener, Waterloo, and Guelph). By bringing together technologists, designers, activists, and civic leaders, CTWR has fostered a collaborative environment where innovative solutions are developed to address local challenges. Our projects have empowered residents, improved civic engagement, and provided open data tools for the community. We have helped bridge the gap between the tech sector and local government, making civic processes more transparent and accessible. Our events and hacknights have inspired hundreds to use their skills for the public good, making a lasting impact on both the tech and civic communities across the region.
+            </p>
+        </section>
+        <section class="organizers-section shape-container">
+    <!-- Abstract Shapes for Team Section -->
+    <div class="abstract-shape shape-square" style="right: 7%; top: 30%;"></div>
+    <div class="abstract-shape shape-triangle" style="left: 5%; top: 40%;"></div>
+    <div class="abstract-shape shape-zigzag" style="right: 12%; bottom: 20%;"></div>
+    <div class="abstract-shape shape-hexagon" style="left: 15%; bottom: 15%;"></div>
+    <div class="organizers-title">Organizers</div>
+    <div class="organizers-grid">
+        <div class="organizer-card">
+            <a href="https://www.linkedin.com/in/shaydreamside/" target="_blank">
+                <img src="/images/organizers/1743866853685.jpeg" alt="Shay Kennedy" class="organizer-img">
+            </a>
+            <div class="organizer-name">Shay Kennedy</div>
+            <div class="organizer-contact"><a href="https://www.linkedin.com/in/shaydreamside/" target="_blank">LinkedIn</a></div>
+        </div>
+        <div class="organizer-card">
+            <a href="https://www.linkedin.com/in/foudamo/" target="_blank">
+                <img src="/images/organizers/1747066454092.jpeg" alt="Mohamed Fouda" class="organizer-img">
+            </a>
+            <div class="organizer-name">Mohamed Fouda</div>
+            <div class="organizer-contact"><a href="https://www.linkedin.com/in/foudamo/" target="_blank">LinkedIn</a></div>
+        </div>
+        <div class="organizer-card">
+            <a href="https://www.linkedin.com/in/andre-levesque-39617b11/" target="_blank">
+                <img src="/images/organizers/1729533587447.jpeg" alt="Dre Levesque" class="organizer-img">
+            </a>
+            <div class="organizer-name">Dre Levesque</div>
+            <div class="organizer-contact"><a href="https://www.linkedin.com/in/andre-levesque-39617b11/" target="_blank">LinkedIn</a></div>
+        </div>
+        <div class="organizer-card">
+            <a href="https://www.linkedin.com/in/fionalau/" target="_blank">
+                <img src="/images/organizers/1517417697231.jpeg" alt="Fiona Lau" class="organizer-img">
+            </a>
+            <div class="organizer-name">Fiona Lau</div>
+            <div class="organizer-contact"><a href="https://www.linkedin.com/in/fionalau/" target="_blank">LinkedIn</a></div>
+        </div>
+    </div>
+</section>
+        <section class="shoutout-section">
+            <div class="shoutout-title">Big Shoutout also to</div>
+            <div class="shoutout-list">
+                <div class="shoutout-member">
+                    <div class="shoutout-member-name"><a href="https://github.com/qedi-r" target="_blank">Christian Snyder</a></div>
+                </div>
+                <div class="shoutout-member">
+                    <div class="shoutout-member-name"><a href="https://github.com/pnijjar" target="_blank">Paul Nijjar</a></div>
+                </div>
+                <div class="shoutout-member">
+                    <div class="shoutout-member-name"><a href="https://github.com/mmmaxwwwell" target="_blank">Maxwell Veenendaal</a></div>
+                </div>
+                <div class="shoutout-member">
+                    <div class="shoutout-member-name"><a href="https://github.com/derjohng" target="_blank">John Gibbons</a></div>
+                </div>
+                <div class="shoutout-member">
+                    <div class="shoutout-member-name"><a href="https://github.com/KristinaTaylor" target="_blank">Kristina Taylor</a></div>
+                </div>
+                <div class="shoutout-member">
+                    <div class="shoutout-member-name"><a href="https://github.com/apurvakb" target="_blank">Apurva Bhargava</a></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="sponsors section-padding shape-container" id="section_4">
+            <!-- Abstract Shapes for Partners Section -->
+            <div class="abstract-shape shape-blob" style="right: 6%; top: 20%;"></div>
+            <div class="abstract-shape shape-rectangle" style="left: 8%; top: 50%;"></div>
+            <div class="abstract-shape shape-cross" style="right: 10%; bottom: 25%;"></div>
+            <div class="abstract-shape shape-diamond" style="left: 12%; bottom: 20%;"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <h3 class="text-center mb-5">Our Partners</h3>
+                    </div>
+                    <div id="sponsor-container" class="row justify-content-center">
+                        <!-- Current Partners -->
+                        <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
+                            <img src="/images/sponsors/buildersclub.webp" class="sponsors-image img-fluid" alt="Builders Club" title="Builders Club">
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
+                            <img src="/images/sponsors/dreamsidelogo.png" class="sponsors-image img-fluid" alt="Dreamside Digital" title="Dreamside Digital">
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
+                            <img src="/images/sponsors/foxxwoodlogo.png" class="sponsors-image img-fluid" alt="Foxxwood" title="Foxxwood">
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
+                            <img src="/images/sponsors/tinyhometakeout.png" class="sponsors-image img-fluid" alt="Tiny Home Takeout" title="Tiny Home Takeout">
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
+                            <img src="/images/sponsors/denlogo.png" class="sponsors-image img-fluid" alt="DEN" title="DEN">
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
+                            <img src="/images/sponsors/swrllogo.png" class="sponsors-image img-fluid" alt="Smart Waterloo Region" title="Smart Waterloo Region">
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-12 col-12 mt-5">
+                        <h4 class="text-center mb-4">Previous Partners</h4>
+                    </div>
+                    <div id="previous-sponsor-container" class="row justify-content-center">
+                        <!-- Previous Partners -->
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/OFN.png" class="previous-sponsors-image img-fluid" alt="Open Food Network" title="Open Food Network">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/axonify.png" class="previous-sponsors-image img-fluid" alt="Axonify" title="Axonify">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/calgary.jpg" class="previous-sponsors-image img-fluid" alt="Calgary" title="Calgary">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/chalk.png" class="previous-sponsors-image img-fluid" alt="Chalk" title="Chalk">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/city-of-kitchener.svg" class="previous-sponsors-image img-fluid" alt="City of Kitchener" title="City of Kitchener">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/city-of-waterloo.png" class="previous-sponsors-image img-fluid" alt="City of Waterloo" title="City of Waterloo">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/communitech.jpg" class="previous-sponsors-image img-fluid" alt="Communitech" title="Communitech">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/ctto.png" class="previous-sponsors-image img-fluid" alt="CivicTech Toronto" title="CivicTech Toronto">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/edmonton.png" class="previous-sponsors-image img-fluid" alt="Edmonton" title="Edmonton">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/fredericton.jpg" class="previous-sponsors-image img-fluid" alt="Fredericton" title="Fredericton">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/house-of-friendship.png" class="previous-sponsors-image img-fluid" alt="House of Friendship" title="House of Friendship">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/idea-exchange.jpg" class="previous-sponsors-image img-fluid" alt="Idea Exchange" title="Idea Exchange">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/kpl.png" class="previous-sponsors-image img-fluid" alt="Kitchener Public Library" title="Kitchener Public Library">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/london.jpg" class="previous-sponsors-image img-fluid" alt="London" title="London">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/ottawa.jpg" class="previous-sponsors-image img-fluid" alt="Ottawa" title="Ottawa">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/smart-waterloo-region.jpg" class="previous-sponsors-image img-fluid" alt="Smart Waterloo Region (Previous)" title="Smart Waterloo Region (Previous)">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/smile.svg" class="previous-sponsors-image img-fluid" alt="Smile" title="Smile">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/sortable.png" class="previous-sponsors-image img-fluid" alt="Sortable" title="Sortable">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/textnow.jpg" class="previous-sponsors-image img-fluid" alt="TextNow" title="TextNow">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/tulip.svg" class="previous-sponsors-image img-fluid" alt="Tulip" title="Tulip">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                            <img src="/images/sponsors/previous/vancouver.jpg" class="previous-sponsors-image img-fluid" alt="Vancouver" title="Vancouver">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="shoutout-section section-padding shape-container">
+            <!-- Abstract Shapes for Shoutout Section -->
+            <div class="abstract-shape shape-diamond" style="left: 3%; top: 10%;"></div>
+            <div class="abstract-shape shape-cross" style="right: 4%; top: 15%;"></div>
+            <div class="abstract-shape shape-circle" style="left: 10%; bottom: 20%;"></div>
+            <div class="abstract-shape shape-blob" style="right: 8%; bottom: 25%;"></div>
+            <div class="container text-center">
+                <h3>Shoutout to Our Contributors</h3>
+                <p>Special thanks to all the volunteers and community members who have contributed to our projects and events over the years.</p>
+                <p>Check out our <a href="https://github.com/civictechwr">GitHub</a> to see our contributors and get involved!</p>
+            </div>
+        </section>
+    </main>
+    <div id="footer-container"></div>
+    <script>
+        // Load the footer content
+        fetch('/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+
+
+
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

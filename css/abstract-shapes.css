@@ -1,0 +1,206 @@
+/* Abstract Shapes CSS */
+
+.shape-container {
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+.abstract-shape {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Shape 1 - Circle */
+.shape-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF5757, #FF8A5B);
+  top: 20%;
+  left: 5%;
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Shape 2 - Square */
+.shape-square {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #36D1DC, #5B86E5);
+  border-radius: 10px;
+  transform: rotate(45deg);
+  top: 60%;
+  right: 8%;
+  animation: float 18s ease-in-out infinite reverse;
+}
+
+/* Shape 3 - Triangle */
+.shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 140px solid rgba(111, 66, 193, 0.6);
+  top: 30%;
+  right: 15%;
+  animation: float 20s ease-in-out infinite;
+}
+
+/* Shape 4 - Blob */
+.shape-blob {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, #43CEA2, #185A9D);
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  top: 70%;
+  left: 15%;
+  animation: morph 15s linear infinite alternate;
+}
+
+/* Shape 5 - Rectangle */
+.shape-rectangle {
+  width: 120px;
+  height: 60px;
+  background: linear-gradient(135deg, #F09819, #EDDE5D);
+  border-radius: 8px;
+  transform: rotate(-15deg);
+  bottom: 15%;
+  left: 10%;
+  animation: float 12s ease-in-out infinite;
+}
+
+/* Shape 6 - Donut */
+.shape-donut {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: transparent;
+  border: 20px solid rgba(238, 96, 156, 0.6);
+  top: 15%;
+  right: 10%;
+  animation: float 16s ease-in-out infinite reverse;
+}
+
+/* Shape 7 - Zigzag */
+.shape-zigzag {
+  width: 120px;
+  height: 60px;
+  background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+  clip-path: polygon(0% 0%, 20% 0%, 40% 100%, 60% 0%, 80% 100%, 100% 0%, 100% 100%, 0% 100%);
+  top: 45%;
+  left: 12%;
+  animation: float 14s ease-in-out infinite;
+}
+
+/* Shape 8 - Star */
+.shape-star {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #A0F1EA, #5D26C1);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  top: 25%;
+  right: 15%;
+  animation: spin 20s linear infinite;
+}
+
+/* Shape 9 - Hexagon */
+.shape-hexagon {
+  width: 100px;
+  height: 90px;
+  background: linear-gradient(135deg, #76B852, #8DC26F);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  bottom: 20%;
+  right: 10%;
+  animation: float 18s ease-in-out infinite;
+}
+
+/* Shape 10 - Cross */
+.shape-cross {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #F857A6, #FF5858);
+  clip-path: polygon(35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0% 65%, 0% 35%, 35% 35%);
+  top: 60%;
+  left: 8%;
+  animation: spin 25s linear infinite reverse;
+}
+
+/* Shape 11 - Wave */
+.shape-wave {
+  width: 150px;
+  height: 60px;
+  background: linear-gradient(135deg, #00C9FF, #92FE9D);
+  border-radius: 50px;
+  clip-path: polygon(0% 50%, 25% 20%, 50% 50%, 75% 80%, 100% 50%, 100% 100%, 0% 100%);
+  bottom: 15%;
+  right: 20%;
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Shape 12 - Diamond */
+.shape-diamond {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #FC466B, #3F5EFB);
+  transform: rotate(45deg);
+  top: 40%;
+  right: 25%;
+  animation: float 17s ease-in-out infinite reverse;
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes morph {
+  0% {
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  }
+  25% {
+    border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 30% 60% 80%;
+  }
+  75% {
+    border-radius: 60% 40% 30% 70% / 60% 40% 50% 40%;
+  }
+  100% {
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  }
+}
+
+/* Media Queries for Responsive Shapes */
+@media (max-width: 768px) {
+  .abstract-shape {
+    transform: scale(0.7);
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 576px) {
+  .abstract-shape {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+}

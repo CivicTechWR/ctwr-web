@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Civic Tech Waterloo Region</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/abstract-shapes.css">
+    <style>
+        .projects-section {
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+        .projects-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+        .projects-main-centered {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px;
+            background: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .project-description {
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .project-card {
+            background: var(--section-bg-color);
+            border: 2px solid var(--white-color);
+            border-radius: var(--border-radius-medium);
+            position: relative;
+            overflow: hidden;
+            padding: 40px;
+            height: 350px;
+            transition: all ease 0.5s;
+            margin-bottom: 30px;
+        }
+        .project-card:hover {
+            border-color: var(--secondary-color);
+        }
+        .project-info {
+            position: relative;
+            z-index: 2;
+        }
+        .project-image {
+            border-radius: var(--border-radius-medium);
+            display: block;
+            width: 100%;
+            transform: rotate(10deg) translateY(80px);
+            transition: all ease 0.5s;
+        }
+        .project-card:hover .project-image {
+            transform: rotate(0) translateY(0);
+        }
+        .github-btn {
+            font-size: 10px;
+            padding: 4px 8px;
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <script>
+        // Load the header content
+        fetch('/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
+
+    <main class="projects-main-centered shape-container">
+        <!-- Abstract Shapes for Projects Header Section -->
+        <div class="abstract-shape shape-circle" style="left: 5%; top: 10%;"></div>
+        <div class="abstract-shape shape-donut" style="right: 8%; top: 15%;"></div>
+        <div class="abstract-shape shape-star" style="left: 12%; top: 40%;"></div>
+        <div class="abstract-shape shape-diamond" style="right: 10%; top: 35%;"></div>
+        
+        <section class="mt-4 shape-container">
+            <!-- Abstract Shapes for Project Description Section -->
+            <div class="abstract-shape shape-diamond" style="left: 3%; top: 10%; width: 60px; height: 60px;"></div>
+            <div class="abstract-shape shape-circle" style="right: 5%; top: 20%; width: 50px; height: 50px;"></div>
+            <div class="abstract-shape shape-cross" style="left: 8%; bottom: 5%; width: 45px; height: 45px;"></div>
+            <p class="project-description">
+                Our community works on various civic technology projects to address local challenges. 
+                These projects are developed collaboratively by volunteers with diverse skills in design, 
+                development, research, and community engagement.
+            </p>
+        </section>
+
+        <h1 style="font-size: 2rem; margin-bottom: 1.5rem;">Highlighted Projects</h1>
+
+
+        <section class="projects-section shape-container">
+            <!-- Abstract Shapes for Projects List Section -->
+            <div class="abstract-shape shape-square" style="right: 7%; top: 10%;"></div>
+            <div class="abstract-shape shape-triangle" style="left: 5%; top: 30%;"></div>
+            <div class="abstract-shape shape-hexagon" style="right: 12%; bottom: 15%;"></div>
+            <div class="abstract-shape shape-wave" style="left: 8%; bottom: 25%;"></div>
+            <div class="abstract-shape shape-cross" style="right: 15%; top: 50%;"></div>
+            <div class="abstract-shape shape-zigzag" style="left: 15%; top: 60%;"></div>
+            <div class="row" id="project-container">
+                <!-- Projects will be loaded here via JavaScript -->
+            </div>
+        </section>
+
+        <section class="mt-5 shape-container">
+            <!-- Abstract Shapes for Get Involved Section -->
+            <div class="abstract-shape shape-wave" style="left: 2%; top: 5%;"></div>
+            <div class="abstract-shape shape-donut" style="right: 3%; top: 10%;"></div>
+            <div class="abstract-shape shape-triangle" style="left: 6%; bottom: 10%;"></div>
+            <div class="abstract-shape shape-blob" style="right: 5%; bottom: 15%;"></div>
+            <h1 style="font-size: 2rem; margin-bottom: 1.5rem;text-align: center;">Get Involved</h1>
+            <p>
+                Interested in contributing to one of our projects or starting a new one? Join us at our weekly hacknights 
+                where we collaborate on these initiatives. No technical experience is required – we welcome people with all 
+                kinds of skills and backgrounds.
+            </p>
+            <div class="text-center mt-4">
+                <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary" style="margin-right: 15px; background-color: #2d6f72;">Upcoming Hacknights</a>
+                <a href="https://github.com/CivicTechWR" class="btn btn-outline" style="background: transparent; border: 1px solid rgba(0, 0, 0, 0.2); color: #000;">GitHub Organization</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+    <script>
+        // Load the footer content
+        fetch('/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script>
+        // Function to load and display projects
+        function loadProjects() {
+            fetch('/js/projects.json')
+                .then(response => response.json())
+                .then(projects => {
+                    const projectContainer = document.getElementById('project-container');
+                    projectContainer.innerHTML = ''; // Clear any existing content
+                    
+                    projects.forEach(project => {
+                        // Create project card
+                        const projectCard = document.createElement('div');
+                        projectCard.className = 'col-lg-4 col-md-6 col-12 mb-4';
+                        
+                        // Format the year array as a string
+                        const yearString = Array.isArray(project.year) ? project.year.join(', ') : project.year;
+                        
+                        projectCard.innerHTML = `
+                            <div class="project-card">
+                                <div class="project-info">
+                                    <a href="${project.github}" class="github-btn btn" target="_blank">GitHub</a>
+                                    <h4 class="projects-title">${project.name}</h4>
+                                    <small class="projects-tag">Year: ${yearString}</small>
+                                </div>
+                                <a href="${project.url}" target="_blank">
+                                    <img src="${project.logo}" class="project-image img-fluid" alt="${project.name}">
+                                </a>
+                            </div>
+                        `;
+                        
+                        projectContainer.appendChild(projectCard);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading projects:', error);
+                    document.getElementById('project-container').innerHTML = `
+                        <div class="col-12 text-center">
+                            <p>Sorry, we couldn't load the projects. Please try again later.</p>
+                        </div>
+                    `;
+                });
+        }
+        
+        // Load projects when the page is loaded
+        document.addEventListener('DOMContentLoaded', loadProjects);
+    </script>
+</body>
+</html>

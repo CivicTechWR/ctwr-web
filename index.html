@@ -30,6 +30,7 @@
     <link href="css/magnific-popup.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/abstract-shapes.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,40 +41,28 @@
         </div>
     </section>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">
-                    <img src="/images/logos/civictechwr_logo_white.png" alt="Civic Tech WR" class="logo">
-                    <span class="brand-name">CivicTech Waterloo Region</span>
-                </a>
-            </div>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    {% for link in site.data.navigation %}
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="{{link.url}}">
-                            <span class="nav-link-title">{{link.text}}</span>
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-
-         
-            </div>
-        </div>
-    </nav>
+    <div id="header-container"></div>
+    <script>
+        // Load the header content
+        fetch('/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
 
 
     <main>
 
-        <section class="hero d-flex justify-content-center align-items-center" id="section_1">
+        <section class="hero d-flex justify-content-center align-items-center shape-container" id="section_1">
+            <!-- Abstract Shapes for Hero Section -->
+            <div class="abstract-shape shape-circle" style="left: 5%; top: 20%;"></div>
+            <div class="abstract-shape shape-donut" style="right: 10%; top: 15%;"></div>
+            <div class="abstract-shape shape-star" style="left: 15%; bottom: 20%;"></div>
+            <div class="abstract-shape shape-hexagon" style="right: 20%; bottom: 25%;"></div>
+            <div class="abstract-shape shape-diamond" style="left: 25%; top: 30%;"></div>
+            <div class="abstract-shape shape-cross" style="right: 25%; top: 40%;"></div>
             <div class="hero-background">
                 <div class="hero-background-layer"></div>
                 <div class="hero-background-pattern"></div>
@@ -91,7 +80,7 @@
                                 Join our community of tech enthusiasts and designers working together to solve local challenges
                             </p>
                             <div class="hero-actions">
-                                <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary">Join Our Community</a>
+                                <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary"><i class="bi bi-calendar-event" style="margin-right: 8px;"></i>Upcoming Hacknights</a>
                                 <a href="#section_2" class="btn btn-outline">Learn More</a>
                             </div>
                         </div>
@@ -105,7 +94,12 @@
         
 
 
-        <section class="about section-padding" id="section_2">
+        <section class="about section-padding shape-container" id="section_2">
+            <!-- Abstract Shapes for About Section -->
+            <div class="abstract-shape shape-triangle" style="left: 3%; top: 15%;"></div>
+            <div class="abstract-shape shape-wave" style="right: 5%; top: 25%;"></div>
+            <div class="abstract-shape shape-circle" style="left: 8%; bottom: 20%;"></div>
+            <div class="abstract-shape shape-zigzag" style="right: 7%; bottom: 30%;"></div>
             <div class="container">
                 <div class="row">
 
@@ -128,7 +122,12 @@
             </div>
         </section>
 
-        <section class="hacknights section-padding" id="section_2">
+        <section class="hacknights section-padding shape-container" id="section_2">
+            <!-- Abstract Shapes for Hacknights Section -->
+            <div class="abstract-shape shape-square" style="left: 4%; top: 10%;"></div>
+            <div class="abstract-shape shape-star" style="right: 6%; top: 20%;"></div>
+            <div class="abstract-shape shape-hexagon" style="left: 7%; bottom: 15%;"></div>
+            <div class="abstract-shape shape-donut" style="right: 9%; bottom: 25%;"></div>
             <div class="container">
                 <div class="row">
 
@@ -148,6 +147,83 @@
                 </div>
             </div>
         </section>
+       
+
+<!-- PROJECTS -->
+       <section class="projects section-padding shape-container" id="section_3">
+    <!-- Abstract Shapes for Projects Section -->
+    <div class="abstract-shape shape-square" style="right: 7%; top: 10%;"></div>
+    <div class="abstract-shape shape-triangle" style="left: 5%; top: 30%;"></div>
+    <div class="abstract-shape shape-zigzag" style="right: 15%; bottom: 15%;"></div>
+    <div class="abstract-shape shape-cross" style="left: 12%; bottom: 25%;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="pt-2 mb-3">Highlighted Projects</h3>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div id="project-container" class="row">
+                {% for project in site.data.projects %}
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="projects-thumb">
+                        <div class="projects-info">
+                             
+                            
+                            <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
+                            <h4 class="projects-title">{{project.name}}</h4>
+                           <small class="projects-tag">Year: {{project.year}}</small>
+                        </div>
+                        <a href="{{project.url}}">
+                            <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}">
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+        
+
+<!-- SPONSORS -->
+<section class="sponsors section-padding shape-container" id="section_4">
+    <!-- Abstract Shapes for Partners Section -->
+    <div class="abstract-shape shape-blob" style="right: 8%; top: 40%;"></div>
+    <div class="abstract-shape shape-rectangle" style="left: 6%; top: 60%;"></div>
+    <div class="abstract-shape shape-wave" style="right: 12%; bottom: 20%;"></div>
+    <div class="abstract-shape shape-diamond" style="left: 10%; bottom: 30%;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12">
+                <h3 class="text-center mb-5">Our Partners</h3>
+            </div>
+            <div id="sponsor-container" class="row justify-content-center">
+                {% for partner in site.data.partners %}
+                    {% if partner.current %}
+                    <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
+                        <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+            <div class="col-lg-12 col-12 mt-5">
+                <h4 class="text-center mb-4">Previous Partners</h4>
+            </div>
+            <div id="previous-sponsor-container" class="row justify-content-center">
+                {% for partner in site.data.partners %}
+                    {% if partner.current == false %}
+                    <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                        <img src="{{partner.logo}}" class="previous-sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 
 
         <!-- NEXT MEETING -->
@@ -160,7 +236,7 @@
                         
                             <div class="profile-thumb">
                                 <div class="profile-title">
-                                    <h4 class="mb-0">Next Meeting</h4>
+                                    <h4 class="mb-0">Upcoming Hacknight</h4>
                                 </div>
 
                                 <div class="profile-body">
@@ -197,205 +273,23 @@
             </div>
         </section>
 
-       
 
 
-       <section class="projects section-padding" id="section_3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="pt-2 mb-3">Projects</h3>
-            </div>
 
-            <div class="clearfix"></div>
-
-            <div id="project-container" class="row">
-                {% for project in site.data.projects %}
-                  <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="projects-thumb">
-                        <div class="projects-info">
-                             
-                            
-                            <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
-                            <h4 class="projects-title">{{project.name}}</h4>
-                           <small class="projects-tag">Year: {{project.year}}</small>
-                        </div>
-                        <a href="{{project.url}}">
-                            <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}">
-                        </a>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</section>
-        
-
-
-<section class="sponsors section-padding" id="section_4">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-12">
-                <h3 class="text-center mb-5">Our Partners</h3>
-            </div>
-            <div id="sponsor-container" class="row">
-                {% for partner in site.data.partners %}
-                    <div class="col-lg-3 col-6 sponsors-item-height">
-                        <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}">
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</section>
 
     </main>
 
-    <!--
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div
-                            class="contact-info contact-info-border-start d-flex flex-column justify-content-center align-items-center">
-
-                            <ul class="social-icon">
-                                <li class="social-icon-item"><a href="{{site.meetup}}"
-                                        title="meetup icons" class="social-icon-link"><img width="30" height="30"
-                                            src="https://img.icons8.com/ios-filled/50/meetup.png"
-                                            alt="civictechwr-meetup" /></a></li>
-
-                                <li class="social-icon-item"><a href="{{ site.slack_invite }}"
-                                        class="social-icon-link bi-slack"></a></li>
-
-                                <li class="social-icon-item"><a href="{{ site.instagram }}"
-                                        class="social-icon-link bi-instagram"></a></li>
-
-                                <li class="social-icon-item"><a href="{{ site.twitter }}"
-                                        class="social-icon-link bi-twitter"></a></li>
-
-                                <li class="social-icon-item"><a href="{{ site.facebook }}"
-                                        class="social-icon-link bi-facebook"></a></li>
-
-                                <li class="social-icon-item"><a href="mailto:{{ site.email }}"
-                                        class="social-icon-link bi-envelope-fill"></a></li>
-
-                                
-                            </ul>
-
-                    
-                        </div>
-                
-            </div>
-        </div>
-    </footer>
--->
-
-<footer class="footer">
-    <div class="footer-content">
-  
-      <div class="footer-content-column">
-        <div class="footer-logo">
-          <a class="footer-logo-link">
-            <!-- <span class="hidden-link-text">CTWRLOGO</span> -->
-            <img src="{{ base_url }}/images/logos/civictechwr_logo_black.png" class="footer-logo-image" width="180" alt="CivicTechWR Logo" />
-            <!-- <h1 style="font-size: 1.5em;">CIVIC TECH WATERLOO REGION</h1> -->
-          </a>
-          <p>We're a community group that brings together people from different sectors and industries to actively solve issues facing our local community using design and technology</p>
-        </div>
-      </div>
-  
-      <div class="footer-content-column">
-        <div class="footer-menu">
-          <h2 class="footer-menu-name">Our previous projects</h2>
-          <ul id="menu-get-started" class="footer-menu-list">
-            <li class="menu-item">
-              <a href="https://www.cbc.ca/news/canada/kitchener-waterloo/waterloo-region-organizations-voter-information-surveys-1.4870468">CBC - Oct 20, 2018</a>
-            </li>
-            <li class="menu-item">
-              <a href="https://www.waterloochronicle.ca/community-story/8943235-waterlooregionvotes-org-helps-voters-inform-themselves-before-municipal-election/">Waterloo Chronicle - Oct 03, 2018</a>
-            </li>
-            <li class="menu-item">
-              <a href="https://www.therecord.com/news-story/8847728-techies-mobilizing-for-this-fall-s-municipal-elections-in-waterloo-region/">The Record - Aug 19, 2018</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-  
-      <div class="footer-content-column">
-        <div class="footer-menu">
-          <h2 class="footer-menu-name">Quick Links</h2>
-          <ul id="menu-quick-links" class="footer-menu-list">
-            <li class="menu-item">
-              <a href="{{ base_url }}">Home</a>
-            </li>
-            <li class="menu-item">
-              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/FAQ">Frequently Asked Questions (FAQ)</a>
-            </li>
-            <li class="menu-item">
-              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/Guidelines_&_Templates">Guidelines & Templates</a>
-            </li>
-            <li class="menu-item">
-              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/policies/Code_of_Conduct">Code of Conduct</a>
-            </li>
-            <li class="menu-item">
-              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/policies/Diversity_and_Inclusion_Policy">Diversity and Inclusion Policy</a>
-            </li>
-            <li class="menu-item">
-              <a href="http://civictechwr.github.io/CTWR-Organization-Documentation/blog">Recaps</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-  
-      <div class="footer-content-column">
-        <div class="footer-call-to-action">
-          <h2 class="footer-call-to-action-title">Want to Get Involved?</h2>
-          <a class="footer-call-to-action-button" href="https://www.meetup.com/civictechwr/" target="_blank">Join Us in our next Meetup</a>
-          <a class="footer-call-to-action-button" href="https://join.slack.com/t/civictechwr/shared_invite/zt-2ldijjy0i-gaGvPkuafPt9Zpn7jml70w" target="_blank">Say hello to us on Slack</a>
-          <a class="footer-call-to-action-button" href="https://github.com/CivicTechWR" target="_blank">Contribute to projects on GitHub</a>
-        </div>
-      </div>
-  
-    </div>
-  
-    <div class="footer-copyright">
-      <div class="contact-info">
-        <ul class="social-icon">
-          <li class="social-icon-item">
-            <a href="https://www.meetup.com/civictechwr/" target="_blank" class="social-icon-link">
-              <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/meetup.png" alt="meetup" />
-            </a>
-          </li>
-          <li class="social-icon-item">
-            <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" target="_blank" class="social-icon-link bi-slack"></a>
-          </li>
-          <li class="social-icon-item">
-            <a href="https://instagram.com/civictechwr" target="_blank" class="social-icon-link bi-instagram"></a>
-          </li>
-          <li class="social-icon-item">
-            <a href="https://twitter.com/civictechwr" target="_blank" class="social-icon-link bi-twitter"></a>
-          </li>
-          <li class="social-icon-item">
-            <a href="https://facebook.com/civictechwr" target="_blank" class="social-icon-link bi-facebook"></a>
-          </li>
-          <li class="social-icon-item">
-            <a href="https://medium.com/civictechwr" target="_blank" class="social-icon-link bi-medium"></a>
-          </li>
-          <li class="social-icon-item">
-            <a href="mailto:civictechwr@gmail.com" class="social-icon-link bi-envelope-fill"></a>
-          </li>
-        </ul>
-      </div>
-  
-      <div class="footer-copyright-wrapper">
-        <p style="font-size: 13px;">Civic Tech Waterloo Region | All rights reserved</p>
-      </div>
-      
-    </div>
-
-  </footer>
-
+    <div id="footer-container"></div>
+    <script>
+        // Load the footer content
+        fetch('/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+ 
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -404,6 +298,7 @@
     <script src="js/magnific-popup-options.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/meeting.js"></script>
+    <script src="js/add-view-all-card.js"></script>
 
 </body>
 
