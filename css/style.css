@@ -1668,6 +1668,9 @@ a {
     padding-top: 80px;
     padding-bottom: 80px;
   }
+  .section-padding {
+    padding: 2em;
+  }
 
   .custom-btn,
   .navbar .custom-btn {
@@ -1697,11 +1700,7 @@ a {
     color: var(--secondary-color);
   }
 
-  .navbar-toggler .navbar-toggler-icon,
-  .navbar-toggler .navbar-toggler-icon:before,
-  .navbar-toggler .navbar-toggler-icon:after {
-    background: var(--dark-color);
-  }
+
 
   .navbar-expand-lg .navbar-nav .nav-link {
     margin-left: 0;
@@ -1815,6 +1814,7 @@ a {
   .logo{
     width: 50px;
     height: 50px;
+    margin-left: 0px;
   }
   .hero-image-wrap {
     width: 300px;
