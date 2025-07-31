@@ -160,46 +160,52 @@
 
     <script src="js/bootstrap.min.js"></script>
     
-<script>
-    function loadProjects() {
-        fetch('/js/projects.json')
-            .then(response => response.json())
-            .then(repos => {
-                const projectContainer = document.getElementById('project-container');
-                projectContainer.innerHTML = '';
-
-                repos
-                    .filter(repo => !repo.fork && !repo.archived) // optional: skip forks/archived
-                    .forEach(repo => {
+    <script>
+        // Function to load and display projects
+        function loadProjects() {
+            fetch('/js/projects.json')
+                .then(response => response.json())
+                .then(projects => {
+                    const projectContainer = document.getElementById('project-container');
+                    projectContainer.innerHTML = ''; // Clear any existing content
+                    
+                    projects.forEach(project => {
+                        // Create project card
                         const projectCard = document.createElement('div');
                         projectCard.className = 'col-lg-4 col-md-6 col-12 mb-4';
-
+                        
+                        // Format the year array as a string
+                        const yearString = Array.isArray(project.year) ? project.year.join(', ') : project.year;
+                        
                         projectCard.innerHTML = `
                             <div class="project-card">
                                 <div class="project-info">
-                                    <a href="${repo.html_url}" class="github-btn btn" target="_blank">GitHub</a>
-                                    <h4 class="projects-title">${repo.name}</h4>
-                                    <small class="projects-tag">${repo.language || ''}</small>
-                                    <p>${repo.description || 'No description available.'}</p>
+                                    <a href="${project.github}" class="github-btn btn" target="_blank">GitHub</a>
+                                    <h4 class="projects-title">${project.name}</h4>
+                                    <small class="projects-tag">Year: ${yearString}</small>
                                 </div>
+                                <a href="${project.url}" target="_blank">
+                                    <img src="${project.logo}" class="project-image img-fluid" alt="${project.name}">
+                                </a>
                             </div>
                         `;
-
+                        
                         projectContainer.appendChild(projectCard);
                     });
-            })
-            .catch(error => {
-                console.error('Error loading projects:', error);
-                document.getElementById('project-container').innerHTML = `
-                    <div class="col-12 text-center">
-                        <p>Sorry, we couldn't load the projects. Please try again later.</p>
-                    </div>
-                `;
-            });
-    }
-
-    document.addEventListener('DOMContentLoaded', loadProjects);
-</script>
+                })
+                .catch(error => {
+                    console.error('Error loading projects:', error);
+                    document.getElementById('project-container').innerHTML = `
+                        <div class="col-12 text-center">
+                            <p>Sorry, we couldn't load the projects. Please try again later.</p>
+                        </div>
+                    `;
+                });
+        }
+        
+        // Load projects when the page is loaded
+        document.addEventListener('DOMContentLoaded', loadProjects);
+    </script>
 
 <script>
     function loadGitHubProjects() {
