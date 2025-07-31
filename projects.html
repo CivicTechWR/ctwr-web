@@ -108,8 +108,6 @@
         </section>
 
         <h1 style="font-size: 2rem; margin-bottom: 1.5rem;">Highlighted Projects</h1>
-
-
         <section class="projects-section shape-container">
             <!-- Abstract Shapes for Projects List Section -->
             <div class="abstract-shape shape-square" style="right: 7%; top: 10%;"></div>
@@ -120,6 +118,13 @@
             <div class="abstract-shape shape-zigzag" style="left: 15%; top: 60%;"></div>
             <div class="row" id="project-container">
                 <!-- Projects will be loaded here via JavaScript -->
+            </div>
+        </section>
+
+        <h2 style="font-size: 1.75rem; margin-top: 4rem; margin-bottom: 1.5rem;">Other Projects</h2>
+        <section class="projects-section shape-container">
+            <div class="row" id="github-projects-container">
+                <!-- GitHub projects will load here -->
             </div>
         </section>
 
@@ -157,7 +162,7 @@
     
 <script>
     function loadProjects() {
-        fetch('https://api.github.com/orgs/CivicTechWR/repos')
+        fetch('/js/projects.json')
             .then(response => response.json())
             .then(repos => {
                 const projectContainer = document.getElementById('project-container');
@@ -194,6 +199,47 @@
     }
 
     document.addEventListener('DOMContentLoaded', loadProjects);
+</script>
+
+<script>
+    function loadGitHubProjects() {
+        fetch('https://api.github.com/orgs/CivicTechWR/repos')
+            .then(response => response.json())
+            .then(repos => {
+                const container = document.getElementById('github-projects-container');
+                container.innerHTML = '';
+
+                repos
+                    .filter(repo => !repo.fork && !repo.archived) // skip forks/archived
+                    .forEach(repo => {
+                        const card = document.createElement('div');
+                        card.className = 'col-lg-4 col-md-6 col-12 mb-4';
+
+                        card.innerHTML = `
+                            <div class="project-card">
+                                <div class="project-info">
+                                    <a href="${repo.html_url}" class="github-btn btn" target="_blank">GitHub</a>
+                                    <h4 class="projects-title">${repo.name}</h4>
+                                    <small class="projects-tag">${repo.language || ''}</small>
+                                    <p>${repo.description || 'No description available.'}</p>
+                                </div>
+                            </div>
+                        `;
+
+                        container.appendChild(card);
+                    });
+            })
+            .catch(error => {
+                console.error('Error loading GitHub projects:', error);
+                document.getElementById('github-projects-container').innerHTML = `
+                    <div class="col-12 text-center">
+                        <p>Sorry, we couldn't load the other projects. Please try again later.</p>
+                    </div>
+                `;
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadGitHubProjects);
 </script>
 
 </body>
