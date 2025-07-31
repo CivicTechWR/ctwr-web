@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="description" content="CivicTechWR is community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology.">
+    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
     <title>Projects | Civic Tech Waterloo Region</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/abstract-shapes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/abstract-shapes.css" rel="stylesheet">
     <style>
         .projects-section {
             margin-top: 2rem;
@@ -143,9 +152,50 @@
         </section>
 
         <!-- NEXT MEETING -->
-        <section class="projects-section shape-container mt-5">
-          <h2 class="projects-title">Upcoming Events</h2>
-          <div id="event-widget"></div>
+        <section class="featured section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+                        <div class="about-thumb">
+
+                        
+                            <div class="profile-thumb">
+                                <div class="profile-title">
+                                    <h4 class="mb-0">Upcoming Hacknight</h4>
+                                </div>
+
+                                <div class="profile-body">
+                                    <p>
+                                        <span class="profile-small-title"><a class="bi-question-circle-fill"></a></span>
+                                        <span id="meeting-name"></span>
+                                    </p>
+
+                                    <p>
+                                        <span class="profile-small-title"><a class="bi-calendar-date-fill"></a></span>
+                                        <span id="meeting-date-time"></span>
+                                    </p>
+
+                                    <p>
+                                        <span class="profile-small-title"><a class="bi-pin-fill"></a></span>
+                                        <span id="meeting-location"></span>
+                                    </p>
+
+
+                                </div>
+
+                                <p class="mb-4 d-flex justify-content-center"><a id="meeting-btn"
+                                        class="meeting-btn btn custom-link"
+                                        href="http://www.meetup.com/civictechwr">More Details & RSVP</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-12">
+                        <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="">
+                    </div>
+
+                </div>
+            </div>
         </section>
         
     </main>
@@ -254,15 +304,24 @@
 <script type="text/javascript" src="https://secure.meetupstatic.com/simg/event-widget.js"></script>
 <script type="text/javascript">
   new MeetupWidget({
-    widgetId: "event-widget",
-    groupUrlname: "civictechwr",
+    widgetId: 'event-widget',
+    groupUrlname: 'civictechwr',
     eventCount: 3,
-    style: "standard",
+    style: 'standard',
     showLogo: true,
     showDescription: false,
     showJoinButton: true
   });
 </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/meeting.js"></script>
+    <script src="js/add-view-all-card.js"></script>
 
 </body>
 </html>
