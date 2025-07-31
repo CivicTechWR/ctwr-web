@@ -834,8 +834,8 @@ strong {
 
 .sponsors-image {
   display: block;
-  width: 160px;
-  height: 80px;
+  width: 200px;
+  height: 100px;
   object-fit: contain;
   margin: 0 auto 20px;
   transition: all ease 0.3s;
@@ -851,13 +851,13 @@ strong {
 
 .previous-sponsors-image {
   display: block;
-  width: 100px;
-  height: 60px;
+  width: 160px;
+  height: 80px;
   object-fit: contain;
   margin: 0 auto 15px;
   transition: all ease 0.3s;
   filter: grayscale(100%);
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .previous-sponsors-image:hover {
