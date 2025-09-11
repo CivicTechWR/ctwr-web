@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">
-        <img src="/images/logos/civictechwr_logo_white.png" alt="Civic Tech WR" class="logo">
-        <span class="brand-name">CivicTech Waterloo Region</span>
+        <img src="/images/logos/civictechwr_logo_black.png" alt="Civic Tech WR" class="logo">
+        <!-- <span class="brand-name">CivicTech Waterloo Region</span>-->
       </a>
     </div>
 
@@ -46,12 +46,14 @@
 
 <style>
   .navbar {
-    background-color: #000;
-    position: fixed;
+    background-color: #fff;
+    box-shadow: none;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     z-index: 999;
+    height: auto;
   }
 
   .container-fluid {
@@ -65,12 +67,12 @@
   .navbar-brand {
     display: flex;
     align-items: center;
-    color: #fff;
+    color: #000 !important;
     text-decoration: none;
   }
   
   .logo {
-    height: 40px;
+    height: 60px;
     margin-right: 10px;
   }
   
@@ -84,20 +86,21 @@
   }
   
   .nav-link {
-    color: #fff;
+    color: #000 !important;
     padding: 10px 15px;
-    transition: color 0.3s;
+    font-size: 1rem;
+    font-weight: 400;
   }
   
   .nav-link:hover {
-    color: #3dc9b3;
+    color: var(--secondary-color) !important;
   }
   
   .header-login-btn {
     display: inline-block;
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff !important;
+    color: #000 !important;
     font-weight: 500;
     padding: 0.5rem 1rem;
     font-size: 1rem;
