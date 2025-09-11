@@ -193,44 +193,7 @@
 </section>
         
 
-<!-- SPONSORS -->
-<section class="sponsors section-padding shape-container" id="section_4">
-    <!-- Abstract Shapes for Partners Section -->
-    <div class="abstract-shape shape-blob" style="right: 8%; top: 40%;"></div>
-    <div class="abstract-shape shape-rectangle" style="left: 6%; top: 60%;"></div>
-    <div class="abstract-shape shape-wave" style="right: 12%; bottom: 20%;"></div>
-    <div class="abstract-shape shape-diamond" style="left: 10%; bottom: 30%;"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-12">
-                <h3 class="text-center mb-5">Our Thanks To Our Partners</h3>
-            </div>
-            <div id="sponsor-container" class="row justify-content-center">
-                {% for partner in site.data.partners %}
-                    {% if partner.current %}
-                    <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
-                        <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-            <p>We're always keen to working with our community partner, from corporations to non-profits and everything in between. If you would like to spnonsor us or have an idea for collaboration, please reach out to us at civictechwr@gmail.com</p>
 
-            <div class="col-lg-12 col-12 mt-5">
-                <h4 class="text-center mb-4">Previous Partners</h4>
-            </div>
-            <div id="previous-sponsor-container" class="row justify-content-center">
-                {% for partner in site.data.partners %}
-                    {% if partner.current == false %}
-                    <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
-                        <img src="{{partner.logo}}" class="previous-sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</section>
 
 
         <!-- NEXT MEETING -->
@@ -274,12 +237,46 @@
                 </div>
             </div>
         </section>
-
-
-
-
-
     </main>
+
+    <!-- SPONSORS -->
+<section class="sponsors section-padding shape-container" id="section_4">
+    <!-- Abstract Shapes for Partners Section -->
+    <div class="abstract-shape shape-blob" style="right: 8%; top: 40%;"></div>
+    <div class="abstract-shape shape-rectangle" style="left: 6%; top: 60%;"></div>
+    <div class="abstract-shape shape-wave" style="right: 12%; bottom: 20%;"></div>
+    <div class="abstract-shape shape-diamond" style="left: 10%; bottom: 30%;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12">
+                <h3 class="text-center mb-5">Our Thanks To Our Partners</h3>
+                <p>We're always keen to working with our community partner, from corporations to non-profits and everything in between. If you would like to spnonsor us or have an idea for collaboration, please reach out to us at civictechwr@gmail.com</p>
+            </div>
+            <div id="sponsor-container" class="row justify-content-center">
+                {% for partner in site.data.partners %}
+                    {% if partner.current %}
+                    <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
+                        <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="col-lg-12 col-12 mt-5">
+                <h5 class="text-center mb-4">Previous Partners</h5>
+            </div>
+            <div id="previous-sponsor-container" class="row justify-content-center">
+                {% for partner in site.data.partners %}
+                    {% if partner.current == false %}
+                    <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                        <img src="{{partner.logo}}" class="previous-sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 
     <div id="footer-container"></div>
     <script>
