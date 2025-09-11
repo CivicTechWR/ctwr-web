@@ -1,8 +1,8 @@
 - text: Home
-  url: /#section_1
+  url: /
 - text: About
-  url: /#section_2
+  url: /about.html
 - text: Projects
-  url: /#section_3
+  url: /projects.html
 - text: Partners
   url: /#section_4

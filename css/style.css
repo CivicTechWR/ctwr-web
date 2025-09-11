@@ -776,7 +776,6 @@ strong {
   border-right: 1px solid var(--border-color);
   color: var(--secondary-color);
   font-weight: var(--font-weight-bold);
-  min-width: 140px;
   margin-right: 10px;
   padding: 13px 30px;
   display: inline-block;
