@@ -169,7 +169,8 @@
                     <h3 class="pt-2 mb-3">Featured Projects</h3>
                     <h3>Built by the Community</h3>
                     <p>Discover some of our most impactful civic tech initiatives that are making a difference in the Waterloo Region community. From improving civic engagement to providing essential community resources, these projects showcase how technology can be used to solve real-world problems and strengthen our local democracy.</p>
-                    <a href="/projects.html" class="btn btn-primary">View All Projects</a>
+                    <a href="/projects.html" class="btn btn-primary pt-2 mb-3">View All Projects</a>
+                    <a href="https://civictechwr.github.io/blog/" class="btn btn-primary pt-2 mb-3">View Latest Blog</a>
                 </div>
                 
                 <!-- Third project positioned below text for better balance -->
@@ -214,44 +215,41 @@
 
 
         <!-- NEXT MEETING -->
-        <section class="featured section-padding" id="section_2">
+        <section class="featured section-padding" style="background-color: var(--secondary-color);" id="section_2">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-12">
                         <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                        <h2 style="text-align: center;"> We hope to see you this coming Wednesday</h2>
+                        <h2 style="text-align: center;color: white;"> We look forward to seeing you on Wednesdays</h2>
                         <div class="about-thumb">
                             <div class="profile-thumb">
                                 <div class="profile-body">
                                     <p>
-                                        <span class="profile-small-title"><a class="bi-question-circle-fill"></a></span>
-                                        <span id="meeting-name"></span>
+                                        <span style=" color: white;" class="profile-small-title"><a class="bi-question-circle-fill"></a></span>
+                                        <span style=" color: white;" id="meeting-name"></span>
                                     </p>
 
-                                    <p>
-                                        <span class="profile-small-title"><a class="bi-calendar-date-fill"></a></span>
+                                    <p style=" background-color: var(--secondary-color); color: white;">
+                                        <span style=" background-color: var(--secondary-color); color: white;" class="profile-small-title"><a class="bi-calendar-date-fill"></a></span>
                                         <span id="meeting-date-time"></span>
                                     </p>
 
                                     <p>
-                                        <span class="profile-small-title"><a class="bi-pin-fill"></a></span>
-                                        <span id="meeting-location"></span>
+                                        <span style=" color: white;" class="profile-small-title"><a class="bi-pin-fill"></a></span>
+                                        <span style=" color: white;" id="meeting-location"></span>
                                     </p>
 
 
                                 </div>
-
-                                <p class="mb-4 d-flex justify-content-center"><a id="meeting-btn"
-                                        class="meeting-btn btn custom-link"
+                            </div>
+                            <div class="col-12 mt-5">
+                            <p class="mb-4 d-flex justify-content-center"><a id="meeting-btn" style="background-color: white; color: var(--secondary-color);" class="meeting-btn btn custom-link"
                                         href="http://www.meetup.com/civictechwr">More Details & RSVP</a></p>
                             </div>
                         </div>
                     </div>
-
-                    
-
                 </div>
             </div>
         </section>
@@ -270,10 +268,10 @@
                 <h3 class="text-center mb-5">Our Thanks To Our Partners</h3>
                 <p>We're always keen to working with our community partner, from corporations to non-profits and everything in between. If you would like to spnonsor us or have an idea for collaboration, please reach out to us at civictechwr@gmail.com</p>
             </div>
-            <div id="sponsor-container" class="row justify-content-center">
+            <div id="sponsor-container" style="padding: 20px" class="mt-5 row justify-content-center">
                 {% for partner in site.data.partners %}
                     {% if partner.current %}
-                    <div class="col-lg-3 col-md-4 col-6 sponsors-item-height">
+                    <div class="col-lg-2 col-md-6 col-6 sponsors-item-height">
                         <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
                     </div>
                     {% endif %}
@@ -283,10 +281,10 @@
             <div class="col-lg-12 col-12 mt-5">
                 <h5 class="text-center mb-4">Previous Partners</h5>
             </div>
-            <div id="previous-sponsor-container" class="row justify-content-center">
+            <div id="previous-sponsor-container" style="padding: 20px" class="row justify-content-center">
                 {% for partner in site.data.partners %}
                     {% if partner.current == false %}
-                    <div class="col-lg-2 col-md-3 col-4 sponsors-item-height">
+                    <div class="mt-4 col-lg-2 col-md-2 col-4 sponsors-item-height">
                         <img src="{{partner.logo}}" class="previous-sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
                     </div>
                     {% endif %}

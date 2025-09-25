@@ -2,16 +2,16 @@ $(document).ready(function() {
   // Sample data for upcoming hacknight (since Meetup API might be restricted)
   const upcomingEvents = [
     {
-      name: "CivicTech Waterloo Region Hacknight",
+      name: "CTWR Weekly Hacknight",
       local_date: "2025-06-04",
-      local_time: "18:30",
-      venue: { name: "Communitech Hub, Kitchener" },
+      local_time: "18:00",
+      venue: { name: "Downtown Kitchener" },
       link: "https://www.meetup.com/civictechwr/events/"
     },
     {
       name: "CivicTech Waterloo Region Speaker Night",
       local_date: "2025-06-12",
-      local_time: "18:30",
+      local_time: "18:00",
       venue: { name: "Virtual Meeting" },
       link: "https://www.meetup.com/civictechwr/events/"
     }
@@ -28,9 +28,6 @@ $(document).ready(function() {
     var date = parseDateTime(event.local_date, event.local_time);
     var dateString = date.toLocaleString('en-US', { 
       weekday: 'long',
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric', 
       hour12: true, 
       hour: 'numeric', 
       minute: 'numeric' 

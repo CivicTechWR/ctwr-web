@@ -5,20 +5,23 @@
 - name: Dreamside Digital
   logo: /images/sponsors/dreamsidelogo.png
   current: true
-- name: Foxxwood
-  logo: /images/sponsors/foxxwoodlogo.png
-  current: true
 - name: Tiny Home Takeout
   logo: /images/sponsors/tinyhometakeout.png
   current: true
-- name: DEN
-  logo: /images/sponsors/denlogo.png
-  current: true
-- name: Smart Waterloo Region
-  logo: /images/sponsors/swrllogo.png
+- name: Code for Canada
+  logo: /images/sponsors/codeforcanada.jpg
   current: true
 
 # Previous Partners
+- name: DEN
+  logo: /images/sponsors/denlogo.png
+  current: false
+- name: Smart Waterloo Region
+  logo: /images/sponsors/swrllogo.png
+  current: false
+- name: Foxxwood
+  logo: /images/sponsors/foxxwoodlogo.png
+  current: false
 - name: Open Food Network
   logo: /images/sponsors/previous/OFN.png
   current: false

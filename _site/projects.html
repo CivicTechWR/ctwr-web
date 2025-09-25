@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="description" content="CivicTechWR is community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology.">
+    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
     <title>Projects | Civic Tech Waterloo Region</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/abstract-shapes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/abstract-shapes.css" rel="stylesheet">
     <style>
         .projects-section {
             margin-top: 2rem;
@@ -19,7 +28,7 @@
             margin-bottom: 3rem;
         }
         .projects-main-centered {
-            max-width: 1100px;
+            max-width: 1500px;
             margin: 0 auto;
             padding: 100px;
             background: none;
@@ -67,8 +76,15 @@
             background-color: var(--secondary-color);
             color: #fff;
         }
+        @media screen and (max-width: 480px) {
+            .projects-main-centered{
+                padding: 40px;
+                padding-top: 100px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div id="header-container"></div>
     <script>
@@ -88,20 +104,18 @@
         <div class="abstract-shape shape-star" style="left: 12%; top: 40%;"></div>
         <div class="abstract-shape shape-diamond" style="right: 10%; top: 35%;"></div>
         
+        <h1 style="text-align: center;">Highlighted CTWR Projects</h1>
+        <p class="project-description">
+            Our community works on various civic technology projects to address local challenges. 
+            These projects are developed collaboratively by volunteers with diverse skills in design, 
+            development, research, and community engagement.
+        </p>
         <section class="mt-4 shape-container">
             <!-- Abstract Shapes for Project Description Section -->
             <div class="abstract-shape shape-diamond" style="left: 3%; top: 10%; width: 60px; height: 60px;"></div>
             <div class="abstract-shape shape-circle" style="right: 5%; top: 20%; width: 50px; height: 50px;"></div>
             <div class="abstract-shape shape-cross" style="left: 8%; bottom: 5%; width: 45px; height: 45px;"></div>
-            <p class="project-description">
-                Our community works on various civic technology projects to address local challenges. 
-                These projects are developed collaboratively by volunteers with diverse skills in design, 
-                development, research, and community engagement.
-            </p>
         </section>
-
-        <h1 style="font-size: 2rem; margin-bottom: 1.5rem;">Highlighted Projects</h1>
-
 
         <section class="projects-section shape-container">
             <!-- Abstract Shapes for Projects List Section -->
@@ -113,6 +127,13 @@
             <div class="abstract-shape shape-zigzag" style="left: 15%; top: 60%;"></div>
             <div class="row" id="project-container">
                 <!-- Projects will be loaded here via JavaScript -->
+            </div>
+        </section>
+
+        <h2 style="font-size: 1.75rem; margin-top: 4rem; margin-bottom: 1.5rem;">Other Projects</h2>
+        <section class="projects-section shape-container">
+            <div class="row" id="github-projects-container">
+                <!-- GitHub projects will load here -->
             </div>
         </section>
 
@@ -128,12 +149,54 @@
                 where we collaborate on these initiatives. No technical experience is required – we welcome people with all 
                 kinds of skills and backgrounds.
             </p>
-            <div class="text-center mt-4">
-                <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary" style="margin-right: 15px; background-color: #2d6f72;">Upcoming Hacknights</a>
-                <a href="https://github.com/CivicTechWR" class="btn btn-outline" style="background: transparent; border: 1px solid rgba(0, 0, 0, 0.2); color: #000;">GitHub Organization</a>
-            </div>
         </section>
     </main>
+
+        <!-- NEXT MEETING -->
+        <section class="featured section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+                        <div class="about-thumb">
+
+                            <h2 style="text-align: center;"> We hope to see you this coming Wednesday</h2>
+                            <div class="profile-thumb">
+
+                                <div class="profile-body">
+                                    <p>
+                                        <span class="profile-small-title"><a class="bi-question-circle-fill"></a></span>
+                                        <span id="meeting-name"></span>
+                                    </p>
+
+                                    <p>
+                                        <span class="profile-small-title"><a class="bi-calendar-date-fill"></a></span>
+                                        <span id="meeting-date-time"></span>
+                                    </p>
+
+                                    <p>
+                                        <span class="profile-small-title"><a class="bi-pin-fill"></a></span>
+                                        <span id="meeting-location"></span>
+                                    </p>
+
+
+                                </div>
+
+                                <p class="mb-4 d-flex justify-content-center"><a id="meeting-btn"
+                                        class="meeting-btn btn custom-link"
+                                        href="http://www.meetup.com/civictechwr">More Details & RSVP</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </section>
+        
 
     <div id="footer-container"></div>
     <script>
@@ -194,5 +257,69 @@
         // Load projects when the page is loaded
         document.addEventListener('DOMContentLoaded', loadProjects);
     </script>
+
+<script>
+    function loadGitHubProjects() {
+        fetch('https://api.github.com/orgs/CivicTechWR/repos')
+            .then(response => response.json())
+            .then(repos => {
+                const container = document.getElementById('github-projects-container');
+                container.innerHTML = '';
+
+                repos
+                    .filter(repo => !repo.fork && !repo.archived) // skip forks/archived
+                    .forEach(repo => {
+                        const card = document.createElement('div');
+                        card.className = 'col-lg-4 col-md-6 col-12 mb-4';
+
+                        card.innerHTML = `
+                            <div class="project-card">
+                                <div class="project-info">
+                                    <a href="${repo.html_url}" class="github-btn btn" target="_blank">GitHub</a>
+                                    <h4 class="projects-title">${repo.name}</h4>
+                                    <small class="projects-tag">${repo.language || ''}</small>
+                                    <p>${repo.description || 'No description available.'}</p>
+                                </div>
+                            </div>
+                        `;
+
+                        container.appendChild(card);
+                    });
+            })
+            .catch(error => {
+                console.error('Error loading GitHub projects:', error);
+                document.getElementById('github-projects-container').innerHTML = `
+                    <div class="col-12 text-center">
+                        <p>Sorry, we couldn't load the other projects. Please try again later.</p>
+                    </div>
+                `;
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadGitHubProjects);
+</script>
+
+<script type="text/javascript" src="https://secure.meetupstatic.com/simg/event-widget.js"></script>
+<script type="text/javascript">
+  new MeetupWidget({
+    widgetId: 'event-widget',
+    groupUrlname: 'civictechwr',
+    eventCount: 3,
+    style: 'standard',
+    showLogo: true,
+    showDescription: false,
+    showJoinButton: true
+  });
+</script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/meeting.js"></script>
+    <script src="js/add-view-all-card.js"></script>
+
 </body>
 </html>
