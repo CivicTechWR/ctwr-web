@@ -88,7 +88,7 @@ DEPENDENCIES
   bigdecimal
   bundler-audit (~> 0.9)
   csv
-  jekyll
+  jekyll (~> 4.3)
   jekyll-feed (~> 0.12)
   jekyll-seo-tag (~> 2.8)
   jekyll-sitemap (~> 1.4)

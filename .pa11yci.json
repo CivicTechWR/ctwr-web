@@ -4,8 +4,8 @@
     "standard": "WCAG2AA"
   },
   "urls": [
-    "http://127.0.0.1:8080/",
-    "http://127.0.0.1:8080/about.html",
-    "http://127.0.0.1:8080/projects.html"
+    "http://127.0.0.1:4000/",
+    "http://127.0.0.1:4000/about.html",
+    "http://127.0.0.1:4000/projects.html"
   ]
 }

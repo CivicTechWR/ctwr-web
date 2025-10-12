@@ -808,11 +808,11 @@ strong {
 
 .footer-sponsor-btn {
   display: inline-block;
-  background: #d6685f;
+  background: #c2544b; /* Improved contrast ratio for WCAG AA compliance */
   color: #fff !important;
   font-weight: bold;
   padding: 8px 26px;
-  border: 2px solid #d6685f;
+  border: 2px solid #c2544b;
   border-radius: 4px;
   text-decoration: none !important;
   font-size: 1rem;
@@ -870,6 +870,24 @@ strong {
 
 .footer-social-icons {
   margin-bottom: 14px;
+}
+
+/* Footer copyright text - improved contrast for WCAG AA compliance */
+.footer-copyright-wrapper p {
+  color: #767676 !important; /* Improved contrast ratio */
+  font-size: 0.9rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* About page text contrast improvements */
+.about-section p {
+  color: #2a2a2a !important; /* Improved contrast ratio for better readability */
+}
+
+/* Specific fix for organizing team text */
+.text-center {
+  color: #2a2a2a !important; /* Ensure sufficient contrast ratio */
 }
 
 .footer-social-icons a {
@@ -959,13 +977,15 @@ strong {
 }
 
 .btn.btn-outline.btn-light-inverse {
-  border-color: rgb(255 255 255 / 20%) !important;
+  border-color: rgba(255, 255, 255, 0.8) !important; /* Improved contrast */
   color: var(--white-color) !important;
+  background: rgba(0, 0, 0, 0.1) !important; /* Subtle background for better contrast */
 }
 
 .btn.btn-outline.btn-light-inverse:hover {
-  background: rgb(255 255 255 / 10%) !important;
-  border-color: rgb(255 255 255 / 30%) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  color: var(--white-color) !important;
 }
 
 @keyframes fadeInUp {

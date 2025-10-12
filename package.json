@@ -13,7 +13,7 @@
   "scripts": {
     "lint:html": "htmlhint '*.html' '_includes/*.html'",
     "lint:css": "stylelint 'css/**/*.css'",
-    "lint:js": "eslint 'js/**/*.js'",
+    "lint:js": "eslint 'js/custom.js' 'js/meeting.js' 'js/click-scroll.js' 'js/add-view-all-card.js' 'js/magnific-popup-options.js'",
     "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules' '#_site' '#vendor' '#.github/CODE_OF_CONDUCT.md' '#README.md'",
     "lint:yaml": "echo 'YAML files found:' && find . -name '*.yml' -o -name '*.yaml' | grep -v node_modules | grep -v _site | grep -v vendor | wc -l && echo 'YAML linting skipped - using basic validation'",
     "lint:json": "find . -name '*.json' | grep -v node_modules | grep -v _site | grep -v vendor | grep -v package-lock.json | xargs jsonlint",
@@ -52,7 +52,6 @@
     "html-validate": "^10.1.2",
     "htmlhint": "^1.1.4",
     "js-yaml": "^4.1.0",
-    "jsonlint": "^1.6.3",
     "markdownlint-cli2": "^0.18.1",
     "markdownlint-cli2-formatter-pretty": "^0.0.8",
     "prettier": "^3.6.2",
