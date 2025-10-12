@@ -20,7 +20,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1"
+          ruby-version: "3.4"
           bundler-cache: true
 
       - name: Build site
@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Pa11y CI against built site
         run: |
-          npx --yes http-server _site -p 8080 &
+          npx --yes http-server _site -p 4000 &
           SERVER_PID=$!
           trap "kill $SERVER_PID" EXIT
           sleep 2
