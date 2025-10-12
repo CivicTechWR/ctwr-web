@@ -964,14 +964,21 @@ strong {
 .meeting-section-alt .profile-thumb {
   background: var(--secondary-color);
   border: 1px solid var(--white-color);
+  color: var(--white-color);
 }
 
 .meeting-section-alt .profile-body {
   background: var(--secondary-color);
+  color: var(--white-color);
 }
 
 .meeting-section-alt .profile-body p {
   background: var(--secondary-color) !important;
+  color: var(--white-color) !important;
+}
+
+.meeting-section-alt .profile-small-title {
+  color: var(--white-color) !important;
 }
 
 .services-thumb {
