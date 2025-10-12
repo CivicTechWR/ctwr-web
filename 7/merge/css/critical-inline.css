@@ -1,0 +1,199 @@
+/* Critical CSS - Above the fold styles only */
+/* This should be inlined in the <head> for fastest rendering */
+
+/* CSS Variables */
+:root {
+  --white-color: #fff;
+  --primary-color: #FC6C6D;
+  --secondary-color: #2D6F72;
+  --dark-color: #000;
+  --p-color: #717275;
+  --section-bg-color: #f9f9f9;
+  --border-color: #e9eaeb;
+  --body-font-family: 'DM Sans', sans-serif;
+  --h1-font-size: 62px;
+  --h2-font-size: 48px;
+  --h3-font-size: 36px;
+  --h4-font-size: 32px;
+  --h5-font-size: 24px;
+  --h6-font-size: 22px;
+  --p-font-size: 18px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --border-radius-large: 100px;
+  --border-radius-medium: 20px;
+  --border-radius-small: 10px;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body-font-family);
+  font-size: var(--p-font-size);
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: var(--white-color);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--secondary-color);
+  color: var(--white-color);
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Header styles */
+.site-header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: var(--white-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 0.5rem;
+}
+
+.brand-name {
+  color: var(--white-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Hero section */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  color: var(--white-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: var(--p-font-size);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-small);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--white-color);
+  color: var(--white-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--white-color);
+  color: var(--secondary-color);
+}
+
+/* Container and grid */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.col-lg-7 {
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+  padding: 0 15px;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 0 15px;
+}
+
+/* Flexbox utilities */
+.d-flex { display: flex !important; }
+.justify-content-center { justify-content: center !important; }
+.align-items-center { align-items: center !important; }
+
+/* Responsive */
+@media (width <= 991.98px) {
+  .col-lg-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (width <= 767.98px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+}
