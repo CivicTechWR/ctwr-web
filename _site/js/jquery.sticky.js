@@ -172,7 +172,7 @@
         });
       },
       update: scroller,
-      unstick: function (options) {
+      unstick: function () {
         return this.each(function () {
           var that = this;
           var unstickyElement = $(that);

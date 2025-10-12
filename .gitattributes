@@ -1,0 +1,77 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Custom for Visual Studio
+*.cs     diff=csharp
+
+# Standard to msysgit
+*.doc	 diff=astextplain
+*.DOC	 diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.dot  diff=astextplain
+*.DOT  diff=astextplain
+*.pdf  diff=astextplain
+*.PDF	 diff=astextplain
+*.rtf	 diff=astextplain
+*.RTF	 diff=astextplain
+
+# Web files
+*.html  text
+*.css   text
+*.js    text
+*.json  text
+*.xml   text
+*.yml   text
+*.yaml  text
+
+# Image files
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.svg   text
+*.webp  binary
+
+# Font files
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary
+
+# Archive files
+*.zip   binary
+*.tar   binary
+*.gz    binary
+*.rar   binary
+*.7z    binary
+
+# Jekyll
+_site/  export-ignore
+.jekyll-cache/ export-ignore
+.sass-cache/ export-ignore
+
+# Dependencies
+node_modules/ export-ignore
+vendor/ export-ignore
+
+# Build files
+*.min.css export-ignore
+*.min.js export-ignore
+*.min.js.map export-ignore
+
+# IDE files
+.vscode/ export-ignore
+.idea/ export-ignore
+
+# OS files
+.DS_Store export-ignore
+Thumbs.db export-ignore
+
+# Log files
+*.log export-ignore
+
+# Environment files
+.env export-ignore
+.env.local export-ignore

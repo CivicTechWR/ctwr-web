@@ -19,7 +19,7 @@
   z-index: 9999;
   position: fixed;
   outline: none !important;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .mfp-container {
@@ -33,14 +33,14 @@
   box-sizing: border-box;
 }
 
-.mfp-container:before {
+.mfp-container::before {
   content: "";
   display: inline-block;
   height: 100%;
   vertical-align: middle;
 }
 
-.mfp-align-top .mfp-container:before {
+.mfp-align-top .mfp-container::before {
   display: none;
 }
 
@@ -65,15 +65,15 @@
 
 .mfp-zoom-out-cur,
 .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
-  cursor: -moz-zoom-out;
-  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+  cursor: zoom-out;
   cursor: zoom-out;
 }
 
 .mfp-zoom {
   cursor: pointer;
-  cursor: -webkit-zoom-in;
-  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+  cursor: zoom-in;
   cursor: zoom-in;
 }
 
@@ -85,8 +85,8 @@
 .mfp-arrow,
 .mfp-preloader,
 .mfp-counter {
-  -webkit-user-select: none;
-  -moz-user-select: none;
+  user-select: none;
+  user-select: none;
   user-select: none;
 }
 
@@ -109,9 +109,11 @@
   right: 8px;
   z-index: 1044;
 }
+
 .mfp-preloader a {
   color: #ccc;
 }
+
 .mfp-preloader a:hover {
   color: #fff;
 }
@@ -130,7 +132,7 @@ button.mfp-arrow {
   cursor: pointer;
   background: transparent;
   border: 0;
-  -webkit-appearance: none;
+  appearance: none;
   display: block;
   outline: none;
   padding: 0;
@@ -160,10 +162,12 @@ button::-moz-focus-inner {
   font-size: 28px;
   font-family: Arial, Baskerville, monospace;
 }
+
 .mfp-close:hover,
 .mfp-close:focus {
   opacity: 1;
 }
+
 .mfp-close:active {
   top: 1px;
 }
@@ -202,15 +206,18 @@ button::-moz-focus-inner {
   height: 110px;
   -webkit-tap-highlight-color: transparent;
 }
+
 .mfp-arrow:active {
   margin-top: -54px;
 }
+
 .mfp-arrow:hover,
 .mfp-arrow:focus {
   opacity: 1;
 }
-.mfp-arrow:before,
-.mfp-arrow:after {
+
+.mfp-arrow::before,
+.mfp-arrow::after {
   content: "";
   display: block;
   width: 0;
@@ -222,12 +229,14 @@ button::-moz-focus-inner {
   margin-left: 35px;
   border: medium inset transparent;
 }
-.mfp-arrow:after {
+
+.mfp-arrow::after {
   border-top-width: 13px;
   border-bottom-width: 13px;
   top: 8px;
 }
-.mfp-arrow:before {
+
+.mfp-arrow::before {
   border-top-width: 21px;
   border-bottom-width: 21px;
   opacity: 0.7;
@@ -236,11 +245,13 @@ button::-moz-focus-inner {
 .mfp-arrow-left {
   left: 0;
 }
-.mfp-arrow-left:after {
+
+.mfp-arrow-left::after {
   border-right: 17px solid #fff;
   margin-left: 31px;
 }
-.mfp-arrow-left:before {
+
+.mfp-arrow-left::before {
   margin-left: 25px;
   border-right: 27px solid #3f3f3f;
 }
@@ -248,11 +259,13 @@ button::-moz-focus-inner {
 .mfp-arrow-right {
   right: 0;
 }
-.mfp-arrow-right:after {
+
+.mfp-arrow-right::after {
   border-left: 17px solid #fff;
   margin-left: 39px;
 }
-.mfp-arrow-right:before {
+
+.mfp-arrow-right::before {
   border-left: 27px solid #3f3f3f;
 }
 
@@ -260,11 +273,13 @@ button::-moz-focus-inner {
   padding-top: 40px;
   padding-bottom: 40px;
 }
+
 .mfp-iframe-holder .mfp-content {
   line-height: 0;
   width: 100%;
   max-width: 900px;
 }
+
 .mfp-iframe-holder .mfp-close {
   top: -40px;
 }
@@ -275,6 +290,7 @@ button::-moz-focus-inner {
   overflow: hidden;
   padding-top: 56.25%;
 }
+
 .mfp-iframe-scaler iframe {
   position: absolute;
   display: block;
@@ -282,7 +298,7 @@ button::-moz-focus-inner {
   left: 0;
   width: 100%;
   height: 100%;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px rgb(0 0 0 / 60%);
   background: #000;
 }
 
@@ -294,7 +310,7 @@ img.mfp-img {
   display: block;
   line-height: 0;
   box-sizing: border-box;
-  padding: 40px 0 40px;
+  padding: 40px 0;
   margin: 0 auto;
 }
 
@@ -302,26 +318,26 @@ img.mfp-img {
 .mfp-figure {
   line-height: 0;
 }
-.mfp-figure:after {
+
+.mfp-figure::after {
   content: "";
   position: absolute;
-  left: 0;
-  top: 40px;
-  bottom: 40px;
+  inset: 40px 0;
   display: block;
-  right: 0;
   width: auto;
   height: auto;
   z-index: -1;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px rgb(0 0 0 / 60%);
   background: #444;
 }
+
 .mfp-figure small {
   color: #bdbdbd;
   display: block;
   font-size: 12px;
   line-height: 14px;
 }
+
 .mfp-figure figure {
   margin: 0;
 }
@@ -339,7 +355,7 @@ img.mfp-img {
   text-align: left;
   line-height: 18px;
   color: #f3f3f3;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   padding-right: 36px;
 }
 
@@ -351,8 +367,8 @@ img.mfp-img {
   cursor: pointer;
 }
 
-@media screen and (max-width: 800px) and (orientation: landscape),
-  screen and (max-height: 300px) {
+@media screen and (width <= 800px) and (orientation: landscape),
+  screen and (height <= 300px) {
   /**
        * Remove all paddings around the image on small screen
        */
@@ -360,19 +376,23 @@ img.mfp-img {
     padding-left: 0;
     padding-right: 0;
   }
+
   .mfp-img-mobile img.mfp-img {
     padding: 0;
   }
-  .mfp-img-mobile .mfp-figure:after {
+
+  .mfp-img-mobile .mfp-figure::after {
     top: 0;
     bottom: 0;
   }
+
   .mfp-img-mobile .mfp-figure small {
     display: inline;
     margin-left: 5px;
   }
+
   .mfp-img-mobile .mfp-bottom-bar {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgb(0 0 0 / 60%);
     bottom: 0;
     margin: 0;
     top: auto;
@@ -380,39 +400,45 @@ img.mfp-img {
     position: fixed;
     box-sizing: border-box;
   }
+
   .mfp-img-mobile .mfp-bottom-bar:empty {
     padding: 0;
   }
+
   .mfp-img-mobile .mfp-counter {
     right: 5px;
     top: 3px;
   }
+
   .mfp-img-mobile .mfp-close {
     top: 0;
     right: 0;
     width: 35px;
     height: 35px;
     line-height: 35px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgb(0 0 0 / 60%);
     position: fixed;
     text-align: center;
     padding: 0;
   }
 }
 
-@media all and (max-width: 900px) {
+@media all and (width <= 900px) {
   .mfp-arrow {
-    -webkit-transform: scale(0.75);
+    transform: scale(0.75);
     transform: scale(0.75);
   }
+
   .mfp-arrow-left {
-    -webkit-transform-origin: 0;
+    transform-origin: 0;
     transform-origin: 0;
   }
+
   .mfp-arrow-right {
-    -webkit-transform-origin: 100%;
+    transform-origin: 100%;
     transform-origin: 100%;
   }
+
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px;

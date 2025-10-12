@@ -1,0 +1,3 @@
+# Ignore files with very long lines that are difficult to break
+.github/CODE_OF_CONDUCT.md
+README.md

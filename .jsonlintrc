@@ -1,0 +1,7 @@
+{
+  "strict": true,
+  "comments": false,
+  "tabs": false,
+  "indent": 2,
+  "max-len": 200
+}

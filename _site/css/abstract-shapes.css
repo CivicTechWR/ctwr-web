@@ -42,7 +42,7 @@
   height: 0;
   border-left: 80px solid transparent;
   border-right: 80px solid transparent;
-  border-bottom: 140px solid rgba(111, 66, 193, 0.6);
+  border-bottom: 140px solid rgb(111 66 193 / 60%);
   top: 30%;
   right: 15%;
   animation: float 20s ease-in-out infinite;
@@ -77,7 +77,7 @@
   height: 100px;
   border-radius: 50%;
   background: transparent;
-  border: 20px solid rgba(238, 96, 156, 0.6);
+  border: 20px solid rgb(238 96 156 / 60%);
   top: 15%;
   right: 10%;
   animation: float 16s ease-in-out infinite reverse;
@@ -153,9 +153,11 @@
   0% {
     transform: translateY(0) rotate(0deg);
   }
+
   50% {
     transform: translateY(-20px) rotate(5deg);
   }
+
   100% {
     transform: translateY(0) rotate(0deg);
   }
@@ -165,6 +167,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -174,31 +177,35 @@
   0% {
     border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
   }
+
   25% {
-    border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+    border-radius: 40% 60% 30% 70% / 60% 40%;
   }
+
   50% {
     border-radius: 30% 60% 70% 40% / 50% 30% 60% 80%;
   }
+
   75% {
-    border-radius: 60% 40% 30% 70% / 60% 40% 50% 40%;
+    border-radius: 60% 40% 30% 70% / 60% 40% 50%;
   }
+
   100% {
     border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
   }
 }
 
 /* Media Queries for Responsive Shapes */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .abstract-shape {
     transform: scale(0.7);
     opacity: 0.4;
   }
 }
 
-/*---------------------------------------
+/* ---------------------------------------
   POSITION UTILITIES              
------------------------------------------*/
+----------------------------------------- */
 .top-3p {
   top: 3%;
   bottom: auto;
@@ -419,9 +426,9 @@
   left: auto;
 }
 
-/*---------------------------------------
+/* ---------------------------------------
   SIZE UTILITIES              
------------------------------------------*/
+----------------------------------------- */
 .shape-size-60 {
   width: 60px;
   height: 60px;
@@ -437,7 +444,7 @@
   height: 45px;
 }
 
-@media (max-width: 576px) {
+@media (width <= 576px) {
   .abstract-shape {
     transform: scale(0.5);
     opacity: 0.3;

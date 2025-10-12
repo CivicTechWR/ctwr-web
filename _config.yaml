@@ -24,9 +24,74 @@ exclude:
   - "vendor"
   - "README.md"
   - "LICENSE.txt"
+  - "docs"
+  - "scripts"
+  - "eslint.config.js"
+  - ".stylelintrc.json"
+  - ".htmlhintrc"
+  - "package.json"
+  - "package-lock.json"
+  - ".gitignore"
+  - ".cursorrules"
+  - ".cursorignore"
+  - "*.min.js.map"
 
 # Includes
 include:
   - ".htaccess"
   - "_data"
+  - "css/*.min.css"
+  - "js/*.min.js"
+
 # Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+timezone: America/Toronto
+
+# Keep files
+keep_files:
+  - css/*.min.css
+  - js/*.min.js
+
+# Performance optimizations
+incremental: true
+future: false
+unpublished: false
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+      author: "CivicTechWR"
+      comments: false
+      share: false
+      read_time: true
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO
+seo:
+  type: "Organization"
+  name: "Civic Tech Waterloo Region"
+  description: "Community group bringing together people to solve local issues using technology"
+  url: "https://civictechwr.org"
+  logo: "/images/logos/civictechwr_logo_black.png"
+  same_as:
+    - "https://twitter.com/civictechwr"
+    - "https://facebook.com/civictechwr"
+    - "https://instagram.com/civictechwr"
+    - "https://www.linkedin.com/company/civictechwr"

@@ -1,0 +1,46 @@
+extends: default
+
+rules:
+  line-length:
+    max: 200
+    level: warning
+  indentation:
+    spaces: 2
+  comments:
+    min-spaces-from-content: 1
+  document-start:
+    present: false
+  truthy:
+    allowed-values: ['true', 'false', 'on', 'off']
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+  colons:
+    max-spaces-before: 0
+    max-spaces-after: 1
+  commas:
+    max-spaces-before: 0
+    max-spaces-after: 1
+  dashes:
+    max-spaces-before: 0
+    max-spaces-after: 1
+  dots:
+    max-spaces-before: 0
+    max-spaces-after: 0
+  hash:
+    min-spaces-before: 1
+  hyphens:
+    max-spaces-before: 0
+    max-spaces-after: 1
+  new-line-at-end-of-file: disable
+  new-lines:
+    type: unix
+  octal-values:
+    forbid-implicit-octal: true
+  quoted-strings:
+    quote-type: single
+    required: false
+  trailing-spaces: enable

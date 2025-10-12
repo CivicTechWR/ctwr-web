@@ -1,32 +1,107 @@
+# Jekyll
 .bundle/
 vendor/bundle/
-node_modules/
 _site/
 .jekyll-cache/
+.sass-cache/
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+build/
+*.min.css
+*.min.js
+*.min.js.map
 
 # System files
 .DS_Store
 **/.DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-# Backup files
-*.old.*
-*.backup
-*~
-
-# IDE
+# IDE and editors
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
 
 # Logs
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 
-# Environment
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Environment variables
 .env
 .env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Minified files
-*.min.css
-*.min.js
-*.min.js.map
+# Temporary folders
+tmp/
+temp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.backup
+*.bak
+*.old
+*.orig
+*.rej
+*.swp
+*.tmp
+
+# Archive files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Security
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Local development
+.local/
+.cache/
+
+# Documentation (keep in repo but exclude from builds)
+# Note: README.md, CONTRIBUTING.md, LICENSE, etc. are intentionally tracked

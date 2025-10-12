@@ -5,6 +5,11 @@ source "https://rubygems.org"
 # gem "rails"
 gem "jekyll"
 
+# Performance and SEO plugins
+gem "jekyll-feed", "~> 0.12"
+gem "jekyll-sitemap", "~> 1.4"
+gem "jekyll-seo-tag", "~> 2.8"
+
 gem "wdm", '>= 0.1.0'
 gem "csv"
 gem "base64"
