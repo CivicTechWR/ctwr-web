@@ -779,15 +779,29 @@ a:focus {
 /* Links that should be teal (like navigation, important links) */
 .nav-link,
 .navbar-nav .nav-link,
-.footer-menu-list a,
 .copyright-text-wrap a {
   color: var(--secondary-color);
 }
 
 .nav-link:hover,
-.navbar-nav .nav-link:hover,
-.footer-menu-list a:hover {
+.navbar-nav .nav-link:hover {
   color: var(--primary-color);
+}
+
+
+/* Footer button links should be black */
+.footer-general-btn,
+.footer-donate-btn,
+.footer-sponsor-btn {
+  color: #000 !important;
+  text-decoration: none;
+}
+
+.footer-general-btn:hover,
+.footer-donate-btn:hover,
+.footer-sponsor-btn:hover {
+  color: #333 !important;
+  text-decoration: underline;
 }
 
 
@@ -1584,14 +1598,14 @@ blockquote footer::before {
 }
 
 .footer-menu-list a {
-  color: #666;
+  color: #666 !important;
   text-decoration: none;
   font-size: 14px;
   transition: color 0.2s;
 }
 
 .footer-menu-list a:hover {
-  color: #333;
+  color: #333 !important;
 }
 
 .footer-call-to-action-title {
