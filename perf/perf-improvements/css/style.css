@@ -122,12 +122,13 @@ button {
 }
 
 a {
-  color: var(--p-color);
+  color: var(--secondary-color);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--secondary-color);
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 
 ::selection {
@@ -752,6 +753,49 @@ strong {
   transition: all 0.3s ease;
 }
 
+/* Focus styles for links */
+a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Specific link styles */
+.text-decoration-underline {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.text-decoration-underline:hover {
+  color: var(--primary-color);
+}
+
+
+/* Original button styles - maintain compatibility */
+.btn-primary {
+  background: var(--secondary-color);
+  border: none;
+  color: var(--white-color);
+}
+
+.btn-primary:hover {
+  background: #d6685f;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgb(255 255 255 / 20%);
+  color: var(--white-color);
+  align-content: center;
+}
+
+.btn-outline:hover {
+  background: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 30%);
+  transform: translateY(-2px);
+}
+
+/* Bootstrap override styles - higher specificity */
 .btn.btn-primary {
   background: var(--secondary-color) !important;
   border: none !important;
