@@ -748,14 +748,14 @@ strong {
   transition: all 0.3s ease;
 }
 
-.btn-primary {
-  background: var(--secondary-color);
-  border: none;
-  color: var(--white-color);
+.btn.btn-primary {
+  background: var(--secondary-color) !important;
+  border: none !important;
+  color: var(--white-color) !important;
 }
 
-.btn-primary:hover {
-  background: #d6685f;
+.btn.btn-primary:hover {
+  background: #d6685f !important;
   transform: translateY(-2px);
 }
 
