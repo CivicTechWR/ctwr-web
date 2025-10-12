@@ -118,3 +118,30 @@ jobs:
 
       - name: Run Shell Lint
         run: npm run lint:shell
+
+  build-assets:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run minify
+
+      - name: Check if optimized-bundle.min.js exists
+        run: |
+          if [ ! -f "js/optimized-bundle.min.js" ]; then
+            echo "ERROR: optimized-bundle.min.js was not created during build"
+            exit 1
+          fi
+          echo "✅ optimized-bundle.min.js created successfully"
