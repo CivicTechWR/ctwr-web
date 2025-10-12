@@ -16,8 +16,8 @@ gem "base64"
 gem "bigdecimal"
 gem "rexml", ">= 3.4.2"
 
-# Use newer sass-embedded with Ruby 3.4+ to fix security vulnerability
-gem "sass-embedded", "~> 1.77"
+# Use sass-embedded compatible with both Ruby 3.4+ and GitHub Actions
+gem "sass-embedded", "~> 1.64"
 
 group :development do
   gem "bundler-audit", "~> 0.9", require: false

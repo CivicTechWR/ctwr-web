@@ -23,5 +23,8 @@ jobs:
           ruby-version: "3.4"
           bundler-cache: true
 
+      - name: Install bundler-audit
+        run: gem install bundler-audit
+
       - name: Run Bundler Audit
         run: bundle exec bundle-audit check
