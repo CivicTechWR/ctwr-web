@@ -47,6 +47,12 @@ Key Features:
   --font-weight-normal:           400;
   --font-weight-medium:           500;
   --font-weight-bold:             700;
+  
+  /* Override Bootstrap's link color variables for specific components only */
+  --bs-link-color: var(--p-color);
+  --bs-link-color-rgb: 113, 114, 117; /* RGB values for #717275 */
+  --bs-link-hover-color: var(--secondary-color);
+  --bs-link-hover-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
 }
 
 body {
@@ -121,6 +127,7 @@ button {
   transition: all 0.3s;
 }
 
+
 a {
   color: var(--p-color);
   text-decoration: none;
@@ -128,6 +135,7 @@ a {
 
 a:hover {
   color: var(--secondary-color);
+  text-decoration: underline;
 }
 
 ::selection {
@@ -347,28 +355,32 @@ strong {
   color: var(--white-color);
 }
 
-.custom-link {
-	background-color: var(--primary-color);
+.btn.custom-link {
+	background-color: var(--primary-color) !important;
+	border: none !important;
+	color: var(--white-color) !important;
 }
 
-.custom-link:hover {
-	background-color: var(--secondary-color);
+.btn.custom-link:hover {
+	background-color: var(--secondary-color) !important;
+	color: var(--white-color) !important;
 }
 
-.meeting-btn {
-  background: var(--secondary-color);
-  border-radius: var(--border-radius-small);
-  color: var(--white-color);
-  font-weight: var(--font-weight-bold);
-  padding: 12px 24px;
-  margin: 0 10px;
-  width: 100%;
+.btn.meeting-btn {
+  background: var(--secondary-color) !important;
+  border-radius: var(--border-radius-small) !important;
+  color: var(--white-color) !important;
+  font-weight: var(--font-weight-bold) !important;
+  padding: 12px 24px !important;
+  margin: 0 10px !important;
+  width: 100% !important;
+  border: none !important;
 }
 
-.meeting-btn:hover {
-  background: var(--primary-color);
-  box-shadow: 0 1rem 3rem rgb(0 0 0 / 17.5%);
-  color: var(--white-color);
+.btn.meeting-btn:hover {
+  background: var(--primary-color) !important;
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 17.5%) !important;
+  color: var(--white-color) !important;
 }
 
 /* ---------------------------------------
@@ -748,6 +760,52 @@ strong {
   transition: all 0.3s ease;
 }
 
+/* Focus styles for links */
+a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Specific link styles */
+.text-decoration-underline {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.text-decoration-underline:hover {
+  color: var(--primary-color);
+}
+
+/* Links that should be teal (like navigation, important links) */
+.nav-link,
+.navbar-nav .nav-link,
+.copyright-text-wrap a {
+  color: var(--secondary-color);
+}
+
+.nav-link:hover,
+.navbar-nav .nav-link:hover {
+  color: var(--primary-color);
+}
+
+
+/* Footer button links should be black */
+.footer-general-btn,
+.footer-donate-btn,
+.footer-sponsor-btn {
+  color: #000 !important;
+  text-decoration: none;
+}
+
+.footer-general-btn:hover,
+.footer-donate-btn:hover,
+.footer-sponsor-btn:hover {
+  color: #333 !important;
+  text-decoration: underline;
+}
+
+
+/* Original button styles - maintain compatibility */
 .btn-primary {
   background: var(--secondary-color);
   border: none;
@@ -769,6 +827,31 @@ strong {
 .btn-outline:hover {
   background: rgb(255 255 255 / 10%);
   border-color: rgb(255 255 255 / 30%);
+  transform: translateY(-2px);
+}
+
+/* Bootstrap override styles - higher specificity */
+.btn.btn-primary {
+  background: var(--secondary-color) !important;
+  border: none !important;
+  color: var(--white-color) !important;
+}
+
+.btn.btn-primary:hover {
+  background: #d6685f !important;
+  transform: translateY(-2px);
+}
+
+.btn.btn-outline {
+  background: transparent !important;
+  border: 1px solid rgb(255 255 255 / 20%) !important;
+  color: var(--white-color) !important;
+  align-content: center;
+}
+
+.btn.btn-outline:hover {
+  background: rgb(255 255 255 / 10%) !important;
+  border-color: rgb(255 255 255 / 30%) !important;
   transform: translateY(-2px);
 }
 
@@ -948,30 +1031,37 @@ strong {
   color: var(--white-color);
 }
 
-.meeting-btn-alt {
-  background: var(--primary-color);
-  color: var(--white-color);
-  border: 2px solid var(--primary-color);
+.btn.meeting-btn-alt {
+  background: var(--primary-color) !important;
+  color: var(--white-color) !important;
+  border: 2px solid var(--primary-color) !important;
 }
 
-.meeting-btn-alt:hover {
-  background: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+.btn.meeting-btn-alt:hover {
+  background: transparent !important;
+  color: var(--primary-color) !important;
+  border: 2px solid var(--primary-color) !important;
 }
 
 /* Meeting details card styling */
 .meeting-section-alt .profile-thumb {
   background: var(--secondary-color);
   border: 1px solid var(--white-color);
+  color: var(--white-color);
 }
 
 .meeting-section-alt .profile-body {
   background: var(--secondary-color);
+  color: var(--white-color);
 }
 
 .meeting-section-alt .profile-body p {
   background: var(--secondary-color) !important;
+  color: var(--white-color) !important;
+}
+
+.meeting-section-alt .profile-small-title {
+  color: var(--white-color) !important;
 }
 
 .services-thumb {
@@ -1508,14 +1598,14 @@ blockquote footer::before {
 }
 
 .footer-menu-list a {
-  color: #666;
+  color: #666 !important;
   text-decoration: none;
   font-size: 14px;
   transition: color 0.2s;
 }
 
 .footer-menu-list a:hover {
-  color: #333;
+  color: #333 !important;
 }
 
 .footer-call-to-action-title {

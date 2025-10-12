@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="CivicTechWR is community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology."
+      content="CivicTechWR is a community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology."
     />
     <link
       rel="icon"
@@ -27,8 +27,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions." />
 <meta property="og:description" content="Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions." />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
+<link rel="canonical" href="/" />
+<meta property="og:url" content="/" />
 <meta property="og:site_name" content="Civic Tech Waterloo Region" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
@@ -36,7 +36,7 @@
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@CivicTechWR" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"CivicTechWR"},"description":"Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions.","headline":"Civic Tech Waterloo Region","name":"Civic Tech Waterloo Region","url":"http://localhost:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"CivicTechWR"},"description":"Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions.","headline":"Civic Tech Waterloo Region","name":"Civic Tech Waterloo Region","url":"/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -66,34 +66,20 @@
       rel="stylesheet"
     />
 
+    <!-- Load main stylesheet for CSS variables -->
+    <link href="css/style.css" rel="stylesheet" />
+
     <!-- Critical CSS inlined for performance -->
     <style>
       /* Critical CSS for above-the-fold content */
+      /* CSS Variables are defined in css/style.css */
+      
+      /* Override Bootstrap's link color variables for specific components only */
       :root {
-        --white-color: #fff;
-        --primary-color: #FC6C6D;
-        --secondary-color: #2D6F72;
-        --section-bg-color: #f9f9f9;
-        --dark-color: #000;
-        --p-color: #717275;
-        --border-color: #e9eaeb;
-        --featured-border-color: #727aab;
-        --body-font-family: 'DM Sans', sans-serif;
-        --h1-font-size: 62px;
-        --h2-font-size: 48px;
-        --h3-font-size: 36px;
-        --h4-font-size: 32px;
-        --h5-font-size: 24px;
-        --h6-font-size: 22px;
-        --p-font-size: 18px;
-        --menu-font-size: 12px;
-        --copyright-font-size: 14px;
-        --border-radius-large: 100px;
-        --border-radius-medium: 20px;
-        --border-radius-small: 10px;
-        --font-weight-normal: 400;
-        --font-weight-medium: 500;
-        --font-weight-bold: 700;
+        --bs-link-color: var(--p-color);
+        --bs-link-color-rgb: 113, 114, 117; /* RGB values for #717275 */
+        --bs-link-hover-color: var(--secondary-color);
+        --bs-link-hover-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
       }
       
       body {
@@ -195,6 +181,34 @@
         transition: all 0.3s ease;
       }
       
+      /* General link styles - override Bootstrap blue links */
+      a {
+        color: var(--p-color);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+      }
+
+
+      /* Footer button links should be black */
+      .footer-general-btn,
+      .footer-donate-btn,
+      .footer-sponsor-btn {
+        color: #000 !important;
+        text-decoration: none;
+      }
+
+      .footer-general-btn:hover,
+      .footer-donate-btn:hover,
+      .footer-sponsor-btn:hover {
+        color: #333 !important;
+        text-decoration: underline;
+      }
+
+      /* Original button styles - maintain compatibility */
       .btn-primary {
         background: var(--secondary-color);
         border: none;
@@ -204,6 +218,55 @@
       .btn-primary:hover {
         background: #d6685f;
         transform: translateY(-2px);
+      }
+      
+      .btn-outline {
+        background: transparent;
+        border: 1px solid rgb(255 255 255 / 20%);
+        color: var(--white-color);
+        align-content: center;
+      }
+
+      .btn-outline:hover {
+        background: rgb(255 255 255 / 10%);
+        border-color: rgb(255 255 255 / 30%);
+        transform: translateY(-2px);
+      }
+
+      /* Bootstrap override styles - higher specificity */
+      .btn.btn-primary {
+        background: var(--secondary-color) !important;
+        border: none !important;
+        color: var(--white-color) !important;
+      }
+      
+      .btn.btn-primary:hover {
+        background: #d6685f !important;
+        transform: translateY(-2px);
+      }
+      
+      .btn.btn-outline {
+        background: transparent !important;
+        border: 1px solid rgb(255 255 255 / 20%) !important;
+        color: var(--white-color) !important;
+        align-content: center;
+      }
+
+      .btn.btn-outline:hover {
+        background: rgb(255 255 255 / 10%) !important;
+        border-color: rgb(255 255 255 / 30%) !important;
+        transform: translateY(-2px);
+      }
+
+      .btn.custom-link {
+        background-color: var(--primary-color) !important;
+        border: none !important;
+        color: var(--white-color) !important;
+      }
+
+      .btn.custom-link:hover {
+        background-color: var(--secondary-color) !important;
+        color: var(--white-color) !important;
       }
       
       @keyframes fadeInUp {
@@ -221,7 +284,6 @@
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/magnific-popup.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
     <link href="css/abstract-shapes.css" rel="stylesheet" />
   </head>
 
@@ -283,7 +345,7 @@
                     href="https://www.meetup.com/civictechwr/"
                     class="btn btn-primary"
                     ><i class="bi bi-calendar-event me-2"></i
-                    >Upcoming Hacknights</a
+                    >Upcoming hacknights</a
                   >
                   <a
                     href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw"
@@ -331,7 +393,7 @@
                   CivicTechWR focuses on using technology to improve how we
                   connect with our local communities and governments. It’s about
                   making civic interactions and services more efficient and
-                  effective. Civic Tech Waterloo Region was founded in July
+                  effective. CivicTech Waterloo Region was founded in July
                   2017. We’re a community group that brings together people from
                   diverse sectors and industries to collaboratively solve
                   challenges facing our local community using design and
@@ -389,7 +451,7 @@
             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
               <div class="about-thumb">
                 <h3 class="pt-2 mb-3">
-                  Weekly Hacknights.<br />Every Wednesday.
+                  Weekly hacknights.<br />Every Wednesday.
                 </h3>
 
                 <p>
@@ -406,7 +468,7 @@
                 <a
                   href="https://www.meetup.com/civictechwr/"
                   class="btn btn-primary"
-                  ><i class="bi bi-calendar-event me-2"></i>Upcoming Hacknights</a
+                  ><i class="bi bi-calendar-event me-2"></i>Upcoming hacknights</a
                 >
               </div>
             </div>
