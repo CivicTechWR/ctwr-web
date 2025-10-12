@@ -192,6 +192,20 @@
         text-decoration: underline;
       }
 
+      /* Footer sitemap links should be gray */
+      .footer-menu-list a,
+      .footer-links-list a {
+        color: #666 !important;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+      }
+
+      .footer-menu-list a:hover,
+      .footer-links-list a:hover {
+        color: #333 !important;
+      }
+
       /* Original button styles - maintain compatibility */
       .btn-primary {
         background: var(--secondary-color);

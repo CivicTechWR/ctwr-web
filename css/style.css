@@ -1597,14 +1597,16 @@ blockquote footer::before {
   margin-bottom: 12px;
 }
 
-.footer-menu-list a {
+.footer-menu-list a,
+.footer-links-list a {
   color: #666 !important;
   text-decoration: none;
   font-size: 14px;
   transition: color 0.2s;
 }
 
-.footer-menu-list a:hover {
+.footer-menu-list a:hover,
+.footer-links-list a:hover {
   color: #333 !important;
 }
 
