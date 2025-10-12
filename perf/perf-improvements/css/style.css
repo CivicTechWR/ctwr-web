@@ -47,6 +47,12 @@ Key Features:
   --font-weight-normal:           400;
   --font-weight-medium:           500;
   --font-weight-bold:             700;
+  
+  /* Override Bootstrap's link color variables */
+  --bs-link-color: var(--secondary-color);
+  --bs-link-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
+  --bs-link-hover-color: var(--primary-color);
+  --bs-link-hover-color-rgb: 252, 108, 109; /* RGB values for #FC6C6D */
 }
 
 body {
@@ -121,13 +127,14 @@ button {
   transition: all 0.3s;
 }
 
+
 a {
-  color: var(--secondary-color);
+  color: var(--secondary-color) !important;
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
   text-decoration: underline;
 }
 

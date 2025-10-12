@@ -2,6 +2,14 @@
 
 /* CSS Variables are defined in css/style.css */
 
+/* Override Bootstrap's link color variables */
+:root {
+  --bs-link-color: var(--secondary-color);
+  --bs-link-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
+  --bs-link-hover-color: var(--primary-color);
+  --bs-link-hover-color-rgb: 252, 108, 109; /* RGB values for #FC6C6D */
+}
+
 /* Base styles */
 body {
   background: var(--white-color);
