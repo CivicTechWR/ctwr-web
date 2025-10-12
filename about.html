@@ -1,332 +1,265 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <meta name="description" content="CivicTechWR is community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology.">
-    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
-    <title>About Us | Civic Tech Waterloo Region</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/magnific-popup.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/abstract-shapes.css" rel="stylesheet">
-    <style>
-        .organizers-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 3rem;
-        }
-        .organizers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            justify-items: center;
-            align-items: start;
-            padding: 30px;
-            margin: 0 auto;
-        }
-        .organizer-card {
-            background: none;
-            box-shadow: none;
-            border-radius: 0;
-            text-align: center;
-            padding: 0;
-            width: 100%;
-            max-width: 180px;
-        }
-        .organizer-img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 0.8rem;
-            background: #f2f2f2;
-            border: 1px solid #222;
-        }
-        .organizer-name {
-            /*font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 0.3rem;*/
-            color: #000;
-        }
-        .organizer-contact {
-            /*margin-top: 0.2rem;
-            font-size: 0.9rem;*/
-        }
-        .organizer-contact a {
-            color: inherit;
-            text-decoration: underline;
-        }
-        .about-section {
-            padding: 2rem 1rem;
-        }
-        .shoutout-section {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 0;
-            background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .shoutout-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        .shoutout-list {
-            flex-direction: column;
-            gap: 0.5rem;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
-        .shoutout-member {
-            background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            padding: 0;
-            min-width: auto;
-            text-align: left;
-        }
-        .shoutout-member-name {
-            font-size: 1rem;
-            font-weight: normal;
-            margin-bottom: 0;
-        }
-        .shoutout-member-name a {
-            text-align: center;
-            color: inherit;
-            text-decoration: underline;
-        }
-        .organizer-card {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .organizer-img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            border: 1px solid #222;
-        }
-        .organizer-contact {
-            /*margin-top: 0.5rem;
-            font-size: 1.25em;*/
-        }
-    .about-main-centered {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 100px;
-    background: none;
-    border-radius: 0;
-    box-shadow: none;
-}
+---
+layout: null
+permalink: /about.html
+---
 
-@media screen and (max-width: 480px) {
-            .about-main-centered{
-                padding: 40px;
-                padding-top: 100px;
-            }
-        }
-</style>
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="CivicTechWR is a community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology."
+    />
+    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
+    <title>About Us | CivicTech Waterloo Region</title>
+    {% seo %}
+
+    <!-- Resource hints for performance -->
+    <link rel="preload" href="css/style.css" as="style" />
+    {% if jekyll.environment == "production" %}
+    <link rel="preload" href="css/bootstrap.min.css" as="style" />
+    {% else %}
+    <link rel="preload" href="css/bootstrap.css" as="style" />
+    {% endif %}
+    <link rel="preload" href="images/about-us.webp" as="image" />
+
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+    <!-- Preconnect to critical external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    {% if jekyll.environment == "production" %}
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    {% else %}
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    {% endif %}
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/abstract-shapes.css" rel="stylesheet" />
+    <link href="css/pages/about.css" rel="stylesheet" />
     
-    <div id="header-container"></div>
-    <script>
-        // Load the header content
-        fetch('/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading header:', error));
-    </script>
-    <main class="about-main-centered shape-container">
+  </head>
+  <body>
+    {% include icons.svg %}
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    {% include header.html %}
+    <div class="has-fixed-nav">
+      <header class="site-header">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-12">
+              <h1 class="page-title">About CivicTech Waterloo Region</h1>
+              <p class="page-subtitle">Meet the community of designers, technologists, and civic leaders working together to solve local challenges.</p>
+            </div>
+            <div class="col-lg-6 col-12 text-lg-end text-start">
+              <a class="btn btn-outline btn-light-inverse" href="https://www.meetup.com/civictechwr/" target="_blank" rel="noopener noreferrer">Join our hacknights</a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main id="main-content" class="about-main-centered shape-container">
         <!-- Abstract Shapes for About Section -->
-        <div class="abstract-shape shape-circle" style="left: 5%; top: 10%;"></div>
-        <div class="abstract-shape shape-donut" style="right: 8%; top: 15%;"></div>
-        <div class="abstract-shape shape-star" style="left: 12%; bottom: 25%;"></div>
-        <div class="abstract-shape shape-wave" style="right: 15%; bottom: 20%;"></div>
-        
+        <div class="abstract-shape shape-circle left-5p top-10p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-donut right-8p top-15p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-star left-12p bottom-25p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-wave right-15p bottom-20p" aria-hidden="true"></div>
+
         <section class="section-padding shape-container">
-            <h1 style="text-align:center;">What is CivicTechWR?</h1>
-            <p>
-                Bringing people together from different sectors and industries to actively solve issues facing our local community. Even though ﻿"tech" is in the name, everyone is welcome and everyone has a skill or experience that is valuable. We welcome people with all types and levels of skills. We're here to work together, inspire each other, exchange ideas and tools, to improve the lives of our community in civic through technology.
-            </p>
-            <p>
-                Civic Tech Waterloo Region (CTWR) has been a driving force for positive change in the Tri-City area (Kitchener, Waterloo, and Cambridge). By bringing together technologists, designers, activists, and civic leaders, CTWR has fostered a collaborative environment where innovative solutions are developed to address local challenges. Our projects have empowered residents, improved civic engagement, and provided open data tools for the community. We have helped bridge the gap between the tech sector and local government, making civic processes more transparent and accessible. Our events and hacknights have inspired hundreds to use their skills for the public good, making a lasting impact on both the tech and civic communities across the region.
-            </p>
-            <h2 style="text-align: center;">tl;dr</h2>
-            <h4 style="text-align: center;">We don’t know what we’re doing!</h4>
-            <h4 style="text-align: center;">We’re figuring it out as we go.</h4>
-            <h4 style="text-align: center;">If you don't find what you need, feel free to build it</h4>
+          <h1 class="text-center">What is CivicTechWR?</h1>
+          <p>
+            Bringing people together from different sectors and industries to actively solve issues facing our local community. Even though ﻿"tech" is in the name, everyone is welcome and everyone has
+            a skill or experience that is valuable. We welcome people with all types and levels of skills. We're here to work together, inspire each other, exchange ideas and tools, to improve the
+            lives of our community in civic through technology.
+          </p>
+          <p>
+            CivicTech Waterloo Region (CTWR) has been a driving force for positive change in the Tri-City area (Kitchener, Waterloo, and Cambridge). By bringing together technologists, designers,
+            activists, and civic leaders, CTWR has fostered a collaborative environment where innovative solutions are developed to address local challenges. Our projects have empowered residents,
+            improved civic engagement, and provided open data tools for the community. We have helped bridge the gap between the tech sector and local government, making civic processes more
+            transparent and accessible. Our events and hacknights have inspired hundreds to use their skills for the public good, making a lasting impact on both the tech and civic communities across
+            the region.
+          </p>
+          <h2 class="text-center">tl;dr</h2>
+          <h4 class="text-center">We don't know what we're doing!</h4>
+          <h4 class="text-center">We're figuring it out as we go.</h4>
+          <h4 class="text-center">If you don't find what you need, feel free to build it</h4>
         </section>
         <section class="organizers-section section-padding shape-container">
-            <!-- Abstract Shapes for Team Section -->
-            <div class="abstract-shape shape-square" style="right: 7%; top: 30%;"></div>
-            <div class="abstract-shape shape-triangle" style="left: 5%; top: 40%;"></div>
-            <div class="abstract-shape shape-zigzag" style="right: 12%; bottom: 20%;"></div>
-            <div class="abstract-shape shape-hexagon" style="left: 15%; bottom: 15%;"></div>
-            <h2 style="text-align: center; padding: 20px;">Organizing Team</h2>
-            <p style="text-align: center;">Special thanks to all the volunteers and community members who have contributed to our projects and events over the years.</p>
-            <div class="col-lg-12 col-12"><img style ="max-width: 100%;" src="/images/about-us.jpg" alt="About Us"></div>
-            <div class="organizers-grid">
-                <div class="organizer-card">
-                    <a href="https://www.linkedin.com/in/andre-levesque-39617b11/" target="_blank">
-                        <!--<img src="/images/organizers/1729533587447.jpeg" alt="Dre Levesque" class="organizer-img">-->
-                    </a>
-                    <div class="organizer-name">Dre Levesque</div>
-                    <div class="organizer-contact"><a href="https://www.linkedin.com/in/andre-levesque-39617b11/" target="_blank">LinkedIn</a></div>
-                </div>
-                <div class="organizer-card">
-                    <a href="https://www.linkedin.com/in/fionalau/" target="_blank">
-                        <!--<img src="/images/organizers/1517417697231.jpeg" alt="Fiona Lau" class="organizer-img">-->
-                    </a>
-                    <div class="organizer-name">Fiona Lau</div>
-                    <div class="organizer-contact"><a href="https://www.linkedin.com/in/fionalau/" target="_blank">LinkedIn</a></div>
-                </div>
-                <div class="organizer-card">
-                    <a href="https://www.linkedin.com/in/foudamo/" target="_blank">
-                        <!--<img src="/images/organizers/1747066454092.jpeg" alt="Mohamed Fouda" class="organizer-img">-->
-                    </a>
-                    <div class="organizer-name">Mohamed Fouda</div>
-                    <div class="organizer-contact"><a href="https://www.linkedin.com/in/foudamo/" target="_blank">LinkedIn</a></div>
-                </div>
-                <div class="organizer-card">
-                    <a href="https://www.linkedin.com/in/shaydreamside/" target="_blank">
-                        <!--<img src="/images/organizers/1743866853685.jpeg" alt="Shay Kennedy" class="organizer-img">-->
-                    </a>
-                    <div class="organizer-name">Shay Kennedy</div>
-                    <div class="organizer-contact"><a href="https://www.linkedin.com/in/shaydreamside/" target="_blank">LinkedIn</a></div>
-                </div>
+          <!-- Abstract Shapes for Team Section -->
+          <div class="abstract-shape shape-square right-7p top-30p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-triangle left-5p top-40p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-zigzag right-12p bottom-20p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-hexagon left-15p bottom-15p" aria-hidden="true"></div>
+          <h2 class="text-center heading-spaced">Organizing Team</h2>
+          <p class="text-center">Special thanks to all the volunteers and community members who have contributed to our projects and events over the years.</p>
+          <div class="col-lg-12 col-12">
+            <picture>
+              <source srcset="/images/about-us.webp" type="image/webp" />
+              <img class="about-image img-fluid" src="/images/about-us.jpg" alt="CivicTech Waterloo Region organizing team and community members at a group gathering" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <div class="organizers-grid">
+            <div class="organizer-card">
+              <!--<img src="/images/organizers/1729533587447.jpeg" alt="Dre Levesque" class="organizer-img">-->
+              <div class="organizer-name">Dre Levesque</div>
+              <div class="organizer-contact">
+                <a href="https://www.linkedin.com/in/andre-levesque-39617b11/" target="_blank" rel="noopener noreferrer" aria-label="Dre Levesque LinkedIn (opens in new window)">LinkedIn</a>
+              </div>
             </div>
+            <div class="organizer-card">
+              <!--<img src="/images/organizers/1517417697231.jpeg" alt="Fiona Lau" class="organizer-img">-->
+              <div class="organizer-name">Fiona Lau</div>
+              <div class="organizer-contact">
+                <a href="https://www.linkedin.com/in/fionalau/" target="_blank" rel="noopener noreferrer" aria-label="Fiona Lau LinkedIn (opens in new window)">LinkedIn</a>
+              </div>
+            </div>
+            <div class="organizer-card">
+              <!--<img src="/images/organizers/1747066454092.jpeg" alt="Mohamed Fouda" class="organizer-img">-->
+              <div class="organizer-name">Mohamed Fouda</div>
+              <div class="organizer-contact">
+                <a href="https://www.linkedin.com/in/foudamo/" target="_blank" rel="noopener noreferrer" aria-label="Mohamed Fouda LinkedIn (opens in new window)">LinkedIn</a>
+              </div>
+            </div>
+            <div class="organizer-card">
+              <!--<img src="/images/organizers/1743866853685.jpeg" alt="Shay Kennedy" class="organizer-img">-->
+              <div class="organizer-name">Shay Kennedy</div>
+              <div class="organizer-contact">
+                <a href="https://www.linkedin.com/in/shaydreamside/" target="_blank" rel="noopener noreferrer" aria-label="Shay Kennedy LinkedIn (opens in new window)">LinkedIn</a>
+              </div>
+            </div>
+          </div>
 
-
-
+          <div class="shoutout-section">
             <div class="container text-center">
-            <h4>Big Shoutout also to</h4>
-            <div class="shoutout-list">
+              <h4>Big Shoutout also to</h4>
+              <div class="shoutout-list">
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/qedi-r" target="_blank">Christian Snyder</a></div>
+                  <div class="shoutout-member-name">
+                    <a class="shoutout-link" href="https://github.com/qedi-r" target="_blank" rel="noopener noreferrer" aria-label="Christian Snyder GitHub (opens in new window)">Christian Snyder</a>
+                  </div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/pnijjar" target="_blank">Paul Nijjar</a></div>
+                  <div class="shoutout-member-name">
+                    <a class="shoutout-link" href="https://github.com/pnijjar" target="_blank" rel="noopener noreferrer" aria-label="Paul Nijjar GitHub (opens in new window)">Paul Nijjar</a>
+                  </div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/mmmaxwwwell" target="_blank">Maxwell Veenendaal</a></div>
+                  <div class="shoutout-member-name">
+                    <a class="shoutout-link" href="https://github.com/mmmaxwwwell" target="_blank" rel="noopener noreferrer" aria-label="Maxwell Veenendaal GitHub (opens in new window)">
+                      Maxwell Veenendaal
+                    </a>
+                  </div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/derjohng" target="_blank">John Gibbons</a></div>
+                  <div class="shoutout-member-name">
+                    <a class="shoutout-link" href="https://github.com/derjohng" target="_blank" rel="noopener noreferrer" aria-label="John Gibbons GitHub (opens in new window)">John Gibbons</a>
+                  </div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/KristinaTaylor" target="_blank">Kristina Taylor</a></div>
+                  <div class="shoutout-member-name">
+                    <a class="shoutout-link" href="https://github.com/KristinaTaylor" target="_blank" rel="noopener noreferrer" aria-label="Kristina Taylor GitHub (opens in new window)">
+                      Kristina Taylor
+                    </a>
+                  </div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/apurvakb" target="_blank">Apurva Bhargava</a></div>
+                  <div class="shoutout-member-name">
+                    <a class="shoutout-link" href="https://github.com/apurvakb" target="_blank" rel="noopener noreferrer" aria-label="Apurva Bhargava GitHub (opens in new window)">Apurva Bhargava</a>
+                  </div>
                 </div>
+              </div>
+              <p></p>
             </div>
-            <p> </p>
+            <div class="container text-center">
+              <p>
+                Check out our
+                <a class="shoutout-link" href="https://github.com/civictechwr">GitHub</a>
+                to see our contributors and get involved!
+              </p>
             </div>
-            <div class="container text-center"><p>Check out our <a href="https://github.com/civictechwr">GitHub</a> to see our contributors and get involved!</p></div>
+          </div>
         </section>
 
         <section class="mt-5 shape-container">
-            <!-- Abstract Shapes for Get Involved Section -->
-            <div class="abstract-shape shape-wave" style="left: 2%; top: 5%;"></div>
-            <div class="abstract-shape shape-donut" style="right: 3%; top: 10%;"></div>
-            <div class="abstract-shape shape-triangle" style="left: 6%; bottom: 10%;"></div>
-            <div class="abstract-shape shape-blob" style="right: 5%; bottom: 15%;"></div>
-            <h3 style="text-align: center;">Get Involved</h3>
-            <p>
-                Interested in contributing to one of our projects or starting a new one? Join us at our weekly hacknights 
-                where we collaborate on these initiatives. No technical experience is required – we welcome people with all 
-                kinds of skills and backgrounds.
-            </p>
+          <!-- Abstract Shapes for Get Involved Section -->
+          <div class="abstract-shape shape-wave left-2p top-5p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-donut right-3p top-10p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-triangle left-6p bottom-10p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-blob right-5p bottom-15p" aria-hidden="true"></div>
+          <h3 class="projects-involved-heading">Get Involved</h3>
+          <p>
+            Interested in contributing to one of our projects or starting a new one? Join us at our weekly hacknights where we collaborate on these initiatives. No technical experience is required –
+            we welcome people with all kinds of skills and backgrounds.
+          </p>
         </section>
-        
+      </main>
 
-
-    </main>
-
-
-        <!-- NEXT MEETING -->
-        <section class="featured section-padding" id="section_2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                        <div class="about-thumb">
-
-                            <h2 style="text-align: center;"> We hope to see you this coming Wednesday</h2>
-                            <div class="profile-thumb">
-
-                                <div class="profile-body">
-                                    <p>
-                                        <span class="profile-small-title"><a class="bi-question-circle-fill"></a></span>
-                                        <span id="meeting-name"></span>
-                                    </p>
-
-                                    <p>
-                                        <span class="profile-small-title"><a class="bi-calendar-date-fill"></a></span>
-                                        <span id="meeting-date-time"></span>
-                                    </p>
-
-                                    <p>
-                                        <span class="profile-small-title"><a class="bi-pin-fill"></a></span>
-                                        <span id="meeting-location"></span>
-                                    </p>
-
-
-                                </div>
-
-                                <p class="mb-4 d-flex justify-content-center"><a id="meeting-btn"
-                                        class="meeting-btn btn custom-link"
-                                        href="http://www.meetup.com/civictechwr">More Details & RSVP</a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-
-                </div>
+      <!-- NEXT MEETING -->
+      <section class="featured section-padding section-secondary-bg meeting-section-alt" id="about_meeting">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-12">
+              <div class="meeting-image-wrapper">
+                <picture>
+                  <source srcset="/images/hacknight-8.webp" type="image/webp" />
+                  <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="CivicTech Waterloo Region community members at weekly hacknight gathering" loading="lazy" decoding="async" />
+                </picture>
+              </div>
             </div>
-        </section>
+            <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+              <div class="meeting-content">
+                <h2 class="meeting-title text-center mb-4">We look forward to seeing you at our next meeting</h2>
+                
+                <div class="meeting-card">
+                  <div class="meeting-details">
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-name">CTWR Weekly Hacknight</span>
+                      </div>
+                    </div>
+                    
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-calendar-date-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-date-time">Thursday 6:00 PM</span>
+                      </div>
+                    </div>
+                    
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-pin-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-location">Downtown Kitchener</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="meeting-cta">
+                    <a id="meeting-btn" class="btn btn-primary meeting-btn" href="https://www.meetup.com/civictechwr">More Details & RSVP</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <div id="footer-container"></div>
-    <script>
-        // Load the footer content
-        fetch('/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
-    </script>
+      {% include footer.html %}
+    </div>
 
-
-
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/magnific-popup-options.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/meeting.js"></script>
-    <script src="js/add-view-all-card.js"></script>
-
-</body>
+    <script src="js/optimized-bundle.min.js"></script>
+  </body>
 </html>

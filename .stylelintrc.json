@@ -1,0 +1,22 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "no-duplicate-selectors": true,
+    "no-descending-specificity": null,
+    "keyframes-name-pattern": null,
+    "color-function-alias-notation": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "property-no-deprecated": null,
+    "declaration-property-value-no-unknown": null,
+    "comment-empty-line-before": null,
+    "number-max-precision": null
+  },
+  "ignoreFiles": [
+    "**/*.min.css",
+    "**/bootstrap.min.css",
+    "**/bootstrap.css",
+    "**/bootstrap-icons.css",
+    "**/magnific-popup.css"
+  ]
+}

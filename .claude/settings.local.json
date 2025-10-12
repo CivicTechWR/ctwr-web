@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//private/tmp/claudepro-directory/**)",
+      "Bash(find:*)",
+      "Read(//tmp/claudepro-directory/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

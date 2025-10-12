@@ -1,0 +1,83 @@
+/* Header specific styles */
+.site-header-nav .navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  height: auto;
+}
+
+.site-header-nav .container-fluid {
+  max-width: 95%;
+}
+
+.site-header-nav .ms-auto {
+  margin-left: 50%;
+}
+
+.site-header-nav .navbar-brand {
+  display: flex;
+  align-items: center;
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.site-header-nav .logo {
+  height: 60px;
+  margin-right: 10px;
+}
+
+.site-header-nav .brand-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--white-color);
+}
+
+.site-header-nav .navbar-nav {
+  margin-left: 20px;
+}
+
+.site-header-nav .nav-link {
+  color: var(--white-color);
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.site-header-nav .nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.site-header-nav .header-login-btn {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white-color);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.site-header-nav .header-login-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+@media (width <= 991px) {
+  .site-header-nav .header-login-btn {
+    margin-top: 15px;
+    display: inline-block;
+  }
+
+  .site-header-nav .navbar-collapse {
+    padding: 15px 0;
+  }
+}

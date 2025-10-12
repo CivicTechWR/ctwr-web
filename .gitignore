@@ -1,38 +1,45 @@
-# Dependencies
-node_modules/
-vendor/
-
-# Jekyll build output
+# Jekyll
+.bundle/
+vendor/bundle/
 _site/
 .jekyll-cache/
+.sass-cache/
 .jekyll-metadata
 
-# Bundle
-.bundle/
+# Dependencies
+node_modules/
+package-lock.json
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Build outputs
+dist/
+build/
+*.min.css
+*.min.js
+*.min.js.map
 
-# IDE files
+# System files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE and editors
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# OS files
-.DS_Store
-Thumbs.db
+.project
+.settings/
+.classpath
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
 # Runtime data
 pids
@@ -42,47 +49,60 @@ pids
 
 # Coverage directory used by tools like istanbul
 coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Temporary folders
 tmp/
 temp/
 
-# Optional npm cache directory
-.npm
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Optional eslint cache
-.eslintcache
+# Backup files
+*.backup
+*.bak
+*.old
+*.orig
+*.rej
+*.swp
+*.tmp
 
-# Output of 'npm pack'
-*.tgz
+# Archive files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
 
-# Yarn Integrity file
-.yarn-integrity
+# Security
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
 
-# dotenv environment variables file
-.env
+# Local development
+.local/
+.cache/
 
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# next.js build output
-.next
-
-# nuxt.js build output
-.nuxt
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
+# Documentation (keep in repo but exclude from builds)
+# Note: README.md, CONTRIBUTING.md, LICENSE, etc. are intentionally tracked

@@ -1,46 +1,72 @@
 ---
-
+layout: null
+permalink: /
 ---
-
 
 <!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <meta name="description" content="CivicTechWR is community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology.">
-    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="CivicTechWR is a community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology."
+    />
+    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
 
     <title>{{ site.title }}</title>
+    {% seo %}
 
     <!-- CSS FILES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Preload critical resources -->
+    {% if jekyll.environment == "production" %}
+    <link rel="preload" href="css/bootstrap.min.css" as="style" />
+    {% else %}
+    <link rel="preload" href="css/bootstrap.css" as="style" />
+    {% endif %}
+    <link rel="preload" href="images/hacknight-1.jpg" as="image" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//cors-anywhere.herokuapp.com" />
+    <link rel="dns-prefetch" href="//api.meetup.com" />
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Preconnect to critical external resources -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <!-- Critical CSS inlined for performance -->
 
-    <link href="css/magnific-popup.css" rel="stylesheet">
+    {% if jekyll.environment == "production" %}
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    {% else %}
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    {% endif %}
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/abstract-shapes.css" rel="stylesheet" />
 
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/abstract-shapes.css" rel="stylesheet">
-</head>
+    <!-- Load main stylesheet AFTER Bootstrap to override its styles -->
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
 
-<body>
+  <body>
+    {% include icons.svg %}
+    <a href="#section_1" class="skip-link">Skip to main content</a>
 
+    <!-- Screen reader announcements -->
+    <div id="sr-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     <section class="preloader">
-        <div class="spinner">
-            <span class="spinner-rotate"></span>
-        </div>
+      <div class="spinner">
+        <span class="spinner-rotate"></span>
+      </div>
     </section>
-    
+
     <!--
     <div id="header-container"></div>
     <script>
@@ -54,267 +80,286 @@
     </script>
     -->
 
-
+    {% include header.html %}
     <main>
-
-        <section class="hero d-flex justify-content-center align-items-center shape-container" id="section_1">
-            <!-- Abstract Shapes for Hero Section -->
-            <div class="abstract-shape shape-circle" style="left: 5%; top: 20%;"></div>
-            <div class="abstract-shape shape-donut" style="right: 10%; top: 15%;"></div>
-            <div class="abstract-shape shape-star" style="left: 15%; bottom: 20%;"></div>
-            <div class="abstract-shape shape-hexagon" style="right: 20%; bottom: 25%;"></div>
-            <div class="abstract-shape shape-diamond" style="left: 25%; top: 30%;"></div>
-            <div class="abstract-shape shape-cross" style="right: 25%; top: 40%;"></div>
-            <div class="hero-background">
-                <div class="hero-background-layer"></div>
-                <div class="hero-background-pattern"></div>
-            </div>
-            <div class="container">
-                <div class="row d-flex justify-content-center align-items-center">
-                    <div class="col-lg-7 col-12">
-                        <div class="hero-text">
-                            <div class="hero-badge">
-                                <span class="badge-icon">&lt;/&gt;</span>
-                                <span class="badge-text">Welcome to CivicTechWR</span>
-                            </div>
-                            <h1 class="hero-title">Civic Change through Tech and Design</h1>
-                            <p class="hero-description">
-                                Join our community of tech enthusiasts and designers working together to solve local challenges in the Waterloo region
-                            </p>
-                            <div class="hero-actions">
-                                <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary"><i class="bi bi-calendar-event" style="margin-right: 8px;"></i>Upcoming Hacknights</a>
-                                <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" class="btn btn-outline">Slack</a>
-                                <a href="https://discourse.ctwr.org" class="btn btn-outline" target="_blank">Member Dashboard</a>
-                                <a href="https://civictechwr.github.io/blog/" class="btn btn-outline">Blog</a>
-                            </div>
-                        </div>
-                    </div>
+      <section class="hero d-flex justify-content-center align-items-center shape-container" id="section_1">
+        <!-- Abstract Shapes for Hero Section -->
+        <div class="abstract-shape shape-circle top-20p left-5p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-donut top-15p right-10p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-star bottom-20p left-15p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-hexagon bottom-25p right-20p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-diamond top-30p left-25p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-cross top-40p right-25p" aria-hidden="true"></div>
+        <div class="hero-background">
+          <div class="hero-background-layer"></div>
+          <div class="hero-background-pattern"></div>
+        </div>
+        <div class="container">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-lg-7 col-12">
+              <div class="hero-text">
+                <div class="hero-badge">
+                  <span class="badge-icon">&lt;/&gt;</span>
+                  <span class="badge-text">Welcome to CivicTechWR</span>
                 </div>
-            </div>
-        </section> 
-        
-        
-        
-        
-
-
-        <section class="about section-padding shape-container" id="section_2">
-            <!-- Abstract Shapes for About Section -->
-            <div class="abstract-shape shape-triangle" style="left: 3%; top: 15%;"></div>
-            <div class="abstract-shape shape-wave" style="right: 5%; top: 25%;"></div>
-            <div class="abstract-shape shape-circle" style="left: 8%; bottom: 20%;"></div>
-            <div class="abstract-shape shape-zigzag" style="right: 7%; bottom: 30%;"></div>
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                        <div class="about-thumb">
-
-                            <h3 class="pt-2 mb-3">A little bit about CivicTech Waterloo Region</h3>
-
-                            <p>CivicTechWR focuses on using technology to improve how we connect with our local communities and governments. It’s about making civic interactions and services more efficient and effective.
-                                Civic Tech Waterloo Region was founded in July 2017. We’re a community group that brings together people from diverse sectors and industries to collaboratively solve challenges facing our local community using design and technology. We were inspired by similar organizations like CivicTechTO, Beta City YEG, and Code for America Brigades.
-                            </p>
-                            <a style="text-decoration: underline;" href="/about.html"><p>You can read more about our team here</p></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight-1.jpg" class="about-image img-fluid" alt="">
-                    </div>
-
+                <h1 class="hero-title">Civic Change through Tech and Design</h1>
+                <p class="hero-description">Join our community of tech enthusiasts and designers working together to solve local challenges in the Waterloo region</p>
+                <div class="hero-actions">
+                  <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary">
+                    <i class="bi bi-calendar-event me-2"></i>
+                    Upcoming hacknights
+                  </a>
+                  <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" class="btn btn-outline btn-light-inverse">Slack</a>
+                  <a href="https://discourse.ctwr.org" class="btn btn-outline btn-light-inverse" target="_blank" rel="noopener noreferrer" aria-label="Member Dashboard (opens in new window)">
+                    Member Dashboard
+                  </a>
+                  <a href="https://civictechwr.github.io/blog/" class="btn btn-outline btn-light-inverse">Blog</a>
                 </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="hacknights section-padding shape-container" id="section_2">
-            <!-- Abstract Shapes for Hacknights Section -->
-            <div class="abstract-shape shape-square" style="left: 4%; top: 10%;"></div>
-            <div class="abstract-shape shape-star" style="right: 6%; top: 20%;"></div>
-            <div class="abstract-shape shape-hexagon" style="left: 7%; bottom: 15%;"></div>
-            <div class="abstract-shape shape-donut" style="right: 9%; bottom: 25%;"></div>
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight-7.jpg" class="about-image img-fluid" alt="">
-                    </div>
-
-                    <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                        <div class="about-thumb">
-                            <h3 class="pt-2 mb-3">Weekly Hacknights.<br>Every Wednesday.</h3>
-
-                            <p>We meet every week, hosting hacknights most weeks and featuring a guest speaker once a month. Our speakers include community leaders from local non-profits, government, industry, or other engaged citizens—anyone with something inspiring or educational to share. Whether it's a speaker session or a hacknight, we provide a collaborative space for people to work on civic tech projects and connect with others who share their passion for making a difference. Join us at our next hacknight!
-                            </p>
-                            <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary"><i class="bi bi-calendar-event" style="margin-right: 8px;"></i>Upcoming Hacknights</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-       
-
-<!-- PROJECTS -->
-       <section class="projects section-padding shape-container" id="section_3">
-    <!-- Abstract Shapes for Projects Section -->
-    <div class="abstract-shape shape-square" style="right: 7%; top: 10%;"></div>
-    <div class="abstract-shape shape-triangle" style="left: 5%; top: 30%;"></div>
-    <div class="abstract-shape shape-zigzag" style="right: 15%; bottom: 15%;"></div>
-    <div class="abstract-shape shape-cross" style="left: 12%; bottom: 25%;"></div>
-    <div class="container">
-        <div class="row">
-            
+      <section class="about section-padding shape-container" id="section_about">
+        <!-- Abstract Shapes for About Section -->
+        <div class="abstract-shape shape-triangle left-3p top-15p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-wave right-5p top-25p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-circle left-8p bottom-20p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-zigzag right-7p bottom-30p" aria-hidden="true"></div>
+        <div class="container">
+          <div class="row">
             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                <div class="about-thumb">
-                    <h3 class="pt-2 mb-3">Featured Projects</h3>
-                    <h3>Built by the Community</h3>
-                    <p>Discover some of our most impactful civic tech initiatives that are making a difference in the Waterloo Region community. From improving civic engagement to providing essential community resources, these projects showcase how technology can be used to solve real-world problems and strengthen our local democracy.</p>
-                    <a href="/projects.html" class="btn btn-primary pt-2 mb-3">View All Projects</a>
-                    <a href="https://civictechwr.github.io/blog/" class="btn btn-primary pt-2 mb-3">View Latest Blog</a>
-                </div>
-                
-                <!-- Third project positioned below text for better balance -->
-                <div class="mt-4">
-                    {% for project in site.data.projects offset:2 limit:1 %}
-                    <div class="projects-thumb">
-                        <div class="projects-info">
-                            <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
-                            <h4 class="projects-title">{{project.name}}</h4>
-                           <small class="projects-tag">Year: {{project.year}}</small>
-                        </div>
-                        <a href="{{project.url}}">
-                            <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}">
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
+              <div class="about-thumb">
+                <h3 class="pt-2 mb-3">A little bit about CivicTech Waterloo Region</h3>
+
+                <p>
+                  CivicTechWR focuses on using technology to improve how we connect with our local communities and governments. It's about making civic interactions and services more efficient and
+                  effective. CivicTech Waterloo Region was founded in July 2017. We're a community group that brings together people from diverse sectors and industries to collaboratively solve
+                  challenges facing our local community using design and technology. We were inspired by similar organizations like CivicTechTO, Beta City YEG, and Code for America Brigades.
+                </p>
+                <p>
+                  <a class="text-decoration-underline" href="/about.html">You can read more about our team here</a>
+                </p>
+              </div>
             </div>
 
             <div class="col-lg-6 col-12">
-                {% for project in site.data.projects limit:2 %}
-                <div class="mb-3">
-                    <div class="projects-thumb">
-                        <div class="projects-info">
-                            <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
-                            <h4 class="projects-title">{{project.name}}</h4>
-                           <small class="projects-tag">Year: {{project.year}}</small>
-                        </div>
-                        <a href="{{project.url}}">
-                            <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}">
-                        </a>
-                    </div>
+              <picture>
+                <source srcset="/images/hacknight-1.webp" type="image/webp" />
+                <img
+                  src="/images/hacknight-1.jpg"
+                  class="about-image img-fluid"
+                  alt="CivicTech Waterloo Region community members collaborating at weekly hacknight event"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hacknights section-padding shape-container" id="section_hacknights">
+        <!-- Abstract Shapes for Hacknights Section -->
+        <div class="abstract-shape shape-square left-4p top-10p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-star right-6p top-20p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-hexagon left-7p bottom-15p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-donut right-9p bottom-25p" aria-hidden="true"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-12">
+              <picture>
+                <source srcset="/images/hacknight-7.webp" type="image/webp" />
+                <img
+                  src="/images/hacknight-7.jpg"
+                  class="about-image img-fluid"
+                  alt="CivicTech Waterloo Region community members working together at hacknight event"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+
+            <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+              <div class="about-thumb">
+                <h3 class="pt-2 mb-3">
+                  Weekly hacknights.
+                  <br />
+                  Every Wednesday.
+                </h3>
+
+                <p>
+                  We meet every week, hosting hacknights most weeks and featuring a guest speaker once a month. Our speakers include community leaders from local non-profits, government, industry, or
+                  other engaged citizens—anyone with something inspiring or educational to share. Whether it's a speaker session or a hacknight, we provide a collaborative space for people to work on
+                  civic tech projects and connect with others who share their passion for making a difference. Join us at our next hacknight!
+                </p>
+                <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary">
+                  <i class="bi bi-calendar-event me-2"></i>
+                  Upcoming hacknights
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="projects section-padding shape-container" id="section_3">
+        <!-- Abstract Shapes for Projects Section -->
+        <div class="abstract-shape shape-square right-7p top-10p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-triangle left-5p top-30p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-zigzag right-15p bottom-15p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-cross left-12p bottom-25p" aria-hidden="true"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+              <div class="about-thumb">
+                <h3 class="pt-2 mb-3">Featured Projects</h3>
+                <h3>Built by the Community</h3>
+                <p>
+                  Discover some of our most impactful civic tech initiatives that are making a difference in the Waterloo Region community. From improving civic engagement to providing essential
+                  community resources, these projects showcase how technology can be used to solve real-world problems and strengthen our local democracy.
+                </p>
+                <a href="/projects.html" class="btn btn-primary pt-2 mb-3">View All Projects</a>
+                <a href="https://civictechwr.github.io/blog/" class="btn btn-primary pt-2 mb-3">View Latest Blog</a>
+              </div>
+
+              <!-- Third project positioned below text for better balance -->
+              <div class="mt-4">
+                {% for project in site.data.projects offset:2 limit:1 %}
+                <div class="projects-thumb">
+                  <div class="projects-info">
+                    <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
+                    <h4 class="projects-title">{{project.name}}</h4>
+                    <small class="projects-tag">Year: {{project.year}}</small>
+                  </div>
+                  <a href="{{project.url}}">
+                    <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}" loading="lazy" decoding="async" />
+                  </a>
                 </div>
                 {% endfor %}
+              </div>
             </div>
-        </div>
-    </div>
-</section>
-        
 
-
-
-
-        <!-- NEXT MEETING -->
-        <section class="featured section-padding" style="background-color: var(--secondary-color);" id="section_2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                        <h2 style="text-align: center;color: white;"> We look forward to seeing you on Wednesdays</h2>
-                        <div class="about-thumb">
-                            <div class="profile-thumb">
-                                <div class="profile-body">
-                                    <p>
-                                        <span style=" color: white;" class="profile-small-title"><a class="bi-question-circle-fill"></a></span>
-                                        <span style=" color: white;" id="meeting-name"></span>
-                                    </p>
-
-                                    <p style=" background-color: var(--secondary-color); color: white;">
-                                        <span style=" background-color: var(--secondary-color); color: white;" class="profile-small-title"><a class="bi-calendar-date-fill"></a></span>
-                                        <span id="meeting-date-time"></span>
-                                    </p>
-
-                                    <p>
-                                        <span style=" color: white;" class="profile-small-title"><a class="bi-pin-fill"></a></span>
-                                        <span style=" color: white;" id="meeting-location"></span>
-                                    </p>
-
-
-                                </div>
-                            </div>
-                            <div class="col-12 mt-5">
-                            <p class="mb-4 d-flex justify-content-center"><a id="meeting-btn" style="background-color: white; color: var(--secondary-color);" class="meeting-btn btn custom-link"
-                                        href="http://www.meetup.com/civictechwr">More Details & RSVP</a></p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-6 col-12">
+              {% for project in site.data.projects limit:2 %}
+              <div class="mb-3">
+                <div class="projects-thumb">
+                  <div class="projects-info">
+                    <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
+                    <h4 class="projects-title">{{project.name}}</h4>
+                    <small class="projects-tag">Year: {{project.year}}</small>
+                  </div>
+                  <a href="{{project.url}}">
+                    <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}" loading="lazy" decoding="async" />
+                  </a>
                 </div>
+              </div>
+              {% endfor %}
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEXT MEETING -->
+      <section class="featured section-padding section-secondary-bg meeting-section-alt" id="section_next_meeting">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-12">
+              <div class="meeting-image-wrapper">
+                <picture>
+                  <source srcset="/images/hacknight-8.webp" type="image/webp" />
+                  <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="CivicTech Waterloo Region community members at weekly hacknight gathering" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+              <div class="meeting-content">
+                <h2 class="meeting-title text-center mb-4">We look forward to seeing you at our next meeting</h2>
+                
+                <div class="meeting-card">
+                  <div class="meeting-details">
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-name">CTWR Weekly Hacknight</span>
+                      </div>
+                    </div>
+                    
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-calendar-date-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-date-time">Thursday 6:00 PM</span>
+                      </div>
+                    </div>
+                    
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-pin-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-location">Downtown Kitchener</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="meeting-cta">
+                    <a id="meeting-btn" class="btn btn-primary meeting-btn" href="https://www.meetup.com/civictechwr">More Details & RSVP</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- SPONSORS -->
-<section class="sponsors section-padding shape-container" id="section_4">
-    <!-- Abstract Shapes for Partners Section -->
-    <div class="abstract-shape shape-blob" style="right: 8%; top: 40%;"></div>
-    <div class="abstract-shape shape-rectangle" style="left: 6%; top: 60%;"></div>
-    <div class="abstract-shape shape-wave" style="right: 12%; bottom: 20%;"></div>
-    <div class="abstract-shape shape-diamond" style="left: 10%; bottom: 30%;"></div>
-    <div class="container">
+    <section class="sponsors section-padding shape-container" id="section_4">
+      <!-- Abstract Shapes for Partners Section -->
+      <div class="abstract-shape shape-blob right-8p top-40p" aria-hidden="true"></div>
+      <div class="abstract-shape shape-rectangle left-6p top-60p" aria-hidden="true"></div>
+      <div class="abstract-shape shape-wave right-12p bottom-20p" aria-hidden="true"></div>
+      <div class="abstract-shape shape-diamond left-10p bottom-30p" aria-hidden="true"></div>
+      <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-12">
-                <h3 class="text-center mb-5">Our Thanks To Our Partners</h3>
-                <p>We're always keen to working with our community partner, from corporations to non-profits and everything in between. If you would like to spnonsor us or have an idea for collaboration, please reach out to us at civictechwr@gmail.com</p>
+          <div class="col-lg-12 col-12">
+            <h3 class="text-center mb-5">Our Thanks To Our Partners</h3>
+            <p>
+              We're always keen to working with our community partner, from corporations to non-profits and everything in between. If you would like to spnonsor us or have an idea for collaboration,
+              please reach out to us at civictechwr@gmail.com
+            </p>
+          </div>
+          <div id="sponsor-container" class="mt-5 row justify-content-center sponsor-grid">
+            {% for partner in site.data.partners %} {% if partner.current %}
+            <div class="col-lg-2 col-md-6 col-6 sponsors-item-height">
+              <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
             </div>
-            <div id="sponsor-container" style="padding: 20px" class="mt-5 row justify-content-center">
-                {% for partner in site.data.partners %}
-                    {% if partner.current %}
-                    <div class="col-lg-2 col-md-6 col-6 sponsors-item-height">
-                        <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
+            {% endif %} {% endfor %}
+          </div>
 
-            <div class="col-lg-12 col-12 mt-5">
-                <h5 class="text-center mb-4">Previous Partners</h5>
+          <div class="col-lg-12 col-12 mt-5">
+            <h5 class="text-center mb-4">Previous Partners</h5>
+          </div>
+          <div id="previous-sponsor-container" class="row justify-content-center sponsor-grid">
+            {% for partner in site.data.partners %} {% if partner.current == false %}
+            <div class="mt-4 col-lg-2 col-md-2 col-4 sponsors-item-height">
+              <img src="{{partner.logo}}" class="previous-sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
             </div>
-            <div id="previous-sponsor-container" style="padding: 20px" class="row justify-content-center">
-                {% for partner in site.data.partners %}
-                    {% if partner.current == false %}
-                    <div class="mt-4 col-lg-2 col-md-2 col-4 sponsors-item-height">
-                        <img src="{{partner.logo}}" class="previous-sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}">
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
+            {% endif %} {% endfor %}
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-    <div id="footer-container"></div>
-    <script>
-        // Load the footer content
-        fetch('/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
-    </script>
- 
+    {% include footer.html %}
+
     <!-- JAVASCRIPT FILES -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/magnific-popup-options.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/meeting.js"></script>
-    <script src="js/add-view-all-card.js"></script>
-
-</body>
-
+    <script src="js/optimized-bundle.min.js" nonce="{{ site.script_nonce | default: 'ctwr-script' }}"></script>
+  </body>
 </html>

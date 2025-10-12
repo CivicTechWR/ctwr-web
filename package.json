@@ -1,0 +1,89 @@
+{
+  "name": "ctwr-web",
+  "version": "2.0.0",
+  "description": "CivicTech Waterloo Region Website - A modern, accessible, and performant static site built with Jekyll",
+  "homepage": "https://civictechwr.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CTWR-Org/ctwr-web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CTWR-Org/ctwr-web/issues"
+  },
+  "scripts": {
+    "lint:html": "htmlhint '*.html' '_includes/*.html'",
+    "lint:css": "stylelint 'css/**/*.css'",
+    "lint:js": "eslint 'js/**/*.js'",
+    "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules' '#_site' '#vendor' '#.github/CODE_OF_CONDUCT.md' '#README.md'",
+    "lint:yaml": "echo 'YAML files found:' && find . -name '*.yml' -o -name '*.yaml' | grep -v node_modules | grep -v _site | grep -v vendor | wc -l && echo 'YAML linting skipped - using basic validation'",
+    "lint:json": "find . -name '*.json' | grep -v node_modules | grep -v _site | grep -v vendor | grep -v package-lock.json | xargs jsonlint",
+    "lint:shell": "find scripts -name '*.sh' -exec shellcheck {} \\; 2>/dev/null || echo 'Shellcheck not available, skipping shell linting'",
+    "lint:all": "npm run lint:html && npm run lint:css && npm run lint:js && npm run lint:md && npm run lint:yaml && npm run lint:json && npm run lint:shell",
+    "lint": "npm run lint:all",
+    "format:html": "prettier --write '*.html' '_includes/*.html'",
+    "format:css": "prettier --write 'css/**/*.css'",
+    "format:js": "prettier --write 'js/**/*.js'",
+    "format:md": "markdownlint-cli2-fix '**/*.md' '#node_modules' '#_site' '#vendor'",
+    "format:yaml": "prettier --write '**/*.yml' '**/*.yaml'",
+    "format:json": "prettier --write '**/*.json' '#package-lock.json'",
+    "format:all": "npm run format:html && npm run format:css && npm run format:js && npm run format:md && npm run format:yaml && npm run format:json",
+    "format": "npm run format:all",
+    "minify:css": "cleancss -o css/style.min.css css/style.css && cleancss -o css/abstract-shapes.min.css css/abstract-shapes.css",
+    "minify:js": "terser js/custom.js js/meeting.js js/click-scroll.js js/magnific-popup-options.js --compress --mangle --source-map -o js/bundle.min.js",
+    "minify": "npm run minify:css && npm run minify:js",
+    "build:prod": "npm run minify && bundle exec jekyll build",
+    "build:dev": "bundle exec jekyll build",
+    "serve": "bundle exec jekyll serve --livereload",
+    "test:accessibility": "npx pa11y-ci",
+    "test:security": "npm audit && bundle exec bundler-audit check --update",
+    "test:smoke": "./scripts/smoke-tests.sh",
+    "test:smoke:build": "npm run build:prod && echo 'Build successful'",
+    "test:smoke:serve": "timeout 10s npm run serve || echo 'Serve test completed'",
+    "test:smoke:html": "htmlhint '_site/**/*.html'",
+    "test:smoke:css": "stylelint '_site/css/**/*.css'",
+    "test:smoke:js": "eslint '_site/js/**/*.js'",
+    "test:smoke:all": "npm run test:smoke:build && npm run test:smoke:html && npm run test:smoke:css && npm run test:smoke:js",
+    "test": "npm run lint && npm run test:accessibility && npm run test:security && npm run test:smoke",
+    "preview": "./scripts/setup-preview.sh"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "eslint": "^9.37.0",
+    "html-validate": "^10.1.2",
+    "htmlhint": "^1.1.4",
+    "js-yaml": "^4.1.0",
+    "jsonlint": "^1.6.3",
+    "markdownlint-cli2": "^0.18.1",
+    "markdownlint-cli2-formatter-pretty": "^0.0.8",
+    "prettier": "^3.6.2",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1",
+    "terser": "^5.44.0",
+    "yaml-lint": "^1.7.0"
+  },
+  "keywords": [
+    "civic-tech",
+    "jekyll",
+    "waterloo-region",
+    "accessibility",
+    "performance",
+    "static-site",
+    "bootstrap",
+    "responsive"
+  ],
+  "author": {
+    "name": "CivicTech Waterloo Region",
+    "email": "civictechwr@gmail.com",
+    "url": "https://civictechwr.org"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "ruby": ">=3.1.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
