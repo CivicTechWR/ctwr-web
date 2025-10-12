@@ -347,28 +347,32 @@ strong {
   color: var(--white-color);
 }
 
-.custom-link {
-	background-color: var(--primary-color);
+.btn.custom-link {
+	background-color: var(--primary-color) !important;
+	border: none !important;
+	color: var(--white-color) !important;
 }
 
-.custom-link:hover {
-	background-color: var(--secondary-color);
+.btn.custom-link:hover {
+	background-color: var(--secondary-color) !important;
+	color: var(--white-color) !important;
 }
 
-.meeting-btn {
-  background: var(--secondary-color);
-  border-radius: var(--border-radius-small);
-  color: var(--white-color);
-  font-weight: var(--font-weight-bold);
-  padding: 12px 24px;
-  margin: 0 10px;
-  width: 100%;
+.btn.meeting-btn {
+  background: var(--secondary-color) !important;
+  border-radius: var(--border-radius-small) !important;
+  color: var(--white-color) !important;
+  font-weight: var(--font-weight-bold) !important;
+  padding: 12px 24px !important;
+  margin: 0 10px !important;
+  width: 100% !important;
+  border: none !important;
 }
 
-.meeting-btn:hover {
-  background: var(--primary-color);
-  box-shadow: 0 1rem 3rem rgb(0 0 0 / 17.5%);
-  color: var(--white-color);
+.btn.meeting-btn:hover {
+  background: var(--primary-color) !important;
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 17.5%) !important;
+  color: var(--white-color) !important;
 }
 
 /* ---------------------------------------
@@ -759,16 +763,16 @@ strong {
   transform: translateY(-2px);
 }
 
-.btn-outline {
-  background: transparent;
-  border: 1px solid rgb(255 255 255 / 20%);
-  color: var(--white-color);
+.btn.btn-outline {
+  background: transparent !important;
+  border: 1px solid rgb(255 255 255 / 20%) !important;
+  color: var(--white-color) !important;
   align-content: center;
 }
 
-.btn-outline:hover {
-  background: rgb(255 255 255 / 10%);
-  border-color: rgb(255 255 255 / 30%);
+.btn.btn-outline:hover {
+  background: rgb(255 255 255 / 10%) !important;
+  border-color: rgb(255 255 255 / 30%) !important;
   transform: translateY(-2px);
 }
 
@@ -948,16 +952,16 @@ strong {
   color: var(--white-color);
 }
 
-.meeting-btn-alt {
-  background: var(--primary-color);
-  color: var(--white-color);
-  border: 2px solid var(--primary-color);
+.btn.meeting-btn-alt {
+  background: var(--primary-color) !important;
+  color: var(--white-color) !important;
+  border: 2px solid var(--primary-color) !important;
 }
 
-.meeting-btn-alt:hover {
-  background: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+.btn.meeting-btn-alt:hover {
+  background: transparent !important;
+  color: var(--primary-color) !important;
+  border: 2px solid var(--primary-color) !important;
 }
 
 /* Meeting details card styling */
