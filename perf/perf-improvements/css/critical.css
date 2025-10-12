@@ -1,0 +1,191 @@
+/* Critical CSS for above-the-fold content */
+
+/* CSS Variables */
+:root {
+  --white-color: #fff;
+  --primary-color: #FC6C6D;
+  --secondary-color: #2D6F72;
+  --section-bg-color: #f9f9f9;
+  --dark-color: #000;
+  --p-color: #717275;
+  --border-color: #e9eaeb;
+  --featured-border-color: #727aab;
+  --body-font-family: 'DM Sans', sans-serif;
+  --h1-font-size: 62px;
+  --h2-font-size: 48px;
+  --h3-font-size: 36px;
+  --h4-font-size: 32px;
+  --h5-font-size: 24px;
+  --h6-font-size: 22px;
+  --p-font-size: 18px;
+  --menu-font-size: 12px;
+  --copyright-font-size: 14px;
+  --border-radius-large: 100px;
+  --border-radius-medium: 20px;
+  --border-radius-small: 10px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+
+/* Base styles */
+body {
+  background: var(--white-color);
+  font-family: var(--body-font-family);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  color: var(--secondary-color);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+}
+
+h5 {
+  font-size: var(--h5-font-size);
+  line-height: normal;
+}
+
+h6 {
+  font-size: var(--h6-font-size);
+}
+
+p {
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Navigation */
+.navbar {
+  background: var(--dark-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 3rem;
+  padding: 0;
+  box-shadow: 0 0 0.2rem rgb(0 0 0 / 10%), 0 0.2rem 0.4rem rgb(0 0 0 / 20%);
+  transition: transform .25s cubic-bezier(.1,.7,.1,1),box-shadow .25s;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white-color) !important;
+  text-decoration: none;
+}
+
+.logo {
+  height: 1.8rem;
+  margin-right: 0.6rem;
+}
+
+/* Hero section */
+.hero {
+  background: var(--dark-color);
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(3rem + 330px);
+  padding-bottom: 7rem;
+  min-height: 100vh;
+  z-index: 2;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  color: var(--white-color);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(45deg, #fff 30%, rgb(255 255 255 / 70%));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 80%);
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--secondary-color);
+  border: none;
+  color: var(--white-color);
+}
+
+.btn-primary:hover {
+  background: #d6685f;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (width <= 768px) {
+  .hero {
+    padding-top: 5rem;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+}
