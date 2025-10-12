@@ -24,7 +24,10 @@ jobs:
           bundler-cache: true
 
       - name: Build site
-        run: bundle exec jekyll build
+        run: |
+          bundle exec jekyll build
+          echo "Build completed successfully"
+          ls -la _site/
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -33,8 +36,12 @@ jobs:
 
       - name: Run Pa11y CI against built site
         run: |
+          echo "Starting http-server on port 4000..."
           npx --yes http-server _site -p 4000 &
           SERVER_PID=$!
           trap "kill $SERVER_PID" EXIT
-          sleep 2
+          sleep 5
+          echo "Testing server connectivity..."
+          curl -I http://127.0.0.1:4000/ || echo "Server not responding"
+          echo "Running pa11y-ci..."
           npx --yes pa11y-ci --config .pa11yci.json
