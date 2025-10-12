@@ -1,3 +1,7 @@
+---
+layout: null
+permalink: /projects.html
+---
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,17 +23,21 @@
     />
     <title>Projects | CivicTech Waterloo Region</title>
     {% seo %}
-    
+
     <!-- Resource hints for performance -->
     <link rel="preload" href="css/style.css" as="style" />
+    {% if jekyll.environment == "production" %}
+    <link rel="preload" href="css/bootstrap.min.css" as="style" />
+    {% else %}
     <link rel="preload" href="css/bootstrap.css" as="style" />
+    {% endif %}
     <link rel="preload" href="js/projects.json" as="fetch" crossorigin />
-    
+
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    
+
     <!-- Preconnect to critical external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,9 +45,13 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+
+    {% if jekyll.environment == "production" %}
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    {% else %}
     <link href="css/bootstrap.css" rel="stylesheet" />
+    {% endif %}
     <link href="css/bootstrap-icons.css" rel="stylesheet" />
-    <link href="css/magnific-popup.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/abstract-shapes.css" rel="stylesheet" />
     <style>
@@ -112,19 +124,29 @@
   </head>
 
   <body>
-    <a href="#projects_meeting" class="skip-link">Skip to main content</a>
-    <div id="header-container"></div>
-    <script>
-      // Load the header content
-      fetch("/header.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("header-container").innerHTML = data;
-        })
-        .catch((error) => console.error("Error loading header:", error));
-    </script>
+    {% include icons.svg %}
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    {% include header.html %}
+    <div class="has-fixed-nav">
+    <header class="site-header">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-12">
+            <h1 class="page-title">Projects Built By Our Community</h1>
+            <p class="page-subtitle">
+              Explore civic technology initiatives designed to improve life across Waterloo Region.
+            </p>
+          </div>
+          <div class="col-lg-6 col-12 text-lg-end text-start">
+            <a class="btn btn-outline btn-light-inverse" href="/projects.html#projects_meeting">
+              View upcoming hacknights
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <main class="projects-main-centered shape-container">
+    <main id="main-content" class="projects-main-centered shape-container">
       <!-- Abstract Shapes for Projects Header Section -->
       <div class="abstract-shape shape-circle left-5p top-10p" aria-hidden="true"></div>
       <div class="abstract-shape shape-donut right-8p top-15p" aria-hidden="true"></div>
@@ -186,6 +208,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-12">
+            <div class="meeting-image-wrapper">
             <picture>
               <source srcset="/images/hacknight-8.webp" type="image/webp" />
               <img
@@ -196,9 +219,10 @@
                 decoding="async"
               />
             </picture>
+            </div>
           </div>
           <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-            <div class="about-thumb">
+            <div class="about-thumb meeting-card">
               <h2 class="meeting-section-title">
                 We look forward to seeing you at our next meeting
               </h2>
@@ -248,8 +272,7 @@
     </section>
 
     {% include footer.html %}
-
-    <script src="js/bootstrap.js"></script>
+    </div>
 
     <script>
       // Function to load and display projects
@@ -352,11 +375,6 @@
     </script>
 
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/jquery.magnific-popup.js"></script>
-    <script src="js/magnific-popup-options.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/meeting.js"></script>
     <script src="js/add-view-all-card.js"></script>

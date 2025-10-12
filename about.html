@@ -1,3 +1,7 @@
+---
+layout: null
+permalink: /about.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,24 +12,32 @@
     <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon">
     <title>About Us | CivicTech Waterloo Region</title>
     {% seo %}
-    
+
     <!-- Resource hints for performance -->
     <link rel="preload" href="css/style.css" as="style" />
+    {% if jekyll.environment == "production" %}
+    <link rel="preload" href="css/bootstrap.min.css" as="style" />
+    {% else %}
     <link rel="preload" href="css/bootstrap.css" as="style" />
+    {% endif %}
     <link rel="preload" href="images/about-us.webp" as="image" />
-    
+
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    
+
     <!-- Preconnect to critical external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    {% if jekyll.environment == "production" %}
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    {% else %}
     <link href="css/bootstrap.css" rel="stylesheet">
+    {% endif %}
     <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/magnific-popup.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/abstract-shapes.css" rel="stylesheet">
     <style>
@@ -153,24 +165,34 @@
 </style>
 </head>
 <body>
-    <a href="#about_meeting" class="skip-link">Skip to main content</a>
-    <div id="header-container"></div>
-    <script nonce="{{ site.script_nonce | default: 'ctwr-script' }}">
-        // Load the header content
-        fetch('/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading header:', error));
-    </script>
-    <main class="about-main-centered shape-container">
+    {% include icons.svg %}
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+     {% include header.html %}
+    <div class="has-fixed-nav">
+    <header class="site-header">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-12">
+            <h1 class="page-title">About CivicTech Waterloo Region</h1>
+            <p class="page-subtitle">
+              Meet the community of designers, technologists, and civic leaders working together to solve local challenges.
+            </p>
+          </div>
+          <div class="col-lg-6 col-12 text-lg-end text-start">
+            <a class="btn btn-outline btn-light-inverse" href="https://www.meetup.com/civictechwr/" target="_blank" rel="noopener noreferrer">
+              Join our hacknights
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" class="about-main-centered shape-container">
         <!-- Abstract Shapes for About Section -->
         <div class="abstract-shape shape-circle left-5p top-10p" aria-hidden="true"></div>
         <div class="abstract-shape shape-donut right-8p top-15p" aria-hidden="true"></div>
         <div class="abstract-shape shape-star left-12p bottom-25p" aria-hidden="true"></div>
         <div class="abstract-shape shape-wave right-15p bottom-20p" aria-hidden="true"></div>
-        
+
         <section class="section-padding shape-container">
             <h1 class="text-center">What is CivicTechWR?</h1>
             <p>
@@ -180,8 +202,8 @@
                 CivicTech Waterloo Region (CTWR) has been a driving force for positive change in the Tri-City area (Kitchener, Waterloo, and Cambridge). By bringing together technologists, designers, activists, and civic leaders, CTWR has fostered a collaborative environment where innovative solutions are developed to address local challenges. Our projects have empowered residents, improved civic engagement, and provided open data tools for the community. We have helped bridge the gap between the tech sector and local government, making civic processes more transparent and accessible. Our events and hacknights have inspired hundreds to use their skills for the public good, making a lasting impact on both the tech and civic communities across the region.
             </p>
             <h2 class="text-center">tl;dr</h2>
-            <h4 class="text-center">We don’t know what we’re doing!</h4>
-            <h4 class="text-center">We’re figuring it out as we go.</h4>
+            <h4 class="text-center">We don't know what we're doing!</h4>
+            <h4 class="text-center">We're figuring it out as we go.</h4>
             <h4 class="text-center">If you don't find what you need, feel free to build it</h4>
         </section>
         <section class="organizers-section section-padding shape-container">
@@ -223,31 +245,33 @@
 
 
 
+            <div class="shoutout-section">
             <div class="container text-center">
             <h4>Big Shoutout also to</h4>
             <div class="shoutout-list">
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/qedi-r" target="_blank" rel="noopener noreferrer" aria-label="Christian Snyder GitHub (opens in new window)">Christian Snyder</a></div>
+                    <div class="shoutout-member-name"><a class="shoutout-link" href="https://github.com/qedi-r" target="_blank" rel="noopener noreferrer" aria-label="Christian Snyder GitHub (opens in new window)">Christian Snyder</a></div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/pnijjar" target="_blank" rel="noopener noreferrer" aria-label="Paul Nijjar GitHub (opens in new window)">Paul Nijjar</a></div>
+                    <div class="shoutout-member-name"><a class="shoutout-link" href="https://github.com/pnijjar" target="_blank" rel="noopener noreferrer" aria-label="Paul Nijjar GitHub (opens in new window)">Paul Nijjar</a></div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/mmmaxwwwell" target="_blank" rel="noopener noreferrer" aria-label="Maxwell Veenendaal GitHub (opens in new window)">Maxwell Veenendaal</a></div>
+                    <div class="shoutout-member-name"><a class="shoutout-link" href="https://github.com/mmmaxwwwell" target="_blank" rel="noopener noreferrer" aria-label="Maxwell Veenendaal GitHub (opens in new window)">Maxwell Veenendaal</a></div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/derjohng" target="_blank" rel="noopener noreferrer" aria-label="John Gibbons GitHub (opens in new window)">John Gibbons</a></div>
+                    <div class="shoutout-member-name"><a class="shoutout-link" href="https://github.com/derjohng" target="_blank" rel="noopener noreferrer" aria-label="John Gibbons GitHub (opens in new window)">John Gibbons</a></div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/KristinaTaylor" target="_blank" rel="noopener noreferrer" aria-label="Kristina Taylor GitHub (opens in new window)">Kristina Taylor</a></div>
+                    <div class="shoutout-member-name"><a class="shoutout-link" href="https://github.com/KristinaTaylor" target="_blank" rel="noopener noreferrer" aria-label="Kristina Taylor GitHub (opens in new window)">Kristina Taylor</a></div>
                 </div>
                 <div class="shoutout-member">
-                    <div class="shoutout-member-name"><a href="https://github.com/apurvakb" target="_blank" rel="noopener noreferrer" aria-label="Apurva Bhargava GitHub (opens in new window)">Apurva Bhargava</a></div>
+                    <div class="shoutout-member-name"><a class="shoutout-link" href="https://github.com/apurvakb" target="_blank" rel="noopener noreferrer" aria-label="Apurva Bhargava GitHub (opens in new window)">Apurva Bhargava</a></div>
                 </div>
             </div>
             <p> </p>
             </div>
-            <div class="container text-center"><p>Check out our <a href="https://github.com/civictechwr">GitHub</a> to see our contributors and get involved!</p></div>
+            <div class="container text-center"><p>Check out our <a class="shoutout-link" href="https://github.com/civictechwr">GitHub</a> to see our contributors and get involved!</p></div>
+            </div>
         </section>
 
         <section class="mt-5 shape-container">
@@ -258,12 +282,12 @@
         <div class="abstract-shape shape-blob right-5p bottom-15p" aria-hidden="true"></div>
             <h3 class="projects-involved-heading">Get Involved</h3>
             <p>
-                Interested in contributing to one of our projects or starting a new one? Join us at our weekly hacknights 
-                where we collaborate on these initiatives. No technical experience is required – we welcome people with all 
+                Interested in contributing to one of our projects or starting a new one? Join us at our weekly hacknights
+                where we collaborate on these initiatives. No technical experience is required – we welcome people with all
                 kinds of skills and backgrounds.
             </p>
         </section>
-        
+
 
 
     </main>
@@ -274,13 +298,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-12">
+                        <div class="meeting-image-wrapper">
                         <picture>
                             <source srcset="/images/hacknight-8.webp" type="image/webp">
                             <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="CivicTech Waterloo Region community members at weekly hacknight gathering" loading="lazy" decoding="async">
                         </picture>
+                        </div>
                     </div>
                     <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                        <div class="about-thumb">
+                        <div class="about-thumb meeting-card">
 
                             <h2 class="meeting-section-title"> We look forward to seeing you at our next meeting</h2>
                             <div class="profile-thumb meeting-section-alt">
@@ -317,22 +343,18 @@
                         </div>
                     </div>
 
-                    
+
 
                 </div>
             </div>
         </section>
 
     {% include footer.html %}
+    </div>
 
 
 
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/jquery.magnific-popup.js"></script>
-    <script src="js/magnific-popup-options.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/meeting.js"></script>
     <script src="js/add-view-all-card.js"></script>

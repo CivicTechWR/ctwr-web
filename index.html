@@ -1,4 +1,6 @@
 ---
+layout: null
+permalink: /
 ---
 
 <!DOCTYPE html>
@@ -26,35 +28,35 @@
 
     <!-- CSS FILES -->
     <!-- Preload critical resources -->
-    <link rel="preload" href="css/style.css" as="style" />
+    {% if jekyll.environment == "production" %}
+    <link rel="preload" href="css/bootstrap.min.css" as="style" />
+    {% else %}
     <link rel="preload" href="css/bootstrap.css" as="style" />
-    <link rel="preload" href="js/jquery.js" as="script" />
-    <link rel="preload" href="js/bootstrap.js" as="script" />
+    {% endif %}
     <link rel="preload" href="images/hacknight-1.jpg" as="image" />
-    
+
     <!-- DNS prefetch for external resources -->
-    <link rel="dns-prefetch" href="//code.jquery.com" />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <link rel="dns-prefetch" href="//cors-anywhere.herokuapp.com" />
     <link rel="dns-prefetch" href="//api.meetup.com" />
-    
+
     <!-- Preconnect to critical external resources -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+      <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet"
+      />
 
     <!-- Critical CSS inlined for performance -->
     <style>
       /* Critical CSS for above-the-fold content */
       /* CSS Variables are defined in css/style.css */
-      
+
       /* Override Bootstrap's link color variables for specific components only */
       :root {
         --bs-link-color: var(--p-color);
@@ -62,58 +64,29 @@
         --bs-link-hover-color: var(--secondary-color);
         --bs-link-hover-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
       }
-      
+
       body {
         background: var(--white-color);
         font-family: var(--body-font-family);
       }
-      
+
       h1, h2, h3, h4, h5, h6 {
         font-weight: var(--font-weight-bold);
       }
-      
+
       h1 { font-size: var(--h1-font-size); }
       h2 { font-size: var(--h2-font-size); color: var(--secondary-color); }
       h3 { font-size: var(--h3-font-size); }
       h4 { font-size: var(--h4-font-size); }
       h5 { font-size: var(--h5-font-size); line-height: normal; }
       h6 { font-size: var(--h6-font-size); }
-      
+
       p {
         color: var(--p-color);
         font-size: var(--p-font-size);
         font-weight: var(--font-weight-normal);
       }
-      
-      .navbar {
-        background: var(--dark-color);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        height: 3rem;
-        padding: 0;
-        box-shadow: 0 0 0.2rem rgb(0 0 0 / 10%), 0 0.2rem 0.4rem rgb(0 0 0 / 20%);
-        transition: transform .25s cubic-bezier(.1,.7,.1,1),box-shadow .25s;
-      }
-      
-      .navbar-brand {
-        display: flex;
-        align-items: center;
-        height: 100%;
-        padding: 0 0.6rem;
-        font-size: 1.2rem;
-        font-weight: 500;
-        color: var(--white-color) !important;
-        text-decoration: none;
-      }
-      
-      .logo {
-        height: 1.8rem;
-        margin-right: 0.6rem;
-      }
-      
+
       .hero {
         background: var(--dark-color);
         position: relative;
@@ -123,7 +96,7 @@
         min-height: 100vh;
         z-index: 2;
       }
-      
+
       .hero-text {
         position: relative;
         z-index: 2;
@@ -136,7 +109,7 @@
         animation: fadeInUp 1s ease forwards;
         animation-delay: 0.5s;
       }
-      
+
       .hero-title {
         font-size: 3.5rem;
         font-weight: 700;
@@ -146,14 +119,14 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      
+
       .hero-description {
         font-size: 1.2rem;
         line-height: 1.6;
         color: rgb(255 255 255 / 80%);
         margin-bottom: 2rem;
       }
-      
+
       .btn {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
@@ -161,7 +134,7 @@
         border-radius: 0.3rem;
         transition: all 0.3s ease;
       }
-      
+
       /* General link styles - override Bootstrap blue links */
       a {
         color: var(--p-color);
@@ -174,20 +147,6 @@
       }
 
 
-      /* Footer button links should be black */
-      .footer-general-btn,
-      .footer-donate-btn,
-      .footer-sponsor-btn {
-        color: #000 !important;
-        text-decoration: none;
-      }
-
-      .footer-general-btn:hover,
-      .footer-donate-btn:hover,
-      .footer-sponsor-btn:hover {
-        color: #333 !important;
-        text-decoration: underline;
-      }
 
       /* Footer sitemap links should be gray */
       .footer-menu-list a,
@@ -209,12 +168,12 @@
         border: none;
         color: var(--white-color);
       }
-      
+
       .btn-primary:hover {
         background: #d6685f;
         transform: translateY(-2px);
       }
-      
+
       .btn-outline {
         background: transparent;
         border: 1px solid rgb(255 255 255 / 20%);
@@ -234,12 +193,12 @@
         border: none !important;
         color: var(--white-color) !important;
       }
-      
+
       .btn.btn-primary:hover {
         background: #d6685f !important;
         transform: translateY(-2px);
       }
-      
+
       .btn.btn-outline {
         background: transparent !important;
         border: 1px solid rgb(255 255 255 / 20%) !important;
@@ -263,12 +222,12 @@
         background-color: var(--secondary-color) !important;
         color: var(--white-color) !important;
       }
-      
+
       @keyframes fadeInUp {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
       }
-      
+
       @media (width <= 768px) {
         .hero { padding-top: 5rem; }
         .hero-title { font-size: 2.5rem; }
@@ -276,18 +235,22 @@
       }
     </style>
 
+    {% if jekyll.environment == "production" %}
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    {% else %}
     <link href="css/bootstrap.css" rel="stylesheet" />
+    {% endif %}
     <link href="css/bootstrap-icons.css" rel="stylesheet" />
-    <link href="css/magnific-popup.css" rel="stylesheet" />
     <link href="css/abstract-shapes.css" rel="stylesheet" />
-    
+
     <!-- Load main stylesheet AFTER Bootstrap to override its styles -->
     <link href="css/style.css" rel="stylesheet" />
   </head>
 
   <body>
+    {% include icons.svg %}
     <a href="#section_1" class="skip-link">Skip to main content</a>
-    
+
     <!-- Screen reader announcements -->
     <div id="sr-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     <section class="preloader">
@@ -309,6 +272,7 @@
     </script>
     -->
 
+    {% include header.html %}
     <main>
       <section
         class="hero d-flex justify-content-center align-items-center shape-container"
@@ -347,12 +311,12 @@
                   >
                   <a
                     href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw"
-                    class="btn btn-outline"
+                    class="btn btn-outline btn-light-inverse"
                     >Slack</a
                   >
                   <a
                     href="https://discourse.ctwr.org"
-                    class="btn btn-outline"
+                    class="btn btn-outline btn-light-inverse"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Member Dashboard (opens in new window)"
@@ -360,7 +324,7 @@
                   >
                   <a
                     href="https://civictechwr.github.io/blog/"
-                    class="btn btn-outline"
+                    class="btn btn-outline btn-light-inverse"
                     >Blog</a
                   >
                 </div>
@@ -389,10 +353,10 @@
 
                 <p>
                   CivicTechWR focuses on using technology to improve how we
-                  connect with our local communities and governments. It’s about
+                  connect with our local communities and governments. It's about
                   making civic interactions and services more efficient and
                   effective. CivicTech Waterloo Region was founded in July
-                  2017. We’re a community group that brings together people from
+                  2017. We're a community group that brings together people from
                   diverse sectors and industries to collaboratively solve
                   challenges facing our local community using design and
                   technology. We were inspired by similar organizations like
@@ -572,22 +536,24 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6 col-12">
-              <picture>
-                <source srcset="/images/hacknight-8.webp" type="image/webp" />
-                <img
-                  src="/images/hacknight-8.jpg"
-                  class="about-image img-fluid"
-                  alt="CivicTech Waterloo Region community members at weekly hacknight gathering"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
+              <div class="meeting-image-wrapper">
+                <picture>
+                  <source srcset="/images/hacknight-8.webp" type="image/webp" />
+                  <img
+                    src="/images/hacknight-8.jpg"
+                    class="about-image img-fluid"
+                    alt="CivicTech Waterloo Region community members at weekly hacknight gathering"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
             </div>
             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
               <h2 class="text-center">
                 We look forward to seeing you at our next meeting
               </h2>
-              <div class="about-thumb">
+              <div class="about-thumb meeting-card">
                 <div class="profile-thumb">
                   <div class="profile-body">
                     <p>
@@ -708,26 +674,6 @@
     {% include footer.html %}
 
     <!-- JAVASCRIPT FILES -->
-    <script
-      src="js/jquery.js"
-      nonce="{{ site.script_nonce | default: 'ctwr-script' }}"
-    ></script>
-    <script
-      src="js/bootstrap.js"
-      nonce="{{ site.script_nonce | default: 'ctwr-script' }}"
-    ></script>
-    <script
-      src="js/click-scroll.js"
-      nonce="{{ site.script_nonce | default: 'ctwr-script' }}"
-    ></script>
-    <script
-      src="js/jquery.magnific-popup.js"
-      nonce="{{ site.script_nonce | default: 'ctwr-script' }}"
-    ></script>
-    <script
-      src="js/magnific-popup-options.js"
-      nonce="{{ site.script_nonce | default: 'ctwr-script' }}"
-    ></script>
     <script
       src="js/custom.js"
       nonce="{{ site.script_nonce | default: 'ctwr-script' }}"
