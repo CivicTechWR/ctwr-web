@@ -17,7 +17,7 @@ fi
 echo "🔍 Running accessibility checks on $FILE_PATH..."
 
 # Check for basic accessibility issues
-if command -v axe &> /dev/null; then
+if command -v axe &>/dev/null; then
   echo "Running axe-core accessibility scan..."
   axe "$FILE_PATH" --format json 2>/dev/null | jq -r '.violations[] | "⚠️ " + .id + ": " + .description'
   echo "✅ Accessibility scan completed" >&2

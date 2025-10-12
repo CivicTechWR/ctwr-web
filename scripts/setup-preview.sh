@@ -8,9 +8,9 @@ echo "🚀 Setting up preview for perf/perf-improvements branch..."
 # Check if we're on the right branch
 CURRENT_BRANCH=$(git branch --show-current)
 if [ "$CURRENT_BRANCH" != "perf/perf-improvements" ]; then
-    echo "❌ Please switch to the perf/perf-improvements branch first"
-    echo "   Run: git checkout perf/perf-improvements"
-    exit 1
+  echo "❌ Please switch to the perf/perf-improvements branch first"
+  echo "   Run: git checkout perf/perf-improvements"
+  exit 1
 fi
 
 # Build the site

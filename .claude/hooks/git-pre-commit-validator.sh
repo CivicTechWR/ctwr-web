@@ -33,27 +33,27 @@ fi
 echo "Checking file sizes..."
 for file in $STAGED_FILES; do
   if [ -f "$file" ]; then
-    size=$(wc -c < "$file")
-    if [ "$size" -gt 10485760 ]; then  # 10MB limit
+    size=$(wc -c <"$file")
+    if [ "$size" -gt 10485760 ]; then # 10MB limit
       echo "⚠️ Large file detected: $file ($(($size / 1024 / 1024))MB)" >&2
     fi
   fi
 done
 
 # Run linting if available
-if command -v npm &> /dev/null && [ -f "package.json" ]; then
+if command -v npm &>/dev/null && [ -f "package.json" ]; then
   echo "Running ESLint..."
   npm run lint 2>/dev/null || echo "⚠️ Linting issues found" >&2
 fi
 
 # Run formatting if available
-if command -v prettier &> /dev/null; then
+if command -v prettier &>/dev/null; then
   echo "Running Prettier..."
   prettier --check $STAGED_FILES 2>/dev/null || echo "⚠️ Formatting issues found" >&2
 fi
 
 # Run tests if available
-if command -v npm &> /dev/null && [ -f "package.json" ]; then
+if command -v npm &>/dev/null && [ -f "package.json" ]; then
   echo "Running tests..."
   npm test 2>/dev/null || echo "⚠️ Tests failed" >&2
 fi

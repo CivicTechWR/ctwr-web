@@ -3,7 +3,9 @@
 title: Civic Tech Waterloo Region
 email: civictechwr@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions.
+  Civic Tech Waterloo Region is a community group that brings together people
+  from different sectors and industries to actively solve issues facing our
+  local community using technology-based solutions.
 baseurl: "" # The subpath of your site, e.g., /blog
 url: "" # The base URL of your site
 
@@ -87,7 +89,8 @@ plugins:
 seo:
   type: "Organization"
   name: "Civic Tech Waterloo Region"
-  description: "Community group bringing together people to solve local issues using technology"
+  description: "Community group bringing together people to solve local issues
+    using technology"
   url: "https://civictechwr.org"
   logo: "/images/logos/civictechwr_logo_black.png"
   same_as:

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Jekyll plugin to ensure minified assets are copied to the site
 Jekyll::Hooks.register :site, :post_write do |site|
   # Copy minified CSS files

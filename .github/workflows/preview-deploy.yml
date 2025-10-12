@@ -1,3 +1,4 @@
+---
 name: Preview Deploy
 
 on:
@@ -53,7 +54,8 @@ jobs:
         with:
           script: |
             const branch = context.payload.pull_request.head.ref;
-            const previewUrl = `https://${context.repo.owner}.github.io/${context.repo.repo}/${branch}/`;
+            const previewUrl = `https://${context.repo.owner}.github.io/` +
+              `${context.repo.repo}/${branch}/`;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,

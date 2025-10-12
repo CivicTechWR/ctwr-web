@@ -22,47 +22,47 @@ TESTS_FAILED=0
 
 # Function to run a test
 run_test() {
-    local test_name="$1"
-    local test_command="$2"
-    
-    echo -e "\n${BLUE}Testing: ${test_name}${NC}"
-    echo "Command: ${test_command}"
-    
-    if eval "$test_command"; then
-        echo -e "${GREEN}✅ PASSED: ${test_name}${NC}"
-        ((TESTS_PASSED++))
-    else
-        echo -e "${RED}❌ FAILED: ${test_name}${NC}"
-        ((TESTS_FAILED++))
-    fi
+  local test_name="$1"
+  local test_command="$2"
+
+  echo -e "\n${BLUE}Testing: ${test_name}${NC}"
+  echo "Command: ${test_command}"
+
+  if eval "$test_command"; then
+    echo -e "${GREEN}✅ PASSED: ${test_name}${NC}"
+    ((TESTS_PASSED++))
+  else
+    echo -e "${RED}❌ FAILED: ${test_name}${NC}"
+    ((TESTS_FAILED++))
+  fi
 }
 
 # Function to check if a file exists
 check_file_exists() {
-    local file_path="$1"
-    local test_name="$2"
-    
-    if [ -f "$file_path" ]; then
-        echo -e "${GREEN}✅ PASSED: ${test_name} - File exists: ${file_path}${NC}"
-        ((TESTS_PASSED++))
-    else
-        echo -e "${RED}❌ FAILED: ${test_name} - File missing: ${file_path}${NC}"
-        ((TESTS_FAILED++))
-    fi
+  local file_path="$1"
+  local test_name="$2"
+
+  if [ -f "$file_path" ]; then
+    echo -e "${GREEN}✅ PASSED: ${test_name} - File exists: ${file_path}${NC}"
+    ((TESTS_PASSED++))
+  else
+    echo -e "${RED}❌ FAILED: ${test_name} - File missing: ${file_path}${NC}"
+    ((TESTS_FAILED++))
+  fi
 }
 
 # Function to check if a URL is accessible
 check_url() {
-    local url="$1"
-    local test_name="$2"
-    
-    if curl -s --head "$url" | head -n 1 | grep -q "200 OK"; then
-        echo -e "${GREEN}✅ PASSED: ${test_name} - URL accessible: ${url}${NC}"
-        ((TESTS_PASSED++))
-    else
-        echo -e "${RED}❌ FAILED: ${test_name} - URL not accessible: ${url}${NC}"
-        ((TESTS_FAILED++))
-    fi
+  local url="$1"
+  local test_name="$2"
+
+  if curl -s --head "$url" | head -n 1 | grep -q "200 OK"; then
+    echo -e "${GREEN}✅ PASSED: ${test_name} - URL accessible: ${url}${NC}"
+    ((TESTS_PASSED++))
+  else
+    echo -e "${RED}❌ FAILED: ${test_name} - URL not accessible: ${url}${NC}"
+    ((TESTS_FAILED++))
+  fi
 }
 
 echo -e "\n${YELLOW}Phase 1: Pre-build Tests${NC}"
@@ -148,9 +148,9 @@ echo -e "Tests Passed: ${GREEN}${TESTS_PASSED}${NC}"
 echo -e "Tests Failed: ${RED}${TESTS_FAILED}${NC}"
 
 if [ $TESTS_FAILED -eq 0 ]; then
-    echo -e "\n${GREEN}🎉 All smoke tests passed! The site is rock solid.${NC}"
-    exit 0
+  echo -e "\n${GREEN}🎉 All smoke tests passed! The site is rock solid.${NC}"
+  exit 0
 else
-    echo -e "\n${RED}💥 Some smoke tests failed. Please check the output above.${NC}"
-    exit 1
+  echo -e "\n${RED}💥 Some smoke tests failed. Please check the output above.${NC}"
+  exit 1
 fi
