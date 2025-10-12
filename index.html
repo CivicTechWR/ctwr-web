@@ -58,12 +58,12 @@
       /* Critical CSS for above-the-fold content */
       /* CSS Variables are defined in css/style.css */
       
-      /* Override Bootstrap's link color variables */
+      /* Override Bootstrap's link color variables for specific components only */
       :root {
-        --bs-link-color: var(--secondary-color);
-        --bs-link-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
-        --bs-link-hover-color: var(--primary-color);
-        --bs-link-hover-color-rgb: 252, 108, 109; /* RGB values for #FC6C6D */
+        --bs-link-color: var(--p-color);
+        --bs-link-color-rgb: 113, 114, 117; /* RGB values for #717275 */
+        --bs-link-hover-color: var(--secondary-color);
+        --bs-link-hover-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
       }
       
       body {
@@ -167,12 +167,12 @@
       
       /* General link styles - override Bootstrap blue links */
       a {
-        color: var(--secondary-color);
+        color: var(--p-color);
         text-decoration: none;
       }
 
       a:hover {
-        color: var(--primary-color);
+        color: var(--secondary-color);
         text-decoration: underline;
       }
 
