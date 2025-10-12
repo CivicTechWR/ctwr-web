@@ -157,6 +157,43 @@
         transition: all 0.3s ease;
       }
       
+      /* General link styles - override Bootstrap blue links */
+      a {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+      }
+
+      /* Original button styles - maintain compatibility */
+      .btn-primary {
+        background: var(--secondary-color);
+        border: none;
+        color: var(--white-color);
+      }
+      
+      .btn-primary:hover {
+        background: #d6685f;
+        transform: translateY(-2px);
+      }
+      
+      .btn-outline {
+        background: transparent;
+        border: 1px solid rgb(255 255 255 / 20%);
+        color: var(--white-color);
+        align-content: center;
+      }
+
+      .btn-outline:hover {
+        background: rgb(255 255 255 / 10%);
+        border-color: rgb(255 255 255 / 30%);
+        transform: translateY(-2px);
+      }
+
+      /* Bootstrap override styles - higher specificity */
       .btn.btn-primary {
         background: var(--secondary-color) !important;
         border: none !important;
