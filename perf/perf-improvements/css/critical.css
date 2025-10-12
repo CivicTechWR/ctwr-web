@@ -1,32 +1,6 @@
 /* Critical CSS for above-the-fold content */
 
-/* CSS Variables */
-:root {
-  --white-color: #fff;
-  --primary-color: #FC6C6D;
-  --secondary-color: #2D6F72;
-  --section-bg-color: #f9f9f9;
-  --dark-color: #000;
-  --p-color: #717275;
-  --border-color: #e9eaeb;
-  --featured-border-color: #727aab;
-  --body-font-family: 'DM Sans', sans-serif;
-  --h1-font-size: 62px;
-  --h2-font-size: 48px;
-  --h3-font-size: 36px;
-  --h4-font-size: 32px;
-  --h5-font-size: 24px;
-  --h6-font-size: 22px;
-  --p-font-size: 18px;
-  --menu-font-size: 12px;
-  --copyright-font-size: 14px;
-  --border-radius-large: 100px;
-  --border-radius-medium: 20px;
-  --border-radius-small: 10px;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-}
+/* CSS Variables are defined in css/style.css */
 
 /* Base styles */
 body {
