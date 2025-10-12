@@ -120,8 +120,8 @@ Then use:
 
 **Problem:** 5 documentation links still use HTTP:
 ```html
-<li><a href="http://civictechwr.github.io/CTWR-Organization-Documentation/FAQ">
-<li><a href="http://civictechwr.github.io/CTWR-Organization-Documentation/Guidelines_&_Templates">
+<li><a href="https://civictechwr.github.io/CTWR-Organization-Documentation/FAQ">
+<li><a href="https://civictechwr.github.io/CTWR-Organization-Documentation/Guidelines_&_Templates">
 ```
 
 **Risk:** Man-in-the-middle attacks, content injection
