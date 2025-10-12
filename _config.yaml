@@ -1,3 +1,4 @@
+---
 # Basic site settings
 title: Civic Tech Waterloo Region
 email: civictechwr@gmail.com
@@ -12,7 +13,6 @@ instagram: https://instagram.com/civictechwr
 meetup: https://www.meetup.com/civictechwr
 twitter: https://twitter.com/civictechwr
 facebook: https://facebook.com/civictechwr
-
 
 # Exclusions
 exclude:
@@ -29,6 +29,4 @@ exclude:
 include:
   - ".htaccess"
   - "_data"
-
 # Build settings
-

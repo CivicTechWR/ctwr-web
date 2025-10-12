@@ -1,0 +1,117 @@
+# CTWR Website - Cursor Ignore File
+# Exclude files and directories that shouldn't be processed by Cursor
+
+# Build outputs
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Dependencies
+node_modules/
+vendor/
+.bundle/
+
+# Minified files
+*.min.css
+*.min.js
+*.min.js.map
+
+# Backup files
+*.backup
+*.bak
+*.old
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary folders
+tmp/
+temp/
+
+# Jekyll
+.jekyll-cache/
+.jekyll-metadata
+
+# Sass
+.sass-cache/
+
+# Ruby
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+
+# Documentation that's auto-generated
+docs/auto-generated/
+
+# Large media files (keep in git but ignore in Cursor)
+images/large/
+videos/
+*.mov
+*.mp4
+*.avi
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar

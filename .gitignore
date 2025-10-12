@@ -1,0 +1,32 @@
+.bundle/
+vendor/bundle/
+node_modules/
+_site/
+.jekyll-cache/
+
+# System files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Backup files
+*.old.*
+*.backup
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# Minified files
+*.min.css
+*.min.js
+*.min.js.map

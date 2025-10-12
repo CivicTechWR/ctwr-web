@@ -1,0 +1,115 @@
+# CTWR Website Development Rules
+# Based on cursor.directory best practices for web development
+
+## Project Overview
+This is a Jekyll static site for CivicTech Waterloo Region, focusing on accessibility, performance, security, and maintainability.
+
+## Code Quality Standards
+
+### HTML
+- Use semantic HTML5 elements
+- Ensure proper heading hierarchy (h1 → h2 → h3)
+- Include alt text for all images
+- Use ARIA labels and roles where appropriate
+- Validate HTML5 compliance
+- Use skip navigation links for accessibility
+
+### CSS
+- Follow BEM methodology for class naming
+- Use CSS custom properties (variables) for consistency
+- Mobile-first responsive design approach
+- Use logical properties where possible
+- Minimize use of !important
+- Group related styles together
+- Use consistent spacing and indentation
+
+### JavaScript
+- Use modern ES6+ features
+- Prefer const/let over var
+- Use meaningful variable and function names
+- Add JSDoc comments for complex functions
+- Handle errors gracefully
+- Minimize global scope pollution
+- Use event delegation where appropriate
+
+### Jekyll
+- Use Jekyll's built-in features (collections, data files, includes)
+- Keep front matter minimal and consistent
+- Use Jekyll's asset pipeline
+- Optimize for build performance
+
+## Security Requirements
+- No hardcoded secrets or API keys
+- Use HTTPS for all external resources
+- Implement Content Security Policy (CSP)
+- Add security headers (X-Frame-Options, X-Content-Type-Options, etc.)
+- Sanitize user inputs
+- Use rel="noopener noreferrer" for external links
+
+## Performance Standards
+- Optimize images (WebP format preferred)
+- Minify CSS and JavaScript
+- Use resource hints (preload, prefetch, dns-prefetch)
+- Implement lazy loading for images
+- Minimize HTTP requests
+- Use CDN for external resources
+- Achieve Core Web Vitals targets
+
+## Accessibility Requirements (WCAG 2.1 AA)
+- Color contrast ratio minimum 4.5:1
+- Keyboard navigation support
+- Screen reader compatibility
+- Focus management
+- Alternative text for images
+- Proper heading structure
+- Form labels and error messages
+
+## File Organization
+- Keep related files together
+- Use descriptive file and folder names
+- Separate concerns (HTML, CSS, JS)
+- Use includes for reusable components
+- Maintain consistent naming conventions
+
+## Testing Requirements
+- HTML validation
+- CSS linting with stylelint
+- JavaScript linting with ESLint
+- Accessibility testing with Pa11y
+- Performance testing with Lighthouse
+- Cross-browser compatibility testing
+
+## Git Workflow
+- Use conventional commit messages
+- Create feature branches for new work
+- Review all changes before merging
+- Keep commits atomic and focused
+- Update documentation with code changes
+
+## Documentation
+- Maintain README with setup instructions
+- Document configuration changes
+- Keep audit reports up to date
+- Include troubleshooting guides
+- Document deployment procedures
+
+## Dependencies
+- Keep dependencies up to date
+- Use exact versions for production
+- Regular security audits
+- Remove unused dependencies
+- Prefer smaller, focused packages
+
+## Build Process
+- Automated linting and testing
+- Minification for production
+- Source maps for debugging
+- Asset optimization
+- Cache busting for static assets
+
+## Monitoring
+- Regular security scans
+- Performance monitoring
+- Accessibility compliance checks
+- Dependency vulnerability scanning
+- Build status monitoring

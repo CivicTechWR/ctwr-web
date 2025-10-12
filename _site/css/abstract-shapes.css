@@ -145,8 +145,6 @@
   height: 90px;
   background: linear-gradient(135deg, #FC466B, #3F5EFB);
   transform: rotate(45deg);
-  top: 40%;
-  right: 25%;
   animation: float 17s ease-in-out infinite reverse;
 }
 
@@ -196,6 +194,247 @@
     transform: scale(0.7);
     opacity: 0.4;
   }
+}
+
+/*---------------------------------------
+  POSITION UTILITIES              
+-----------------------------------------*/
+.top-3p {
+  top: 3%;
+  bottom: auto;
+}
+
+.top-4p {
+  top: 4%;
+  bottom: auto;
+}
+
+.top-5p {
+  top: 5%;
+  bottom: auto;
+}
+
+.top-6p {
+  top: 6%;
+  bottom: auto;
+}
+
+.top-7p {
+  top: 7%;
+  bottom: auto;
+}
+
+.top-8p {
+  top: 8%;
+  bottom: auto;
+}
+
+.top-9p {
+  top: 9%;
+  bottom: auto;
+}
+
+.top-10p {
+  top: 10%;
+  bottom: auto;
+}
+
+.top-12p {
+  top: 12%;
+  bottom: auto;
+}
+
+.top-15p {
+  top: 15%;
+  bottom: auto;
+}
+
+.top-20p {
+  top: 20%;
+  bottom: auto;
+}
+
+.top-25p {
+  top: 25%;
+  bottom: auto;
+}
+
+.top-30p {
+  top: 30%;
+  bottom: auto;
+}
+
+.top-35p {
+  top: 35%;
+  bottom: auto;
+}
+
+.top-40p {
+  top: 40%;
+  bottom: auto;
+}
+
+.top-60p {
+  top: 60%;
+  bottom: auto;
+}
+
+.bottom-5p {
+  bottom: 5%;
+  top: auto;
+}
+
+.bottom-10p {
+  bottom: 10%;
+  top: auto;
+}
+
+.bottom-15p {
+  bottom: 15%;
+  top: auto;
+}
+
+.bottom-20p {
+  bottom: 20%;
+  top: auto;
+}
+
+.bottom-25p {
+  bottom: 25%;
+  top: auto;
+}
+
+.bottom-30p {
+  bottom: 30%;
+  top: auto;
+}
+
+.left-2p {
+  left: 2%;
+  right: auto;
+}
+
+.left-3p {
+  left: 3%;
+  right: auto;
+}
+
+.left-4p {
+  left: 4%;
+  right: auto;
+}
+
+.left-5p {
+  left: 5%;
+  right: auto;
+}
+
+.left-6p {
+  left: 6%;
+  right: auto;
+}
+
+.left-7p {
+  left: 7%;
+  right: auto;
+}
+
+.left-8p {
+  left: 8%;
+  right: auto;
+}
+
+.left-10p {
+  left: 10%;
+  right: auto;
+}
+
+.left-12p {
+  left: 12%;
+  right: auto;
+}
+
+.left-15p {
+  left: 15%;
+  right: auto;
+}
+
+.left-25p {
+  left: 25%;
+  right: auto;
+}
+
+.right-3p {
+  right: 3%;
+  left: auto;
+}
+
+.right-5p {
+  right: 5%;
+  left: auto;
+}
+
+.right-6p {
+  right: 6%;
+  left: auto;
+}
+
+.right-7p {
+  right: 7%;
+  left: auto;
+}
+
+.right-8p {
+  right: 8%;
+  left: auto;
+}
+
+.right-9p {
+  right: 9%;
+  left: auto;
+}
+
+.right-10p {
+  right: 10%;
+  left: auto;
+}
+
+.right-12p {
+  right: 12%;
+  left: auto;
+}
+
+.right-15p {
+  right: 15%;
+  left: auto;
+}
+
+.right-20p {
+  right: 20%;
+  left: auto;
+}
+
+.right-25p {
+  right: 25%;
+  left: auto;
+}
+
+/*---------------------------------------
+  SIZE UTILITIES              
+-----------------------------------------*/
+.shape-size-60 {
+  width: 60px;
+  height: 60px;
+}
+
+.shape-size-50 {
+  width: 50px;
+  height: 50px;
+}
+
+.shape-size-45 {
+  width: 45px;
+  height: 45px;
 }
 
 @media (max-width: 576px) {
