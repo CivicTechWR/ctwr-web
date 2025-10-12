@@ -1,31 +1,38 @@
-(function ($) {
-  "use strict";
+'use strict';
 
-  // PRE LOADER
-  $(window).on('load', function () {
-    $(".preloader").fadeOut(1000); // set duration in brackets
+// PRE LOADER - Fade out preloader on page load
+window.addEventListener('load', () => {
+  const preloader = document.querySelector('.preloader');
+  if (preloader) {
+    preloader.style.opacity = '0';
+    preloader.style.transition = 'opacity 1s';
+    setTimeout(() => {
+      preloader.style.display = 'none';
+    }, 1000);
+  }
+});
+
+// SMOOTH SCROLL - Custom links with smooth scrolling
+document.addEventListener('DOMContentLoaded', () => {
+  const customLinks = document.querySelectorAll('.custom-link');
+
+  customLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const targetId = link.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        const navbar = document.querySelector('.navbar');
+        const headerHeight = navbar ? navbar.offsetHeight + 10 : 10;
+        const targetPosition = targetElement.offsetTop - headerHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
-
-  // CUSTOM LINK
-  $(".custom-link").click(function () {
-    var el = $(this).attr("href");
-    var elWrapped = $(el);
-    var header_height = $(".navbar").height() + 10;
-
-    scrollToDiv(elWrapped, header_height);
-    return false;
-
-    function scrollToDiv(element, navheight) {
-      var offset = element.offset();
-      var offsetTop = offset.top;
-      var totalScroll = offsetTop - navheight;
-
-      $("body,html").animate(
-        {
-          scrollTop: totalScroll,
-        },
-        300
-      );
-    }
-  });
-})(window.jQuery);
+});
