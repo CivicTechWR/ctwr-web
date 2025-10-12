@@ -875,7 +875,7 @@ strong {
 /* Footer copyright text - improved contrast for WCAG AA compliance */
 .footer-copyright-wrapper p {
   color: #767676 !important; /* Improved contrast ratio */
-  font-size: 0.9rem;
+  font-size: 14px;
   margin: 0;
   text-align: center;
 }
@@ -905,12 +905,6 @@ strong {
   color: var(--secondary-color);
 }
 
-.footer-copyright-wrapper p {
-  font-size: 14px;
-  text-align: center;
-  margin-top: 10px;
-  color: #c7c7c7;
-}
 
 @media (width <= 900px) {
   .footer-redesign-container {

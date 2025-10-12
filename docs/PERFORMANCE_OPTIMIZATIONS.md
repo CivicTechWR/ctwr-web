@@ -8,7 +8,7 @@ This document outlines the performance optimizations implemented to improve clie
 ### 1. JavaScript Bundle Optimization
 - **Before**: Multiple separate JS files (custom.js, meeting.js, add-view-all-card.js, click-scroll.js)
 - **After**: Single optimized bundle (optimized-bundle.min.js - 4.8KB)
-- **Benefits**: 
+- **Benefits**:
   - Reduced HTTP requests from 4+ to 1
   - Eliminated jQuery dependency (saved ~88KB)
   - Better compression and minification
@@ -59,6 +59,7 @@ This document outlines the performance optimizations implemented to improve clie
 ## Performance Metrics
 
 ### Bundle Size Comparison
+
 | File | Before | After | Savings |
 |------|--------|-------|---------|
 | JavaScript Bundle | 2.1KB | 4.8KB | +2.7KB (more features) |
