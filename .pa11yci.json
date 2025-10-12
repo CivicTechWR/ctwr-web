@@ -1,7 +1,10 @@
 {
   "defaults": {
     "timeout": 30000,
-    "standard": "WCAG2AA"
+    "standard": "WCAG2AA",
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    }
   },
   "urls": [
     "http://127.0.0.1:4000/",
