@@ -2,7 +2,8 @@
 layout: null
 permalink: /projects.html
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -11,16 +12,8 @@ permalink: /projects.html
       name="description"
       content="CivicTechWR is a community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology."
     />
-    <link
-      rel="icon"
-      href="/images/logos/civictechwr_logo_black.png"
-      type="image/x-icon"
-    />
-    <link
-      rel="shortcut icon"
-      href="/images/logos/civictechwr_logo_black.png"
-      type="image/x-icon"
-    />
+    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
     <title>Projects | CivicTech Waterloo Region</title>
     {% seo %}
 
@@ -41,10 +34,7 @@ permalink: /projects.html
     <!-- Preconnect to critical external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
     {% if jekyll.environment == "production" %}
     <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -54,73 +44,8 @@ permalink: /projects.html
     <link href="css/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/abstract-shapes.css" rel="stylesheet" />
-    <style>
-      .projects-section {
-        margin-top: 2rem;
-        margin-bottom: 4rem;
-      }
-      .projects-title {
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 3rem;
-      }
-      .projects-main-centered {
-        max-width: 1500px;
-        margin: 0 auto;
-        padding: 100px;
-        background: none;
-        border-radius: 0;
-        box-shadow: none;
-      }
-      .project-description {
-        margin-bottom: 2rem;
-        text-align: center;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .project-card {
-        background: var(--section-bg-color);
-        border: 2px solid var(--white-color);
-        border-radius: var(--border-radius-medium);
-        position: relative;
-        overflow: hidden;
-        padding: 40px;
-        height: 350px;
-        transition: all ease 0.5s;
-        margin-bottom: 30px;
-      }
-      .project-card:hover {
-        border-color: var(--secondary-color);
-      }
-      .project-info {
-        position: relative;
-        z-index: 2;
-      }
-      .project-image {
-        border-radius: var(--border-radius-medium);
-        display: block;
-        width: 100%;
-        transform: rotate(10deg) translateY(80px);
-        transition: all ease 0.5s;
-      }
-      .project-card:hover .project-image {
-        transform: rotate(0) translateY(0);
-      }
-      .github-btn {
-        font-size: 10px;
-        padding: 4px 8px;
-        background-color: var(--secondary-color);
-        color: #fff;
-      }
-      @media screen and (max-width: 480px) {
-        .projects-main-centered {
-          padding: 40px;
-          padding-top: 100px;
-        }
-      }
-    </style>
+    <link href="css/pages/projects.css" rel="stylesheet" />
+    
   </head>
 
   <body>
@@ -128,171 +53,148 @@ permalink: /projects.html
     <a href="#main-content" class="skip-link">Skip to main content</a>
     {% include header.html %}
     <div class="has-fixed-nav">
-    <header class="site-header">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 col-12">
-            <h1 class="page-title">Projects Built By Our Community</h1>
-            <p class="page-subtitle">
-              Explore civic technology initiatives designed to improve life across Waterloo Region.
-            </p>
-          </div>
-          <div class="col-lg-6 col-12 text-lg-end text-start">
-            <a class="btn btn-outline btn-light-inverse" href="/projects.html#projects_meeting">
-              View upcoming hacknights
-            </a>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <main id="main-content" class="projects-main-centered shape-container">
-      <!-- Abstract Shapes for Projects Header Section -->
-      <div class="abstract-shape shape-circle left-5p top-10p" aria-hidden="true"></div>
-      <div class="abstract-shape shape-donut right-8p top-15p" aria-hidden="true"></div>
-      <div class="abstract-shape shape-star left-12p top-40p" aria-hidden="true"></div>
-      <div class="abstract-shape shape-diamond right-10p top-35p" aria-hidden="true"></div>
-
-      <h1 class="projects-page-title">Highlighted CTWR Projects</h1>
-      <p class="project-description">
-        Our community works on various civic technology projects to address
-        local challenges. These projects are developed collaboratively by
-        volunteers with diverse skills in design, development, research, and
-        community engagement.
-      </p>
-      <section class="mt-4 shape-container">
-        <!-- Abstract Shapes for Project Description Section -->
-        <div class="abstract-shape shape-diamond left-3p top-10p shape-size-60" aria-hidden="true"></div>
-        <div class="abstract-shape shape-circle right-5p top-20p shape-size-50" aria-hidden="true"></div>
-        <div class="abstract-shape shape-cross left-8p bottom-5p shape-size-45" aria-hidden="true"></div>
-      </section>
-
-      <section class="projects-section shape-container">
-        <!-- Abstract Shapes for Projects List Section -->
-        <div class="abstract-shape shape-square right-7p top-10p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-triangle left-5p top-30p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-hexagon right-12p bottom-15p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-wave left-8p bottom-25p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-cross right-15p top-50p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-zigzag left-15p top-60p" aria-hidden="true"></div>
-        <div class="row" id="project-container">
-          <!-- Projects will be loaded here via JavaScript -->
-        </div>
-      </section>
-
-      <h2 class="projects-section-heading">Other Projects</h2>
-      <section class="projects-section shape-container">
-        <div class="row" id="github-projects-container">
-          <!-- GitHub projects will load here -->
-        </div>
-      </section>
-
-      <section class="mt-5 shape-container">
-        <!-- Abstract Shapes for Get Involved Section -->
-        <div class="abstract-shape shape-wave left-2p top-5p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-donut right-3p top-10p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-triangle left-6p bottom-10p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-blob right-5p bottom-15p" aria-hidden="true"></div>
-        <h2 class="projects-involved-heading">Get Involved</h2>
-        <p>
-          Interested in contributing to one of our projects or starting a new
-          one? Join us at our weekly hacknights where we collaborate on these
-          initiatives. No technical experience is required – we welcome people
-          with all kinds of skills and backgrounds.
-        </p>
-      </section>
-    </main>
-
-    <!-- NEXT MEETING -->
-    <section class="featured section-padding section-secondary-bg" id="projects_meeting">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-12">
-            <div class="meeting-image-wrapper">
-            <picture>
-              <source srcset="/images/hacknight-8.webp" type="image/webp" />
-              <img
-                src="/images/hacknight-8.jpg"
-                class="about-image img-fluid"
-                alt="CivicTech Waterloo Region community members at weekly hacknight gathering"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
+      <header class="site-header">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-12">
+              <h1 class="page-title">Projects Built By Our Community</h1>
+              <p class="page-subtitle">Explore civic technology initiatives designed to improve life across Waterloo Region.</p>
+            </div>
+            <div class="col-lg-6 col-12 text-lg-end text-start">
+              <a class="btn btn-outline btn-light-inverse" href="/projects.html#projects_meeting">View upcoming hacknights</a>
             </div>
           </div>
-          <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-            <div class="about-thumb meeting-card">
-              <h2 class="meeting-section-title">
-                We look forward to seeing you at our next meeting
-              </h2>
-              <div class="profile-thumb meeting-section-alt">
-                <div class="profile-body">
-                  <p>
-                    <span class="profile-small-title">
-                      <span
-                        aria-hidden="true"
-                        class="bi bi-question-circle-fill"
-                      ></span>
-                    </span>
-                    <span id="meeting-name"></span>
-                  </p>
+        </div>
+      </header>
 
-                  <p>
-                    <span class="profile-small-title">
-                      <span
-                        aria-hidden="true"
-                        class="bi bi-calendar-date-fill"
-                      ></span>
-                    </span>
-                    <span id="meeting-date-time"></span>
-                  </p>
+      <main id="main-content" class="projects-main-centered shape-container">
+        <!-- Abstract Shapes for Projects Header Section -->
+        <div class="abstract-shape shape-circle left-5p top-10p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-donut right-8p top-15p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-star left-12p top-40p" aria-hidden="true"></div>
+        <div class="abstract-shape shape-diamond right-10p top-35p" aria-hidden="true"></div>
 
-                  <p>
-                    <span class="profile-small-title">
-                      <span aria-hidden="true" class="bi bi-pin-fill"></span>
-                    </span>
-                    <span id="meeting-location"></span>
-                  </p>
+        <h1 class="projects-page-title">Highlighted CTWR Projects</h1>
+        <p class="project-description">
+          Our community works on various civic technology projects to address local challenges. These projects are developed collaboratively by volunteers with diverse skills in design, development,
+          research, and community engagement.
+        </p>
+        <section class="mt-4 shape-container">
+          <!-- Abstract Shapes for Project Description Section -->
+          <div class="abstract-shape shape-diamond left-3p top-10p shape-size-60" aria-hidden="true"></div>
+          <div class="abstract-shape shape-circle right-5p top-20p shape-size-50" aria-hidden="true"></div>
+          <div class="abstract-shape shape-cross left-8p bottom-5p shape-size-45" aria-hidden="true"></div>
+        </section>
+
+        <section class="projects-section shape-container">
+          <!-- Abstract Shapes for Projects List Section -->
+          <div class="abstract-shape shape-square right-7p top-10p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-triangle left-5p top-30p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-hexagon right-12p bottom-15p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-wave left-8p bottom-25p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-cross right-15p top-50p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-zigzag left-15p top-60p" aria-hidden="true"></div>
+          <div class="row" id="project-container">
+            <!-- Projects will be loaded here via JavaScript -->
+          </div>
+        </section>
+
+        <h2 class="projects-section-heading">Other Projects</h2>
+        <section class="projects-section shape-container">
+          <div class="row" id="github-projects-container">
+            <!-- GitHub projects will load here -->
+          </div>
+        </section>
+
+        <section class="mt-5 shape-container">
+          <!-- Abstract Shapes for Get Involved Section -->
+          <div class="abstract-shape shape-wave left-2p top-5p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-donut right-3p top-10p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-triangle left-6p bottom-10p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-blob right-5p bottom-15p" aria-hidden="true"></div>
+          <h2 class="projects-involved-heading">Get Involved</h2>
+          <p>
+            Interested in contributing to one of our projects or starting a new one? Join us at our weekly hacknights where we collaborate on these initiatives. No technical experience is required –
+            we welcome people with all kinds of skills and backgrounds.
+          </p>
+        </section>
+      </main>
+
+      <!-- NEXT MEETING -->
+      <section class="featured section-padding section-secondary-bg meeting-section-alt" id="projects_meeting">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-12">
+              <div class="meeting-image-wrapper">
+                <picture>
+                  <source srcset="/images/hacknight-8.webp" type="image/webp" />
+                  <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="CivicTech Waterloo Region community members at weekly hacknight gathering" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+              <div class="meeting-content">
+                <h2 class="meeting-title text-center mb-4">We look forward to seeing you at our next meeting</h2>
+                
+                <div class="meeting-card">
+                  <div class="meeting-details">
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-name">CTWR Weekly Hacknight</span>
+                      </div>
+                    </div>
+                    
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-calendar-date-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-date-time">Thursday 6:00 PM</span>
+                      </div>
+                    </div>
+                    
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-pin-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-location">Downtown Kitchener</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="meeting-cta">
+                    <a id="meeting-btn" class="btn btn-primary meeting-btn" href="https://www.meetup.com/civictechwr">More Details & RSVP</a>
+                  </div>
                 </div>
-
-                <p class="mb-4 d-flex justify-content-center">
-                  <a
-                    id="meeting-btn"
-                    class="meeting-btn btn custom-link meeting-btn-alt"
-                    href="https://www.meetup.com/civictechwr"
-                    >More Details & RSVP</a
-                  >
-                </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {% include footer.html %}
+      {% include footer.html %}
     </div>
 
     <script>
       // Function to load and display projects
       function loadProjects() {
-        fetch("/js/projects.json")
-          .then((response) => response.json())
-          .then((projects) => {
-            const projectContainer =
-              document.getElementById("project-container");
-            projectContainer.innerHTML = ""; // Clear any existing content
+        fetch('/js/projects.json')
+          .then(response => response.json())
+          .then(projects => {
+            const projectContainer = document.getElementById('project-container');
+            projectContainer.innerHTML = ''; // Clear any existing content
 
-            projects.forEach((project) => {
+            projects.forEach(project => {
               // Create project card
-              const projectCard = document.createElement("div");
-              projectCard.className = "col-lg-4 col-md-6 col-12 mb-4";
+              const projectCard = document.createElement('div');
+              projectCard.className = 'col-lg-4 col-md-6 col-12 mb-4';
 
               // Format the year array as a string
-              const yearString = Array.isArray(project.year)
-                ? project.year.join(", ")
-                : project.year;
+              const yearString = Array.isArray(project.year) ? project.year.join(', ') : project.year;
 
               projectCard.innerHTML = `
                             <div class="project-card">
@@ -310,9 +212,9 @@ permalink: /projects.html
               projectContainer.appendChild(projectCard);
             });
           })
-          .catch((error) => {
-            console.error("Error loading projects:", error);
-            document.getElementById("project-container").innerHTML = `
+          .catch(error => {
+            console.error('Error loading projects:', error);
+            document.getElementById('project-container').innerHTML = `
                         <div class="col-12 text-center">
                             <p>Sorry, we couldn't load the projects. Please try again later.</p>
                         </div>
@@ -321,39 +223,30 @@ permalink: /projects.html
       }
 
       // Load projects when the page is loaded
-      document.addEventListener("DOMContentLoaded", loadProjects);
+      document.addEventListener('DOMContentLoaded', loadProjects);
     </script>
 
     <script>
       function loadGitHubProjects() {
-        fetch("https://api.github.com/orgs/CivicTechWR/repos")
-          .then((response) => response.json())
-          .then((repos) => {
-            const container = document.getElementById(
-              "github-projects-container"
-            );
-            container.innerHTML = "";
+        fetch('https://api.github.com/orgs/CivicTechWR/repos')
+          .then(response => response.json())
+          .then(repos => {
+            const container = document.getElementById('github-projects-container');
+            container.innerHTML = '';
 
             repos
-              .filter((repo) => !repo.fork && !repo.archived) // skip forks/archived
-              .forEach((repo) => {
-                const card = document.createElement("div");
-                card.className = "col-lg-4 col-md-6 col-12 mb-4";
+              .filter(repo => !repo.fork && !repo.archived) // skip forks/archived
+              .forEach(repo => {
+                const card = document.createElement('div');
+                card.className = 'col-lg-4 col-md-6 col-12 mb-4';
 
                 card.innerHTML = `
                             <div class="project-card">
                                 <div class="project-info">
-                                    <a href="${
-                                      repo.html_url
-                                    }" class="github-btn btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    <a href="${repo.html_url}" class="github-btn btn" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     <h4 class="projects-title">${repo.name}</h4>
-                                    <small class="projects-tag">${
-                                      repo.language || ""
-                                    }</small>
-                                    <p>${
-                                      repo.description ||
-                                      "No description available."
-                                    }</p>
+                                    <small class="projects-tag">${repo.language || ''}</small>
+                                    <p>${repo.description || 'No description available.'}</p>
                                 </div>
                             </div>
                         `;
@@ -361,9 +254,9 @@ permalink: /projects.html
                 container.appendChild(card);
               });
           })
-          .catch((error) => {
-            console.error("Error loading GitHub projects:", error);
-            document.getElementById("github-projects-container").innerHTML = `
+          .catch(error => {
+            console.error('Error loading GitHub projects:', error);
+            document.getElementById('github-projects-container').innerHTML = `
                     <div class="col-12 text-center">
                         <p>Sorry, we couldn't load the other projects. Please try again later.</p>
                     </div>
@@ -371,12 +264,9 @@ permalink: /projects.html
           });
       }
 
-      document.addEventListener("DOMContentLoaded", loadGitHubProjects);
+      document.addEventListener('DOMContentLoaded', loadGitHubProjects);
     </script>
 
-
-    <script src="js/custom.js"></script>
-    <script src="js/meeting.js"></script>
-    <script src="js/add-view-all-card.js"></script>
+    <script src="js/optimized-bundle.min.js"></script>
   </body>
 </html>

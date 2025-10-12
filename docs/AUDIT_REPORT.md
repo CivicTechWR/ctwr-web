@@ -110,7 +110,7 @@ This comprehensive audit examined the CivicTech Waterloo Region Jekyll website a
 Then use:
 ```html
 <section class="featured section-padding meeting-section-alt" id="section_2">
-  <h2 style="text-align: center;">We look forward to seeing you on Wednesdays</h2>
+  <h2 class="text-center">We look forward to seeing you on Wednesdays</h2>
   ...
   <a id="meeting-btn" class="meeting-btn meeting-btn-alt btn custom-link">
 ```

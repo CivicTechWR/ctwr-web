@@ -1,0 +1,114 @@
+/* About page specific styles */
+.about-main-centered {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 100px;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media screen and (width <= 480px) {
+  .about-main-centered {
+    padding: 40px;
+    padding-top: 100px;
+  }
+}
+
+.organizers-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.organizers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  place-items: start center;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.organizer-card {
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  text-align: center;
+  padding: 0;
+  width: 100%;
+  max-width: 180px;
+  margin-bottom: 2rem;
+}
+
+.organizer-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  background: #f2f2f2;
+  border: 1px solid #222;
+  /* Use consistent image styling for non-circular elements */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.organizer-name {
+  color: #000;
+}
+
+.organizer-contact a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.about-section {
+  padding: 2rem 1rem;
+}
+
+.shoutout-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.shoutout-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.shoutout-list {
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.shoutout-member {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  min-width: auto;
+  text-align: left;
+}
+
+.shoutout-member-name {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.shoutout-member-name a {
+  text-align: center;
+  color: inherit;
+  text-decoration: underline;
+}

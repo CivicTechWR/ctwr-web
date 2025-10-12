@@ -3,7 +3,7 @@ layout: null
 permalink: /
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,16 +12,8 @@ permalink: /
       name="description"
       content="CivicTechWR is a community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology."
     />
-    <link
-      rel="icon"
-      href="/images/logos/civictechwr_logo_black.png"
-      type="image/x-icon"
-    />
-    <link
-      rel="shortcut icon"
-      href="/images/logos/civictechwr_logo_black.png"
-      type="image/x-icon"
-    />
+    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
 
     <title>{{ site.title }}</title>
     {% seo %}
@@ -47,193 +39,9 @@ permalink: /
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-      <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
-        rel="stylesheet"
-      />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
     <!-- Critical CSS inlined for performance -->
-    <style>
-      /* Critical CSS for above-the-fold content */
-      /* CSS Variables are defined in css/style.css */
-
-      /* Override Bootstrap's link color variables for specific components only */
-      :root {
-        --bs-link-color: var(--p-color);
-        --bs-link-color-rgb: 113, 114, 117; /* RGB values for #717275 */
-        --bs-link-hover-color: var(--secondary-color);
-        --bs-link-hover-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
-      }
-
-      body {
-        background: var(--white-color);
-        font-family: var(--body-font-family);
-      }
-
-      h1, h2, h3, h4, h5, h6 {
-        font-weight: var(--font-weight-bold);
-      }
-
-      h1 { font-size: var(--h1-font-size); }
-      h2 { font-size: var(--h2-font-size); color: var(--secondary-color); }
-      h3 { font-size: var(--h3-font-size); }
-      h4 { font-size: var(--h4-font-size); }
-      h5 { font-size: var(--h5-font-size); line-height: normal; }
-      h6 { font-size: var(--h6-font-size); }
-
-      p {
-        color: var(--p-color);
-        font-size: var(--p-font-size);
-        font-weight: var(--font-weight-normal);
-      }
-
-      .hero {
-        background: var(--dark-color);
-        position: relative;
-        overflow: hidden;
-        padding-top: calc(3rem + 330px);
-        padding-bottom: 7rem;
-        min-height: 100vh;
-        z-index: 2;
-      }
-
-      .hero-text {
-        position: relative;
-        z-index: 2;
-        color: var(--white-color);
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 1s ease forwards;
-        animation-delay: 0.5s;
-      }
-
-      .hero-title {
-        font-size: 3.5rem;
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(45deg, #fff 30%, rgb(255 255 255 / 70%));
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .hero-description {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        color: rgb(255 255 255 / 80%);
-        margin-bottom: 2rem;
-      }
-
-      .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-        font-weight: 500;
-        border-radius: 0.3rem;
-        transition: all 0.3s ease;
-      }
-
-      /* General link styles - override Bootstrap blue links */
-      a {
-        color: var(--p-color);
-        text-decoration: none;
-      }
-
-      a:hover {
-        color: var(--secondary-color);
-        text-decoration: underline;
-      }
-
-
-
-      /* Footer sitemap links should be gray */
-      .footer-menu-list a,
-      .footer-links-list a {
-        color: #666 !important;
-        text-decoration: none;
-        font-size: 14px;
-        transition: color 0.2s;
-      }
-
-      .footer-menu-list a:hover,
-      .footer-links-list a:hover {
-        color: #333 !important;
-      }
-
-      /* Original button styles - maintain compatibility */
-      .btn-primary {
-        background: var(--secondary-color);
-        border: none;
-        color: var(--white-color);
-      }
-
-      .btn-primary:hover {
-        background: #d6685f;
-        transform: translateY(-2px);
-      }
-
-      .btn-outline {
-        background: transparent;
-        border: 1px solid rgb(255 255 255 / 20%);
-        color: var(--white-color);
-        align-content: center;
-      }
-
-      .btn-outline:hover {
-        background: rgb(255 255 255 / 10%);
-        border-color: rgb(255 255 255 / 30%);
-        transform: translateY(-2px);
-      }
-
-      /* Bootstrap override styles - higher specificity */
-      .btn.btn-primary {
-        background: var(--secondary-color) !important;
-        border: none !important;
-        color: var(--white-color) !important;
-      }
-
-      .btn.btn-primary:hover {
-        background: #d6685f !important;
-        transform: translateY(-2px);
-      }
-
-      .btn.btn-outline {
-        background: transparent !important;
-        border: 1px solid rgb(255 255 255 / 20%) !important;
-        color: var(--white-color) !important;
-        align-content: center;
-      }
-
-      .btn.btn-outline:hover {
-        background: rgb(255 255 255 / 10%) !important;
-        border-color: rgb(255 255 255 / 30%) !important;
-        transform: translateY(-2px);
-      }
-
-      .btn.custom-link {
-        background-color: var(--primary-color) !important;
-        border: none !important;
-        color: var(--white-color) !important;
-      }
-
-      .btn.custom-link:hover {
-        background-color: var(--secondary-color) !important;
-        color: var(--white-color) !important;
-      }
-
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      @media (width <= 768px) {
-        .hero { padding-top: 5rem; }
-        .hero-title { font-size: 2.5rem; }
-        .hero-description { font-size: 1rem; }
-      }
-    </style>
 
     {% if jekyll.environment == "production" %}
     <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -274,10 +82,7 @@ permalink: /
 
     {% include header.html %}
     <main>
-      <section
-        class="hero d-flex justify-content-center align-items-center shape-container"
-        id="section_1"
-      >
+      <section class="hero d-flex justify-content-center align-items-center shape-container" id="section_1">
         <!-- Abstract Shapes for Hero Section -->
         <div class="abstract-shape shape-circle top-20p left-5p" aria-hidden="true"></div>
         <div class="abstract-shape shape-donut top-15p right-10p" aria-hidden="true"></div>
@@ -298,35 +103,17 @@ permalink: /
                   <span class="badge-text">Welcome to CivicTechWR</span>
                 </div>
                 <h1 class="hero-title">Civic Change through Tech and Design</h1>
-                <p class="hero-description">
-                  Join our community of tech enthusiasts and designers working
-                  together to solve local challenges in the Waterloo region
-                </p>
+                <p class="hero-description">Join our community of tech enthusiasts and designers working together to solve local challenges in the Waterloo region</p>
                 <div class="hero-actions">
-                  <a
-                    href="https://www.meetup.com/civictechwr/"
-                    class="btn btn-primary"
-                    ><i class="bi bi-calendar-event me-2"></i
-                    >Upcoming hacknights</a
-                  >
-                  <a
-                    href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw"
-                    class="btn btn-outline btn-light-inverse"
-                    >Slack</a
-                  >
-                  <a
-                    href="https://discourse.ctwr.org"
-                    class="btn btn-outline btn-light-inverse"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Member Dashboard (opens in new window)"
-                    >Member Dashboard</a
-                  >
-                  <a
-                    href="https://civictechwr.github.io/blog/"
-                    class="btn btn-outline btn-light-inverse"
-                    >Blog</a
-                  >
+                  <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary">
+                    <i class="bi bi-calendar-event me-2"></i>
+                    Upcoming hacknights
+                  </a>
+                  <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" class="btn btn-outline btn-light-inverse">Slack</a>
+                  <a href="https://discourse.ctwr.org" class="btn btn-outline btn-light-inverse" target="_blank" rel="noopener noreferrer" aria-label="Member Dashboard (opens in new window)">
+                    Member Dashboard
+                  </a>
+                  <a href="https://civictechwr.github.io/blog/" class="btn btn-outline btn-light-inverse">Blog</a>
                 </div>
               </div>
             </div>
@@ -334,10 +121,7 @@ permalink: /
         </div>
       </section>
 
-      <section
-        class="about section-padding shape-container"
-        id="section_about"
-      >
+      <section class="about section-padding shape-container" id="section_about">
         <!-- Abstract Shapes for About Section -->
         <div class="abstract-shape shape-triangle left-3p top-15p" aria-hidden="true"></div>
         <div class="abstract-shape shape-wave right-5p top-25p" aria-hidden="true"></div>
@@ -347,25 +131,15 @@ permalink: /
           <div class="row">
             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
               <div class="about-thumb">
-                <h3 class="pt-2 mb-3">
-                  A little bit about CivicTech Waterloo Region
-                </h3>
+                <h3 class="pt-2 mb-3">A little bit about CivicTech Waterloo Region</h3>
 
                 <p>
-                  CivicTechWR focuses on using technology to improve how we
-                  connect with our local communities and governments. It's about
-                  making civic interactions and services more efficient and
-                  effective. CivicTech Waterloo Region was founded in July
-                  2017. We're a community group that brings together people from
-                  diverse sectors and industries to collaboratively solve
-                  challenges facing our local community using design and
-                  technology. We were inspired by similar organizations like
-                  CivicTechTO, Beta City YEG, and Code for America Brigades.
+                  CivicTechWR focuses on using technology to improve how we connect with our local communities and governments. It's about making civic interactions and services more efficient and
+                  effective. CivicTech Waterloo Region was founded in July 2017. We're a community group that brings together people from diverse sectors and industries to collaboratively solve
+                  challenges facing our local community using design and technology. We were inspired by similar organizations like CivicTechTO, Beta City YEG, and Code for America Brigades.
                 </p>
                 <p>
-                  <a class="text-decoration-underline" href="/about.html"
-                    >You can read more about our team here</a
-                  >
+                  <a class="text-decoration-underline" href="/about.html">You can read more about our team here</a>
                 </p>
               </div>
             </div>
@@ -386,10 +160,7 @@ permalink: /
         </div>
       </section>
 
-      <section
-        class="hacknights section-padding shape-container"
-        id="section_hacknights"
-      >
+      <section class="hacknights section-padding shape-container" id="section_hacknights">
         <!-- Abstract Shapes for Hacknights Section -->
         <div class="abstract-shape shape-square left-4p top-10p" aria-hidden="true"></div>
         <div class="abstract-shape shape-star right-6p top-20p" aria-hidden="true"></div>
@@ -413,25 +184,20 @@ permalink: /
             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
               <div class="about-thumb">
                 <h3 class="pt-2 mb-3">
-                  Weekly hacknights.<br />Every Wednesday.
+                  Weekly hacknights.
+                  <br />
+                  Every Wednesday.
                 </h3>
 
                 <p>
-                  We meet every week, hosting hacknights most weeks and
-                  featuring a guest speaker once a month. Our speakers include
-                  community leaders from local non-profits, government,
-                  industry, or other engaged citizens—anyone with something
-                  inspiring or educational to share. Whether it's a speaker
-                  session or a hacknight, we provide a collaborative space for
-                  people to work on civic tech projects and connect with others
-                  who share their passion for making a difference. Join us at
-                  our next hacknight!
+                  We meet every week, hosting hacknights most weeks and featuring a guest speaker once a month. Our speakers include community leaders from local non-profits, government, industry, or
+                  other engaged citizens—anyone with something inspiring or educational to share. Whether it's a speaker session or a hacknight, we provide a collaborative space for people to work on
+                  civic tech projects and connect with others who share their passion for making a difference. Join us at our next hacknight!
                 </p>
-                <a
-                  href="https://www.meetup.com/civictechwr/"
-                  class="btn btn-primary"
-                  ><i class="bi bi-calendar-event me-2"></i>Upcoming hacknights</a
-                >
+                <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary">
+                  <i class="bi bi-calendar-event me-2"></i>
+                  Upcoming hacknights
+                </a>
               </div>
             </div>
           </div>
@@ -452,21 +218,11 @@ permalink: /
                 <h3 class="pt-2 mb-3">Featured Projects</h3>
                 <h3>Built by the Community</h3>
                 <p>
-                  Discover some of our most impactful civic tech initiatives
-                  that are making a difference in the Waterloo Region community.
-                  From improving civic engagement to providing essential
-                  community resources, these projects showcase how technology
-                  can be used to solve real-world problems and strengthen our
-                  local democracy.
+                  Discover some of our most impactful civic tech initiatives that are making a difference in the Waterloo Region community. From improving civic engagement to providing essential
+                  community resources, these projects showcase how technology can be used to solve real-world problems and strengthen our local democracy.
                 </p>
-                <a href="/projects.html" class="btn btn-primary pt-2 mb-3"
-                  >View All Projects</a
-                >
-                <a
-                  href="https://civictechwr.github.io/blog/"
-                  class="btn btn-primary pt-2 mb-3"
-                  >View Latest Blog</a
-                >
+                <a href="/projects.html" class="btn btn-primary pt-2 mb-3">View All Projects</a>
+                <a href="https://civictechwr.github.io/blog/" class="btn btn-primary pt-2 mb-3">View Latest Blog</a>
               </div>
 
               <!-- Third project positioned below text for better balance -->
@@ -474,23 +230,12 @@ permalink: /
                 {% for project in site.data.projects offset:2 limit:1 %}
                 <div class="projects-thumb">
                   <div class="projects-info">
-                    <a
-                      href="{{project.github}}"
-                      class="github-btn btn"
-                      target="_blank"
-                      >GitHub</a
-                    >
+                    <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
                     <h4 class="projects-title">{{project.name}}</h4>
                     <small class="projects-tag">Year: {{project.year}}</small>
                   </div>
                   <a href="{{project.url}}">
-                    <img
-                      src="{{project.logo}}"
-                      class="projects-image img-fluid"
-                      alt="{{project.name}}"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}" loading="lazy" decoding="async" />
                   </a>
                 </div>
                 {% endfor %}
@@ -502,23 +247,12 @@ permalink: /
               <div class="mb-3">
                 <div class="projects-thumb">
                   <div class="projects-info">
-                    <a
-                      href="{{project.github}}"
-                      class="github-btn btn"
-                      target="_blank"
-                      >GitHub</a
-                    >
+                    <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
                     <h4 class="projects-title">{{project.name}}</h4>
                     <small class="projects-tag">Year: {{project.year}}</small>
                   </div>
                   <a href="{{project.url}}">
-                    <img
-                      src="{{project.logo}}"
-                      class="projects-image img-fluid"
-                      alt="{{project.name}}"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}" loading="lazy" decoding="async" />
                   </a>
                 </div>
               </div>
@@ -529,79 +263,54 @@ permalink: /
       </section>
 
       <!-- NEXT MEETING -->
-      <section
-        class="featured section-padding section-secondary-bg meeting-section-alt"
-        id="section_next_meeting"
-      >
+      <section class="featured section-padding section-secondary-bg meeting-section-alt" id="section_next_meeting">
         <div class="container">
-          <div class="row">
+          <div class="row align-items-center">
             <div class="col-lg-6 col-12">
               <div class="meeting-image-wrapper">
                 <picture>
                   <source srcset="/images/hacknight-8.webp" type="image/webp" />
-                  <img
-                    src="/images/hacknight-8.jpg"
-                    class="about-image img-fluid"
-                    alt="CivicTech Waterloo Region community members at weekly hacknight gathering"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="CivicTech Waterloo Region community members at weekly hacknight gathering" loading="lazy" decoding="async" />
                 </picture>
               </div>
             </div>
             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-              <h2 class="text-center">
-                We look forward to seeing you at our next meeting
-              </h2>
-              <div class="about-thumb meeting-card">
-                <div class="profile-thumb">
-                  <div class="profile-body">
-                    <p>
-                      <span
-                        class="profile-small-title profile-small-title-inverse text-white"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="bi bi-question-circle-fill"
-                        ></span>
-                      </span>
-                      <span class="text-white" id="meeting-name"></span>
-                    </p>
-
-                    <p class="meeting-detail text-white">
-                      <span
-                        class="profile-small-title profile-small-title-inverse meeting-detail-label text-white"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="bi bi-calendar-date-fill"
-                        ></span>
-                      </span>
-                      <span class="text-white" id="meeting-date-time"></span>
-                    </p>
-
-                    <p>
-                      <span
-                        class="profile-small-title profile-small-title-inverse text-white"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="bi bi-pin-fill"
-                        ></span>
-                      </span>
-                      <span class="text-white" id="meeting-location"></span>
-                    </p>
+              <div class="meeting-content">
+                <h2 class="meeting-title text-center mb-4">We look forward to seeing you at our next meeting</h2>
+                
+                <div class="meeting-card">
+                  <div class="meeting-details">
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-name">CTWR Weekly Hacknight</span>
+                      </div>
+                    </div>
+                    
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-calendar-date-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-date-time">Thursday 6:00 PM</span>
+                      </div>
+                    </div>
+                    
+                    <div class="meeting-detail-item">
+                      <div class="meeting-icon">
+                        <i class="bi bi-pin-fill" aria-hidden="true"></i>
+                      </div>
+                      <div class="meeting-text">
+                        <span id="meeting-location">Downtown Kitchener</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-12 mt-5">
-                  <p class="mb-4 d-flex justify-content-center">
-                    <a
-                      id="meeting-btn"
-                      class="meeting-btn meeting-btn-alt btn custom-link btn-inverse"
-                      href="https://www.meetup.com/civictechwr"
-                      >More Details & RSVP</a
-                    >
-                  </p>
+                  
+                  <div class="meeting-cta">
+                    <a id="meeting-btn" class="btn btn-primary meeting-btn" href="https://www.meetup.com/civictechwr">More Details & RSVP</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -622,26 +331,14 @@ permalink: /
           <div class="col-lg-12 col-12">
             <h3 class="text-center mb-5">Our Thanks To Our Partners</h3>
             <p>
-              We're always keen to working with our community partner, from
-              corporations to non-profits and everything in between. If you
-              would like to spnonsor us or have an idea for collaboration,
+              We're always keen to working with our community partner, from corporations to non-profits and everything in between. If you would like to spnonsor us or have an idea for collaboration,
               please reach out to us at civictechwr@gmail.com
             </p>
           </div>
-          <div
-            id="sponsor-container"
-            class="mt-5 row justify-content-center sponsor-grid"
-          >
+          <div id="sponsor-container" class="mt-5 row justify-content-center sponsor-grid">
             {% for partner in site.data.partners %} {% if partner.current %}
             <div class="col-lg-2 col-md-6 col-6 sponsors-item-height">
-              <img
-                src="{{partner.logo}}"
-                class="sponsors-image img-fluid"
-                alt="{{partner.name}}"
-                title="{{partner.name}}"
-                loading="lazy"
-                decoding="async"
-              />
+              <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
             </div>
             {% endif %} {% endfor %}
           </div>
@@ -649,21 +346,10 @@ permalink: /
           <div class="col-lg-12 col-12 mt-5">
             <h5 class="text-center mb-4">Previous Partners</h5>
           </div>
-          <div
-            id="previous-sponsor-container"
-            class="row justify-content-center sponsor-grid"
-          >
-            {% for partner in site.data.partners %} {% if partner.current ==
-            false %}
+          <div id="previous-sponsor-container" class="row justify-content-center sponsor-grid">
+            {% for partner in site.data.partners %} {% if partner.current == false %}
             <div class="mt-4 col-lg-2 col-md-2 col-4 sponsors-item-height">
-              <img
-                src="{{partner.logo}}"
-                class="previous-sponsors-image img-fluid"
-                alt="{{partner.name}}"
-                title="{{partner.name}}"
-                loading="lazy"
-                decoding="async"
-              />
+              <img src="{{partner.logo}}" class="previous-sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
             </div>
             {% endif %} {% endfor %}
           </div>
@@ -674,17 +360,6 @@ permalink: /
     {% include footer.html %}
 
     <!-- JAVASCRIPT FILES -->
-    <script
-      src="js/custom.js"
-      nonce="{{ site.script_nonce | default: 'ctwr-script' }}"
-    ></script>
-    <script
-      src="js/meeting.js"
-      nonce="{{ site.script_nonce | default: 'ctwr-script' }}"
-    ></script>
-    <script
-      src="js/add-view-all-card.js"
-      nonce="{{ site.script_nonce | default: 'ctwr-script' }}"
-    ></script>
+    <script src="js/optimized-bundle.min.js" nonce="{{ site.script_nonce | default: 'ctwr-script' }}"></script>
   </body>
 </html>

@@ -1,5 +1,4 @@
 /* Critical CSS for above-the-fold content */
-
 /* CSS Variables are defined in css/style.css */
 
 /* Override Bootstrap's link color variables for specific components only */
@@ -10,14 +9,17 @@
   --bs-link-hover-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
 }
 
-/* Base styles */
 body {
   background: var(--white-color);
   font-family: var(--body-font-family);
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: var(--font-weight-bold);
 }
 
@@ -53,37 +55,6 @@ p {
   font-weight: var(--font-weight-normal);
 }
 
-/* Navigation */
-.navbar {
-  background: var(--dark-color);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  height: 3rem;
-  padding: 0;
-  box-shadow: 0 0 0.2rem rgb(0 0 0 / 10%), 0 0.2rem 0.4rem rgb(0 0 0 / 20%);
-  transition: transform .25s cubic-bezier(.1,.7,.1,1),box-shadow .25s;
-}
-
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 0.6rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--white-color) !important;
-  text-decoration: none;
-}
-
-.logo {
-  height: 1.8rem;
-  margin-right: 0.6rem;
-}
-
-/* Hero section */
 .hero {
   background: var(--dark-color);
   position: relative;
@@ -124,7 +95,11 @@ p {
   margin-bottom: 2rem;
 }
 
-/* Buttons */
+.hero-actions {
+  display: flex;
+  gap: var(--space-4, 16px);
+}
+
 .btn {
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
@@ -135,43 +110,44 @@ p {
 
 /* General link styles - override Bootstrap blue links */
 a {
-  color: var(--p-color);
+  color: var(--secondary-color);
   text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+a:focus {
+  color: var(--primary-color);
+  text-decoration: underline;
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+a:visited {
   color: var(--secondary-color);
-  text-decoration: underline;
 }
 
-
-/* Footer button links should be black */
-.footer-general-btn,
-.footer-donate-btn,
-.footer-sponsor-btn {
-  color: #000 !important;
-  text-decoration: none;
+a:visited:hover {
+  color: var(--primary-color);
 }
 
-.footer-general-btn:hover,
-.footer-donate-btn:hover,
-.footer-sponsor-btn:hover {
-  color: #333 !important;
-  text-decoration: underline;
-}
-
-/* Footer sitemap links should be gray */
+/* Footer sitemap links should be teal */
 .footer-menu-list a,
 .footer-links-list a {
-  color: #666 !important;
+  color: var(--secondary-color);
   text-decoration: none;
   font-size: 14px;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 
 .footer-menu-list a:hover,
 .footer-links-list a:hover {
-  color: #333 !important;
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 
 /* Original button styles - maintain compatibility */
@@ -201,41 +177,30 @@ a:hover {
 
 /* Bootstrap override styles - higher specificity */
 .btn.btn-primary {
-  background: var(--secondary-color) !important;
-  border: none !important;
-  color: var(--white-color) !important;
+  background: var(--secondary-color);
+  border: none;
+  color: var(--white-color);
 }
 
 .btn.btn-primary:hover {
-  background: #d6685f !important;
+  background: #d6685f;
   transform: translateY(-2px);
 }
 
 .btn.btn-outline {
-  background: transparent !important;
-  border: 1px solid rgb(255 255 255 / 20%) !important;
-  color: var(--white-color) !important;
+  background: transparent;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
   align-content: center;
 }
 
 .btn.btn-outline:hover {
-  background: rgb(255 255 255 / 10%) !important;
-  border-color: rgb(255 255 255 / 30%) !important;
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-color: var(--secondary-color);
   transform: translateY(-2px);
 }
 
-.btn.custom-link {
-  background-color: var(--primary-color) !important;
-  border: none !important;
-  color: var(--white-color) !important;
-}
-
-.btn.custom-link:hover {
-  background-color: var(--secondary-color) !important;
-  color: var(--white-color) !important;
-}
-
-/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -248,17 +213,18 @@ a:hover {
   }
 }
 
-/* Responsive */
 @media (width <= 768px) {
   .hero {
     padding-top: 5rem;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .hero-description {
     font-size: 1rem;
   }
 }
+
+

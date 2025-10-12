@@ -3,7 +3,8 @@
 # Smoke Tests for CivicTech Waterloo Region Website
 # This script runs basic tests to ensure the site builds and renders correctly
 
-set -e  # Exit on any error
+# Run tests sequentially and report failures without exiting immediately
+set +e
 
 echo "🧪 Starting Smoke Tests for CivicTech Waterloo Region Website"
 echo "=============================================================="

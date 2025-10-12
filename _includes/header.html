@@ -1,120 +1,53 @@
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/abstract-shapes.css" rel="stylesheet">
+<link href="css/pages/header.css" rel="stylesheet">
+<header class="site-header-nav" role="banner">
+  <nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
         <img
           src="/images/logos/civictechwr_logo_white.png"
-          alt="Civic Tech WR"
+          alt="CivicTech Waterloo Region"
           class="logo"
         />
-        <span class="brand-name">CivicTech Waterloo Region</span>
-      </a>
-    </div>
+          <span class="brand-name">CivicTech Waterloo Region</span>
+        </a>
+      </div>
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        {% for link in site.data.navigation %}
-        <li class="nav-item">
-          <a class="nav-link click-scroll" href="{{link.url}}">
-            <span class="nav-link-title">{{link.text}}</span>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% for link in site.data.navigation %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{link.url}}">
+              <span class="nav-link-title">{{link.text}}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="ms-auto">
+          <a
+            class="btn btn-outline"
+            href="https://discourse.ctwr.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Member Dashboard
           </a>
-        </li>
-        {% endfor %}
-      </ul>
-      <div class="ms-auto">
-        <a
-          class="header-login-btn"
-          href="https://discourse.ctwr.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Log In</a
-        >
+        </div>
       </div>
     </div>
-  </div>
-</nav>
-
-<style>
-  .navbar {
-    background-color: #000;
-    padding: 15px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-  }
-
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .logo {
-    height: 40px;
-    margin-right: 10px;
-  }
-
-  .brand-name {
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
-
-  .navbar-nav {
-    margin-left: 20px;
-  }
-
-  .nav-link {
-    color: #fff;
-    padding: 10px 15px;
-    transition: color 0.3s;
-  }
-
-  .nav-link:hover {
-    color: #3dc9b3;
-  }
-
-  .header-login-btn {
-    display: inline-block;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff !important;
-    font-weight: 500;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 0.3rem;
-    text-decoration: none !important;
-    transition: all 0.3s ease;
-  }
-
-  .header-login-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 991px) {
-    .header-login-btn {
-      margin-top: 15px;
-      display: inline-block;
-    }
-
-    .navbar-collapse {
-      padding: 15px 0;
-    }
-  }
-</style>
+  </nav>
+</header>
