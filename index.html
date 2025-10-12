@@ -50,9 +50,6 @@
       rel="stylesheet"
     />
 
-    <!-- Load main stylesheet for CSS variables -->
-    <link href="css/style.css" rel="stylesheet" />
-
     <!-- Critical CSS inlined for performance -->
     <style>
       /* Critical CSS for above-the-fold content */
@@ -283,6 +280,9 @@
     <link href="css/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/magnific-popup.css" rel="stylesheet" />
     <link href="css/abstract-shapes.css" rel="stylesheet" />
+    
+    <!-- Load main stylesheet AFTER Bootstrap to override its styles -->
+    <link href="css/style.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -705,16 +705,7 @@
       </div>
     </section>
 
-    <div id="footer-container"></div>
-    <script nonce="{{ site.script_nonce | default: 'ctwr-script' }}">
-      // Load the footer content
-      fetch("/footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("footer-container").innerHTML = data;
-        })
-        .catch((error) => console.error("Error loading footer:", error));
-    </script>
+    {% include footer.html %}
 
     <!-- JAVASCRIPT FILES -->
     <script
