@@ -16,7 +16,7 @@
     "lint:js": "eslint 'js/custom.js' 'js/meeting.js' 'js/click-scroll.js' 'js/add-view-all-card.js' 'js/magnific-popup-options.js'",
     "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules' '#_site' '#vendor' '#.github/CODE_OF_CONDUCT.md' '#README.md'",
     "lint:yaml": "echo 'YAML files found:' && find . -name '*.yml' -o -name '*.yaml' | grep -v node_modules | grep -v _site | grep -v vendor | wc -l && echo 'YAML linting skipped - using basic validation'",
-    "lint:json": "find . -name '*.json' | grep -v node_modules | grep -v _site | grep -v vendor | grep -v package-lock.json | xargs jsonlint",
+    "lint:json": "node -e \"const fs=require('fs');const path=require('path');const files=require('child_process').execSync('find . -name \\\"*.json\\\" | grep -v node_modules | grep -v _site | grep -v vendor | grep -v package-lock.json',{encoding:'utf8'}).trim().split('\\n').filter(f=>f);let errors=0;files.forEach(file=>{try{JSON.parse(fs.readFileSync(file,'utf8'));console.log('✅',file);}catch(e){console.error('❌',file+':',e.message);errors++;}});process.exit(errors);\"",
     "lint:shell": "find scripts -name '*.sh' -exec shellcheck {} \\; 2>/dev/null || echo 'Shellcheck not available, skipping shell linting'",
     "lint:all": "npm run lint:html && npm run lint:css && npm run lint:js && npm run lint:md && npm run lint:yaml && npm run lint:json && npm run lint:shell",
     "lint": "npm run lint:all",
