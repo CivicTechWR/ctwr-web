@@ -42,7 +42,7 @@ jobs:
           echo "Starting http-server on port 4000..."
           npx --yes http-server _site -p 4000 &
           SERVER_PID=$!
-          trap "kill $SERVER_PID" EXIT
+          trap 'kill $SERVER_PID' EXIT
           sleep 5
           echo "Testing server connectivity..."
           curl -I http://127.0.0.1:4000/ || echo "Server not responding"
