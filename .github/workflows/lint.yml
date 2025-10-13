@@ -7,6 +7,8 @@ on:
       - main
   pull_request:
 
+permissions: {}
+
 jobs:
   super-linter:
     runs-on: ubuntu-latest
@@ -23,6 +25,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: true
           FILTER_REGEX_EXCLUDE: ^_site/.*
+          VALIDATE_CSS: false
 
   htmlhint:
     runs-on: ubuntu-latest

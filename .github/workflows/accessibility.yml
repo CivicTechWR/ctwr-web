@@ -9,6 +9,8 @@ on:
   schedule:
     - cron: "0 12 * * 1"
 
+permissions: {}
+
 jobs:
   pa11y:
     runs-on: ubuntu-latest

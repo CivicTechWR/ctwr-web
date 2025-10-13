@@ -9,6 +9,8 @@ on:
       - 'dev'
   pull_request:
 
+permissions: {}
+
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
