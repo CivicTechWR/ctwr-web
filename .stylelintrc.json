@@ -16,7 +16,6 @@
     "**/*.min.css",
     "**/bootstrap.min.css",
     "**/bootstrap.css",
-    "**/bootstrap-icons.css",
-    "**/magnific-popup.css"
+    "**/bootstrap-icons.css"
   ]
 }
