@@ -13,7 +13,7 @@
   "scripts": {
     "lint:html": "htmlhint '*.html' '_includes/*.html'",
     "lint:css": "stylelint 'css/**/*.css'",
-    "lint:js": "eslint 'js/custom.js' 'js/meeting.js' 'js/click-scroll.js' 'js/add-view-all-card.js' 'js/magnific-popup-options.js'",
+    "lint:js": "eslint 'js/custom.js' 'js/meeting.js' 'js/add-view-all-card.js' 'js/optimized-bundle.js'",
     "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules' '#_site' '#vendor' '#.github/CODE_OF_CONDUCT.md' '#README.md'",
     "lint:yaml": "echo 'YAML files found:' && find . -name '*.yml' -o -name '*.yaml' | grep -v node_modules | grep -v _site | grep -v vendor | wc -l && echo 'YAML linting skipped - using basic validation'",
     "lint:json": "node -e \"const fs=require('fs');const path=require('path');const files=require('child_process').execSync('find . -name \\\"*.json\\\" | grep -v node_modules | grep -v _site | grep -v vendor | grep -v package-lock.json',{encoding:'utf8'}).trim().split('\\n').filter(f=>f);let errors=0;files.forEach(file=>{try{JSON.parse(fs.readFileSync(file,'utf8'));console.log('✅',file);}catch(e){console.error('❌',file+':',e.message);errors++;}});process.exit(errors);\"",
@@ -29,7 +29,7 @@
     "format:all": "npm run format:html && npm run format:css && npm run format:js && npm run format:md && npm run format:yaml && npm run format:json",
     "format": "npm run format:all",
     "minify:css": "cleancss -o css/style.min.css css/style.css && cleancss -o css/abstract-shapes.min.css css/abstract-shapes.css",
-    "minify:js": "terser js/custom.js js/meeting.js js/click-scroll.js js/magnific-popup-options.js --compress --mangle --source-map -o js/bundle.min.js",
+    "minify:js": "terser js/custom.js js/meeting.js js/add-view-all-card.js --compress --mangle --source-map -o js/bundle.min.js",
     "minify:optimized": "terser js/optimized-bundle.js --compress --mangle --source-map -o js/optimized-bundle.min.js",
     "minify": "npm run minify:css && npm run minify:js && npm run minify:optimized",
     "build:prod": "npm run minify && bundle exec jekyll build",
