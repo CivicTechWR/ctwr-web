@@ -1211,7 +1211,7 @@ strong {
 /* Individual meeting detail item */
 .meeting-detail-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   padding: 1rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1228,11 +1228,13 @@ strong {
   justify-content: center;
   width: 3rem;
   height: 3rem;
+  min-width: 3rem;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   color: var(--white-color);
   font-size: 1.2rem;
   flex-shrink: 0;
+  margin-top: 0.125rem;
 }
 
 /* Meeting text */
@@ -1240,12 +1242,14 @@ strong {
   color: var(--white-color);
   font-size: 1.1rem;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.5;
+  flex: 1;
 }
 
 /* Meeting CTA */
 .meeting-cta {
   text-align: center;
+  margin-top: 1rem;
 }
 
 .meeting-btn {
@@ -1258,6 +1262,8 @@ strong {
   text-decoration: none;
   display: inline-block;
   transition: all 0.3s ease;
+  width: 100%;
+  max-width: 280px;
 }
 
 .meeting-btn:hover {

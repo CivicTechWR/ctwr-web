@@ -33,6 +33,14 @@
   margin-left: -15px;
 }
 
+/* Base column styles with gutters */
+[class*="col-"] {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 .col-12 {
   flex: 0 0 100%;
   max-width: 100%;
