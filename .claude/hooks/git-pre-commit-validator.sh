@@ -2,7 +2,6 @@
 
 # Read the tool input from stdin
 INPUT=$(cat)
-TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name')
 COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // ""')
 
 # Only run on git commit commands
@@ -35,7 +34,7 @@ for file in $STAGED_FILES; do
   if [ -f "$file" ]; then
     size=$(wc -c <"$file")
     if [ "$size" -gt 10485760 ]; then # 10MB limit
-      echo "⚠️ Large file detected: $file ($(($size / 1024 / 1024))MB)" >&2
+      echo "⚠️ Large file detected: $file ($((size / 1024 / 1024))MB)" >&2
     fi
   fi
 done
@@ -49,7 +48,7 @@ fi
 # Run formatting if available
 if command -v prettier &>/dev/null; then
   echo "Running Prettier..."
-  prettier --check $STAGED_FILES 2>/dev/null || echo "⚠️ Formatting issues found" >&2
+  prettier --check "$STAGED_FILES" 2>/dev/null || echo "⚠️ Formatting issues found" >&2
 fi
 
 # Run tests if available

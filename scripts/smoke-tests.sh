@@ -51,20 +51,6 @@ check_file_exists() {
   fi
 }
 
-# Function to check if a URL is accessible
-check_url() {
-  local url="$1"
-  local test_name="$2"
-
-  if curl -s --head "$url" | head -n 1 | grep -q "200 OK"; then
-    echo -e "${GREEN}✅ PASSED: ${test_name} - URL accessible: ${url}${NC}"
-    ((TESTS_PASSED++))
-  else
-    echo -e "${RED}❌ FAILED: ${test_name} - URL not accessible: ${url}${NC}"
-    ((TESTS_FAILED++))
-  fi
-}
-
 echo -e "\n${YELLOW}Phase 1: Pre-build Tests${NC}"
 echo "================================"
 
