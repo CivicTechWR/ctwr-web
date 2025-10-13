@@ -1,6 +1,6 @@
 /* Header specific styles */
 .site-header-nav .navbar {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8) !important;
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   position: absolute;
@@ -9,6 +9,10 @@
   right: 0;
   z-index: 999;
   height: auto;
+}
+
+.site-header-nav .container {
+  background-color: transparent !important;
 }
 
 .site-header-nav .container-fluid {
@@ -104,23 +108,44 @@
 }
 
 @media (width <= 991px) {
+  .site-header-nav .navbar {
+    flex-wrap: wrap;
+  }
+
+  .site-header-nav .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .navbar-toggler {
     display: block;
+    order: 3;
+  }
+
+  .navbar-header {
+    order: 1;
   }
 
   .navbar-collapse {
-    display: none;
+    display: none !important;
     width: 100%;
     padding: 15px 0;
+    order: 4;
+    flex-basis: 100%;
+    background-color: transparent;
   }
 
   .nav-toggle:checked ~ .navbar-collapse {
-    display: block;
+    display: flex !important;
+    flex-direction: column;
   }
 
   .site-header-nav .navbar-nav {
     margin-left: 0;
     flex-direction: column;
+    width: 100%;
   }
 
   .site-header-nav .nav-link {
@@ -134,5 +159,6 @@
 
   .site-header-nav .ms-auto {
     margin-left: 0;
+    width: 100%;
   }
 }
