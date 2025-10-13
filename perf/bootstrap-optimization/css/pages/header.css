@@ -43,6 +43,12 @@
 
 .site-header-nav .navbar-nav {
   margin-left: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.site-header-nav .nav-item {
+  list-style: none;
 }
 
 .site-header-nav .nav-link {
