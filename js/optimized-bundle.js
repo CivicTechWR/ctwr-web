@@ -210,25 +210,62 @@ function setInitialNavState() {
 // ============================================================================
 
 /**
- * Sample data for upcoming hacknight events
- * Used as fallback when Meetup API is unavailable
+ * Calculate the next occurrence of a specific day of week
+ * @param {Date} date - Starting date
+ * @param {number} dayOfWeek - Target day (0=Sunday, 3=Wednesday)
+ * @returns {Date} Next occurrence of that day
  */
-const upcomingEvents = [
-  {
-    name: "CTWR Weekly Hacknight",
-    local_date: "2025-10-15",
-    local_time: "18:00",
-    venue: { name: "Downtown Kitchener" },
-    link: "https://www.meetup.com/civictechwr/events/",
-  },
-  {
-    name: "CivicTech Waterloo Region Speaker Night",
-    local_date: "2025-10-22",
-    local_time: "18:00",
-    venue: { name: "Virtual Meeting" },
-    link: "https://www.meetup.com/civictechwr/events/",
-  },
-];
+function getNextDayOfWeek(date, dayOfWeek) {
+  const resultDate = new Date(date.getTime());
+  resultDate.setDate(date.getDate() + (7 + dayOfWeek - date.getDay()) % 7);
+  // If it's the same day, get next week
+  if (resultDate.getDate() === date.getDate()) {
+    resultDate.setDate(date.getDate() + 7);
+  }
+  return resultDate;
+}
+
+/**
+ * Format date as YYYY-MM-DD
+ * @param {Date} date - Date to format
+ * @returns {string} Formatted date string
+ */
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+/**
+ * Generate upcoming event data dynamically based on current date
+ * This ensures meeting dates are always accurate without manual updates
+ */
+function generateUpcomingEvents() {
+  const today = new Date();
+  const nextWednesday = getNextDayOfWeek(today, 3); // 3 = Wednesday
+  const followingWednesday = new Date(nextWednesday);
+  followingWednesday.setDate(nextWednesday.getDate() + 7);
+
+  return [
+    {
+      name: "CTWR Weekly Hacknight",
+      local_date: formatDate(nextWednesday),
+      local_time: "18:00",
+      venue: { name: "Downtown Kitchener" },
+      link: "https://www.meetup.com/civictechwr/events/",
+    },
+    {
+      name: "CivicTech Waterloo Region Hacknight",
+      local_date: formatDate(followingWednesday),
+      local_time: "18:00",
+      venue: { name: "Downtown Kitchener" },
+      link: "https://www.meetup.com/civictechwr/events/",
+    },
+  ];
+}
+
+const upcomingEvents = generateUpcomingEvents();
 
 /**
  * Parse date and time strings into a JavaScript Date object
