@@ -1,0 +1,54 @@
+<section class="featured section-padding section-secondary-bg meeting-section-alt" id="{{ include.section_id | default: 'section_next_meeting' }}">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-12">
+        <div class="meeting-image-wrapper">
+          <picture>
+            <source srcset="/images/hacknight-8.webp" type="image/webp" />
+            <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="CivicTech Waterloo Region community members at weekly hacknight gathering" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+        <div class="meeting-content">
+          <h2 class="meeting-title text-center mb-4">We look forward to seeing you at our next meeting</h2>
+
+          <div class="meeting-card">
+            <div class="meeting-details">
+              <div class="meeting-detail-item">
+                <div class="meeting-icon">
+                  <svg class="icon" width="24" height="24" aria-hidden="true"><use href="#icon-question-circle-fill"/></svg>
+                </div>
+                <div class="meeting-text">
+                  <span id="meeting-name">CTWR Weekly Hacknight</span>
+                </div>
+              </div>
+
+              <div class="meeting-detail-item">
+                <div class="meeting-icon">
+                  <svg class="icon" width="24" height="24" aria-hidden="true"><use href="#icon-calendar-date-fill"/></svg>
+                </div>
+                <div class="meeting-text">
+                  <span id="meeting-date-time">Wednesday 6:00 PM</span>
+                </div>
+              </div>
+
+              <div class="meeting-detail-item">
+                <div class="meeting-icon">
+                  <svg class="icon" width="24" height="24" aria-hidden="true"><use href="#icon-pin-fill"/></svg>
+                </div>
+                <div class="meeting-text">
+                  <span id="meeting-location">Downtown Kitchener</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="meeting-cta">
+              <a id="meeting-btn" class="btn btn-primary meeting-btn" href="https://www.meetup.com/civictechwr">More Details & RSVP</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
