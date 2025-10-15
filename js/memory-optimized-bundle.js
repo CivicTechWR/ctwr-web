@@ -139,7 +139,7 @@ class MeetingEvents {
   constructor() {
     this.sampleData = {
       name: 'CTWR Weekly Hacknight',
-      dateTime: 'Thursday 6:00 PM',
+      dateTime: 'Wednesday 6:00 PM',
       location: 'Downtown Kitchener',
       url: 'https://www.meetup.com/civictechwr/events/'
     };
