@@ -18,8 +18,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions." />
 <meta property="og:description" content="Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions." />
-<link rel="canonical" href="http://0.0.0.0:4000/projects.html" />
-<meta property="og:url" content="http://0.0.0.0:4000/projects.html" />
+<link rel="canonical" href="http://localhost:4000/projects.html" />
+<meta property="og:url" content="http://localhost:4000/projects.html" />
 <meta property="og:site_name" content="Civic Tech Waterloo Region" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
@@ -27,7 +27,7 @@
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@CivicTechWR" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"CivicTechWR"},"description":"Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions.","headline":"Civic Tech Waterloo Region","url":"http://0.0.0.0:4000/projects.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"CivicTechWR"},"description":"Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions.","headline":"Civic Tech Waterloo Region","url":"http://localhost:4000/projects.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -51,10 +51,12 @@
     
     <link href="css/bootstrap.css" rel="stylesheet" />
     
-    <link href="css/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/abstract-shapes.css" rel="stylesheet" />
     <link href="css/pages/projects.css" rel="stylesheet" />
+
+    <!-- Unified button system (loads last for highest specificity) -->
+    <link href="css/components/buttons.css" rel="stylesheet" />
     
   </head>
 
@@ -121,13 +123,24 @@
   <symbol id="icon-pin" viewBox="0 0 24 24">
     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
   </symbol>
+
+  <!-- Bootstrap Icons (16x16 viewBox) - Only unique -fill variants -->
+  <symbol id="icon-calendar-date-fill" viewBox="0 0 16 16">
+    <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zm5.402 9.746c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.582 1.2 1.144 1.2z"/>
+    <path d="M16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-6.664-1.21c-1.11 0-1.656-.767-1.656-1.883 0-1.168.668-1.898 1.801-1.898 1.035 0 1.668.684 1.668 1.898 0 1.125-.602 1.883-1.813 1.883z"/>
+  </symbol>
+
+  <symbol id="icon-pin-fill" viewBox="0 0 16 16">
+    <path d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A5.921 5.921 0 0 1 5 6.708V2.277a2.77 2.77 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354z"/>
+  </symbol>
+
+  <symbol id="icon-question-circle-fill" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+  </symbol>
 </svg>
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <link href="css/style.css" rel="stylesheet">
-<link href="css/abstract-shapes.css" rel="stylesheet">
-<link href="css/pages/header.css" rel="stylesheet">
-<header class="site-header-nav" role="banner">
+    <header class="site-header-nav" role="banner">
   <nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
     <div class="container">
       <div class="navbar-header">
@@ -141,19 +154,12 @@
         </a>
       </div>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+      <label for="nav-toggle" class="navbar-toggler">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </label>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           
           <li class="nav-item">
@@ -183,7 +189,7 @@
         </ul>
         <div class="ms-auto">
           <a
-            class="btn btn-outline"
+            class="btn btn--outline"
             href="https://discourse.ctwr.org"
             target="_blank"
             rel="noopener noreferrer"
@@ -205,7 +211,7 @@
               <p class="page-subtitle">Explore civic technology initiatives designed to improve life across Waterloo Region.</p>
             </div>
             <div class="col-lg-6 col-12 text-lg-end text-start">
-              <a class="btn btn-outline btn-light-inverse" href="/projects.html#projects_meeting">View upcoming hacknights</a>
+              <a class="btn btn--outline" href="/projects.html#projects_meeting">View upcoming hacknights</a>
             </div>
           </div>
         </div>
@@ -266,59 +272,60 @@
 
       <!-- NEXT MEETING -->
       <section class="featured section-padding section-secondary-bg meeting-section-alt" id="projects_meeting">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-6 col-12">
-              <div class="meeting-image-wrapper">
-                <picture>
-                  <source srcset="/images/hacknight-8.webp" type="image/webp" />
-                  <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="CivicTech Waterloo Region community members at weekly hacknight gathering" loading="lazy" decoding="async" />
-                </picture>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-12">
+        <div class="meeting-image-wrapper">
+          <picture>
+            <source srcset="/images/hacknight-8.webp" type="image/webp" />
+            <img src="/images/hacknight-8.jpg" class="about-image img-fluid" alt="CivicTech Waterloo Region community members at weekly hacknight gathering" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+        <div class="meeting-content">
+          <h2 class="meeting-title text-center mb-4">We look forward to seeing you at our next meeting</h2>
+
+          <div class="meeting-card">
+            <div class="meeting-details">
+              <div class="meeting-detail-item">
+                <div class="meeting-icon">
+                  <svg class="icon" width="24" height="24" aria-hidden="true"><use href="#icon-question-circle-fill"/></svg>
+                </div>
+                <div class="meeting-text">
+                  <span id="meeting-name">CTWR Weekly Hacknight</span>
+                </div>
               </div>
-            </div>
-            <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-              <div class="meeting-content">
-                <h2 class="meeting-title text-center mb-4">We look forward to seeing you at our next meeting</h2>
-                
-                <div class="meeting-card">
-                  <div class="meeting-details">
-                    <div class="meeting-detail-item">
-                      <div class="meeting-icon">
-                        <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
-                      </div>
-                      <div class="meeting-text">
-                        <span id="meeting-name">CTWR Weekly Hacknight</span>
-                      </div>
-                    </div>
-                    
-                    <div class="meeting-detail-item">
-                      <div class="meeting-icon">
-                        <i class="bi bi-calendar-date-fill" aria-hidden="true"></i>
-                      </div>
-                      <div class="meeting-text">
-                        <span id="meeting-date-time">Thursday 6:00 PM</span>
-                      </div>
-                    </div>
-                    
-                    <div class="meeting-detail-item">
-                      <div class="meeting-icon">
-                        <i class="bi bi-pin-fill" aria-hidden="true"></i>
-                      </div>
-                      <div class="meeting-text">
-                        <span id="meeting-location">Downtown Kitchener</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="meeting-cta">
-                    <a id="meeting-btn" class="btn btn-primary meeting-btn" href="https://www.meetup.com/civictechwr">More Details & RSVP</a>
-                  </div>
+
+              <div class="meeting-detail-item">
+                <div class="meeting-icon">
+                  <svg class="icon" width="24" height="24" aria-hidden="true"><use href="#icon-calendar-date-fill"/></svg>
+                </div>
+                <div class="meeting-text">
+                  <span id="meeting-date-time">Wednesday 6:00 PM</span>
+                </div>
+              </div>
+
+              <div class="meeting-detail-item">
+                <div class="meeting-icon">
+                  <svg class="icon" width="24" height="24" aria-hidden="true"><use href="#icon-pin-fill"/></svg>
+                </div>
+                <div class="meeting-text">
+                  <span id="meeting-location">Downtown Kitchener</span>
                 </div>
               </div>
             </div>
+
+            <div class="meeting-cta">
+              <a id="meeting-btn" class="btn btn--meeting" href="https://www.meetup.com/civictechwr">More Details & RSVP</a>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <footer class="footer-redesign">
   <div class="footer-redesign-container">
@@ -330,10 +337,10 @@
     <div class="footer-col footer-support">
       <div class="footer-col-title">SUPPORT US</div>
       <div class="footer-support-text">We pitch in for pizza and drinks ourselves. If you'd like to chip in, please consider donating.</div>
-      <a class="footer-donate-btn" href="https://buy.stripe.com/cN24hE161goQcZa8wx" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18"><use href="#icon-heart"></use></svg> Donate</a>
+      <a class="btn btn--donate" href="https://buy.stripe.com/cN24hE161goQcZa8wx" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18"><use href="#icon-heart"></use></svg> Donate</a>
       <div><br /></div>
       <div class="footer-support-text">Interested in sponsoring us? We'd love to talk to you</div>
-      <a class="footer-sponsor-btn" href="mailto:civictechwr@gmail.com" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18"><use href="#icon-handshake"></use></svg> Sponsor Us</a>
+      <a class="btn btn--donate" href="mailto:civictechwr@gmail.com" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18"><use href="#icon-handshake"></use></svg> Sponsor Us</a>
     </div>
 
     <div class="footer-col footer-links">
@@ -347,7 +354,7 @@
         <li><a href="/about.html">About Us</a></li>
       </ul>
       <ul class="footer-links-list">
-        <li><a class="footer-general-btn" href="https://feedback.ctwr.org/"><svg class="icon" width="18" height="18"><use href="#icon-comment-dots"></use></svg> Got Feedback?</a></li>
+        <li><a class="btn btn--footer" href="https://feedback.ctwr.org/"><svg class="icon" width="18" height="18"><use href="#icon-comment-dots"></use></svg> Got Feedback?</a></li>
       </ul>
     </div>
 
@@ -361,8 +368,8 @@
         <li><a href="https://civictechwr.github.io/CTWR-Organization-Documentation/policies/Diversity_and_Inclusion_Policy">Diversity and Inclusion Policy</a></li>
       </ul>
       <ul class="footer-links-list">
-        <li><a class="footer-general-btn" href="https://www.meetup.com/civictechwr/"><svg class="icon" width="18" height="18"><use href="#icon-calendar-alt"></use></svg> Upcoming Hacknight</a></li>
-        <li><a class="footer-general-btn" href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18"><use href="#icon-slack"></use></svg> Join us on Slack</a></li>
+        <li><a class="btn btn--footer" href="https://www.meetup.com/civictechwr/"><svg class="icon" width="18" height="18"><use href="#icon-calendar-alt"></use></svg> Upcoming Hacknight</a></li>
+        <li><a class="btn btn--footer" href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18"><use href="#icon-slack"></use></svg> Join us on Slack</a></li>
       </ul>
       <div class="footer-social-icons">
         <a href="https://www.linkedin.com/company/civictechwr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon" width="24" height="24"><use href="#icon-linkedin"></use></svg></a>
@@ -399,7 +406,7 @@
               projectCard.innerHTML = `
                             <div class="project-card">
                                 <div class="project-info">
-                                    <a href="${project.github}" class="github-btn btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    <a href="${project.github}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     <h4 class="projects-title">${project.name}</h4>
                                     <small class="projects-tag">Year: ${yearString}</small>
                                 </div>
@@ -443,7 +450,7 @@
                 card.innerHTML = `
                             <div class="project-card">
                                 <div class="project-info">
-                                    <a href="${repo.html_url}" class="github-btn btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    <a href="${repo.html_url}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     <h4 class="projects-title">${repo.name}</h4>
                                     <small class="projects-tag">${repo.language || ''}</small>
                                     <p>${repo.description || 'No description available.'}</p>

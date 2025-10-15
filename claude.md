@@ -2,8 +2,9 @@
 
 **Project:** CivicTechWR Jekyll Website
 **Branch:** perf/perf-improvements
-**Last Updated:** October 12, 2025
+**Last Updated:** October 15, 2025
 **Tech Stack:** Jekyll, HTML, CSS, JavaScript, Bootstrap 4.1.3
+**Current Branch:** perf/bootstrap-optimization
 
 ---
 
@@ -47,6 +48,153 @@ CivicTechWR is a community organization website built with Jekyll. The site focu
 ### Recent Audit Findings
 
 See `docs/AUDIT_REPORT.md` for complete performance audit results.
+
+---
+
+## Current Work in Progress (October 15, 2025)
+
+### ✅ Completed - Foundation Fixes
+
+The following critical fixes have been completed:
+
+1. **Removed duplicate CSS definitions** (commit a5d7ada)
+   - Deleted `.github-btn` duplicate from `css/pages/projects.css`
+   - Removed 3 CSS `<link>` tags from `_includes/header.html` (causing FOUC)
+
+2. **Fixed hardcoded event dates** (commit f8586db)
+   - Replaced hardcoded Thursday dates with dynamic Wednesday calculation
+   - Added `getNextDayOfWeek()` function in `js/optimized-bundle.js`
+   - Regenerated minified bundle via `npm run minify:optimized`
+
+3. **Removed 10.1KB of unused critical CSS**
+   - Deleted `critical.css`, `critical-inline.css`, `critical-optimized.css`
+
+4. **Created unified meeting section component**
+   - Created `_includes/meeting-section.html` with parametrizable `section_id`
+   - Replaced 162 lines of duplicate HTML across index.html, about.html, projects.html
+
+5. **Created unified button system** (staged, not yet committed)
+   - Created `css/components/buttons.css` (380 lines, ZERO `!important` declarations)
+   - Uses BEM methodology (btn--primary, btn--secondary, btn--outline, etc.)
+   - Loaded in all 3 main HTML pages (index.html, about.html, projects.html)
+
+### 🚧 In Progress - Button System Migration
+
+**Status:** Foundation complete, HTML migration pending
+
+**Files staged for commit:**
+- `css/components/buttons.css` (new file)
+- `index.html` (loads button CSS on line 57)
+- `about.html` (loads button CSS on line 49)
+- `projects.html` (loads button CSS on line 49)
+
+**Remaining Work:**
+
+#### Step 1: Update HTML to use new BEM button classes
+Use the **web-design-specialist** agent to systematically update button classes:
+
+**Migration mapping:**
+- `class="btn btn-primary"` → `class="btn btn--primary"`
+- `class="btn btn-outline"` → `class="btn btn--outline"`
+- `class="btn btn-outline btn-light-inverse"` → `class="btn btn--light"`
+- `class="github-btn btn"` → `class="btn btn--badge"`
+- `class="btn btn-primary meeting-btn"` → `class="btn btn--meeting"`
+- `class="footer-donate-btn"` → `class="btn btn--donate"`
+- `class="footer-sponsor-btn"` → `class="btn btn--footer"`
+- `class="footer-general-btn"` → `class="btn btn--footer"`
+
+**Files requiring updates (29 button instances total):**
+1. `index.html` - 9 buttons (lines 110, 114, 115-117, 118, 199, 226, 227, 235, 252)
+2. `about.html` - 2 buttons (line 65)
+3. `projects.html` - 6 buttons (lines 66, 151, 195 - including 4 JavaScript-generated)
+4. `_includes/header.html` - 1 button (line 32)
+5. `_includes/footer.html` - 5 buttons (lines 11, 14, 28, 42, 43)
+6. `_includes/meeting-section.html` - 1 button (line 47)
+
+**Agent to use:**
+```bash
+# Launch web-design-specialist to perform systematic button class updates
+# The agent has already analyzed all files and created a detailed migration plan
+# Ask it to execute the migration with exact search-and-replace operations
+```
+
+#### Step 2: Remove old button CSS from style.css
+Use the **code-reviewer** agent to identify and remove legacy button definitions:
+
+**Old button classes to remove from `css/style.css` (17+ definitions with `!important`):**
+- Line 702: `.btn` (base)
+- Lines 333-351: `.navbar .custom-btn`
+- Lines 353-365: `.custom-btn`
+- Lines 367-377: `.custom-border-btn`
+- Lines 379-388: `.btn.custom-link` (with `!important`)
+- Lines 390-405: `.btn.meeting-btn` (with `!important`)
+- Lines 795-806: `.footer-donate-btn`
+- Lines 809-820: `.footer-sponsor-btn`
+- Lines 823-835: `.footer-general-btn`
+- Lines 923-932: `.btn-primary`
+- Lines 934-945: `.btn-outline`
+- Lines 948-957: `.btn.btn-primary` (with `!important`)
+- Lines 959-971: `.btn.btn-outline` (with `!important`)
+- Lines 973-983: `.btn.btn-outline.btn-light-inverse` (with `!important`)
+- Lines 1251-1263: `.meeting-btn`
+- Lines 1348-1362: `.btn.meeting-btn-alt` (with `!important`)
+- Lines 1496-1501: `.github-btn`
+
+**Expected results:**
+- Removal of ~150-200 lines of CSS
+- Elimination of button-related `!important` declarations (majority of 64 instances)
+- 5-10KB reduction in style.css file size
+
+#### Step 3: Test all pages
+**Manual testing checklist:**
+- [ ] All buttons render with correct visual styles
+- [ ] Hover states work properly (no `!important` conflicts)
+- [ ] Focus states show accessibility indicators
+- [ ] Buttons maintain correct sizing on mobile (responsive breakpoints)
+- [ ] No console errors from missing CSS classes
+- [ ] Footer buttons maintain correct spacing and icons
+- [ ] GitHub badge buttons display correctly on project cards
+- [ ] Meeting section button on teal background (red coral color)
+
+**Browser testing:**
+- [ ] Chrome/Edge (Chromium)
+- [ ] Firefox
+- [ ] Safari
+- [ ] Mobile Safari (iOS)
+- [ ] Chrome Mobile (Android)
+
+#### Step 4: Commit the complete button system
+```bash
+git add css/components/buttons.css index.html about.html projects.html _includes/header.html _includes/footer.html _includes/meeting-section.html css/style.css
+git commit -m "feat: Consolidate 7 button systems into unified BEM system
+
+- Create css/components/buttons.css with BEM methodology
+- ZERO !important declarations (eliminates CSS specificity wars)
+- Update all 29 button instances across 6 files to use new classes
+- Remove 17+ old button definitions from style.css (~150-200 lines)
+- Maintains visual parity with existing design
+- Estimated 5-10KB CSS reduction
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+```
+
+### 📋 Next Immediate Tasks
+
+After button system completion, prioritize these tasks:
+
+1. **Remove remaining `!important` declarations** (~40-50 left in style.css)
+   - Use **code-reviewer** agent to identify all instances
+   - Fix specificity issues properly instead of using `!important`
+
+2. **Standardize link colors** (4 different schemes currently)
+   - Audit all link styles in style.css
+   - Consolidate to single color system using CSS variables
+
+3. **Remove inline styles from index.html** (180+ lines duplicating style.css)
+   - Use **web-design-specialist** to identify duplicates
+   - Move to appropriate CSS files or remove
 
 ---
 
@@ -573,11 +721,16 @@ From `/tmp/claudepro-directory`:
 ## Next Steps (Priority Order)
 
 ### Phase 1: Critical Fixes (Week 1)
-1. ✅ **Code Review** - Identify all style inconsistencies
-2. Remove 64 `!important` declarations
-3. Consolidate 7 button systems into 1 unified system
-4. Delete duplicate `footer.html` (keep `_includes/footer.html`)
-5. Standardize link colors across site
+1. ✅ **Code Review** - Identify all style inconsistencies (COMPLETED)
+2. ✅ **Remove duplicate code** - Duplicate CSS, footer implementations (COMPLETED)
+3. 🚧 **Consolidate 7 button systems into 1 unified system** (IN PROGRESS - see "Current Work in Progress" section)
+   - ✅ Created `css/components/buttons.css` with BEM methodology
+   - ⏳ Update HTML to use new button classes (29 instances across 6 files)
+   - ⏳ Remove old button CSS from style.css (17+ definitions, ~150-200 lines)
+   - ⏳ Test all pages
+   - ⏳ Commit complete button system
+4. Remove remaining `!important` declarations (~40-50 left after button cleanup)
+5. Standardize link colors across site (4 different schemes)
 
 ### Phase 2: Performance (Week 2)
 6. Replace Font Awesome with SVG sprites (-315KB)
@@ -633,5 +786,46 @@ From `/tmp/claudepro-directory`:
 
 ---
 
-**Last Updated:** October 12, 2025
-**Next Review:** After Phase 1 completion (estimated 1 week)
+## Quick Start Guide for New Session
+
+When starting a new conversation to continue this work:
+
+### Option 1: Complete Button System Migration (Recommended)
+
+**Task:** "Complete the button system migration using the web-design-specialist agent"
+
+**What will happen:**
+1. Agent will update all 29 button instances across 6 HTML files to use new BEM classes
+2. You'll need to manually test the pages (or ask for help testing)
+3. Use code-reviewer agent to remove old button CSS from style.css
+4. Commit the complete button system
+
+**Estimated time:** 30-45 minutes
+
+### Option 2: Continue with Next Priority Task
+
+**Task:** "Remove remaining !important declarations from style.css using the code-reviewer agent"
+
+**What will happen:**
+1. Agent will identify all `!important` usage (should be ~40-50 instances after button cleanup)
+2. Agent will propose specificity fixes for each instance
+3. You'll apply the fixes and test
+
+**Estimated time:** 1-2 hours
+
+### Option 3: Run Full Site Audit
+
+**Task:** "Run a comprehensive site audit using all available agents"
+
+**What will happen:**
+1. Performance audit with performance-optimizer-agent
+2. Code quality review with code-reviewer-agent
+3. Design consistency check with web-design-specialist
+4. Consolidated report with prioritized action items
+
+**Estimated time:** 45-60 minutes
+
+---
+
+**Last Updated:** October 15, 2025
+**Next Review:** After button system completion

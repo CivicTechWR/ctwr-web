@@ -156,6 +156,12 @@ a:visited:hover {
   color: var(--primary-color);
 }
 
+/* Prevent visited link color from affecting buttons */
+a.btn:visited,
+a.btn:visited:hover {
+  color: inherit;
+}
+
 ::selection {
   background: var(--secondary-color);
   color: var(--white-color);
