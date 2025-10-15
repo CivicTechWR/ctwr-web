@@ -63,7 +63,7 @@ permalink: /projects.html
               <p class="page-subtitle">Explore civic technology initiatives designed to improve life across Waterloo Region.</p>
             </div>
             <div class="col-lg-6 col-12 text-lg-end text-start">
-              <a class="btn btn-outline btn-light-inverse" href="/projects.html#projects_meeting">View upcoming hacknights</a>
+              <a class="btn btn--light" href="/projects.html#projects_meeting">View upcoming hacknights</a>
             </div>
           </div>
         </div>
@@ -148,7 +148,7 @@ permalink: /projects.html
               projectCard.innerHTML = `
                             <div class="project-card">
                                 <div class="project-info">
-                                    <a href="${project.github}" class="github-btn btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    <a href="${project.github}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     <h4 class="projects-title">${project.name}</h4>
                                     <small class="projects-tag">Year: ${yearString}</small>
                                 </div>
@@ -192,7 +192,7 @@ permalink: /projects.html
                 card.innerHTML = `
                             <div class="project-card">
                                 <div class="project-info">
-                                    <a href="${repo.html_url}" class="github-btn btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    <a href="${repo.html_url}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     <h4 class="projects-title">${repo.name}</h4>
                                     <small class="projects-tag">${repo.language || ''}</small>
                                     <p>${repo.description || 'No description available.'}</p>

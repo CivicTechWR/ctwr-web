@@ -107,15 +107,15 @@ permalink: /
                 <h1 class="hero-title">Civic Change through Tech and Design</h1>
                 <p class="hero-description">Join our community of tech enthusiasts and designers working together to solve local challenges in the Waterloo region</p>
                 <div class="hero-actions">
-                  <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary">
+                  <a href="https://www.meetup.com/civictechwr/" class="btn btn--primary">
                     <svg class="icon me-2" width="16" height="16" aria-hidden="true"><use href="#icon-calendar-event"/></svg>
                     Upcoming hacknights
                   </a>
-                  <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" class="btn btn-outline btn-light-inverse">Slack</a>
-                  <a href="https://discourse.ctwr.org" class="btn btn-outline btn-light-inverse" target="_blank" rel="noopener noreferrer" aria-label="Member Dashboard (opens in new window)">
+                  <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" class="btn btn--light">Slack</a>
+                  <a href="https://discourse.ctwr.org" class="btn btn--light" target="_blank" rel="noopener noreferrer" aria-label="Member Dashboard (opens in new window)">
                     Member Dashboard
                   </a>
-                  <a href="https://civictechwr.github.io/blog/" class="btn btn-outline btn-light-inverse">Blog</a>
+                  <a href="https://civictechwr.github.io/blog/" class="btn btn--light">Blog</a>
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@ permalink: /
                   other engaged citizens—anyone with something inspiring or educational to share. Whether it's a speaker session or a hacknight, we provide a collaborative space for people to work on
                   civic tech projects and connect with others who share their passion for making a difference. Join us at our next hacknight!
                 </p>
-                <a href="https://www.meetup.com/civictechwr/" class="btn btn-primary">
+                <a href="https://www.meetup.com/civictechwr/" class="btn btn--primary">
                   <svg class="icon me-2" width="16" height="16" aria-hidden="true"><use href="#icon-calendar-event"/></svg>
                   Upcoming hacknights
                 </a>
@@ -223,8 +223,8 @@ permalink: /
                   Discover some of our most impactful civic tech initiatives that are making a difference in the Waterloo Region community. From improving civic engagement to providing essential
                   community resources, these projects showcase how technology can be used to solve real-world problems and strengthen our local democracy.
                 </p>
-                <a href="/projects.html" class="btn btn-primary pt-2 mb-3">View All Projects</a>
-                <a href="https://civictechwr.github.io/blog/" class="btn btn-primary pt-2 mb-3">View Latest Blog</a>
+                <a href="/projects.html" class="btn btn--primary pt-2 mb-3">View All Projects</a>
+                <a href="https://civictechwr.github.io/blog/" class="btn btn--primary pt-2 mb-3">View Latest Blog</a>
               </div>
 
               <!-- Third project positioned below text for better balance -->
@@ -232,7 +232,7 @@ permalink: /
                 {% for project in site.data.projects offset:2 limit:1 %}
                 <div class="projects-thumb">
                   <div class="projects-info">
-                    <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
+                    <a href="{{project.github}}" class="btn btn--badge" target="_blank">GitHub</a>
                     <h4 class="projects-title">{{project.name}}</h4>
                     <small class="projects-tag">Year: {{project.year}}</small>
                   </div>
@@ -249,7 +249,7 @@ permalink: /
               <div class="mb-3">
                 <div class="projects-thumb">
                   <div class="projects-info">
-                    <a href="{{project.github}}" class="github-btn btn" target="_blank">GitHub</a>
+                    <a href="{{project.github}}" class="btn btn--badge" target="_blank">GitHub</a>
                     <h4 class="projects-title">{{project.name}}</h4>
                     <small class="projects-tag">Year: {{project.year}}</small>
                   </div>

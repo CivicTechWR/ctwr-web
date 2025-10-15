@@ -213,11 +213,7 @@ a:visited:hover {
   outline: none;
 }
 
-/* Improve focus visibility for low contrast elements */
-.btn-outline:focus {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--white-color);
-}
+/* Removed old .btn-outline:focus styles - now handled by unified button system */
 
 .section-padding {
   padding: 8em;
@@ -327,85 +323,7 @@ strong {
 
 
 /* ---------------------------------------
-  CUSTOM BUTTON               
------------------------------------------ */
-.custom-btn,
-.navbar .custom-btn {
-  font-size: var(--p-font-size);
-  font-weight: var(--font-weight-bold);
-}
-
-.navbar .custom-btn {
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-color: var(--white-color);
-  color: var(--white-color);
-  padding: 8px 22px;
-}
-
-.navbar .custom-btn:hover {
-  background: var(--white-color);
-  border-color: transparent;
-  color: var(--secondary-color);
-}
-
-.custom-btn {
-  background: var(--secondary-color);
-  border-radius: var(--border-radius-large);
-  color: var(--white-color);
-  font-weight: var(--font-weight-bold);
-  padding: 12px 24px;
-}
-
-.custom-btn:hover {
-  background: var(--primary-color);
-  box-shadow: 0 1rem 3rem rgb(0 0 0 / 17.5%);
-  color: var(--white-color);
-}
-
-.custom-border-btn {
-  background: transparent;
-  border: 2px solid var(--border-color);
-  color: var(--p-color);
-}
-
-.custom-border-btn:hover {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color);
-  color: var(--white-color);
-}
-
-.btn.custom-link {
-	background-color: var(--primary-color) !important;
-	border: none !important;
-	color: var(--white-color) !important;
-}
-
-.btn.custom-link:hover {
-	background-color: var(--secondary-color) !important;
-	color: var(--white-color) !important;
-}
-
-.btn.meeting-btn {
-  background: var(--secondary-color) !important;
-  border-radius: var(--border-radius-small) !important;
-  color: var(--white-color) !important;
-  font-weight: var(--font-weight-bold) !important;
-  padding: 12px 24px !important;
-  margin: 0 10px !important;
-  width: 100% !important;
-  border: none !important;
-}
-
-.btn.meeting-btn:hover {
-  background: var(--primary-color) !important;
-  box-shadow: 0 1rem 3rem rgb(0 0 0 / 17.5%) !important;
-  color: var(--white-color) !important;
-}
-
-/* ---------------------------------------
-  NAVIGATION              
+  NAVIGATION
 ----------------------------------------- */
 .sticky-wrapper {
   position: relative;
@@ -426,16 +344,6 @@ strong {
 
 .is-sticky .navbar-nav .nav-link {
   color: var(--p-color);
-}
-
-.is-sticky .navbar .custom-btn {
-  border-color: var(--secondary-color);
-  color: var(--secondary-color);
-}
-
-.is-sticky .navbar .custom-btn:hover {
-  background: var(--secondary-color);
-  color: var(--white-color);
 }
 
 
@@ -494,18 +402,7 @@ strong {
   text-decoration: none;
 }
 
-/* Removed duplicate navbar toggler styles */
-
-.navbar .btn.btn-outline {
-  border-color: rgb(255 255 255 / 20%) !important;
-  color: var(--white-color) !important;
-}
-
-.navbar .btn.btn-outline:hover,
-.navbar .btn.btn-outline:focus {
-  border-color: rgb(255 255 255 / 40%) !important;
-  background: rgb(255 255 255 / 10%) !important;
-}
+/* Removed duplicate navbar toggler styles and old .navbar .btn.btn-outline overrides */
 
 .navbar-collapse {
   display: flex;
@@ -792,82 +689,6 @@ strong {
   color: #444;
 }
 
-.footer-donate-btn {
-  display: inline-block;
-  background: #2D6F72;
-  color: #fff !important;
-  font-weight: bold;
-  border: 2px solid #2D6F72;
-  padding: 8px 26px;
-  border-radius: 4px;
-  text-decoration: none !important;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  transition: background 0.2s;
-}
-
-.footer-sponsor-btn {
-  display: inline-block;
-  background: #c2544b; /* Improved contrast ratio for WCAG AA compliance */
-  color: #fff !important;
-  font-weight: bold;
-  padding: 8px 26px;
-  border: 2px solid #c2544b;
-  border-radius: 4px;
-  text-decoration: none !important;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  transition: background 0.2s;
-}
-
-.footer-general-btn {
-  display: inline-block;
-  background: #fafafa;
-  color: var(--secondary-color) !important;
-  border: 2px solid var(--secondary-color);
-  font-weight: bold;
-  padding: 8px 26px;
-  border-radius: 4px;
-  text-decoration: none !important;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  transition: background 0.2s;
-}
-
-/* Override link styles for buttons inside footer lists */
-.footer-links-list .footer-general-btn,
-.footer-links-list .footer-donate-btn,
-.footer-links-list .footer-sponsor-btn {
-  color: var(--secondary-color) !important;
-  font-size: 1rem !important;
-}
-
-.footer-general-btn i,
-.footer-donate-btn i,
-.footer-sponsor-btn i {
-  margin-right: 8px;
-}
-
-.footer-donate-btn:hover {
-  background: #fff;
-  color: var(--p-color) !important;
-  border-color: var(--p-color);
-  text-decoration: underline;
-}
-
-.footer-general-btn:hover {
-  color: var(--p-color) !important;
-  border-color: var(--p-color);
-  text-decoration: underline;
-}
-
-.footer-sponsor-btn:hover {
-  background: #fff;
-  color: var(--p-color) !important;
-  border-color: var(--p-color);
-  text-decoration: underline;
-}
-
 .footer-social-icons {
   margin-bottom: 14px;
 }
@@ -918,69 +739,6 @@ strong {
   }
 }
 
-
-/* Original button styles - maintain compatibility */
-.btn-primary {
-  background: var(--secondary-color);
-  border: none;
-  color: var(--white-color);
-}
-
-.btn-primary:hover {
-  background: #d6685f;
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1px solid rgb(255 255 255 / 20%);
-  color: var(--white-color);
-  align-content: center;
-}
-
-.btn-outline:hover {
-  background: rgb(255 255 255 / 10%);
-  border-color: rgb(255 255 255 / 30%);
-  transform: translateY(-2px);
-}
-
-/* Bootstrap override styles - higher specificity */
-.btn.btn-primary {
-  background: var(--secondary-color) !important;
-  border: none !important;
-  color: var(--white-color) !important;
-}
-
-.btn.btn-primary:hover {
-  background: #d6685f !important;
-  transform: translateY(-2px);
-}
-
-.btn.btn-outline {
-  background: transparent !important;
-  border: 1px solid var(--secondary-color) !important;
-  color: var(--secondary-color) !important;
-  align-content: center;
-}
-
-.btn.btn-outline:hover {
-  background: var(--secondary-color) !important;
-  color: var(--white-color) !important;
-  border-color: var(--secondary-color) !important;
-  transform: translateY(-2px);
-}
-
-.btn.btn-outline.btn-light-inverse {
-  border-color: rgba(255, 255, 255, 0.8) !important; /* Improved contrast */
-  color: var(--white-color) !important;
-  background: rgba(0, 0, 0, 0.1) !important; /* Subtle background for better contrast */
-}
-
-.btn.btn-outline.btn-light-inverse:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-color: rgba(255, 255, 255, 0.9) !important;
-  color: var(--white-color) !important;
-}
 
 @keyframes fadeInUp {
   from {
@@ -1248,25 +1006,6 @@ strong {
   text-align: center;
 }
 
-.meeting-btn {
-  background: var(--primary-color) !important;
-  border: 2px solid var(--primary-color) !important;
-  color: var(--white-color) !important;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.meeting-btn:hover {
-  background: var(--white-color) !important;
-  color: var(--primary-color) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
 /* Responsive adjustments */
 @media (width >= 1200px) {
   .meeting-image-wrapper {
@@ -1344,22 +1083,6 @@ strong {
 
 
 
-
-.btn.meeting-btn-alt {
-  background: var(--primary-color) !important;
-  color: var(--white-color) !important;
-  border: 2px solid var(--primary-color) !important;
-  width: 100%;
-  border-radius: 999px;
-  padding: 0.9rem 1.25rem;
-  margin-top: 1.25rem;
-}
-
-.btn.meeting-btn-alt:hover {
-  background: transparent !important;
-  color: var(--primary-color) !important;
-  border: 2px solid var(--primary-color) !important;
-}
 
 .services-thumb {
   background: var(--white-color);
@@ -1493,15 +1216,8 @@ strong {
   margin-bottom: 5px;
 }
 
-.github-btn{
-  font-size: 10px;
-  padding: 4px 8px;
-  background-color: var(--secondary-color);
-  color: #fff;
-}
-
 /* ---------------------------------------
-  CONTACT              
+  CONTACT
 ----------------------------------------- */
 
 /*
@@ -2096,12 +1812,6 @@ blockquote footer::before {
     padding-bottom: 80px;
   }
 
-  .custom-btn,
-  .navbar .custom-btn {
-    font-size: var(--copyright-text-font-size);
-    padding: 8px 16px;
-  }
-
   .navbar .container {
     background: var(--white-color);
   }
@@ -2118,13 +1828,6 @@ blockquote footer::before {
     height: 44px;
     line-height: 44px;
   }
-
-  .navbar .custom-btn {
-    border-color: var(--secondary-color);
-    color: var(--secondary-color);
-  }
-
-
 
   .navbar-expand-lg .navbar-nav .nav-link {
     margin-left: 0;
@@ -2222,13 +1925,6 @@ blockquote footer::before {
 
   h5 {
     font-size: 20px;
-  }
-
-  .custom-btn,
-  .navbar .custom-btn {
-    font-size: 14px;
-    padding: 6px 14px;
-    margin-left: 15px;
   }
 
   .navbar-icon {
@@ -2355,10 +2051,6 @@ body.has-fixed-nav .site-header {
 @media (width <= 768px) {
   .meeting-section-alt .profile-thumb {
     padding: 1.5rem;
-  }
-
-  .btn.meeting-btn-alt {
-    font-size: 1rem;
   }
 }
 
