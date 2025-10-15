@@ -216,14 +216,14 @@ function setInitialNavState() {
 const upcomingEvents = [
   {
     name: "CTWR Weekly Hacknight",
-    local_date: "2025-10-16",
+    local_date: "2025-10-15",
     local_time: "18:00",
     venue: { name: "Downtown Kitchener" },
     link: "https://www.meetup.com/civictechwr/events/",
   },
   {
     name: "CivicTech Waterloo Region Speaker Night",
-    local_date: "2025-10-23",
+    local_date: "2025-10-22",
     local_time: "18:00",
     venue: { name: "Virtual Meeting" },
     link: "https://www.meetup.com/civictechwr/events/",
