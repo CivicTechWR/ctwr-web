@@ -378,7 +378,7 @@ strong {
   padding: 0;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--white-color) !important;
+  color: var(--white-color);
   text-decoration: none;
 }
 
@@ -399,7 +399,7 @@ strong {
 }
 
 .navbar-nav .nav-link {
-  color: var(--white-color) !important;
+  color: var(--white-color);
   font-size: 0.95rem;
   font-weight: var(--font-weight-medium);
   padding: 0.5rem 0.75rem;
@@ -408,7 +408,7 @@ strong {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  color: rgb(255 255 255 / 70%) !important;
+  color: rgb(255 255 255 / 70%);
   text-decoration: none;
 }
 
@@ -740,7 +740,7 @@ strong {
 
 /* Footer copyright text - improved contrast for WCAG AA compliance */
 .footer-copyright-wrapper p {
-  color: #767676 !important; /* Improved contrast ratio */
+  color: #767676; /* Improved contrast ratio */
   font-size: 14px;
   margin: 0;
   text-align: center;
@@ -748,12 +748,12 @@ strong {
 
 /* About page text contrast improvements */
 .about-section p {
-  color: #2a2a2a !important; /* Improved contrast ratio for better readability */
+  color: #2a2a2a; /* Improved contrast ratio for better readability */
 }
 
 /* Specific fix for organizing team text */
 .text-center {
-  color: #2a2a2a !important; /* Ensure sufficient contrast ratio */
+  color: #2a2a2a; /* Ensure sufficient contrast ratio */
 }
 
 .footer-social-icons a {
@@ -943,10 +943,10 @@ strong {
 
 /* Meeting section with teal background */
 .section-secondary-bg {
-  background: var(--secondary-color) !important;
-  color: var(--white-color) !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-top: none;
+  border-bottom: none;
 }
 
 .section-secondary-bg h1,
@@ -960,10 +960,10 @@ strong {
 
 /* Meeting section styles */
 .meeting-section-alt {
-  background: var(--secondary-color) !important;
-  color: var(--white-color) !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-top: none;
+  border-bottom: none;
   padding: 4rem 0;
 }
 
@@ -988,7 +988,7 @@ strong {
 
 /* Meeting title */
 .meeting-title {
-  color: var(--white-color) !important;
+  color: var(--white-color);
   font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 2rem;
@@ -1582,15 +1582,6 @@ blockquote footer::before {
   font-family: var(--body-font-family);
 }
 
-.md-footer {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.md-footer-meta {
-  display: none !important;
-}
-
 .footer {
   background: linear-gradient(180deg, #fff 0%, #f5f7ff 100%);
   padding: 40px 0 0;
@@ -1657,7 +1648,7 @@ blockquote footer::before {
 
 .footer-menu-list a,
 .footer-links-list a {
-  color: var(--secondary-color) !important;
+  color: var(--secondary-color);
   text-decoration: none;
   font-size: 14px;
   transition: color 0.2s ease;
@@ -1665,7 +1656,7 @@ blockquote footer::before {
 
 .footer-menu-list a:hover,
 .footer-links-list a:hover {
-  color: var(--primary-color) !important;
+  color: var(--primary-color);
   text-decoration: underline;
 }
 
