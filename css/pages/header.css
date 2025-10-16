@@ -20,7 +20,7 @@
 }
 
 .site-header-nav .ms-auto {
-  margin-left: 50%;
+  margin-left: auto;
 }
 
 .site-header-nav .navbar-brand {
@@ -54,6 +54,18 @@
 
 .site-header-nav .nav-link:hover {
   color: var(--secondary-color);
+}
+
+/* Ensure header action button has sufficient contrast on dark header */
+.site-header-nav .btn.btn--outline {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: var(--white-color);
+}
+
+.site-header-nav .btn.btn--outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: var(--white-color);
 }
 
 .site-header-nav .header-login-btn {
@@ -126,6 +138,11 @@
 
   .navbar-header {
     order: 1;
+  }
+
+  /* Hide logo on mobile to prevent white box */
+  .site-header-nav .logo {
+    display: none;
   }
 
   .navbar-collapse {

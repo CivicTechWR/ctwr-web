@@ -337,10 +337,14 @@ strong {
   height: auto !important;
 }
 
-.is-sticky,
-.is-sticky .navbar .container {
-  background: var(--white-color);
+.is-sticky .navbar {
   box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%);
+}
+
+/* Keep sticky nav consistent with dark theme */
+.is-sticky .navbar,
+.is-sticky .navbar .container {
+  background: var(--dark-color);
 }
 
 .is-sticky .navbar-brand,
@@ -441,9 +445,33 @@ strong {
     min-height: 3rem;
   }
 
+  /* Hide logo on mobile to prevent white box */
+  .navbar-brand .logo {
+    display: none !important;
+  }
+
+  /* Hide collapsed menu by default; reveal when toggled */
   .navbar-collapse {
+    display: none;
     background: var(--dark-color);
     padding: 1rem 0;
+    width: 100%;
+  }
+
+  /* CSS-only toggle using hidden checkbox */
+  #nav-toggle:checked ~ .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Show the hamburger on small screens */
+  .navbar-toggler {
+    display: block;
+  }
+
+  /* Remove extra left indent on small screens */
+  .navbar-nav {
+    margin-left: 0;
   }
 
   .nav-item {
@@ -462,6 +490,12 @@ strong {
     flex-direction: column;
     width: 100%;
     padding: 0.6rem 1rem;
+  }
+
+  /* Ensure right-side actions don't push content */
+  .navbar-collapse .ms-auto {
+    margin-left: 0;
+    width: 100%;
   }
 
   .action-button {
@@ -1943,12 +1977,6 @@ blockquote footer::before {
     width: 35.5px;
     height: 35.5px;
     line-height: 35.5px;
-  }
-
-  .logo{
-    width: 50px;
-    height: 50px;
-    margin-left: 0;
   }
 
   .hero-image-wrap {
