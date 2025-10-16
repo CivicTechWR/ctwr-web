@@ -665,6 +665,7 @@ strong {
 .navbar-nav .nav-link,
 .copyright-text-wrap a {
   color: var(--secondary-color);
+  font-weight: var(--font-weight-bold);
 }
 
 .nav-link:hover,
@@ -1381,101 +1382,7 @@ strong {
 
 
 /* ---------------------------------------
-  SITE FOOTER              
------------------------------------------ */
-
-/*
-.site-footer {
-  border-top: 1px solid var(--border-color);
-  padding-bottom: 50px;
-  text-align: center;
-}
-
-.site-footer-title {
-  font-size: var(--menu-font-size);
-  color: var(--dark-color);
-  text-transform: uppercase;
-}
-
-.copyright-text-wrap p,
-.copyright-text {
-  font-size: var(--copyright-font-size);
-}
-
-.copyright-text {
-  border-right: 1px solid var(--border-color);
-  padding-right: 25px;
-  margin-right: 20px;
-}
-
-.copyright-text-wrap a {
-  font-weight: var(--font-weight-bold);
-}
-
-.footer-menu {
-  margin: 0;
-  padding: 0;
-}
-
-.footer-menu-item {
-  list-style: none;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.footer-menu-link {
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-medium);
-  font-size: var(--copyright-font-size);
-  font-weight: var(--font-weight-medium);
-  display: inline-block;
-  vertical-align: top;
-  text-align: center;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 6px 14px;
-  min-width: 70px;
-}
-
-.footer-menu-link:hover {
-  /*background: var(--secondary-color);
-  border-color: transparent;
-  color: var(--white-color);
-}
-
-
-/*---------------------------------------
-  SOCIAL ICON               
------------------------------------------ */
-
-@charset "UTF-8";
-/*!
- * Bootstrap v3.3.5 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-
-footer {
-  display: block;
-}
-
-blockquote footer {
-  display: block;
-  font-size: 80%;
-  line-height: 1.42857;
-
-  /* color: #777777; */
-}
-
-blockquote footer::before {
-  content: '\2014 \00A0';
-}
-
-
-/* ---------------------------------------
-  SITE FOOTER              
+  SITE FOOTER
 ----------------------------------------- */
 .site-footer {
   border-top: 1px solid var(--border-color);
@@ -1492,16 +1399,9 @@ blockquote footer::before {
 .copyright-text-wrap p,
 .copyright-text {
   font-size: var(--copyright-font-size);
-}
-
-.copyright-text {
   border-right: 1px solid var(--border-color);
   padding-right: 25px;
   margin-right: 20px;
-}
-
-.copyright-text-wrap a {
-  font-weight: var(--font-weight-bold);
 }
 
 .footer-menu {
@@ -2015,6 +1915,10 @@ blockquote footer::before {
   text-align: center;
 }
 
+.organizers-section .shoutout-section {
+  margin-top: 3rem;
+}
+
 .organizers-section .organizer-name {
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -2024,14 +1928,6 @@ blockquote footer::before {
 .organizers-section .organizer-contact a {
   color: var(--secondary-color);
   text-decoration: underline;
-}
-
-.organizers-section .shoutout-section {
-  background: #fff;
-  border-radius: 16px;
-  padding: 2rem 1.5rem;
-  margin-top: 3rem;
-  box-shadow: 0 10px 30px rgb(15 23 42 / 10%);
 }
 
 .organizers-section .shoutout-link {
