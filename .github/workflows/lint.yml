@@ -19,7 +19,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Run Super-Linter
-        uses: super-linter/super-linter/slim@v6
+        uses: super-linter/super-linter/slim@v8
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
