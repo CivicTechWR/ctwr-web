@@ -74,15 +74,21 @@ Key Features:
   --space-7:                      48px;
   --space-8:                      64px;
   --space-10:                     80px;
+  --space-12:                     96px;
+  --space-15:                     120px;
 
   /* Section spacing for large layout padding */
   --section-padding-sm:           80px;
   --section-padding-md:           120px;
+  --section-padding-lg:           160px;
+  --section-padding-xl:           200px;
 
   /* Simplified Border Radius - Modern radius system */
   --radius-sm:                    4px;
   --radius-md:                    12px;
+  --radius-card:                  16px;
   --radius-lg:                    24px;
+  --radius-xl:                    32px;
   --radius-full:                  9999px;
 
   /* Override Bootstrap's link color variables for specific components only */
@@ -224,7 +230,7 @@ a.btn:visited:hover {
   left: 0;
   background: var(--primary-color);
   color: var(--white-color);
-  padding: 8px;
+  padding: var(--space-2);
   text-decoration: none;
   z-index: 100;
 }
@@ -270,7 +276,7 @@ strong {
 .section-title-wrap {
   background: var(--secondary-color);
   border-radius: var(--border-radius-small);
-  padding: 10px 30px;
+  padding: var(--space-2-5) var(--space-5-5);
 }
 
 
@@ -1037,7 +1043,7 @@ strong {
 .meeting-card {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
+  border-radius: var(--radius-card);
   padding: 2rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -1423,7 +1429,7 @@ strong {
 ----------------------------------------- */
 .site-footer {
   border-top: 1px solid var(--border-color);
-  padding-bottom: 50px;
+  padding-bottom: var(--space-7);
   text-align: center;
 }
 
@@ -1594,7 +1600,7 @@ strong {
   }
 
   .hero {
-    padding-top: 200px;
+    padding-top: var(--section-padding-xl);
     padding-bottom: 400px;
   }
 
@@ -1703,7 +1709,7 @@ strong {
   }
 
   .hero{
-    padding-top: 150px;
+    padding-top: var(--space-15);
     padding-bottom: 0;
   }
 }
@@ -1776,7 +1782,7 @@ strong {
 
 .has-fixed-nav .site-header,
 body.has-fixed-nav .site-header {
-  padding-top: 160px;
+  padding-top: var(--section-padding-lg);
 }
 
 .page-title {
@@ -1806,7 +1812,7 @@ body.has-fixed-nav .site-header {
 
 .meeting-section-alt .meeting-image-wrapper {
   position: relative;
-  border-radius: 32px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: 0 30px 70px rgb(15 23 42 / 30%);
 }
@@ -1850,5 +1856,5 @@ body.has-fixed-nav .site-header {
 
 .footer-social-icon-img {
   background: var(--white-color);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
