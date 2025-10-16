@@ -41,13 +41,15 @@ permalink: /
 
     <!-- Custom Bootstrap with only used classes (2.7KB vs 237KB = 98.9% reduction) -->
     <link href="css/bootstrap-custom.css" rel="stylesheet" />
+    {% if jekyll.environment == "production" %}
+    <link href="css/abstract-shapes.min.css" rel="stylesheet" />
+    <link href="css/style.min.css" rel="stylesheet" />
+    <link href="css/components/buttons.min.css" rel="stylesheet" />
+    {% else %}
     <link href="css/abstract-shapes.css" rel="stylesheet" />
-
-    <!-- Load main stylesheet AFTER Bootstrap to override its styles -->
     <link href="css/style.css" rel="stylesheet" />
-
-    <!-- Unified button system (loads last for highest specificity) -->
     <link href="css/components/buttons.css" rel="stylesheet" />
+    {% endif %}
   </head>
 
   <body>
