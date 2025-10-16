@@ -47,7 +47,50 @@ Key Features:
   --font-weight-normal:           400;
   --font-weight-medium:           500;
   --font-weight-bold:             700;
-  
+
+  /* Neutral Palette - Grayscale for consistent neutrals */
+  --gray-900:                     #222;
+  --gray-700:                     #444;
+  --gray-600:                     #555;
+  --gray-500:                     #666;
+  --gray-400:                     #777;
+  --gray-300:                     #999;
+  --gray-200:                     #ccc;
+  --gray-100:                     #eaeaea;
+  --gray-50:                      #fafafa;
+
+  /* Spacing Scale - Consistent spacing system */
+  --space-1:                      4px;
+  --space-2:                      8px;
+  --space-2-5:                    10px;
+  --space-3:                      12px;
+  --space-3-5:                    14px;
+  --space-4:                      16px;
+  --space-4-5:                    20px;
+  --space-5:                      24px;
+  --space-5-5:                    30px;
+  --space-6:                      32px;
+  --space-6-5:                    40px;
+  --space-7:                      48px;
+  --space-8:                      64px;
+  --space-10:                     80px;
+  --space-12:                     96px;
+  --space-15:                     120px;
+
+  /* Section spacing for large layout padding */
+  --section-padding-sm:           80px;
+  --section-padding-md:           120px;
+  --section-padding-lg:           160px;
+  --section-padding-xl:           200px;
+
+  /* Simplified Border Radius - Modern radius system */
+  --radius-sm:                    4px;
+  --radius-md:                    12px;
+  --radius-card:                  16px;
+  --radius-lg:                    24px;
+  --radius-xl:                    32px;
+  --radius-full:                  9999px;
+
   /* Override Bootstrap's link color variables for specific components only */
   --bs-link-color: var(--p-color);
   --bs-link-color-rgb: 113, 114, 117; /* RGB values for #717275 */
@@ -129,7 +172,23 @@ button {
 }
 
 
-/* Standardized link styles */
+/* ---------------------------------------
+  LINK COLOR STANDARDIZATION
+
+  Standard link behavior across the site:
+  - Default: Teal (var(--secondary-color))
+  - Hover: Red (var(--primary-color)) with underline
+  - Focus: Red with outline for accessibility
+  - Visited: Teal (same as default for consistency)
+
+  Contextual variations:
+  - Navigation links (.navbar-nav .nav-link): White on dark header background
+  - Footer social icons: Gray → Teal on hover (icon color, not link)
+  - Buttons (a.btn): Inherit from button system (css/components/buttons.css)
+
+  All other links inherit these base styles.
+----------------------------------------- */
+
 a {
   color: var(--secondary-color);
   text-decoration: none;
@@ -186,8 +245,8 @@ a.btn:visited:hover {
   top: -40px;
   left: 0;
   background: var(--primary-color);
-  color: white;
-  padding: 8px;
+  color: var(--white-color);
+  padding: var(--space-2);
   text-decoration: none;
   z-index: 100;
 }
@@ -233,7 +292,7 @@ strong {
 .section-title-wrap {
   background: var(--secondary-color);
   border-radius: var(--border-radius-small);
-  padding: 10px 30px;
+  padding: var(--space-2-5) var(--space-5-5);
 }
 
 
@@ -337,10 +396,14 @@ strong {
   height: auto !important;
 }
 
-.is-sticky,
-.is-sticky .navbar .container {
-  background: var(--white-color);
+.is-sticky .navbar {
   box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%);
+}
+
+/* Keep sticky nav consistent with dark theme */
+.is-sticky .navbar,
+.is-sticky .navbar .container {
+  background: var(--dark-color);
 }
 
 .is-sticky .navbar-brand,
@@ -374,7 +437,7 @@ strong {
   padding: 0;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--white-color) !important;
+  color: var(--white-color);
   text-decoration: none;
 }
 
@@ -395,7 +458,7 @@ strong {
 }
 
 .navbar-nav .nav-link {
-  color: var(--white-color) !important;
+  color: var(--white-color);
   font-size: 0.95rem;
   font-weight: var(--font-weight-medium);
   padding: 0.5rem 0.75rem;
@@ -404,7 +467,7 @@ strong {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  color: rgb(255 255 255 / 70%) !important;
+  color: rgb(255 255 255 / 70%);
   text-decoration: none;
 }
 
@@ -441,9 +504,33 @@ strong {
     min-height: 3rem;
   }
 
+  /* Hide logo on mobile to prevent white box */
+  .navbar-brand .logo {
+    display: none !important;
+  }
+
+  /* Hide collapsed menu by default; reveal when toggled */
   .navbar-collapse {
+    display: none;
     background: var(--dark-color);
     padding: 1rem 0;
+    width: 100%;
+  }
+
+  /* CSS-only toggle using hidden checkbox */
+  #nav-toggle:checked ~ .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Show the hamburger on small screens */
+  .navbar-toggler {
+    display: block;
+  }
+
+  /* Remove extra left indent on small screens */
+  .navbar-nav {
+    margin-left: 0;
   }
 
   .nav-item {
@@ -462,6 +549,12 @@ strong {
     flex-direction: column;
     width: 100%;
     padding: 0.6rem 1rem;
+  }
+
+  /* Ensure right-side actions don't push content */
+  .navbar-collapse .ms-auto {
+    margin-left: 0;
+    width: 100%;
   }
 
   .action-button {
@@ -589,7 +682,7 @@ strong {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, #fff 30%, rgb(255 255 255 / 70%));
+  background: linear-gradient(45deg, var(--white-color) 30%, rgb(255 255 255 / 70%));
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -616,7 +709,7 @@ strong {
 }
 
 
-/* Specific link styles */
+/* Link utility classes */
 .text-decoration-underline {
   color: var(--secondary-color);
   text-decoration: underline;
@@ -626,25 +719,23 @@ strong {
   color: var(--primary-color);
 }
 
-/* Links that should be teal (like navigation, important links) */
-.nav-link,
-.navbar-nav .nav-link,
+/* Copyright/footer link specificity - inherit standard link colors but add bold weight */
 .copyright-text-wrap a {
-  color: var(--secondary-color);
+  font-weight: var(--font-weight-bold);
 }
 
-.nav-link:hover,
-.navbar-nav .nav-link:hover {
-  color: var(--primary-color);
-}
+/* Note: .nav-link and .navbar-nav .nav-link colors are defined in NAVIGATION section above
+   - White for dark header background (lines 270-282)
+   - Gray for mobile/sticky state (lines 224-226, 1422-1426)
+   This comment prevents duplicate/conflicting selectors */
 
 
 /* Footer styles */
 .footer-redesign {
-  background: #fafafa;
-  border-top: 1px solid #eaeaea;
-  padding: 48px 0 32px;
-  margin-top: 64px;
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-100);
+  padding: var(--space-7) 0 var(--space-6);
+  margin-top: var(--space-8);
   font-size: 1rem;
 }
 
@@ -653,7 +744,7 @@ strong {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: var(--space-6);
   justify-content: space-between;
   align-items: flex-start;
   padding: 0 36px;
@@ -662,7 +753,7 @@ strong {
 .footer-col {
   flex: 1 1 210px;
   min-width: 210px;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
 }
 
 .footer-brand-logo {
@@ -671,7 +762,7 @@ strong {
 }
 
 .footer-brand-mission {
-  color: #222;
+  color: var(--gray-900);
   font-size: 0.85rem;
   margin-bottom: 0;
   max-width: 220px;
@@ -679,7 +770,7 @@ strong {
 
 .footer-col-title {
   font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-3);
   letter-spacing: 1px;
   font-size: 1.07rem;
   color: var(--secondary-color);
@@ -688,7 +779,7 @@ strong {
 .footer-links-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px;
+  margin: 0 0 var(--space-4-5);
 }
 
 .footer-links-list li {
@@ -696,17 +787,17 @@ strong {
 }
 
 .footer-support-text {
-  margin-bottom: 14px;
-  color: #444;
+  margin-bottom: var(--space-3-5);
+  color: var(--gray-700);
 }
 
 .footer-social-icons {
-  margin-bottom: 14px;
+  margin-bottom: var(--space-3-5);
 }
 
 /* Footer copyright text - improved contrast for WCAG AA compliance */
 .footer-copyright-wrapper p {
-  color: #767676 !important; /* Improved contrast ratio */
+  color: var(--gray-400); /* Improved contrast ratio */
   font-size: 14px;
   margin: 0;
   text-align: center;
@@ -714,22 +805,22 @@ strong {
 
 /* About page text contrast improvements */
 .about-section p {
-  color: #2a2a2a !important; /* Improved contrast ratio for better readability */
+  color: var(--gray-900); /* Improved contrast ratio for better readability */
 }
 
 /* Specific fix for organizing team text */
 .text-center {
-  color: #2a2a2a !important; /* Ensure sufficient contrast ratio */
+  color: var(--gray-900); /* Ensure sufficient contrast ratio */
 }
 
 .footer-social-icons a {
-  margin-right: 12px;
+  margin-right: var(--space-3);
   display: inline-block;
 }
 
 .footer-social-icons i {
   font-size: 18px;
-  color: #666;
+  color: var(--gray-500);
   transition: color 0.2s;
 }
 
@@ -798,15 +889,15 @@ strong {
 
 .profile-title {
   border-bottom: 1px solid var(--border-color);
-  padding: 15px 30px;
+  padding: 15px var(--space-5-5);
 }
 
 .profile-small-title {
   border-right: 1px solid var(--border-color);
   color: var(--secondary-color);
   font-weight: var(--font-weight-bold);
-  margin-right: 10px;
-  padding: 14px;
+  margin-right: var(--space-2-5);
+  padding: var(--space-3-5);
   display: inline-block;
 }
 
@@ -823,13 +914,13 @@ strong {
 }
 
 .about-thumb {
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: var(--space-4-5);
+  padding-left: var(--space-4-5);
 }
 
 
 /* ---------------------------------------
-  FEATURED              
+  FEATURED
 ----------------------------------------- */
 
 
@@ -853,13 +944,13 @@ strong {
 
 
 /* ---------------------------------------
-  sponsors              
+  sponsors
 ----------------------------------------- */
 
 .sponsors-item-height {
   min-height: 120px;
   height: 120px;
-  margin-bottom: 30px;
+  margin-bottom: var(--space-5-5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -909,10 +1000,10 @@ strong {
 
 /* Meeting section with teal background */
 .section-secondary-bg {
-  background: var(--secondary-color) !important;
-  color: var(--white-color) !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-top: none;
+  border-bottom: none;
 }
 
 .section-secondary-bg h1,
@@ -926,10 +1017,10 @@ strong {
 
 /* Meeting section styles */
 .meeting-section-alt {
-  background: var(--secondary-color) !important;
-  color: var(--white-color) !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-top: none;
+  border-bottom: none;
   padding: 4rem 0;
 }
 
@@ -954,7 +1045,7 @@ strong {
 
 /* Meeting title */
 .meeting-title {
-  color: var(--white-color) !important;
+  color: var(--white-color);
   font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 2rem;
@@ -965,7 +1056,7 @@ strong {
 .meeting-card {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
+  border-radius: var(--radius-card);
   padding: 2rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -1101,8 +1192,8 @@ strong {
   border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
-  margin-bottom: 24px;
-  padding: 40px 40px 240px;
+  margin-bottom: var(--space-5);
+  padding: var(--space-6-5) var(--space-6-5) 240px;
   transition: all 0.5s;
 }
 
@@ -1154,7 +1245,7 @@ strong {
   border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
-  padding: 6px 20px 6px 15px;
+  padding: 6px var(--space-4-5) 6px 15px;
   transition: all ease 0.5s;
 }
 
@@ -1185,7 +1276,7 @@ strong {
   border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
-  padding: 40px;
+  padding: var(--space-6-5);
   height: 350px;
   transition: all ease 0.5s;
 }
@@ -1210,13 +1301,13 @@ strong {
   border-radius: var(--border-radius-medium);
   display: block;
   width: 100%;
-  transform: rotate(10deg) translateY(80px);
+  transform: rotate(10deg) translateY(var(--space-10));
   transition: all ease 0.5s;
 }
 
 .projects-title {
-  padding-top: 10px;
-  margin-bottom: 20px;
+  padding-top: var(--space-2-5);
+  margin-bottom: var(--space-4-5);
 }
 
 .projects-tag {
@@ -1263,7 +1354,7 @@ strong {
   box-shadow: none;
   border: 2px solid var(--border-color);
   color: var(--p-color);
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
   padding-top: 13px;
   padding-bottom: 13px;
   outline: none;
@@ -1279,7 +1370,7 @@ strong {
   position: relative;
   margin-right: 0;
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
   padding: 0;
 }
 
@@ -1306,7 +1397,7 @@ strong {
   width: 100%;
   margin-top: 0;
   margin-left: 0;
-  padding: 40px 50px;
+  padding: var(--space-6-5) 50px;
 }
 
 .form-check-input:checked[type="checkbox"] {
@@ -1347,13 +1438,11 @@ strong {
 
 
 /* ---------------------------------------
-  SITE FOOTER              
+  SITE FOOTER
 ----------------------------------------- */
-
-/*
 .site-footer {
   border-top: 1px solid var(--border-color);
-  padding-bottom: 50px;
+  padding-bottom: var(--space-7);
   text-align: center;
 }
 
@@ -1366,16 +1455,9 @@ strong {
 .copyright-text-wrap p,
 .copyright-text {
   font-size: var(--copyright-font-size);
-}
-
-.copyright-text {
   border-right: 1px solid var(--border-color);
   padding-right: 25px;
-  margin-right: 20px;
-}
-
-.copyright-text-wrap a {
-  font-weight: var(--font-weight-bold);
+  margin-right: var(--space-4-5);
 }
 
 .footer-menu {
@@ -1397,101 +1479,9 @@ strong {
   display: inline-block;
   vertical-align: top;
   text-align: center;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 6px 14px;
-  min-width: 70px;
-}
-
-.footer-menu-link:hover {
-  /*background: var(--secondary-color);
-  border-color: transparent;
-  color: var(--white-color);
-}
-
-
-/*---------------------------------------
-  SOCIAL ICON               
------------------------------------------ */
-
-@charset "UTF-8";
-/*!
- * Bootstrap v3.3.5 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-
-footer {
-  display: block;
-}
-
-blockquote footer {
-  display: block;
-  font-size: 80%;
-  line-height: 1.42857;
-
-  /* color: #777777; */
-}
-
-blockquote footer::before {
-  content: '\2014 \00A0';
-}
-
-
-/* ---------------------------------------
-  SITE FOOTER              
------------------------------------------ */
-.site-footer {
-  border-top: 1px solid var(--border-color);
-  padding-bottom: 50px;
-  text-align: center;
-}
-
-.site-footer-title {
-  font-size: var(--menu-font-size);
-  color: var(--dark-color);
-  text-transform: uppercase;
-}
-
-.copyright-text-wrap p,
-.copyright-text {
-  font-size: var(--copyright-font-size);
-}
-
-.copyright-text {
-  border-right: 1px solid var(--border-color);
-  padding-right: 25px;
-  margin-right: 20px;
-}
-
-.copyright-text-wrap a {
-  font-weight: var(--font-weight-bold);
-}
-
-.footer-menu {
-  margin: 0;
-  padding: 0;
-}
-
-.footer-menu-item {
-  list-style: none;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.footer-menu-link {
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-medium);
-  font-size: var(--copyright-font-size);
-  font-weight: var(--font-weight-medium);
-  display: inline-block;
-  vertical-align: top;
-  text-align: center;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 6px 14px;
+  margin-right: var(--space-2-5);
+  margin-bottom: var(--space-2-5);
+  padding: 6px var(--space-3-5);
   min-width: 70px;
 }
 
@@ -1512,7 +1502,7 @@ blockquote footer::before {
   margin: 0 0 15px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: var(--space-4-5);
 }
 
 .social-icon-item {
@@ -1527,239 +1517,11 @@ blockquote footer::before {
   justify-content: center;
   width: 40px;
   height: 40px;
-  color: #666;
+  color: var(--gray-500);
   font-size: 20px;
   transition: color 0.2s;
   border-radius: var(--border-radius-large);
   margin: 2px 2px 5px;
-}
-
-
-
-
-/* CSS */
-* {
-  margin: 0;
-  padding: 0;
-}
-
-
-.pg-footer {
-  font-family: var(--body-font-family);
-}
-
-.md-footer {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.md-footer-meta {
-  display: none !important;
-}
-
-.footer {
-  background: linear-gradient(180deg, #fff 0%, #f5f7ff 100%);
-  padding: 40px 0 0;
-  margin: 120px 0 0;
-  position: relative;
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #4285f4 0%, #34a853 33%, #fbbc05 66%, #ea4335 100%);
-  opacity: 0.8;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 0 20px;
-}
-
-.footer-content-column {
-  flex: 1;
-  min-width: 250px;
-  margin: 0 15px 30px;
-}
-
-.footer-logo h1 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  line-height: 1.2;
-}
-
-.footer-logo p {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #666;
-  max-width: 300px;
-}
-
-.footer-menu-name {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.footer-menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-menu-list li {
-  margin-bottom: 12px;
-}
-
-.footer-menu-list a,
-.footer-links-list a {
-  color: var(--secondary-color) !important;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s ease;
-}
-
-.footer-menu-list a:hover,
-.footer-links-list a:hover {
-  color: var(--primary-color) !important;
-  text-decoration: underline;
-}
-
-.footer-call-to-action-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.footer-call-to-action-button {
-  display: block;
-  padding: 10px 20px;
-  margin-bottom: 15px;
-  background-color: #EB7571;
-  color: white;
-  text-align: center;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: background-color 0.2s;
-}
-
-.footer-call-to-action-button:hover {
-  background-color: #cfcfcf;
-}
-
-.footer-copyright {
-  border-top: 1px solid rgb(66 133 244 / 10%);
-  padding: 20px 0;
-  margin: 20px 0 0;
-  background: rgb(245 247 255 / 90%);
-}
-
-
-
-.social-icon-link:hover {
-  color: #333;
-}
-
-.footer-copyright-wrapper {
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  color: #666;
-  font-size: 13px;
-}
-
-@media (width <= 1024px) {
-  .footer-content {
-    justify-content: flex-start;
-  }
-  
-  .footer-content-column {
-    flex: 0 0 calc(50% - 30px);
-  }
-}
-
-@media (width <= 768px) {
-  .footer-content-column {
-    flex: 0 0 100%;
-    margin: 0 0 30px;
-  }
-}
-
-@media (width >=320px) and (width <=479px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-  .footer-content {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1230px;
-    position: relative;
-  }
-}
-
-@media (width >=480px) and (width <=599px)  { /* smartphones, Android phones, landscape iPhone */
-  .footer-content {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1230px;
-    position: relative;
-  }
-}
-
-@media (width >=600px) and (width <= 800px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-  .footer-content {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1230px;
-    position: relative;
-  }
-}
-
-@media (width >=801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
-
-}
-
-@media (width >=1025px) { /* big landscape tablets, laptops, and desktops */
-
-}
-
-@media (width >=1281px) { /* hi-res laptops and desktops */
-
-}
-
-
-
-
-@media (width >= 760px) {
-  .footer-content {
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 1230px;
-      position: relative;
-  }
-
-  .footer-wave-svg {
-      height: 50px;
-  }
-
-  .footer-content-column {
-      width: 24.99%;
-  }
-}
-
-@media (width >= 568px) {
-  /* .footer-content-column {
-      width: 49.99%;
-  } */
 }
 
 
@@ -1819,8 +1581,8 @@ blockquote footer::before {
 
   .section-padding {
     padding: 2em;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
   }
 
   .navbar .container {
@@ -1846,18 +1608,18 @@ blockquote footer::before {
 
   .navbar-nav .nav-link {
     color: var(--p-color);
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: var(--space-2-5);
+    padding-bottom: var(--space-2-5);
   }
 
   .hero {
-    padding-top: 200px;
+    padding-top: var(--section-padding-xl);
     padding-bottom: 400px;
   }
 
   .hero-text {
     top: 0;
-    margin-bottom: 120px;
+    margin-bottom: var(--section-padding-md);
   }
 
   .about-thumb {
@@ -1871,11 +1633,11 @@ blockquote footer::before {
 
   .services-thumb-up {
     bottom: 0;
-    margin-bottom: 32px;
+    margin-bottom: var(--space-6);
   }
 
   .services-thumb {
-    margin-bottom: 32px;
+    margin-bottom: var(--space-6);
     padding-bottom: 270px;
   }
 
@@ -1891,13 +1653,13 @@ blockquote footer::before {
 
   .projects-thumb {
     margin-top: 0;
-    margin-bottom: 32px;
+    margin-bottom: var(--space-6);
   }
 
 /*
   .contact-info {
     border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
-    padding: 40px 30px;
+    padding: var(--space-6-5) var(--space-5-5);
   }
 
   .contact-info-border-start {
@@ -1912,8 +1674,8 @@ blockquote footer::before {
 
 @media screen and (width <= 575px) {
   .navbar .container {
-    margin-right: 12px;
-    margin-left: 12px;
+    margin-right: var(--space-3);
+    margin-left: var(--space-3);
   }
 }
 
@@ -1945,12 +1707,6 @@ blockquote footer::before {
     line-height: 35.5px;
   }
 
-  .logo{
-    width: 50px;
-    height: 50px;
-    margin-left: 0;
-  }
-
   .hero-image-wrap {
     width: 300px;
     height: 300px;
@@ -1966,18 +1722,18 @@ blockquote footer::before {
   }
 
   .hero{
-    padding-top: 150px;
+    padding-top: var(--space-15);
     padding-bottom: 0;
   }
 }
 
 /* About page cards */
 .organizers-section {
-  background: #f7f7f7;
-  border-radius: 12px;
+  background: var(--section-bg-color);
+  border-radius: var(--space-3);
   padding: 3rem;
   margin-top: 3rem;
-  box-shadow: 0 20px 60px rgb(15 23 42 / 8%);
+  box-shadow: 0 var(--space-4-5) 60px rgb(15 23 42 / 8%);
 }
 
 .organizers-section .organizers-grid {
@@ -1989,11 +1745,15 @@ blockquote footer::before {
 
 .organizers-section .organizer-card,
 .organizers-section .shoutout-section {
-  background: #fff;
-  border-radius: 16px;
+  background: var(--white-color);
+  border-radius: var(--space-4);
   padding: 2rem 1.5rem;
-  box-shadow: 0 10px 30px rgb(15 23 42 / 10%);
+  box-shadow: 0 var(--space-2-5) var(--space-5-5) rgb(15 23 42 / 10%);
   text-align: center;
+}
+
+.organizers-section .shoutout-section {
+  margin-top: 3rem;
 }
 
 .organizers-section .organizer-name {
@@ -2005,14 +1765,6 @@ blockquote footer::before {
 .organizers-section .organizer-contact a {
   color: var(--secondary-color);
   text-decoration: underline;
-}
-
-.organizers-section .shoutout-section {
-  background: #fff;
-  border-radius: 16px;
-  padding: 2rem 1.5rem;
-  margin-top: 3rem;
-  box-shadow: 0 10px 30px rgb(15 23 42 / 10%);
 }
 
 .organizers-section .shoutout-link {
@@ -2038,12 +1790,12 @@ blockquote footer::before {
 
 /* Page header spacing */
 .site-header {
-  padding: 120px 0 80px;
+  padding: var(--section-padding-md) 0 var(--space-10);
 }
 
 .has-fixed-nav .site-header,
 body.has-fixed-nav .site-header {
-  padding-top: 160px;
+  padding-top: var(--section-padding-lg);
 }
 
 .page-title {
@@ -2073,7 +1825,7 @@ body.has-fixed-nav .site-header {
 
 .meeting-section-alt .meeting-image-wrapper {
   position: relative;
-  border-radius: 32px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: 0 30px 70px rgb(15 23 42 / 30%);
 }
@@ -2116,6 +1868,6 @@ body.has-fixed-nav .site-header {
 }
 
 .footer-social-icon-img {
-  background: #fff;
-  border-radius: 4px;
+  background: var(--white-color);
+  border-radius: var(--radius-sm);
 }

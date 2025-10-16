@@ -1,0 +1,39 @@
+/* ---------------------------------------
+  GLOBAL RESETS AND BASE STYLES
+----------------------------------------- */
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body base styles */
+body {
+  background: var(--white-color);
+  font-family: var(--body-font-family);
+}
+
+/* Section padding utility */
+.section-padding {
+  padding: 8em;
+}
+
+/* Selection styles */
+::selection {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+/* Strong/bold elements */
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Section title wrap */
+.section-title-wrap {
+  background: var(--secondary-color);
+  border-radius: var(--border-radius-small);
+  padding: 10px 30px;
+}

@@ -19,33 +19,52 @@ The official website for [CivicTech Waterloo Region](https://civictechwr.org), a
 
 ### Prerequisites
 
-- Ruby 3.1+ (for Jekyll)
-- Node.js 20+ (for build tools)
+- Ruby 3.1+ (3.4.5 recommended; see `.ruby-version`)
+- Node.js 22+ (for build tools; see `.nvmrc`)
 - Git
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/CTWR-Org/ctwr-web.git
    cd ctwr-web
    ```
 
 2. **Install dependencies**
+
    ```bash
-   # Install Ruby dependencies
-   bundle install
-   
+   # Ensure you are on Ruby 3.1+ (3.4.5 recommended)
+   # with rbenv (example):
+   #   rbenv install 3.4.5 && rbenv local 3.4.5
+   # or asdf: asdf install ruby 3.4.5 && asdf local ruby 3.4.5
+
+   # Quick setup (checks Ruby, installs Bundler & gems)
+   ./scripts/setup-ruby.sh
+
    # Install Node.js dependencies
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run serve
    ```
 
    The site will be available at `http://localhost:4000`
+
+### Troubleshooting Ruby
+
+- If `bundle exec jekyll build` fails with missing gems like `sass-embedded` or
+  `google-protobuf`, verify your Ruby matches `.ruby-version` (3.4.5). Older
+  Rubies (e.g., 2.6) are not supported. After switching Ruby, run:
+  ```bash
+  rm -rf vendor/bundle
+  gem install bundler
+  bundle install
+  ```
 
 ## 📁 Project Structure
 

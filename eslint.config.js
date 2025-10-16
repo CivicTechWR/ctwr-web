@@ -32,6 +32,9 @@ module.exports = [
         cancelAnimationFrame: 'readonly',
         pJSDom: 'readonly',
         check: 'readonly',
+        // Performance APIs
+        performance: 'readonly',
+        PerformanceObserver: 'readonly',
         // Library globals
         jQuery: 'readonly',
         $: 'readonly',

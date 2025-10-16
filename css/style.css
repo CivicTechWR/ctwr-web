@@ -172,7 +172,23 @@ button {
 }
 
 
-/* Standardized link styles */
+/* ---------------------------------------
+  LINK COLOR STANDARDIZATION
+
+  Standard link behavior across the site:
+  - Default: Teal (var(--secondary-color))
+  - Hover: Red (var(--primary-color)) with underline
+  - Focus: Red with outline for accessibility
+  - Visited: Teal (same as default for consistency)
+
+  Contextual variations:
+  - Navigation links (.navbar-nav .nav-link): White on dark header background
+  - Footer social icons: Gray → Teal on hover (icon color, not link)
+  - Buttons (a.btn): Inherit from button system (css/components/buttons.css)
+
+  All other links inherit these base styles.
+----------------------------------------- */
+
 a {
   color: var(--secondary-color);
   text-decoration: none;
@@ -693,7 +709,7 @@ strong {
 }
 
 
-/* Specific link styles */
+/* Link utility classes */
 .text-decoration-underline {
   color: var(--secondary-color);
   text-decoration: underline;
@@ -703,18 +719,15 @@ strong {
   color: var(--primary-color);
 }
 
-/* Links that should be teal (like navigation, important links) */
-.nav-link,
-.navbar-nav .nav-link,
+/* Copyright/footer link specificity - inherit standard link colors but add bold weight */
 .copyright-text-wrap a {
-  color: var(--secondary-color);
   font-weight: var(--font-weight-bold);
 }
 
-.nav-link:hover,
-.navbar-nav .nav-link:hover {
-  color: var(--primary-color);
-}
+/* Note: .nav-link and .navbar-nav .nav-link colors are defined in NAVIGATION section above
+   - White for dark header background (lines 270-282)
+   - Gray for mobile/sticky state (lines 224-226, 1422-1426)
+   This comment prevents duplicate/conflicting selectors */
 
 
 /* Footer styles */

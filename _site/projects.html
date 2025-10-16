@@ -33,9 +33,7 @@
 
     <!-- Resource hints for performance -->
     <link rel="preload" href="css/style.css" as="style" />
-    
-    <link rel="preload" href="css/bootstrap.css" as="style" />
-    
+    <link rel="preload" href="css/bootstrap-custom.css" as="style" />
     <link rel="preload" href="js/projects.json" as="fetch" crossorigin />
 
     <!-- DNS prefetch for external resources -->
@@ -48,9 +46,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
-    
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    
+    <!-- Custom Bootstrap with only used classes (2.7KB vs 237KB = 98.9% reduction) -->
+    <link href="css/bootstrap-custom.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/abstract-shapes.css" rel="stylesheet" />
     <link href="css/pages/projects.css" rel="stylesheet" />
@@ -189,7 +186,7 @@
         </ul>
         <div class="ms-auto">
           <a
-            class="btn btn--outline"
+            class="btn btn--light"
             href="https://discourse.ctwr.org"
             target="_blank"
             rel="noopener noreferrer"

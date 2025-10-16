@@ -1,10 +1,5 @@
 {
-  "MD013": {
-    "line_length": 200,
-    "code_blocks": false,
-    "tables": false,
-    "headings": false
-  },
+  "MD013": false,
   "MD024": {
     "siblings_only": true
   },
@@ -13,9 +8,7 @@
   "MD002": false,
   "MD026": false,
   "MD029": false,
-  "MD007": {
-    "indent": 2
-  },
+  "MD007": false,
   "MD012": {
     "maximum": 1
   },
@@ -76,7 +69,7 @@
     "style": "backtick"
   },
   "MD049": {
-    "style": "backtick"
+    "style": "asterisk"
   },
   "MD050": {
     "style": "asterisk"
