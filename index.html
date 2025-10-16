@@ -20,11 +20,7 @@ permalink: /
 
     <!-- CSS FILES -->
     <!-- Preload critical resources -->
-    {% if jekyll.environment == "production" %}
-    <link rel="preload" href="css/bootstrap.min.css" as="style" />
-    {% else %}
-    <link rel="preload" href="css/bootstrap.css" as="style" />
-    {% endif %}
+    <link rel="preload" href="css/bootstrap-custom.css" as="style" />
     <link rel="preload" href="images/hacknight-1.jpg" as="image" />
 
     <!-- DNS prefetch for external resources -->
@@ -43,11 +39,8 @@ permalink: /
 
     <!-- Critical CSS inlined for performance -->
 
-    {% if jekyll.environment == "production" %}
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    {% else %}
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    {% endif %}
+    <!-- Custom Bootstrap with only used classes (2.7KB vs 237KB = 98.9% reduction) -->
+    <link href="css/bootstrap-custom.css" rel="stylesheet" />
     <link href="css/abstract-shapes.css" rel="stylesheet" />
 
     <!-- Load main stylesheet AFTER Bootstrap to override its styles -->
