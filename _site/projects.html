@@ -38,13 +38,14 @@
 
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
     <!-- Preconnect to critical external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <!-- Self-hosted fonts (no external DNS lookup required) -->
+    
+    <link href="css/fonts.css" rel="stylesheet" />
+    
 
     <!-- Custom Bootstrap with only used classes (2.7KB vs 237KB = 98.9% reduction) -->
     <link href="css/bootstrap-custom.css" rel="stylesheet" />

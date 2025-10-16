@@ -28,7 +28,7 @@
     "format:json": "prettier --write '**/*.json' '#package-lock.json'",
     "format:all": "npm run format:html && npm run format:css && npm run format:js && npm run format:md && npm run format:yaml && npm run format:json",
     "format": "npm run format:all",
-    "minify:css": "cleancss -o css/style.min.css css/style.css && cleancss -o css/abstract-shapes.min.css css/abstract-shapes.css && cleancss -o css/components/buttons.min.css css/components/buttons.css && cleancss -o css/pages/about.min.css css/pages/about.css && cleancss -o css/pages/projects.min.css css/pages/projects.css",
+    "minify:css": "cleancss -o css/fonts.min.css css/fonts.css && cleancss -o css/style.min.css css/style.css && cleancss -o css/abstract-shapes.min.css css/abstract-shapes.css && cleancss -o css/components/buttons.min.css css/components/buttons.css && cleancss -o css/pages/about.min.css css/pages/about.css && cleancss -o css/pages/projects.min.css css/pages/projects.css",
     "minify:js": "terser js/optimized-bundle.js --compress --mangle --source-map -o js/optimized-bundle.min.js",
     "minify": "npm run minify:css && npm run minify:js",
     "build": "npm run build:prod",
