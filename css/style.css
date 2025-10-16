@@ -62,12 +62,22 @@ Key Features:
   /* Spacing Scale - Consistent spacing system */
   --space-1:                      4px;
   --space-2:                      8px;
+  --space-2-5:                    10px;
   --space-3:                      12px;
+  --space-3-5:                    14px;
   --space-4:                      16px;
+  --space-4-5:                    20px;
   --space-5:                      24px;
+  --space-5-5:                    30px;
   --space-6:                      32px;
+  --space-6-5:                    40px;
   --space-7:                      48px;
   --space-8:                      64px;
+  --space-10:                     80px;
+
+  /* Section spacing for large layout padding */
+  --section-padding-sm:           80px;
+  --section-padding-md:           120px;
 
   /* Simplified Border Radius - Modern radius system */
   --radius-sm:                    4px;
@@ -705,8 +715,8 @@ strong {
 .footer-redesign {
   background: var(--gray-50);
   border-top: 1px solid var(--gray-100);
-  padding: 48px 0 32px;
-  margin-top: 64px;
+  padding: var(--space-7) 0 var(--space-6);
+  margin-top: var(--space-8);
   font-size: 1rem;
 }
 
@@ -715,7 +725,7 @@ strong {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: var(--space-6);
   justify-content: space-between;
   align-items: flex-start;
   padding: 0 36px;
@@ -724,7 +734,7 @@ strong {
 .footer-col {
   flex: 1 1 210px;
   min-width: 210px;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
 }
 
 .footer-brand-logo {
@@ -741,7 +751,7 @@ strong {
 
 .footer-col-title {
   font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-3);
   letter-spacing: 1px;
   font-size: 1.07rem;
   color: var(--secondary-color);
@@ -750,7 +760,7 @@ strong {
 .footer-links-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px;
+  margin: 0 0 var(--space-4-5);
 }
 
 .footer-links-list li {
@@ -758,12 +768,12 @@ strong {
 }
 
 .footer-support-text {
-  margin-bottom: 14px;
+  margin-bottom: var(--space-3-5);
   color: var(--gray-700);
 }
 
 .footer-social-icons {
-  margin-bottom: 14px;
+  margin-bottom: var(--space-3-5);
 }
 
 /* Footer copyright text - improved contrast for WCAG AA compliance */
@@ -785,7 +795,7 @@ strong {
 }
 
 .footer-social-icons a {
-  margin-right: 12px;
+  margin-right: var(--space-3);
   display: inline-block;
 }
 
@@ -860,15 +870,15 @@ strong {
 
 .profile-title {
   border-bottom: 1px solid var(--border-color);
-  padding: 15px 30px;
+  padding: 15px var(--space-5-5);
 }
 
 .profile-small-title {
   border-right: 1px solid var(--border-color);
   color: var(--secondary-color);
   font-weight: var(--font-weight-bold);
-  margin-right: 10px;
-  padding: 14px;
+  margin-right: var(--space-2-5);
+  padding: var(--space-3-5);
   display: inline-block;
 }
 
@@ -885,13 +895,13 @@ strong {
 }
 
 .about-thumb {
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: var(--space-4-5);
+  padding-left: var(--space-4-5);
 }
 
 
 /* ---------------------------------------
-  FEATURED              
+  FEATURED
 ----------------------------------------- */
 
 
@@ -915,13 +925,13 @@ strong {
 
 
 /* ---------------------------------------
-  sponsors              
+  sponsors
 ----------------------------------------- */
 
 .sponsors-item-height {
   min-height: 120px;
   height: 120px;
-  margin-bottom: 30px;
+  margin-bottom: var(--space-5-5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1163,8 +1173,8 @@ strong {
   border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
-  margin-bottom: 24px;
-  padding: 40px 40px 240px;
+  margin-bottom: var(--space-5);
+  padding: var(--space-6-5) var(--space-6-5) 240px;
   transition: all 0.5s;
 }
 
@@ -1216,7 +1226,7 @@ strong {
   border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
-  padding: 6px 20px 6px 15px;
+  padding: 6px var(--space-4-5) 6px 15px;
   transition: all ease 0.5s;
 }
 
@@ -1247,7 +1257,7 @@ strong {
   border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
-  padding: 40px;
+  padding: var(--space-6-5);
   height: 350px;
   transition: all ease 0.5s;
 }
@@ -1272,13 +1282,13 @@ strong {
   border-radius: var(--border-radius-medium);
   display: block;
   width: 100%;
-  transform: rotate(10deg) translateY(80px);
+  transform: rotate(10deg) translateY(var(--space-10));
   transition: all ease 0.5s;
 }
 
 .projects-title {
-  padding-top: 10px;
-  margin-bottom: 20px;
+  padding-top: var(--space-2-5);
+  margin-bottom: var(--space-4-5);
 }
 
 .projects-tag {
@@ -1325,7 +1335,7 @@ strong {
   box-shadow: none;
   border: 2px solid var(--border-color);
   color: var(--p-color);
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
   padding-top: 13px;
   padding-bottom: 13px;
   outline: none;
@@ -1341,7 +1351,7 @@ strong {
   position: relative;
   margin-right: 0;
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
   padding: 0;
 }
 
@@ -1368,7 +1378,7 @@ strong {
   width: 100%;
   margin-top: 0;
   margin-left: 0;
-  padding: 40px 50px;
+  padding: var(--space-6-5) 50px;
 }
 
 .form-check-input:checked[type="checkbox"] {
@@ -1428,7 +1438,7 @@ strong {
   font-size: var(--copyright-font-size);
   border-right: 1px solid var(--border-color);
   padding-right: 25px;
-  margin-right: 20px;
+  margin-right: var(--space-4-5);
 }
 
 .footer-menu {
@@ -1450,9 +1460,9 @@ strong {
   display: inline-block;
   vertical-align: top;
   text-align: center;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 6px 14px;
+  margin-right: var(--space-2-5);
+  margin-bottom: var(--space-2-5);
+  padding: 6px var(--space-3-5);
   min-width: 70px;
 }
 
@@ -1473,7 +1483,7 @@ strong {
   margin: 0 0 15px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: var(--space-4-5);
 }
 
 .social-icon-item {
@@ -1552,8 +1562,8 @@ strong {
 
   .section-padding {
     padding: 2em;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
   }
 
   .navbar .container {
@@ -1579,8 +1589,8 @@ strong {
 
   .navbar-nav .nav-link {
     color: var(--p-color);
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: var(--space-2-5);
+    padding-bottom: var(--space-2-5);
   }
 
   .hero {
@@ -1590,7 +1600,7 @@ strong {
 
   .hero-text {
     top: 0;
-    margin-bottom: 120px;
+    margin-bottom: var(--section-padding-md);
   }
 
   .about-thumb {
@@ -1604,11 +1614,11 @@ strong {
 
   .services-thumb-up {
     bottom: 0;
-    margin-bottom: 32px;
+    margin-bottom: var(--space-6);
   }
 
   .services-thumb {
-    margin-bottom: 32px;
+    margin-bottom: var(--space-6);
     padding-bottom: 270px;
   }
 
@@ -1624,13 +1634,13 @@ strong {
 
   .projects-thumb {
     margin-top: 0;
-    margin-bottom: 32px;
+    margin-bottom: var(--space-6);
   }
 
 /*
   .contact-info {
     border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
-    padding: 40px 30px;
+    padding: var(--space-6-5) var(--space-5-5);
   }
 
   .contact-info-border-start {
@@ -1645,8 +1655,8 @@ strong {
 
 @media screen and (width <= 575px) {
   .navbar .container {
-    margin-right: 12px;
-    margin-left: 12px;
+    margin-right: var(--space-3);
+    margin-left: var(--space-3);
   }
 }
 
@@ -1701,10 +1711,10 @@ strong {
 /* About page cards */
 .organizers-section {
   background: var(--section-bg-color);
-  border-radius: 12px;
+  border-radius: var(--space-3);
   padding: 3rem;
   margin-top: 3rem;
-  box-shadow: 0 20px 60px rgb(15 23 42 / 8%);
+  box-shadow: 0 var(--space-4-5) 60px rgb(15 23 42 / 8%);
 }
 
 .organizers-section .organizers-grid {
@@ -1717,9 +1727,9 @@ strong {
 .organizers-section .organizer-card,
 .organizers-section .shoutout-section {
   background: var(--white-color);
-  border-radius: 16px;
+  border-radius: var(--space-4);
   padding: 2rem 1.5rem;
-  box-shadow: 0 10px 30px rgb(15 23 42 / 10%);
+  box-shadow: 0 var(--space-2-5) var(--space-5-5) rgb(15 23 42 / 10%);
   text-align: center;
 }
 
@@ -1761,7 +1771,7 @@ strong {
 
 /* Page header spacing */
 .site-header {
-  padding: 120px 0 80px;
+  padding: var(--section-padding-md) 0 var(--space-10);
 }
 
 .has-fixed-nav .site-header,
