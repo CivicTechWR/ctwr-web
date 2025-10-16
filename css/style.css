@@ -213,7 +213,7 @@ a.btn:visited:hover {
   top: -40px;
   left: 0;
   background: var(--primary-color);
-  color: white;
+  color: var(--white-color);
   padding: 8px;
   text-decoration: none;
   z-index: 100;
@@ -650,7 +650,7 @@ strong {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, #fff 30%, rgb(255 255 255 / 70%));
+  background: linear-gradient(45deg, var(--white-color) 30%, rgb(255 255 255 / 70%));
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -703,8 +703,8 @@ strong {
 
 /* Footer styles */
 .footer-redesign {
-  background: #fafafa;
-  border-top: 1px solid #eaeaea;
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-100);
   padding: 48px 0 32px;
   margin-top: 64px;
   font-size: 1rem;
@@ -733,7 +733,7 @@ strong {
 }
 
 .footer-brand-mission {
-  color: #222;
+  color: var(--gray-900);
   font-size: 0.85rem;
   margin-bottom: 0;
   max-width: 220px;
@@ -759,7 +759,7 @@ strong {
 
 .footer-support-text {
   margin-bottom: 14px;
-  color: #444;
+  color: var(--gray-700);
 }
 
 .footer-social-icons {
@@ -768,7 +768,7 @@ strong {
 
 /* Footer copyright text - improved contrast for WCAG AA compliance */
 .footer-copyright-wrapper p {
-  color: #767676; /* Improved contrast ratio */
+  color: var(--gray-400); /* Improved contrast ratio */
   font-size: 14px;
   margin: 0;
   text-align: center;
@@ -776,12 +776,12 @@ strong {
 
 /* About page text contrast improvements */
 .about-section p {
-  color: #2a2a2a; /* Improved contrast ratio for better readability */
+  color: var(--gray-900); /* Improved contrast ratio for better readability */
 }
 
 /* Specific fix for organizing team text */
 .text-center {
-  color: #2a2a2a; /* Ensure sufficient contrast ratio */
+  color: var(--gray-900); /* Ensure sufficient contrast ratio */
 }
 
 .footer-social-icons a {
@@ -791,7 +791,7 @@ strong {
 
 .footer-social-icons i {
   font-size: 18px;
-  color: #666;
+  color: var(--gray-500);
   transition: color 0.2s;
 }
 
@@ -1488,7 +1488,7 @@ strong {
   justify-content: center;
   width: 40px;
   height: 40px;
-  color: #666;
+  color: var(--gray-500);
   font-size: 20px;
   transition: color 0.2s;
   border-radius: var(--border-radius-large);
@@ -1700,7 +1700,7 @@ strong {
 
 /* About page cards */
 .organizers-section {
-  background: #f7f7f7;
+  background: var(--section-bg-color);
   border-radius: 12px;
   padding: 3rem;
   margin-top: 3rem;
@@ -1716,7 +1716,7 @@ strong {
 
 .organizers-section .organizer-card,
 .organizers-section .shoutout-section {
-  background: #fff;
+  background: var(--white-color);
   border-radius: 16px;
   padding: 2rem 1.5rem;
   box-shadow: 0 10px 30px rgb(15 23 42 / 10%);
@@ -1839,6 +1839,6 @@ body.has-fixed-nav .site-header {
 }
 
 .footer-social-icon-img {
-  background: #fff;
+  background: var(--white-color);
   border-radius: 4px;
 }
