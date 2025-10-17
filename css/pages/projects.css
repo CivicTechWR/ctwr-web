@@ -2,7 +2,7 @@
 .projects-main-centered {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 100px;
+  padding: var(--page-padding);
   background: none;
   border-radius: 0;
   box-shadow: none;
@@ -10,7 +10,7 @@
 
 @media screen and (width <= 480px) {
   .projects-main-centered {
-    padding: 40px;
+    padding: var(--card-padding);
     padding-top: 100px;
   }
 }
@@ -22,7 +22,7 @@
 
 .projects-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: var(--font-size-2xl);
   font-weight: 600;
   margin-bottom: 3rem;
 }
@@ -41,7 +41,7 @@
   border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
-  padding: 40px;
+  padding: var(--card-padding);
   height: 350px;
   transition: all ease 0.5s;
   margin-bottom: 30px;

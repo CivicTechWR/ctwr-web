@@ -1,0 +1,194 @@
+/* ---------------------------------------
+  FOOTER COMPONENT - Site footer
+  Extracted from style.css for better organization
+----------------------------------------- */
+
+/* Main Footer Styles */
+.site-footer {
+  border-top: 1px solid var(--border-color);
+  padding-bottom: var(--space-7);
+  text-align: center;
+}
+
+.site-footer-title {
+  font-size: var(--menu-font-size);
+  color: var(--dark-color);
+  text-transform: uppercase;
+}
+
+.copyright-text-wrap p,
+.copyright-text {
+  font-size: var(--copyright-font-size);
+  border-right: 1px solid var(--border-color);
+  padding-right: 25px;
+  margin-right: var(--space-4-5);
+}
+
+.footer-menu {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-menu-item {
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.footer-menu-link {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-medium);
+  font-size: var(--copyright-font-size);
+  font-weight: var(--font-weight-medium);
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  margin-right: var(--space-2-5);
+  margin-bottom: var(--space-2-5);
+  padding: 6px var(--space-3-5);
+  min-width: 70px;
+}
+
+.footer-menu-link:hover {
+  /* Hover styles can be added here if needed */
+}
+
+/* Footer Redesign - Modern Footer Layout */
+.footer-redesign {
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-100);
+  padding: var(--space-7) 0 var(--space-6);
+  margin-top: var(--space-8);
+  font-size: var(--font-size-mobile-md);
+}
+
+.footer-redesign-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 36px;
+}
+
+.footer-col {
+  flex: 1 1 210px;
+  min-width: 210px;
+  margin-bottom: var(--space-5);
+}
+
+.footer-brand-logo {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.footer-brand-mission {
+  color: var(--gray-900);
+  font-size: var(--font-size-mobile-sm);
+  margin-bottom: 0;
+  max-width: 220px;
+}
+
+.footer-col-title {
+  font-weight: bold;
+  margin-bottom: var(--space-3);
+  letter-spacing: 1px;
+  font-size: var(--font-size-mobile-lg);
+  color: var(--secondary-color);
+}
+
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4-5);
+}
+
+.footer-links-list li {
+  margin-bottom: 7px;
+}
+
+.footer-support-text {
+  margin-bottom: var(--space-3-5);
+  color: var(--gray-700);
+}
+
+.footer-social-icons {
+  margin-bottom: var(--space-3-5);
+}
+
+.footer-social-icons a {
+  margin-right: var(--space-3);
+  display: inline-block;
+}
+
+.footer-social-icons i {
+  font-size: var(--p-font-size);
+  color: var(--gray-500);
+  transition: color 0.2s;
+}
+
+.footer-social-icons i:hover {
+  color: var(--secondary-color);
+}
+
+/* Footer copyright text - improved contrast for WCAG AA compliance */
+.footer-copyright-wrapper p {
+  color: var(--gray-600); /* Improved contrast ratio for WCAG AA compliance */
+  font-size: var(--copyright-font-size);
+  margin: 0;
+  text-align: center;
+}
+
+/* Social Icons */
+.social-icon {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4-5);
+}
+
+.social-icon-item {
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--gray-500);
+  font-size: var(--font-size-mobile-xl);
+  transition: color 0.2s;
+  border-radius: var(--border-radius-large);
+  margin: 2px 2px 5px;
+}
+
+/* Footer Accent Utilities */
+.footer-col-title-accent {
+  color: var(--secondary-color);
+}
+
+.footer-social-icon-img {
+  background: var(--white-color);
+  border-radius: var(--radius-sm);
+}
+
+/* Responsive Footer Styles */
+@media (width <= 900px) {
+  .footer-redesign-container {
+    flex-direction: column;
+    gap: 36px;
+    padding: 0 18px;
+  }
+
+  .footer-col {
+    min-width: 0;
+  }
+}

@@ -1,0 +1,226 @@
+/* ---------------------------------------
+  HERO SECTION - Main landing area
+  Extracted from style.css for better organization
+----------------------------------------- */
+
+.hero {
+  background: var(--dark-color);
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding-top: calc(3rem + 330px);
+  padding-bottom: 7rem;
+  min-height: 100vh;
+  z-index: 2;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, 
+    rgb(66 133 244 / 80%),
+    rgb(52 168 83 / 80%),
+    rgb(251 188 5 / 80%),
+    rgb(234 67 53 / 80%)
+  );
+  opacity: 0.2;
+  mix-blend-mode: multiply;
+  animation: gradient 5s ease infinite;
+}
+
+.hero-background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(rgb(255 255 255 / 20%) 0.5px, transparent 1px),
+    radial-gradient(rgb(255 255 255 / 20%) 0.5px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  animation: pattern 60s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    transform: rotate(0deg) scale(1.5);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(2);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1.5);
+  }
+}
+
+@keyframes pattern {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  color: var(--white-color);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgb(255 255 255 / 10%);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-2xl);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 10%);
+}
+
+.badge-icon {
+  font-size: var(--font-size-mobile-xl);
+  margin-right: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.badge-text {
+  font-size: var(--font-size-mobile-sm);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.hero-title {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(45deg, var(--white-color) 30%, rgb(255 255 255 / 70%));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: var(--font-size-mobile-xl);
+  line-height: 1.6;
+  color: rgb(255 255 255 / 80%);
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Hero Image Styles */
+.hero-image-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive Hero Styles */
+@media (width <= 768px) {
+  .hero {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-mobile-md);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (width >= 1600px) {
+  .hero {
+    padding-top: 380px;
+    padding-bottom: 380px;
+  }
+
+  .hero-image-wrap {
+    top: -50px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .hero-image {
+    min-width: 650px;
+  }
+  
+  .hero-title,
+  .hero h2 {
+    font-size: var(--h2-font-size);
+  }
+}
+
+@media screen and (width <= 991px) {
+  .hero {
+    padding-top: var(--section-padding-xl);
+    padding-bottom: 400px;
+  }
+
+  .hero-text {
+    top: 0;
+    margin-bottom: var(--section-padding-md);
+  }
+}
+
+@media screen and (width <= 480px) {
+  .hero-image-wrap {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-image {
+    min-width: inherit;
+  }
+
+  .hero{
+    padding-top: var(--space-15);
+    padding-bottom: 0;
+  }
+}

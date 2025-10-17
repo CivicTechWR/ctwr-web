@@ -1,0 +1,179 @@
+/* ---------------------------------------
+  TYPOGRAPHY - Base Text Styles
+  Extracted from style.css for better organization
+----------------------------------------- */
+
+/* Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-bold);
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  color: var(--secondary-color);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+  color: var(--dark-color);
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+  color: var(--dark-color);
+}
+
+h5 {
+  font-size: var(--h5-font-size);
+  line-height: normal;
+  color: var(--dark-color);
+}
+
+h6 {
+  font-size: var(--h6-font-size);
+  color: var(--dark-color);
+}
+
+/* Body Text */
+p {
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-normal);
+}
+
+ul li {
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Interactive Elements */
+a, 
+button {
+  touch-action: manipulation;
+  transition: all 0.3s;
+}
+
+/* Link Styles */
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+a:focus {
+  color: var(--primary-color);
+  text-decoration: underline;
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+a:visited {
+  color: var(--secondary-color);
+}
+
+a:visited:hover {
+  color: var(--primary-color);
+}
+
+/* Prevent visited link color from affecting buttons */
+a.btn:visited,
+a.btn:visited:hover {
+  color: inherit;
+}
+
+/* Text Selection */
+::selection {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+/* Text Utilities */
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Section Title Wrapper */
+.section-title-wrap {
+  background: var(--secondary-color);
+  border-radius: var(--border-radius-small);
+  padding: var(--space-2-5) var(--space-5-5);
+}
+
+/* Responsive Typography */
+@media screen and (width <= 991px) {
+  h1 {
+    font-size: var(--h2-font-size);
+  }
+
+  h2 {
+    font-size: var(--h3-font-size);
+  }
+
+  h3 {
+    font-size: var(--h4-font-size);
+  }
+
+  h4 {
+    font-size: 28px;
+  }
+
+  h5 {
+    font-size: var(--font-size-mobile-xl);
+  }
+
+  h6 {
+    font-size: var(--p-font-size);
+  }
+}
+
+@media screen and (width <= 480px) {
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  h4 {
+    font-size: var(--h6-font-size);
+  }
+
+  h5 {
+    font-size: var(--font-size-mobile-xl);
+  }
+}
+
+/* Section Padding */
+.section-padding {
+  padding: 8em;
+}
+
+@media (width <= 480px) {
+  .section-padding {
+    padding: 2em;
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+  }
+}

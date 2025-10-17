@@ -1,0 +1,151 @@
+/* Critical CSS - Above the fold styles for CivicTechWR */
+
+/* Essential CSS Custom Properties */
+:root {
+  --white-color: #fff;
+  --primary-color: #FC6C6D;
+  --secondary-color: #2D6F72;
+  --section-bg-color: #f9f9f9;
+  --dark-color: #000;
+  --p-color: #717275;
+  --border-color: #e9eaeb;
+  --body-font-family: 'DM Sans', sans-serif;
+  --h1-font-size: 62px;
+  --h2-font-size: 48px;
+  --h3-font-size: 36px;
+  --h4-font-size: 32px;
+  --h5-font-size: 24px;
+  --h6-font-size: 22px;
+  --p-font-size: 18px;
+  --border-radius-large: 100px;
+  --border-radius-medium: 20px;
+  --border-radius-small: 10px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+
+/* Essential base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--white-color);
+  font-family: var(--body-font-family);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Critical navigation styles */
+.navbar {
+  background: var(--secondary-color);
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  color: var(--white-color);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.navbar-nav .nav-link {
+  color: var(--white-color);
+  font-weight: var(--font-weight-medium);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+/* Critical hero styles */
+.hero {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: var(--white-color);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: var(--p-font-size);
+  margin-bottom: 2rem;
+}
+
+/* Critical button styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn--primary {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.btn--primary:hover {
+  background: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Critical responsive styles */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .navbar {
+    padding: 0.5rem 0;
+  }
+  
+  .btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Essential utility classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}

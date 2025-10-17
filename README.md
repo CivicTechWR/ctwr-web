@@ -173,6 +173,12 @@ Security is a top priority:
 - Safari 14+
 - Edge 90+
 
+## 📚 Documentation
+
+- [CSS Architecture Guide](docs/CSS_ARCHITECTURE.md) - Comprehensive CSS system documentation
+- [CSS Quick Reference](docs/CSS_QUICK_REFERENCE.md) - Quick reference for developers
+- [CSS README](css/README.md) - CSS-specific documentation and guidelines
+
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.

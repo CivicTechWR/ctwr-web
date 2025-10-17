@@ -30,23 +30,19 @@ permalink: /projects.html
 
     <!-- Self-hosted fonts (no external DNS lookup required) -->
     {% if jekyll.environment == "production" %}
-    <link href="css/fonts.min.css" rel="stylesheet" />
+    <link href="css/fonts.min.css?v=1760695256" rel="stylesheet" />
     {% else %}
-    <link href="css/fonts.css" rel="stylesheet" />
+    <link href="css/fonts.css?v=1760695256" rel="stylesheet" />
     {% endif %}
 
-    <!-- Custom Bootstrap with only used classes (2.7KB vs 237KB = 98.9% reduction) -->
-    <link href="css/bootstrap-custom.css" rel="stylesheet" />
+    <!-- CSS Variables - Must load FIRST before all other CSS -->
+    <link href="css/base/variables.css?v=1760695256" rel="stylesheet" />
     {% if jekyll.environment == "production" %}
-    <link href="css/style.min.css" rel="stylesheet" />
-    <link href="css/abstract-shapes.min.css" rel="stylesheet" />
-    <link href="css/pages/projects.min.css" rel="stylesheet" />
-    <link href="css/components/buttons.min.css" rel="stylesheet" />
+    <link href="css/main.min.css?v=1760695256" rel="stylesheet" />
+    <link href="css/pages/projects.min.css?v=1760695256" rel="stylesheet" />
     {% else %}
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/abstract-shapes.css" rel="stylesheet" />
-    <link href="css/pages/projects.css" rel="stylesheet" />
-    <link href="css/components/buttons.css" rel="stylesheet" />
+    <link href="css/main.css?v=1760695256" rel="stylesheet" />
+    <link href="css/pages/projects.css?v=1760695256" rel="stylesheet" />
     {% endif %}
     
   </head>

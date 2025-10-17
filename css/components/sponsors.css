@@ -1,0 +1,40 @@
+/* Sponsors Component */
+
+.sponsors-item-height {
+  min-height: 120px;
+  height: 120px;
+  margin-bottom: var(--space-5-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsors-image {
+  display: block;
+  object-fit: contain;
+  margin: 0 auto 20px;
+  transition: all ease 0.3s;
+  filter: grayscale(100%);
+  opacity: 0.8;
+}
+
+.sponsors-image:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.previous-sponsors-image {
+  display: block;
+  object-fit: contain;
+  margin: 0 auto 15px;
+  transition: all ease 0.3s;
+  filter: grayscale(100%);
+  opacity: 0.8;
+}
+
+.previous-sponsors-image:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+  opacity: 0.9;
+}

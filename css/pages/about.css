@@ -2,7 +2,7 @@
 .about-main-centered {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 100px;
+  padding: var(--page-padding);
   background: none;
   border-radius: 0;
   box-shadow: none;
@@ -10,14 +10,14 @@
 
 @media screen and (width <= 480px) {
   .about-main-centered {
-    padding: 40px;
+    padding: var(--card-padding);
     padding-top: 100px;
   }
 }
 
 .organizers-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: var(--font-size-2xl);
   font-weight: 600;
   margin-bottom: 3rem;
 }
@@ -27,7 +27,7 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   place-items: start center;
-  padding: 30px;
+  padding: var(--card-padding-sm);
   margin: 0 auto;
 }
 
@@ -46,16 +46,16 @@
   width: 120px;
   height: 120px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   margin-bottom: 1rem;
-  background: #f2f2f2;
-  border: 1px solid #222;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-900);
   /* Use consistent image styling for non-circular elements */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-light);
 }
 
 .organizer-name {
-  color: #000;
+  color: var(--dark-color);
 }
 
 .organizer-contact a {
@@ -80,7 +80,7 @@
 }
 
 .shoutout-title {
-  font-size: 1.2rem;
+  font-size: var(--font-size-mobile-xl);
   font-weight: 500;
   margin-bottom: 1rem;
 }
@@ -102,7 +102,7 @@
 }
 
 .shoutout-member-name {
-  font-size: 1rem;
+  font-size: var(--font-size-mobile-md);
   font-weight: normal;
   margin-bottom: 0;
 }

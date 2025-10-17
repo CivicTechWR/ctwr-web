@@ -29,21 +29,23 @@ CivicTechWR is a community organization website built with Jekyll. The site focu
 - **200+ MB Chrome memory usage** (target: <50MB)
 - Large asset sizes: 800KB total CSS/JS (target: <100KB)
 - Font Awesome 6.4.0: 320KB loaded, only ~15 icons used
-- Bootstrap: 295KB loaded, ~25% utilized
+- Bootstrap: ~~295KB loaded~~ → **2.7KB** (98.9% reduction ✅)
 - jQuery: 85KB loaded, only 2 features used
 
-**Code Quality Issues:**
-- **64 instances of `!important`** declarations (CSS specificity wars)
-- **7 different button style systems** (inconsistent UX)
-- **Duplicate footer implementations** (root vs _includes)
-- **2,252 lines of CSS** with significant duplication
-- **180+ lines of inline styles** in index.html duplicating style.css
+**Code Quality Issues (UPDATED OCTOBER 16):**
+- ~~**64 instances of `!important`**~~ → **14 instances** (only in bootstrap-custom.css utilities) ✅
+- ~~**7 different button style systems**~~ → **1 unified BEM system** ✅
+- ~~**Duplicate footer implementations**~~ → **Single canonical footer** ✅
+- **1,871 lines of CSS** in monolithic style.css (needs splitting into components)
+- ~~**Orphaned component files**~~ → **Deleted orphaned files** (header.css, reset.css removed) ✅
+- ~~**Duplication:** Variables defined in BOTH files~~ → **Single source in variables.css** ✅
+- **Navigation duplication:** Nav styles still in style.css (280 lines, needs extraction)
 
 **Style Inconsistencies:**
-- 4 different link color schemes across the site
-- 5 different border-radius values used inconsistently
-- 3 different hover effect patterns
-- Hard-coded colors mixed with CSS variables
+- ~~4 different link color schemes~~ → **Standardized to teal/coral system** ✅
+- ~~5 different border-radius values~~ → **Consolidated to --radius-* system** ✅
+- 3 different hover effect patterns (partially standardized)
+- ~~Hard-coded colors mixed with CSS variables~~ → **All using CSS variables** ✅
 
 ### Recent Audit Findings
 
@@ -827,5 +829,352 @@ When starting a new conversation to continue this work:
 
 ---
 
-**Last Updated:** October 15, 2025
-**Next Review:** After button system completion
+**Last Updated:** October 16, 2025
+**Next Review:** After CSS componentization completion
+
+---
+
+## 🚨 CSS CLEANUP STRATEGY (UPDATED OCTOBER 16, 2025)
+
+### Current Reality Check
+
+**ACTUAL Current State (October 16, 2025):**
+
+✅ **Wins:**
+- Button system: 315 lines, BEM, ZERO `!important` in buttons.css
+- Bootstrap custom: 2.7KB (98.9% reduction from 237KB)
+- Main style.css: ZERO `!important` (cleaned up!)
+- Directory structure exists: `css/components/`, `css/pages/`, `css/base/`
+
+⚠️ **Critical Issues:**
+1. ~~**ORPHANED FILES**~~ → **FIXED**: Deleted `css/base/reset.css` and `css/pages/header.css` (4.4KB saved) ✅
+2. ~~**DUPLICATION**: Variables in BOTH files~~ → **FIXED**: Only in `css/base/variables.css` now ✅
+3. **MONOLITHIC FILE**: `style.css` = 38KB/1,871 lines containing 18+ different components
+4. **NAVIGATION DUPLICATION**: Nav styles in `style.css` (lines 311-589, 280 lines) need extraction to component file
+5. ~~**4 `!important` in header.css**~~ → **FIXED**: header.css deleted, only 14 `!important` in bootstrap utilities ✅
+
+### The Surgical Cleanup Plan
+
+**Goal**: Split `style.css` into component files WITHOUT breaking the design. 100% visual parity required.
+
+**Strategy**: Gatekeeping system with visual testing at every step.
+
+---
+
+### Phase 1: Fix Orphaned Files & Duplication (Day 1)
+
+#### Gate 1.1: Consolidate Variables (30 min)
+
+**Action:**
+1. Delete duplicate variables from `style.css` (lines 25-99)
+2. Keep only `css/base/variables.css` as single source of truth
+3. Load `variables.css` FIRST in all HTML `<head>` sections
+4. Verify variables.css has ALL needed variables (compare both files)
+
+**Testing:**
+```bash
+# 1. Make changes
+# 2. Build site
+bundle exec jekyll serve
+# 3. Visual check: index.html, about.html, projects.html
+# 4. Check browser console for CSS errors
+```
+
+**Rollback**: If ANY visual difference, revert immediately.
+
+**Commit**: Once verified, commit with message:
+```
+refactor: Consolidate CSS variables into single source of truth
+
+- Remove duplicate variables from style.css (lines 25-99)
+- Use css/base/variables.css as canonical source
+- Load variables.css in all HTML <head> sections
+- ZERO visual changes (100% visual parity maintained)
+```
+
+#### Gate 1.2: Extract Navigation Component (45 min)
+
+**Current State**: Navigation styles in `style.css` (lines 311-589, 280 lines)
+
+**Action:**
+1. Extract navigation styles from `style.css` lines 311-589
+2. Create `css/components/navigation.css` with the navigation code
+3. Delete navigation from `style.css` (lines 311-589)
+4. Load `navigation.css` in all HTML files (after variables.css, before style.css)
+
+**Testing:**
+```bash
+# Test EVERY breakpoint:
+# - Desktop: 1920px, 1440px, 1024px
+# - Tablet: 768px
+# - Mobile: 375px, 320px
+
+# Test navigation:
+# - [ ] Logo appears correctly
+# - [ ] Links are clickable
+# - [ ] Hover states work
+# - [ ] Mobile hamburger menu works
+# - [ ] Sticky behavior on scroll
+# - [ ] No white flashes or jumps
+```
+
+**Rollback**: If navigation breaks at ANY breakpoint, revert.
+
+**Commit**: Once verified across ALL breakpoints.
+
+---
+
+### Phase 2: Extract Components from style.css (Day 2-3)
+
+**Critical Rule**: Extract ONE component at a time. Test. Commit. Repeat.
+
+#### Extraction Order (by size/risk):
+
+| Priority | Component | Lines in style.css | New File | Risk |
+|----------|-----------|-------------------|----------|------|
+| 1 | Hero | 670-981 (311 lines) | `css/components/hero.css` | Medium |
+| 2 | Services | 1094-1371 (277 lines) | `css/components/services.css` | Low |
+| 3 | Footer | 1543-1596 (53 lines) | `css/components/footer.css` | Low |
+| 4 | Projects | 1373-1422 (49 lines) | `css/components/projects.css` | Low (merge with existing pages/projects.css) |
+| 5 | Forms | 1452-1541 (89 lines) | `css/components/forms.css` | Low |
+| 6 | Sponsors | 1049-1092 (43 lines) | `css/components/sponsors.css` | Low |
+| 7 | Social Icons | 1598-1632 (34 lines) | `css/components/social-icons.css` | Low |
+| 8 | About | 983-1023 (40 lines) | `css/components/about.css` | Low |
+| 9 | Typography | 108-241 (133 lines) | `css/base/typography.css` | Low |
+| 10 | Icons | 359-388 (29 lines) | `css/base/icons.css` | Low |
+| 11 | Preloader | 315-356 (41 lines) | `css/components/preloader.css` | Low |
+| 12 | Avatar | 299-313 (14 lines) | `css/base/images.css` | Low |
+| 13 | Featured | 1025-1047 (22 lines) | `css/components/featured.css` | Low |
+
+#### Extraction Template (Use for Each Component)
+
+```bash
+# Example: Extract Hero component
+
+# 1. Create component file
+# Copy lines 670-981 from style.css to css/components/hero.css
+
+# 2. Add component to HTML <head>
+# Add after variables.css, before style.css:
+# <link href="css/components/hero.css" rel="stylesheet" />
+
+# 3. Delete from style.css
+# Remove lines 670-981 from style.css
+
+# 4. Test
+bundle exec jekyll serve
+# Visual check: Does hero section look identical?
+# Check: No console errors?
+# Check: No layout shifts?
+
+# 5. If perfect, commit
+git add css/components/hero.css css/style.css index.html
+git commit -m "refactor: Extract hero styles into component file
+
+- Move hero styles (311 lines) to css/components/hero.css
+- Remove from style.css (lines 670-981)
+- Load hero.css in index.html
+- ZERO visual changes (100% parity maintained)"
+
+# 6. If ANY issue, rollback
+git restore .
+```
+
+**Critical**: Do NOT extract multiple components in one commit!
+
+---
+
+### Phase 3: Create Master CSS Loader (Day 4)
+
+Once all components are extracted, create single entry point.
+
+#### New File: `css/main.css`
+
+```css
+/**
+ * CivicTechWR Master CSS Loader
+ * Imports all component files in correct order
+ */
+
+/* 1. Base Layer - Variables, resets, typography */
+@import url('base/variables.css');
+@import url('base/reset.css');
+@import url('base/typography.css');
+@import url('base/icons.css');
+@import url('base/images.css');
+
+/* 2. Layout Layer - Grid, sections */
+@import url('bootstrap-custom.css');
+
+/* 3. Component Layer - Reusable UI components */
+@import url('components/buttons.css');
+@import url('components/navigation.css');
+@import url('components/hero.css');
+@import url('components/footer.css');
+@import url('components/preloader.css');
+@import url('components/forms.css');
+@import url('components/social-icons.css');
+@import url('components/services.css');
+@import url('components/projects.css');
+@import url('components/sponsors.css');
+@import url('components/featured.css');
+@import url('components/about.css');
+
+/* 4. Utility Layer - Abstract shapes, helpers */
+@import url('abstract-shapes.css');
+```
+
+#### Update HTML to use master loader
+
+Replace all individual `<link>` tags with:
+```html
+<link href="css/main.css" rel="stylesheet" />
+```
+
+**Testing**: Full regression test of entire site.
+
+---
+
+### Phase 4: Final style.css State
+
+After all extractions, `style.css` should contain ONLY:
+
+1. **Responsive styles** (lines 1635-1949) - media queries that affect multiple components
+2. **Page-specific overrides** - Anything that doesn't fit cleanly into a component
+3. **Temporary styles** - Things being refactored later
+
+**Target size**: <200 lines (down from 1,949)
+
+---
+
+### Gatekeeping Rules (CRITICAL)
+
+**Before Every Commit:**
+1. ✅ Visual regression test (take screenshots before/after)
+2. ✅ Test all breakpoints: 1920px, 1440px, 1024px, 768px, 375px, 320px
+3. ✅ Test all pages: index.html, about.html, projects.html
+4. ✅ Check browser console for CSS errors
+5. ✅ Verify no layout shifts or flashes
+
+**If ANY Test Fails:**
+- ❌ DO NOT commit
+- ❌ Revert changes immediately
+- 🔍 Investigate why test failed
+- 🔧 Fix issue
+- 🔁 Restart testing checklist
+
+**Rollback Command:**
+```bash
+git restore .
+```
+
+---
+
+### Tools & Automation
+
+#### CSS Validation Script
+
+Create `scripts/validate-css.sh`:
+```bash
+#!/bin/bash
+
+echo "🔍 Validating CSS architecture..."
+
+# Check for !important (should be 14: 10 in bootstrap-custom.css, 0 elsewhere)
+IMPORTANT_COUNT=$(grep -r "!important" css --include="*.css" | grep -v ".min.css" | grep -v "node_modules" | grep -v "_site" | wc -l | tr -d ' ')
+
+if [ "$IMPORTANT_COUNT" -ne 14 ]; then
+  echo "❌ Found $IMPORTANT_COUNT !important declarations (expected 14 in bootstrap-custom.css only)"
+  grep -r "!important" css --include="*.css" | grep -v ".min.css" | grep -v "node_modules" | grep -v "_site"
+  exit 1
+fi
+
+# Check for duplicate variable definitions
+VAR_FILES=$(grep -l "^:root" css --include="*.css" | grep -v ".min.css" | grep -v "_site" | wc -l | tr -d ' ')
+
+if [ "$VAR_FILES" -ne 1 ]; then
+  echo "❌ Found $VAR_FILES files with :root definitions (should be 1: variables.css)"
+  grep -l "^:root" css --include="*.css" | grep -v ".min.css" | grep -v "_site"
+  exit 1
+fi
+
+# Check style.css size
+STYLE_SIZE=$(wc -l < css/style.css | tr -d ' ')
+
+if [ "$STYLE_SIZE" -gt 500 ]; then
+  echo "⚠️  style.css is $STYLE_SIZE lines (target: <200 after extraction)"
+fi
+
+echo "✅ CSS validation passed!"
+```
+
+Run before every commit:
+```bash
+bash scripts/validate-css.sh
+```
+
+---
+
+### Success Metrics
+
+**Week 1 Goals:**
+- [ ] Variables consolidated (single source of truth)
+- [ ] Navigation deduplicated (zero `!important`)
+- [ ] 5+ components extracted
+- [ ] `style.css` under 1,000 lines
+
+**Week 2 Goals:**
+- [ ] All 13 components extracted
+- [ ] Master CSS loader implemented
+- [ ] `style.css` under 200 lines
+- [ ] Zero visual regressions
+
+**Final State:**
+```
+css/
+├── main.css              # Master loader (50 lines)
+├── bootstrap-custom.css  # 2.7KB (unchanged)
+├── abstract-shapes.css   # 6.6KB (unchanged)
+├── fonts.css            # 568B (unchanged)
+├── style.css            # <5KB (from 38KB)
+├── base/
+│   ├── variables.css    # All CSS custom properties
+│   ├── reset.css        # Global resets
+│   ├── typography.css   # Text styles
+│   ├── icons.css        # Icon styles
+│   └── images.css       # Image utilities
+└── components/
+    ├── buttons.css      # ✅ Already done (315 lines)
+    ├── navigation.css   # Header/nav (replaces duplication)
+    ├── hero.css         # Hero section
+    ├── footer.css       # Footer
+    ├── preloader.css    # Loading spinner
+    ├── forms.css        # Form elements
+    ├── social-icons.css # Social media icons
+    ├── services.css     # Services section
+    ├── projects.css     # Projects showcase
+    ├── sponsors.css     # Partner logos
+    ├── featured.css     # Featured numbers
+    └── about.css        # About section
+```
+
+---
+
+### Emergency Contacts
+
+**If Something Breaks:**
+1. Revert immediately: `git restore .`
+2. Take screenshots of broken state
+3. Document what changed
+4. Ask for help with specific issue
+
+**Never:**
+- ❌ Commit broken states
+- ❌ Use `!important` to "fix" issues
+- ❌ Skip testing steps
+- ❌ Extract multiple components at once
+
+---
+
+**Last Updated:** October 16, 2025
+**Next Review:** After Phase 1 completion (variables + navigation)

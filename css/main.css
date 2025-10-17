@@ -1,0 +1,104 @@
+/**
+ * CivicTechWR Master CSS Loader
+ * Imports all component files in correct order for optimal loading
+ * 
+ * Load Order:
+ * 1. Base Layer - Variables, resets, typography
+ * 2. Layout Layer - Grid system, utilities
+ * 3. Component Layer - Reusable UI components
+ * 4. Page Layer - Page-specific styles
+ * 5. Utility Layer - Abstract shapes, helpers
+ */
+
+/* ==========================================================================
+   BASE LAYER - Foundation styles
+   ========================================================================== */
+
+/* CSS Custom Properties - Must be loaded first */
+@import url('base/variables.css');
+
+/* Typography - Base text styles */
+@import url('base/typography.css');
+
+/* ==========================================================================
+   LAYOUT LAYER - Grid system and utilities
+   ========================================================================== */
+
+/* Custom Bootstrap - Only includes used classes (2.7KB vs 237KB) */
+@import url('bootstrap-custom.css');
+
+/* ==========================================================================
+   COMPONENT LAYER - Reusable UI components
+   ========================================================================== */
+
+/* Navigation - Header and navigation system */
+@import url('components/navigation.css');
+
+/* Buttons - Unified button system with BEM methodology */
+@import url('components/buttons.css');
+
+/* Hero - Main landing section */
+@import url('components/hero.css');
+
+/* Services - What we do section */
+@import url('components/services.css');
+
+/* Footer - Site footer */
+@import url('components/footer.css');
+
+/* Avatar - Profile and user images */
+@import url('components/avatar.css');
+
+/* Preloader - Loading spinner */
+@import url('components/preloader.css');
+
+/* Icons - SVG icon styling */
+@import url('components/icons.css');
+
+/* Featured - Featured numbers and statistics */
+@import url('components/featured.css');
+
+/* Sponsors - Partner and sponsor logos */
+@import url('components/sponsors.css');
+
+/* Projects - Project showcase cards */
+@import url('components/projects.css');
+
+/* Forms - Contact forms and inputs */
+@import url('components/forms.css');
+
+/* Organizers - Team and organizers section */
+@import url('components/organizers.css');
+
+/* Page Header - Page titles and headers */
+@import url('components/page-header.css');
+
+/* Footer Utilities - Footer-specific utilities */
+@import url('components/footer-utilities.css');
+
+/* ==========================================================================
+   PAGE LAYER - Page-specific styles
+   ========================================================================== */
+
+/* About page specific styles */
+@import url('pages/about.css');
+
+/* Projects page specific styles */
+@import url('pages/projects.css');
+
+/* ==========================================================================
+   UTILITY LAYER - Abstract shapes and helpers
+   ========================================================================== */
+
+/* Abstract Shapes - Decorative background elements */
+@import url('abstract-shapes.css');
+
+/* Fonts - Self-hosted font files */
+@import url('fonts.css');
+
+/* ==========================================================================
+   MAIN STYLES - Remaining styles from original style.css
+   ========================================================================== */
+
+/* Main stylesheet - Contains remaining styles after component extraction */
+@import url('style.css');

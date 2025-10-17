@@ -106,3 +106,53 @@ Thumbs.db
 
 # Documentation (keep in repo but exclude from builds)
 # Note: README.md, CONTRIBUTING.md, LICENSE, etc. are intentionally tracked
+
+# CSS Processing
+css/purged/
+css/autoprefixed/
+css/*.min.css
+css/*.min.css.map
+
+# Testing and Validation
+*-report.json
+*-validation.json
+compatibility-report.md
+lighthouse-report.json
+html-validation.json
+final-lighthouse.json
+final-accessibility.json
+
+# Test files
+test-*.html
+test-*.js
+test-*.css
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Pa11y
+pa11y-results/
+
+# Cursor IDE
+.cursor/
+
+# Ruby
+.bundle/
+vendor/
+Gemfile.lock
+
+# Jekyll
+.jekyll-cache/
+.sass-cache/
+.jekyll-metadata
+_site/
+
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock# Analysis files
+css-analysis.json
+defined-selectors.txt
+used-classes.txt

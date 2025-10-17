@@ -15,13 +15,126 @@ This is a Jekyll static site for CivicTech Waterloo Region, focusing on accessib
 - Use skip navigation links for accessibility
 
 ### CSS
+
+**CRITICAL: CSS CLEANUP PROJECT IN PROGRESS (Oct 2025)**
+
+See CLAUDE.md section "CSS CLEANUP STRATEGY" for complete details.
+
+**Core Principles:**
+- **Visual Parity is Sacred**: ZERO visual changes allowed during refactoring
+- **One Change at a Time**: Extract ONE component per commit, test, commit, repeat
+- **CSS Variables Only**: Never hard-code colors, spacing, or typography
+- **BEM Naming**: Block__Element--Modifier pattern for all components
+- **!important Policy**: Only allowed in utility classes (display, text-align helpers)
+
+**Current State (Oct 17, 2025):**
+📊 **Total:** 16 files, 74.3KB, 2,175 lines
+✅ **Completed:**
+- Button system: 7.1KB, BEM methodology, zero !important
+- Bootstrap custom: 2.1KB (98.9% reduction from 237KB)
+- Component architecture: /base, /components, /pages structure
+- Master CSS loader: main.css orchestrates all imports
+- Navigation: 6.4KB extracted component
+- Hero: 3.8KB extracted component
+- Services: 5.6KB extracted component
+- Footer: 3.8KB extracted component
+- Typography: 2.7KB in base/typography.css
+- Variables: 3.6KB single source of truth in base/variables.css
+
+✅ **!important Usage (24 total - APPROPRIATE):**
+All 24 instances are in base/responsive.css utility classes:
+- Display utilities (.d-none, .d-block, .d-flex, etc.) ✓ Correct
+- Text alignment (.text-left, .text-center, .text-right) ✓ Correct
+- Responsive variants (.d-mobile-*, .d-tablet-*, .d-desktop-*) ✓ Correct
+**Verdict:** This is proper usage - utility classes SHOULD use !important
+
+⚠️ **Remaining Work:**
+1. **Delete empty file:** critical.css (0 bytes)
+2. **Extract from style.css (14.3KB/685 lines):**
+   - Preloader (lines 68-106) → components/preloader.css
+   - Forms (lines 379-464) → components/forms.css
+   - Icons (lines 114-124) → base/icons.css
+   - Avatar (lines 52-62) → base/images.css
+   - Sponsors (lines 239-290) → components/sponsors.css
+   - Featured numbers (lines 216-232) → components/featured.css
+   - Projects (lines 300-346) → Merge into pages/projects.css
+   - About/Organizers (lines 172-208, 542-600) → Merge into pages/about.css
+   - Meeting variants (lines 625-674) → components/meeting.css
+
+**Expected Result:** style.css shrinks to <200 lines (from 685)
+
+**Next Steps (Priority Order):**
+1. Delete critical.css (30 seconds)
+2. Extract preloader component (15 min)
+3. Extract forms component (20 min)
+4. Extract remaining components using template below (2-3 hours)
+5. Set up CSS minification pipeline (1 hour)
+
+**Extraction Template:**
+```bash
+# 1. Create component file (copy lines from style.css)
+# 2. Add @import to main.css in correct layer
+# 3. Delete lines from style.css
+# 4. Test: bundle exec jekyll serve
+# 5. Visual check: ALL pages identical at ALL breakpoints
+# 6. If perfect: commit. If ANY issue: git restore .
+```
+
+**Testing Checklist (NEVER SKIP):**
+- [ ] Take screenshots before changes
+- [ ] Make changes
+- [ ] Take screenshots after changes
+- [ ] Compare screenshots (ANY difference = REVERT)
+- [ ] Test breakpoints: 1920px, 1440px, 1024px, 768px, 375px, 320px
+- [ ] Test all pages: index.html, about.html, projects.html
+- [ ] Check browser console for errors
+- [ ] Run: bash scripts/validate-css.sh (if exists)
+- [ ] If all pass: commit. If ANY fail: revert immediately
+
+**CSS Standards:**
 - Follow BEM methodology for class naming
 - Use CSS custom properties (variables) for consistency
 - Mobile-first responsive design approach
 - Use logical properties where possible
-- Minimize use of !important
+- NEVER use !important (fix specificity instead)
 - Group related styles together
 - Use consistent spacing and indentation
+
+**Color System (Always use variables):**
+```css
+--primary-color: #FC6C6D;      /* Red/coral - accent */
+--secondary-color: #2D6F72;    /* Teal - brand primary */
+--gray-900: #222;  --gray-700: #444;  --gray-600: #555;
+--gray-500: #666;  --gray-400: #777;  --gray-300: #999;
+```
+
+**Spacing System:**
+```css
+--space-1: 4px;  --space-2: 8px;  --space-3: 12px;  --space-4: 16px;
+--space-5: 24px; --space-6: 32px; --space-7: 48px;  --space-8: 64px;
+```
+
+**Border Radius:**
+```css
+--radius-sm: 4px; --radius-md: 12px; --radius-card: 16px;
+--radius-lg: 24px; --radius-xl: 32px; --radius-full: 9999px;
+```
+
+**Emergency Procedures:**
+If something breaks:
+1. Stop immediately
+2. Revert: `git restore .`
+3. Take screenshots of broken state
+4. Document what changed
+5. Ask for help
+
+**NEVER:**
+- ❌ Commit broken states
+- ❌ Use !important to fix issues
+- ❌ Skip testing steps
+- ❌ Extract multiple components at once
+- ❌ Make visual changes during refactoring
+- ❌ Hard-code values (always use CSS variables)
 
 ### JavaScript
 - Use modern ES6+ features

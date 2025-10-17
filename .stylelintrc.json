@@ -1,22 +1,36 @@
 {
   "extends": ["stylelint-config-standard"],
   "rules": {
+  "rules": {
+    "color-no-hex": null,
+    "color-named": null,
+    "declaration-no-important": "error",
+    "selector-class-pattern": "^[a-z][a-z0-9]*(__[a-z0-9]+)*(--[a-z0-9]+)*$",
+    "custom-property-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "max-nesting-depth": 3,
+    "selector-max-id": 0,
+    "selector-max-universal": 1,
+    "selector-max-type": 2,
+    "selector-max-combinators": 3,
+    "selector-max-attribute": 2,
+    "selector-max-pseudo-class": 3,
+    "selector-max-specificity": "0,3,0",
+    "declaration-block-no-redundant-longhand-properties": true,
+    "shorthand-property-no-redundant-values": true,
+    "declaration-block-no-duplicate-properties": true,
     "no-duplicate-selectors": true,
-    "no-descending-specificity": null,
-    "selector-class-pattern": null,
-    "keyframes-name-pattern": null,
-    "color-function-alias-notation": null,
-    "color-function-notation": null,
-    "alpha-value-notation": null,
-    "property-no-deprecated": null,
-    "declaration-property-value-no-unknown": null,
-    "comment-empty-line-before": null,
-    "number-max-precision": null
+    "no-duplicate-at-import-rules": true,
+    "no-empty-source": null,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["import", "media", "supports", "keyframes", "page"]
+      }
+    ]
   },
   "ignoreFiles": [
-    "**/*.min.css",
-    "**/bootstrap.min.css",
-    "**/bootstrap.css",
-    "**/bootstrap-icons.css"
+    "css/**/*.min.css",
+    "_site/**/*",
+    "node_modules/**/*"
   ]
 }

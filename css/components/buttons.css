@@ -15,7 +15,7 @@
 
   /* Typography */
   font-family: var(--body-font-family);
-  font-size: 1rem;
+  font-size: var(--font-size-mobile-md);
   font-weight: 500;
   line-height: 1.5;
   text-align: center;
@@ -24,7 +24,7 @@
 
   /* Visual */
   border: 2px solid transparent;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
 
   /* Animation */
@@ -43,7 +43,7 @@
 .btn:focus {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(45, 111, 114, 0.2);
+  box-shadow: 0 0 0 4px var(--secondary-alpha-2);
 }
 
 .btn:active {
@@ -69,25 +69,13 @@
 }
 
 .btn--primary:hover {
-  background: #246359; /* Darker teal */
-  border-color: #246359;
+  background: var(--secondary-hover);
+  border-color: var(--secondary-hover);
   color: var(--white-color);
-  box-shadow: 0 4px 12px rgba(45, 111, 114, 0.3);
+  box-shadow: 0 4px 12px var(--secondary-alpha-3);
 }
 
-/* Secondary Button - Red/Coral background */
-.btn--secondary {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--white-color);
-}
-
-.btn--secondary:hover {
-  background: #d65a5b; /* Darker coral */
-  border-color: #d65a5b;
-  color: var(--white-color);
-  box-shadow: 0 4px 12px rgba(252, 108, 109, 0.3);
-}
+/* Secondary Button - Removed (unused) */
 
 /* Outline Button - Transparent with border */
 .btn--outline {
@@ -104,15 +92,19 @@
 
 /* Light Inverse Button - For dark backgrounds */
 .btn--light {
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.8);
-  color: var(--white-color);
+  background: var(--white-color);
+  border: 2px solid var(--white-color);
+  color: var(--secondary-color);
+  font-weight: 700;
+  box-shadow: 0 6px 16px var(--shadow-heavy);
 }
 
 .btn--light:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.9);
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
   color: var(--white-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Ghost Button - Minimal styling */
@@ -123,7 +115,7 @@
 }
 
 .btn--ghost:hover {
-  background: rgba(45, 111, 114, 0.1);
+  background: var(--secondary-alpha-1);
   color: var(--secondary-color);
 }
 
@@ -134,19 +126,19 @@
 /* Small Button */
 .btn--sm {
   padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+  font-size: var(--font-size-mobile-sm);
 }
 
 /* Large Button */
 .btn--lg {
   padding: 1rem 2rem;
-  font-size: 1.125rem;
+  font-size: var(--font-size-mobile-lg);
 }
 
 /* Extra Small (for badges like GitHub) */
 .btn--xs {
   padding: 0.25rem 0.5rem;
-  font-size: 0.625rem;
+  font-size: var(--font-size-mobile-xs);
   font-weight: 600;
 }
 
@@ -162,7 +154,7 @@
 
 /* Pill-shaped Button */
 .btn--pill {
-  border-radius: 624px;
+  border-radius: var(--radius-full);
 }
 
 /* Square Button (icon buttons) */
@@ -193,23 +185,23 @@
 
 /* Footer Donate Button - High contrast coral */
 .btn--donate {
-  background: #c2544b; /* WCAG AA compliant */
-  border-color: #c2544b;
+  background: var(--secondary-disabled);
+  border-color: var(--secondary-disabled);
   color: var(--white-color);
   font-weight: 600;
   letter-spacing: 0.05em;
 }
 
 .btn--donate:hover {
-  background: #a94841;
-  border-color: #a94841;
+  background: var(--primary-disabled);
+  border-color: var(--primary-disabled);
   color: var(--white-color);
   box-shadow: 0 4px 12px rgba(194, 84, 75, 0.3);
 }
 
 /* Footer General Button - Outline variant for footer */
 .btn--footer {
-  background: #fafafa;
+  background: var(--gray-50);
   border-color: var(--secondary-color);
   color: var(--secondary-color);
   font-weight: 600;
@@ -227,9 +219,9 @@
   border-color: var(--secondary-color);
   color: var(--white-color);
   padding: 0.25rem 0.5rem;
-  font-size: 0.625rem;
+  font-size: var(--font-size-mobile-xs);
   font-weight: 600;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -247,14 +239,14 @@
   color: var(--dark-color);
   padding: 0.75rem 2rem;
   font-weight: 600;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
 }
 
 .btn--meeting:hover {
   background: var(--white-color);
   border-color: var(--white-color);
   color: var(--dark-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--shadow-medium);
 }
 
 /* ==========================================================================
@@ -264,17 +256,20 @@
 @media (width <= 768px) {
   .btn {
     padding: 0.625rem 1.25rem;
-    font-size: 0.9375rem;
+    font-size: var(--font-size-mobile-sm);
+    max-width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
   }
 
   .btn--lg {
     padding: 0.875rem 1.75rem;
-    font-size: 1rem;
+    font-size: var(--font-size-mobile-md);
   }
 
   .btn--sm {
     padding: 0.4375rem 0.875rem;
-    font-size: 0.8125rem;
+    font-size: var(--font-size-mobile-xs);
   }
 
   /* Stack buttons vertically on mobile */
@@ -301,6 +296,22 @@
 
 .btn-group--end {
   justify-content: flex-end;
+}
+
+/* Login Button - Header login button */
+.btn--login {
+  background: transparent;
+  border: 2px solid var(--white-color);
+  color: var(--white-color);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-mobile-sm);
+}
+
+.btn--login:hover {
+  background: var(--white-color);
+  color: var(--secondary-color);
+  transform: translateY(-1px);
 }
 
 @media (width <= 576px) {

@@ -1,0 +1,21 @@
+# Browser support configuration
+# Based on current usage statistics and project requirements
+
+# Production browsers (last 2 versions with >1% usage)
+> 1%
+last 2 versions
+not dead
+
+# Specific browser support
+Chrome >= 90
+Firefox >= 88
+Safari >= 14
+Edge >= 90
+
+# Mobile browsers
+iOS >= 14
+Android >= 10
+
+# Exclude very old browsers
+not IE 11
+not IE_Mob 11

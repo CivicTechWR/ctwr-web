@@ -17,7 +17,7 @@
 .shape-circle {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background: linear-gradient(135deg, #FF5757, #FF8A5B);
   top: 20%;
   left: 5%;
@@ -29,7 +29,7 @@
   width: 100px;
   height: 100px;
   background: linear-gradient(135deg, #36D1DC, #5B86E5);
-  border-radius: 10px;
+  border-radius: var(--border-radius-small);
   transform: rotate(45deg);
   top: 60%;
   right: 8%;
@@ -64,7 +64,7 @@
   width: 120px;
   height: 60px;
   background: linear-gradient(135deg, #F09819, #EDDE5D);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   transform: rotate(-15deg);
   bottom: 15%;
   left: 10%;
@@ -75,7 +75,7 @@
 .shape-donut {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background: transparent;
   border: 20px solid rgb(238 96 156 / 60%);
   top: 15%;
@@ -132,7 +132,7 @@
   width: 150px;
   height: 60px;
   background: linear-gradient(135deg, #00C9FF, #92FE9D);
-  border-radius: 50px;
+  border-radius: var(--radius-lg);
   clip-path: polygon(0% 50%, 25% 20%, 50% 50%, 75% 80%, 100% 50%, 100% 100%, 0% 100%);
   bottom: 15%;
   right: 20%;
@@ -278,6 +278,11 @@
 
 .top-40p {
   top: 40%;
+  bottom: auto;
+}
+
+.top-50p {
+  top: 50%;
   bottom: auto;
 }
 

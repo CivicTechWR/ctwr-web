@@ -27,9 +27,76 @@
   --font-weight-medium:           500;
   --font-weight-bold:             700;
 
+  /* Neutral Palette - Grayscale for consistent neutrals */
+  --gray-900:                     #222;
+  --gray-700:                     #444;
+  --gray-600:                     #555;
+  --gray-500:                     #666;
+  --gray-400:                     #777;
+  --gray-300:                     #999;
+  --gray-200:                     #ccc;
+  --gray-100:                     #eaeaea;
+  --gray-50:                      #fafafa;
+
+  /* Spacing Scale - Consistent spacing system */
+  --space-1:                      4px;
+  --space-2:                      8px;
+  --space-2-5:                    10px;
+  --space-3:                      12px;
+  --space-3-5:                    14px;
+  --space-4:                      16px;
+  --space-4-5:                    20px;
+  --space-5:                      24px;
+  --space-5-5:                    30px;
+  --space-6:                      32px;
+  --space-6-5:                    40px;
+  --space-7:                      48px;
+  --space-8:                      64px;
+  --space-10:                     80px;
+  --space-12:                     96px;
+  --space-15:                     120px;
+
+  /* Section spacing for large layout padding */
+  --section-padding-sm:           80px;
+  --section-padding-md:           120px;
+  --section-padding-lg:           160px;
+  --section-padding-xl:           200px;
+
+  /* Additional spacing for specific components */
+  --page-padding:                 100px;
+  --card-padding:                 40px;
+  --card-padding-sm:              30px;
+  --card-padding-xs:              15px;
+
+  /* Simplified Border Radius - Modern radius system */
+  --radius-sm:                    4px;
+  --radius-md:                    12px;
+  --radius-card:                  16px;
+  --radius-lg:                    24px;
+  --radius-xl:                    32px;
+  --radius-full:                  9999px;
+  --radius-2xl:                   2rem;
+
+  /* Button hover state colors */
+  --secondary-hover: #246359; /* Darker teal for button hover */
+  --primary-hover: #d65a5b; /* Darker coral for button hover */
+  --secondary-disabled: #c2544b; /* WCAG AA compliant disabled state */
+  --primary-disabled: #a94841; /* Darker disabled state */
+
   /* Override Bootstrap's link color variables for specific components only */
   --bs-link-color: var(--p-color);
   --bs-link-color-rgb: 113, 114, 117; /* RGB values for #717275 */
   --bs-link-hover-color: var(--secondary-color);
   --bs-link-hover-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
+
+  /* Common rgba values for shadows and overlays */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.2);
+  --shadow-heavy: rgba(0, 0, 0, 0.4);
+  --overlay-light: rgba(255, 255, 255, 0.1);
+  --overlay-medium: rgba(255, 255, 255, 0.2);
+  --overlay-heavy: rgba(255, 255, 255, 0.7);
+  --secondary-alpha-1: rgba(45, 111, 114, 0.1);
+  --secondary-alpha-2: rgba(45, 111, 114, 0.2);
+  --secondary-alpha-3: rgba(45, 111, 114, 0.3);
 }
