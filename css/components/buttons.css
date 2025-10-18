@@ -11,7 +11,7 @@
 .btn {
   /* Layout */
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: var(--space-3) var(--space-5);
 
   /* Typography */
   font-family: var(--body-font-family);
@@ -21,6 +21,7 @@
   text-align: center;
   text-decoration: none;
   letter-spacing: 0.01em;
+  color: var(--dark-color); /* Default color - prevents inheriting parent color */
 
   /* Visual */
   border: 2px solid transparent;
@@ -125,19 +126,19 @@
 
 /* Small Button */
 .btn--sm {
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4);
   font-size: var(--font-size-mobile-sm);
 }
 
 /* Large Button */
 .btn--lg {
-  padding: 1rem 2rem;
+  padding: var(--space-4) var(--space-6);
   font-size: var(--font-size-mobile-lg);
 }
 
 /* Extra Small (for badges like GitHub) */
 .btn--xs {
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-mobile-xs);
   font-weight: 600;
 }
@@ -179,6 +180,22 @@
   margin-left: 0.5rem;
 }
 
+/* Spacing for buttons after paragraphs or headings */
+p + .btn,
+h1 + .btn,
+h2 + .btn,
+h3 + .btn,
+h4 + .btn,
+h5 + .btn,
+h6 + .btn {
+  margin-top: var(--space-5);
+}
+
+/* Spacing for multiple buttons in a row */
+.btn + .btn {
+  margin-top: var(--space-3);
+}
+
 /* ==========================================================================
    SPECIAL PURPOSE BUTTONS
    ========================================================================== */
@@ -218,7 +235,7 @@
   background: var(--secondary-color);
   border-color: var(--secondary-color);
   color: var(--white-color);
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-mobile-xs);
   font-weight: 600;
   border-radius: var(--radius-sm);
@@ -237,7 +254,7 @@
   background: var(--primary-color);
   border-color: var(--primary-color);
   color: var(--dark-color);
-  padding: 0.75rem 2rem;
+  padding: var(--space-3) var(--space-6);
   font-weight: 600;
   border-radius: var(--radius-sm);
 }
@@ -255,7 +272,7 @@
 
 @media (width <= 768px) {
   .btn {
-    padding: 0.625rem 1.25rem;
+    padding: var(--space-3) var(--space-5);
     font-size: var(--font-size-mobile-sm);
     max-width: 100%;
     white-space: normal;
@@ -263,12 +280,12 @@
   }
 
   .btn--lg {
-    padding: 0.875rem 1.75rem;
+    padding: var(--space-4) var(--space-6);
     font-size: var(--font-size-mobile-md);
   }
 
   .btn--sm {
-    padding: 0.4375rem 0.875rem;
+    padding: var(--space-2) var(--space-4);
     font-size: var(--font-size-mobile-xs);
   }
 
@@ -286,7 +303,7 @@
 
 .btn-group {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--space-3);
   flex-wrap: wrap;
 }
 
