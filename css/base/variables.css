@@ -20,6 +20,16 @@
   --p-font-size:                  18px;
   --menu-font-size:               12px;
   --copyright-font-size:          14px;
+
+  /* Modern font size scale for responsive typography */
+  --font-size-mobile-xs:          12px;
+  --font-size-mobile-sm:          14px;
+  --font-size-mobile-md:          16px;
+  --font-size-mobile-lg:          18px;
+  --font-size-mobile-xl:          20px;
+  --font-size-2xl:                28px;
+  --font-size-3xl:                36px;
+  --font-size-4xl:                48px;
   --border-radius-large:          100px;
   --border-radius-medium:         20px;
   --border-radius-small:          10px;
@@ -38,20 +48,23 @@
   --gray-100:                     #eaeaea;
   --gray-50:                      #fafafa;
 
+  /* Alpha Color Variants - Transparency effects */
+  --white-alpha-90:               rgba(255, 255, 255, 0.9);
+  --white-alpha-80:               rgba(255, 255, 255, 0.8);
+  --white-alpha-70:               rgba(255, 255, 255, 0.7);
+  --white-alpha-20:               rgba(255, 255, 255, 0.2);
+  --white-alpha-10:               rgba(255, 255, 255, 0.1);
+
   /* Spacing Scale - Consistent spacing system */
   --space-1:                      4px;
   --space-2:                      8px;
-  --space-2-5:                    10px;
   --space-3:                      12px;
-  --space-3-5:                    14px;
   --space-4:                      16px;
-  --space-4-5:                    20px;
   --space-5:                      24px;
-  --space-5-5:                    30px;
   --space-6:                      32px;
-  --space-6-5:                    40px;
   --space-7:                      48px;
   --space-8:                      64px;
+  --space-9:                      40px;
   --space-10:                     80px;
   --space-12:                     96px;
   --space-15:                     120px;

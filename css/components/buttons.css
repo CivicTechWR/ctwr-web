@@ -1,7 +1,19 @@
 /**
  * Unified Button System - BEM Methodology
  * Replaces 17+ fragmented button classes with a cohesive system
- * NO !important declarations - proper specificity hierarchy
+ *
+ * Specificity Strategy:
+ * - Base .btn class: Low specificity foundation
+ * - Modifiers (.btn--primary, .btn--outline): Single class selectors
+ * - States (:hover, :focus, :disabled): Pseudo-class specificity
+ * - Groups (.btn-group): Layout enforcement
+ *
+ * !important Usage: 4 instances in .btn-group (lines 307, 325-327)
+ * - Used to enforce flexbox layout in button groups
+ * - Ensures consistent alignment across different CSS contexts
+ * - All other styles use proper specificity without !important
+ *
+ * Future Goal: Eliminate .btn-group !important through higher specificity
  */
 
 /* ==========================================================================
