@@ -389,9 +389,9 @@ class PerformanceMonitor {
     const checkMemory = () => {
       const memory = performance.memory;
       const usedMB = Math.round(memory.usedJSHeapSize / 1024 / 1024);
-      
+
       if (usedMB > 50) {
-        console.warn(`High memory usage: ${usedMB}MB`);
+        // Trigger garbage collection if available (production silent monitoring)
         if (window.gc) window.gc();
       }
     };

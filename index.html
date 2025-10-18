@@ -226,7 +226,7 @@ permalink: /
                 {% for project in site.data.projects offset:2 limit:1 %}
                 <div class="projects-thumb">
                   <div class="projects-info">
-                    <a href="{{project.github}}" class="btn btn--badge" target="_blank">GitHub</a>
+                    <a href="{{project.github}}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">GitHub</a>
                     <h4 class="projects-title">{{project.name}}</h4>
                     <small class="projects-tag">Year: {{project.year}}</small>
                   </div>
@@ -243,7 +243,7 @@ permalink: /
               <div class="mb-3">
                 <div class="projects-thumb">
                   <div class="projects-info">
-                    <a href="{{project.github}}" class="btn btn--badge" target="_blank">GitHub</a>
+                    <a href="{{project.github}}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">GitHub</a>
                     <h4 class="projects-title">{{project.name}}</h4>
                     <small class="projects-tag">Year: {{project.year}}</small>
                   </div>
