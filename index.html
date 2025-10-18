@@ -38,10 +38,6 @@ permalink: /
     <link href="css/fonts.css" rel="stylesheet" />
     {% endif %}
 
-    <!-- CSS Variables - Must load FIRST before all other CSS -->
-    <link href="css/base/variables.css?v=1760695256" rel="stylesheet" />
-    <link href="css/components/navigation.css?v=1760695256" rel="stylesheet" />
-
     <!-- Critical CSS inlined for performance -->
     <style>
       /* Critical CSS - Above the fold styles only */
@@ -97,8 +93,8 @@ permalink: /
       .btn { display: inline-block; padding: var(--space-3) var(--space-5); font-size: 1rem; font-weight: var(--font-weight-medium); border-radius: var(--border-radius-small); border: none; text-align: center; text-decoration: none; cursor: pointer; transition: all 0.3s ease; margin: 0.25rem; }
       .btn--primary { background: var(--secondary-color); color: var(--white-color); }
       .btn--primary:hover { background: var(--primary-color); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
-      .btn--light { background: transparent; color: var(--white-color); border: 2px solid var(--white-color); }
-      .btn--light:hover { background: var(--white-color); color: var(--secondary-color); }
+      .btn--light { background: var(--white-color); color: var(--secondary-color); border: 2px solid var(--white-color); font-weight: 700; box-shadow: 0 6px 16px rgba(0,0,0,0.4); }
+      .btn--light:hover { background: var(--secondary-color); color: var(--white-color); box-shadow: 0 8px 24px rgba(0,0,0,0.5); transform: translateY(-2px); }
       .icon { display: inline-block; fill: currentcolor; vertical-align: middle; }
       @media (max-width: 768px) { .hero h1 { font-size: var(--h2-font-size); } .hero p { font-size: var(--p-font-size); } .btn { display: block; width: 100%; margin: 0.5rem 0; } }
     </style>
@@ -185,8 +181,8 @@ permalink: /
         <div class="container">
           <div class="row">
             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-              <div class="about-thumb">
-                <h3 class="pt-2 mb-3">A little bit about CivicTech Waterloo Region</h3>
+              <div class="about-thumb flow">
+                <h3>A little bit about CivicTech Waterloo Region</h3>
 
                 <p>
                   CivicTechWR focuses on using technology to improve how we connect with our local communities and governments. It's about making civic interactions and services more efficient and
@@ -237,8 +233,8 @@ permalink: /
             </div>
 
             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-              <div class="about-thumb">
-                <h3 class="pt-2 mb-3">
+              <div class="about-thumb flow">
+                <h3>
                   Weekly hacknights.
                   <br />
                   Every Wednesday.
@@ -268,16 +264,16 @@ permalink: /
         <div class="abstract-shape shape-cross left-12p bottom-25p" aria-hidden="true"></div>
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-              <div class="about-thumb">
-                <h3 class="pt-2 mb-3">Featured Projects</h3>
+            <div class="col-lg-6 col-12 order-2 order-lg-1">
+              <div class="about-thumb flow">
+                <h3>Featured Projects</h3>
                 <h3>Built by the Community</h3>
                 <p>
                   Discover some of our most impactful civic tech initiatives that are making a difference in the Waterloo Region community. From improving civic engagement to providing essential
                   community resources, these projects showcase how technology can be used to solve real-world problems and strengthen our local democracy.
                 </p>
-                <a href="/projects.html" class="btn btn--primary pt-2 mb-3">View All Projects</a>
-                <a href="https://civictechwr.github.io/blog/" class="btn btn--primary pt-2 mb-3">View Latest Blog</a>
+                <a href="/projects.html" class="btn btn--primary">View All Projects</a>
+                <a href="https://civictechwr.github.io/blog/" class="btn btn--primary">View Latest Blog</a>
               </div>
 
               <!-- Third project positioned below text for better balance -->
@@ -297,7 +293,7 @@ permalink: /
               </div>
             </div>
 
-            <div class="col-lg-6 col-12">
+            <div class="col-lg-6 col-12 order-1 order-lg-2 mb-4 mb-lg-0">
               {% for project in site.data.projects limit:2 %}
               <div class="mb-3">
                 <div class="projects-thumb">
@@ -337,10 +333,10 @@ permalink: /
               please reach out to us at civictechwr@gmail.com
             </p>
           </div>
-          <div id="sponsor-container" class="mt-5 row justify-content-center sponsor-grid">
+          <div id="sponsor-container" class="mt-5 sponsor-grid">
             {% for partner in site.data.partners %} {% if partner.current %}
-            <div class="col-lg-2 col-md-6 col-6 sponsors-item-height">
-              <img src="{{partner.logo}}" class="sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
+            <div class="sponsors-item-height">
+              <img src="{{partner.logo}}" class="sponsors-image" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
             </div>
             {% endif %} {% endfor %}
           </div>
@@ -348,10 +344,10 @@ permalink: /
           <div class="col-lg-12 col-12 mt-5">
             <h5 class="text-center mb-4">Previous Partners</h5>
           </div>
-          <div id="previous-sponsor-container" class="row justify-content-center sponsor-grid">
+          <div id="previous-sponsor-container" class="sponsor-grid">
             {% for partner in site.data.partners %} {% if partner.current == false %}
-            <div class="mt-4 col-lg-2 col-md-2 col-4 sponsors-item-height">
-              <img src="{{partner.logo}}" class="previous-sponsors-image img-fluid" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
+            <div class="sponsors-item-height">
+              <img src="{{partner.logo}}" class="previous-sponsors-image" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
             </div>
             {% endif %} {% endfor %}
           </div>
