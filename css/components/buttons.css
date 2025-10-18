@@ -8,12 +8,10 @@
  * - States (:hover, :focus, :disabled): Pseudo-class specificity
  * - Groups (.btn-group): Layout enforcement
  *
- * !important Usage: 4 instances in .btn-group (lines 307, 325-327)
- * - Used to enforce flexbox layout in button groups
- * - Ensures consistent alignment across different CSS contexts
- * - All other styles use proper specificity without !important
- *
- * Future Goal: Eliminate .btn-group !important through higher specificity
+ * !important Usage: ZERO instances
+ * - All styles use proper CSS specificity instead of !important
+ * - Eliminates specificity wars and improves maintainability
+ * - Clean, predictable cascade without override hacks
  */
 
 /* ==========================================================================
@@ -316,10 +314,10 @@ h6 + .btn {
    ========================================================================== */
 
 .btn-group {
-  display: flex !important; /* Ensure flexbox is used */
+  display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
-  align-items: center; /* Ensure all buttons align to center baseline */
+  align-items: center;
 }
 
 .btn-group--center {
@@ -334,9 +332,9 @@ h6 + .btn {
 .btn-group .btn {
   min-height: 44px; /* Consistent minimum height for touch targets */
   height: auto; /* Allow natural height based on content */
-  display: inline-flex !important; /* Override any conflicting display rules */
-  align-items: center !important; /* Ensure vertical centering */
-  justify-content: center !important; /* Ensure horizontal centering */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Login Button - Header login button */
