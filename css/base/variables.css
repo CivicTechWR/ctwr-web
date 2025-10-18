@@ -90,6 +90,46 @@
   --radius-full:                  9999px;
   --radius-2xl:                   2rem;
 
+  /**
+   * BREAKPOINT SYSTEM
+   *
+   * Standard breakpoints follow Bootstrap 4 convention for grid compatibility:
+   * - xs: 0px (default, no media query needed)
+   * - sm: 576px and up (small devices, landscape phones)
+   * - md: 768px and up (medium devices, tablets)
+   * - lg: 992px and up (large devices, desktops)
+   * - xl: 1200px and up (extra large devices, large desktops)
+   * - xxl: 1600px and up (custom: ultra-wide monitors)
+   *
+   * Usage in media queries (modern range syntax):
+   * @media (width <= 768px) { ... }  // Mobile and tablet
+   * @media (width >= 992px) { ... }  // Desktop and up
+   * @media (width >= 768px) and (width < 992px) { ... }  // Tablet only
+   *
+   * NOTE: CSS custom properties cannot be used directly in @media queries.
+   * The variables below are for documentation and JavaScript access only.
+   */
+
+  /* Standard breakpoints (mobile-first) */
+  --breakpoint-xs:                0;        /* Extra small: 0px and up */
+  --breakpoint-sm:                576px;    /* Small: 576px and up */
+  --breakpoint-md:                768px;    /* Medium: 768px and up */
+  --breakpoint-lg:                992px;    /* Large: 992px and up */
+  --breakpoint-xl:                1200px;   /* Extra large: 1200px and up */
+  --breakpoint-xxl:               1600px;   /* Extra extra large: 1600px and up */
+
+  /* Semantic aliases for clarity */
+  --breakpoint-mobile:            480px;    /* Small mobile devices */
+  --breakpoint-tablet:            768px;    /* Tablets (same as md) */
+  --breakpoint-desktop:           992px;    /* Desktop (same as lg) */
+
+  /* Max-width boundaries (for documentation and JavaScript) */
+  --breakpoint-xs-max:            575px;    /* Max before sm */
+  --breakpoint-sm-max:            767px;    /* Max before md */
+  --breakpoint-md-max:            991px;    /* Max before lg */
+  --breakpoint-lg-max:            1199px;   /* Max before xl */
+  --breakpoint-xl-max:            1599px;   /* Max before xxl */
+
   /* Button hover state colors */
   --secondary-hover: #246359; /* Darker teal for button hover */
   --primary-hover: #d65a5b; /* Darker coral for button hover */

@@ -12,36 +12,64 @@ h5,
 h6 {
   font-family: var(--body-font-family);
   font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-5);
 }
 
 h1 {
   font-size: var(--h1-font-size);
+  margin-bottom: var(--space-6);
 }
 
 h2 {
   font-size: var(--h2-font-size);
   color: var(--secondary-color);
+  margin-bottom: var(--space-6);
 }
 
 h3 {
   font-size: var(--h3-font-size);
   color: var(--dark-color);
+  margin-bottom: var(--space-5);
 }
 
 h4 {
   font-size: var(--h4-font-size);
   color: var(--dark-color);
+  margin-bottom: var(--space-4);
 }
 
 h5 {
   font-size: var(--h5-font-size);
   line-height: normal;
   color: var(--dark-color);
+  margin-bottom: var(--space-4);
 }
 
 h6 {
   font-size: var(--h6-font-size);
   color: var(--dark-color);
+  margin-bottom: var(--space-3);
+}
+
+/* Spacing between consecutive headings */
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+  margin-top: var(--space-3);
+}
+
+/* Two consecutive headings of same level need more space */
+h2 + h2,
+h3 + h3,
+h4 + h4 {
+  margin-top: var(--space-6);
+}
+
+/* Utility class for headings that need extra spacing */
+.heading-spaced {
+  margin-bottom: var(--space-7);
 }
 
 /* Body Text */
@@ -49,12 +77,64 @@ p {
   color: var(--p-color);
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-normal);
+  margin-bottom: var(--space-5);
 }
 
-ul li {
+/* Last paragraph in a container should have no bottom margin */
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: var(--space-5);
+  padding-left: var(--space-6);
+}
+
+ul li, ol li {
+  margin-bottom: var(--space-2);
   color: var(--p-color);
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-normal);
+}
+
+ul:last-child, ol:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: var(--space-5);
+}
+
+img:last-child {
+  margin-bottom: 0;
+}
+
+/* Figure elements */
+figure {
+  margin-bottom: var(--space-6);
+}
+
+figure:last-child {
+  margin-bottom: 0;
+}
+
+/* Flow spacing - consistent vertical rhythm between ALL sibling elements */
+.flow > * + * {
+  margin-top: var(--space-7);
+}
+
+/* Tighter flow spacing for compact sections */
+.flow-tight > * + * {
+  margin-top: var(--space-3);
+}
+
+/* Looser flow spacing for spacious sections */
+.flow-loose > * + * {
+  margin-top: var(--space-8);
 }
 
 /* Interactive Elements */
@@ -113,11 +193,11 @@ strong {
 .section-title-wrap {
   background: var(--secondary-color);
   border-radius: var(--border-radius-small);
-  padding: var(--space-2-5) var(--space-5-5);
+  padding: var(--space-3) var(--space-6);
 }
 
 /* Responsive Typography */
-@media screen and (width <= 991px) {
+@media (width < 992px) {
   h1 {
     font-size: var(--h2-font-size);
   }

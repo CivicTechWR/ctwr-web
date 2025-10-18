@@ -21,7 +21,7 @@
   font-size: var(--copyright-font-size);
   border-right: 1px solid var(--border-color);
   padding-right: 25px;
-  margin-right: var(--space-4-5);
+  margin-right: var(--space-5);
 }
 
 .footer-menu {
@@ -43,9 +43,9 @@
   display: inline-block;
   vertical-align: top;
   text-align: center;
-  margin-right: var(--space-2-5);
-  margin-bottom: var(--space-2-5);
-  padding: 6px var(--space-3-5);
+  margin-right: var(--space-3);
+  margin-bottom: var(--space-3);
+  padding: 6px var(--space-4);
   min-width: 70px;
 }
 
@@ -102,7 +102,7 @@
 .footer-links-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 var(--space-4-5);
+  margin: 0 0 var(--space-5);
 }
 
 .footer-links-list li {
@@ -110,12 +110,12 @@
 }
 
 .footer-support-text {
-  margin-bottom: var(--space-3-5);
+  margin-bottom: var(--space-4);
   color: var(--gray-700);
 }
 
 .footer-social-icons {
-  margin-bottom: var(--space-3-5);
+  margin-bottom: var(--space-4);
 }
 
 .footer-social-icons a {
@@ -148,7 +148,7 @@
   margin: 0 0 15px;
   display: flex;
   justify-content: center;
-  gap: var(--space-4-5);
+  gap: var(--space-5);
 }
 
 .social-icon-item {
@@ -181,7 +181,7 @@
 }
 
 /* Responsive Footer Styles */
-@media (width <= 900px) {
+@media (width < 992px) {
   .footer-redesign-container {
     flex-direction: column;
     gap: 36px;

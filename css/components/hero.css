@@ -212,7 +212,7 @@
   }
 }
 
-@media screen and (width <= 991px) {
+@media (width < 992px) {
   .hero {
     padding-top: var(--section-padding-xl);
     padding-bottom: 400px;

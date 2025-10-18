@@ -1,7 +1,7 @@
 /* ---------------------------------------
   NAVIGATION - REBUILT FROM SCRATCH
   Mobile-first responsive navigation system
-  Three breakpoints: Mobile (0-767px), Tablet (768-991px), Desktop (992px+)
+  Three breakpoints: Mobile (0-768px), Tablet (768-992px), Desktop (992px+)
 ----------------------------------------- */
 
 /* Skip navigation for accessibility */
@@ -60,7 +60,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 0.75rem 0;
+  padding: var(--space-3) 0;
   box-shadow: 0 0.2rem 0.4rem var(--shadow-medium);
   width: 100%;
 }
@@ -141,7 +141,7 @@
 .navbar-toggler {
   display: none;
   order: 3;
-  padding: 0.5rem;
+  padding: var(--space-2);
   margin-left: auto;
   background: transparent;
   border: none;
@@ -186,7 +186,7 @@
 
 .navbar-nav .nav-link {
   display: block;
-  padding: 0.5rem 0.75rem;
+  padding: var(--space-2) var(--space-3);
   color: var(--white-color);
   text-decoration: none;
   font-size: var(--font-size-mobile-sm);
@@ -213,8 +213,8 @@
   align-items: center;
 }
 
-/* MOBILE STYLES: 0-767px (phones) */
-@media (max-width: 767px) {
+/* MOBILE STYLES: 0-768px (phones) */
+@media (width < 768px) {
   .navbar {
     min-height: 3.5rem;
   }
@@ -239,7 +239,7 @@
     width: 100%;
     order: 4;
     background: var(--dark-color);
-    padding: 1rem 0;
+    padding: var(--space-4) 0;
   }
 
   /* Show navigation when checkbox is checked */
@@ -261,7 +261,7 @@
   }
 
   .navbar-nav .nav-link {
-    padding: 0.75rem 1rem;
+    padding: var(--space-3) var(--space-4);
     width: 100%;
     text-align: left;
   }
@@ -270,8 +270,8 @@
   .navbar-collapse .ms-auto {
     margin-left: 0;
     width: 100%;
-    padding: 0.5rem 1rem;
-    margin-top: 0.5rem;
+    padding: var(--space-2) var(--space-4);
+    margin-top: var(--space-2);
   }
 
   .navbar-collapse .ms-auto .btn {
@@ -288,8 +288,8 @@
   }
 }
 
-/* TABLET STYLES: 768-991px (tablets) */
-@media (min-width: 768px) and (max-width: 991px) {
+/* TABLET STYLES: 768-992px (tablets) */
+@media (width >= 768px) and (width < 992px) {
   .navbar-brand .logo {
     display: block;
   }
@@ -309,7 +309,7 @@
   }
 
   .navbar-nav .nav-link {
-    padding: 0.5rem 0.75rem;
+    padding: var(--space-2) var(--space-3);
   }
 }
 
@@ -334,7 +334,7 @@
   }
 
   .navbar-nav .nav-link {
-    padding: 0.5rem 1rem;
+    padding: var(--space-2) var(--space-4);
   }
 
   .navbar-icon {
