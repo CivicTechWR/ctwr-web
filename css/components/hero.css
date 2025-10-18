@@ -138,11 +138,6 @@
   margin-top: var(--space-6);
 }
 
-/* Override btn-group gap for hero section */
-.hero-actions .btn-group {
-  gap: var(--space-4);
-}
-
 /* Hero Image Styles */
 .hero-image-wrap {
   position: relative;

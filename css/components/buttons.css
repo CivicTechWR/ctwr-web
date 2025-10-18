@@ -45,7 +45,7 @@
 
   /* Behavior */
   user-select: none;
-  vertical-align: top; /* Consistent baseline alignment */
+  vertical-align: middle; /* Fixed: Changed from 'top' for proper button group alignment */
 }
 
 .btn:hover {
@@ -183,13 +183,13 @@
 /* Button with Icon */
 .btn__icon {
   display: inline-block;
-  margin-right: 0.5rem;
+  margin-right: var(--space-2); /* Fixed: Use design system variable (8px) */
   vertical-align: middle;
 }
 
 .btn__icon--right {
   margin-right: 0;
-  margin-left: 0.5rem;
+  margin-left: var(--space-2); /* Fixed: Use design system variable (8px) */
 }
 
 /* Spacing for buttons after paragraphs or headings */
@@ -331,7 +331,9 @@ h6 + .btn {
 /* Ensure consistent button heights in groups */
 .btn-group .btn {
   min-height: 44px; /* Consistent minimum height for touch targets */
-  height: auto; /* Allow natural height based on content */
+  height: 44px; /* Fixed: Force consistent height (changed from 'auto') */
+  padding-top: 0; /* Fixed: Prevent padding from affecting alignment */
+  padding-bottom: 0; /* Fixed: Prevent padding from affecting alignment */
   display: inline-flex;
   align-items: center;
   justify-content: center;
