@@ -10,7 +10,9 @@
 
 .btn {
   /* Layout */
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: var(--space-3) var(--space-5);
 
   /* Typography */
@@ -33,7 +35,7 @@
 
   /* Behavior */
   user-select: none;
-  vertical-align: middle;
+  vertical-align: top; /* Consistent baseline alignment */
 }
 
 .btn:hover {
@@ -302,9 +304,10 @@ h6 + .btn {
    ========================================================================== */
 
 .btn-group {
-  display: flex;
+  display: flex !important; /* Ensure flexbox is used */
   gap: var(--space-3);
   flex-wrap: wrap;
+  align-items: center; /* Ensure all buttons align to center baseline */
 }
 
 .btn-group--center {
@@ -313,6 +316,15 @@ h6 + .btn {
 
 .btn-group--end {
   justify-content: flex-end;
+}
+
+/* Ensure consistent button heights in groups */
+.btn-group .btn {
+  min-height: 44px; /* Consistent minimum height for touch targets */
+  height: auto; /* Allow natural height based on content */
+  display: inline-flex !important; /* Override any conflicting display rules */
+  align-items: center !important; /* Ensure vertical centering */
+  justify-content: center !important; /* Ensure horizontal centering */
 }
 
 /* Login Button - Header login button */

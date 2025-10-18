@@ -18,7 +18,6 @@ permalink: /about.html
     {% seo %}
 
     <!-- Resource hints for performance -->
-    <link rel="preload" href="css/style.css" as="style" />
     <link rel="preload" href="css/bootstrap-custom.css" as="style" />
     <link rel="preload" href="images/about-us.webp" as="image" />
     
@@ -57,8 +56,7 @@ permalink: /about.html
     <link href="css/fonts.css?v=1760695256" rel="stylesheet" />
     {% endif %}
 
-    <!-- CSS Variables - Must load FIRST before all other CSS -->
-    <link href="css/base/variables.css?v=1760695256" rel="stylesheet" />
+    <!-- Main CSS (includes variables, components, and utilities) -->
     {% if jekyll.environment == "production" %}
     <link href="css/main.min.css?v=1760695256" rel="stylesheet" />
     <link href="css/pages/about.min.css?v=1760695256" rel="stylesheet" />
@@ -81,7 +79,9 @@ permalink: /about.html
               <p class="page-subtitle">Meet the community of designers, technologists, and civic leaders working together to solve local challenges.</p>
             </div>
             <div class="col-lg-6 col-12 text-lg-end text-start">
-              <a class="btn btn--outline" href="https://www.meetup.com/civictechwr/" target="_blank" rel="noopener noreferrer">Join our hacknights</a>
+              <div class="btn-group btn-group--end">
+                <a class="btn btn--outline" href="https://www.meetup.com/civictechwr/" target="_blank" rel="noopener noreferrer">Join our hacknights</a>
+              </div>
             </div>
           </div>
         </div>

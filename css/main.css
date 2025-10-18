@@ -1,7 +1,7 @@
 /**
  * CivicTechWR Master CSS Loader
- * Imports all component files in correct order for optimal loading
- * 
+ * Built from component files in correct order for optimal loading
+ *
  * Load Order:
  * 1. Base Layer - Variables, resets, typography
  * 2. Layout Layer - Grid system, utilities
@@ -15,90 +15,3426 @@
    ========================================================================== */
 
 /* CSS Custom Properties - Must be loaded first */
-@import url('base/variables.css');
+/* ---------------------------------------
+  CUSTOM PROPERTIES ( VARIABLES )
+----------------------------------------- */
+:root {
+  --white-color:                  #fff;
+  --primary-color:                #FC6C6D;
+  --secondary-color:              #2D6F72;
+  --section-bg-color:             #f9f9f9;
+  --dark-color:                   #000;
+  --p-color:                      #717275;
+  --border-color:                 #e9eaeb;
+  --featured-border-color:        #727aab;
+  --body-font-family:             'DM Sans', sans-serif;
+  --h1-font-size:                 62px;
+  --h2-font-size:                 48px;
+  --h3-font-size:                 36px;
+  --h4-font-size:                 32px;
+  --h5-font-size:                 24px;
+  --h6-font-size:                 22px;
+  --p-font-size:                  18px;
+  --menu-font-size:               12px;
+  --copyright-font-size:          14px;
+
+  /* Modern font size scale for responsive typography */
+  --font-size-mobile-xs:          12px;
+  --font-size-mobile-sm:          14px;
+  --font-size-mobile-md:          16px;
+  --font-size-mobile-lg:          18px;
+  --font-size-mobile-xl:          20px;
+  --font-size-2xl:                28px;
+  --font-size-3xl:                36px;
+  --font-size-4xl:                48px;
+  --border-radius-large:          100px;
+  --border-radius-medium:         20px;
+  --border-radius-small:          10px;
+  --font-weight-normal:           400;
+  --font-weight-medium:           500;
+  --font-weight-bold:             700;
+
+  /* Neutral Palette - Grayscale for consistent neutrals */
+  --gray-900:                     #222;
+  --gray-700:                     #444;
+  --gray-600:                     #555;
+  --gray-500:                     #666;
+  --gray-400:                     #777;
+  --gray-300:                     #999;
+  --gray-200:                     #ccc;
+  --gray-100:                     #eaeaea;
+  --gray-50:                      #fafafa;
+
+  /* Spacing Scale - Consistent spacing system */
+  --space-1:                      4px;
+  --space-2:                      8px;
+  --space-3:                      12px;
+  --space-4:                      16px;
+  --space-5:                      24px;
+  --space-6:                      32px;
+  --space-7:                      48px;
+  --space-8:                      64px;
+  --space-9:                      40px;
+  --space-10:                     80px;
+  --space-12:                     96px;
+  --space-15:                     120px;
+
+  /* Section spacing for large layout padding */
+  --section-padding-sm:           80px;
+  --section-padding-md:           120px;
+  --section-padding-lg:           160px;
+  --section-padding-xl:           200px;
+
+  /* Additional spacing for specific components */
+  --page-padding:                 100px;
+  --card-padding:                 40px;
+  --card-padding-sm:              30px;
+  --card-padding-xs:              15px;
+
+  /* Simplified Border Radius - Modern radius system */
+  --radius-sm:                    4px;
+  --radius-md:                    12px;
+  --radius-card:                  16px;
+  --radius-lg:                    24px;
+  --radius-xl:                    32px;
+  --radius-full:                  9999px;
+  --radius-2xl:                   2rem;
+
+  /* Button hover state colors */
+  --secondary-hover: #246359; /* Darker teal for button hover */
+  --primary-hover: #d65a5b; /* Darker coral for button hover */
+  --secondary-disabled: #c2544b; /* WCAG AA compliant disabled state */
+  --primary-disabled: #a94841; /* Darker disabled state */
+
+  /* Override Bootstrap's link color variables for specific components only */
+  --bs-link-color: var(--p-color);
+  --bs-link-color-rgb: 113, 114, 117; /* RGB values for #717275 */
+  --bs-link-hover-color: var(--secondary-color);
+  --bs-link-hover-color-rgb: 45, 111, 114; /* RGB values for #2D6F72 */
+
+  /* Common rgba values for shadows and overlays */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.2);
+  --shadow-heavy: rgba(0, 0, 0, 0.4);
+  --overlay-light: rgba(255, 255, 255, 0.1);
+  --overlay-medium: rgba(255, 255, 255, 0.2);
+  --overlay-heavy: rgba(255, 255, 255, 0.7);
+  --secondary-alpha-1: rgba(45, 111, 114, 0.1);
+  --secondary-alpha-2: rgba(45, 111, 114, 0.2);
+  --secondary-alpha-3: rgba(45, 111, 114, 0.3);
+}
 
 /* Typography - Base text styles */
-@import url('base/typography.css');
+/* ---------------------------------------
+  TYPOGRAPHY - Base Text Styles
+  Extracted from style.css for better organization
+----------------------------------------- */
 
+/* Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-5);
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+  margin-bottom: var(--space-6);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  color: var(--secondary-color);
+  margin-bottom: var(--space-6);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+  color: var(--dark-color);
+  margin-bottom: var(--space-5);
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+  color: var(--dark-color);
+  margin-bottom: var(--space-4);
+}
+
+h5 {
+  font-size: var(--h5-font-size);
+  line-height: normal;
+  color: var(--dark-color);
+  margin-bottom: var(--space-4);
+}
+
+h6 {
+  font-size: var(--h6-font-size);
+  color: var(--dark-color);
+  margin-bottom: var(--space-3);
+}
+
+/* Spacing between consecutive headings */
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+  margin-top: var(--space-3);
+}
+
+/* Two consecutive headings of same level need more space */
+h2 + h2,
+h3 + h3,
+h4 + h4 {
+  margin-top: var(--space-6);
+}
+
+/* Utility class for headings that need extra spacing */
+.heading-spaced {
+  margin-bottom: var(--space-7);
+}
+
+/* Body Text */
+p {
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-normal);
+  margin-bottom: var(--space-5);
+}
+
+/* Last paragraph in a container should have no bottom margin */
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: var(--space-5);
+  padding-left: var(--space-6);
+}
+
+ul li, ol li {
+  margin-bottom: var(--space-2);
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-normal);
+}
+
+ul:last-child, ol:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: var(--space-5);
+}
+
+img:last-child {
+  margin-bottom: 0;
+}
+
+/* Figure elements */
+figure {
+  margin-bottom: var(--space-6);
+}
+
+figure:last-child {
+  margin-bottom: 0;
+}
+
+/* Flow spacing - consistent vertical rhythm between ALL sibling elements */
+.flow > * + * {
+  margin-top: var(--space-7);
+}
+
+/* Tighter flow spacing for compact sections */
+.flow-tight > * + * {
+  margin-top: var(--space-3);
+}
+
+/* Looser flow spacing for spacious sections */
+.flow-loose > * + * {
+  margin-top: var(--space-8);
+}
+
+/* Interactive Elements */
+a, 
+button {
+  touch-action: manipulation;
+  transition: all 0.3s;
+}
+
+/* Link Styles */
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+a:focus {
+  color: var(--primary-color);
+  text-decoration: underline;
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+a:visited {
+  color: var(--secondary-color);
+}
+
+a:visited:hover {
+  color: var(--primary-color);
+}
+
+/* Prevent visited link color from affecting buttons */
+a.btn:visited,
+a.btn:visited:hover {
+  color: inherit;
+}
+
+/* Text Selection */
+::selection {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+/* Text Utilities */
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Section Title Wrapper */
+.section-title-wrap {
+  background: var(--secondary-color);
+  border-radius: var(--border-radius-small);
+  padding: var(--space-3) var(--space-6);
+}
+
+/* Responsive Typography */
+@media screen and (width <= 991px) {
+  h1 {
+    font-size: var(--h2-font-size);
+  }
+
+  h2 {
+    font-size: var(--h3-font-size);
+  }
+
+  h3 {
+    font-size: var(--h4-font-size);
+  }
+
+  h4 {
+    font-size: 28px;
+  }
+
+  h5 {
+    font-size: var(--font-size-mobile-xl);
+  }
+
+  h6 {
+    font-size: var(--p-font-size);
+  }
+}
+
+@media screen and (width <= 480px) {
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  h4 {
+    font-size: var(--h6-font-size);
+  }
+
+  h5 {
+    font-size: var(--font-size-mobile-xl);
+  }
+}
+
+/* Section Padding */
+.section-padding {
+  padding: 8em;
+}
+
+@media (width <= 480px) {
+  .section-padding {
+    padding: 2em;
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+  }
+}
 /* ==========================================================================
    LAYOUT LAYER - Grid system and utilities
    ========================================================================== */
 
 /* Custom Bootstrap - Only includes used classes (2.7KB vs 237KB) */
-@import url('bootstrap-custom.css');
+/* Custom Bootstrap CSS - Only includes classes actually used by CTWR website */
+/* This reduces the 281KB Bootstrap CSS to ~15KB */
+
+/* Grid System */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (width >= 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (width >= 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (width >= 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (width >= 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+
+.col-2 {
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+
+@media (width >= 768px) {
+  .col-md-2 {
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (width >= 992px) {
+  .col-lg-2 {
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+
+  .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .col-lg-7 {
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+  }
+
+  .col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Flexbox utilities */
+.d-flex {
+  display: flex;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.align-items-center {
+  align-items: center;
+}
+.align-items-stretch {
+  align-items: stretch;
+}
+
+/* Spacing utilities */
+.mt-4 {
+  margin-top: 1.5rem;
+}
+.mt-5 {
+  margin-top: 3rem;
+}
+.mb-3 {
+  margin-bottom: 1rem;
+}
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+.mb-5 {
+  margin-bottom: 3rem;
+}
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
+/* Text utilities */
+.text-center {
+  text-align: center;
+}
+.text-decoration-underline {
+  text-decoration: underline;
+}
+
+/* Responsive utilities */
+@media (width <= 991.98px) {
+  .mt-lg-0 {
+    margin-top: 0;
+  }
+}
+
+/* Button styles handled by css/components/buttons.css */
+
+/* Image utilities */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
 
 /* ==========================================================================
    COMPONENT LAYER - Reusable UI components
    ========================================================================== */
 
 /* Navigation - Header and navigation system */
-@import url('components/navigation.css');
+/* ---------------------------------------
+  NAVIGATION - REBUILT FROM SCRATCH
+  Mobile-first responsive navigation system
+  Three breakpoints: Mobile (0-767px), Tablet (768-991px), Desktop (992px+)
+----------------------------------------- */
+
+/* Skip navigation for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: var(--white-color);
+  padding: var(--space-2);
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--white-color);
+  outline-offset: 2px;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Keyboard navigation improvements */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Hide checkbox used for mobile toggle */
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sticky wrapper for nav */
+.sticky-wrapper {
+  position: relative;
+  z-index: 222;
+  height: auto;
+}
+
+/* Base navbar styles - applies to all screen sizes */
+.navbar {
+  background: var(--dark-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: var(--space-3) 0;
+  box-shadow: 0 0.2rem 0.4rem var(--shadow-medium);
+  width: 100%;
+}
+
+.navbar .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  background: var(--dark-color);
+}
+
+/* Sticky state styles */
+.is-sticky .navbar {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.18);
+}
+
+.is-sticky .navbar,
+.is-sticky .navbar .container {
+  background: var(--dark-color);
+}
+
+/* Brand/Logo */
+.navbar-header {
+  display: flex;
+  align-items: center;
+  order: 1;
+  flex: 0 0 auto;
+}
+
+/* Navbar Icon */
+.navbar-icon {
+  background: var(--white-color);
+  border-radius: var(--border-radius-large);
+  color: var(--dark-color);
+  width: 47px;
+  height: 47px;
+  line-height: 47px;
+  text-align: center;
+}
+
+.is-sticky .navbar-icon {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  color: var(--white-color);
+  text-decoration: none;
+  font-size: var(--font-size-mobile-md);
+  font-weight: var(--font-weight-medium);
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.navbar-brand .logo {
+  height: 40px;
+  width: auto;
+}
+
+.navbar-brand .brand-name {
+  margin-left: 0.5rem;
+  font-size: var(--font-size-mobile-md);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+/* Hamburger toggle button */
+.navbar-toggler {
+  display: none;
+  order: 3;
+  padding: var(--space-2);
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--white-color);
+}
+
+.navbar-toggler-icon {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+/* Navigation collapse container */
+.navbar-collapse {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1 1 auto;
+  order: 2;
+}
+
+/* Navigation list */
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: 1.5rem;
+}
+
+.nav-item {
+  list-style: none;
+  margin: 0;
+}
+
+.navbar-nav .nav-link {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  color: var(--white-color);
+  text-decoration: none;
+  font-size: var(--font-size-mobile-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--overlay-heavy);
+  text-decoration: none;
+}
+
+.navbar-nav .nav-link:focus {
+  outline: 2px solid var(--white-color);
+  outline-offset: 2px;
+}
+
+/* Right-aligned actions (e.g., dashboard button) */
+.navbar-collapse .ms-auto {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* MOBILE STYLES: 0-767px (phones) */
+@media (max-width: 767px) {
+  .navbar {
+    min-height: 3.5rem;
+  }
+
+  .navbar .container {
+    flex-wrap: wrap;
+  }
+
+  /* Hide logo on mobile to save space */
+  .navbar-brand .logo {
+    display: none;
+  }
+
+  /* Show hamburger button */
+  .navbar-toggler {
+    display: block;
+  }
+
+  /* Collapse navigation by default */
+  .navbar-collapse {
+    display: none;
+    width: 100%;
+    order: 4;
+    background: var(--dark-color);
+    padding: var(--space-4) 0;
+  }
+
+  /* Show navigation when checkbox is checked */
+  #nav-toggle:checked ~ .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Stack navigation vertically */
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link {
+    padding: var(--space-3) var(--space-4);
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Stack right-side actions */
+  .navbar-collapse .ms-auto {
+    margin-left: 0;
+    width: 100%;
+    padding: var(--space-2) var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .navbar-collapse .ms-auto .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-icon {
+    background: var(--secondary-color);
+    color: var(--white-color);
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+  }
+}
+
+/* TABLET STYLES: 768-991px (tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-brand .logo {
+    display: block;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-collapse {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    margin-left: 1.5rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding: var(--space-2) var(--space-3);
+  }
+}
+
+/* DESKTOP STYLES: 992px+ */
+@media (min-width: 992px) {
+  .navbar-brand .logo {
+    display: block;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-collapse {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    margin-left: 2rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .navbar-icon {
+    font-size: var(--copyright-font-size);
+    width: 35.5px;
+    height: 35.5px;
+    line-height: 35.5px;
+  }
+}
 
 /* Buttons - Unified button system with BEM methodology */
-@import url('components/buttons.css');
+/**
+ * Unified Button System - BEM Methodology
+ * Replaces 17+ fragmented button classes with a cohesive system
+ * NO !important declarations - proper specificity hierarchy
+ */
+
+/* ==========================================================================
+   BASE BUTTON
+   ========================================================================== */
+
+.btn {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-5);
+
+  /* Typography */
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-mobile-md);
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  color: var(--dark-color); /* Default color - prevents inheriting parent color */
+
+  /* Visual */
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+
+  /* Animation */
+  transition: all 0.3s ease;
+
+  /* Behavior */
+  user-select: none;
+  vertical-align: top; /* Consistent baseline alignment */
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--secondary-alpha-2);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ==========================================================================
+   BUTTON VARIANTS
+   ========================================================================== */
+
+/* Primary Button - Teal background (main CTA) */
+.btn--primary {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.btn--primary:hover {
+  background: var(--secondary-hover);
+  border-color: var(--secondary-hover);
+  color: var(--white-color);
+  box-shadow: 0 4px 12px var(--secondary-alpha-3);
+}
+
+/* Secondary Button - Removed (unused) */
+
+/* Outline Button - Transparent with border */
+.btn--outline {
+  background: transparent;
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.btn--outline:hover {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+/* Light Inverse Button - For dark backgrounds */
+.btn--light {
+  background: var(--white-color);
+  border: 2px solid var(--white-color);
+  color: var(--secondary-color);
+  font-weight: 700;
+  box-shadow: 0 6px 16px var(--shadow-heavy);
+}
+
+.btn--light:hover {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Ghost Button - Minimal styling */
+.btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--secondary-color);
+}
+
+.btn--ghost:hover {
+  background: var(--secondary-alpha-1);
+  color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   BUTTON SIZES
+   ========================================================================== */
+
+/* Small Button */
+.btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-mobile-sm);
+}
+
+/* Large Button */
+.btn--lg {
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--font-size-mobile-lg);
+}
+
+/* Extra Small (for badges like GitHub) */
+.btn--xs {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-mobile-xs);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   BUTTON MODIFIERS
+   ========================================================================== */
+
+/* Full Width Button */
+.btn--full {
+  display: block;
+  width: 100%;
+}
+
+/* Pill-shaped Button */
+.btn--pill {
+  border-radius: var(--radius-full);
+}
+
+/* Square Button (icon buttons) */
+.btn--square {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Button with Icon */
+.btn__icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.btn__icon--right {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Spacing for buttons after paragraphs or headings */
+p + .btn,
+h1 + .btn,
+h2 + .btn,
+h3 + .btn,
+h4 + .btn,
+h5 + .btn,
+h6 + .btn {
+  margin-top: var(--space-5);
+}
+
+/* Spacing for multiple buttons in a row */
+.btn + .btn {
+  margin-top: var(--space-3);
+}
+
+/* ==========================================================================
+   SPECIAL PURPOSE BUTTONS
+   ========================================================================== */
+
+/* Footer Donate Button - High contrast coral */
+.btn--donate {
+  background: var(--secondary-disabled);
+  border-color: var(--secondary-disabled);
+  color: var(--white-color);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.btn--donate:hover {
+  background: var(--primary-disabled);
+  border-color: var(--primary-disabled);
+  color: var(--white-color);
+  box-shadow: 0 4px 12px rgba(194, 84, 75, 0.3);
+}
+
+/* Footer General Button - Outline variant for footer */
+.btn--footer {
+  background: var(--gray-50);
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.btn--footer:hover {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+/* GitHub Badge Button */
+.btn--badge {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-mobile-xs);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn--badge:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+/* Meeting CTA Button - Prominent on teal background */
+.btn--meeting {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--dark-color);
+  padding: var(--space-3) var(--space-6);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+
+.btn--meeting:hover {
+  background: var(--white-color);
+  border-color: var(--white-color);
+  color: var(--dark-color);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+@media (width <= 768px) {
+  .btn {
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--font-size-mobile-sm);
+    max-width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .btn--lg {
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--font-size-mobile-md);
+  }
+
+  .btn--sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-mobile-xs);
+  }
+
+  /* Stack buttons vertically on mobile */
+  .btn--full-mobile {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ==========================================================================
+   BUTTON GROUPS
+   ========================================================================== */
+
+.btn-group {
+  display: flex !important; /* Ensure flexbox is used */
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  align-items: center; /* Ensure all buttons align to center baseline */
+}
+
+.btn-group--center {
+  justify-content: center;
+}
+
+.btn-group--end {
+  justify-content: flex-end;
+}
+
+/* Ensure consistent button heights in groups */
+.btn-group .btn {
+  min-height: 44px; /* Consistent minimum height for touch targets */
+  height: auto; /* Allow natural height based on content */
+  display: inline-flex !important; /* Override any conflicting display rules */
+  align-items: center !important; /* Ensure vertical centering */
+  justify-content: center !important; /* Ensure horizontal centering */
+}
+
+/* Login Button - Header login button */
+.btn--login {
+  background: transparent;
+  border: 2px solid var(--white-color);
+  color: var(--white-color);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-mobile-sm);
+}
+
+.btn--login:hover {
+  background: var(--white-color);
+  color: var(--secondary-color);
+  transform: translateY(-1px);
+}
+
+@media (width <= 576px) {
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+  }
+}
 
 /* Hero - Main landing section */
-@import url('components/hero.css');
+/* ---------------------------------------
+  HERO SECTION - Main landing area
+  Extracted from style.css for better organization
+----------------------------------------- */
 
+.hero {
+  background: var(--dark-color);
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding-top: calc(3rem + 330px);
+  padding-bottom: 7rem;
+  min-height: 100vh;
+  z-index: 2;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, 
+    rgb(66 133 244 / 80%),
+    rgb(52 168 83 / 80%),
+    rgb(251 188 5 / 80%),
+    rgb(234 67 53 / 80%)
+  );
+  opacity: 0.2;
+  mix-blend-mode: multiply;
+  animation: gradient 5s ease infinite;
+}
+
+.hero-background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(rgb(255 255 255 / 20%) 0.5px, transparent 1px),
+    radial-gradient(rgb(255 255 255 / 20%) 0.5px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  animation: pattern 60s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    transform: rotate(0deg) scale(1.5);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(2);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1.5);
+  }
+}
+
+@keyframes pattern {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  color: var(--white-color);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgb(255 255 255 / 10%);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-2xl);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 10%);
+}
+
+.badge-icon {
+  font-size: var(--font-size-mobile-xl);
+  margin-right: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.badge-text {
+  font-size: var(--font-size-mobile-sm);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.hero-title {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(45deg, var(--white-color) 30%, rgb(255 255 255 / 70%));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: var(--font-size-mobile-xl);
+  line-height: 1.6;
+  color: rgb(255 255 255 / 80%);
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--space-6);
+}
+
+/* Override btn-group gap for hero section */
+.hero-actions .btn-group {
+  gap: var(--space-4);
+}
+
+/* Hero Image Styles */
+.hero-image-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive Hero Styles */
+@media (width <= 768px) {
+  .hero {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-mobile-md);
+  }
+
+  .hero-actions {
+    margin-top: var(--space-5);
+  }
+
+  .hero-actions .btn-group {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .hero-actions .btn-group .btn {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Page header variant - for about.html and projects.html */
+.site-header .btn {
+  margin-top: var(--space-3);
+}
+
+@media screen and (width >= 1600px) {
+  .hero {
+    padding-top: 380px;
+    padding-bottom: 380px;
+  }
+
+  .hero-image-wrap {
+    top: -50px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .hero-image {
+    min-width: 650px;
+  }
+  
+  .hero-title,
+  .hero h2 {
+    font-size: var(--h2-font-size);
+  }
+}
+
+@media screen and (width <= 991px) {
+  .hero {
+    padding-top: var(--section-padding-xl);
+    padding-bottom: 400px;
+  }
+
+  .hero-text {
+    top: 0;
+    margin-bottom: var(--section-padding-md);
+  }
+}
+
+@media screen and (width <= 480px) {
+  .hero-image-wrap {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-image {
+    min-width: inherit;
+  }
+
+  .hero{
+    padding-top: var(--space-15);
+    padding-bottom: 0;
+  }
+}
 /* Services - What we do section */
-@import url('components/services.css');
+/* ---------------------------------------
+  SERVICES SECTION - What we do
+  Extracted from style.css for better organization
+----------------------------------------- */
 
+.services,
+.featured {
+  background: var(--section-bg-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Meeting section with teal background */
+.section-secondary-bg {
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-top: none;
+  border-bottom: none;
+}
+
+.section-secondary-bg h1,
+.section-secondary-bg h2,
+.section-secondary-bg h3,
+.section-secondary-bg h4,
+.section-secondary-bg h5,
+.section-secondary-bg h6 {
+  color: var(--white-color);
+}
+
+/* Meeting section styles */
+.meeting-section-alt {
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-top: none;
+  border-bottom: none;
+  padding: var(--space-8) 0;
+}
+
+/* Meeting content container */
+.meeting-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  min-height: 400px;
+}
+
+/* Meeting image wrapper - uses consistent about-image styling */
+.meeting-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 400px;
+  padding: 0 1rem;
+}
+
+/* Meeting title */
+.meeting-title {
+  color: var(--white-color);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+/* Meeting card */
+.meeting-card {
+  background: var(--overlay-light);
+  border: 1px solid var(--overlay-medium);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px var(--shadow-light);
+  max-width: 100%;
+}
+
+/* Meeting details container */
+.meeting-details {
+  margin-bottom: 2rem;
+}
+
+/* Individual meeting detail item */
+.meeting-detail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--overlay-light);
+}
+
+.meeting-detail-item:last-child {
+  border-bottom: none;
+}
+
+/* Meeting icon */
+.meeting-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  color: var(--white-color);
+  font-size: var(--font-size-mobile-xl);
+  flex-shrink: 0;
+}
+
+/* Meeting text */
+.meeting-text {
+  color: var(--white-color);
+  font-size: var(--font-size-mobile-lg);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Meeting CTA */
+.meeting-cta {
+  text-align: center;
+}
+
+/* Services Cards */
+.services-thumb {
+  background: var(--white-color);
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-medium);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-5);
+  padding: var(--space-9) var(--space-9) 240px;
+  transition: all 0.5s;
+}
+
+.services-thumb-up {
+  position: relative;
+  bottom: 50px;
+  margin-bottom: -50px;
+}
+
+.services-thumb:hover {
+  border: 2px solid var(--secondary-color);
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 17.5%);
+}
+
+.services-thumb:hover .services-icon-wrap {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.services-icon-wrap {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 55%;
+  transform: rotate(-35deg) translateY(55px);
+  transition: all ease 0.5s;
+}
+
+.services-icon {
+  font-size: 90px;
+  position: relative;
+  bottom: 15px;
+}
+
+.services-thumb:hover .services-price-wrap {
+  background: var(--secondary-color);
+}
+
+.services-thumb:hover .services-price-overlay {
+  background: var(--primary-color);
+}
+
+.services-price-wrap {
+  background: var(--primary-color);
+  border-radius: var(--border-radius-medium);
+  position: relative;
+  overflow: hidden;
+  padding: 6px var(--space-5) 6px var(--card-padding-xs);
+  transition: all ease 0.5s;
+}
+
+.services-price-text {
+  color: var(--white-color);
+  font-size: var(--copyright-font-size);
+  font-weight: var(--font-weight-bold);
+}
+
+.services-price-overlay {
+  background: var(--secondary-color);
+  border-bottom-left-radius: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (width >= 1200px) {
+  .meeting-image-wrapper {
+    padding: 0 2rem;
+  }
+}
+
+@media (width >= 992px) {
+  .meeting-section-alt .row {
+    align-items: stretch;
+  }
+  
+  .meeting-section-alt .col-lg-6 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .meeting-image-wrapper {
+    min-height: 500px;
+    padding: 0 1.5rem;
+  }
+  
+  .meeting-content {
+    min-height: 500px;
+  }
+}
+
+@media (width <= 991px) {
+  .meeting-title {
+    text-align: center;
+  }
+  
+  .meeting-image-wrapper {
+    min-height: 350px;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (width <= 768px) {
+  .meeting-section-alt {
+    padding: var(--space-6) 0;
+  }
+  
+  .meeting-card {
+    padding: var(--space-5);
+  }
+
+  .meeting-detail-item {
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+  }
+
+  .meeting-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: var(--font-size-mobile-md);
+  }
+
+  .meeting-text {
+    font-size: var(--font-size-mobile-md);
+  }
+  
+  .meeting-image-wrapper {
+    min-height: 280px;
+    padding: 0;
+  }
+}
+
+@media (width <= 576px) {
+  .meeting-image-wrapper {
+    min-height: 250px;
+  }
+}
+
+/* Services responsive styles */
+@media screen and (width <= 991px) {
+  .services-thumb-up {
+    bottom: 0;
+    margin-bottom: var(--space-6);
+  }
+
+  .services-thumb {
+    margin-bottom: var(--space-6);
+    padding-bottom: 270px;
+  }
+
+  .services-icon-wrap {
+    width: 45%;
+    height: 60%;
+  }
+}
 /* Footer - Site footer */
-@import url('components/footer.css');
+/* ---------------------------------------
+  FOOTER COMPONENT - Site footer
+  Extracted from style.css for better organization
+----------------------------------------- */
 
+/* Main Footer Styles */
+.site-footer {
+  border-top: 1px solid var(--border-color);
+  padding-bottom: var(--space-7);
+  text-align: center;
+}
+
+.site-footer-title {
+  font-size: var(--menu-font-size);
+  color: var(--dark-color);
+  text-transform: uppercase;
+}
+
+.copyright-text-wrap p,
+.copyright-text {
+  font-size: var(--copyright-font-size);
+  border-right: 1px solid var(--border-color);
+  padding-right: 25px;
+  margin-right: var(--space-5);
+}
+
+.footer-menu {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-menu-item {
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.footer-menu-link {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-medium);
+  font-size: var(--copyright-font-size);
+  font-weight: var(--font-weight-medium);
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  margin-right: var(--space-3);
+  margin-bottom: var(--space-3);
+  padding: 6px var(--space-4);
+  min-width: 70px;
+}
+
+.footer-menu-link:hover {
+  /* Hover styles can be added here if needed */
+}
+
+/* Footer Redesign - Modern Footer Layout */
+.footer-redesign {
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-100);
+  padding: var(--space-7) 0 var(--space-6);
+  margin-top: var(--space-8);
+  font-size: var(--font-size-mobile-md);
+}
+
+.footer-redesign-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 36px;
+}
+
+.footer-col {
+  flex: 1 1 210px;
+  min-width: 210px;
+  margin-bottom: var(--space-5);
+}
+
+.footer-brand-logo {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.footer-brand-mission {
+  color: var(--gray-900);
+  font-size: var(--font-size-mobile-sm);
+  margin-bottom: 0;
+  max-width: 220px;
+}
+
+.footer-col-title {
+  font-weight: bold;
+  margin-bottom: var(--space-3);
+  letter-spacing: 1px;
+  font-size: var(--font-size-mobile-lg);
+  color: var(--secondary-color);
+}
+
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-5);
+}
+
+.footer-links-list li {
+  margin-bottom: 7px;
+}
+
+.footer-support-text {
+  margin-bottom: var(--space-4);
+  color: var(--gray-700);
+}
+
+.footer-social-icons {
+  margin-bottom: var(--space-4);
+}
+
+.footer-social-icons a {
+  margin-right: var(--space-3);
+  display: inline-block;
+}
+
+.footer-social-icons i {
+  font-size: var(--p-font-size);
+  color: var(--gray-500);
+  transition: color 0.2s;
+}
+
+.footer-social-icons i:hover {
+  color: var(--secondary-color);
+}
+
+/* Footer copyright text - improved contrast for WCAG AA compliance */
+.footer-copyright-wrapper p {
+  color: var(--gray-600); /* Improved contrast ratio for WCAG AA compliance */
+  font-size: var(--copyright-font-size);
+  margin: 0;
+  text-align: center;
+}
+
+/* Social Icons */
+.social-icon {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-5);
+}
+
+.social-icon-item {
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--gray-500);
+  font-size: var(--font-size-mobile-xl);
+  transition: color 0.2s;
+  border-radius: var(--border-radius-large);
+  margin: 2px 2px 5px;
+}
+
+/* Footer Accent Utilities */
+.footer-col-title-accent {
+  color: var(--secondary-color);
+}
+
+.footer-social-icon-img {
+  background: var(--white-color);
+  border-radius: var(--radius-sm);
+}
+
+/* Responsive Footer Styles */
+@media (width <= 900px) {
+  .footer-redesign-container {
+    flex-direction: column;
+    gap: 36px;
+    padding: 0 18px;
+  }
+
+  .footer-col {
+    min-width: 0;
+  }
+}
 /* Avatar - Profile and user images */
-@import url('components/avatar.css');
+/* Avatar Image Components */
 
+.avatar-image {
+  border-radius: var(--border-radius-large);
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.avatar-image-large {
+  width: 90.4px;
+  height: 90.4px;
+}
+
+.profile-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--border-radius-small);
+  object-fit: cover;
+}
+
+.profile-title {
+  font-size: var(--font-size-mobile-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+.profile-small-title {
+  font-size: var(--font-size-mobile-md);
+  font-weight: var(--font-weight-normal);
+}
+
+.about-image {
+  border-radius: var(--border-radius-medium);
+}
 /* Preloader - Loading spinner */
-@import url('components/preloader.css');
+/* Preloader Component */
 
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background: none repeat scroll 0 0 var(--white-color);
+}
+
+.spinner {
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-small);
+  position: relative;
+}
+
+.spinner::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 45px;
+  height: 45px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  border-top-color: var(--white-color);
+  animation: spinner .9s linear infinite;
+}
+
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
 /* Icons - SVG icon styling */
-@import url('components/icons.css');
+/* Icon Components */
 
+/* SVG Icon Sprite Styling */
+.icon {
+  display: inline-block;
+  fill: currentcolor;
+  vertical-align: middle;
+}
+
+.form-check-icon {
+  color: var(--secondary-color);
+}
 /* Featured - Featured numbers and statistics */
-@import url('components/featured.css');
+/* Featured Numbers Component */
 
+.featured-numbers {
+  font-size: var(--h1-font-size);
+  line-height: normal;
+  display: block;
+}
+
+.featured-text {
+  color: var(--secondary-color);
+}
+
+.featured-border-bottom {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.featured-border-start {
+  border-left: 1px solid var(--border-color);
+}
 /* Sponsors - Partner and sponsor logos */
-@import url('components/sponsors.css');
+/* Sponsors Component */
 
+/* Sponsor grid container - uses CSS Grid for consistent layout */
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-6);
+  row-gap: var(--space-8);
+  align-items: center;
+  justify-items: center;
+}
+
+/* Container for each sponsor logo - provides consistent bounds */
+.sponsors-item-height {
+  width: 100%;
+  min-height: 100px;
+  height: 100px;
+  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-4);
+}
+
+/* Current partner logos - larger and more prominent */
+.sponsors-image {
+  display: block;
+  object-fit: contain;
+  margin: 0 auto;
+  transition: all ease 0.3s;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  /* Systematic size constraints for consistent visual weight */
+  max-width: 180px;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+}
+
+.sponsors-image:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Previous partner logos - smaller to show hierarchy */
+.previous-sponsors-image {
+  display: block;
+  object-fit: contain;
+  margin: 0 auto;
+  transition: all ease 0.3s;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  /* Smaller constraints for previous partners */
+  max-width: 140px;
+  max-height: 60px;
+  width: auto;
+  height: auto;
+}
+
+.previous-sponsors-image:hover {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+  opacity: 0.85;
+}
+
+/* Responsive sizing for tablets */
+@media (width <= 768px) {
+  .sponsor-grid {
+    gap: var(--space-5);
+    row-gap: var(--space-6);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .sponsors-item-height {
+    min-height: 90px;
+    height: 90px;
+    padding: 0 var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .sponsors-image {
+    max-width: 160px;
+    max-height: 70px;
+  }
+
+  .previous-sponsors-image {
+    max-width: 120px;
+    max-height: 50px;
+  }
+}
+
+/* Responsive sizing for mobile */
+@media (width <= 576px) {
+  .sponsor-grid {
+    gap: var(--space-4);
+    row-gap: var(--space-5);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sponsors-item-height {
+    min-height: 80px;
+    height: 80px;
+    padding: 0 var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .sponsors-image {
+    max-width: 140px;
+    max-height: 60px;
+  }
+
+  .previous-sponsors-image {
+    max-width: 100px;
+    max-height: 45px;
+  }
+}
 /* Projects - Project showcase cards */
-@import url('components/projects.css');
+/* Projects Component */
 
+.projects-thumb {
+  background: var(--section-bg-color);
+  border: 2px solid var(--white-color);
+  border-radius: var(--border-radius-medium);
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-9);
+  height: 350px;
+  transition: all ease 0.5s;
+}
+
+.projects-thumb:hover {
+  border-color: var(--secondary-color);
+}
+
+.projects-thumb:hover .projects-image,
+.projects-thumb:focus .projects-image {
+  transform: rotate(0) translateY(0);
+}
+
+.projects-thumb .popup-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.projects-image {
+  border-radius: var(--border-radius-medium);
+  display: block;
+  width: 100%;
+  transform: rotate(10deg) translateY(var(--space-10));
+  transition: all ease 0.5s;
+}
+
+.projects-title {
+  padding-top: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.projects-tag {
+  font-size: var(--menu-font-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+/* ---------------------------------------
+  RESPONSIVE STYLES
+----------------------------------------- */
+
+@media (width <= 480px) {
+  .services .col-lg-10 .row .col-lg-6:last-child,
+  .projects .col-lg-4:last-child {
+    margin-bottom: 0;
+  }
+
+  .projects-thumb {
+    height: auto;
+    min-height: 300px;
+    margin-top: 0;
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+  }
+
+  .projects .about-thumb {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* Ensure GitHub buttons fit within project cards on mobile */
+  .projects-thumb .btn--badge,
+  .project-card .btn--badge {
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+}
 /* Forms - Contact forms and inputs */
-@import url('components/forms.css');
+/* Contact and Form Components */
 
+/*
+.contact {
+  background: var(--section-bg-color);
+}
+
+.contact-info {
+  background: var(--white-color);
+  border-top-right-radius: var(--border-radius-small);
+  border-bottom-right-radius: var(--border-radius-small);
+  padding: 60px var(--card-padding-sm) var(--card-padding-sm) var(--card-padding-sm);
+  height: 100%;
+}
+
+.contact-info-border-start {
+  border-right: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+}
+
+.contact-form {
+  margin-left: 10px;
+}
+*/
+
+/* Custom Form Styles */
+.custom-form .form-control {
+  background: var(--white-color);
+  box-shadow: none;
+  border: 2px solid var(--border-color);
+  color: var(--p-color);
+  margin-bottom: var(--space-5);
+  padding-top: 13px;
+  padding-bottom: 13px;
+  outline: none;
+}
+
+.form-floating>label {
+  color: var(--p-color);
+}
+
+.form-check-inline {
+  vertical-align: middle;
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: var(--space-5);
+  padding: 0;
+}
+
+.custom-form .form-check-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.form-check-label-text {
+  color: var(--p-color);
+  display: block;
+  font-size: var(--copyright-font-size);
+  margin-top: 5px;
+}
 /* Organizers - Team and organizers section */
-@import url('components/organizers.css');
+/* Organizers Component */
 
+.organizers-section {
+  background: var(--section-bg-color);
+  border-radius: var(--space-3);
+  padding: var(--space-7);
+  margin-top: 3rem;
+  box-shadow: 0 var(--space-5) 60px rgb(15 23 42 / 8%);
+}
+
+.organizers-section .organizers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+  margin-top: 2rem;
+}
+
+.organizers-section .organizer-card,
+.organizers-section .shoutout-section {
+  background: var(--white-color);
+  border-radius: var(--space-4);
+  padding: var(--space-6) var(--space-5);
+  box-shadow: 0 var(--space-3) var(--space-6) rgb(15 23 42 / 10%);
+  text-align: center;
+}
+
+.organizers-section .shoutout-section {
+  margin-top: 3rem;
+}
+
+.organizers-section .organizer-name {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--heading-color);
+}
+
+.organizers-section .organizer-contact a {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.organizers-section .shoutout-link {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.organizers-section .shoutout-member {
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+@media (width <= 768px) {
+  .organizers-section {
+    padding: var(--space-6);
+  }
+
+  .organizers-section .organizer-card,
+  .organizers-section .shoutout-section {
+    box-shadow: 0 6px 20px rgb(15 23 42 / 10%);
+  }
+}
+/* Profile - Profile cards and about section */
+/* ---------------------------------------
+  PROFILE & ABOUT SECTION STYLES
+----------------------------------------- */
+
+/* Profile card container */
+.profile-thumb {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Profile card header */
+.profile-title {
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--card-padding-xs) var(--space-6);
+}
+
+/* Small title labels in profile */
+.profile-small-title {
+  border-right: 1px solid var(--border-color);
+  color: var(--secondary-color);
+  font-weight: var(--font-weight-bold);
+  margin-right: var(--space-3);
+  padding: var(--space-4);
+  display: inline-block;
+}
+
+/* Profile card body */
+.profile-body p {
+  margin-bottom: 0;
+}
+
+.profile-body p:nth-of-type(even) {
+  background: var(--white-color);
+}
+
+/* About section images */
+.about-image {
+  border-radius: var(--border-radius-medium);
+  margin-bottom: var(--space-6);
+}
+
+.about-thumb {
+  padding-right: var(--space-6);
+  padding-left: var(--space-6);
+}
+
+/* Ensure images have proper spacing from adjacent content */
+.about-image + *,
+* + .about-image {
+  margin-top: var(--space-6);
+}
+
+/* ---------------------------------------
+  RESPONSIVE STYLES
+----------------------------------------- */
+
+@media (width <= 768px) {
+  .about-thumb {
+    padding-right: var(--space-4);
+    padding-left: var(--space-4);
+  }
+}
+
+@media (width <= 480px) {
+  .about-thumb {
+    padding-right: var(--space-3);
+    padding-left: var(--space-3);
+  }
+
+  .about-numbers {
+    font-size: var(--font-size-3xl);
+  }
+
+  .about-image {
+    margin-bottom: var(--space-5);
+  }
+}
+
+/* Meeting - Meeting section and details */
+/**
+ * Meeting Section Component
+ * Styles for the meeting section used across the site
+ * 
+ * Components:
+ * - .meeting-section-alt - Main meeting section container
+ * - .meeting-image-wrapper - Image container with styling
+ * - .meeting-card - Meeting details card
+ * - .meeting-content - Content wrapper
+ * - .meeting-details - Meeting information list
+ * - .meeting-detail-item - Individual meeting detail
+ * - .meeting-icon - Icon container
+ * - .meeting-text - Text content
+ * - .meeting-cta - Call-to-action area
+ * - .meeting-title - Section title
+ * - .profile-thumb - Profile image container (meeting variant)
+ * - .profile-body - Profile content area (meeting variant)
+ */
+
+/* ==========================================================================
+   MEETING SECTION - Main container
+   ========================================================================== */
+
+.meeting-section-alt .col-lg-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   MEETING IMAGE - Image wrapper and styling
+   ========================================================================== */
+
+.meeting-section-alt .meeting-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgb(15 23 42 / 30%);
+}
+
+.meeting-section-alt .meeting-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+
+/* ==========================================================================
+   MEETING CARD - Meeting details card
+   ========================================================================== */
+
+.meeting-section-alt .meeting-content {
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+}
+
+.meeting-section-alt .meeting-card {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   PROFILE STYLES - Meeting section specific profile styling
+   ========================================================================== */
+
+.meeting-section-alt .profile-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.meeting-section-alt .profile-body::before {
+  content: "";
+  position: absolute;
+  left: 2.2rem;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN - Mobile optimizations
+   ========================================================================== */
+
+@media (width <= 768px) {
+  .meeting-section-alt .meeting-content {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .meeting-section-alt .profile-thumb {
+    padding: var(--space-5);
+  }
+}
+
+@media (width <= 480px) {
+  .meeting-section-alt .meeting-content {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+}
 /* Page Header - Page titles and headers */
-@import url('components/page-header.css');
+/* Page Header Component */
 
+.site-header {
+  padding: var(--section-padding-md) 0 var(--space-10);
+}
+
+.has-fixed-nav .site-header,
+body.has-fixed-nav .site-header {
+  padding-top: var(--section-padding-lg);
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+}
+
+.page-subtitle {
+  font-size: var(--font-size-mobile-lg);
+  color: var(--p-color);
+  margin-bottom: 0;
+}
 /* Footer Utilities - Footer-specific utilities */
-@import url('components/footer-utilities.css');
+/* Footer Utilities Component */
 
+.footer-col-title-accent {
+  color: var(--secondary-color);
+}
+
+.footer-social-icon-img {
+  background: var(--white-color);
+  border-radius: var(--radius-sm);
+}
 /* ==========================================================================
    PAGE LAYER - Page-specific styles
    ========================================================================== */
 
 /* About page specific styles */
-@import url('pages/about.css');
+/* About page specific styles */
+.about-main-centered {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: var(--page-padding);
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media screen and (width <= 480px) {
+  .about-main-centered {
+    padding: var(--card-padding);
+    padding-top: 100px;
+  }
+}
+
+.organizers-title {
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.organizers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+  place-items: start center;
+  padding: var(--card-padding-sm);
+  margin: 0 auto;
+}
+
+.organizer-card {
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  text-align: center;
+  padding: 0;
+  width: 100%;
+  max-width: 180px;
+  margin-bottom: 2rem;
+}
+
+.organizer-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-900);
+  /* Use consistent image styling for non-circular elements */
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.organizer-name {
+  color: var(--dark-color);
+}
+
+.organizer-contact a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.about-section {
+  padding: var(--space-6) var(--space-4);
+}
+
+.shoutout-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.shoutout-title {
+  font-size: var(--font-size-mobile-xl);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.shoutout-list {
+  flex-direction: column;
+  gap: var(--space-2);
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.shoutout-member {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  min-width: auto;
+  text-align: left;
+}
+
+.shoutout-member-name {
+  font-size: var(--font-size-mobile-md);
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.shoutout-member-name a {
+  text-align: center;
+  color: inherit;
+  text-decoration: underline;
+}
 
 /* Projects page specific styles */
-@import url('pages/projects.css');
+/* Projects page specific styles */
+.projects-main-centered {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: var(--page-padding);
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media screen and (width <= 480px) {
+  .projects-main-centered {
+    padding: var(--card-padding);
+    padding-top: 100px;
+  }
+}
+
+.projects-section {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.projects-title {
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.project-description {
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-card {
+  background: var(--section-bg-color);
+  border: 2px solid var(--white-color);
+  border-radius: var(--border-radius-medium);
+  position: relative;
+  overflow: hidden;
+  padding: var(--card-padding);
+  height: 350px;
+  transition: all ease 0.5s;
+  margin-bottom: 30px;
+}
+
+.project-card:hover {
+  border-color: var(--secondary-color);
+}
+
+.project-info {
+  position: relative;
+  z-index: 2;
+}
+
+.project-image {
+  border-radius: var(--border-radius-medium);
+  display: block;
+  width: 100%;
+  transform: rotate(10deg) translateY(80px);
+  transition: all ease 0.5s;
+}
+
+.project-card:hover .project-image {
+  transform: rotate(0) translateY(0);
+}
 
 /* ==========================================================================
    UTILITY LAYER - Abstract shapes and helpers
    ========================================================================== */
 
 /* Abstract Shapes - Decorative background elements */
-@import url('abstract-shapes.css');
+/* Abstract Shapes CSS */
+
+.shape-container {
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+.abstract-shape {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Shape 1 - Circle */
+.shape-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #ff5757, #ff8a5b);
+  top: 20%;
+  left: 5%;
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Shape 2 - Square */
+.shape-square {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  border-radius: var(--border-radius-small);
+  transform: rotate(45deg);
+  top: 60%;
+  right: 8%;
+  animation: float 18s ease-in-out infinite reverse;
+}
+
+/* Shape 3 - Triangle */
+.shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 140px solid rgb(111 66 193 / 60%);
+  top: 30%;
+  right: 15%;
+  animation: float 20s ease-in-out infinite;
+}
+
+/* Shape 4 - Blob */
+.shape-blob {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  top: 70%;
+  left: 15%;
+  animation: morph 15s linear infinite alternate;
+}
+
+/* Shape 5 - Rectangle */
+.shape-rectangle {
+  width: 120px;
+  height: 60px;
+  background: linear-gradient(135deg, #f09819, #edde5d);
+  border-radius: var(--radius-sm);
+  transform: rotate(-15deg);
+  bottom: 15%;
+  left: 10%;
+  animation: float 12s ease-in-out infinite;
+}
+
+/* Shape 6 - Donut */
+.shape-donut {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: 20px solid rgb(238 96 156 / 60%);
+  top: 15%;
+  right: 10%;
+  animation: float 16s ease-in-out infinite reverse;
+}
+
+/* Shape 7 - Zigzag */
+.shape-zigzag {
+  width: 120px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff6b6b, #ffe66d);
+  clip-path: polygon(0% 0%, 20% 0%, 40% 100%, 60% 0%, 80% 100%, 100% 0%, 100% 100%, 0% 100%);
+  top: 45%;
+  left: 12%;
+  animation: float 14s ease-in-out infinite;
+}
+
+/* Shape 8 - Star */
+.shape-star {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #a0f1ea, #5d26c1);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  top: 25%;
+  right: 15%;
+  animation: spin 20s linear infinite;
+}
+
+/* Shape 9 - Hexagon */
+.shape-hexagon {
+  width: 100px;
+  height: 90px;
+  background: linear-gradient(135deg, #76b852, #8dc26f);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  bottom: 20%;
+  right: 10%;
+  animation: float 18s ease-in-out infinite;
+}
+
+/* Shape 10 - Cross */
+.shape-cross {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #f857a6, #ff5858);
+  clip-path: polygon(
+    35% 0%,
+    65% 0%,
+    65% 35%,
+    100% 35%,
+    100% 65%,
+    65% 65%,
+    65% 100%,
+    35% 100%,
+    35% 65%,
+    0% 65%,
+    0% 35%,
+    35% 35%
+  );
+  top: 60%;
+  left: 8%;
+  animation: spin 25s linear infinite reverse;
+}
+
+/* Shape 11 - Wave */
+.shape-wave {
+  width: 150px;
+  height: 60px;
+  background: linear-gradient(135deg, #00c9ff, #92fe9d);
+  border-radius: var(--radius-lg);
+  clip-path: polygon(0% 50%, 25% 20%, 50% 50%, 75% 80%, 100% 50%, 100% 100%, 0% 100%);
+  bottom: 15%;
+  right: 20%;
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Shape 12 - Diamond */
+.shape-diamond {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #fc466b, #3f5efb);
+  transform: rotate(45deg);
+  animation: float 17s ease-in-out infinite reverse;
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes morph {
+  0% {
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  }
+
+  25% {
+    border-radius: 40% 60% 30% 70% / 60% 40%;
+  }
+
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 30% 60% 80%;
+  }
+
+  75% {
+    border-radius: 60% 40% 30% 70% / 60% 40% 50%;
+  }
+
+  100% {
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  }
+}
+
+/* Media Queries for Responsive Shapes */
+@media (width <= 768px) {
+  .abstract-shape {
+    transform: scale(0.7);
+    opacity: 0.4;
+  }
+}
+
+/* ---------------------------------------
+  POSITION UTILITIES
+----------------------------------------- */
+.top-3p {
+  top: 3%;
+  bottom: auto;
+}
+
+.top-4p {
+  top: 4%;
+  bottom: auto;
+}
+
+.top-5p {
+  top: 5%;
+  bottom: auto;
+}
+
+.top-6p {
+  top: 6%;
+  bottom: auto;
+}
+
+.top-7p {
+  top: 7%;
+  bottom: auto;
+}
+
+.top-8p {
+  top: 8%;
+  bottom: auto;
+}
+
+.top-9p {
+  top: 9%;
+  bottom: auto;
+}
+
+.top-10p {
+  top: 10%;
+  bottom: auto;
+}
+
+.top-12p {
+  top: 12%;
+  bottom: auto;
+}
+
+.top-15p {
+  top: 15%;
+  bottom: auto;
+}
+
+.top-20p {
+  top: 20%;
+  bottom: auto;
+}
+
+.top-25p {
+  top: 25%;
+  bottom: auto;
+}
+
+.top-30p {
+  top: 30%;
+  bottom: auto;
+}
+
+.top-35p {
+  top: 35%;
+  bottom: auto;
+}
+
+.top-40p {
+  top: 40%;
+  bottom: auto;
+}
+
+.top-50p {
+  top: 50%;
+  bottom: auto;
+}
+
+.top-60p {
+  top: 60%;
+  bottom: auto;
+}
+
+.bottom-5p {
+  bottom: 5%;
+  top: auto;
+}
+
+.bottom-10p {
+  bottom: 10%;
+  top: auto;
+}
+
+.bottom-15p {
+  bottom: 15%;
+  top: auto;
+}
+
+.bottom-20p {
+  bottom: 20%;
+  top: auto;
+}
+
+.bottom-25p {
+  bottom: 25%;
+  top: auto;
+}
+
+.bottom-30p {
+  bottom: 30%;
+  top: auto;
+}
+
+.left-2p {
+  left: 2%;
+  right: auto;
+}
+
+.left-3p {
+  left: 3%;
+  right: auto;
+}
+
+.left-4p {
+  left: 4%;
+  right: auto;
+}
+
+.left-5p {
+  left: 5%;
+  right: auto;
+}
+
+.left-6p {
+  left: 6%;
+  right: auto;
+}
+
+.left-7p {
+  left: 7%;
+  right: auto;
+}
+
+.left-8p {
+  left: 8%;
+  right: auto;
+}
+
+.left-10p {
+  left: 10%;
+  right: auto;
+}
+
+.left-12p {
+  left: 12%;
+  right: auto;
+}
+
+.left-15p {
+  left: 15%;
+  right: auto;
+}
+
+.left-25p {
+  left: 25%;
+  right: auto;
+}
+
+.right-3p {
+  right: 3%;
+  left: auto;
+}
+
+.right-5p {
+  right: 5%;
+  left: auto;
+}
+
+.right-6p {
+  right: 6%;
+  left: auto;
+}
+
+.right-7p {
+  right: 7%;
+  left: auto;
+}
+
+.right-8p {
+  right: 8%;
+  left: auto;
+}
+
+.right-9p {
+  right: 9%;
+  left: auto;
+}
+
+.right-10p {
+  right: 10%;
+  left: auto;
+}
+
+.right-12p {
+  right: 12%;
+  left: auto;
+}
+
+.right-15p {
+  right: 15%;
+  left: auto;
+}
+
+.right-20p {
+  right: 20%;
+  left: auto;
+}
+
+.right-25p {
+  right: 25%;
+  left: auto;
+}
+
+/* ---------------------------------------
+  SIZE UTILITIES
+----------------------------------------- */
+.shape-size-60 {
+  width: 60px;
+  height: 60px;
+}
+
+.shape-size-50 {
+  width: 50px;
+  height: 50px;
+}
+
+.shape-size-45 {
+  width: 45px;
+  height: 45px;
+}
+
+@media (width <= 576px) {
+  .abstract-shape {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+}
 
 /* Fonts - Self-hosted font files */
-@import url('fonts.css');
+/* Self-hosted DM Sans font - Latin subset only
+ * Replaces Google Fonts API to eliminate external DNS lookup and improve performance
+ * Variable font supporting weights 400-700
+ * File size: 37KB
+ */
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/dm-sans-latin-400-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 /* ==========================================================================
    MAIN STYLES - Remaining styles from original style.css
    ========================================================================== */
 
 /* Main stylesheet - Contains remaining styles after component extraction */
-@import url('style.css');
+/*
+
+TemplateMo 578 First Portfolio
+https://templatemo.com/tm-578-first-portfolio
+
+CivicTech Waterloo Region Website Styles
+Customized for CTWR branding and accessibility requirements
+Author: CivicTechWR
+Version: 2.0.0
+Last Updated: October 2024
+
+Key Features:
+- WCAG 2.1 AA compliant
+- Mobile-first responsive design
+- CSS custom properties for theming
+- Optimized for performance
+- Enhanced accessibility features
+
+*/
+
+body {
+  background: var(--white-color);
+  font-family: var(--body-font-family);
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography styles moved to css/base/typography.css */
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* Navigation styles moved to css/components/navigation.css */
+
+/* Removed old .btn-outline:focus styles - now handled by unified button system */
+
+/* Section padding moved to css/base/typography.css */
+
+/* Typography styles moved to css/base/typography.css */
+
+/* Section title wrap moved to css/base/typography.css */
+
+/* Hero styles moved to css/components/hero.css */
+
+/* Removed duplicate .btn definition - now handled by css/components/buttons.css */
+
+/* Link utility classes */
+.text-decoration-underline {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.text-decoration-underline:hover {
+  color: var(--primary-color);
+}
+
+/* Copyright/footer link specificity - inherit standard link colors but add bold weight */
+.copyright-text-wrap a {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Note: .nav-link and .navbar-nav .nav-link colors are defined in NAVIGATION section above
+   - White for dark header background (lines 270-282)
+   - Gray for mobile/sticky state (lines 224-226, 1422-1426)
+   This comment prevents duplicate/conflicting selectors */
+
+/* Footer styles moved to css/components/footer.css */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero responsive styles moved to css/components/hero.css */
+
+/* Profile and About styles moved to css/components/profile.css */
+
+/* ---------------------------------------
+  FEATURED
+----------------------------------------- */
+
+/* Services styles moved to css/components/services.css */
+
+/* Site footer and social icon styles moved to css/components/footer.css */
+
+/* ---------------------------------------
+  RESPONSIVE STYLES
+----------------------------------------- */
+/* Hero responsive styles moved to css/components/hero.css */
+/* Typography responsive styles moved to css/base/typography.css */
+/* About/profile responsive styles moved to css/components/profile.css */
+/* Projects responsive styles moved to css/components/projects.css */
+
+/* Page header styles moved to css/components/page-header.css */
+/* Footer utilities moved to css/components/footer-utilities.css */

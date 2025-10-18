@@ -83,20 +83,7 @@ permalink: /
       .spinner { border: 1px solid transparent; border-radius: var(--border-radius-small); position: relative; }
       .spinner::before { content: ''; box-sizing: border-box; position: absolute; top: 50%; left: 50%; width: 45px; height: 45px; margin-top: -10px; margin-left: -10px; border-radius: 9999px; border: 1px solid var(--border-color); border-top-color: var(--white-color); animation: spinner .9s linear infinite; }
       @keyframes spinner { to { transform: rotate(360deg); } }
-      .navbar { background: var(--white-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 0; }
-      .navbar-brand { font-size: var(--h5-font-size); font-weight: var(--font-weight-bold); color: var(--secondary-color); text-decoration: none; }
-      .navbar-nav .nav-link { color: var(--p-color); font-weight: var(--font-weight-medium); text-decoration: none; padding: 0.5rem 1rem; transition: color 0.3s ease; }
-      .navbar-nav .nav-link:hover { color: var(--secondary-color); }
-      .hero { background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%); color: var(--white-color); padding: 8rem 0 4rem; text-align: center; position: relative; overflow: hidden; }
-      .hero h1 { font-size: var(--h1-font-size); font-weight: var(--font-weight-bold); margin-bottom: 1.5rem; line-height: 1.2; }
-      .hero p { font-size: var(--h5-font-size); margin-bottom: 2rem; opacity: 0.9; }
-      .btn { display: inline-block; padding: var(--space-3) var(--space-5); font-size: 1rem; font-weight: var(--font-weight-medium); border-radius: var(--border-radius-small); border: none; text-align: center; text-decoration: none; cursor: pointer; transition: all 0.3s ease; margin: 0.25rem; }
-      .btn--primary { background: var(--secondary-color); color: var(--white-color); }
-      .btn--primary:hover { background: var(--primary-color); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
-      .btn--light { background: var(--white-color); color: var(--secondary-color); border: 2px solid var(--white-color); font-weight: 700; box-shadow: 0 6px 16px rgba(0,0,0,0.4); }
-      .btn--light:hover { background: var(--secondary-color); color: var(--white-color); box-shadow: 0 8px 24px rgba(0,0,0,0.5); transform: translateY(-2px); }
-      .icon { display: inline-block; fill: currentcolor; vertical-align: middle; }
-      @media (max-width: 768px) { .hero h1 { font-size: var(--h2-font-size); } .hero p { font-size: var(--p-font-size); } .btn { display: block; width: 100%; margin: 0.5rem 0; } }
+      /* Inline CSS removed - using main.css instead */
     </style>
 
     {% if jekyll.environment == "production" %}
@@ -156,15 +143,17 @@ permalink: /
                 <h1 class="hero-title">Civic Change through Tech and Design</h1>
                 <p class="hero-description">Join our community of tech enthusiasts and designers working together to solve local challenges in the Waterloo region</p>
                 <div class="hero-actions">
-                  <a href="https://www.meetup.com/civictechwr/" class="btn btn--primary">
-                    <svg class="icon me-2" width="16" height="16" aria-hidden="true"><use href="#icon-calendar-event"/></svg>
-                    Upcoming hacknights
-                  </a>
-                  <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" class="btn btn--light">Slack</a>
-                  <a href="https://discourse.ctwr.org" class="btn btn--light" target="_blank" rel="noopener noreferrer" aria-label="Member Dashboard (opens in new window)">
-                    Member Dashboard
-                  </a>
-                  <a href="https://civictechwr.github.io/blog/" class="btn btn--light">Blog</a>
+                  <div class="btn-group btn-group--center">
+                    <a href="https://www.meetup.com/civictechwr/" class="btn btn--primary">
+                      <svg class="icon me-2" width="16" height="16" aria-hidden="true"><use href="#icon-calendar-event"/></svg>
+                      Upcoming hacknights
+                    </a>
+                    <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" class="btn btn--light">Slack</a>
+                    <a href="https://discourse.ctwr.org" class="btn btn--light" target="_blank" rel="noopener noreferrer" aria-label="Member Dashboard (opens in new window)">
+                      Member Dashboard
+                    </a>
+                    <a href="https://civictechwr.github.io/blog/" class="btn btn--light">Blog</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -272,8 +261,10 @@ permalink: /
                   Discover some of our most impactful civic tech initiatives that are making a difference in the Waterloo Region community. From improving civic engagement to providing essential
                   community resources, these projects showcase how technology can be used to solve real-world problems and strengthen our local democracy.
                 </p>
-                <a href="/projects.html" class="btn btn--primary">View All Projects</a>
-                <a href="https://civictechwr.github.io/blog/" class="btn btn--primary">View Latest Blog</a>
+                <div class="btn-group">
+                  <a href="/projects.html" class="btn btn--primary">View All Projects</a>
+                  <a href="https://civictechwr.github.io/blog/" class="btn btn--primary">View Latest Blog</a>
+                </div>
               </div>
 
               <!-- Third project positioned below text for better balance -->

@@ -18,7 +18,6 @@ permalink: /projects.html
     {% seo %}
 
     <!-- Resource hints for performance -->
-    <link rel="preload" href="css/style.css" as="style" />
     <link rel="preload" href="css/bootstrap-custom.css" as="style" />
     <link rel="preload" href="js/projects.json" as="fetch" crossorigin />
     
@@ -57,8 +56,7 @@ permalink: /projects.html
     <link href="css/fonts.css?v=1760695256" rel="stylesheet" />
     {% endif %}
 
-    <!-- CSS Variables - Must load FIRST before all other CSS -->
-    <link href="css/base/variables.css?v=1760695256" rel="stylesheet" />
+    <!-- Main CSS (includes variables, components, and utilities) -->
     {% if jekyll.environment == "production" %}
     <link href="css/main.min.css?v=1760695256" rel="stylesheet" />
     <link href="css/pages/projects.min.css?v=1760695256" rel="stylesheet" />
@@ -82,7 +80,9 @@ permalink: /projects.html
               <p class="page-subtitle">Explore civic technology initiatives designed to improve life across Waterloo Region.</p>
             </div>
             <div class="col-lg-6 col-12 text-lg-end text-start">
-              <a class="btn btn--outline" href="/projects.html#projects_meeting">View upcoming hacknights</a>
+              <div class="btn-group btn-group--end">
+                <a class="btn btn--outline" href="/projects.html#projects_meeting">View upcoming hacknights</a>
+              </div>
             </div>
           </div>
         </div>
