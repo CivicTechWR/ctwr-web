@@ -1,0 +1,106 @@
+/**
+ * Meeting Section Component
+ * Styles for the meeting section used across the site
+ * 
+ * Components:
+ * - .meeting-section-alt - Main meeting section container
+ * - .meeting-image-wrapper - Image container with styling
+ * - .meeting-card - Meeting details card
+ * - .meeting-content - Content wrapper
+ * - .meeting-details - Meeting information list
+ * - .meeting-detail-item - Individual meeting detail
+ * - .meeting-icon - Icon container
+ * - .meeting-text - Text content
+ * - .meeting-cta - Call-to-action area
+ * - .meeting-title - Section title
+ * - .profile-thumb - Profile image container (meeting variant)
+ * - .profile-body - Profile content area (meeting variant)
+ */
+
+/* ==========================================================================
+   MEETING SECTION - Main container
+   ========================================================================== */
+
+.meeting-section-alt .col-lg-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   MEETING IMAGE - Image wrapper and styling
+   ========================================================================== */
+
+.meeting-section-alt .meeting-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgb(15 23 42 / 30%);
+}
+
+.meeting-section-alt .meeting-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+
+/* ==========================================================================
+   MEETING CARD - Meeting details card
+   ========================================================================== */
+
+.meeting-section-alt .meeting-content {
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+}
+
+.meeting-section-alt .meeting-card {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   PROFILE STYLES - Meeting section specific profile styling
+   ========================================================================== */
+
+.meeting-section-alt .profile-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.meeting-section-alt .profile-body::before {
+  content: "";
+  position: absolute;
+  left: 2.2rem;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN - Mobile optimizations
+   ========================================================================== */
+
+@media (width <= 768px) {
+  .meeting-section-alt .meeting-content {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .meeting-section-alt .profile-thumb {
+    padding: var(--space-5);
+  }
+}
+
+@media (width <= 480px) {
+  .meeting-section-alt .meeting-content {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+}

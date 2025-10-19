@@ -7,15 +7,15 @@
 
 .contact-info {
   background: var(--white-color);
-  border-top-right-radius: var(--border-radius-small);
-  border-bottom-right-radius: var(--border-radius-small);
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
   padding: 60px var(--card-padding-sm) var(--card-padding-sm) var(--card-padding-sm);
   height: 100%;
 }
 
 .contact-info-border-start {
   border-right: 1px solid var(--border-color);
-  border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
 
 .contact-form {

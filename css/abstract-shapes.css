@@ -18,7 +18,7 @@
   width: 150px;
   height: 150px;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, #FF5757, #FF8A5B);
+  background: linear-gradient(135deg, #ff5757, #ff8a5b);
   top: 20%;
   left: 5%;
   animation: float 15s ease-in-out infinite;
@@ -28,8 +28,8 @@
 .shape-square {
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, #36D1DC, #5B86E5);
-  border-radius: var(--border-radius-small);
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  border-radius: var(--radius-md);
   transform: rotate(45deg);
   top: 60%;
   right: 8%;
@@ -52,7 +52,7 @@
 .shape-blob {
   width: 180px;
   height: 180px;
-  background: linear-gradient(135deg, #43CEA2, #185A9D);
+  background: linear-gradient(135deg, #43cea2, #185a9d);
   border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
   top: 70%;
   left: 15%;
@@ -63,7 +63,7 @@
 .shape-rectangle {
   width: 120px;
   height: 60px;
-  background: linear-gradient(135deg, #F09819, #EDDE5D);
+  background: linear-gradient(135deg, #f09819, #edde5d);
   border-radius: var(--radius-sm);
   transform: rotate(-15deg);
   bottom: 15%;
@@ -87,7 +87,7 @@
 .shape-zigzag {
   width: 120px;
   height: 60px;
-  background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+  background: linear-gradient(135deg, #ff6b6b, #ffe66d);
   clip-path: polygon(0% 0%, 20% 0%, 40% 100%, 60% 0%, 80% 100%, 100% 0%, 100% 100%, 0% 100%);
   top: 45%;
   left: 12%;
@@ -98,7 +98,7 @@
 .shape-star {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #A0F1EA, #5D26C1);
+  background: linear-gradient(135deg, #a0f1ea, #5d26c1);
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   top: 25%;
   right: 15%;
@@ -109,7 +109,7 @@
 .shape-hexagon {
   width: 100px;
   height: 90px;
-  background: linear-gradient(135deg, #76B852, #8DC26F);
+  background: linear-gradient(135deg, #76b852, #8dc26f);
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   bottom: 20%;
   right: 10%;
@@ -120,8 +120,21 @@
 .shape-cross {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #F857A6, #FF5858);
-  clip-path: polygon(35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0% 65%, 0% 35%, 35% 35%);
+  background: linear-gradient(135deg, #f857a6, #ff5858);
+  clip-path: polygon(
+    35% 0%,
+    65% 0%,
+    65% 35%,
+    100% 35%,
+    100% 65%,
+    65% 65%,
+    65% 100%,
+    35% 100%,
+    35% 65%,
+    0% 65%,
+    0% 35%,
+    35% 35%
+  );
   top: 60%;
   left: 8%;
   animation: spin 25s linear infinite reverse;
@@ -131,7 +144,7 @@
 .shape-wave {
   width: 150px;
   height: 60px;
-  background: linear-gradient(135deg, #00C9FF, #92FE9D);
+  background: linear-gradient(135deg, #00c9ff, #92fe9d);
   border-radius: var(--radius-lg);
   clip-path: polygon(0% 50%, 25% 20%, 50% 50%, 75% 80%, 100% 50%, 100% 100%, 0% 100%);
   bottom: 15%;
@@ -143,7 +156,7 @@
 .shape-diamond {
   width: 90px;
   height: 90px;
-  background: linear-gradient(135deg, #FC466B, #3F5EFB);
+  background: linear-gradient(135deg, #fc466b, #3f5efb);
   transform: rotate(45deg);
   animation: float 17s ease-in-out infinite reverse;
 }
@@ -204,7 +217,7 @@
 }
 
 /* ---------------------------------------
-  POSITION UTILITIES              
+  POSITION UTILITIES
 ----------------------------------------- */
 .top-3p {
   top: 3%;
@@ -432,7 +445,7 @@
 }
 
 /* ---------------------------------------
-  SIZE UTILITIES              
+  SIZE UTILITIES
 ----------------------------------------- */
 .shape-size-60 {
   width: 60px;

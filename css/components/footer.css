@@ -37,7 +37,7 @@
 
 .footer-menu-link {
   border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--radius-lg);
   font-size: var(--copyright-font-size);
   font-weight: var(--font-weight-medium);
   display: inline-block;
@@ -131,7 +131,7 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  border-radius: var(--border-radius-large);
+  border-radius: var(--radius-full);
   transition: all 0.2s;
 }
 
@@ -204,7 +204,7 @@
   color: var(--gray-500);
   font-size: var(--font-size-mobile-xl);
   transition: color 0.2s;
-  border-radius: var(--border-radius-large);
+  border-radius: var(--radius-full);
   margin: 0 0 var(--space-1);
 }
 

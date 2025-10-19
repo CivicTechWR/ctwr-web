@@ -16,7 +16,7 @@
 
 .spinner {
   border: 1px solid transparent;
-  border-radius: var(--border-radius-small);
+  border-radius: var(--radius-md);
   position: relative;
 }
 

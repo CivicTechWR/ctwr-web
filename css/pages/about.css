@@ -25,7 +25,7 @@
 .organizers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: var(--space-6);
   place-items: start center;
   padding: var(--card-padding-sm);
   margin: 0 auto;
@@ -64,7 +64,7 @@
 }
 
 .about-section {
-  padding: 2rem 1rem;
+  padding: var(--space-6) var(--space-4);
 }
 
 .shoutout-section {
@@ -87,7 +87,7 @@
 
 .shoutout-list {
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
   justify-content: flex-start;
   align-items: flex-start;
 }

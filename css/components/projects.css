@@ -3,7 +3,7 @@
 .projects-thumb {
   background: var(--section-bg-color);
   border: 2px solid var(--white-color);
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
   padding: var(--space-9);
@@ -27,7 +27,7 @@
 }
 
 .projects-image {
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--radius-lg);
   display: block;
   width: 100%;
   transform: rotate(10deg) translateY(var(--space-10));

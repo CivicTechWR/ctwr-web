@@ -96,7 +96,7 @@
 /* Navbar Icon */
 .navbar-icon {
   background: var(--white-color);
-  border-radius: var(--border-radius-large);
+  border-radius: var(--radius-full);
   color: var(--dark-color);
   width: 47px;
   height: 47px;

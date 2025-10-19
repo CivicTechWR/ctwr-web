@@ -38,7 +38,7 @@
 .project-card {
   background: var(--section-bg-color);
   border: 2px solid var(--white-color);
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
   padding: var(--card-padding);
@@ -57,7 +57,7 @@
 }
 
 .project-image {
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--radius-lg);
   display: block;
   width: 100%;
   transform: rotate(10deg) translateY(80px);
