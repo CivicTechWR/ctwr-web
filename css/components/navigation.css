@@ -112,6 +112,7 @@
 .navbar-brand {
   display: flex;
   align-items: center;
+  gap: var(--space-2);
   padding: 0;
   color: var(--white-color);
   text-decoration: none;
@@ -131,10 +132,10 @@
 }
 
 .navbar-brand .brand-name {
-  margin-left: 0.5rem;
   font-size: var(--font-size-mobile-md);
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
+  line-height: 1;
 }
 
 /* Hamburger toggle button */
@@ -176,7 +177,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  margin-left: 1.5rem;
+  margin-left: var(--space-5);
 }
 
 .nav-item {
@@ -305,7 +306,7 @@
 
   .navbar-nav {
     flex-direction: row;
-    margin-left: 1.5rem;
+    margin-left: var(--space-5);
   }
 
   .navbar-nav .nav-link {
@@ -330,7 +331,7 @@
 
   .navbar-nav {
     flex-direction: row;
-    margin-left: 2rem;
+    margin-left: var(--space-6);
   }
 
   .navbar-nav .nav-link {

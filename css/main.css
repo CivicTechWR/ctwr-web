@@ -986,6 +986,7 @@ p {
 .navbar-brand {
   display: flex;
   align-items: center;
+  gap: var(--space-2);
   padding: 0;
   color: var(--white-color);
   text-decoration: none;
@@ -1005,10 +1006,10 @@ p {
 }
 
 .navbar-brand .brand-name {
-  margin-left: 0.5rem;
   font-size: var(--font-size-mobile-md);
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
+  line-height: 1;
 }
 
 /* Hamburger toggle button */
@@ -1050,7 +1051,7 @@ p {
   margin: 0;
   padding: 0;
   list-style: none;
-  margin-left: 1.5rem;
+  margin-left: var(--space-5);
 }
 
 .nav-item {
@@ -1179,7 +1180,7 @@ p {
 
   .navbar-nav {
     flex-direction: row;
-    margin-left: 1.5rem;
+    margin-left: var(--space-5);
   }
 
   .navbar-nav .nav-link {
@@ -1204,7 +1205,7 @@ p {
 
   .navbar-nav {
     flex-direction: row;
-    margin-left: 2rem;
+    margin-left: var(--space-6);
   }
 
   .navbar-nav .nav-link {
@@ -1879,7 +1880,7 @@ h6 + .btn {
   justify-content: center;
   height: 100%;
   min-height: 400px;
-  padding: 0 1rem;
+  padding: 0 var(--space-4);
 }
 
 /* Meeting title */
@@ -1887,7 +1888,7 @@ h6 + .btn {
   color: var(--white-color);
   font-size: 1.75rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-6);
   text-align: left;
 }
 
@@ -1904,7 +1905,7 @@ h6 + .btn {
 
 /* Meeting details container */
 .meeting-details {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-6);
 }
 
 /* Individual meeting detail item */
@@ -2007,7 +2008,7 @@ h6 + .btn {
   border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
-  padding: 6px var(--space-5) 6px var(--card-padding-xs);
+  padding: var(--space-2) var(--space-5) var(--space-2) var(--card-padding-xs);
   transition: all ease 0.5s;
 }
 
@@ -2031,7 +2032,7 @@ h6 + .btn {
 /* Responsive adjustments */
 @media (width >= 1200px) {
   .meeting-image-wrapper {
-    padding: 0 2rem;
+    padding: 0 var(--space-6);
   }
 }
 
@@ -2047,7 +2048,7 @@ h6 + .btn {
   
   .meeting-image-wrapper {
     min-height: 500px;
-    padding: 0 1.5rem;
+    padding: 0 var(--space-5);
   }
   
   .meeting-content {
@@ -2062,8 +2063,8 @@ h6 + .btn {
   
   .meeting-image-wrapper {
     min-height: 350px;
-    margin-bottom: 2rem;
-    padding: 0 0.5rem;
+    margin-bottom: var(--space-6);
+    padding: 0 var(--space-2);
   }
 }
 
@@ -2143,7 +2144,7 @@ h6 + .btn {
 .copyright-text {
   font-size: var(--copyright-font-size);
   border-right: 1px solid var(--border-color);
-  padding-right: 25px;
+  padding-right: var(--space-5);
   margin-right: var(--space-5);
 }
 
@@ -2168,12 +2169,18 @@ h6 + .btn {
   text-align: center;
   margin-right: var(--space-3);
   margin-bottom: var(--space-3);
-  padding: 6px var(--space-4);
+  padding: var(--space-2) var(--space-4);
   min-width: 70px;
 }
 
 .footer-menu-link:hover {
-  /* Hover styles can be added here if needed */
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.footer-menu-link:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 /* Footer Redesign - Modern Footer Layout */
@@ -2193,7 +2200,7 @@ h6 + .btn {
   gap: var(--space-6);
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0 36px;
+  padding: 0 var(--space-9);
 }
 
 .footer-col {
@@ -2204,7 +2211,7 @@ h6 + .btn {
 
 .footer-brand-logo {
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: var(--space-4);
 }
 
 .footer-brand-mission {
@@ -2229,7 +2236,7 @@ h6 + .btn {
 }
 
 .footer-links-list li {
-  margin-bottom: 7px;
+  margin-bottom: var(--space-2);
 }
 
 .footer-support-text {
@@ -2243,7 +2250,23 @@ h6 + .btn {
 
 .footer-social-icons a {
   margin-right: var(--space-3);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--border-radius-large);
+  transition: all 0.2s;
+}
+
+.footer-social-icons a:hover {
+  background: var(--secondary-alpha-1);
+  transform: translateY(-2px);
+}
+
+.footer-social-icons a:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 .footer-social-icons i {
@@ -2254,6 +2277,22 @@ h6 + .btn {
 
 .footer-social-icons i:hover {
   color: var(--secondary-color);
+}
+
+.footer-links-list a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links-list a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.footer-links-list a:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 /* Footer copyright text - improved contrast for WCAG AA compliance */
@@ -2268,7 +2307,7 @@ h6 + .btn {
 .social-icon {
   list-style: none;
   padding: 0;
-  margin: 0 0 15px;
+  margin: 0 0 var(--space-4);
   display: flex;
   justify-content: center;
   gap: var(--space-5);
@@ -2284,13 +2323,22 @@ h6 + .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   color: var(--gray-500);
   font-size: var(--font-size-mobile-xl);
   transition: color 0.2s;
   border-radius: var(--border-radius-large);
-  margin: 2px 2px 5px;
+  margin: 0 0 var(--space-1);
+}
+
+.social-icon-link:hover {
+  color: var(--secondary-color);
+}
+
+.social-icon-link:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 /* Footer Accent Utilities */
@@ -2307,8 +2355,8 @@ h6 + .btn {
 @media (width < 992px) {
   .footer-redesign-container {
     flex-direction: column;
-    gap: 36px;
-    padding: 0 18px;
+    gap: var(--space-9);
+    padding: 0 var(--space-4);
   }
 
   .footer-col {
@@ -2590,7 +2638,7 @@ h6 + .btn {
   font-weight: var(--font-weight-medium);
   color: var(--secondary-color);
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin-bottom: var(--space-1);
 }
 
 /* ---------------------------------------
@@ -2697,7 +2745,7 @@ h6 + .btn {
   background: var(--section-bg-color);
   border-radius: var(--space-3);
   padding: var(--space-7);
-  margin-top: 3rem;
+  margin-top: var(--space-7);
   box-shadow: 0 var(--space-5) 60px rgb(15 23 42 / 8%);
 }
 
@@ -2705,7 +2753,7 @@ h6 + .btn {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-6);
-  margin-top: 2rem;
+  margin-top: var(--space-6);
 }
 
 .organizers-section .organizer-card,
@@ -2718,12 +2766,12 @@ h6 + .btn {
 }
 
 .organizers-section .shoutout-section {
-  margin-top: 3rem;
+  margin-top: var(--space-7);
 }
 
 .organizers-section .organizer-name {
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
   color: var(--heading-color);
 }
 
@@ -2738,7 +2786,7 @@ h6 + .btn {
 }
 
 .organizers-section .shoutout-member {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
   font-weight: 500;
 }
 
@@ -2955,7 +3003,7 @@ body.has-fixed-nav .site-header {
 .page-title {
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   color: var(--heading-color);
 }
 
@@ -3103,19 +3151,19 @@ body.has-fixed-nav .site-header {
 }
 
 .projects-section {
-  margin-top: 2rem;
-  margin-bottom: 4rem;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .projects-title {
   text-align: center;
   font-size: var(--font-size-2xl);
   font-weight: 600;
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-7);
 }
 
 .project-description {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-6);
   text-align: center;
   max-width: 800px;
   margin-left: auto;
@@ -3131,7 +3179,7 @@ body.has-fixed-nav .site-header {
   padding: var(--card-padding);
   height: 350px;
   transition: all ease 0.5s;
-  margin-bottom: 30px;
+  margin-bottom: var(--space-7);
 }
 
 .project-card:hover {
@@ -3153,6 +3201,20 @@ body.has-fixed-nav .site-header {
 
 .project-card:hover .project-image {
   transform: rotate(0) translateY(0);
+}
+
+/* Projects info section - fix GitHub badge floating */
+.projects-info {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.projects-info .btn--badge {
+  align-self: flex-start;
+  margin-bottom: var(--space-2);
 }
 
 /* ==========================================================================

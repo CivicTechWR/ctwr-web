@@ -12,7 +12,7 @@ body.has-fixed-nav .site-header {
 .page-title {
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   color: var(--heading-color);
 }
 

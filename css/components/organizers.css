@@ -3,34 +3,34 @@
 .organizers-section {
   background: var(--section-bg-color);
   border-radius: var(--space-3);
-  padding: 3rem;
-  margin-top: 3rem;
-  box-shadow: 0 var(--space-4-5) 60px rgb(15 23 42 / 8%);
+  padding: var(--space-7);
+  margin-top: var(--space-7);
+  box-shadow: 0 var(--space-5) 60px rgb(15 23 42 / 8%);
 }
 
 .organizers-section .organizers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
 }
 
 .organizers-section .organizer-card,
 .organizers-section .shoutout-section {
   background: var(--white-color);
   border-radius: var(--space-4);
-  padding: 2rem 1.5rem;
-  box-shadow: 0 var(--space-2-5) var(--space-5-5) rgb(15 23 42 / 10%);
+  padding: var(--space-6) var(--space-5);
+  box-shadow: 0 var(--space-3) var(--space-6) rgb(15 23 42 / 10%);
   text-align: center;
 }
 
 .organizers-section .shoutout-section {
-  margin-top: 3rem;
+  margin-top: var(--space-7);
 }
 
 .organizers-section .organizer-name {
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
   color: var(--heading-color);
 }
 
@@ -45,13 +45,13 @@
 }
 
 .organizers-section .shoutout-member {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
   font-weight: 500;
 }
 
 @media (width <= 768px) {
   .organizers-section {
-    padding: 2rem;
+    padding: var(--space-6);
   }
 
   .organizers-section .organizer-card,
