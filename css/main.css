@@ -1478,6 +1478,7 @@ h6 + .btn {
 .btn--badge:hover {
   background: var(--primary-color);
   border-color: var(--primary-color);
+  color: var(--dark-color);
   transform: translateY(-1px);
 }
 
