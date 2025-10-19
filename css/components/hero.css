@@ -180,11 +180,6 @@
   }
 }
 
-/* Page header variant - for about.html and projects.html */
-.site-header .btn {
-  margin-top: var(--space-3);
-}
-
 @media screen and (width >= 1600px) {
   .hero {
     padding-top: 380px;

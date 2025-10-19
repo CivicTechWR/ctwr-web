@@ -1,76 +1,8 @@
 /**
- * CSS Custom Property Fallbacks
- * Provides fallbacks for older browsers that don't support CSS custom properties
+ * Hardcoded Fallback Styles
+ * For older browsers that don't support CSS custom properties
+ * CSS custom properties are defined ONLY in css/base/variables.css
  */
-
-/* Fallback values for browsers without CSS custom property support */
-/* These should be loaded before the main CSS files */
-
-/* Color fallbacks */
-:root {
-  /* Brand Colors - with fallbacks */
-  --white-color: #fff;
-  --primary-color: #FC6C6D;
-  --secondary-color: #2D6F72;
-  --dark-color: #000;
-  --p-color: #717275;
-  
-  /* Neutral Palette - with fallbacks */
-  --gray-900: #222;
-  --gray-700: #444;
-  --gray-600: #555;
-  --gray-500: #666;
-  --gray-400: #777;
-  --gray-300: #999;
-  --gray-200: #ccc;
-  --gray-100: #eaeaea;
-  --gray-50: #fafafa;
-  
-  /* Layout Colors - with fallbacks */
-  --section-bg-color: #f9f9f9;
-  --border-color: #e9eaeb;
-  
-  /* Typography - with fallbacks */
-  --body-font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --h1-font-size: 62px;
-  --h2-font-size: 48px;
-  --h3-font-size: 36px;
-  --h4-font-size: 32px;
-  --h5-font-size: 24px;
-  --h6-font-size: 22px;
-  --p-font-size: 18px;
-  
-  /* Font Weights - with fallbacks */
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-  
-  /* Border Radius - with fallbacks */
-  --border-radius-large: 100px;
-  --border-radius-medium: 20px;
-  --border-radius-small: 10px;
-  --radius-sm: 4px;
-  --radius-md: 12px;
-  --radius-card: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-  --radius-2xl: 2rem;
-  --radius-full: 9999px;
-  
-  /* Spacing - with fallbacks */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
-  --space-8: 64px;
-  --space-9: 40px;
-  --space-10: 80px;
-  --space-12: 96px;
-  --space-15: 120px;
-}
 
 /* Fallback styles for browsers without CSS custom property support */
 /* These will be overridden by CSS custom properties in supporting browsers */
