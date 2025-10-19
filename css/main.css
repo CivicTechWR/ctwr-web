@@ -1578,7 +1578,7 @@ h6 + .btn {
   transform: translateY(-1px);
 }
 
-@media (width <= 576px) {
+@media (width <= 768px) {
   .btn-group {
     flex-direction: column;
   }
