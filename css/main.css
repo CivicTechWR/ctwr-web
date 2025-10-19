@@ -1078,10 +1078,7 @@ p {
     margin-top: var(--space-2);
   }
 
-  .navbar-collapse .ms-auto .btn {
-    width: 100%;
-    text-align: center;
-  }
+  /* Button uses btn--full-mobile modifier class for width control */
 
   .navbar-icon {
     background: var(--secondary-color);
