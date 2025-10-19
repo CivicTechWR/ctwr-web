@@ -1358,7 +1358,8 @@ h6 + .btn {
 }
 
 /* Remove margin when buttons are in flexbox button groups */
-.btn-group > .btn + .btn {
+/* Using attribute selector to increase specificity without !important */
+.btn-group[class] .btn + .btn {
   margin-top: 0;
 }
 
