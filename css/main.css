@@ -1423,9 +1423,14 @@ h6 + .btn {
   margin-top: var(--space-5);
 }
 
-/* Spacing for multiple buttons in a row */
+/* Spacing for multiple buttons in a row (stacked vertically) */
 .btn + .btn {
   margin-top: var(--space-3);
+}
+
+/* Remove margin when buttons are in flexbox button groups */
+.btn-group > .btn + .btn {
+  margin-top: 0;
 }
 
 /* ==========================================================================
