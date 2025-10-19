@@ -2778,11 +2778,33 @@ h6 + .btn {
 .organizers-section .organizer-contact a {
   color: var(--secondary-color);
   text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.organizers-section .organizer-contact a:hover {
+  color: var(--primary-color);
+}
+
+.organizers-section .organizer-contact a:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  color: var(--primary-color);
 }
 
 .organizers-section .shoutout-link {
   color: var(--secondary-color);
   text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.organizers-section .shoutout-link:hover {
+  color: var(--primary-color);
+}
+
+.organizers-section .shoutout-link:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  color: var(--primary-color);
 }
 
 .organizers-section .shoutout-member {
