@@ -278,23 +278,27 @@ permalink: /
               please reach out to us at civictechwr@gmail.com
             </p>
           </div>
-          <div id="sponsor-container" class="mt-5 sponsor-grid">
-            {% for partner in site.data.partners %} {% if partner.current %}
-            <div class="sponsors-item-height">
-              <img src="{{partner.logo}}" class="sponsors-image" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
+          <div class="col-lg-12 col-12">
+            <div id="sponsor-container" class="mt-5 sponsor-grid">
+              {% for partner in site.data.partners %} {% if partner.current %}
+              <div class="sponsors-item-height">
+                <img src="{{partner.logo}}" class="sponsors-image" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
+              </div>
+              {% endif %} {% endfor %}
             </div>
-            {% endif %} {% endfor %}
           </div>
 
           <div class="col-lg-12 col-12 mt-5">
             <h5 class="text-center mb-4">Previous Partners</h5>
           </div>
-          <div id="previous-sponsor-container" class="sponsor-grid">
-            {% for partner in site.data.partners %} {% if partner.current == false %}
-            <div class="sponsors-item-height">
-              <img src="{{partner.logo}}" class="previous-sponsors-image" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
+          <div class="col-lg-12 col-12">
+            <div id="previous-sponsor-container" class="sponsor-grid">
+              {% for partner in site.data.partners %} {% if partner.current == false %}
+              <div class="sponsors-item-height">
+                <img src="{{partner.logo}}" class="previous-sponsors-image" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
+              </div>
+              {% endif %} {% endfor %}
             </div>
-            {% endif %} {% endfor %}
           </div>
         </div>
       </div>
