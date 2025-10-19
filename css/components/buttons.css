@@ -313,6 +313,13 @@ h6 + .btn {
     width: 100%;
     margin-bottom: 0.5rem;
   }
+
+  /* Badge buttons need text wrapping on mobile */
+  .btn--badge {
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+  }
 }
 
 /* ==========================================================================

@@ -70,11 +70,4 @@
     padding-left: 0;
   }
 
-  /* Ensure GitHub buttons fit within project cards on mobile */
-  .projects-thumb .btn--badge,
-  .project-card .btn--badge {
-    max-width: 100%;
-    word-wrap: break-word;
-    white-space: normal;
-  }
 }
