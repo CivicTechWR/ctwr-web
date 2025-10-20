@@ -1,0 +1,314 @@
+/**
+ * Unified Button System - BEM Methodology
+ * Replaces 17+ fragmented button classes with a cohesive system
+ * NO !important declarations - proper specificity hierarchy
+ */
+
+/* ==========================================================================
+   BASE BUTTON
+   ========================================================================== */
+
+.btn {
+  /* Layout */
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+
+  /* Typography */
+  font-family: var(--body-font-family);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+
+  /* Visual */
+  border: 2px solid transparent;
+  border-radius: 0.375rem;
+  cursor: pointer;
+
+  /* Animation */
+  transition: all 0.3s ease;
+
+  /* Behavior */
+  user-select: none;
+  vertical-align: middle;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(45, 111, 114, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ==========================================================================
+   BUTTON VARIANTS
+   ========================================================================== */
+
+/* Primary Button - Teal background (main CTA) */
+.btn--primary {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.btn--primary:hover {
+  background: #246359; /* Darker teal */
+  border-color: #246359;
+  color: var(--white-color);
+  box-shadow: 0 4px 12px rgba(45, 111, 114, 0.3);
+}
+
+/* Secondary Button - Red/Coral background */
+.btn--secondary {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.btn--secondary:hover {
+  background: #d65a5b; /* Darker coral */
+  border-color: #d65a5b;
+  color: var(--white-color);
+  box-shadow: 0 4px 12px rgba(252, 108, 109, 0.3);
+}
+
+/* Outline Button - Transparent with border */
+.btn--outline {
+  background: transparent;
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.btn--outline:hover {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+/* Light Inverse Button - For dark backgrounds */
+.btn--light {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.8);
+  color: var(--white-color);
+}
+
+.btn--light:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: var(--white-color);
+}
+
+/* Ghost Button - Minimal styling */
+.btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--secondary-color);
+}
+
+.btn--ghost:hover {
+  background: rgba(45, 111, 114, 0.1);
+  color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   BUTTON SIZES
+   ========================================================================== */
+
+/* Small Button */
+.btn--sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Large Button */
+.btn--lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Extra Small (for badges like GitHub) */
+.btn--xs {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   BUTTON MODIFIERS
+   ========================================================================== */
+
+/* Full Width Button */
+.btn--full {
+  display: block;
+  width: 100%;
+}
+
+/* Pill-shaped Button */
+.btn--pill {
+  border-radius: 624px;
+}
+
+/* Square Button (icon buttons) */
+.btn--square {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Button with Icon */
+.btn__icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.btn__icon--right {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* ==========================================================================
+   SPECIAL PURPOSE BUTTONS
+   ========================================================================== */
+
+/* Footer Donate Button - High contrast coral */
+.btn--donate {
+  background: #c2544b; /* WCAG AA compliant */
+  border-color: #c2544b;
+  color: var(--white-color);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.btn--donate:hover {
+  background: #a94841;
+  border-color: #a94841;
+  color: var(--white-color);
+  box-shadow: 0 4px 12px rgba(194, 84, 75, 0.3);
+}
+
+/* Footer General Button - Outline variant for footer */
+.btn--footer {
+  background: #fafafa;
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.btn--footer:hover {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+/* GitHub Badge Button */
+.btn--badge {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn--badge:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+/* Meeting CTA Button - Prominent on teal background */
+.btn--meeting {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.btn--meeting:hover {
+  background: var(--white-color);
+  border-color: var(--white-color);
+  color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+@media (width <= 768px) {
+  .btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .btn--lg {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+
+  .btn--sm {
+    padding: 0.4375rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  /* Stack buttons vertically on mobile */
+  .btn--full-mobile {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ==========================================================================
+   BUTTON GROUPS
+   ========================================================================== */
+
+.btn-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-group--center {
+  justify-content: center;
+}
+
+.btn-group--end {
+  justify-content: flex-end;
+}
+
+@media (width <= 576px) {
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+  }
+}
