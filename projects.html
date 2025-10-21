@@ -188,16 +188,41 @@ permalink: /projects.html
                 const card = document.createElement('div');
                 card.className = 'col-lg-4 col-md-6 col-12 mb-4';
 
-                card.innerHTML = `
-                            <div class="project-card">
-                                <div class="project-info">
-                                    <a href="${repo.html_url}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                    <h4 class="projects-title">${repo.name}</h4>
-                                    <small class="projects-tag">${repo.language || ''}</small>
-                                    <p>${repo.description || 'No description available.'}</p>
-                                </div>
-                            </div>
-                        `;
+                // Secure DOM construction to prevent XSS
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+
+                const projectInfo = document.createElement('div');
+                projectInfo.className = 'project-info';
+
+                // Sanitize URL to prevent javascript: protocol injection
+                const githubLink = document.createElement('a');
+                const safeUrl = repo.html_url && repo.html_url.startsWith('https://')
+                  ? repo.html_url
+                  : '#';
+                githubLink.href = safeUrl;
+                githubLink.className = 'btn btn--badge';
+                githubLink.target = '_blank';
+                githubLink.rel = 'noopener noreferrer';
+                githubLink.textContent = 'GitHub'; // Safe: textContent escapes HTML
+
+                const title = document.createElement('h4');
+                title.className = 'projects-title';
+                title.textContent = repo.name || 'Untitled Project'; // Safe: textContent escapes HTML
+
+                const language = document.createElement('small');
+                language.className = 'projects-tag';
+                language.textContent = repo.language || ''; // Safe: textContent escapes HTML
+
+                const description = document.createElement('p');
+                description.textContent = repo.description || 'No description available.'; // Safe: textContent escapes HTML
+
+                projectInfo.appendChild(githubLink);
+                projectInfo.appendChild(title);
+                projectInfo.appendChild(language);
+                projectInfo.appendChild(description);
+                projectCard.appendChild(projectInfo);
+                card.appendChild(projectCard);
 
                 container.appendChild(card);
               });

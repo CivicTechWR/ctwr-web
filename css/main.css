@@ -295,7 +295,20 @@ figure:last-child {
 
 /* Flow spacing - consistent vertical rhythm between ALL sibling elements */
 .flow > * + * {
-  margin-top: var(--space-7);
+  margin-top: var(--space-7); /* 48px - desktop default */
+}
+
+/* Responsive flow spacing for better mobile readability */
+@media (width <= 576px) {
+  .flow > * + * {
+    margin-top: var(--space-4); /* 16px - small mobile */
+  }
+}
+
+@media (width >= 577px) and (width <= 991px) {
+  .flow > * + * {
+    margin-top: var(--space-5); /* 24px - tablet/large mobile */
+  }
 }
 
 /* Tighter flow spacing for compact sections */
@@ -645,6 +658,13 @@ p {
 /* Custom Bootstrap CSS - Only includes classes actually used by CTWR website */
 /* This reduces the 281KB Bootstrap CSS to ~15KB */
 
+/* Box-sizing fix - critical for proper grid layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Grid System */
 .container {
   width: 100%;
@@ -683,6 +703,14 @@ p {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+}
+
+/* All columns need padding to offset row's negative margins */
+[class*="col-"] {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .col-12 {
@@ -746,6 +774,9 @@ p {
 .justify-content-center {
   justify-content: center;
 }
+.align-items-start {
+  align-items: start;
+}
 .align-items-center {
   align-items: center;
 }
@@ -782,7 +813,7 @@ p {
 }
 
 /* Responsive utilities */
-@media (width < 992px) {
+@media (width >= 992px) {
   .mt-lg-0 {
     margin-top: 0;
   }
@@ -1470,6 +1501,14 @@ h6 + .btn {
     word-wrap: break-word;
     white-space: normal;
   }
+
+  /* Meeting button needs reduced padding on mobile to fit text */
+  .btn--meeting {
+    padding: var(--space-3) var(--space-4);
+    max-width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+  }
 }
 
 /* ==========================================================================
@@ -1516,6 +1555,13 @@ h6 + .btn {
   background: var(--white-color);
   color: var(--secondary-color);
   transform: translateY(-1px);
+}
+
+/* Desktop: Prevent wrapping, keep buttons in single row */
+@media (width >= 992px) {
+  .btn-group {
+    flex-wrap: nowrap;
+  }
 }
 
 @media (width <= 768px) {
@@ -1659,7 +1705,7 @@ h6 + .btn {
   font-size: var(--font-size-mobile-xl);
   line-height: 1.6;
   color: var(--white-alpha-80);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .hero-actions {
@@ -1697,7 +1743,7 @@ h6 + .btn {
   }
 
   .hero-actions {
-    margin-top: var(--space-5);
+    margin-top: var(--space-6);
   }
 
   .hero-actions .btn-group {

@@ -321,6 +321,14 @@ h6 + .btn {
     word-wrap: break-word;
     white-space: normal;
   }
+
+  /* Meeting button needs reduced padding on mobile to fit text */
+  .btn--meeting {
+    padding: var(--space-3) var(--space-4);
+    max-width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+  }
 }
 
 /* ==========================================================================
@@ -367,6 +375,13 @@ h6 + .btn {
   background: var(--white-color);
   color: var(--secondary-color);
   transform: translateY(-1px);
+}
+
+/* Desktop: Prevent wrapping, keep buttons in single row */
+@media (width >= 992px) {
+  .btn-group {
+    flex-wrap: nowrap;
+  }
 }
 
 @media (width <= 768px) {
