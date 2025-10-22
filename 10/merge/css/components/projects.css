@@ -51,7 +51,7 @@
   RESPONSIVE STYLES
 ----------------------------------------- */
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .services .col-lg-10 .row .col-lg-6:last-child,
   .projects .col-lg-4:last-child {
     margin-bottom: 0;

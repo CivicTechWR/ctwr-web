@@ -124,7 +124,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-.hero-description {
+.hero .hero-description {
   font-size: var(--font-size-mobile-xl);
   line-height: 1.6;
   color: var(--white-alpha-80);
@@ -138,11 +138,15 @@
   margin-top: var(--space-6);
 }
 
-/* Safari fix: Force button text visibility in hero section - prevents inheritance of transparent fill from hero-title */
-.hero-actions .btn,
-.hero-actions .btn--light,
+/* Safari 26.1 fix: Force button text visibility with hardcoded colors - prevents inheritance of transparent fill from hero-title */
+.hero-actions .btn--light {
+  color: #2D6F72 !important;
+  -webkit-text-fill-color: #2D6F72 !important;
+}
+
 .hero-actions .btn--primary {
-  -webkit-text-fill-color: currentColor !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 /* Hero Image Styles */
@@ -158,7 +162,7 @@
 }
 
 /* Responsive Hero Styles */
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .hero {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -168,8 +172,9 @@
     font-size: var(--font-size-3xl);
   }
 
-  .hero-description {
+  .hero .hero-description {
     font-size: var(--font-size-mobile-md);
+    margin-bottom: var(--space-4);
   }
 
   .hero-actions {
@@ -187,7 +192,7 @@
   }
 }
 
-@media screen and (width >= 1600px) {
+@media screen and (min-width: 1600px) {
   .hero {
     padding-top: 380px;
     padding-bottom: 380px;
@@ -209,7 +214,7 @@
   }
 }
 
-@media (width < 992px) {
+@media (max-width: 991px) {
   .hero {
     padding-top: var(--section-padding-xl);
     padding-bottom: 400px;
@@ -221,7 +226,7 @@
   }
 }
 
-@media screen and (width <= 480px) {
+@media screen and (max-width: 480px) {
   .hero-title {
     font-size: var(--font-size-2xl);
     line-height: 1.3;

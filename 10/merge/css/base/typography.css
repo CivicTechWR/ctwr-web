@@ -197,7 +197,7 @@ strong {
 }
 
 /* Responsive Typography */
-@media (width < 992px) {
+@media (max-width: 991px) {
   h1 {
     font-size: var(--h2-font-size);
   }
@@ -221,9 +221,14 @@ strong {
   h6 {
     font-size: var(--p-font-size);
   }
+
+  /* Reduce paragraph spacing on tablets */
+  p {
+    margin-bottom: var(--space-5);
+  }
 }
 
-@media screen and (width <= 480px) {
+@media screen and (max-width: 480px) {
   h1 {
     font-size: var(--font-size-3xl);
   }
@@ -243,6 +248,11 @@ strong {
   h5 {
     font-size: var(--font-size-mobile-xl);
   }
+
+  /* Further reduce paragraph spacing on mobile */
+  p {
+    margin-bottom: var(--space-4);
+  }
 }
 
 /* Section Padding */
@@ -250,7 +260,7 @@ strong {
   padding: 8em;
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .section-padding {
     padding: 2em;
     padding-top: var(--space-10);

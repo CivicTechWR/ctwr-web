@@ -292,7 +292,7 @@ h6 + .btn {
    RESPONSIVE ADJUSTMENTS
    ========================================================================== */
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .btn {
     padding: var(--space-3) var(--space-5);
     font-size: var(--font-size-mobile-sm);
@@ -387,7 +387,7 @@ h6 + .btn {
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .btn-group {
     flex-direction: column;
   }

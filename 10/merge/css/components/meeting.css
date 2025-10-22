@@ -87,7 +87,7 @@
    RESPONSIVE DESIGN - Mobile optimizations
    ========================================================================== */
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .meeting-section-alt .meeting-content {
     padding-left: var(--space-4);
     padding-right: var(--space-4);
@@ -98,7 +98,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .meeting-section-alt .meeting-content {
     padding-left: var(--space-3);
     padding-right: var(--space-3);
