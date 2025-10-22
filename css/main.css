@@ -248,7 +248,7 @@ p {
   color: var(--p-color);
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-normal);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 /* Last paragraph in a container should have no bottom margin */
@@ -1708,7 +1708,7 @@ h6 + .btn {
   font-size: var(--font-size-mobile-xl);
   line-height: 1.6;
   color: var(--white-alpha-80);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .hero-actions {
