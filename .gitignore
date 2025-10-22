@@ -113,6 +113,25 @@ css/autoprefixed/
 css/*.min.css
 css/*.min.css.map
 
+# AI assistant artifacts
+.claude/
+claudedocs/
+claude.md
+CLAUDE.md
+AGENT_TASK_*.md
+CLEANUP_SUMMARY.md
+COMPREHENSIVE_CODE_REVIEW_*.md
+CSS_CONFLICTS_AUDIT.md
+CSS_OPTIMIZATION_SUMMARY.md
+CSS_SPACING_CLEANUP_PLAN.md
+CURSOR_HANDOFF_SPACING_CLEANUP.md
+FILES_TO_DELETE.md
+HTML_AUDIT_REPORT.md
+MOBILE_CENTERING_FIX_REPORT.md
+REPOSITORY_CLEANUP*.md
+REVIEW_SUMMARY.md
+STYLE_CSS_ANALYSIS.md
+
 # Testing and Validation
 *-report.json
 *-validation.json
@@ -137,6 +156,10 @@ pa11y-results/
 
 # Cursor IDE
 .cursor/
+.cursorrules
+.cursorignore
+.qodo/
+.serena/
 
 # Ruby
 .bundle/
@@ -152,7 +175,9 @@ _site/
 # Node.js
 node_modules/
 package-lock.json
-yarn.lock# Analysis files
+yarn.lock
+
+# Analysis files
 css-analysis.json
 defined-selectors.txt
 used-classes.txt
