@@ -40,8 +40,8 @@ ctwr-web/
 
 ### Prerequisites
 
-- Ruby 3.1+ (for Jekyll)
-- Node.js 20+ (for build tools)
+- Ruby 3.1+ (3.4.5 recommended; see `.ruby-version`)
+- Node.js 22+ (for build tools; see `.nvmrc`)
 - Git
 
 ### Installation
@@ -54,7 +54,14 @@ ctwr-web/
 
 2. Install Ruby dependencies:
    ```bash
-   bundle install
+   # Ensure you are using Ruby 3.1+ (3.4.5 recommended)
+   # rbenv example:
+   #   rbenv install 3.4.5 && rbenv local 3.4.5
+   # asdf example:
+   #   asdf install ruby 3.4.5 && asdf local ruby 3.4.5
+
+   # Quick setup (checks Ruby, installs Bundler & gems)
+   ./scripts/setup-ruby.sh
    ```
 
 3. Install Node.js dependencies:
@@ -220,7 +227,12 @@ Use conventional commits:
 
 ### Common Issues
 
-1. **Jekyll build fails**: Check Ruby version and gem dependencies
+1. **Jekyll build fails**: Ensure you are using Ruby matching `.ruby-version` (3.4.5). If you see missing `sass-embedded` / `google-protobuf`, clear and reinstall gems:
+   ```bash
+   rm -rf vendor/bundle
+   gem install bundler
+   bundle install
+   ```
 2. **CSS minification errors**: Verify CSS syntax and remove comments
 3. **JavaScript errors**: Check ESLint configuration and fix syntax issues
 4. **Accessibility failures**: Review ARIA labels and keyboard navigation
