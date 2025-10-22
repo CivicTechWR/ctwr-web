@@ -77,7 +77,7 @@ p {
   color: var(--p-color);
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-normal);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 /* Last paragraph in a container should have no bottom margin */

@@ -46,6 +46,9 @@
   /* Behavior */
   user-select: none;
   vertical-align: middle; /* Fixed: Changed from 'top' for proper button group alignment */
+
+  /* Safari fix: Ensure text is visible (prevent inheritance of -webkit-text-fill-color: transparent from hero-title) */
+  -webkit-text-fill-color: currentColor;
 }
 
 .btn:hover {
