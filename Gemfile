@@ -6,7 +6,7 @@ source "https://rubygems.org"
 ruby ">= 3.1.0"
 
 # gem "rails"
-gem "jekyll", "~> 4.3"
+gem "jekyll", "~> 4.4"
 
 # Performance and SEO plugins
 gem "jekyll-feed", "~> 0.12"
