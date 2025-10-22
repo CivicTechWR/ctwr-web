@@ -14,8 +14,11 @@ ERRORS=0
 
 # Check for !important (should only be in utility files)
 echo "Checking !important declarations..."
+# shellcheck disable=SC2126
 IMPORTANT_COUNT=$(grep -r "!important" css --include="*.css" --exclude-dir="_site" --exclude="*.min.css" | wc -l | tr -d ' ')
+# shellcheck disable=SC2126
 IMPORTANT_IN_UTILITIES=$(grep -r "!important" css/base/fallbacks.css css/loading-strategy.css 2>/dev/null | wc -l | tr -d ' ')
+# shellcheck disable=SC2126
 IMPORTANT_IN_COMPONENTS=$(grep -r "!important" css/components --include="*.css" --exclude="*.min.css" 2>/dev/null | grep -v "NO !important" | grep -v "^\s*//" | wc -l | tr -d ' ')
 
 echo "  Total !important: $IMPORTANT_COUNT"
@@ -34,6 +37,7 @@ echo ""
 
 # Check for duplicate variable definitions in component files
 echo "Checking for CSS variable definitions in component files..."
+# shellcheck disable=SC2126
 VAR_IN_COMPONENTS=$(grep -rl "^:root" css/components css/pages --include="*.css" --exclude="*.min.css" 2>/dev/null | wc -l | tr -d ' ')
 
 if [ "$VAR_IN_COMPONENTS" -gt 0 ]; then
@@ -57,7 +61,7 @@ echo ""
 # Check style.css size
 echo "Checking style.css optimization..."
 if [ -f "css/style.css" ]; then
-  STYLE_SIZE=$(wc -l < css/style.css | tr -d ' ')
+  STYLE_SIZE=$(wc -l <css/style.css | tr -d ' ')
   echo "  style.css: $STYLE_SIZE lines"
 
   if [ "$STYLE_SIZE" -gt 200 ]; then
@@ -96,6 +100,7 @@ echo ""
 
 # Count component files
 echo "Checking component architecture..."
+# shellcheck disable=SC2126
 COMPONENT_COUNT=$(find css/components -name "*.css" -not -name "*.min.css" 2>/dev/null | wc -l | tr -d ' ')
 echo "  Component files: $COMPONENT_COUNT"
 

@@ -2,7 +2,10 @@
 set -euo pipefail
 
 require_cmd() {
-  command -v "$1" >/dev/null 2>&1 || { echo "❌ Missing required command: $1" >&2; exit 1; }
+  command -v "$1" >/dev/null 2>&1 || {
+    echo "❌ Missing required command: $1" >&2
+    exit 1
+  }
 }
 
 echo "🔧 Checking Ruby environment..."
@@ -36,4 +39,3 @@ bundle config set path 'vendor/bundle'
 bundle install --jobs 4 --retry 3
 
 echo "✅ Ruby environment ready. Try: bundle exec jekyll build"
-

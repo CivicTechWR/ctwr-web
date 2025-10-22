@@ -27,7 +27,7 @@ TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 REPORT_FILE="reports/css-budget/validation-${TIMESTAMP}.json"
 
 # Initialize report
-cat > "$REPORT_FILE" << EOF
+cat >"$REPORT_FILE" <<EOF
 {
   "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
   "budget": {},
@@ -51,10 +51,10 @@ size_to_bytes() {
     local num="${BASH_REMATCH[1]}"
     local unit="${BASH_REMATCH[2]}"
     case $unit in
-      "KB") echo "$(echo "$num * 1024" | bc)" ;;
-      "MB") echo "$(echo "$num * 1024 * 1024" | bc)" ;;
-      "GB") echo "$(echo "$num * 1024 * 1024 * 1024" | bc)" ;;
-      *) echo "$num" ;;
+    "KB") bc <<<"$num * 1024" ;;
+    "MB") bc <<<"$num * 1024 * 1024" ;;
+    "GB") bc <<<"$num * 1024 * 1024 * 1024" ;;
+    *) echo "$num" ;;
     esac
   else
     echo "0"
@@ -80,19 +80,19 @@ echo -e "${BLUE}📏 Measuring main CSS files...${NC}"
 
 # Get total CSS size
 TOTAL_CSS_SIZE=$(find css -name "*.css" -not -name "*.min.css" -not -name "*.optimized.css" -exec du -cb {} + | tail -1 | cut -f1)
-TOTAL_CSS_HUMAN=$(bytes_to_human $TOTAL_CSS_SIZE)
+TOTAL_CSS_HUMAN=$(bytes_to_human "$TOTAL_CSS_SIZE")
 
 # Get critical CSS size
 # NOTE: critical.css was orphaned file not loaded in production - removed during cleanup
 CRITICAL_CSS_SIZE=0
-CRITICAL_CSS_HUMAN=$(bytes_to_human $CRITICAL_CSS_SIZE)
+CRITICAL_CSS_HUMAN=$(bytes_to_human "$CRITICAL_CSS_SIZE")
 
 # Get minified CSS size
 MINIFIED_CSS_SIZE=0
 if [ -d "css" ]; then
   MINIFIED_CSS_SIZE=$(find css -name "*.min.css" -exec du -cb {} + 2>/dev/null | tail -1 | cut -f1 || echo "0")
 fi
-MINIFIED_CSS_HUMAN=$(bytes_to_human $MINIFIED_CSS_SIZE)
+MINIFIED_CSS_HUMAN=$(bytes_to_human "$MINIFIED_CSS_SIZE")
 
 # Count component files
 COMPONENT_COUNT=$(find css/components -name "*.css" 2>/dev/null | wc -l || echo "0")
@@ -189,7 +189,7 @@ else
 fi
 
 # Update report with results
-jq --arg status "$STATUS" --argjson violations $VIOLATIONS --argjson warnings $WARNINGS --argjson totalSize $TOTAL_CSS_SIZE --argjson criticalSize $CRITICAL_CSS_SIZE --argjson componentCount $COMPONENT_COUNT --argjson customPropCount $CUSTOM_PROP_COUNT --argjson mediaQueryCount $MEDIA_QUERY_COUNT '
+jq --arg status "$STATUS" --argjson violations "$VIOLATIONS" --argjson warnings "$WARNINGS" --argjson totalSize "$TOTAL_CSS_SIZE" --argjson criticalSize "$CRITICAL_CSS_SIZE" --argjson componentCount "$COMPONENT_COUNT" --argjson customPropCount "$CUSTOM_PROP_COUNT" --argjson mediaQueryCount "$MEDIA_QUERY_COUNT" '
   .summary.status = $status |
   .summary.totalViolations = $violations |
   .summary.totalWarnings = $warnings |
@@ -198,7 +198,7 @@ jq --arg status "$STATUS" --argjson violations $VIOLATIONS --argjson warnings $W
   .metrics.componentCount = $componentCount |
   .metrics.customPropertyCount = $customPropCount |
   .metrics.mediaQueryCount = $mediaQueryCount
-' "$REPORT_FILE" > "${REPORT_FILE}.tmp" && mv "${REPORT_FILE}.tmp" "$REPORT_FILE"
+' "$REPORT_FILE" >"${REPORT_FILE}.tmp" && mv "${REPORT_FILE}.tmp" "$REPORT_FILE"
 
 echo -e "${BLUE}📊 Budget Validation Summary:${NC}"
 echo "  Status: $STATUS"
