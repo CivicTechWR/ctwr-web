@@ -14,7 +14,227 @@
    BASE LAYER - Foundation styles
    ========================================================================== */
 
-/* CSS Custom Properties - Must be loaded first */
+/* Browser Fallbacks - For older browsers without CSS custom property support */
+/* These hardcoded values will be overridden by CSS custom properties in modern browsers */
+/**
+ * Hardcoded Fallback Styles
+ * For older browsers that don't support CSS custom properties
+ * CSS custom properties are defined ONLY in css/base/variables.css
+ */
+
+/* Fallback styles for browsers without CSS custom property support */
+/* These will be overridden by CSS custom properties in supporting browsers */
+
+/* Base typography fallbacks */
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #717275;
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #000;
+  margin-bottom: 0.875rem;
+}
+
+h3 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #000;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #000;
+  margin-bottom: 0.75rem;
+}
+
+h5 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000;
+  margin-bottom: 0.625rem;
+}
+
+h6 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000;
+  margin-bottom: 0.625rem;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #717275;
+  margin-bottom: 1rem;
+}
+
+/* Button fallbacks - moved to components/buttons.css */
+
+/* Navigation fallbacks */
+.navbar {
+  background-color: #2D6F72;
+  padding: 16px 0;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-link {
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Layout fallbacks */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.section-bg {
+  background-color: #f9f9f9;
+}
+
+/* Card fallbacks */
+.card {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+/* Form fallbacks */
+.form-control {
+  background-color: #fff;
+  border: 2px solid #e9eaeb;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #717275;
+  margin-bottom: 24px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #2D6F72;
+  box-shadow: 0 0 0 4px rgba(45, 111, 114, 0.2);
+}
+
+/* Responsive fallbacks */
+@media (max-width: 768px) {
+  h1 { font-size: 40px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 28px; }
+  h4 { font-size: 24px; }
+  h5 { font-size: 20px; }
+  h6 { font-size: 18px; }
+
+  /* Reduce paragraph spacing on tablets */
+  p {
+    margin-bottom: 24px;
+  }
+
+  /* Button styles moved to components/buttons.css */
+
+  .navbar {
+    padding: 8px 0;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 32px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 24px; }
+  h4 { font-size: 20px; }
+  h5 { font-size: 18px; }
+  h6 { font-size: 16px; }
+
+  /* Further reduce paragraph spacing on mobile */
+  p {
+    margin-bottom: 16px;
+  }
+
+  /* Button styles moved to components/buttons.css */
+
+  .section {
+    padding: 32px 0;
+  }
+}
+
+/* Utility class fallbacks */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Utility classes moved to bootstrap-custom.css to avoid duplication */
+
+/* Focus fallbacks for accessibility */
+*:focus {
+  outline: 2px solid #2D6F72;
+  outline-offset: 2px;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 4px rgba(45, 111, 114, 0.2);
+}
+
+/* Print fallbacks */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* Button styles moved to components/buttons.css */
+  
+  .navbar {
+    background: transparent;
+    color: #000;
+  }
+}
+/* CSS Custom Properties - Overrides fallbacks in modern browsers */
 /* ---------------------------------------
   CUSTOM PROPERTIES ( VARIABLES )
 ----------------------------------------- */
@@ -168,7 +388,7 @@
   --secondary-alpha-3: rgba(45, 111, 114, 0.3);
 }
 
-/* Typography - Base text styles */
+/* Typography - Base text styles using CSS custom properties */
 /* ---------------------------------------
   TYPOGRAPHY - Base Text Styles
   Extracted from style.css for better organization
@@ -295,20 +515,7 @@ figure:last-child {
 
 /* Flow spacing - consistent vertical rhythm between ALL sibling elements */
 .flow > * + * {
-  margin-top: var(--space-7); /* 48px - desktop default */
-}
-
-/* Responsive flow spacing for better mobile readability */
-@media (width <= 576px) {
-  .flow > * + * {
-    margin-top: var(--space-4); /* 16px - small mobile */
-  }
-}
-
-@media (width >= 577px) and (width <= 991px) {
-  .flow > * + * {
-    margin-top: var(--space-5); /* 24px - tablet/large mobile */
-  }
+  margin-top: var(--space-7);
 }
 
 /* Tighter flow spacing for compact sections */
@@ -381,7 +588,7 @@ strong {
 }
 
 /* Responsive Typography */
-@media (width < 992px) {
+@media (max-width: 991px) {
   h1 {
     font-size: var(--h2-font-size);
   }
@@ -405,9 +612,14 @@ strong {
   h6 {
     font-size: var(--p-font-size);
   }
+
+  /* Reduce paragraph spacing on tablets */
+  p {
+    margin-bottom: var(--space-5);
+  }
 }
 
-@media screen and (width <= 480px) {
+@media screen and (max-width: 480px) {
   h1 {
     font-size: var(--font-size-3xl);
   }
@@ -427,6 +639,11 @@ strong {
   h5 {
     font-size: var(--font-size-mobile-xl);
   }
+
+  /* Further reduce paragraph spacing on mobile */
+  p {
+    margin-bottom: var(--space-4);
+  }
 }
 
 /* Section Padding */
@@ -434,220 +651,11 @@ strong {
   padding: 8em;
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .section-padding {
     padding: 2em;
     padding-top: var(--space-10);
     padding-bottom: var(--space-10);
-  }
-}
-/* Browser Fallbacks - For older browsers without CSS custom property support */
-/**
- * Hardcoded Fallback Styles
- * For older browsers that don't support CSS custom properties
- * CSS custom properties are defined ONLY in css/base/variables.css
- */
-
-/* Fallback styles for browsers without CSS custom property support */
-/* These will be overridden by CSS custom properties in supporting browsers */
-
-/* Base typography fallbacks */
-body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #717275;
-  background-color: #fff;
-}
-
-h1 {
-  font-size: 62px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #000;
-  margin-bottom: 1rem;
-}
-
-h2 {
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #000;
-  margin-bottom: 0.875rem;
-}
-
-h3 {
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: #000;
-  margin-bottom: 0.75rem;
-}
-
-h4 {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: #000;
-  margin-bottom: 0.75rem;
-}
-
-h5 {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: #000;
-  margin-bottom: 0.625rem;
-}
-
-h6 {
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: #000;
-  margin-bottom: 0.625rem;
-}
-
-p {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #717275;
-  margin-bottom: var(--space-6);
-}
-
-/* Button fallbacks - moved to components/buttons.css */
-
-/* Navigation fallbacks */
-.navbar {
-  background-color: #2D6F72;
-  padding: 16px 0;
-  position: relative;
-  z-index: 1000;
-}
-
-.navbar-brand {
-  color: #fff;
-  font-size: 24px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.nav-link {
-  color: #fff;
-  font-weight: 500;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-/* Layout fallbacks */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-.section {
-  padding: 64px 0;
-}
-
-.section-bg {
-  background-color: #f9f9f9;
-}
-
-/* Card fallbacks */
-.card {
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 24px;
-}
-
-/* Form fallbacks */
-.form-control {
-  background-color: #fff;
-  border: 2px solid #e9eaeb;
-  border-radius: 10px;
-  padding: 12px 16px;
-  font-size: 16px;
-  color: #717275;
-  margin-bottom: 24px;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: #2D6F72;
-  box-shadow: 0 0 0 4px rgba(45, 111, 114, 0.2);
-}
-
-/* Responsive fallbacks */
-@media (max-width: 768px) {
-  h1 { font-size: 40px; }
-  h2 { font-size: 32px; }
-  h3 { font-size: 28px; }
-  h4 { font-size: 24px; }
-  h5 { font-size: 20px; }
-  h6 { font-size: 18px; }
-  
-  /* Button styles moved to components/buttons.css */
-  
-  .navbar {
-    padding: 8px 0;
-  }
-  
-  .section {
-    padding: 48px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  h1 { font-size: 32px; }
-  h2 { font-size: 28px; }
-  h3 { font-size: 24px; }
-  h4 { font-size: 20px; }
-  h5 { font-size: 18px; }
-  h6 { font-size: 16px; }
-  
-  /* Button styles moved to components/buttons.css */
-  
-  .section {
-    padding: 32px 0;
-  }
-}
-
-/* Utility class fallbacks */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-
-/* Utility classes moved to bootstrap-custom.css to avoid duplication */
-
-/* Focus fallbacks for accessibility */
-*:focus {
-  outline: 2px solid #2D6F72;
-  outline-offset: 2px;
-}
-
-.btn:focus {
-  box-shadow: 0 0 0 4px rgba(45, 111, 114, 0.2);
-}
-
-/* Print fallbacks */
-@media print {
-  * {
-    background: transparent !important;
-    color: #000 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-  
-  /* Button styles moved to components/buttons.css */
-  
-  .navbar {
-    background: transparent;
-    color: #000;
   }
 }
 /* ==========================================================================
@@ -1049,7 +1057,7 @@ p {
 }
 
 /* MOBILE STYLES: 0-768px (phones) */
-@media (width < 768px) {
+@media (max-width: 767px) {
   .navbar {
     min-height: 3.5rem;
   }
@@ -1121,7 +1129,7 @@ p {
 }
 
 /* TABLET STYLES: 768-992px (tablets) */
-@media (width >= 768px) and (width < 992px) {
+@media (min-width: 768px) and (max-width: 991px) {
   .navbar-brand .logo {
     display: block;
   }
@@ -1472,7 +1480,7 @@ h6 + .btn {
    RESPONSIVE ADJUSTMENTS
    ========================================================================== */
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .btn {
     padding: var(--space-3) var(--space-5);
     font-size: var(--font-size-mobile-sm);
@@ -1567,7 +1575,7 @@ h6 + .btn {
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .btn-group {
     flex-direction: column;
   }
@@ -1704,11 +1712,11 @@ h6 + .btn {
   -webkit-text-fill-color: transparent;
 }
 
-.hero-description {
+.hero .hero-description {
   font-size: var(--font-size-mobile-xl);
   line-height: 1.6;
   color: var(--white-alpha-80);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .hero-actions {
@@ -1718,11 +1726,15 @@ h6 + .btn {
   margin-top: var(--space-6);
 }
 
-/* Safari fix: Force button text visibility in hero section - prevents inheritance of transparent fill from hero-title */
-.hero-actions .btn,
-.hero-actions .btn--light,
+/* Safari 26.1 fix: Force button text visibility with hardcoded colors - prevents inheritance of transparent fill from hero-title */
+.hero-actions .btn--light {
+  color: #2D6F72 !important;
+  -webkit-text-fill-color: #2D6F72 !important;
+}
+
 .hero-actions .btn--primary {
-  -webkit-text-fill-color: currentColor !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 /* Hero Image Styles */
@@ -1738,7 +1750,7 @@ h6 + .btn {
 }
 
 /* Responsive Hero Styles */
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .hero {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -1748,8 +1760,9 @@ h6 + .btn {
     font-size: var(--font-size-3xl);
   }
 
-  .hero-description {
+  .hero .hero-description {
     font-size: var(--font-size-mobile-md);
+    margin-bottom: var(--space-4);
   }
 
   .hero-actions {
@@ -1767,7 +1780,7 @@ h6 + .btn {
   }
 }
 
-@media screen and (width >= 1600px) {
+@media screen and (min-width: 1600px) {
   .hero {
     padding-top: 380px;
     padding-bottom: 380px;
@@ -1789,7 +1802,7 @@ h6 + .btn {
   }
 }
 
-@media (width < 992px) {
+@media (max-width: 991px) {
   .hero {
     padding-top: var(--section-padding-xl);
     padding-bottom: 400px;
@@ -1801,7 +1814,7 @@ h6 + .btn {
   }
 }
 
-@media screen and (width <= 480px) {
+@media screen and (max-width: 480px) {
   .hero-title {
     font-size: var(--font-size-2xl);
     line-height: 1.3;
@@ -2026,13 +2039,13 @@ h6 + .btn {
 }
 
 /* Responsive adjustments */
-@media (width >= 1200px) {
+@media (min-width: 1200px) {
   .meeting-image-wrapper {
     padding: 0 var(--space-6);
   }
 }
 
-@media (width >= 992px) {
+@media (min-width: 992px) {
   .meeting-section-alt .row {
     align-items: stretch;
   }
@@ -2052,11 +2065,11 @@ h6 + .btn {
   }
 }
 
-@media (width < 992px) {
+@media (max-width: 991px) {
   .meeting-title {
     text-align: center;
   }
-  
+
   .meeting-image-wrapper {
     min-height: 350px;
     margin-bottom: var(--space-6);
@@ -2064,7 +2077,7 @@ h6 + .btn {
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .meeting-section-alt {
     padding: var(--space-6) 0;
   }
@@ -2094,14 +2107,14 @@ h6 + .btn {
   }
 }
 
-@media (width <= 576px) {
+@media (max-width: 576px) {
   .meeting-image-wrapper {
     min-height: 250px;
   }
 }
 
 /* Services responsive styles */
-@media (width < 992px) {
+@media (max-width: 991px) {
   .services-thumb-up {
     bottom: 0;
     margin-bottom: var(--space-6);
@@ -2348,7 +2361,7 @@ h6 + .btn {
 }
 
 /* Responsive Footer Styles */
-@media (width < 992px) {
+@media (max-width: 991px) {
   .footer-redesign-container {
     flex-direction: column;
     gap: var(--space-9);
@@ -2537,7 +2550,7 @@ h6 + .btn {
 }
 
 /* Responsive sizing for tablets */
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .sponsor-grid {
     gap: var(--space-5);
     row-gap: var(--space-6);
@@ -2563,7 +2576,7 @@ h6 + .btn {
 }
 
 /* Responsive sizing for mobile */
-@media (width <= 576px) {
+@media (max-width: 576px) {
   .sponsor-grid {
     gap: var(--space-4);
     row-gap: var(--space-5);
@@ -2641,7 +2654,7 @@ h6 + .btn {
   RESPONSIVE STYLES
 ----------------------------------------- */
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .services .col-lg-10 .row .col-lg-6:last-child,
   .projects .col-lg-4:last-child {
     margin-bottom: 0;
@@ -2801,7 +2814,7 @@ h6 + .btn {
   font-weight: 500;
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .organizers-section {
     padding: var(--space-6);
   }
@@ -2870,14 +2883,14 @@ h6 + .btn {
   RESPONSIVE STYLES
 ----------------------------------------- */
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .about-thumb {
     padding-right: var(--space-4);
     padding-left: var(--space-4);
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .about-thumb {
     padding-right: var(--space-3);
     padding-left: var(--space-3);
@@ -2982,7 +2995,7 @@ h6 + .btn {
    RESPONSIVE DESIGN - Mobile optimizations
    ========================================================================== */
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .meeting-section-alt .meeting-content {
     padding-left: var(--space-4);
     padding-right: var(--space-4);
@@ -2993,7 +3006,7 @@ h6 + .btn {
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .meeting-section-alt .meeting-content {
     padding-left: var(--space-3);
     padding-right: var(--space-3);

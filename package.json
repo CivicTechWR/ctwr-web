@@ -5,13 +5,18 @@
   "scripts": {
     "build:dev": "bundle exec jekyll build",
     "build:prod": "JEKYLL_ENV=production bundle exec jekyll build",
+    "build:css": "bash scripts/build-css.sh",
+    "build:main-css": "bash scripts/build-main-css.sh",
     "minify:css": "cleancss -o css/main.min.css css/main.css && cleancss -o css/base/variables.min.css css/base/variables.css && cleancss -o css/base/typography.min.css css/base/typography.css && cleancss -o css/components/navigation.min.css css/components/navigation.css && cleancss -o css/components/buttons.min.css css/components/buttons.css && cleancss -o css/components/hero.min.css css/components/hero.css && cleancss -o css/components/services.min.css css/components/services.css && cleancss -o css/components/footer.min.css css/components/footer.css && cleancss -o css/components/avatar.min.css css/components/avatar.css && cleancss -o css/components/preloader.min.css css/components/preloader.css && cleancss -o css/components/icons.min.css css/components/icons.css && cleancss -o css/components/featured.min.css css/components/featured.css && cleancss -o css/components/sponsors.min.css css/components/sponsors.css && cleancss -o css/components/projects.min.css css/components/projects.css && cleancss -o css/components/forms.min.css css/components/forms.css && cleancss -o css/components/organizers.min.css css/components/organizers.css && cleancss -o css/components/profile.min.css css/components/profile.css && cleancss -o css/components/meeting.min.css css/components/meeting.css && cleancss -o css/components/page-header.min.css css/components/page-header.css && cleancss -o css/pages/about.min.css css/pages/about.css && cleancss -o css/pages/projects.min.css css/pages/projects.css && cleancss -o css/bootstrap-custom.min.css css/bootstrap-custom.css && cleancss -o css/abstract-shapes.min.css css/abstract-shapes.css && cleancss -o css/fonts.min.css css/fonts.css && cleancss -o css/style.min.css css/style.css",
     "minify:js": "terser js/optimized-bundle.js -o js/optimized-bundle.min.js --compress --mangle",
+    "minify": "npm run minify:css && npm run minify:js",
     "purge:css": "purgecss --config ./purgecss.config.js",
-        "build:css": "bash scripts/build-css.sh",
-        "build:main-css": "bash scripts/build-main-css.sh",
     "optimize:all": "npm run build:css && npm run minify:js",
-    "lint:css": "stylelint 'css/**/*.css' --config .stylelintrc.json",
+    "lint:css": "stylelint \"css/**/*.css\" --config .stylelintrc.json",
+    "lint:md": "bash scripts/lint-markdown.sh",
+    "lint:yaml": "bash scripts/lint-yaml.sh",
+    "lint:json": "bash scripts/lint-json.sh",
+    "lint:shell": "bash scripts/lint-shell.sh",
     "analyze:css": "css-analyzer css/style.css --format json > css-analysis.json",
     "test:performance": "lighthouse http://localhost:4000 --output=json --output-path=./lighthouse-report.json --chrome-flags='--headless' --quiet",
     "monitor:css": "bash scripts/monitor-css-performance.sh",
@@ -31,6 +36,8 @@
     "clean-css-cli": "^5.6.3",
     "css-analyzer": "^0.0.3",
     "css-tree": "^2.3.1",
+    "jsonlint": "^1.6.3",
+    "markdownlint-cli": "^0.42.0",
     "lighthouse": "^12.8.2",
     "pa11y": "^9.0.1",
     "pa11y-ci": "^4.0.1",
@@ -43,6 +50,7 @@
     "purgecss": "^7.0.2",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^36.0.1",
-    "terser": "^5.31.0"
+    "terser": "^5.31.0",
+    "yaml-lint": "^1.7.0"
   }
 }

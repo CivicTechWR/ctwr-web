@@ -71,7 +71,7 @@
   font-weight: 500;
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .organizers-section {
     padding: var(--space-6);
   }

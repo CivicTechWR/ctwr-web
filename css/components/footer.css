@@ -228,7 +228,7 @@
 }
 
 /* Responsive Footer Styles */
-@media (width < 992px) {
+@media (max-width: 991px) {
   .footer-redesign-container {
     flex-direction: column;
     gap: var(--space-9);

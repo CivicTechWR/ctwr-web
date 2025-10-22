@@ -28,16 +28,17 @@ cat > css/main.css << 'EOF'
 EOF
 
 # Add base layer files
-echo "/* CSS Custom Properties - Must be loaded first */" >> css/main.css
+echo "/* Browser Fallbacks - For older browsers without CSS custom property support */" >> css/main.css
+echo "/* These hardcoded values will be overridden by CSS custom properties in modern browsers */" >> css/main.css
+cat css/base/fallbacks.css >> css/main.css
+
+echo "" >> css/main.css
+echo "/* CSS Custom Properties - Overrides fallbacks in modern browsers */" >> css/main.css
 cat css/base/variables.css >> css/main.css
 
 echo "" >> css/main.css
-echo "/* Typography - Base text styles */" >> css/main.css
+echo "/* Typography - Base text styles using CSS custom properties */" >> css/main.css
 cat css/base/typography.css >> css/main.css
-
-echo "" >> css/main.css
-echo "/* Browser Fallbacks - For older browsers without CSS custom property support */" >> css/main.css
-cat css/base/fallbacks.css >> css/main.css
 
 echo "" >> css/main.css
 echo "/* ==========================================================================" >> css/main.css
