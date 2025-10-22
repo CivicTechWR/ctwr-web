@@ -1,7 +1,6 @@
 {
   "extends": ["stylelint-config-standard"],
   "rules": {
-  "rules": {
     "color-no-hex": null,
     "color-named": null,
     "declaration-no-important": "error",

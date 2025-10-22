@@ -56,14 +56,14 @@
   RESPONSIVE STYLES
 ----------------------------------------- */
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .about-thumb {
     padding-right: var(--space-4);
     padding-left: var(--space-4);
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .about-thumb {
     padding-right: var(--space-3);
     padding-left: var(--space-3);

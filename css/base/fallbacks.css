@@ -146,13 +146,18 @@ p {
   h4 { font-size: 24px; }
   h5 { font-size: 20px; }
   h6 { font-size: 18px; }
-  
+
+  /* Reduce paragraph spacing on tablets */
+  p {
+    margin-bottom: 24px;
+  }
+
   /* Button styles moved to components/buttons.css */
-  
+
   .navbar {
     padding: 8px 0;
   }
-  
+
   .section {
     padding: 48px 0;
   }
@@ -165,9 +170,14 @@ p {
   h4 { font-size: 20px; }
   h5 { font-size: 18px; }
   h6 { font-size: 16px; }
-  
+
+  /* Further reduce paragraph spacing on mobile */
+  p {
+    margin-bottom: 16px;
+  }
+
   /* Button styles moved to components/buttons.css */
-  
+
   .section {
     padding: 32px 0;
   }
