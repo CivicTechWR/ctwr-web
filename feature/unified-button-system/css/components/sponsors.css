@@ -65,7 +65,7 @@
 }
 
 /* Responsive sizing for tablets */
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .sponsor-grid {
     gap: var(--space-5);
     row-gap: var(--space-6);
@@ -91,7 +91,7 @@
 }
 
 /* Responsive sizing for mobile */
-@media (width <= 576px) {
+@media (max-width: 576px) {
   .sponsor-grid {
     gap: var(--space-4);
     row-gap: var(--space-5);
