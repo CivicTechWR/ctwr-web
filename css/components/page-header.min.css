@@ -1,0 +1,1 @@
+.site-header{padding:var(--section-padding-md) 0 var(--space-10)}.has-fixed-nav .site-header,body.has-fixed-nav .site-header{padding-top:var(--section-padding-lg)}.page-title{font-size:clamp(2.5rem, 4vw, 3.5rem);font-weight:700;margin-bottom:var(--space-4);color:var(--heading-color)}.page-subtitle{font-size:var(--font-size-mobile-lg);color:var(--p-color);margin-bottom:0}

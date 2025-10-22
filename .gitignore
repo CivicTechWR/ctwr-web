@@ -13,8 +13,8 @@ package-lock.json
 # Build outputs
 dist/
 build/
-*.min.css
-*.min.js
+
+# Generated source maps
 *.min.js.map
 
 # System files
@@ -110,8 +110,6 @@ Thumbs.db
 # CSS Processing
 css/purged/
 css/autoprefixed/
-css/*.min.css
-css/*.min.css.map
 
 # AI assistant artifacts
 .claude/
