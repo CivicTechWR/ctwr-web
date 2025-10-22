@@ -32,31 +32,27 @@
 
 
     <!-- Resource hints for performance -->
-    <link rel="preload" href="css/style.css" as="style" />
-    
-    <link rel="preload" href="css/bootstrap.min.css" as="style" />
-    
+    <link rel="preload" href="css/bootstrap-custom.css" as="style" />
     <link rel="preload" href="images/about-us.webp" as="image" />
+    
+    <!-- All CSS loaded via main.css (preloaded for performance) -->
 
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
     <!-- Preconnect to critical external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
+    <!-- Self-hosted fonts (no external DNS lookup required) -->
     
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/fonts.min.css?v=1760695256" rel="stylesheet" />
     
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/abstract-shapes.css" rel="stylesheet" />
-    <link href="css/pages/about.css" rel="stylesheet" />
 
-    <!-- Unified button system (loads last for highest specificity) -->
-    <link href="css/components/buttons.css" rel="stylesheet" />
+    <!-- Main CSS (includes variables, components, and utilities) -->
+    
+    <link href="css/main.min.css?v=1760695256" rel="stylesheet" />
+    <link href="css/pages/about.min.css?v=1760695256" rel="stylesheet" />
+    
     
   </head>
   <body>
@@ -144,11 +140,14 @@
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
-        <img
-          src="/images/logos/civictechwr_logo_white.png"
-          alt="CivicTech Waterloo Region"
-          class="logo"
-        />
+        <picture>
+          <source srcset="/images/logos/civictechwr_logo_white.webp" type="image/webp" />
+          <img
+            src="/images/logos/civictechwr_logo_white.png"
+            alt="CivicTech Waterloo Region"
+            class="logo"
+          />
+        </picture>
           <span class="brand-name">CivicTech Waterloo Region</span>
         </a>
       </div>
@@ -188,7 +187,7 @@
         </ul>
         <div class="ms-auto">
           <a
-            class="btn btn--outline"
+            class="btn btn--light btn--full-mobile"
             href="https://discourse.ctwr.org"
             target="_blank"
             rel="noopener noreferrer"
@@ -210,7 +209,9 @@
               <p class="page-subtitle">Meet the community of designers, technologists, and civic leaders working together to solve local challenges.</p>
             </div>
             <div class="col-lg-6 col-12 text-lg-end text-start">
-              <a class="btn btn--outline" href="https://www.meetup.com/civictechwr/" target="_blank" rel="noopener noreferrer">Join our hacknights</a>
+              <div class="btn-group btn-group--end">
+                <a class="btn btn--outline" href="https://www.meetup.com/civictechwr/" target="_blank" rel="noopener noreferrer">Join our hacknights</a>
+              </div>
             </div>
           </div>
         </div>
@@ -363,7 +364,7 @@
           </picture>
         </div>
       </div>
-      <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+      <div class="col-lg-6 col-12">
         <div class="meeting-content">
           <h2 class="meeting-title text-center mb-4">We look forward to seeing you at our next meeting</h2>
 
@@ -398,7 +399,9 @@
             </div>
 
             <div class="meeting-cta">
-              <a id="meeting-btn" class="btn btn--meeting" href="https://www.meetup.com/civictechwr">More Details & RSVP</a>
+              <div class="btn-group btn-group--center">
+                <a id="meeting-btn" class="btn btn--meeting" href="https://www.meetup.com/civictechwr">More Details & RSVP</a>
+              </div>
             </div>
           </div>
         </div>
@@ -411,17 +414,22 @@
       <footer class="footer-redesign">
   <div class="footer-redesign-container">
     <div class="footer-col footer-brand">
-      <a href="https://civictechwr.org"><img src="/images/logos/civictechwr_logo_black.png" alt="CivicTechWR Logo" class="footer-brand-logo" width="120"></a>
+      <a href="https://civictechwr.org">
+        <picture>
+          <source srcset="/images/logos/civictechwr_logo_black.webp" type="image/webp" />
+          <img src="/images/logos/civictechwr_logo_black.png" alt="CivicTechWR Logo" class="footer-brand-logo" width="120">
+        </picture>
+      </a>
       <div class="footer-brand-mission">Our mission is to bring together people from different sectors and industries to actively solve issues facing our local community using design and technology.</div>
     </div>
 
     <div class="footer-col footer-support">
       <div class="footer-col-title">SUPPORT US</div>
       <div class="footer-support-text">We pitch in for pizza and drinks ourselves. If you'd like to chip in, please consider donating.</div>
-      <a class="btn btn--donate" href="https://buy.stripe.com/cN24hE161goQcZa8wx" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18"><use href="#icon-heart"></use></svg> Donate</a>
+      <a class="btn btn--donate" href="https://buy.stripe.com/cN24hE161goQcZa8wx" target="_blank" rel="noopener noreferrer"><svg class="btn__icon icon" width="16" height="16"><use href="#icon-heart"></use></svg> Donate</a>
       <div><br /></div>
       <div class="footer-support-text">Interested in sponsoring us? We'd love to talk to you</div>
-      <a class="btn btn--donate" href="mailto:civictechwr@gmail.com" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18"><use href="#icon-handshake"></use></svg> Sponsor Us</a>
+      <a class="btn btn--donate" href="mailto:civictechwr@gmail.com" target="_blank" rel="noopener noreferrer"><svg class="btn__icon icon" width="16" height="16"><use href="#icon-handshake"></use></svg> Sponsor Us</a>
     </div>
 
     <div class="footer-col footer-links">
@@ -435,7 +443,7 @@
         <li><a href="/about.html">About Us</a></li>
       </ul>
       <ul class="footer-links-list">
-        <li><a class="btn btn--footer" href="https://feedback.ctwr.org/"><svg class="icon" width="18" height="18"><use href="#icon-comment-dots"></use></svg> Got Feedback?</a></li>
+        <li><a class="btn btn--footer" href="https://feedback.ctwr.org/"><svg class="btn__icon icon" width="16" height="16"><use href="#icon-comment-dots"></use></svg> Got Feedback?</a></li>
       </ul>
     </div>
 
@@ -449,8 +457,8 @@
         <li><a href="https://civictechwr.github.io/CTWR-Organization-Documentation/policies/Diversity_and_Inclusion_Policy">Diversity and Inclusion Policy</a></li>
       </ul>
       <ul class="footer-links-list">
-        <li><a class="btn btn--footer" href="https://www.meetup.com/civictechwr/"><svg class="icon" width="18" height="18"><use href="#icon-calendar-alt"></use></svg> Upcoming Hacknight</a></li>
-        <li><a class="btn btn--footer" href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18"><use href="#icon-slack"></use></svg> Join us on Slack</a></li>
+        <li><a class="btn btn--footer" href="https://www.meetup.com/civictechwr/"><svg class="btn__icon icon" width="16" height="16"><use href="#icon-calendar-alt"></use></svg> Upcoming Hacknight</a></li>
+        <li><a class="btn btn--footer" href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" target="_blank" rel="noopener noreferrer"><svg class="btn__icon icon" width="16" height="16"><use href="#icon-slack"></use></svg> Join us on Slack</a></li>
       </ul>
       <div class="footer-social-icons">
         <a href="https://www.linkedin.com/company/civictechwr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon" width="24" height="24"><use href="#icon-linkedin"></use></svg></a>
