@@ -158,3 +158,12 @@ jobs:
             exit 1
           fi
           echo "✅ optimized-bundle.min.js created successfully"
+
+      - name: Ensure minified assets are committed
+        run: |
+          if [ -n "$(git status --short css js)" ]; then
+            echo "❌ Minified assets are out of date. Run 'npm run minify' and commit the updated files."
+            git status --short css js
+            exit 1
+          fi
+          echo "✅ Minified assets match repository state"
