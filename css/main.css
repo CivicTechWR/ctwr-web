@@ -1718,6 +1718,13 @@ h6 + .btn {
   margin-top: var(--space-6);
 }
 
+/* Safari fix: Force button text visibility in hero section - prevents inheritance of transparent fill from hero-title */
+.hero-actions .btn,
+.hero-actions .btn--light,
+.hero-actions .btn--primary {
+  -webkit-text-fill-color: currentColor !important;
+}
+
 /* Hero Image Styles */
 .hero-image-wrap {
   position: relative;
