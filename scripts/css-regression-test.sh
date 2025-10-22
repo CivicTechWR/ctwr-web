@@ -32,7 +32,8 @@ get_css_metrics() {
   # Get file sizes
   local total_css_size=$(find css -name "*.css" -not -name "*.min.css" -not -name "*.optimized.css" -exec du -cb {} + | tail -1 | cut -f1)
   local minified_css_size=$(find css -name "*.min.css" -exec du -cb {} + 2>/dev/null | tail -1 | cut -f1 || echo "0")
-  local critical_css_size=$(du -cb css/critical.css 2>/dev/null | tail -1 | cut -f1 || echo "0")
+  # NOTE: critical.css was orphaned file not loaded in production - removed during cleanup
+  local critical_css_size=0
   
   # Get file counts
   local component_count=$(find css/components -name "*.css" 2>/dev/null | wc -l || echo "0")

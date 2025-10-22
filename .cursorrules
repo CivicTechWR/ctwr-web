@@ -16,9 +16,13 @@ This is a Jekyll static site for CivicTech Waterloo Region, focusing on accessib
 
 ### CSS
 
-**CRITICAL: CSS CLEANUP PROJECT IN PROGRESS (Oct 2025)**
+**CRITICAL: CSS SPACING CLEANUP - ACTIVE (Oct 17, 2025 21:20 UTC)**
 
-See CLAUDE.md section "CSS CLEANUP STRATEGY" for complete details.
+✅ **PHASE 1 COMPLETE:** Deleted 16.8KB orphaned code (responsive.css + critical.css)
+🚧 **PHASE 3 IN PROGRESS:** Replacing 27 in-between variable uses + 37 hardcoded spacing values
+
+See `CURSOR_HANDOFF_SPACING_CLEANUP.md` for complete status and next steps.
+See CLAUDE.md section "CSS CLEANUP STRATEGY" for original plan.
 
 **Core Principles:**
 - **Visual Parity is Sacred**: ZERO visual changes allowed during refactoring
@@ -27,48 +31,61 @@ See CLAUDE.md section "CSS CLEANUP STRATEGY" for complete details.
 - **BEM Naming**: Block__Element--Modifier pattern for all components
 - **!important Policy**: Only allowed in utility classes (display, text-align helpers)
 
-**Current State (Oct 17, 2025):**
-📊 **Total:** 16 files, 74.3KB, 2,175 lines
-✅ **Completed:**
-- Button system: 7.1KB, BEM methodology, zero !important
-- Bootstrap custom: 2.1KB (98.9% reduction from 237KB)
-- Component architecture: /base, /components, /pages structure
-- Master CSS loader: main.css orchestrates all imports
-- Navigation: 6.4KB extracted component
-- Hero: 3.8KB extracted component
-- Services: 5.6KB extracted component
-- Footer: 3.8KB extracted component
-- Typography: 2.7KB in base/typography.css
-- Variables: 3.6KB single source of truth in base/variables.css
+**Current State (Oct 17, 2025 - Post Analysis):**
+📊 **Total:** 28 files, 96.4 KB, 4,662 lines, 665 rules, 684 selectors
+📈 **Performance Gains:** 88% total CSS reduction (from ~800KB)
 
-✅ **!important Usage (24 total - APPROPRIATE):**
-All 24 instances are in base/responsive.css utility classes:
-- Display utilities (.d-none, .d-block, .d-flex, etc.) ✓ Correct
-- Text alignment (.text-left, .text-center, .text-right) ✓ Correct
-- Responsive variants (.d-mobile-*, .d-tablet-*, .d-desktop-*) ✓ Correct
-**Verdict:** This is proper usage - utility classes SHOULD use !important
+✅ **MAJOR WINS - Architecture Complete:**
+- **Button system:** 7.3KB, BEM methodology, ZERO !important ✓
+- **Bootstrap custom:** 2.0KB (99.2% reduction from 237KB) ✓
+- **Component architecture:** Fully modular /base, /components, /pages structure ✓
+- **Master CSS loader:** main.css (3.6KB) orchestrates all imports in correct order ✓
+- **Single source of truth:** base/variables.css (4.0KB) - no duplicates ✓
+- **Max specificity:** [1, 2, 0] - excellent, no specificity wars ✓
 
-⚠️ **Remaining Work:**
-1. **Delete empty file:** critical.css (0 bytes)
-2. **Extract from style.css (14.3KB/685 lines):**
-   - Preloader (lines 68-106) → components/preloader.css
-   - Forms (lines 379-464) → components/forms.css
-   - Icons (lines 114-124) → base/icons.css
-   - Avatar (lines 52-62) → base/images.css
-   - Sponsors (lines 239-290) → components/sponsors.css
-   - Featured numbers (lines 216-232) → components/featured.css
-   - Projects (lines 300-346) → Merge into pages/projects.css
-   - About/Organizers (lines 172-208, 542-600) → Merge into pages/about.css
-   - Meeting variants (lines 625-674) → components/meeting.css
+✅ **Component Files Extracted:**
+- navigation.css (6.5KB), hero.css (4.0KB), footer.css (3.9KB)
+- services.css (5.7KB), meeting.css (2.7KB), forms.css (1.3KB)
+- typography.css (2.8KB), fallbacks.css (7.2KB)
+- buttons.css (7.3KB), avatar.css (0.7KB), preloader.css (0.8KB)
+- sponsors.css (0.7KB), projects.css (1.0KB), organizers.css (1.3KB)
+- featured.css (0.3KB), icons.css (0.2KB), page-header.css (0.4KB)
+- ❌ responsive.css DELETED (12.1KB orphaned file - Oct 17)
+- ❌ critical.css DELETED (4.7KB orphaned file - Oct 17)
+- +4 more component files
 
-**Expected Result:** style.css shrinks to <200 lines (from 685)
+✅ **!important Usage (63 total - ALL APPROPRIATE):**
+All 63 instances are in utility classes (intentional and correct):
+- base/fallbacks.css (41) - Display/flexbox/spacing utilities ✓
+- base/responsive.css (17) - Responsive display/text utilities ✓
+- loading-strategy.css (5) - Critical loading utilities ✓
+**Verdict:** Perfect usage - utility classes SHOULD use !important to override components
 
-**Next Steps (Priority Order):**
-1. Delete critical.css (30 seconds)
-2. Extract preloader component (15 min)
-3. Extract forms component (20 min)
-4. Extract remaining components using template below (2-3 hours)
-5. Set up CSS minification pipeline (1 hour)
+⚠️ **CRITICAL ISSUE FOUND: Duplicate Styles**
+style.css (13.4KB/635 lines) contains DUPLICATES of existing component files:
+- Avatar styles (52-62) → Already in components/avatar.css
+- Preloader (68-106) → Already in components/preloader.css
+- Icons (114-124) → Already in components/icons.css
+- Featured (216-232) → Already in components/featured.css
+- Sponsors (238-290) → Already in components/sponsors.css
+- Projects (299-346) → Already in components/projects.css
+- Forms (378-464) → Already in components/forms.css
+- Organizers (542-600) → Already in components/organizers.css
+
+**Root Cause:** During component extraction, code was copied but not deleted from style.css
+
+**Next Steps (Final Cleanup - 1 hour):**
+1. **Remove duplicate sections from style.css** (30 min)
+   - Delete lines that already exist in component files
+   - Keep only unique styles (About profiles, page-specific utilities)
+   - Expected result: style.css → ~200 lines (68% reduction)
+2. **Verify all components load via main.css** (15 min)
+   - Ensure import order is correct
+   - Test all pages render identically
+3. **Final validation** (15 min)
+   - Run full regression test on all pages
+   - Verify no missing styles
+   - Confirm 100% visual parity
 
 **Extraction Template:**
 ```bash
@@ -96,9 +113,10 @@ All 24 instances are in base/responsive.css utility classes:
 - Use CSS custom properties (variables) for consistency
 - Mobile-first responsive design approach
 - Use logical properties where possible
-- NEVER use !important (fix specificity instead)
+- !important ONLY in utility classes (display, spacing, text-align helpers)
 - Group related styles together
 - Use consistent spacing and indentation
+- Keep max specificity low (prefer classes over IDs and descendant selectors)
 
 **Color System (Always use variables):**
 ```css

@@ -76,7 +76,7 @@ echo -e "${BLUE}📈 Generating performance summary...${NC}"
   echo ""
   echo "Size Analysis:"
   echo "  Main CSS: $(du -h css/main.css | cut -f1)"
-  echo "  Critical CSS: $(du -h css/critical.css | cut -f1)"
+  # NOTE: critical.css was orphaned file not loaded in production - removed during cleanup
   echo "  Total Original: $(find css -name "*.css" -not -name "*.min.css" -not -name "*.optimized.css" -exec du -ch {} + | tail -1 | cut -f1)"
   echo "  Total Minified: $(find css -name "*.min.css" -exec du -ch {} + | tail -1 | cut -f1)"
   echo ""

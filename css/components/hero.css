@@ -128,7 +128,7 @@
   font-size: var(--font-size-mobile-xl);
   line-height: 1.6;
   color: var(--white-alpha-80);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .hero-actions {
@@ -166,7 +166,7 @@
   }
 
   .hero-actions {
-    margin-top: var(--space-5);
+    margin-top: var(--space-6);
   }
 
   .hero-actions .btn-group {

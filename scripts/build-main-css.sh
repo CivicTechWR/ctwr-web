@@ -155,3 +155,4 @@ cat css/style.css >> css/main.css
 
 echo "✅ main.css built successfully from component files!"
 echo "📊 File size: $(du -h css/main.css | cut -f1)"
+

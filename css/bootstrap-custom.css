@@ -1,6 +1,13 @@
 /* Custom Bootstrap CSS - Only includes classes actually used by CTWR website */
 /* This reduces the 281KB Bootstrap CSS to ~15KB */
 
+/* Box-sizing fix - critical for proper grid layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Grid System */
 .container {
   width: 100%;
@@ -39,6 +46,14 @@
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+}
+
+/* All columns need padding to offset row's negative margins */
+[class*="col-"] {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .col-12 {
@@ -102,6 +117,9 @@
 .justify-content-center {
   justify-content: center;
 }
+.align-items-start {
+  align-items: start;
+}
 .align-items-center {
   align-items: center;
 }
@@ -138,7 +156,7 @@
 }
 
 /* Responsive utilities */
-@media (width < 992px) {
+@media (width >= 992px) {
   .mt-lg-0 {
     margin-top: 0;
   }

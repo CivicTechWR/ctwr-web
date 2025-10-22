@@ -514,7 +514,7 @@ p {
   font-weight: 400;
   line-height: 1.6;
   color: #717275;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-6);
 }
 
 /* Button fallbacks - moved to components/buttons.css */

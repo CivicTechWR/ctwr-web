@@ -73,9 +73,24 @@ ctwr-web/
 ├── _config.yaml          # Jekyll configuration
 ├── _data/                # Jekyll data files (navigation, partners, projects)
 ├── _includes/            # Reusable components (header, footer)
-├── css/                  # Stylesheets
-│   ├── style.css         # Main stylesheet
-│   └── critical.css      # Critical CSS for above-the-fold
+├── css/                  # Stylesheets (componentized architecture)
+│   ├── main.css          # Master CSS loader (imports all components)
+│   ├── base/             # Foundation styles
+│   │   ├── variables.css # CSS custom properties (design tokens)
+│   │   ├── typography.css # Text and heading styles
+│   │   ├── responsive.css # Responsive utilities
+│   │   └── fallbacks.css  # Browser fallback utilities
+│   ├── components/       # Reusable UI components (17 files)
+│   │   ├── buttons.css   # Button system (BEM methodology)
+│   │   ├── navigation.css # Header and navigation
+│   │   ├── footer.css    # Site footer
+│   │   ├── hero.css      # Hero section
+│   │   ├── profile.css   # Profile cards and about section
+│   │   └── ...          # + 12 more components
+│   ├── pages/            # Page-specific styles
+│   │   ├── about.css     # About page styles
+│   │   └── projects.css  # Projects page styles
+│   └── style.css         # Legacy styles (128 lines, minimal)
 ├── js/                   # JavaScript files
 │   ├── custom.js         # Custom functionality
 │   └── meeting.js        # Event management

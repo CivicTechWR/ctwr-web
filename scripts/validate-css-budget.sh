@@ -83,10 +83,8 @@ TOTAL_CSS_SIZE=$(find css -name "*.css" -not -name "*.min.css" -not -name "*.opt
 TOTAL_CSS_HUMAN=$(bytes_to_human $TOTAL_CSS_SIZE)
 
 # Get critical CSS size
+# NOTE: critical.css was orphaned file not loaded in production - removed during cleanup
 CRITICAL_CSS_SIZE=0
-if [ -f "css/critical.css" ]; then
-  CRITICAL_CSS_SIZE=$(du -cb css/critical.css | tail -1 | cut -f1)
-fi
 CRITICAL_CSS_HUMAN=$(bytes_to_human $CRITICAL_CSS_SIZE)
 
 # Get minified CSS size

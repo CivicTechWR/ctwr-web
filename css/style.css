@@ -18,14 +18,12 @@ Key Features:
 
 */
 
-
 body {
-    background: var(--white-color);
-    font-family: var(--body-font-family);
-    margin: 0;
-    padding: 0;
+  background: var(--white-color);
+  font-family: var(--body-font-family);
+  margin: 0;
+  padding: 0;
 }
-
 
 /* Typography styles moved to css/base/typography.css */
 
@@ -44,13 +42,6 @@ body {
 /* Typography styles moved to css/base/typography.css */
 
 /* Section title wrap moved to css/base/typography.css */
-
-
-
-
-
-
-
 
 /* Hero styles moved to css/components/hero.css */
 
@@ -76,9 +67,7 @@ body {
    - Gray for mobile/sticky state (lines 224-226, 1422-1426)
    This comment prevents duplicate/conflicting selectors */
 
-
 /* Footer styles moved to css/components/footer.css */
-
 
 @keyframes fadeInUp {
   from {
@@ -94,197 +83,23 @@ body {
 
 /* Hero responsive styles moved to css/components/hero.css */
 
-/* ---------------------------------------
-  ABOUT              
------------------------------------------ */
-.profile-thumb {
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-medium);
-  position: relative;
-  overflow: hidden;
-}
-
-.profile-title {
-  border-bottom: 1px solid var(--border-color);
-  padding: var(--card-padding-xs) var(--space-5-5);
-}
-
-.profile-small-title {
-  border-right: 1px solid var(--border-color);
-  color: var(--secondary-color);
-  font-weight: var(--font-weight-bold);
-  margin-right: var(--space-2-5);
-  padding: var(--space-3-5);
-  display: inline-block;
-}
-
-.profile-body p {
-  margin-bottom: 0;
-}
-
-.profile-body p:nth-of-type(even) {
-  background: var(--white-color);
-}
-
-.about-image {
-  border-radius: var(--border-radius-medium);
-}
-
-.about-thumb {
-  padding-right: var(--space-4-5);
-  padding-left: var(--space-4-5);
-}
-
+/* Profile and About styles moved to css/components/profile.css */
 
 /* ---------------------------------------
   FEATURED
 ----------------------------------------- */
 
-
-
-
-
-
-
 /* Services styles moved to css/components/services.css */
-
-
-
-/* ---------------------------------------
-  CONTACT
------------------------------------------ */
-
-/*
-.contact {
-  background: var(--section-bg-color);
-}
-
-.contact-info {
-  background: var(--white-color);
-  border-top-right-radius: var(--border-radius-small);
-  border-bottom-right-radius: var(--border-radius-small);
-  padding: 60px var(--card-padding-sm) var(--card-padding-sm) var(--card-padding-sm);
-  height: 100%;
-}
-
-.contact-info-border-start {
-  border-right: 1px solid var(--border-color);
-  border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
-}
-
-.contact-form {
-  margin-left: 10px;
-}
-
-*/
-
-
 
 /* Site footer and social icon styles moved to css/components/footer.css */
 
-
-
-
-
-
 /* ---------------------------------------
-  RESPONSIVE STYLES               
+  RESPONSIVE STYLES
 ----------------------------------------- */
 /* Hero responsive styles moved to css/components/hero.css */
-
 /* Typography responsive styles moved to css/base/typography.css */
+/* About/profile responsive styles moved to css/components/profile.css */
+/* Projects responsive styles moved to css/components/projects.css */
 
-@media (width <= 480px) {
-  /* Section padding responsive styles moved to css/base/typography.css */
-
-  /* Navbar icon responsive styles moved to css/components/navigation.css */
-
-  /* Hero responsive styles moved to css/components/hero.css */
-
-  .about-thumb {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-  .about-numbers {
-    font-size: var(--font-size-3xl);
-  }
-
-  /* Services responsive styles moved to css/components/services.css */
-
-  .services .col-lg-10 .row .col-lg-6:last-child,
-  .projects .col-lg-4:last-child {
-    margin-bottom: 0;
-  }
-
-  .projects-thumb {
-    margin-top: 0;
-    margin-bottom: var(--space-6);
-    padding: var(--space-4);
-  }
-
-  /* Ensure GitHub buttons fit within project cards on mobile */
-  .projects-thumb .btn--badge,
-  .project-card .btn--badge {
-    max-width: 100%;
-    word-wrap: break-word;
-    white-space: normal;
-  }
-}
-
-/*
-  .contact-info {
-    border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
-    padding: var(--space-6-5) var(--space-5-5);
-  }
-
-  .contact-info-border-start {
-    border-right: 0;
-    border-bottom: 1px solid var(--border-color);
-    border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
-  }
-}
-*/
-
-/* Removed duplicate navbar mobile styles - handled in main navigation section */
-
-/* Typography responsive styles moved to css/base/typography.css */
-
-/* Navbar icon responsive styles moved to css/components/navigation.css */
-
-/* Hero responsive styles moved to css/components/hero.css */
-
-
-/* Page header spacing */
-.site-header {
-  padding: var(--section-padding-md) 0 var(--space-10);
-}
-
-.has-fixed-nav .site-header,
-body.has-fixed-nav .site-header {
-  padding-top: var(--section-padding-lg);
-}
-
-.page-title {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--heading-color);
-}
-
-.page-subtitle {
-  font-size: var(--font-size-mobile-lg);
-  color: var(--p-color);
-  margin-bottom: 0;
-}
-
-
-/* Footer accent utilities */
-.footer-col-title-accent {
-  color: var(--secondary-color);
-}
-
-.footer-social-icon-img {
-  background: var(--white-color);
-  border-radius: var(--radius-sm);
-}
+/* Page header styles moved to css/components/page-header.css */
+/* Footer utilities moved to css/components/footer-utilities.css */
