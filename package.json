@@ -27,7 +27,7 @@
     "test:css:all": "npm run test:css && npm run test:css:visual && npm run test:css:regression && npm run validate:css:budget"
   },
   "devDependencies": {
-    "@axe-core/cli": "^4.10.2",
+    "@axe-core/cli": "^4.11.0",
     "@playwright/test": "^1.56.1",
     "autoprefixer": "^10.4.21",
     "axe-core": "^4.11.0",
