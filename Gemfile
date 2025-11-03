@@ -22,7 +22,7 @@ gem "rexml", ">= 3.4.2"
 
 # Use sass-embedded (required by jekyll-sass-converter >= 3)
 # Keep within 1.x for stability; works with Ruby 3.1+
-gem "sass-embedded", "~> 1.64"
+gem "sass-embedded", "~> 1.93"
 
 group :development do
   gem "bundler-audit", "~> 0.9", require: false
