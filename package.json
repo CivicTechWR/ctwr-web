@@ -37,7 +37,7 @@
     "css-analyzer": "^0.0.3",
     "css-tree": "^2.3.1",
     "jsonlint": "^1.6.3",
-    "markdownlint-cli": "^0.42.0",
+    "markdownlint-cli": "^0.46.0",
     "lighthouse": "^12.8.2",
     "pa11y": "^9.0.1",
     "pa11y-ci": "^4.0.1",
