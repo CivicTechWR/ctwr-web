@@ -12,6 +12,12 @@
 - name: Code for Canada
   logo: /images/sponsors/codeforcanada.webp
   current: true
+- name: City of Kitchener
+  logo: /images/sponsors/city-of-kitchener.svg
+  current: true
+- name: Uprise.ai
+  logo: /images/sponsors/uprise.webp
+  current: true
 
 # Previous Partners
 - name: DEN
@@ -34,9 +40,6 @@
   current: false
 - name: Chalk
   logo: /images/sponsors/previous/chalk.webp
-  current: false
-- name: City of Kitchener
-  logo: /images/sponsors/previous/city-of-kitchener.svg
   current: false
 - name: City of Waterloo
   logo: /images/sponsors/previous/city-of-waterloo.webp
