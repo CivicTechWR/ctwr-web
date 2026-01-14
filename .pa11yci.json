@@ -2,7 +2,10 @@
   "defaults": {
     "standard": "WCAG2AA",
     "timeout": 30000,
-    "screenCapture": "pa11y-results"
+    "screenCapture": "pa11y-results",
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox"]
+    }
   },
   "urls": [
     "http://127.0.0.1:4000/",

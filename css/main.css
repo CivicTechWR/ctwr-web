@@ -1235,7 +1235,8 @@ h6 + .btn {
 .btn--donate {
   background: var(--primary-color);
   border-color: var(--primary-color);
-  color: var(--white-color);
+  color: var(--dark-color);
+  -webkit-text-fill-color: currentcolor;
   font-weight: 600;
   letter-spacing: 0.05em;
 }
@@ -1243,7 +1244,7 @@ h6 + .btn {
 .btn--donate:hover {
   background: var(--primary-color);
   border-color: var(--primary-color);
-  color: var(--white-color);
+  color: var(--dark-color);
   box-shadow: 0 4px 12px var(--shadow-medium);
 }
 
@@ -1495,6 +1496,12 @@ h6 + .btn {
   animation-delay: 0.5s;
 }
 
+.hero-kicker {
+  color: var(--white-color);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -1671,11 +1678,11 @@ h6 + .btn {
 
 .section-secondary-bg p,
 .section-secondary-bg li,
-.section-secondary-bg a {
+.section-secondary-bg a:not(.btn) {
   color: var(--white-color);
 }
 
-.section-secondary-bg a:hover {
+.section-secondary-bg a:not(.btn):hover {
   color: var(--primary-color);
   text-decoration: underline;
 }
