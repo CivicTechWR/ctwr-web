@@ -13,7 +13,7 @@ permissions: {}
 
 concurrency:
   group: gh-pages-preview
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy-preview:
