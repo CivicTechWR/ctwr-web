@@ -31,7 +31,7 @@
     "test": "npm run test:css:all"
   },
   "devDependencies": {
-    "@axe-core/cli": "^4.10.2",
+    "@axe-core/cli": "^4.11.0",
     "@playwright/test": "^1.57.0",
     "autoprefixer": "^10.4.23",
     "axe-core": "^4.11.0",
