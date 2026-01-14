@@ -253,14 +253,14 @@ function generateUpcomingEvents() {
       local_date: formatDate(nextWednesday),
       local_time: "18:00",
       venue: { name: "Downtown Kitchener" },
-      link: "https://www.meetup.com/civictechwr/events/",
+      link: "https://luma.com/civictechwr",
     },
     {
       name: "CivicTech Waterloo Region Hacknight",
       local_date: formatDate(followingWednesday),
       local_time: "18:00",
       venue: { name: "Downtown Kitchener" },
-      link: "https://www.meetup.com/civictechwr/events/",
+      link: "https://luma.com/civictechwr",
     },
   ];
 }
