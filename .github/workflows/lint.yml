@@ -28,15 +28,21 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           FILTER_REGEX_EXCLUDE: ^_site/.*
           VALIDATE_CSS: false
+          VALIDATE_CSS_PRETTIER: false
           VALIDATE_EDITORCONFIG: false
           VALIDATE_HTML: false
+          VALIDATE_HTML_PRETTIER: false
           VALIDATE_JAVASCRIPT_ES: false
           VALIDATE_JAVASCRIPT_PRETTIER: false
           VALIDATE_JAVASCRIPT_STANDARD: false
           VALIDATE_JSCPD: false
           VALIDATE_JSON: false
           VALIDATE_MARKDOWN: false
+          VALIDATE_MARKDOWN_PRETTIER: false
           VALIDATE_NATURAL_LANGUAGE: false
+          VALIDATE_YAML_PRETTIER: false
+          VALIDATE_BIOME: false
+          VALIDATE_GITHUB_ACTIONS_ZIZMOR: false
 
   htmlhint:
     runs-on: ubuntu-latest
