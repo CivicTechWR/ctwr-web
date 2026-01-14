@@ -2094,6 +2094,11 @@ h6 + .btn {
   color: var(--dark-color);
 }
 
+.footer-support .btn--donate + .btn--donate {
+  margin-top: 0;
+  margin-left: var(--space-3);
+}
+
 .footer-social-icons {
   margin-bottom: var(--space-4);
 }
