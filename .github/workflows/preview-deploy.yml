@@ -17,6 +17,7 @@ concurrency:
 
 jobs:
   deploy-preview:
+    if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     permissions:
       contents: write
