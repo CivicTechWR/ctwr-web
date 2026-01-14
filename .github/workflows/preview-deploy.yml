@@ -11,6 +11,10 @@ on:
 
 permissions: {}
 
+concurrency:
+  group: gh-pages-preview
+  cancel-in-progress: true
+
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
