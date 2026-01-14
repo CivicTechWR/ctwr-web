@@ -52,7 +52,7 @@
     "postcss-combine-media-query": "^1.0.1",
     "postcss-sort-media-queries": "^4.2.1",
     "purgecss": "^7.0.2",
-    "stylelint": "^16.25.0",
+    "stylelint": "^16.26.1",
     "stylelint-config-standard": "^36.0.1",
     "terser": "^5.31.0",
     "yaml-lint": "^1.7.0"
