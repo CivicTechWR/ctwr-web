@@ -1553,6 +1553,20 @@ h6 + .btn {
   margin-top: var(--space-6);
 }
 
+.hero-actions .btn-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-3);
+  align-items: stretch;
+  width: 100%;
+}
+
+.hero-actions .btn-group .btn {
+  width: 100%;
+  justify-content: center;
+  min-height: 3.25rem;
+}
+
 /* Hero Image Styles */
 .hero-image-wrap {
   position: relative;
@@ -1586,7 +1600,7 @@ h6 + .btn {
   }
 
   .hero-actions .btn-group {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: var(--space-4);
   }
 
