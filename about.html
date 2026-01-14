@@ -18,10 +18,8 @@ permalink: /about.html
     {% seo %}
 
     <!-- Resource hints for performance -->
-    <link rel="preload" href="css/bootstrap-custom.css" as="style" />
+    <link rel="preload" href="css/main.css" as="style" />
     <link rel="preload" href="images/about-us.webp" as="image" />
-    
-    <!-- All CSS loaded via main.css (preloaded for performance) -->
 
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
@@ -29,20 +27,11 @@ permalink: /about.html
     <!-- Preconnect to critical external resources -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
-    <!-- Self-hosted fonts (no external DNS lookup required) -->
+    <!-- Consolidated CSS (includes fonts, bootstrap utilities, all components, page styles) -->
     {% if jekyll.environment == "production" %}
-    <link href="css/fonts.min.css?v=1760695256" rel="stylesheet" />
+    <link href="css/main.min.css" rel="stylesheet" />
     {% else %}
-    <link href="css/fonts.css?v=1760695256" rel="stylesheet" />
-    {% endif %}
-
-    <!-- Main CSS (includes variables, components, and utilities) -->
-    {% if jekyll.environment == "production" %}
-    <link href="css/main.min.css?v=1760695256" rel="stylesheet" />
-    <link href="css/pages/about.min.css?v=1760695256" rel="stylesheet" />
-    {% else %}
-    <link href="css/main.css?v=1760695256" rel="stylesheet" />
-    <link href="css/pages/about.css?v=1760695256" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
     {% endif %}
     
   </head>
@@ -60,7 +49,7 @@ permalink: /about.html
             </div>
             <div class="col-lg-6 col-12 text-lg-end text-start">
               <div class="btn-group btn-group--end">
-                <a class="btn btn--outline" href="https://www.meetup.com/civictechwr/" target="_blank" rel="noopener noreferrer">Join our hacknights</a>
+                <a class="btn btn--outline" href="https://luma.com/civictechwr" target="_blank" rel="noopener noreferrer">Join our hacknights</a>
               </div>
             </div>
           </div>
@@ -200,6 +189,29 @@ permalink: /about.html
             we welcome people with all kinds of skills and backgrounds.
           </p>
         </section>
+
+        <!-- NEWSLETTER SIGNUP -->
+        <section class="newsletter-cta section-padding shape-container">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8 col-12 text-center">
+                <h2 class="mb-4">Stay Connected</h2>
+                <p class="mb-4">Subscribe to our newsletter and never miss updates on events, projects, and community news.</p>
+                <div id="mc_embed_signup" class="newsletter-signup-main">
+                  <form action="https://civictechwr.us11.list-manage.com/subscribe/post?u=70e9ca4ba196596a75a7b6a3e&amp;id=e8b89282ec" method="post" id="mc-embedded-subscribe-form-about" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                    <div class="newsletter-form-wrapper">
+                      <input type="email" name="EMAIL" class="email newsletter-input-main" id="mce-EMAIL-about" placeholder="your@email.com" required="" aria-label="Email Address">
+                      <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                        <input type="text" name="b_70e9ca4ba196596a75a7b6a3e_e8b89282ec" tabindex="-1" value="">
+                      </div>
+                      <input type="submit" name="subscribe" id="mc-embedded-subscribe-about" class="btn btn--primary newsletter-btn-main" value="Subscribe">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <!-- NEXT MEETING -->
@@ -209,5 +221,8 @@ permalink: /about.html
     </div>
 
     <script src="js/optimized-bundle.min.js"></script>
+
+    <!-- Mailchimp Newsletter Script -->
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/70e9ca4ba196596a75a7b6a3e/7634ad86559d5b0d40a1cddd0.js");</script>
   </body>
 </html>

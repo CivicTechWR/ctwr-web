@@ -18,10 +18,8 @@ permalink: /projects.html
     {% seo %}
 
     <!-- Resource hints for performance -->
-    <link rel="preload" href="css/bootstrap-custom.css" as="style" />
+    <link rel="preload" href="css/main.css" as="style" />
     <link rel="preload" href="js/projects.json" as="fetch" crossorigin />
-    
-    <!-- All CSS loaded via main.css (preloaded for performance) -->
 
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
@@ -29,20 +27,11 @@ permalink: /projects.html
     <!-- Preconnect to critical external resources -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
-    <!-- Self-hosted fonts (no external DNS lookup required) -->
+    <!-- Consolidated CSS (includes fonts, bootstrap utilities, all components, page styles) -->
     {% if jekyll.environment == "production" %}
-    <link href="css/fonts.min.css?v=1760695256" rel="stylesheet" />
+    <link href="css/main.min.css" rel="stylesheet" />
     {% else %}
-    <link href="css/fonts.css?v=1760695256" rel="stylesheet" />
-    {% endif %}
-
-    <!-- Main CSS (includes variables, components, and utilities) -->
-    {% if jekyll.environment == "production" %}
-    <link href="css/main.min.css?v=1760695256" rel="stylesheet" />
-    <link href="css/pages/projects.min.css?v=1760695256" rel="stylesheet" />
-    {% else %}
-    <link href="css/main.css?v=1760695256" rel="stylesheet" />
-    <link href="css/pages/projects.css?v=1760695256" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
     {% endif %}
     
   </head>
@@ -241,5 +230,8 @@ permalink: /projects.html
     </script>
 
     <script src="js/optimized-bundle.min.js"></script>
+
+    <!-- Mailchimp Newsletter Script -->
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/70e9ca4ba196596a75a7b6a3e/7634ad86559d5b0d40a1cddd0.js");</script>
   </body>
 </html>

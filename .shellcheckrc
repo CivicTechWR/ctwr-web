@@ -1,2 +1,0 @@
-# Shellcheck configuration
-disable=SC1091,SC2034,SC2155

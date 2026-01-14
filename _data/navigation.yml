@@ -1,9 +1,9 @@
 ---
 - text: Home
   url: /
-- text: About
-  url: /about.html
-- text: Projects
+- text: Featured Projects
   url: /projects.html
-- text: Partners
-  url: /#section_4
+- text: About Us
+  url: /about.html
+- text: Blog
+  url: https://civictechwr.github.io/blog/
