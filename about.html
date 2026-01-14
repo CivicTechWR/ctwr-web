@@ -17,8 +17,14 @@ permalink: /about.html
     <title>About Us | CivicTech Waterloo Region</title>
     {% seo %}
 
+    {% if jekyll.environment == "production" %}
+    {% assign css_file = "css/main.min.css" %}
+    {% else %}
+    {% assign css_file = "css/main.css" %}
+    {% endif %}
+
     <!-- Resource hints for performance -->
-    <link rel="preload" href="css/main.css" as="style" />
+    <link rel="preload" href="{{ css_file }}" as="style" />
     <link rel="preload" href="images/about-us.webp" as="image" />
 
     <!-- DNS prefetch for external resources -->
@@ -28,11 +34,7 @@ permalink: /about.html
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
     <!-- Consolidated CSS (includes fonts, bootstrap utilities, all components, page styles) -->
-    {% if jekyll.environment == "production" %}
-    <link href="css/main.min.css" rel="stylesheet" />
-    {% else %}
-    <link href="css/main.css" rel="stylesheet" />
-    {% endif %}
+    <link href="{{ css_file }}" rel="stylesheet" />
     
   </head>
   <body>

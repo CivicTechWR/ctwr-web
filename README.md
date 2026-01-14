@@ -40,8 +40,8 @@ The official website for [CivicTech Waterloo Region](https://civictechwr.org), a
    #   rbenv install 3.4.5 && rbenv local 3.4.5
    # or asdf: asdf install ruby 3.4.5 && asdf local ruby 3.4.5
 
-   # Quick setup (checks Ruby, installs Bundler & gems)
-   ./scripts/setup-ruby.sh
+   # Install Ruby gems
+   bundle install
 
    # Install Node.js dependencies
    npm install
@@ -72,32 +72,17 @@ The official website for [CivicTech Waterloo Region](https://civictechwr.org), a
 ctwr-web/
 ├── _config.yaml          # Jekyll configuration
 ├── _data/                # Jekyll data files (navigation, partners, projects)
-├── _includes/            # Reusable components (header, footer)
-├── css/                  # Stylesheets (componentized architecture)
-│   ├── main.css          # Master CSS loader (imports all components)
-│   ├── base/             # Foundation styles
-│   │   ├── variables.css # CSS custom properties (design tokens)
-│   │   ├── typography.css # Text and heading styles
-│   │   ├── responsive.css # Responsive utilities
-│   │   └── fallbacks.css  # Browser fallback utilities
-│   ├── components/       # Reusable UI components (17 files)
-│   │   ├── buttons.css   # Button system (BEM methodology)
-│   │   ├── navigation.css # Header and navigation
-│   │   ├── footer.css    # Site footer
-│   │   ├── hero.css      # Hero section
-│   │   ├── profile.css   # Profile cards and about section
-│   │   └── ...          # + 12 more components
-│   ├── pages/            # Page-specific styles
-│   │   ├── about.css     # About page styles
-│   │   └── projects.css  # Projects page styles
-│   └── style.css         # Legacy styles (128 lines, minimal)
-├── js/                   # JavaScript files
-│   ├── custom.js         # Custom functionality
-│   └── meeting.js        # Event management
+├── _includes/            # Reusable components (header, footer, meeting section)
+├── _site/                # Build output (ignored)
+├── css/                  # Stylesheets
+│   ├── main.css          # Primary stylesheet
+│   ├── minified/         # Minified output (generated)
+│   └── purged/           # Purged output (generated)
+├── js/                   # JavaScript bundles + data
 ├── images/               # Image assets (optimized for web)
-├── scripts/              # Build and deployment scripts
-├── .github/workflows/    # GitHub Actions CI/CD
-└── docs/                 # Documentation
+├── scripts/              # Build and lint scripts
+├── tests/                # CSS sanity checks
+└── .github/workflows/    # GitHub Actions CI/CD
 ```
 
 ## 🛠️ Development
@@ -108,30 +93,35 @@ ctwr-web/
 # Development
 npm run serve              # Start Jekyll server with live reload
 npm run build:dev          # Build for development
-npm run build:prod         # Build for production (with minification)
+npm run build:prod         # Build for production (includes minify)
+
+# Assets
+npm run minify             # Generate minified CSS/JS
 
 # Code Quality
-npm run lint               # Run all linters (HTML, CSS, JS)
-npm run format             # Format code with Prettier
+npm run lint               # Run all linters
+npm run lint:css           # CSS linting
+npm run lint:md            # Markdown linting
+npm run lint:yaml          # YAML linting
+npm run lint:json          # JSON linting
+npm run lint:shell         # Shell linting
 
 # Testing
-npm run test:accessibility # Run accessibility tests
-npm run test:security      # Run security audits
-npm run test               # Run all tests
-
-# Deployment
-npm run preview            # Deploy preview branch
+npm run test               # Run all CSS tests
+npm run test:css           # CSS component tests
+npm run test:css:visual    # Asset smoke tests
+npm run test:css:all       # Full CSS test suite
 ```
 
 ### Code Quality
 
-This project maintains high code quality standards:
+This project maintains code quality standards:
 
-- **HTML**: Validated with HTMLHint
+- **HTML**: Validated with HTMLHint (CI)
 - **CSS**: Linted with Stylelint
-- **JavaScript**: Linted with ESLint
+- **Markdown/YAML/JSON**: Linted via npm scripts
 - **Accessibility**: Tested with Pa11y CI
-- **Security**: Audited with Bundler Audit and npm audit
+- **Security**: Audited with Bundler Audit
 
 ## 🎨 Design System
 
@@ -190,9 +180,7 @@ Security is a top priority:
 
 ## 📚 Documentation
 
-- [CSS Architecture Guide](docs/CSS_ARCHITECTURE.md) - Comprehensive CSS system documentation
-- [CSS Quick Reference](docs/CSS_QUICK_REFERENCE.md) - Quick reference for developers
-- [CSS README](css/README.md) - CSS-specific documentation and guidelines
+- This README is the primary developer reference for setup and scripts.
 
 ## 🤝 Contributing
 

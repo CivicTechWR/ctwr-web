@@ -129,10 +129,10 @@
    * - xl: 1200px and up (extra large devices, large desktops)
    * - xxl: 1600px and up (custom: ultra-wide monitors)
    *
-   * Usage in media queries (modern range syntax):
-   * @media (width <= 768px) { ... }  // Mobile and tablet
-   * @media (width >= 992px) { ... }  // Desktop and up
-   * @media (width >= 768px) and (width < 992px) { ... }  // Tablet only
+   * Usage in media queries:
+   * @media (max-width: 767.98px) { ... }  // Mobile and tablet
+   * @media (min-width: 992px) { ... }  // Desktop and up
+   * @media (min-width: 768px) and (max-width: 991.98px) { ... }  // Tablet only
    *
    * NOTE: CSS custom properties cannot be used directly in @media queries.
    * The variables below are for documentation and JavaScript access only.
@@ -383,7 +383,7 @@ strong {
 }
 
 /* Responsive Typography */
-@media (width < 992px) {
+@media (max-width: 991.98px) {
   h1 {
     font-size: var(--h2-font-size);
   }
@@ -414,7 +414,7 @@ strong {
   }
 }
 
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   h1 {
     font-size: var(--font-size-3xl);
   }
@@ -443,14 +443,12 @@ strong {
 
 /* Section Padding */
 .section-padding {
-  padding: 8em;
+  padding: var(--section-padding-md) var(--space-6);
 }
 
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   .section-padding {
-    padding: 2em;
-    padding-top: var(--space-10);
-    padding-bottom: var(--space-10);
+    padding: var(--space-10) var(--space-4);
   }
 }
 /* ==========================================================================
@@ -477,25 +475,25 @@ strong {
   margin-left: auto;
 }
 
-@media (width >= 576px) {
+@media (min-width: 576px) {
   .container {
     max-width: 540px;
   }
 }
 
-@media (width >= 768px) {
+@media (min-width: 768px) {
   .container {
     max-width: 720px;
   }
 }
 
-@media (width >= 992px) {
+@media (min-width: 992px) {
   .container {
     max-width: 960px;
   }
 }
 
-@media (width >= 1200px) {
+@media (min-width: 1200px) {
   .container {
     max-width: 1140px;
   }
@@ -536,7 +534,7 @@ strong {
   max-width: 16.666667%;
 }
 
-@media (width >= 768px) {
+@media (min-width: 768px) {
   .col-md-2 {
     flex: 0 0 16.666667%;
     max-width: 16.666667%;
@@ -548,15 +546,25 @@ strong {
   }
 }
 
-@media (width >= 992px) {
+@media (min-width: 992px) {
   .col-lg-2 {
     flex: 0 0 16.666667%;
     max-width: 16.666667%;
   }
 
+  .col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+
   .col-lg-6 {
     flex: 0 0 50%;
     max-width: 50%;
+  }
+
+  .col-lg-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
   }
 
   .col-lg-7 {
@@ -589,22 +597,22 @@ strong {
 
 /* Spacing utilities */
 .mt-4 {
-  margin-top: 1.5rem;
+  margin-top: var(--space-5);
 }
 .mt-5 {
-  margin-top: 3rem;
+  margin-top: var(--space-7);
 }
 .mb-3 {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 .mb-4 {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-5);
 }
 .mb-5 {
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-7);
 }
 .pt-2 {
-  padding-top: 0.5rem;
+  padding-top: var(--space-2);
 }
 
 /* Text utilities */
@@ -612,10 +620,26 @@ strong {
   text-align: center;
 }
 
+.text-start {
+  text-align: left;
+}
+
+.text-end {
+  text-align: right;
+}
+
 /* Responsive utilities */
-@media (width >= 992px) {
+@media (min-width: 992px) {
   .mt-lg-0 {
     margin-top: 0;
+  }
+
+  .text-lg-end {
+    text-align: right;
+  }
+
+  .text-lg-start {
+    text-align: left;
   }
 }
 
@@ -849,7 +873,7 @@ strong {
 }
 
 /* MOBILE STYLES: 0-768px (phones) */
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .navbar {
     min-height: 3.5rem;
   }
@@ -921,7 +945,7 @@ strong {
 }
 
 /* TABLET STYLES: 768-992px (tablets) */
-@media (768px <= width < 992px) {
+@media (min-width: 768px) and (max-width: 991.98px) {
   .navbar-brand .logo {
     display: block;
   }
@@ -946,7 +970,7 @@ strong {
 }
 
 /* DESKTOP STYLES: 992px+ */
-@media (width >= 992px) {
+@media (min-width: 992px) {
   .navbar-brand .logo {
     display: block;
   }
@@ -1028,7 +1052,7 @@ strong {
   vertical-align: middle; /* Fixed: Changed from 'top' for proper button group alignment */
 
   /* Safari fix: Ensure text is visible (prevent inheritance of -webkit-text-fill-color: transparent from hero-title) */
-  -webkit-text-fill-color: currentColor;
+  -webkit-text-fill-color: currentcolor;
 }
 
 .btn:hover {
@@ -1040,6 +1064,9 @@ strong {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px var(--secondary-alpha-2);
+  color: inherit;
+  text-decoration: none;
+  -webkit-text-fill-color: currentcolor;
 }
 
 .btn:active {
@@ -1062,7 +1089,7 @@ strong {
   background: var(--secondary-color);
   border-color: var(--secondary-color);
   color: var(--white-color);
-  -webkit-text-fill-color: var(--white-color);
+  -webkit-text-fill-color: currentcolor;
 }
 
 .btn--primary:hover {
@@ -1092,7 +1119,7 @@ strong {
   background: var(--white-color);
   border: 2px solid var(--white-color);
   color: var(--secondary-color);
-  -webkit-text-fill-color: var(--secondary-color);
+  -webkit-text-fill-color: currentcolor;
   font-weight: 700;
   box-shadow: 0 6px 16px var(--shadow-heavy);
 }
@@ -1101,6 +1128,7 @@ strong {
   background: var(--secondary-color);
   border-color: var(--secondary-color);
   color: var(--white-color);
+  -webkit-text-fill-color: currentcolor;
   box-shadow: 0 8px 24px var(--shadow-2xl);
   transform: translateY(-2px);
 }
@@ -1276,7 +1304,7 @@ h6 + .btn {
    RESPONSIVE ADJUSTMENTS
    ========================================================================== */
 
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .btn {
     padding: var(--space-3) var(--space-5);
     font-size: var(--font-size-mobile-sm);
@@ -1340,9 +1368,6 @@ h6 + .btn {
 /* Ensure consistent button heights in groups */
 .btn-group .btn {
   min-height: 44px; /* Consistent minimum height for touch targets */
-  height: 44px; /* Fixed: Force consistent height (changed from 'auto') */
-  padding-top: 0; /* Fixed: Prevent padding from affecting alignment */
-  padding-bottom: 0; /* Fixed: Prevent padding from affecting alignment */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1365,13 +1390,13 @@ h6 + .btn {
 }
 
 /* Desktop: Prevent wrapping, keep buttons in single row */
-@media (width >= 992px) {
+@media (min-width: 992px) {
   .btn-group {
     flex-wrap: nowrap;
   }
 }
 
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .btn-group {
     flex-direction: column;
   }
@@ -1466,7 +1491,7 @@ h6 + .btn {
   margin: 0 auto;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
+  animation: fade-in-up 1s ease forwards;
   animation-delay: 0.5s;
 }
 
@@ -1476,14 +1501,14 @@ h6 + .btn {
   background: var(--white-alpha-10);
   padding: var(--space-6) var(--space-8);
   border-radius: var(--radius-2xl);
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-6);
   backdrop-filter: blur(10px);
   border: 1px solid var(--white-alpha-10);
 }
 
 .badge-icon {
   font-size: var(--font-size-mobile-xl);
-  margin-right: 0.5rem;
+  margin-right: var(--space-2);
   color: var(--secondary-color);
 }
 
@@ -1507,7 +1532,7 @@ h6 + .btn {
   font-size: var(--font-size-mobile-xl);
   line-height: 1.6;
   color: var(--white-alpha-80);
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-7);
 }
 
 .hero-actions {
@@ -1530,7 +1555,7 @@ h6 + .btn {
 }
 
 /* Responsive Hero Styles */
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .hero {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -1560,7 +1585,7 @@ h6 + .btn {
   }
 }
 
-@media (width >= 1600px) {
+@media (min-width: 1600px) {
   .hero {
     padding-top: 380px;
     padding-bottom: 380px;
@@ -1582,7 +1607,7 @@ h6 + .btn {
   }
 }
 
-@media (width < 992px) {
+@media (max-width: 991.98px) {
   .hero {
     padding-top: var(--section-padding-xl);
     padding-bottom: 400px;
@@ -1594,7 +1619,7 @@ h6 + .btn {
   }
 }
 
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   .hero-title {
     font-size: var(--font-size-2xl);
     line-height: 1.3;
@@ -1830,13 +1855,13 @@ h6 + .btn {
 }
 
 /* Responsive adjustments */
-@media (width >= 1200px) {
+@media (min-width: 1200px) {
   .meeting-image-wrapper {
     padding: 0 var(--space-6);
   }
 }
 
-@media (width >= 992px) {
+@media (min-width: 992px) {
   .meeting-section-alt .row {
     align-items: stretch;
   }
@@ -1856,7 +1881,7 @@ h6 + .btn {
   }
 }
 
-@media (width < 992px) {
+@media (max-width: 991.98px) {
   .meeting-title {
     text-align: center;
   }
@@ -1868,7 +1893,7 @@ h6 + .btn {
   }
 }
 
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .meeting-section-alt {
     padding: var(--space-6) 0;
   }
@@ -1898,14 +1923,14 @@ h6 + .btn {
   }
 }
 
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   .meeting-image-wrapper {
     min-height: 250px;
   }
 }
 
 /* Services responsive styles */
-@media (width < 992px) {
+@media (max-width: 991.98px) {
   .services-thumb-up {
     bottom: 0;
     margin-bottom: var(--space-6);
@@ -2152,7 +2177,7 @@ h6 + .btn {
 }
 
 /* Responsive Footer Styles */
-@media (width < 992px) {
+@media (max-width: 991.98px) {
   .footer-redesign-container {
     flex-direction: column;
     gap: var(--space-9);
@@ -2341,7 +2366,7 @@ h6 + .btn {
 }
 
 /* Responsive sizing for tablets */
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .sponsor-grid {
     gap: var(--space-5);
     row-gap: var(--space-6);
@@ -2367,7 +2392,7 @@ h6 + .btn {
 }
 
 /* Responsive sizing for mobile */
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   .sponsor-grid {
     gap: var(--space-4);
     row-gap: var(--space-5);
@@ -2440,7 +2465,7 @@ h6 + .btn {
   RESPONSIVE STYLES
 ----------------------------------------- */
 
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   .services .col-lg-10 .row .col-lg-6:last-child,
   .projects .col-lg-4:last-child {
     margin-bottom: 0;
@@ -2600,7 +2625,7 @@ h6 + .btn {
   font-weight: 500;
 }
 
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .organizers-section {
     padding: var(--space-6);
   }
@@ -2669,14 +2694,14 @@ h6 + .btn {
   RESPONSIVE STYLES
 ----------------------------------------- */
 
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .about-thumb {
     padding-right: var(--space-4);
     padding-left: var(--space-4);
   }
 }
 
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   .about-thumb {
     padding-right: var(--space-3);
     padding-left: var(--space-3);
@@ -2781,7 +2806,7 @@ h6 + .btn {
    RESPONSIVE DESIGN - Mobile optimizations
    ========================================================================== */
 
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .meeting-section-alt .meeting-content {
     padding-left: var(--space-4);
     padding-right: var(--space-4);
@@ -2792,7 +2817,7 @@ h6 + .btn {
   }
 }
 
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   .meeting-section-alt .meeting-content {
     padding-left: var(--space-3);
     padding-right: var(--space-3);
@@ -2841,7 +2866,7 @@ body.has-fixed-nav .site-header {
 
 .newsletter-form-wrapper {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
@@ -2850,7 +2875,7 @@ body.has-fixed-nav .site-header {
 .newsletter-input-main {
   /*flex: 1 1 300px;*/
   min-width: 250px;
-  padding: 0.875rem 1.25rem;
+  padding: var(--space-3) var(--space-5);
   border: 2px solid var(--border-color, #000);
   border-radius: var(--border-radius, 8px);
   font-size: 1rem;
@@ -2866,7 +2891,7 @@ body.has-fixed-nav .site-header {
 
 .newsletter-btn-main {
   flex: 0 0 auto;
-  padding: 0.875rem 2rem;
+  padding: var(--space-3) var(--space-6);
   white-space: nowrap;
   font-weight: 500;
   min-width: 140px;
@@ -2874,19 +2899,19 @@ body.has-fixed-nav .site-header {
 
 /* Footer Newsletter Styles */
 .footer-newsletter {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
 .footer-newsletter form {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .footer-newsletter input[type="email"] {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   border: 2px solid var(--white-alpha-20);
   border-radius: var(--border-radius, 8px);
   font-size: 0.95rem;
@@ -2913,7 +2938,7 @@ body.has-fixed-nav .site-header {
 }
 
 /* Responsive styles */
-@media (width < 768px) {
+@media (max-width: 767.98px) {
   .newsletter-form-wrapper {
     flex-direction: column;
   }
@@ -2962,18 +2987,17 @@ body.has-fixed-nav .site-header {
 /* About page specific styles */
 /* About page specific styles */
 .about-main-centered {
-  max-width: 1500px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: var(--page-padding);
+  padding: var(--section-padding-md) var(--space-6);
   background: none;
   border-radius: 0;
   box-shadow: none;
 }
 
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   .about-main-centered {
-    padding: var(--card-padding);
-    padding-top: 100px;
+    padding: var(--space-10) var(--space-4);
   }
 }
 
@@ -2981,7 +3005,7 @@ body.has-fixed-nav .site-header {
   text-align: center;
   font-size: var(--font-size-2xl);
   font-weight: 600;
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-7);
 }
 
 .organizers-grid {
@@ -3001,7 +3025,7 @@ body.has-fixed-nav .site-header {
   padding: 0;
   width: 100%;
   max-width: 180px;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-6);
 }
 
 .organizer-img {
@@ -3009,7 +3033,7 @@ body.has-fixed-nav .site-header {
   height: 120px;
   object-fit: cover;
   border-radius: var(--radius-full);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   background: var(--gray-50);
   border: 1px solid var(--dark-color);
   /* Use consistent image styling for non-circular elements */
@@ -3031,7 +3055,7 @@ body.has-fixed-nav .site-header {
 
 .shoutout-section {
   text-align: center;
-  margin-top: 3rem;
+  margin-top: var(--space-7);
   padding: 0;
   background: transparent;
   border-radius: 0;
@@ -3044,7 +3068,7 @@ body.has-fixed-nav .site-header {
 .shoutout-title {
   font-size: var(--font-size-mobile-xl);
   font-weight: 500;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .shoutout-list {
@@ -3078,18 +3102,17 @@ body.has-fixed-nav .site-header {
 /* Projects page specific styles */
 /* Projects page specific styles */
 .projects-main-centered {
-  max-width: 1500px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: var(--page-padding);
+  padding: var(--section-padding-md) var(--space-6);
   background: none;
   border-radius: 0;
   box-shadow: none;
 }
 
-@media (width < 576px) {
+@media (max-width: 575.98px) {
   .projects-main-centered {
-    padding: var(--card-padding);
-    padding-top: 100px;
+    padding: var(--space-10) var(--space-4);
   }
 }
 
@@ -3376,7 +3399,7 @@ body.has-fixed-nav .site-header {
 }
 
 /* Media Queries for Responsive Shapes */
-@media (width <= 768px) {
+@media (max-width: 767.98px) {
   .abstract-shape {
     transform: scale(0.7);
     opacity: 0.4;
@@ -3629,7 +3652,7 @@ body.has-fixed-nav .site-header {
   height: 45px;
 }
 
-@media (width <= 576px) {
+@media (max-width: 575.98px) {
   .abstract-shape {
     transform: scale(0.5);
     opacity: 0.3;
@@ -3729,7 +3752,7 @@ body {
 
 /* Footer styles moved to css/components/footer.css */
 
-@keyframes fadeInUp {
+@keyframes fade-in-up {
   from {
     opacity: 0;
     transform: translateY(20px);

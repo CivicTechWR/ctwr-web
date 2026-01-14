@@ -19,8 +19,14 @@ permalink: /
     {% seo %}
 
     <!-- CSS FILES -->
+    {% if jekyll.environment == "production" %}
+    {% assign css_file = "css/main.min.css" %}
+    {% else %}
+    {% assign css_file = "css/main.css" %}
+    {% endif %}
+
     <!-- Preload critical resources -->
-    <link rel="preload" href="css/main.css" as="style" />
+    <link rel="preload" href="{{ css_file }}" as="style" />
     <link rel="preload" href="images/hacknight-1.jpg" as="image" />
 
     <!-- DNS prefetch for external resources -->
@@ -32,7 +38,7 @@ permalink: /
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
     <!-- Consolidated CSS (includes fonts, bootstrap utilities, all components) -->
-    <link href="css/main.css" rel="stylesheet" />
+    <link href="{{ css_file }}" rel="stylesheet" />
   </head>
 
   <body>
