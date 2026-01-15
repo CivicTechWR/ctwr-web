@@ -1,8 +1,8 @@
 # CivicTech Waterloo Region Website
 
-[![Build Status](https://github.com/CTWR-Org/ctwr-web/workflows/CI/badge.svg)](https://github.com/CTWR-Org/ctwr-web/actions)
-[![Accessibility](https://github.com/CTWR-Org/ctwr-web/workflows/Accessibility/badge.svg)](https://github.com/CTWR-Org/ctwr-web/actions)
-[![Security](https://github.com/CTWR-Org/ctwr-web/workflows/Security/badge.svg)](https://github.com/CTWR-Org/ctwr-web/actions)
+[![Build Status](https://github.com/CivicTechWR/ctwr-web/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/CivicTechWR/ctwr-web/actions/workflows/deploy.yml)
+[![Accessibility](https://github.com/CivicTechWR/ctwr-web/actions/workflows/accessibility.yml/badge.svg?branch=main)](https://github.com/CivicTechWR/ctwr-web/actions/workflows/accessibility.yml)
+[![Security](https://github.com/CivicTechWR/ctwr-web/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/CivicTechWR/ctwr-web/actions/workflows/security.yml)
 
 The official website for [CivicTech Waterloo Region](https://civictechwr.org), a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions.
 
@@ -216,10 +216,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📊 Project Status
 
-![GitHub last commit](https://img.shields.io/github/last-commit/CTWR-Org/ctwr-web)
-![GitHub issues](https://img.shields.io/github/issues/CTWR-Org/ctwr-web)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/CTWR-Org/ctwr-web)
-![GitHub stars](https://img.shields.io/github/stars/CTWR-Org/ctwr-web)
+![GitHub last commit](https://img.shields.io/github/last-commit/CivicTechWR/ctwr-web)
+![GitHub issues](https://img.shields.io/github/issues/CivicTechWR/ctwr-web)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/CivicTechWR/ctwr-web)
+![GitHub stars](https://img.shields.io/github/stars/CivicTechWR/ctwr-web)
 
 ---
 
