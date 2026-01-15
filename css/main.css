@@ -2094,9 +2094,15 @@ h6 + .btn {
   color: var(--dark-color);
 }
 
-.footer-support .btn--donate + .btn--donate {
+.footer-support-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.footer-support-actions .btn {
   margin-top: 0;
-  margin-left: var(--space-3);
 }
 
 .footer-social-icons {
@@ -2216,6 +2222,15 @@ h6 + .btn {
 
   .footer-col {
     min-width: 0;
+  }
+
+  .footer-support-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-support-actions .btn {
+    width: 100%;
   }
 }
 /* Avatar - Profile and user images */
