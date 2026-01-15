@@ -41,7 +41,6 @@ exclude:
 # Includes
 include:
   - ".htaccess"
-  - "_data"
   - "css/*.min.css"
   - "js/*.min.js"
 
