@@ -15,7 +15,7 @@
     "purge:css": "purgecss --config ./purgecss.config.js",
     "optimize:all": "npm run build:css && npm run minify:js",
     "lint": "npm run lint:css && npm run lint:md && npm run lint:yaml && npm run lint:json && npm run lint:shell",
-    "lint:css": "stylelint \"css/**/*.css\" --config .stylelintrc.json",
+    "lint:css": "stylelint \"css/**/*.css\" --config .stylelintrc.json --ignore-pattern \"**/*.min.css\"",
     "lint:md": "bash scripts/lint-markdown.sh",
     "lint:yaml": "bash scripts/lint-yaml.sh",
     "lint:json": "bash scripts/lint-json.sh",
