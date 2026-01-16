@@ -85,17 +85,6 @@ ctwr-web/
 └── .github/workflows/    # GitHub Actions CI/CD
 ```
 
-## 📌 Projects Page Data
-
-Featured projects are curated in `_data/projects.yml` (homepage) and
-`js/projects.json` (projects page). The "Other Projects" section uses
-`js/projects-allowlist.json`, which should contain the repo URLs (preferred) or
-objects that include `url` and optional `name`. This keeps the page focused on
-relevant repos without relying on the full org list.
-
-TODO: Improve GitHub repo metadata (description, homepage, topics, language) so
-the projects cards present more complete and accurate details.
-
 ## 🛠️ Development
 
 ### Available Scripts

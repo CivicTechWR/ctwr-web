@@ -1,26 +1,26 @@
 [
   {
-    "name": "Waterloo Region Votes",
-    "year": [2018],
-    "role": ["Software", "Sponsor"],
-    "logo": "/images/regionvotes.webp",
-    "url": "https://www.waterlooregionvotes.org/",
-    "github": "https://github.com/CivicTechWR/WRvotes"
-  },
-  {
-    "name": "Project PECH",
-    "year": "Active",
-    "role": ["Software"],
-    "logo": "https://opengraph.githubassets.com/1/CivicTechWR/project-pech",
-    "url": "https://github.com/CivicTechWR/project-pech",
-    "github": "https://github.com/CivicTechWR/project-pech"
-  },
-  {
     "name": "ConnectedKW",
     "year": [2024],
     "role": ["Speakers", "Joint events"],
     "logo": "/images/connected-kw.webp",
     "url": "https://www.connectedkw.com/",
-    "github": "https://github.com/CivicTechWR/connectedkw"
+    "github": "https://github.com/CivicTechWR"
+  },
+  {
+    "name": "Waterloo Region Votes",
+    "year": [2018],
+    "role": ["Software", "Sponsor"],
+    "logo": "/images/regionvotes.webp",
+    "url": "https://www.waterlooregionvotes.org/",
+    "github": "https://github.com/CivicTechWR"
+  },
+  {
+    "name": "CouncilBot",
+    "year": [2024],
+    "role": ["Sponsor"],
+    "logo": "/images/councilbot.webp",
+    "url": "https://councilbot.netlify.app/",
+    "github": "https://github.com/CivicTechWR"
   }
 ]

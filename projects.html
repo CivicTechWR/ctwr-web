@@ -95,7 +95,7 @@ permalink: /projects.html
           </div>
         </section>
 
-        <h2 class="projects-section-heading">More Community Projects</h2>
+        <h2 class="projects-section-heading">Other Projects</h2>
         <section class="projects-section shape-container">
           <div class="row" id="github-projects-container">
             <!-- GitHub projects will load here -->
@@ -172,95 +172,62 @@ permalink: /projects.html
 
     <script>
       function loadGitHubProjects() {
-        const normalizeUrl = url => (url || '').replace(/\/+$/, '').toLowerCase();
-
-        Promise.all([
-          fetch('https://api.github.com/orgs/CivicTechWR/repos').then(response => response.json()),
-          fetch('/js/projects-allowlist.json').then(response => response.json()),
-        ])
-          .then(([repos, allowlist]) => {
+        fetch('https://api.github.com/orgs/CivicTechWR/repos')
+          .then(response => response.json())
+          .then(repos => {
             const container = document.getElementById('github-projects-container');
             container.innerHTML = '';
 
-            const allowlistEntries = Array.isArray(allowlist) ? allowlist : [];
-            const allowUrls = new Set(
-              allowlistEntries
-                .map(entry => (typeof entry === 'string' ? entry : entry.url))
-                .map(normalizeUrl)
-                .filter(Boolean)
-            );
-            const allowNames = new Set(
-              allowlistEntries
-                .map(entry => (typeof entry === 'object' ? entry.name : null))
-                .filter(Boolean)
-                .map(name => name.toLowerCase())
-            );
+            repos
+              .filter(repo => !repo.fork && !repo.archived) // skip forks/archived
+              .forEach(repo => {
+                const card = document.createElement('div');
+                card.className = 'col-lg-4 col-md-6 col-12 mb-4';
 
-            const filteredRepos = repos
-              .filter(repo => !repo.fork && !repo.archived)
-              .filter(repo => {
-                const repoUrl = normalizeUrl(repo.html_url);
-                const repoName = (repo.name || '').toLowerCase();
-                return allowUrls.has(repoUrl) || (allowNames.size > 0 && allowNames.has(repoName));
+                // Secure DOM construction to prevent XSS
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+
+                const projectInfo = document.createElement('div');
+                projectInfo.className = 'project-info';
+
+                // Sanitize URL to prevent javascript: protocol injection
+                const githubLink = document.createElement('a');
+                const safeUrl = repo.html_url && repo.html_url.startsWith('https://')
+                  ? repo.html_url
+                  : '#';
+                githubLink.href = safeUrl;
+                githubLink.className = 'btn btn--badge';
+                githubLink.target = '_blank';
+                githubLink.rel = 'noopener noreferrer';
+                githubLink.textContent = 'GitHub'; // Safe: textContent escapes HTML
+
+                const title = document.createElement('h4');
+                title.className = 'projects-title';
+                title.textContent = repo.name || 'Untitled Project'; // Safe: textContent escapes HTML
+
+                const language = document.createElement('small');
+                language.className = 'projects-tag';
+                language.textContent = repo.language || ''; // Safe: textContent escapes HTML
+
+                const description = document.createElement('p');
+                description.textContent = repo.description || 'No description available.'; // Safe: textContent escapes HTML
+
+                projectInfo.appendChild(githubLink);
+                projectInfo.appendChild(title);
+                projectInfo.appendChild(language);
+                projectInfo.appendChild(description);
+                projectCard.appendChild(projectInfo);
+                card.appendChild(projectCard);
+
+                container.appendChild(card);
               });
-
-            if (filteredRepos.length === 0) {
-              container.innerHTML = `
-                <div class="col-12 text-center">
-                  <p>No curated projects are configured yet. Please check back soon.</p>
-                </div>
-              `;
-              return;
-            }
-
-            filteredRepos.forEach(repo => {
-              const card = document.createElement('div');
-              card.className = 'col-lg-4 col-md-6 col-12 mb-4';
-
-              // Secure DOM construction to prevent XSS
-              const projectCard = document.createElement('div');
-              projectCard.className = 'project-card';
-
-              const projectInfo = document.createElement('div');
-              projectInfo.className = 'project-info';
-
-              // Sanitize URL to prevent javascript: protocol injection
-              const githubLink = document.createElement('a');
-              const safeUrl = repo.html_url && repo.html_url.startsWith('https://')
-                ? repo.html_url
-                : '#';
-              githubLink.href = safeUrl;
-              githubLink.className = 'btn btn--badge';
-              githubLink.target = '_blank';
-              githubLink.rel = 'noopener noreferrer';
-              githubLink.textContent = 'GitHub'; // Safe: textContent escapes HTML
-
-              const title = document.createElement('h4');
-              title.className = 'projects-title';
-              title.textContent = repo.name || 'Untitled Project'; // Safe: textContent escapes HTML
-
-              const language = document.createElement('small');
-              language.className = 'projects-tag';
-              language.textContent = repo.language || ''; // Safe: textContent escapes HTML
-
-              const description = document.createElement('p');
-              description.textContent = repo.description || 'No description available.'; // Safe: textContent escapes HTML
-
-              projectInfo.appendChild(githubLink);
-              projectInfo.appendChild(title);
-              projectInfo.appendChild(language);
-              projectInfo.appendChild(description);
-              projectCard.appendChild(projectInfo);
-              card.appendChild(projectCard);
-
-              container.appendChild(card);
-            });
           })
           .catch(error => {
             console.error('Error loading GitHub projects:', error);
             document.getElementById('github-projects-container').innerHTML = `
                     <div class="col-12 text-center">
-                        <p>Sorry, we couldn't load the community projects. Please try again later.</p>
+                        <p>Sorry, we couldn't load the other projects. Please try again later.</p>
                     </div>
                 `;
           });
