@@ -87,10 +87,14 @@ ctwr-web/
 
 ## 📌 Projects Page Data
 
-The projects page includes a curated list of GitHub repos to display in the
-"Other Projects" section. Update `js/projects-allowlist.json` with the repo
-URLs (preferred) or objects that include `url` and optional `name`. This keeps
-the page focused on relevant repos without relying on the full org list.
+Featured projects are curated in `_data/projects.yml` (homepage) and
+`js/projects.json` (projects page). The "Other Projects" section uses
+`js/projects-allowlist.json`, which should contain the repo URLs (preferred) or
+objects that include `url` and optional `name`. This keeps the page focused on
+relevant repos without relying on the full org list.
+
+TODO: Improve GitHub repo metadata (description, homepage, topics, language) so
+the projects cards present more complete and accurate details.
 
 ## 🛠️ Development
 
