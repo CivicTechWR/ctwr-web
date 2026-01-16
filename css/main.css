@@ -422,7 +422,7 @@ strong {
 
 /* Section Padding */
 .section-padding {
-  padding: var(--space-6);
+  padding: var(--section-padding-md);
 }
 
 @media (max-width: 575.98px) {
@@ -1209,7 +1209,7 @@ h6 + .btn {
 .btn--donate {
   background: var(--primary-color);
   border-color: var(--primary-color);
-  color: var(--white-color);
+  color: var(--dark-color);
   -webkit-text-fill-color: currentcolor;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -1218,7 +1218,7 @@ h6 + .btn {
 .btn--donate:hover {
   background: var(--white-color);
   border-color: var(--primary-color);
-  color: var(--primary-color);
+  color: var(--dark-color);
   -webkit-text-fill-color: currentcolor;
 }
 
@@ -1262,7 +1262,7 @@ h6 + .btn {
 .btn--meeting {
   background: var(--primary-color);
   border-color: var(--primary-color);
-  color: var(--white-color);
+  color: var(--dark-color);
   -webkit-text-fill-color: currentcolor;
   padding: var(--space-3) var(--space-6);
   font-weight: 600;
@@ -1272,7 +1272,7 @@ h6 + .btn {
 .btn--meeting:hover {
   background: var(--white-color);
   border-color: var(--primary-color);
-  color: var(--primary-color);
+  color: var(--dark-color);
   -webkit-text-fill-color: currentcolor;
 }
 
