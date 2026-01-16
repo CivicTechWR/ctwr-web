@@ -118,6 +118,11 @@ npm run test:css:all       # Full CSS test suite
 This project maintains code quality standards:
 
 - **HTML**: Validated with HTMLHint (CI)
+
+## 🚀 Deployments
+
+See `docs/deployments.md` for production and preview deploy details, including
+the preview URL format and troubleshooting tips.
 - **CSS**: Linted with Stylelint
 - **Markdown/YAML/JSON**: Linted via npm scripts
 - **Accessibility**: Tested with Pa11y CI
