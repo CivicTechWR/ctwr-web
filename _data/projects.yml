@@ -1,5 +1,5 @@
 ---
-- name: WRVotes
+- name: Waterloo Region Votes
   year: [2018]
   role: ["Software", "Sponsor"]
   logo: /images/regionvotes.webp
@@ -11,9 +11,9 @@
   logo: https://opengraph.githubassets.com/1/CivicTechWR/project-pech
   url: https://github.com/CivicTechWR/project-pech
   github: https://github.com/CivicTechWR/project-pech
-- name: Midtown Radio App
-  year: Active
-  role: ["Software"]
-  logo: https://opengraph.githubassets.com/1/CivicTechWR/MidtownRadioApp
-  url: https://github.com/CivicTechWR/MidtownRadioApp
-  github: https://github.com/CivicTechWR/MidtownRadioApp
+- name: ConnectedKW
+  year: [2024]
+  role: ["Speakers", "Joint events"]
+  logo: /images/connected-kw.webp
+  url: https://www.connectedkw.com/
+  github: https://github.com/CivicTechWR/connectedkw
