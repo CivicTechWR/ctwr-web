@@ -22,6 +22,8 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    env:
+      PREVIEW_DIR: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.ref_name }}
 
     steps:
       - name: Checkout code
@@ -50,22 +52,27 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Remove custom domain for preview
+        run: rm -f _site/CNAME
+
       - name: Deploy to GitHub Pages (preview branch)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
           publish_branch: gh-pages-preview
-          destination_dir: ${{ github.ref_name }}
+          destination_dir: ${{ env.PREVIEW_DIR }}
 
       - name: Comment PR with preview URL
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v8
+        env:
+          PREVIEW_DIR: ${{ env.PREVIEW_DIR }}
         with:
           script: |
-            const branch = context.payload.pull_request.head.ref;
+            const previewDir = process.env.PREVIEW_DIR;
             const previewUrl = `https://${context.repo.owner}.github.io/` +
-              `${context.repo.repo}/${branch}/`;
+              `${context.repo.repo}/${previewDir}/`;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
