@@ -85,6 +85,13 @@ ctwr-web/
 └── .github/workflows/    # GitHub Actions CI/CD
 ```
 
+## 📌 Projects Page Data
+
+The projects page includes a curated list of GitHub repos to display in the
+"Other Projects" section. Update `js/projects-allowlist.json` with the repo
+URLs (preferred) or objects that include `url` and optional `name`. This keeps
+the page focused on relevant repos without relying on the full org list.
+
 ## 🛠️ Development
 
 ### Available Scripts
