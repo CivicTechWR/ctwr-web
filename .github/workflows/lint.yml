@@ -131,6 +131,15 @@ jobs:
       - name: Build assets
         run: npm run minify
 
+      - name: Verify minified assets are in sync
+        run: |
+          if ! git diff --quiet -- css/main.min.css js/optimized-bundle.min.js; then
+            echo "ERROR: Minified assets are out of date. Run npm run minify and commit the changes."
+            git status --short
+            git diff --stat -- css/main.min.css js/optimized-bundle.min.js
+            exit 1
+          fi
+
       - name: Check if optimized-bundle.min.js exists
         run: |
           if [ ! -f "js/optimized-bundle.min.js" ]; then
