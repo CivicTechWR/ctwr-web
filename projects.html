@@ -49,12 +49,19 @@ permalink: /projects.html
             <div class="col-lg-6 col-12">
               <h1 class="page-title">Projects Built By Our Community</h1>
               <p class="page-subtitle">Explore civic technology initiatives designed to improve life across Waterloo Region.</p>
+              <p class="page-subtitle">Our community works on various civic technology projects to address local challenges. These projects are developed collaboratively by volunteers with diverse skills in design, development, research, and community engagement.</p>
             </div>
-            <div class="col-lg-6 col-12 text-lg-end text-start">
-              <div class="btn-group btn-group--end">
-                <a class="btn btn--outline" href="/projects.html#projects_meeting">View upcoming hacknights</a>
-              </div>
-            </div>
+                   <section class="shape-container">
+          <!-- Abstract Shapes for Get Involved Section -->
+          <div class="abstract-shape shape-wave left-2p top-5p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-donut right-3p top-10p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-triangle left-6p bottom-10p" aria-hidden="true"></div>
+          <div class="abstract-shape shape-blob right-5p bottom-15p" aria-hidden="true"></div>
+          <p class="page-subtitle">
+            Interested in contributing to one of our projects or starting a new one? Join us at our weekly hacknights where we collaborate on these initiatives. No technical experience is required –
+            we welcome people with all kinds of skills and backgrounds.
+          </p>
+        </section>
           </div>
         </div>
       </header>
@@ -66,11 +73,8 @@ permalink: /projects.html
         <div class="abstract-shape shape-star left-12p top-40p" aria-hidden="true"></div>
         <div class="abstract-shape shape-diamond right-10p top-35p" aria-hidden="true"></div>
 
-        <h1 class="projects-page-title">Highlighted CTWR Projects</h1>
-        <p class="project-description">
-          Our community works on various civic technology projects to address local challenges. These projects are developed collaboratively by volunteers with diverse skills in design, development,
-          research, and community engagement.
-        </p>
+        <h2 class="projects-section-heading">Featured Projects</h2>
+        <!--<p class="project-description">Our community works on various civic technology projects to address local challenges. These projects are developed collaboratively by volunteers with diverse skills in design, development, research, and community engagement.</p>-->
         <section class="mt-4 shape-container">
           <!-- Abstract Shapes for Project Description Section -->
           <div class="abstract-shape shape-diamond left-3p top-10p shape-size-60" aria-hidden="true"></div>
@@ -114,6 +118,7 @@ permalink: /projects.html
 
       <!-- NEXT MEETING -->
       {% include meeting-section.html section_id="projects_meeting" %}
+      {% include newsletter-signup.html%}      
 
       {% include footer.html %}
     </div>

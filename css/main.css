@@ -27,14 +27,14 @@
   --secondary-color:              #2D6F72;  /* Teal */
 
   /* Neutrals */
-  --white-color:                  #fff;
+  --white-color:                  #fafafa;
   --dark-color:                   #000;
   --gray-50:                      #f5f5f5;  /* Backgrounds only */
 
   /* Aliases for compatibility */
   --p-color:                      var(--dark-color);
   --section-bg-color:             var(--gray-50);
-  --border-color:                 var(--dark-color);
+  --border-color:                 var(--gray-50);
   --featured-border-color:        var(--secondary-color);
   --body-font-family:             'DM Sans', sans-serif;
   --h1-font-size:                 62px;
@@ -43,7 +43,7 @@
   --h4-font-size:                 32px;
   --h5-font-size:                 24px;
   --h6-font-size:                 22px;
-  --p-font-size:                  18px;
+  --p-font-size:                  16px;
   --menu-font-size:               12px;
   --copyright-font-size:          14px;
 
@@ -272,10 +272,7 @@ p {
   margin-bottom: var(--space-6);
 }
 
-/* Last paragraph in a container should have no bottom margin */
-p:last-child {
-  margin-bottom: 0;
-}
+
 
 /* Lists */
 ul, ol {
@@ -301,9 +298,6 @@ img {
   margin-bottom: var(--space-5);
 }
 
-img:last-child {
-  margin-bottom: 0;
-}
 
 /* Figure elements */
 figure {
@@ -312,21 +306,6 @@ figure {
 
 figure:last-child {
   margin-bottom: 0;
-}
-
-/* Flow spacing - consistent vertical rhythm between ALL sibling elements */
-.flow > * + * {
-  margin-top: var(--space-7);
-}
-
-/* Tighter flow spacing for compact sections */
-.flow-tight > * + * {
-  margin-top: var(--space-3);
-}
-
-/* Looser flow spacing for spacious sections */
-.flow-loose > * + * {
-  margin-top: var(--space-8);
 }
 
 /* Interactive Elements */
@@ -443,12 +422,13 @@ strong {
 
 /* Section Padding */
 .section-padding {
-  padding: var(--section-padding-md) var(--space-6);
+  padding: var(--space-6);
 }
 
 @media (max-width: 575.98px) {
   .section-padding {
-    padding: var(--space-10) var(--space-4);
+    padding: var(--space-4);
+    padding-top: var(--space-8);
   }
 }
 /* ==========================================================================
@@ -502,16 +482,12 @@ strong {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
 }
 
 /* All columns need padding to offset row's negative margins */
 [class*="col-"] {
   position: relative;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
 }
 
 .col-12 {
@@ -587,6 +563,9 @@ strong {
 }
 .align-items-start {
   align-items: start;
+}
+.align-items-end {
+  align-items: end;
 }
 .align-items-center {
   align-items: center;
@@ -794,6 +773,7 @@ strong {
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
   line-height: 1;
+  color: var(--white-color);
 }
 
 /* Hamburger toggle button */
@@ -854,10 +834,15 @@ strong {
   transition: color 0.2s ease;
 }
 
+.navbar-nav .nav-link:visited {
+  color: var(--white-color);
+}
+
 .navbar-nav .nav-link:hover,
-.navbar-nav .nav-link:focus {
-  color: var(--overlay-heavy);
-  text-decoration: none;
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:visited:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 
 .navbar-nav .nav-link:focus {
@@ -1024,7 +1009,7 @@ strong {
 
 .btn {
   /* Layout */
-  display: inline-flex;
+  display: block;
   align-items: center;
   justify-content: center;
   padding: var(--space-3) var(--space-5);
@@ -1056,8 +1041,7 @@ strong {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .btn:focus {
@@ -1069,7 +1053,7 @@ strong {
 }
 
 .btn:active {
-  transform: translateY(0);
+  /* No transform effect */
 }
 
 .btn:disabled,
@@ -1092,10 +1076,10 @@ strong {
 }
 
 .btn--primary:hover {
-  background: var(--secondary-color);
+  background: var(--white-color);
   border-color: var(--secondary-color);
-  color: var(--white-color);
-  box-shadow: 0 4px 12px var(--secondary-alpha-3);
+  color: var(--secondary-color);
+  -webkit-text-fill-color: currentcolor;
 }
 
 /* Secondary Button - Removed (unused) */
@@ -1110,27 +1094,25 @@ strong {
 
 .btn--outline:hover {
   background: var(--secondary-color);
-  border-color: var(--secondary-color);
+  border-color: var(--white-color);
   color: var(--white-color);
+  -webkit-text-fill-color: currentcolor;
 }
 
 /* Light Inverse Button - For dark backgrounds */
 .btn--light {
-  background: var(--white-color);
-  border: 2px solid var(--white-color);
-  color: var(--secondary-color);
+  background: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  color: var(--white-color);
   -webkit-text-fill-color: currentcolor;
   font-weight: 700;
-  box-shadow: 0 6px 16px var(--shadow-heavy);
 }
 
 .btn--light:hover {
-  background: var(--secondary-color);
+  background: var(--white-color);
   border-color: var(--secondary-color);
-  color: var(--white-color);
+  color: var(--secondary-color);
   -webkit-text-fill-color: currentcolor;
-  box-shadow: 0 8px 24px var(--shadow-2xl);
-  transform: translateY(-2px);
 }
 
 /* Ghost Button - Minimal styling */
@@ -1142,8 +1124,10 @@ strong {
 }
 
 .btn--ghost:hover {
-  background: var(--secondary-alpha-1);
-  color: var(--secondary-color);
+  background: var(--secondary-color);
+  border-color: var(--white-color);
+  color: var(--white-color);
+  -webkit-text-fill-color: currentcolor;
 }
 
 /* ==========================================================================
@@ -1217,17 +1201,6 @@ h6 + .btn {
   margin-top: var(--space-5);
 }
 
-/* Spacing for multiple buttons in a row (stacked vertically) */
-.btn + .btn {
-  margin-top: var(--space-3);
-}
-
-/* Remove margin when buttons are in flexbox button groups */
-/* Using attribute selector to increase specificity without !important */
-.btn-group[class] .btn + .btn {
-  margin-top: 0;
-}
-
 /* ==========================================================================
    SPECIAL PURPOSE BUTTONS
    ========================================================================== */
@@ -1236,34 +1209,32 @@ h6 + .btn {
 .btn--donate {
   background: var(--primary-color);
   border-color: var(--primary-color);
-  color: var(--dark-color);
+  color: var(--white-color);
   -webkit-text-fill-color: currentcolor;
   font-weight: 600;
   letter-spacing: 0.05em;
 }
 
 .btn--donate:hover {
-  background: var(--primary-color);
+  background: var(--white-color);
   border-color: var(--primary-color);
-  color: var(--dark-color);
-  box-shadow: 0 4px 12px var(--shadow-medium);
+  color: var(--primary-color);
+  -webkit-text-fill-color: currentcolor;
 }
 
 /* Footer General Button - High contrast for visibility on light footer */
 .btn--footer {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+  font-weight: 600;
+}
+
+.btn--footer:hover {
   background: var(--white-color);
   border-color: var(--secondary-color);
   color: var(--secondary-color);
   -webkit-text-fill-color: currentcolor;
-  font-weight: 600;
-  box-shadow: 0 2px 8px var(--shadow-light);
-}
-
-.btn--footer:hover {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color);
-  color: var(--white-color);
-  box-shadow: 0 4px 12px var(--shadow-medium);
 }
 
 /* GitHub Badge Button */
@@ -1281,17 +1252,17 @@ h6 + .btn {
 }
 
 .btn--badge:hover {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--dark-color);
-  transform: translateY(-1px);
+  background: var(--white-color);
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  -webkit-text-fill-color: currentcolor;
 }
 
 /* Meeting CTA Button - Prominent on teal background */
 .btn--meeting {
   background: var(--primary-color);
   border-color: var(--primary-color);
-  color: var(--dark-color);
+  color: var(--white-color);
   -webkit-text-fill-color: currentcolor;
   padding: var(--space-3) var(--space-6);
   font-weight: 600;
@@ -1300,9 +1271,9 @@ h6 + .btn {
 
 .btn--meeting:hover {
   background: var(--white-color);
-  border-color: var(--white-color);
-  color: var(--dark-color);
-  box-shadow: 0 4px 12px var(--shadow-medium);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  -webkit-text-fill-color: currentcolor;
 }
 
 /* ==========================================================================
@@ -1356,7 +1327,7 @@ h6 + .btn {
    ========================================================================== */
 
 .btn-group {
-  display: flex;
+  display: grid;
   gap: var(--space-3);
   flex-wrap: wrap;
   align-items: center;
@@ -1373,7 +1344,7 @@ h6 + .btn {
 /* Ensure consistent button heights in groups */
 .btn-group .btn {
   min-height: 44px; /* Consistent minimum height for touch targets */
-  display: inline-flex;
+  display: block;
   align-items: center;
   justify-content: center;
 }
@@ -1390,8 +1361,9 @@ h6 + .btn {
 
 .btn--login:hover {
   background: var(--white-color);
+  border-color: var(--secondary-color);
   color: var(--secondary-color);
-  transform: translateY(-1px);
+  -webkit-text-fill-color: currentcolor;
 }
 
 /* Desktop: Prevent wrapping, keep buttons in single row */
@@ -1422,7 +1394,6 @@ h6 + .btn {
   position: relative;
   overflow-x: hidden;
   overflow-y: visible;
-  padding-top: calc(3rem + 330px);
   padding-bottom: 7rem;
   min-height: 100vh;
   z-index: 2;
@@ -1547,7 +1518,7 @@ h6 + .btn {
 }
 
 .hero-actions {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   margin-top: var(--space-6);
@@ -1582,7 +1553,6 @@ h6 + .btn {
 /* Responsive Hero Styles */
 @media (max-width: 767.98px) {
   .hero {
-    padding-top: 5rem;
     padding-bottom: 5rem;
   }
 
@@ -1612,7 +1582,6 @@ h6 + .btn {
 
 @media (min-width: 1600px) {
   .hero {
-    padding-top: 380px;
     padding-bottom: 380px;
   }
 
@@ -1634,7 +1603,6 @@ h6 + .btn {
 
 @media (max-width: 991.98px) {
   .hero {
-    padding-top: var(--section-padding-xl);
     padding-bottom: 400px;
   }
 
@@ -1660,7 +1628,6 @@ h6 + .btn {
   }
 
   .hero{
-    padding-top: var(--space-15);
     padding-bottom: 0;
   }
 }
@@ -1711,12 +1678,12 @@ h6 + .btn {
   color: var(--white-color);
   border-top: none;
   border-bottom: none;
-  padding: var(--space-8) 0;
+  padding: var(--space-6);
 }
 
 /* Meeting content container */
 .meeting-content {
-  display: flex;
+  /*display: flex;*/
   flex-direction: column;
   justify-content: center;
   height: 100%;
@@ -1749,7 +1716,6 @@ h6 + .btn {
   border-radius: var(--radius-card);
   padding: var(--space-6);
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px var(--shadow-light);
   max-width: 100%;
 }
 
@@ -2036,7 +2002,7 @@ h6 + .btn {
 /* Footer Redesign - Modern Footer Layout */
 .footer-redesign {
   background: var(--gray-50);
-  border-top: 1px solid var(--dark-color);
+  /*border-top: 1px solid var(--dark-color);*/
   padding: var(--space-7) 0 var(--space-6);
   margin-top: var(--space-8);
   font-size: var(--font-size-mobile-md);
@@ -2059,11 +2025,6 @@ h6 + .btn {
   margin-bottom: var(--space-5);
 }
 
-.footer-brand-logo {
-  display: block;
-  margin-bottom: var(--space-4);
-}
-
 .footer-brand-mission {
   color: var(--dark-color);
   font-size: var(--font-size-mobile-sm);
@@ -2072,11 +2033,8 @@ h6 + .btn {
 }
 
 .footer-col-title {
-  font-weight: var(--font-weight-bold);
   margin-bottom: var(--space-3);
-  letter-spacing: 1px;
   font-size: var(--font-size-mobile-lg);
-  color: var(--secondary-color);
 }
 
 .footer-links-list {
@@ -2095,7 +2053,7 @@ h6 + .btn {
 }
 
 .footer-support-actions {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   gap: var(--space-3);
   align-items: center;
@@ -2141,13 +2099,12 @@ h6 + .btn {
 }
 
 .footer-links-list a {
-  color: var(--secondary-color);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .footer-links-list a:hover {
-  color: var(--primary-color);
+  /*color: var(--primary-color);*/
   text-decoration: underline;
 }
 
@@ -2215,7 +2172,6 @@ h6 + .btn {
 /* Responsive Footer Styles */
 @media (max-width: 991.98px) {
   .footer-redesign-container {
-    flex-direction: column;
     gap: var(--space-9);
     padding: 0 var(--space-4);
   }
@@ -2349,9 +2305,9 @@ h6 + .btn {
 /* Sponsor grid container - uses CSS Grid for consistent layout */
 .sponsor-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: var(--space-6);
-  row-gap: var(--space-8);
+  row-gap: var(--space-6);
   align-items: center;
   justify-items: center;
 }
@@ -2413,9 +2369,9 @@ h6 + .btn {
 /* Responsive sizing for tablets */
 @media (max-width: 767.98px) {
   .sponsor-grid {
-    gap: var(--space-5);
-    row-gap: var(--space-6);
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-4);
+    row-gap: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
 
   .sponsors-item-height {
@@ -2440,7 +2396,7 @@ h6 + .btn {
 @media (max-width: 575.98px) {
   .sponsor-grid {
     gap: var(--space-4);
-    row-gap: var(--space-5);
+    row-gap: var(--space-4);
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -2465,13 +2421,13 @@ h6 + .btn {
 /* Projects Component */
 
 .projects-thumb {
-  background: var(--section-bg-color);
-  border: 2px solid var(--white-color);
+  background: var(--white-alpha-70);
+  border: 2px solid var(--white-alpha-70);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
-  padding: var(--space-9);
-  height: 350px;
+  padding: var(--space-8);
+  height: 450px;
   transition: all ease 0.5s;
 }
 
@@ -2599,32 +2555,16 @@ h6 + .btn {
 /* Organizers - Team and organizers section */
 /* Organizers Component */
 
-.organizers-section {
-  background: var(--section-bg-color);
-  border-radius: var(--space-3);
-  padding: var(--space-7);
-  margin-top: var(--space-7);
-  box-shadow: 0 var(--space-5) 60px var(--shadow-light);
-}
-
 .organizers-section .organizers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-6);
-  margin-top: var(--space-6);
 }
 
 .organizers-section .organizer-card,
 .organizers-section .shoutout-section {
   background: var(--white-color);
   border-radius: var(--space-4);
-  padding: var(--space-6) var(--space-5);
-  box-shadow: 0 var(--space-3) var(--space-6) var(--shadow-light);
   text-align: center;
-}
-
-.organizers-section .shoutout-section {
-  margin-top: var(--space-7);
 }
 
 .organizers-section .organizer-name {
@@ -2669,16 +2609,6 @@ h6 + .btn {
   margin-bottom: var(--space-3);
   font-weight: 500;
 }
-
-@media (max-width: 767.98px) {
-  .organizers-section {
-    padding: var(--space-6);
-  }
-
-  .organizers-section .organizer-card,
-  .organizers-section .shoutout-section {
-    box-shadow: 0 6px 20px var(--shadow-light);
-  }
 }
 /* Profile - Profile cards and about section */
 /* ---------------------------------------
@@ -2725,8 +2655,9 @@ h6 + .btn {
 }
 
 .about-thumb {
-  padding-right: var(--space-6);
-  padding-left: var(--space-6);
+  padding-right: var(--space-8);
+  padding-left: var(--space-8);
+  height: 450px;
 }
 
 /* Ensure images have proper spacing from adjacent content */
@@ -2814,8 +2745,8 @@ h6 + .btn {
    ========================================================================== */
 
 .meeting-section-alt .meeting-content {
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
 }
 
 .meeting-section-alt .meeting-card {
@@ -2872,13 +2803,9 @@ h6 + .btn {
 /* Page Header Component */
 
 .site-header {
-  padding: var(--section-padding-md) 0 var(--space-10);
+  padding: var(--space-6);
 }
 
-.has-fixed-nav .site-header,
-body.has-fixed-nav .site-header {
-  padding-top: var(--section-padding-lg);
-}
 
 .page-title {
   font-size: clamp(2.5rem, 4vw, 3.5rem);
@@ -2899,7 +2826,7 @@ body.has-fixed-nav .site-header {
 
 /* Newsletter CTA Section */
 .newsletter-cta {
-  background: var(--gradient-newsletter);
+  background: var(--secondary-color);
   position: relative;
   overflow: hidden;
 }
@@ -2918,7 +2845,6 @@ body.has-fixed-nav .site-header {
 }
 
 .newsletter-input-main {
-  /*flex: 1 1 300px;*/
   min-width: 250px;
   padding: var(--space-3) var(--space-5);
   border: 2px solid var(--border-color, #000);
@@ -2929,6 +2855,10 @@ body.has-fixed-nav .site-header {
   color: var(--dark-color);
   -webkit-text-fill-color: currentcolor;
   transition: all 0.3s ease;
+}
+
+.newsletter-cta h2, .newsletter-cta p {
+  color: var(--white-color);
 }
 
 .newsletter-input-main:focus {
@@ -2947,6 +2877,8 @@ body.has-fixed-nav .site-header {
   white-space: nowrap;
   font-weight: 500;
   min-width: 140px;
+  background: var(--white-color);
+  color: var(--secondary-color);
 }
 
 /* Footer Newsletter Styles */
@@ -3042,7 +2974,7 @@ body.has-fixed-nav .site-header {
 .about-main-centered {
   max-width: 1140px;
   margin: 0 auto;
-  padding: var(--section-padding-md) var(--space-6);
+  padding: var(--space-6);
   background: none;
   border-radius: 0;
   box-shadow: none;
@@ -3050,7 +2982,7 @@ body.has-fixed-nav .site-header {
 
 @media (max-width: 575.98px) {
   .about-main-centered {
-    padding: var(--space-10) var(--space-4);
+    padding: var(--space-6);
   }
 }
 
@@ -3064,7 +2996,6 @@ body.has-fixed-nav .site-header {
 .organizers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-6);
   place-items: start center;
   padding: var(--card-padding-sm);
   margin: 0 auto;
@@ -3157,7 +3088,7 @@ body.has-fixed-nav .site-header {
 .projects-main-centered {
   max-width: 1140px;
   margin: 0 auto;
-  padding: var(--section-padding-md) var(--space-6);
+  padding: var(--space-6);
   background: none;
   border-radius: 0;
   box-shadow: none;
@@ -3165,7 +3096,7 @@ body.has-fixed-nav .site-header {
 
 @media (max-width: 575.98px) {
   .projects-main-centered {
-    padding: var(--space-10) var(--space-4);
+    padding: var(--space-6);
   }
 }
 
