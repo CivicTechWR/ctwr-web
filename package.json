@@ -32,11 +32,11 @@
   },
   "devDependencies": {
     "@axe-core/cli": "^4.11.0",
-    "@playwright/test": "^1.57.0",
-    "autoprefixer": "^10.4.23",
+    "@playwright/test": "^1.58.1",
+    "autoprefixer": "^10.4.24",
     "axe-core": "^4.11.1",
     "browserslist": "^4.26.3",
-    "caniuse-lite": "^1.0.30001764",
+    "caniuse-lite": "^1.0.30001766",
     "clean-css-cli": "^5.6.3",
     "cssstats-cli": "^4.0.5",
     "css-tree": "^2.3.1",
@@ -45,7 +45,7 @@
     "lighthouse": "^12.8.2",
     "pa11y": "^9.0.1",
     "pa11y-ci": "^4.0.1",
-    "playwright": "^1.56.1",
+    "playwright": "^1.58.1",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.1",
     "postcss-combine-duplicated-selectors": "^10.0.2",
@@ -53,7 +53,7 @@
     "purgecss": "^7.0.2",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^36.0.1",
-    "terser": "^5.45.0",
+    "terser": "^5.46.0",
     "yaml-lint": "^1.7.0"
   }
 }
