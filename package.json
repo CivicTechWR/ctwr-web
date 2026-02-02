@@ -55,5 +55,10 @@
     "stylelint-config-standard": "^36.0.1",
     "terser": "^5.46.0",
     "yaml-lint": "^1.7.0"
+  },
+  "overrides": {
+    "pa11y": {
+      "bfj": "7.0.2"
+    }
   }
 }
