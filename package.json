@@ -45,7 +45,7 @@
     "lighthouse": "^12.8.2",
     "pa11y": "^9.0.1",
     "pa11y-ci": "^4.0.1",
-    "playwright": "^1.56.1",
+    "playwright": "^1.58.1",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.1",
     "postcss-combine-duplicated-selectors": "^10.0.2",
