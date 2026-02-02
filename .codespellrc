@@ -1,0 +1,4 @@
+[codespell]
+# Ignore words that are not misspellings
+# 'rouge' is a Ruby gem for syntax highlighting used by Jekyll
+ignore-words-list = rouge
