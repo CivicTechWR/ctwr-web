@@ -15,6 +15,12 @@ jobs:
   gitleaks:
     name: Scan for committed secrets
     runs-on: ubuntu-latest
+    # Dependabot PRs run in an isolated context that does not receive org/repo
+    # secrets via the pull_request event. Skip the scan for Dependabot since it
+    # only bumps dependency versions and will not introduce committed secrets.
+    # To also scan Dependabot PRs, add GITLEAKS_LICENSE as a Dependabot secret:
+    # Settings → Secrets and variables → Dependabot → New secret.
+    if: github.actor != 'dependabot[bot]'
     permissions:
       contents: read
     steps:
