@@ -55,6 +55,11 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Remove CNAME from preview build
+        # CNAME belongs at the gh-pages root only. A CNAME inside pr-N/ is
+        # harmless but confusing — remove it so the subdirectory is clean.
+        run: rm -f _site/CNAME
+
       - name: Deploy to GitHub Pages (preview)
         uses: peaceiris/actions-gh-pages@v4
         with:
