@@ -1,245 +1,488 @@
 ---
-layout: null
+layout: default
+title: Projects
 permalink: /projects.html
+description: "Explore civic technology projects built by the CivicTechWR community to improve life across Waterloo Region — from civic engagement tools to open data resources."
+preload_fetch: "js/projects.json"
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="CivicTechWR is a community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology."
-    />
-    <meta name="facebook-domain-verification" content="ek2rz7d30q8ive1r9h3vxiacn9pf3f" />
-    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
-    <title>Projects | CivicTech Waterloo Region</title>
-    {% seo %}
-
-    {% if jekyll.environment == "production" %}
-    {% assign css_file = "css/main.min.css" %}
-    {% else %}
-    {% assign css_file = "css/main.css" %}
-    {% endif %}
-
-    <!-- Resource hints for performance -->
-    <link rel="preload" href="{{ css_file }}" as="style" />
-    <link rel="preload" href="js/projects.json" as="fetch" crossorigin />
-
-    <!-- DNS prefetch for external resources -->
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-
-    <!-- Preconnect to critical external resources -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-
-    <!-- Consolidated CSS (includes fonts, bootstrap utilities, all components, page styles) -->
-    <link href="{{ css_file }}" rel="stylesheet" />
-    
-  </head>
-
-  <body>
-    {% include icons.svg %}
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    {% include header.html %}
-    <div class="has-fixed-nav">
-      <header class="site-header">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-6 col-12">
-              <h1 class="page-title">Projects Built By Our Community</h1>
-              <p class="page-subtitle">Explore civic technology initiatives designed to improve life across Waterloo Region.</p>
-              <p class="page-subtitle">Our community works on various civic technology projects to address local challenges. These projects are developed collaboratively by volunteers with diverse skills in design, development, research, and community engagement.</p>
-            </div>
-                   <section class="shape-container">
-          <!-- Abstract Shapes for Get Involved Section -->
-          <div class="abstract-shape shape-wave left-2p top-5p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-donut right-3p top-10p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-triangle left-6p bottom-10p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-blob right-5p bottom-15p" aria-hidden="true"></div>
+<div class="has-fixed-nav">
+  <header class="site-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-12">
+          <h1 class="page-title">Projects Built By Our Community</h1>
           <p class="page-subtitle">
-            Interested in contributing to one of our projects or starting a new one? Join us at our weekly hacknights where we collaborate on these initiatives. No technical experience is required –
-            we welcome people with all kinds of skills and backgrounds.
+            Explore civic technology initiatives designed to improve life across
+            Waterloo Region.
           </p>
-        </section>
-          </div>
+          <p class="page-subtitle">
+            Our community works on various civic technology projects to address
+            local challenges. These projects are developed collaboratively by
+            volunteers with diverse skills in design, development, research, and
+            community engagement.
+          </p>
         </div>
-      </header>
-
-      <main id="main-content" class="projects-main-centered shape-container">
-        <!-- Abstract Shapes for Projects Header Section -->
-        <div class="abstract-shape shape-circle left-5p top-10p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-donut right-8p top-15p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-star left-12p top-40p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-diamond right-10p top-35p" aria-hidden="true"></div>
-
-        <h2 class="projects-section-heading">Featured Projects</h2>
-        <!--<p class="project-description">Our community works on various civic technology projects to address local challenges. These projects are developed collaboratively by volunteers with diverse skills in design, development, research, and community engagement.</p>-->
-        <section class="mt-4 shape-container">
-          <!-- Abstract Shapes for Project Description Section -->
-          <div class="abstract-shape shape-diamond left-3p top-10p shape-size-60" aria-hidden="true"></div>
-          <div class="abstract-shape shape-circle right-5p top-20p shape-size-50" aria-hidden="true"></div>
-          <div class="abstract-shape shape-cross left-8p bottom-5p shape-size-45" aria-hidden="true"></div>
-        </section>
-
-        <section class="projects-section shape-container">
-          <!-- Abstract Shapes for Projects List Section -->
-          <div class="abstract-shape shape-square right-7p top-10p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-triangle left-5p top-30p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-hexagon right-12p bottom-15p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-wave left-8p bottom-25p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-cross right-15p top-50p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-zigzag left-15p top-60p" aria-hidden="true"></div>
-          <div class="row" id="project-container">
-            <!-- Projects will be loaded here via JavaScript -->
-          </div>
-        </section>
-
-        <h2 class="projects-section-heading">Other Projects</h2>
-        <section class="projects-section shape-container">
-          <div class="row" id="github-projects-container">
-            <!-- GitHub projects will load here -->
-          </div>
-        </section>
-
-        <section class="mt-5 shape-container">
+        <section class="shape-container">
           <!-- Abstract Shapes for Get Involved Section -->
-          <div class="abstract-shape shape-wave left-2p top-5p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-donut right-3p top-10p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-triangle left-6p bottom-10p" aria-hidden="true"></div>
-          <div class="abstract-shape shape-blob right-5p bottom-15p" aria-hidden="true"></div>
-          <h2 class="projects-involved-heading">Get Involved</h2>
-          <p>
-            Interested in contributing to one of our projects or starting a new one? Join us at our weekly hacknights where we collaborate on these initiatives. No technical experience is required –
-            we welcome people with all kinds of skills and backgrounds.
+          <div
+            class="abstract-shape shape-wave left-2p top-5p"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="abstract-shape shape-donut right-3p top-10p"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="abstract-shape shape-triangle left-6p bottom-10p"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="abstract-shape shape-blob right-5p bottom-15p"
+            aria-hidden="true"
+          ></div>
+          <p class="page-subtitle">
+            Interested in contributing to one of our projects or starting a new
+            one? Join us at our weekly hacknights where we collaborate on these
+            initiatives. No technical experience is required – we welcome people
+            with all kinds of skills and backgrounds.
           </p>
         </section>
-      </main>
-
-      <!-- NEXT MEETING -->
-      {% include meeting-section.html section_id="projects_meeting" %}
-      {% include newsletter-signup.html%}      
-
-      {% include footer.html %}
+      </div>
     </div>
+  </header>
 
-    <script>
-      // Function to load and display projects
-      function loadProjects() {
-        fetch('/js/projects.json')
-          .then(response => response.json())
-          .then(projects => {
-            const projectContainer = document.getElementById('project-container');
-            projectContainer.innerHTML = ''; // Clear any existing content
+  <main id="main-content" class="projects-main-centered shape-container">
+    <!-- Abstract Shapes for Projects Header Section -->
+    <div
+      class="abstract-shape shape-circle left-5p top-10p"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="abstract-shape shape-donut right-8p top-15p"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="abstract-shape shape-star left-12p top-40p"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="abstract-shape shape-diamond right-10p top-35p"
+      aria-hidden="true"
+    ></div>
 
-            projects.forEach(project => {
-              // Create project card
-              const projectCard = document.createElement('div');
-              projectCard.className = 'col-lg-4 col-md-6 col-12 mb-4';
+    <!-- Filter by category -->
+    <div class="projects-filter-wrap">
+      <div
+        id="projects-filter-bar"
+        class="projects-filter-bar"
+        role="group"
+        aria-label="Filter projects by category"
+      >
+        <button
+          type="button"
+          class="filter-btn filter-btn--active"
+          data-filter="all"
+        >
+          All
+        </button>
+      </div>
+    </div>
+    <h2 class="projects-section-heading">Featured Projects</h2>
+    <!--<p class="project-description">Our community works on various civic technology projects to address local challenges. These projects are developed collaboratively by volunteers with diverse skills in design, development, research, and community engagement.</p>-->
+    <section class="mt-4 shape-container">
+      <!-- Abstract Shapes for Project Description Section -->
+      <div
+        class="abstract-shape shape-diamond left-3p top-10p shape-size-60"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-circle right-5p top-20p shape-size-50"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-cross left-8p bottom-5p shape-size-45"
+        aria-hidden="true"
+      ></div>
+    </section>
 
-              // Format the year array as a string
-              const yearString = Array.isArray(project.year) ? project.year.join(', ') : project.year;
+    <section class="projects-section shape-container">
+      <!-- Abstract Shapes for Projects List Section -->
+      <div
+        class="abstract-shape shape-square right-7p top-10p"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-triangle left-5p top-30p"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-hexagon right-12p bottom-15p"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-wave left-8p bottom-25p"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-cross right-15p top-50p"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-zigzag left-15p top-60p"
+        aria-hidden="true"
+      ></div>
+      <div class="row" id="project-container">
+        <!-- Projects will be loaded here via JavaScript -->
+      </div>
+    </section>
 
-              projectCard.innerHTML = `
-                            <div class="project-card">
-                                <div class="project-info">
-                                    <a href="${project.github}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                    <h4 class="projects-title">${project.name}</h4>
-                                    <small class="projects-tag">Year: ${yearString}</small>
-                                </div>
-                                <a href="${project.url}" target="_blank" rel="noopener noreferrer">
-                                    <img src="${project.logo}" class="project-image img-fluid" alt="${project.name}" loading="lazy" decoding="async">
-                                </a>
-                            </div>
-                        `;
+    <h2 class="projects-section-heading">Other Projects</h2>
+    <section class="projects-section shape-container">
+      <div class="row" id="github-projects-container">
+        <!-- GitHub projects will load here -->
+      </div>
+    </section>
 
-              projectContainer.appendChild(projectCard);
-            });
-          })
-          .catch(error => {
-            console.error('Error loading projects:', error);
-            document.getElementById('project-container').innerHTML = `
-                        <div class="col-12 text-center">
-                            <p>Sorry, we couldn't load the projects. Please try again later.</p>
-                        </div>
-                    `;
-          });
+    <section class="mt-5 shape-container">
+      <!-- Abstract Shapes for Get Involved Section -->
+      <div
+        class="abstract-shape shape-wave left-2p top-5p"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-donut right-3p top-10p"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-triangle left-6p bottom-10p"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="abstract-shape shape-blob right-5p bottom-15p"
+        aria-hidden="true"
+      ></div>
+      <h2 class="projects-involved-heading">Get Involved</h2>
+      <p>
+        Interested in contributing to one of our projects or starting a new one?
+        Join us at our weekly hacknights where we collaborate on these
+        initiatives. No technical experience is required – we welcome people
+        with all kinds of skills and backgrounds.
+      </p>
+    </section>
+  </main>
+
+  <!-- NEXT MEETING -->
+  {% include meeting-section.html section_id="projects_meeting" %} {% include
+  newsletter-signup.html%} {% include footer.html %}
+</div>
+
+<script>
+  (function () {
+    "use strict";
+
+    // ── helpers ──────────────────────────────────────────────────────────────
+    function safeUrl(url) {
+      if (!url) return "#";
+      return url.startsWith("https://") ||
+        url.startsWith("http://") ||
+        url.startsWith("/")
+        ? url
+        : "#";
+    }
+
+    function formatTag(tag) {
+      return tag.replace(/-/g, " ");
+    }
+
+    function buildTagPills(tags) {
+      if (!tags || !tags.length) return null;
+      const wrap = document.createElement("div");
+      wrap.className = "project-tag-pills";
+      tags.forEach((tag) => {
+        const pill = document.createElement("span");
+        pill.className = "project-tag-pill";
+        pill.textContent = formatTag(tag);
+        wrap.appendChild(pill);
+      });
+      return wrap;
+    }
+
+    // ── filter ───────────────────────────────────────────────────────────────
+    function getActiveFilter() {
+      const btn = document.querySelector(".filter-btn--active");
+      return btn ? btn.dataset.filter : "all";
+    }
+
+    function applyFilter(tag) {
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.classList.toggle("filter-btn--active", btn.dataset.filter === tag);
+      });
+
+      ["project-container", "github-projects-container"].forEach((id) => {
+        const container = document.getElementById(id);
+        const empty = document.getElementById(id + "-empty");
+        if (!container) return;
+
+        let visibleCount = 0;
+        Array.from(container.children).forEach((card) => {
+          if (card.id && card.id.endsWith("-empty")) return;
+          let show;
+          if (tag === "all") {
+            show = true;
+          } else if (card.dataset.tags) {
+            show = card.dataset.tags.split(" ").filter(Boolean).includes(tag);
+          } else {
+            show = false;
+          }
+          card.style.display = show ? "" : "none";
+          if (show) visibleCount++;
+        });
+
+        if (empty) empty.style.display = visibleCount === 0 ? "" : "none";
+      });
+    }
+
+    function updateFilterBar() {
+      const tagSet = new Set();
+      document.querySelectorAll("[data-tags]").forEach((el) => {
+        el.dataset.tags
+          .split(" ")
+          .filter(Boolean)
+          .forEach((t) => tagSet.add(t));
+      });
+
+      const bar = document.getElementById("projects-filter-bar");
+      if (!bar) return;
+
+      const activeFilter = getActiveFilter();
+      bar.innerHTML = "";
+
+      const makeBtn = (label, value) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className =
+          "filter-btn" + (activeFilter === value ? " filter-btn--active" : "");
+        btn.dataset.filter = value;
+        btn.textContent = label;
+        btn.addEventListener("click", () => applyFilter(value));
+        return btn;
+      };
+
+      bar.appendChild(makeBtn("All", "all"));
+      Array.from(tagSet)
+        .sort()
+        .forEach((tag) => bar.appendChild(makeBtn(formatTag(tag), tag)));
+    }
+
+    // ── featured projects ─────────────────────────────────────────────────────
+    function buildFeaturedCard(project) {
+      const tags = Array.isArray(project.tags) ? project.tags : [];
+      const yearString = Array.isArray(project.year)
+        ? project.year.join(", ")
+        : String(project.year);
+
+      const col = document.createElement("div");
+      col.className = "col-lg-4 col-md-6 col-12 mb-4";
+      if (tags.length) col.dataset.tags = tags.join(" ");
+
+      const card = document.createElement("div");
+      card.className = "project-card";
+
+      const info = document.createElement("div");
+      info.className = "project-info";
+
+      const githubLink = document.createElement("a");
+      githubLink.href = safeUrl(project.github);
+      githubLink.className = "btn btn--badge";
+      githubLink.target = "_blank";
+      githubLink.rel = "noopener noreferrer";
+      githubLink.setAttribute(
+        "aria-label",
+        (project.display_name || project.name) +
+          " on GitHub (opens in new window)",
+      );
+      githubLink.textContent = "GitHub";
+
+      const title = document.createElement("h4");
+      title.className = "projects-title";
+      title.textContent = project.display_name || project.name;
+
+      const yearTag = document.createElement("small");
+      yearTag.className = "projects-tag";
+      yearTag.textContent = "Year: " + yearString;
+
+      info.appendChild(githubLink);
+      info.appendChild(title);
+      info.appendChild(yearTag);
+
+      const pills = buildTagPills(tags);
+      if (pills) info.appendChild(pills);
+
+      const imgLink = document.createElement("a");
+      imgLink.href = safeUrl(project.url);
+      imgLink.target = "_blank";
+      imgLink.rel = "noopener noreferrer";
+      imgLink.setAttribute(
+        "aria-label",
+        "View " +
+          (project.display_name || project.name) +
+          " (opens in new window)",
+      );
+
+      const img = document.createElement("img");
+      img.src = safeUrl(project.logo);
+      img.className = "project-image img-fluid";
+      img.alt = project.display_name || project.name;
+      img.loading = "lazy";
+      img.decoding = "async";
+
+      imgLink.appendChild(img);
+      card.appendChild(info);
+      card.appendChild(imgLink);
+      col.appendChild(card);
+      return col;
+    }
+
+    function loadProjects() {
+      fetch("/js/projects.json")
+        .then((r) => r.json())
+        .then((projects) => {
+          const container = document.getElementById("project-container");
+          container.innerHTML = "";
+          projects.forEach((p) => container.appendChild(buildFeaturedCard(p)));
+
+          const empty = document.createElement("div");
+          empty.id = "project-container-empty";
+          empty.className = "col-12 text-center";
+          empty.style.display = "none";
+          empty.innerHTML = "<p>No featured projects match this filter.</p>";
+          container.appendChild(empty);
+
+          updateFilterBar();
+          applyFilter(getActiveFilter());
+        })
+        .catch(() => {
+          const container = document.getElementById("project-container");
+          const err = document.createElement("div");
+          err.className = "col-12 text-center";
+          err.innerHTML =
+            "<p>Sorry, we couldn't load the projects. Please try again later.</p>";
+          container.appendChild(err);
+        });
+    }
+
+    // ── GitHub projects ───────────────────────────────────────────────────────
+    function buildGitHubCard(repo, override) {
+      const displayName = override.display_name || repo.name;
+      const description = override.description || repo.description || "";
+      const tags =
+        override.tags && override.tags.length
+          ? override.tags
+          : repo.topics || [];
+      const siteUrl = override.url || repo.html_url;
+
+      const col = document.createElement("div");
+      col.className = "col-lg-4 col-md-6 col-12 mb-4";
+      if (tags.length) col.dataset.tags = tags.join(" ");
+
+      const card = document.createElement("div");
+      card.className = "project-card";
+
+      const info = document.createElement("div");
+      info.className = "project-info";
+
+      const githubLink = document.createElement("a");
+      githubLink.href =
+        repo.html_url && repo.html_url.startsWith("https://")
+          ? repo.html_url
+          : "#";
+      githubLink.className = "btn btn--badge";
+      githubLink.target = "_blank";
+      githubLink.rel = "noopener noreferrer";
+      githubLink.setAttribute(
+        "aria-label",
+        displayName + " on GitHub (opens in new window)",
+      );
+      githubLink.textContent = "GitHub";
+
+      const titleEl = document.createElement("h4");
+      titleEl.className = "projects-title";
+      titleEl.textContent = displayName;
+
+      info.appendChild(githubLink);
+      info.appendChild(titleEl);
+
+      if (repo.language) {
+        const lang = document.createElement("small");
+        lang.className = "projects-tag";
+        lang.textContent = repo.language;
+        info.appendChild(lang);
       }
 
-      // Load projects when the page is loaded
-      document.addEventListener('DOMContentLoaded', loadProjects);
-    </script>
-
-    <script>
-      function loadGitHubProjects() {
-        fetch('https://api.github.com/orgs/CivicTechWR/repos')
-          .then(response => response.json())
-          .then(repos => {
-            const container = document.getElementById('github-projects-container');
-            container.innerHTML = '';
-
-            repos
-              .filter(repo => !repo.fork && !repo.archived) // skip forks/archived
-              .forEach(repo => {
-                const card = document.createElement('div');
-                card.className = 'col-lg-4 col-md-6 col-12 mb-4';
-
-                // Secure DOM construction to prevent XSS
-                const projectCard = document.createElement('div');
-                projectCard.className = 'project-card';
-
-                const projectInfo = document.createElement('div');
-                projectInfo.className = 'project-info';
-
-                // Sanitize URL to prevent javascript: protocol injection
-                const githubLink = document.createElement('a');
-                const safeUrl = repo.html_url && repo.html_url.startsWith('https://')
-                  ? repo.html_url
-                  : '#';
-                githubLink.href = safeUrl;
-                githubLink.className = 'btn btn--badge';
-                githubLink.target = '_blank';
-                githubLink.rel = 'noopener noreferrer';
-                githubLink.textContent = 'GitHub'; // Safe: textContent escapes HTML
-
-                const title = document.createElement('h4');
-                title.className = 'projects-title';
-                title.textContent = repo.name || 'Untitled Project'; // Safe: textContent escapes HTML
-
-                const language = document.createElement('small');
-                language.className = 'projects-tag';
-                language.textContent = repo.language || ''; // Safe: textContent escapes HTML
-
-                const description = document.createElement('p');
-                description.textContent = repo.description || 'No description available.'; // Safe: textContent escapes HTML
-
-                projectInfo.appendChild(githubLink);
-                projectInfo.appendChild(title);
-                projectInfo.appendChild(language);
-                projectInfo.appendChild(description);
-                projectCard.appendChild(projectInfo);
-                card.appendChild(projectCard);
-
-                container.appendChild(card);
-              });
-          })
-          .catch(error => {
-            console.error('Error loading GitHub projects:', error);
-            document.getElementById('github-projects-container').innerHTML = `
-                    <div class="col-12 text-center">
-                        <p>Sorry, we couldn't load the other projects. Please try again later.</p>
-                    </div>
-                `;
-          });
+      if (description) {
+        const desc = document.createElement("p");
+        desc.textContent = description;
+        info.appendChild(desc);
       }
 
-      document.addEventListener('DOMContentLoaded', loadGitHubProjects);
-    </script>
+      const pills = buildTagPills(tags);
+      if (pills) info.appendChild(pills);
 
-    <script src="js/optimized-bundle.min.js"></script>
+      card.appendChild(info);
+      col.appendChild(card);
+      return col;
+    }
 
-    <!-- Mailchimp Newsletter Script -->
-    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/70e9ca4ba196596a75a7b6a3e/7634ad86559d5b0d40a1cddd0.js");</script>
-  </body>
-</html>
+    function loadGitHubProjects() {
+      Promise.all([
+        fetch(
+          "https://api.github.com/orgs/CivicTechWR/repos?per_page=100",
+        ).then((r) => r.json()),
+        fetch("/js/github_overrides.json")
+          .then((r) => r.json())
+          .catch(() => ({})),
+      ])
+        .then(([repos, overrides]) => {
+          const container = document.getElementById(
+            "github-projects-container",
+          );
+          container.innerHTML = "";
+
+          repos
+            .filter((repo) => !repo.fork && !repo.archived)
+            .filter((repo) => !(overrides[repo.name] || {}).hidden)
+            .forEach((repo) =>
+              container.appendChild(
+                buildGitHubCard(repo, overrides[repo.name] || {}),
+              ),
+            );
+
+          const empty = document.createElement("div");
+          empty.id = "github-projects-container-empty";
+          empty.className = "col-12 text-center";
+          empty.style.display = "none";
+          empty.innerHTML = "<p>No projects match this filter.</p>";
+          container.appendChild(empty);
+
+          updateFilterBar();
+          applyFilter(getActiveFilter());
+        })
+        .catch(() => {
+          const container = document.getElementById(
+            "github-projects-container",
+          );
+          const err = document.createElement("div");
+          err.className = "col-12 text-center";
+          err.innerHTML =
+            "<p>Sorry, we couldn't load the other projects. Please try again later.</p>";
+          container.appendChild(err);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadProjects();
+      loadGitHubProjects();
+    });
+  })();
+</script>
