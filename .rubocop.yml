@@ -1,0 +1,18 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+  # Only lint plugin files — Gemfile, config, etc. are not our own Ruby code
+  Include:
+    - "_plugins/**/*.rb"
+  Exclude:
+    - "Gemfile"
+    - "vendor/**/*"
+
+# The existing codebase uses single-quoted strings throughout; keep that style
+# rather than force-converting everything.
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+# Long lines acceptable for URIs and error messages
+Layout/LineLength:
+  Max: 120

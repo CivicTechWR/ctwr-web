@@ -1,0 +1,9 @@
+---
+extends: default
+
+rules:
+  line-length:
+    max: 120
+  # Comments are self-documenting; allow them to exceed line length too
+  comments:
+    min-spaces-from-content: 1

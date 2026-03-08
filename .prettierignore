@@ -1,0 +1,4 @@
+# js/*.json files are Jekyll Liquid templates with YAML front matter,
+# not real JSON — Prettier cannot parse them.
+js/projects.json
+js/github_overrides.json
