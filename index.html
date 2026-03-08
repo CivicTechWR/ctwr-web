@@ -1,82 +1,39 @@
 ---
-layout: null
+layout: default
 permalink: /
+description: "CivicTechWR brings together people from different sectors to work on local civic challenges in Kitchener-Waterloo. Join us at our free weekly Wednesday hacknights — everyone welcome, tech skills optional."
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="CivicTechWR is a community group that brings together people from different backgrounds to actively solve issues facing our local community of Kitchener-Waterloo using design and technology."
-    />
-    <meta name="facebook-domain-verification" content="ek2rz7d30q8ive1r9h3vxiacn9pf3f" />
-    <link rel="icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="/images/logos/civictechwr_logo_black.png" type="image/x-icon" />
-
-    <title>{{ site.title }}</title>
-    {% seo %}
-
-    <!-- CSS FILES -->
-    {% if jekyll.environment == "production" %}
-    {% assign css_file = "css/main.min.css" %}
-    {% else %}
-    {% assign css_file = "css/main.css" %}
-    {% endif %}
-
-    <!-- Preload critical resources -->
-    <link rel="preload" href="{{ css_file }}" as="style" />
-    <link rel="preload" href="images/hacknight-1.jpg" as="image" />
-
-    <!-- DNS prefetch for external resources -->
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-    <link rel="dns-prefetch" href="//cors-anywhere.herokuapp.com" />
-    <link rel="dns-prefetch" href="//lu.ma" />
-
-    <!-- Preconnect to critical external resources -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-
-    <!-- Consolidated CSS (includes fonts, bootstrap utilities, all components) -->
-    <link href="{{ css_file }}" rel="stylesheet" />
-  </head>
-
-  <body>
-    {% include icons.svg %}
-    <a href="#section_1" class="skip-link">Skip to main content</a>
-
-    <!-- Screen reader announcements -->
-    <div id="sr-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
-    <section class="preloader">
-      <div class="spinner">
-        <span class="spinner-rotate"></span>
-      </div>
-    </section>
-
-    <!--
-    <div id="header-container"></div>
-    <script>
-        // Load the header content
-        fetch('/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading header:', error));
-    </script>
-    -->
-
-    {% include header.html %}
-    <main>
-      <section class="hero d-flex justify-content-center align-items-center shape-container" id="section_1">
+    <main id="main-content">
+      <section
+        class="hero d-flex justify-content-center align-items-center shape-container"
+        id="section_1"
+      >
         <!-- Abstract Shapes for Hero Section -->
-        <div class="abstract-shape shape-circle top-20p left-5p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-donut top-15p right-10p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-star bottom-20p left-15p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-hexagon bottom-25p right-20p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-diamond top-30p left-25p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-cross top-40p right-25p" aria-hidden="true"></div>
+        <div
+          class="abstract-shape shape-circle top-20p left-5p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-donut top-15p right-10p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-star bottom-20p left-15p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-hexagon bottom-25p right-20p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-diamond top-30p left-25p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-cross top-40p right-25p"
+          aria-hidden="true"
+        ></div>
         <div class="hero-background">
           <div class="hero-background-layer"></div>
           <div class="hero-background-pattern"></div>
@@ -87,16 +44,42 @@ permalink: /
               <div class="hero-text">
                 <p class="hero-kicker">&lt;/&gt; Welcome to CTWR</p>
                 <div class="hero-badge">
-                  <h1 class="hero-title">CivicTech<br>Waterloo Region</h1>
+                  <h1 class="hero-title">CivicTech<br />Waterloo Region</h1>
                 </div>
-                <p class="hero-description">Join our community working together to solve local challenges in the Waterloo region through tech and design</p>
+                <p class="hero-description">
+                  Everyone is welcome — tech skills optional. Join our community
+                  every Wednesday to work on local civic challenges through
+                  design and technology.
+                </p>
                 <div class="hero-actions">
                   <div class="btn-group btn-group--center">
-                    <a href="https://civictechwr.github.io/blog/" class="btn btn--light">Blog</a>
-                    <a href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw" class="btn btn--light"><svg class="btn__icon icon" width="16" height="16"><use href="#icon-slack"></use></svg> Join us on Slack</a>
-                    <a href="https://luma.com/civictechwr" class="btn btn--primary">
-                      <svg class="btn__icon icon" width="16" height="16" aria-hidden="true"><use href="#icon-calendar-event"/></svg> Upcoming hacknights
+                    <a
+                      href="https://luma.com/civictechwr"
+                      class="btn btn--primary"
+                    >
+                      <svg
+                        class="btn__icon icon"
+                        width="16"
+                        height="16"
+                        aria-hidden="true"
+                      >
+                        <use href="#icon-calendar-event" />
+                      </svg>
+                      Upcoming hacknights
                     </a>
+                    <a
+                      href="https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw"
+                      class="btn btn--light"
+                      ><svg class="btn__icon icon" width="16" height="16">
+                        <use href="#icon-slack"></use>
+                      </svg>
+                      Join us on Slack</a
+                    >
+                    <a
+                      href="https://civictechwr.github.io/blog/"
+                      class="btn btn--light"
+                      >Blog</a
+                    >
                   </div>
                 </div>
               </div>
@@ -107,23 +90,43 @@ permalink: /
 
       <section class="about section-padding shape-container" id="section_about">
         <!-- Abstract Shapes for About Section -->
-        <div class="abstract-shape shape-triangle left-3p top-15p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-wave right-5p top-25p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-circle left-8p bottom-20p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-zigzag right-7p bottom-30p" aria-hidden="true"></div>
+        <div
+          class="abstract-shape shape-triangle left-3p top-15p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-wave right-5p top-25p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-circle left-8p bottom-20p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-zigzag right-7p bottom-30p"
+          aria-hidden="true"
+        ></div>
         <div class="container">
           <div class="row align-items-start">
             <div class="col-lg-6 col-12">
               <div class="about-thumb flow">
-                <h3>About CivicTech<br>Waterloo Region</h3>
+                <h2>About CivicTech<br />Waterloo Region</h2>
 
                 <p>
-                  CivicTechWR focuses on using technology to improve how we connect with our local communities and governments. It's about making civic interactions and services more efficient and
-                  effective. CivicTech Waterloo Region was founded in July 2017. We're a community group that brings together people from diverse sectors and industries to collaboratively solve
-                  challenges facing our local community using design and technology. We were inspired by similar organizations like CivicTechTO, Beta City YEG, and Code for America Brigades.
+                  CivicTechWR focuses on using technology to improve how we
+                  connect with our local communities and governments. It's about
+                  making civic interactions and services more efficient and
+                  effective. CivicTech Waterloo Region was founded in July 2017.
+                  We're a community group that brings together people from
+                  diverse sectors and industries to collaboratively solve
+                  challenges facing our local community using design and
+                  technology. We were inspired by similar organizations like
+                  CivicTechTO, Beta City YEG, and Code for America Brigades.
                 </p>
                 <p>
-                  <a class="text-decoration-underline" href="/about.html">You can read more about our team here</a>
+                  <a class="text-decoration-underline" href="/about.html"
+                    >You can read more about our team here</a
+                  >
                 </p>
               </div>
             </div>
@@ -144,12 +147,27 @@ permalink: /
         </div>
       </section>
 
-      <section class="hacknights section-padding shape-container" id="section_hacknights">
+      <section
+        class="hacknights section-padding shape-container"
+        id="section_hacknights"
+      >
         <!-- Abstract Shapes for Hacknights Section -->
-        <div class="abstract-shape shape-square left-4p top-10p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-star right-6p top-20p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-hexagon left-7p bottom-15p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-donut right-9p bottom-25p" aria-hidden="true"></div>
+        <div
+          class="abstract-shape shape-square left-4p top-10p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-star right-6p top-20p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-hexagon left-7p bottom-15p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-donut right-9p bottom-25p"
+          aria-hidden="true"
+        ></div>
         <div class="container">
           <div class="row align-items-start">
             <div class="col-lg-6 col-12">
@@ -167,14 +185,27 @@ permalink: /
 
             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
               <div class="about-thumb flow">
-                <h3>Every Week On<br>Wednesday Evenings</h3>
+                <h2>Every Week On<br />Wednesday Evenings</h2>
                 <p>
-                  We meet every week, hosting hacknights most weeks and featuring a guest speaker once a month. Our speakers include community leaders from local non-profits, government, industry, or
-                  other engaged citizens—anyone with something inspiring or educational to share. Whether it's a speaker session or a hacknight, we provide a collaborative space for people to work on
-                  civic tech projects and connect with others who share their passion for making a difference. Join us at our next hacknight!
+                  We meet every week, hosting hacknights most weeks and
+                  featuring a guest speaker once a month. Our speakers include
+                  community leaders from local non-profits, government,
+                  industry, or other engaged citizens—anyone with something
+                  inspiring or educational to share. Whether it's a speaker
+                  session or a hacknight, we provide a collaborative space for
+                  people to work on civic tech projects and connect with others
+                  who share their passion for making a difference. Join us at
+                  our next hacknight!
                 </p>
                 <a href="https://luma.com/civictechwr" class="btn btn--primary">
-                  <svg class="btn__icon icon" width="16" height="16" aria-hidden="true"><use href="#icon-calendar-event"/></svg>
+                  <svg
+                    class="btn__icon icon"
+                    width="16"
+                    height="16"
+                    aria-hidden="true"
+                  >
+                    <use href="#icon-calendar-event" />
+                  </svg>
                   Upcoming hacknights
                 </a>
               </div>
@@ -186,26 +217,47 @@ permalink: /
       <!-- PROJECTS -->
       <section class="projects section-padding shape-container" id="section_3">
         <!-- Abstract Shapes for Projects Section -->
-        <div class="abstract-shape shape-square right-7p top-10p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-triangle left-5p top-30p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-zigzag right-15p bottom-15p" aria-hidden="true"></div>
-        <div class="abstract-shape shape-cross left-12p bottom-25p" aria-hidden="true"></div>
+        <div
+          class="abstract-shape shape-square right-7p top-10p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-triangle left-5p top-30p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-zigzag right-15p bottom-15p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-cross left-12p bottom-25p"
+          aria-hidden="true"
+        ></div>
 
         <div class="container">
           <div class="row align-items-end">
-            
             <div class="col-lg-6 col-12 order-2 order-lg-1 mb-4 mb-lg-0">
               <div class="mb-3">
                 <!--<div class="about-thumb flow">-->
                 <div class="about-thumb flow">
-                  <h3>Featured Projects<br>Built by the Community</h3>
+                  <h2>Featured Projects<br />Built by the Community</h2>
                   <p>
-                    Discover some of our most impactful civic tech initiatives that are making a difference in the Waterloo Region community. From improving civic engagement to providing essential
-                    community resources, these projects showcase how technology can be used to solve real-world problems and strengthen our local democracy.
+                    Discover some of our most impactful civic tech initiatives
+                    that are making a difference in the Waterloo Region
+                    community. From improving civic engagement to providing
+                    essential community resources, these projects showcase how
+                    technology can be used to solve real-world problems and
+                    strengthen our local democracy.
                   </p>
                   <div class="btn-group">
-                    <a href="/projects.html" class="btn btn--primary">View All Projects</a>
-                    <a href="https://civictechwr.github.io/blog/" class="btn btn--primary">View Latest Blog</a>
+                    <a href="/projects.html" class="btn btn--primary"
+                      >View All Projects</a
+                    >
+                    <a
+                      href="https://civictechwr.github.io/blog/"
+                      class="btn btn--primary"
+                      >View Latest Blog</a
+                    >
                   </div>
                 </div>
               </div>
@@ -215,16 +267,27 @@ permalink: /
                 <div class="projects-thumb">
                   <div class="projects-info">
                     <!--<h4 class="projects-title">{{project.name}}</h4>-->
-                    <a href="{{project.github}}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">{{project.name}}</a>
+                    <a
+                      href="{{project.github}}"
+                      class="btn btn--badge"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >{{project.name}}</a
+                    >
                     <small class="projects-tag">Year: {{project.year}}</small>
                   </div>
                   <a href="{{project.url}}">
-                    <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}" loading="lazy" decoding="async" />
+                    <img
+                      src="{{project.logo}}"
+                      class="projects-image img-fluid"
+                      alt="{{project.name}}"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </a>
                 </div>
                 {% endfor %}
               </div>
-
             </div>
 
             <div class="col-lg-6 col-12 order-1 order-lg-2 mb-4 mb-lg-0">
@@ -233,18 +296,29 @@ permalink: /
                 <div class="projects-thumb">
                   <div class="projects-info">
                     <!--<h4 class="projects-title">{{project.name}}</h4>-->
-                    
-                    <a href="{{project.github}}" class="btn btn--badge" target="_blank" rel="noopener noreferrer">{{project.name}}</a>
+
+                    <a
+                      href="{{project.github}}"
+                      class="btn btn--badge"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >{{project.name}}</a
+                    >
                     <small class="projects-tag">Year: {{project.year}}</small>
                   </div>
                   <a href="{{project.url}}">
-                    <img src="{{project.logo}}" class="projects-image img-fluid" alt="{{project.name}}" loading="lazy" decoding="async" />
+                    <img
+                      src="{{project.logo}}"
+                      class="projects-image img-fluid"
+                      alt="{{project.name}}"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </a>
                 </div>
               </div>
               {% endfor %}
             </div>
-
           </div>
         </div>
       </section>
@@ -253,56 +327,78 @@ permalink: /
       {% include meeting-section.html section_id="section_next_meeting" %}
       <!-- NEWSLETTER SIGNUP -->
       {% include newsletter-signup.html %}
-      
-    </main>
 
-    <!-- SPONSORS -->
-    <section class="sponsors section-padding shape-container" id="section_4">
-      <!-- Abstract Shapes for Partners Section -->
-      <div class="abstract-shape shape-blob right-8p top-40p" aria-hidden="true"></div>
-      <div class="abstract-shape shape-rectangle left-6p top-60p" aria-hidden="true"></div>
-      <div class="abstract-shape shape-wave right-12p bottom-20p" aria-hidden="true"></div>
-      <div class="abstract-shape shape-diamond left-10p bottom-30p" aria-hidden="true"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-12">
-            <h3 class="text-center mb-5">Our Thanks To Our Partners</h3>
-            <p class="text-center mb-5">
-              We're always keen to working with our community partner, from corporations to non-profits and everything in between.<br>If you would like to spnonsor us or have an idea for collaboration<br>please reach out to us at <a href="mailto:civictechwr@gmail.com">civictechwr@gmail.com</a>
-            </p>
-          </div>
-          <div class="col-lg-12 col-12">
-            <div id="sponsor-container" class="mt-5 sponsor-grid">
-              {% for partner in site.data.partners %} {% if partner.current %}
-              <div class="sponsors-item-height">
-                <img class="sponsors-image" src="{{partner.logo}}" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
-              </div>
-              {% endif %} {% endfor %}
+      <!-- SPONSORS -->
+      <section class="sponsors section-padding shape-container" id="section_4">
+        <!-- Abstract Shapes for Partners Section -->
+        <div
+          class="abstract-shape shape-blob right-8p top-40p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-rectangle left-6p top-60p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-wave right-12p bottom-20p"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="abstract-shape shape-diamond left-10p bottom-30p"
+          aria-hidden="true"
+        ></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <h2 class="text-center mb-5">Our Thanks To Our Partners</h2>
+              <p class="text-center mb-5">
+                We're always keen to work with our community partners, from
+                corporations to non-profits and everything in between.<br />If
+                you would like to sponsor us or have an idea for
+                collaboration<br />please reach out to us at
+                <a href="mailto:civictechwr@gmail.com">civictechwr@gmail.com</a>
+              </p>
             </div>
-          </div>
-
-          <div class="col-lg-12 col-12 mt-5">
-            <h5 class="text-center mb-4">Previous Partners</h5>
-          </div>
-          <div class="col-lg-12 col-12">
-            <div id="previous-sponsor-container" class="sponsor-grid">
-              {% for partner in site.data.partners %} {% if partner.current == false %}
-              <div class="sponsors-item-height">
-                <img src="{{partner.logo}}" class="previous-sponsors-image" alt="{{partner.name}}" title="{{partner.name}}" loading="lazy" decoding="async" />
+            <div class="col-lg-12 col-12">
+              <div id="sponsor-container" class="mt-5 sponsor-grid">
+                {% for partner in site.data.partners %} {% if partner.current %}
+                <div class="sponsors-item-height">
+                  <img
+                    class="sponsors-image"
+                    src="{{partner.logo}}"
+                    alt="{{partner.name}}"
+                    title="{{partner.name}}"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                {% endif %} {% endfor %}
               </div>
-              {% endif %} {% endfor %}
+            </div>
+
+            <div class="col-lg-12 col-12 mt-5">
+              <h3 class="text-center mb-4">Previous Partners</h3>
+            </div>
+            <div class="col-lg-12 col-12">
+              <div id="previous-sponsor-container" class="sponsor-grid">
+                {% for partner in site.data.partners %} {% if partner.current ==
+                false %}
+                <div class="sponsors-item-height">
+                  <img
+                    src="{{partner.logo}}"
+                    class="previous-sponsors-image"
+                    alt="{{partner.name}}"
+                    title="{{partner.name}}"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                {% endif %} {% endfor %}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     {% include footer.html %}
-
-    <!-- JAVASCRIPT FILES -->
-    <script src="js/optimized-bundle.min.js"></script>
-
-    <!-- Mailchimp Newsletter Script -->
-    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/70e9ca4ba196596a75a7b6a3e/7634ad86559d5b0d40a1cddd0.js");</script>
-  </body>
-</html>
