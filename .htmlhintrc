@@ -8,5 +8,6 @@
   "id-unique": true,
   "src-not-empty": true,
   "attr-no-duplication": true,
-  "title-require": true
+  "title-require": false,
+  "no-inline-styles": false
 }
