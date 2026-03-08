@@ -4,6 +4,10 @@ name: Deploy Website
 on:
   push:
     branches: [main]
+  schedule:
+    # Rebuild every Monday at 3 PM UTC (11 AM EDT / 10 AM EST)
+    # so the upcoming Wednesday hacknight details are always fresh.
+    - cron: "0 15 * * 1"
   workflow_dispatch:
 
 permissions:
