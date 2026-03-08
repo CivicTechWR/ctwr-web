@@ -95,9 +95,9 @@ module CivicTechWR
       minute = format('%02d', local.min)
 
       result = {
-        'date_formatted' => local.strftime('%A, %B %-d'),
+        'date_formatted' => "#{local.strftime('%A, %B')} #{local.day}",
         'time_formatted' => "#{hour}:#{minute} #{ampm}",
-        'datetime_iso'   => start_utc.iso8601,
+        'datetime_iso'   => local.iso8601,
         'location_short' => geo['short_address'] || geo['city_state'] || 'Downtown Kitchener',
         'location_full'  => geo['full_address'] || '',
         'event_url'      => "https://lu.ma/#{event['url']}",
@@ -111,11 +111,19 @@ module CivicTechWR
 
     # Convert a UTC Time to Eastern Time (America/Toronto) using TZInfo if available,
     # otherwise fall back to a manual DST calculation.
+    # Returns a Time object whose iso8601 output includes the correct UTC offset
+    # (e.g. "2026-03-11T17:30:00-04:00") so the <time datetime> attribute is accurate.
     def to_eastern(utc_time)
       require 'tzinfo'
       TZInfo::Timezone.get('America/Toronto').to_local(utc_time)
     rescue LoadError
-      utc_time + (dst_offset(utc_time) * 3600)
+      # Build a Time with the correct fixed offset rather than shifting UTC seconds,
+      # so that iso8601 emits "-05:00" or "-04:00" rather than "Z".
+      offset_hours = dst_offset(utc_time)
+      offset_str   = format('%+03d:00', offset_hours)
+      shifted      = Time.at(utc_time.to_i + offset_hours * 3600).utc
+      Time.new(shifted.year, shifted.month, shifted.day,
+               shifted.hour, shifted.min, shifted.sec, offset_str)
     end
 
     # Manual EST/EDT offset calculation when tzinfo is not available.

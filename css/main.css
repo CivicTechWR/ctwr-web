@@ -2372,17 +2372,17 @@ h6 + .btn {
   border-color: var(--secondary-color);
 }
 
-/* Child-selector transform on :focus is a visual motion effect, not the
-   focus indicator. The actual visible focus ring is on :focus-visible below.
-   a11ylint: false-positive on this :focus child rule */
 .projects-thumb:hover .projects-image,
-.projects-thumb:focus .projects-image {
+.projects-thumb:focus-within .projects-image {
   transform: rotate(0) translateY(0);
 }
 
-.projects-thumb:focus-visible {
+/* .projects-thumb is a div; it gets focus via its child <a>.
+   :focus-within applies when the focusable child is keyboard-focused. */
+.projects-thumb:focus-within {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
+  border-color: var(--secondary-color);
 }
 
 .projects-thumb .popup-image {
