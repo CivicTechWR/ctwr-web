@@ -8,11 +8,6 @@ AllCops:
     - "Gemfile"
     - "vendor/**/*"
 
-# The existing codebase uses single-quoted strings throughout; keep that style
-# rather than force-converting everything.
-Style/StringLiterals:
-  EnforcedStyle: single_quotes
-
 # Long lines acceptable for URIs and error messages
 Layout/LineLength:
   Max: 120

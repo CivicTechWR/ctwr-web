@@ -9,11 +9,11 @@ if [ -z "$FILES" ]; then
 fi
 
 for file in $FILES; do
-        # Skip Jekyll Liquid templates (files with YAML front matter)
-        if head -1 "$file" | grep -q '^---'; then
-                continue
-        fi
-        node -e "JSON.parse(require('fs').readFileSync('$file', 'utf8'))"
+	# Skip Jekyll Liquid templates (files with YAML front matter)
+	if head -1 "$file" | grep -q '^---'; then
+		continue
+	fi
+	node -e "JSON.parse(require('fs').readFileSync('$file', 'utf8'))"
 done
 
 echo "JSON lint passed."
