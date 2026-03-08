@@ -12,7 +12,8 @@ on:
 permissions: {}
 
 concurrency:
-  group: gh-pages-preview
+  # Shared with deploy.yml so all pushes to gh-pages are serialized.
+  group: gh-pages
   cancel-in-progress: false
 
 jobs:
@@ -49,21 +50,20 @@ jobs:
         run: npm run minify
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build --baseurl "/ctwr-web/${{ env.PREVIEW_DIR }}"
+        # Previews are served at civictechwr.org/pr-N/ so baseurl must match.
+        run: bundle exec jekyll build --baseurl "/${{ env.PREVIEW_DIR }}"
         env:
           JEKYLL_ENV: production
 
-      - name: Remove custom domain for preview
-        # Prevent github.io previews from redirecting to the custom domain.
-        run: rm -f _site/CNAME
-
-      - name: Deploy to GitHub Pages (preview branch)
+      - name: Deploy to GitHub Pages (preview)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
-          publish_branch: gh-pages-preview
+          publish_branch: gh-pages
           destination_dir: ${{ env.PREVIEW_DIR }}
+          # keep_files preserves production files and other PR previews.
+          keep_files: true
 
       - name: Comment PR with preview URL
         if: github.event_name == 'pull_request'
@@ -73,8 +73,8 @@ jobs:
         with:
           script: |
             const previewDir = process.env.PREVIEW_DIR;
-            const previewUrl = `https://${context.repo.owner}.github.io/` +
-              `${context.repo.repo}/${previewDir}/`;
+            // Previews are served under the production custom domain.
+            const previewUrl = `https://civictechwr.org/${previewDir}/`;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
