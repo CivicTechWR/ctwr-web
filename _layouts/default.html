@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="facebook-domain-verification"
+      content="ek2rz7d30q8ive1r9h3vxiacn9pf3f"
+    />
+    <link
+      rel="icon"
+      href="/images/logos/civictechwr_logo_black.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="/images/logos/civictechwr_logo_black.png"
+      type="image/x-icon"
+    />
+    {% seo %} {% if jekyll.environment == "production" %} {% assign css_file =
+    "css/main.min.css" %} {% else %} {% assign css_file = "css/main.css" %} {%
+    endif %}
+
+    <link rel="preload" href="{{ css_file }}" as="style" />
+    {% if page.preload_image %}
+    <link rel="preload" href="{{ page.preload_image }}" as="image" />
+    {% endif %} {% if page.preload_fetch %}
+    <link
+      rel="preload"
+      href="{{ page.preload_fetch }}"
+      as="fetch"
+      crossorigin
+    />
+    {% endif %}
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="//lu.ma" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link href="{{ css_file }}" rel="stylesheet" />
+  </head>
+  <body>
+    {% include icons.svg %}
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div
+      id="sr-announcements"
+      class="sr-only"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    {% include header.html %} {{ content }}
+    <script src="js/optimized-bundle.min.js"></script>
+    <script id="mcjs">
+      !(function (c, h, i, m, p) {
+        ((m = c.createElement(h)),
+          (p = c.getElementsByTagName(h)[0]),
+          (m.async = 1),
+          (m.src = i),
+          p.parentNode.insertBefore(m, p));
+      })(
+        document,
+        "script",
+        "https://chimpstatic.com/mcjs-connected/js/users/70e9ca4ba196596a75a7b6a3e/7634ad86559d5b0d40a1cddd0.js",
+      );
+    </script>
+  </body>
+</html>
