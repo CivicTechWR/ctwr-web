@@ -23,6 +23,7 @@ Security vulnerabilities should be reported privately to prevent exploitation.
 Send an email to: **civictechwr@gmail.com**
 
 Include the following information:
+
 - **Description** of the vulnerability
 - **Steps to reproduce** the issue
 - **Potential impact** assessment
@@ -32,6 +33,7 @@ Include the following information:
 ### 3. **Use our PGP key** (optional)
 
 For sensitive reports, you can encrypt your email using our PGP key:
+
 ```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 [PGP key will be added here]
@@ -41,6 +43,7 @@ For sensitive reports, you can encrypt your email using our PGP key:
 ## 🔍 What We Consider a Security Vulnerability
 
 ### Critical Issues
+
 - **Remote Code Execution** (RCE)
 - **SQL Injection** vulnerabilities
 - **Cross-Site Scripting** (XSS) that can execute arbitrary code
@@ -48,6 +51,7 @@ For sensitive reports, you can encrypt your email using our PGP key:
 - **Sensitive data exposure** (API keys, passwords, etc.)
 
 ### High Priority Issues
+
 - **Cross-Site Request Forgery** (CSRF)
 - **Server-Side Request Forgery** (SSRF)
 - **Insecure direct object references**
@@ -55,12 +59,14 @@ For sensitive reports, you can encrypt your email using our PGP key:
 - **Insecure deserialization**
 
 ### Medium Priority Issues
+
 - **Information disclosure** (non-sensitive)
 - **Denial of Service** (DoS) vulnerabilities
 - **Insecure redirects**
 - **Missing security headers**
 
 ### Low Priority Issues
+
 - **Best practice violations**
 - **Outdated dependencies** (non-critical)
 - **Minor information leaks**

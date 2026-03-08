@@ -12,25 +12,25 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 <IfModule mod_headers.c>
     # Content Security Policy
     Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jquery.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
-    
+
     # Prevent MIME type sniffing
     Header always set X-Content-Type-Options "nosniff"
-    
+
     # Prevent clickjacking
     Header always set X-Frame-Options "DENY"
-    
+
     # XSS Protection
     Header always set X-XSS-Protection "1; mode=block"
-    
+
     # Referrer Policy
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    
+
     # Permissions Policy
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-    
+
     # HSTS (HTTP Strict Transport Security)
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    
+
     # Remove server signature
     Header unset Server
     Header unset X-Powered-By
@@ -39,7 +39,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # Performance Optimizations
 <IfModule mod_expires.c>
     ExpiresActive On
-    
+
     # Images
     ExpiresByType image/jpg "access plus 1 month"
     ExpiresByType image/jpeg "access plus 1 month"
@@ -47,18 +47,18 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     ExpiresByType image/png "access plus 1 month"
     ExpiresByType image/webp "access plus 1 month"
     ExpiresByType image/svg+xml "access plus 1 month"
-    
+
     # CSS and JavaScript
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
     ExpiresByType text/javascript "access plus 1 month"
-    
+
     # Fonts
     ExpiresByType font/woff "access plus 1 month"
     ExpiresByType font/woff2 "access plus 1 month"
     ExpiresByType application/font-woff "access plus 1 month"
     ExpiresByType application/font-woff2 "access plus 1 month"
-    
+
     # HTML
     ExpiresByType text/html "access plus 1 hour"
 </IfModule>
