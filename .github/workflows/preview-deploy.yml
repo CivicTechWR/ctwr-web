@@ -49,7 +49,7 @@ jobs:
         run: npm run minify
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --baseurl "/ctwr-web/${{ env.PREVIEW_DIR }}"
         env:
           JEKYLL_ENV: production
 
