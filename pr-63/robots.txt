@@ -1,1 +1,1 @@
-Sitemap: https://civictechwr.org/sitemap.xml
+Sitemap: https://civictechwr.org/ctwr-web/pr-63/sitemap.xml

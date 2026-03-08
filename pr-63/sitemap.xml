@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://civictechwr.org/about.html</loc>
+<loc>https://civictechwr.org/ctwr-web/pr-63/about.html</loc>
 </url>
 <url>
-<loc>https://civictechwr.org/</loc>
+<loc>https://civictechwr.org/ctwr-web/pr-63/</loc>
 </url>
 <url>
-<loc>https://civictechwr.org/projects.html</loc>
+<loc>https://civictechwr.org/ctwr-web/pr-63/projects.html</loc>
 </url>
 </urlset>
