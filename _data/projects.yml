@@ -2,18 +2,21 @@
 - name: ConnectedKW
   year: [2024]
   role: ["Speakers", "Joint events"]
+  tags: ["community", "events"]
   logo: /images/connected-kw.webp
   url: https://www.connectedkw.com/
   github: https://github.com/CivicTechWR
 - name: Waterloo Region Votes
   year: [2018]
   role: ["Software", "Sponsor"]
+  tags: ["civic-engagement", "elections", "open-data"]
   logo: /images/regionvotes.webp
   url: https://www.waterlooregionvotes.org/
   github: https://github.com/CivicTechWR
-- name: CouncilBot
+- name: Plan to End Chronic Homelessness (PECH)
   year: [2024]
-  role: ["Sponsor"]
+  role: ["Software"]
+  tags: ["community", "open-data"]
   logo: /images/councilbot.webp
-  url: https://councilbot.netlify.app/
-  github: https://github.com/CivicTechWR
+  url: https://github.com/CivicTechWR/project-pech
+  github: https://github.com/CivicTechWR/project-pech

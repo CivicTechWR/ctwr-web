@@ -1,0 +1,44 @@
+{
+  // Exclude Jekyll build output from VS Code entirely — prevents linting build artifacts
+  "files.exclude": {
+    "_site": true
+  },
+  "search.exclude": {
+    "_site": true,
+    "node_modules": true
+  },
+  "files.watcherExclude": {
+    "_site/**": true
+  },
+
+  // Treat Jekyll template directories as Liquid so HTML-specific linters
+  // do not flag Liquid syntax ({% include %}, {{ content }}, {% seo %}) as
+  // invalid HTML, missing <title>, or invalid link attributes.
+  "files.associations": {
+    "_layouts/**": "liquid",
+    "_includes/**": "liquid"
+  },
+
+  // HTML language features — suppress script/style sub-validation; pages
+  // use Liquid tags that the HTML validator cannot parse
+  "html.validate.scripts": false,
+  "html.validate.styles": false,
+
+  // Axe accessibility linter — restrict to HTML/JS family only; CSS files should
+  // not be checked for HTML-level accessibility rules (false positives when linter
+  // cannot resolve CSS custom properties like var(--p-color))
+  "axe-linter.lintedFileTypes": [
+    "html",
+    "js",
+    "jsx",
+    "tsx",
+    "ts",
+    "vue",
+    "svelte"
+  ],
+
+  // HTMLHint — use the project .htmlhintrc which disables title-require
+  // (title is injected by {% seo %}, not a literal tag) and no-inline-styles
+  // (SVG sprite container uses style="display:none" intentionally)
+  "htmlhint.options": {}
+}

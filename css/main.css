@@ -23,100 +23,101 @@
      ========================================================================== */
 
   /* Brand Colors */
-  --primary-color:                #FC6C6D;  /* Coral */
-  --secondary-color:              #2D6F72;  /* Teal */
+  --primary-color: #fc6c6d; /* Coral */
+  --secondary-color: #2d6f72; /* Teal */
 
   /* Neutrals */
-  --white-color:                  #fafafa;
-  --dark-color:                   #000;
-  --gray-50:                      #f5f5f5;  /* Backgrounds only */
+  --white-color: #fafafa;
+  --dark-color: #000;
+  --gray-50: #f5f5f5; /* Backgrounds only */
 
   /* Aliases for compatibility */
-  --p-color:                      var(--dark-color);
-  --section-bg-color:             var(--gray-50);
-  --border-color:                 var(--gray-50);
-  --featured-border-color:        var(--secondary-color);
-  --body-font-family:             'DM Sans', sans-serif;
-  --h1-font-size:                 62px;
-  --h2-font-size:                 48px;
-  --h3-font-size:                 36px;
-  --h4-font-size:                 32px;
-  --h5-font-size:                 24px;
-  --h6-font-size:                 22px;
-  --p-font-size:                  16px;
-  --menu-font-size:               12px;
-  --copyright-font-size:          14px;
+  --p-color: var(--dark-color);
+  --section-bg-color: var(--gray-50);
+  --border-color: var(--gray-50);
+  --featured-border-color: var(--secondary-color);
+  --body-font-family: "DM Sans", sans-serif;
+  --h1-font-size: 3.875rem;
+  --h2-font-size: 3rem;
+  --h3-font-size: 2.25rem;
+  --h4-font-size: 2rem;
+  --h5-font-size: 1.5rem;
+  --h6-font-size: 1.375rem;
+  --p-font-size: 1rem;
+  --menu-font-size: 0.75rem;
+  --copyright-font-size: 0.875rem;
 
   /* Modern font size scale for responsive typography */
-  --font-size-mobile-xs:          12px;
-  --font-size-mobile-sm:          14px;
-  --font-size-mobile-md:          16px;
-  --font-size-mobile-lg:          18px;
-  --font-size-mobile-xl:          20px;
-  --font-size-mobile-2xl:         26px;  /* Phase 2 standardization */
-  --font-size-mobile-3xl:         28px;  /* Phase 2 standardization */
-  --font-size-2xl:                28px;
-  --font-size-3xl:                36px;
-  --font-size-4xl:                48px;
-  --font-size-display-md:         90px;  /* Phase 2 standardization - Large display sizes */
+  --font-size-mobile-xs: 0.75rem;
+  --font-size-mobile-sm: 0.875rem;
+  --font-size-mobile-md: 1rem;
+  --font-size-mobile-lg: 1.125rem;
+  --font-size-mobile-xl: 1.25rem;
+  --font-size-mobile-2xl: 1.625rem; /* Phase 2 standardization */
+  --font-size-mobile-3xl: 1.75rem; /* Phase 2 standardization */
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2.25rem;
+  --font-size-4xl: 3rem;
+  --font-size-display-sm: 2rem; /* Section display headings */
+  --font-size-display-md: 5.625rem; /* Phase 2 standardization - Large display sizes */
 
   /* Font weights - Phase 2 standardization */
-  --font-weight-normal:           400;
-  --font-weight-medium:           500;
-  --font-weight-semibold:         600;  /* Interpolated from variable font */
-  --font-weight-bold:             700;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600; /* Interpolated from variable font */
+  --font-weight-bold: 700;
 
   /* Line height scale - Phase 2 standardization */
-  --line-height-tight:            1.2;
-  --line-height-normal:           1.5;
-  --line-height-relaxed:          1.6;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
 
   /* Icon dimensions - Phase 2 standardization */
-  --icon-size-sm:                 35.5px;
-  --icon-size-md:                 44px;
-  --icon-size-lg:                 47px;
+  --icon-size-sm: 35.5px;
+  --icon-size-md: 44px;
+  --icon-size-lg: 47px;
 
   /* Alpha Color Variants - Transparency effects */
-  --white-alpha-90:               rgba(255, 255, 255, 0.9);
-  --white-alpha-80:               rgba(255, 255, 255, 0.8);
-  --white-alpha-70:               rgba(255, 255, 255, 0.7);
-  --white-alpha-20:               rgba(255, 255, 255, 0.2);
-  --white-alpha-10:               rgba(255, 255, 255, 0.1);
+  --white-alpha-90: rgba(255, 255, 255, 0.9);
+  --white-alpha-80: rgba(255, 255, 255, 0.8);
+  --white-alpha-70: rgba(255, 255, 255, 0.7);
+  --white-alpha-20: rgba(255, 255, 255, 0.2);
+  --white-alpha-10: rgba(255, 255, 255, 0.1);
 
   /* Spacing Scale - Consistent spacing system */
-  --space-1:                      4px;
-  --space-2:                      8px;
-  --space-3:                      12px;
-  --space-4:                      16px;
-  --space-5:                      24px;
-  --space-6:                      32px;
-  --space-7:                      48px;
-  --space-8:                      64px;
-  --space-9:                      40px;
-  --space-10:                     80px;
-  --space-12:                     96px;
-  --space-15:                     120px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 40px;
+  --space-10: 80px;
+  --space-12: 96px;
+  --space-15: 120px;
 
   /* Section spacing for large layout padding */
-  --section-padding-sm:           80px;
-  --section-padding-md:           120px;
-  --section-padding-lg:           160px;
-  --section-padding-xl:           200px;
+  --section-padding-sm: 80px;
+  --section-padding-md: 120px;
+  --section-padding-lg: 160px;
+  --section-padding-xl: 200px;
 
   /* Additional spacing for specific components */
-  --page-padding:                 100px;
-  --card-padding:                 40px;
-  --card-padding-sm:              30px;
-  --card-padding-xs:              15px;
+  --page-padding: 100px;
+  --card-padding: 40px;
+  --card-padding-sm: 30px;
+  --card-padding-xs: 15px;
 
   /* Simplified Border Radius - Modern radius system */
-  --radius-sm:                    4px;
-  --radius-md:                    12px;
-  --radius-card:                  16px;
-  --radius-lg:                    24px;
-  --radius-xl:                    32px;
-  --radius-full:                  9999px;
-  --radius-2xl:                   2rem;
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-card: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  --radius-2xl: 2rem;
 
   /**
    * BREAKPOINT SYSTEM
@@ -139,24 +140,24 @@
    */
 
   /* Standard breakpoints (mobile-first) */
-  --breakpoint-xs:                0;        /* Extra small: 0px and up */
-  --breakpoint-sm:                576px;    /* Small: 576px and up */
-  --breakpoint-md:                768px;    /* Medium: 768px and up */
-  --breakpoint-lg:                992px;    /* Large: 992px and up */
-  --breakpoint-xl:                1200px;   /* Extra large: 1200px and up */
-  --breakpoint-xxl:               1600px;   /* Extra extra large: 1600px and up */
+  --breakpoint-xs: 0; /* Extra small: 0px and up */
+  --breakpoint-sm: 576px; /* Small: 576px and up */
+  --breakpoint-md: 768px; /* Medium: 768px and up */
+  --breakpoint-lg: 992px; /* Large: 992px and up */
+  --breakpoint-xl: 1200px; /* Extra large: 1200px and up */
+  --breakpoint-xxl: 1600px; /* Extra extra large: 1600px and up */
 
   /* Semantic aliases for clarity */
-  --breakpoint-mobile:            576px;    /* Small mobile devices (Phase 3: consolidated from 480px) */
-  --breakpoint-tablet:            768px;    /* Tablets (same as md) */
-  --breakpoint-desktop:           992px;    /* Desktop (same as lg) */
+  --breakpoint-mobile: 576px; /* Small mobile devices (Phase 3: consolidated from 480px) */
+  --breakpoint-tablet: 768px; /* Tablets (same as md) */
+  --breakpoint-desktop: 992px; /* Desktop (same as lg) */
 
   /* Max-width boundaries (for documentation and JavaScript) */
-  --breakpoint-xs-max:            575px;    /* Max before sm */
-  --breakpoint-sm-max:            767px;    /* Max before md */
-  --breakpoint-md-max:            991px;    /* Max before lg */
-  --breakpoint-lg-max:            1199px;   /* Max before xl */
-  --breakpoint-xl-max:            1599px;   /* Max before xxl */
+  --breakpoint-xs-max: 575px; /* Max before sm */
+  --breakpoint-sm-max: 767px; /* Max before md */
+  --breakpoint-md-max: 991px; /* Max before lg */
+  --breakpoint-lg-max: 1199px; /* Max before xl */
+  --breakpoint-xl-max: 1599px; /* Max before xxl */
 
   /* Shadows - black with opacity */
   --shadow-light: rgba(0, 0, 0, 0.1);
@@ -177,16 +178,26 @@
   --secondary-alpha-3: rgba(45, 111, 114, 0.3);
 
   /* Form states */
-  --success-color:                var(--secondary-color);
-  --success-bg:                   var(--secondary-alpha-1);
-  --success-border:               var(--secondary-color);
-  --error-color:                  var(--primary-color);
-  --error-bg:                     rgba(252, 108, 109, 0.1);
-  --error-border:                 var(--primary-color);
+  /* --success-bg uses 5% teal tint (vs 10%) so teal text meets WCAG AA 4.5:1 */
+  --success-color: var(--secondary-color);
+  --success-bg: rgba(45, 111, 114, 0.05);
+  --success-border: var(--secondary-color);
+  /* --error-color uses dark red; brand coral (#fc6c6d) fails WCAG AA (2.5:1) as text */
+  --error-color: #b91c1c;
+  --error-bg: rgba(185, 28, 28, 0.08);
+  --error-border: #b91c1c;
 
   /* Gradients */
-  --gradient-hero: linear-gradient(135deg, rgba(45, 111, 114, 0.9) 0%, rgba(252, 108, 109, 0.8) 100%);
-  --gradient-newsletter: linear-gradient(135deg, var(--gray-50) 0%, var(--white-color) 100%);
+  --gradient-hero: linear-gradient(
+    135deg,
+    rgba(45, 111, 114, 0.9) 0%,
+    rgba(252, 108, 109, 0.8) 100%
+  );
+  --gradient-newsletter: linear-gradient(
+    135deg,
+    var(--gray-50) 0%,
+    var(--white-color) 100%
+  );
 }
 
 /* Typography - Base text styles using CSS custom properties */
@@ -272,22 +283,23 @@ p {
   margin-bottom: var(--space-6);
 }
 
-
-
 /* Lists */
-ul, ol {
+ul,
+ol {
   margin-bottom: var(--space-5);
   padding-left: var(--space-6);
 }
 
-ul li, ol li {
+ul li,
+ol li {
   margin-bottom: var(--space-2);
   color: var(--p-color);
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-normal);
 }
 
-ul:last-child, ol:last-child {
+ul:last-child,
+ol:last-child {
   margin-bottom: 0;
 }
 
@@ -297,7 +309,6 @@ img {
   height: auto;
   margin-bottom: var(--space-5);
 }
-
 
 /* Figure elements */
 figure {
@@ -309,7 +320,7 @@ figure:last-child {
 }
 
 /* Interactive Elements */
-a, 
+a,
 button {
   touch-action: manipulation;
   transition: all 0.3s;
@@ -319,7 +330,9 @@ button {
 a {
   color: var(--secondary-color);
   text-decoration: none;
-  transition: color 0.2s ease, text-decoration 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-decoration 0.2s ease;
 }
 
 a:hover {
@@ -673,6 +686,9 @@ strong {
 }
 
 /* Keyboard navigation improvements */
+/* tabindex="-1" elements are only programmatically focused (skip link targets,
+   dialog focus trapping). Suppressing outline is intentional; keyboard users
+   cannot tab to these elements directly. a11ylint: false-positive */
 [tabindex="-1"]:focus {
   outline: none;
 }
@@ -757,10 +773,17 @@ strong {
   font-weight: var(--font-weight-medium);
 }
 
+/* :focus rule overrides color/decoration only; visible focus ring is provided
+   by the :focus-visible rule below. a11ylint: false-positive on :focus */
 .navbar-brand:hover,
 .navbar-brand:focus {
   color: var(--white-color);
   text-decoration: none;
+}
+
+.navbar-brand:focus-visible {
+  outline: 2px solid var(--white-color);
+  outline-offset: 3px;
 }
 
 .navbar-brand .logo {
@@ -839,13 +862,15 @@ strong {
 }
 
 .navbar-nav .nav-link:hover,
-.navbar-nav .nav-link:focus,
 .navbar-nav .nav-link:visited:hover {
   color: var(--primary-color);
   text-decoration: underline;
 }
 
-.navbar-nav .nav-link:focus {
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:focus-visible {
+  color: var(--primary-color);
+  text-decoration: underline;
   outline: 2px solid var(--white-color);
   outline-offset: 2px;
 }
@@ -1009,7 +1034,7 @@ strong {
 
 .btn {
   /* Layout */
-  display: block;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: var(--space-3) var(--space-5);
@@ -1022,7 +1047,9 @@ strong {
   text-align: center;
   text-decoration: none;
   letter-spacing: 0.01em;
-  color: var(--dark-color); /* Default color - prevents inheriting parent color */
+  color: var(
+    --dark-color
+  ); /* Default color - prevents inheriting parent color */
 
   /* Visual */
   border: 2px solid transparent;
@@ -1344,7 +1371,7 @@ h6 + .btn {
 /* Ensure consistent button heights in groups */
 .btn-group .btn {
   min-height: 44px; /* Consistent minimum height for touch targets */
-  display: block;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -1430,7 +1457,9 @@ h6 + .btn {
     radial-gradient(var(--white-alpha-20) 0.5px, transparent 1px),
     radial-gradient(var(--white-alpha-20) 0.5px, transparent 1px);
   background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+  background-position:
+    0 0,
+    20px 20px;
   animation: pattern 60s linear infinite;
 }
 
@@ -1505,7 +1534,11 @@ h6 + .btn {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, var(--white-color) 30%, var(--white-alpha-70));
+  background: linear-gradient(
+    45deg,
+    var(--white-color) 30%,
+    var(--white-alpha-70)
+  );
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1594,7 +1627,7 @@ h6 + .btn {
   .hero-image {
     min-width: 650px;
   }
-  
+
   .hero-title,
   .hero h2 {
     font-size: var(--h2-font-size);
@@ -1627,7 +1660,7 @@ h6 + .btn {
     min-width: inherit;
   }
 
-  .hero{
+  .hero {
     padding-bottom: 0;
   }
 }
@@ -1764,87 +1797,6 @@ h6 + .btn {
   text-align: center;
 }
 
-/* Services Cards */
-.services-thumb {
-  background: var(--white-color);
-  border: 2px solid transparent;
-  border-radius: var(--radius-lg);
-  position: relative;
-  overflow: hidden;
-  margin-bottom: var(--space-5);
-  padding: var(--space-9) var(--space-9) 240px;
-  transition: all 0.5s;
-}
-
-.services-thumb-up {
-  position: relative;
-  bottom: 50px;
-  margin-bottom: -50px;
-}
-
-.services-thumb:hover {
-  border: 2px solid var(--secondary-color);
-  box-shadow: 0 1rem 3rem var(--shadow-md);
-}
-
-.services-thumb:hover .services-icon-wrap {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color);
-  color: var(--white-color);
-}
-
-.services-icon-wrap {
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 50%;
-  height: 55%;
-  transform: rotate(-35deg) translateY(55px);
-  transition: all ease 0.5s;
-}
-
-.services-icon {
-  font-size: var(--font-size-display-md);
-  position: relative;
-  bottom: 15px;
-}
-
-.services-thumb:hover .services-price-wrap {
-  background: var(--secondary-color);
-}
-
-.services-thumb:hover .services-price-overlay {
-  background: var(--primary-color);
-}
-
-.services-price-wrap {
-  background: var(--primary-color);
-  border-radius: var(--radius-lg);
-  position: relative;
-  overflow: hidden;
-  padding: var(--space-2) var(--space-5) var(--space-2) var(--card-padding-xs);
-  transition: all ease 0.5s;
-}
-
-.services-price-text {
-  color: var(--white-color);
-  font-size: var(--copyright-font-size);
-  font-weight: var(--font-weight-bold);
-}
-
-.services-price-overlay {
-  background: var(--secondary-color);
-  border-bottom-left-radius: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  pointer-events: none;
-}
-
 /* Responsive adjustments */
 @media (min-width: 1200px) {
   .meeting-image-wrapper {
@@ -1856,17 +1808,17 @@ h6 + .btn {
   .meeting-section-alt .row {
     align-items: stretch;
   }
-  
+
   .meeting-section-alt .col-lg-6 {
     display: flex;
     flex-direction: column;
   }
-  
+
   .meeting-image-wrapper {
     min-height: 500px;
     padding: 0 var(--space-5);
   }
-  
+
   .meeting-content {
     min-height: 500px;
   }
@@ -1888,7 +1840,7 @@ h6 + .btn {
   .meeting-section-alt {
     padding: var(--space-6) 0;
   }
-  
+
   .meeting-card {
     padding: var(--space-5);
   }
@@ -1907,7 +1859,7 @@ h6 + .btn {
   .meeting-text {
     font-size: var(--font-size-mobile-md);
   }
-  
+
   .meeting-image-wrapper {
     min-height: 280px;
     padding: 0;
@@ -1920,23 +1872,6 @@ h6 + .btn {
   }
 }
 
-/* Services responsive styles */
-@media (max-width: 991.98px) {
-  .services-thumb-up {
-    bottom: 0;
-    margin-bottom: var(--space-6);
-  }
-
-  .services-thumb {
-    margin-bottom: var(--space-6);
-    padding-bottom: 270px;
-  }
-
-  .services-icon-wrap {
-    width: 45%;
-    height: 60%;
-  }
-}
 /* Footer - Site footer */
 /* ---------------------------------------
   FOOTER COMPONENT - Site footer
@@ -2248,7 +2183,7 @@ h6 + .btn {
 }
 
 .spinner::before {
-  content: '';
+  content: "";
   box-sizing: border-box;
   position: absolute;
   top: 50%;
@@ -2260,11 +2195,13 @@ h6 + .btn {
   border-radius: var(--radius-full);
   border: 1px solid var(--border-color);
   border-top-color: var(--white-color);
-  animation: spinner .9s linear infinite;
+  animation: spinner 0.9s linear infinite;
 }
 
 @keyframes spinner {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 /* Icons - SVG icon styling */
 /* Icon Components */
@@ -2436,8 +2373,16 @@ h6 + .btn {
 }
 
 .projects-thumb:hover .projects-image,
-.projects-thumb:focus .projects-image {
+.projects-thumb:focus-within .projects-image {
   transform: rotate(0) translateY(0);
+}
+
+/* .projects-thumb is a div; it gets focus via its child <a>.
+   :focus-within applies when the focusable child is keyboard-focused. */
+.projects-thumb:focus-within {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-color: var(--secondary-color);
 }
 
 .projects-thumb .popup-image {
@@ -2484,7 +2429,6 @@ h6 + .btn {
     padding-right: 0;
     padding-left: 0;
   }
-
 }
 /* Forms - Contact forms and inputs */
 /* Contact and Form Components */
@@ -2524,7 +2468,7 @@ h6 + .btn {
   outline: none;
 }
 
-.form-floating>label {
+.form-floating > label {
   color: var(--p-color);
 }
 
@@ -2656,7 +2600,7 @@ h6 + .btn {
 .about-thumb {
   padding-right: var(--space-8);
   padding-left: var(--space-8);
-  height: 450px;
+  min-height: 450px;
 }
 
 /* Ensure images have proper spacing from adjacent content */
@@ -2695,7 +2639,7 @@ h6 + .btn {
 /**
  * Meeting Section Component
  * Styles for the meeting section used across the site
- * 
+ *
  * Components:
  * - .meeting-section-alt - Main meeting section container
  * - .meeting-image-wrapper - Image container with styling
@@ -2805,7 +2749,6 @@ h6 + .btn {
   padding: var(--space-6);
 }
 
-
 .page-title {
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 700;
@@ -2849,25 +2792,27 @@ h6 + .btn {
   border: 2px solid var(--border-color, #000);
   border-radius: var(--border-radius, 8px);
   font-size: 1rem;
-  font-family: var(--body-font-family, 'DM Sans', sans-serif);
+  font-family: var(--body-font-family, "DM Sans", sans-serif);
   background: var(--white-color);
   color: var(--dark-color);
   -webkit-text-fill-color: currentcolor;
   transition: all 0.3s ease;
 }
 
-.newsletter-cta h2, .newsletter-cta p {
+.newsletter-cta h2,
+.newsletter-cta p {
   color: var(--white-color);
 }
 
 .newsletter-input-main:focus {
-  outline: none;
-  border-color: var(--primary-color, #FC6C6D);
-  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.1);
+  outline: 2px solid var(--primary-color, #fc6c6d);
+  outline-offset: -2px;
+  border-color: var(--primary-color, #fc6c6d);
+  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
 }
 
 .newsletter-input-main::placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: #5f5f5f;
 }
 
 .newsletter-btn-main {
@@ -2898,7 +2843,7 @@ h6 + .btn {
   border: 2px solid var(--white-alpha-20);
   border-radius: var(--border-radius, 8px);
   font-size: 0.95rem;
-  font-family: var(--body-font-family, 'DM Sans', sans-serif);
+  font-family: var(--body-font-family, "DM Sans", sans-serif);
   background: var(--white-color);
   color: var(--dark-color);
   -webkit-text-fill-color: currentcolor;
@@ -2906,14 +2851,15 @@ h6 + .btn {
 }
 
 .footer-newsletter input[type="email"]:focus {
-  outline: none;
-  border-color: var(--primary-color, #FC6C6D);
+  outline: 2px solid var(--primary-color, #fc6c6d);
+  outline-offset: -2px;
+  border-color: var(--primary-color, #fc6c6d);
   background: var(--white-color);
-  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.1);
+  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
 }
 
 .footer-newsletter input[type="email"]::placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: #5f5f5f;
 }
 
 .footer-newsletter input[type="submit"] {
@@ -2947,15 +2893,15 @@ h6 + .btn {
 }
 
 #mce-error-response {
-  background-color: var(--error-bg);
-  color: var(--error-color);
-  border: 1px solid var(--error-border);
+  background-color: #f5e8e8; /* rgba(185,28,28,0.08) over #fafafa */
+  color: #b91c1c; /* WCAG AA 5.0:1 on this bg, 5.9:1 on white */
+  border: 1px solid #b91c1c;
 }
 
 #mce-success-response {
-  background-color: var(--success-bg);
-  color: var(--success-color);
-  border: 1px solid var(--success-border);
+  background-color: #f0f3f3; /* rgba(45,111,114,0.05) over #fafafa */
+  color: #2d6f72; /* WCAG AA 4.6:1 on this bg, 4.9:1 on white */
+  border: 1px solid #2d6f72;
 }
 
 /* Loading state */
@@ -3166,6 +3112,93 @@ h6 + .btn {
   margin-bottom: var(--space-2);
 }
 
+/* Projects - Filter bar */
+.projects-filter-wrap {
+  margin-bottom: var(--space-6);
+}
+
+.projects-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.filter-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  color: var(--dark-color);
+  cursor: pointer;
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-mobile-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-4);
+  text-transform: capitalize;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    color 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.filter-btn:focus-visible {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.filter-btn--active,
+.filter-btn--active:hover {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.filter-btn--active:focus-visible {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+  outline: 2px solid var(--white-color);
+  outline-offset: 2px;
+}
+
+.projects-section-heading {
+  font-size: var(--font-size-display-sm);
+  font-weight: 600;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.projects-involved-heading {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+
+/* Tag pills on project cards */
+.project-tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.project-tag-pill {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  color: var(--secondary-color);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-medium);
+  padding: 2px var(--space-2);
+  text-transform: capitalize;
+}
+
 /* ==========================================================================
    UTILITY LAYER - Abstract shapes and helpers
    ========================================================================== */
@@ -3261,7 +3294,16 @@ h6 + .btn {
   width: 120px;
   height: 60px;
   background: linear-gradient(135deg, #ff6b6b, #ffe66d);
-  clip-path: polygon(0% 0%, 20% 0%, 40% 100%, 60% 0%, 80% 100%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(
+    0% 0%,
+    20% 0%,
+    40% 100%,
+    60% 0%,
+    80% 100%,
+    100% 0%,
+    100% 100%,
+    0% 100%
+  );
   top: 45%;
   left: 12%;
   animation: float 14s ease-in-out infinite;
@@ -3272,7 +3314,18 @@ h6 + .btn {
   width: 80px;
   height: 80px;
   background: linear-gradient(135deg, #a0f1ea, #5d26c1);
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
   top: 25%;
   right: 15%;
   animation: spin 20s linear infinite;
@@ -3319,7 +3372,15 @@ h6 + .btn {
   height: 60px;
   background: linear-gradient(135deg, #00c9ff, #92fe9d);
   border-radius: var(--radius-lg);
-  clip-path: polygon(0% 50%, 25% 20%, 50% 50%, 75% 80%, 100% 50%, 100% 100%, 0% 100%);
+  clip-path: polygon(
+    0% 50%,
+    25% 20%,
+    50% 50%,
+    75% 80%,
+    100% 50%,
+    100% 100%,
+    0% 100%
+  );
   bottom: 15%;
   right: 20%;
   animation: float 15s ease-in-out infinite;
@@ -3650,13 +3711,15 @@ h6 + .btn {
  */
 
 @font-face {
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('../fonts/dm-sans-latin-400-700.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url("../fonts/dm-sans-latin-400-700.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 
 /* ==========================================================================
@@ -3769,3 +3832,28 @@ body {
 
 /* Page header styles moved to css/components/page-header.css */
 /* Footer utilities moved to css/components/footer-utilities.css */
+
+/* ==========================================================================
+   REDUCED MOTION - Accessibility: disable animations for users who prefer it
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mailchimp anti-spam honeypot field */
+.mc-honeypot {
+  position: absolute;
+  left: -5000px;
+}
+
+/* Footer link group separator */
+.footer-links-divider-before {
+  margin-top: 0.75rem;
+}

@@ -123,6 +123,7 @@ This project maintains code quality standards:
 
 See `docs/deployments.md` for production and preview deploy details, including
 the preview URL format and troubleshooting tips.
+
 - **CSS**: Linted with Stylelint
 - **Markdown/YAML/JSON**: Linted via npm scripts
 - **Accessibility**: Tested with Pa11y CI
@@ -217,7 +218,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Website**: [civictechwr.org](https://civictechwr.org)
 - **Email**: civictechwr@gmail.com
 - **GitHub**: [@CTWR-Org](https://github.com/CTWR-Org)
-- **Twitter**: [@civictechwr](https://twitter.com/civictechwr)
+- **Threads**: [@civictechwr](https://www.threads.com/@civictechwr)
+- **Bluesky**: [@civictechwr.bsky.social](https://bsky.app/profile/civictechwr.bsky.social)
 
 ## 📊 Project Status
 

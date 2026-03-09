@@ -4,20 +4,25 @@ name: Deploy Website
 on:
   push:
     branches: [main]
+  schedule:
+    # Rebuild every Monday at 3 PM UTC (11 AM EDT / 10 AM EST)
+    # so the upcoming Wednesday hacknight details are always fresh.
+    - cron: "0 15 * * 1"
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: "pages"
+  # Shared with preview-deploy so pushes to gh-pages are serialized.
+  group: gh-pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -45,18 +50,11 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      - name: Upload build artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
-        id: deploy
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          # keep_files preserves pr-N/ preview subdirectories across production deploys.
+          keep_files: true

@@ -19,6 +19,7 @@ https://civictechwr.github.io/ctwr-web/pr-<PR_NUMBER>/
 ```
 
 Notes:
+
 - PR previews use `pr-<number>` paths for stability.
 - The preview workflow removes `_site/CNAME` so `github.io` previews do not
   redirect to the custom domain.

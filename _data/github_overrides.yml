@@ -1,0 +1,85 @@
+# GitHub repository metadata overrides
+# Key = the exact repo.name from the GitHub API
+#   e.g., "ctwr-web" for github.com/CivicTechWR/ctwr-web
+#
+# Available fields:
+#   display_name: Human-readable name (replaces the repo name in the UI)
+#   description:  Override the GitHub description
+#   tags:         Array of filter tags (e.g., ["open-data", "elections"])
+#   url:          Live site URL (defaults to the GitHub repo page)
+#   hidden:       Set to true to exclude this repo from the page entirely
+#
+# Example:
+#   my-repo-name:
+#     display_name: "My Friendly Name"
+#     description: "A brief description of what this project does."
+#     tags: ["civic-engagement", "open-data"]
+#     url: "https://my-project.org"
+
+ctwr-web:
+  display_name: "CivicTechWR Website"
+  description: >-
+    The official CivicTechWR website — open source and volunteer-maintained.
+  tags: ["web", "community"]
+  url: "https://civictechwr.org"
+  hidden: true
+
+# --- Repos hidden from the projects page ---
+
+CTWR-Project-Template-New:
+  hidden: true
+
+blog:
+  hidden: true
+
+.github:
+  hidden: true
+
+CTWR-Organization-Documentation:
+  hidden: true
+
+CTWR-Template:
+  hidden: true
+
+# WRVotes: only WRvotes (most recent) is shown; all others hidden
+WRVotesPlaceholder:
+  hidden: true
+
+WRVotesFederal2019:
+  hidden: true
+
+WRVotesMunicipal2022:
+  hidden: true
+
+ctwr-member-directory:
+  hidden: true
+
+# --- Display name + tag overrides for visible repos ---
+
+WRvotes:
+  # Already featured as "Waterloo Region Votes" in Featured Projects
+  hidden: true
+
+MidtownRadioApp:
+  display_name: "Midtown Radio App"
+  tags: ["community"]
+
+project-pech:
+  display_name: "Plan to End Chronic Homelessness (PECH)"
+  tags: ["community", "open-data"]
+
+go-train-group-pass:
+  display_name: "GO Train Group Pass"
+  tags: ["community"]
+
+project-union-coop:
+  display_name: "Charity & Co-op Land Data"
+  tags: ["open-data", "civic-engagement"]
+
+project-lomo:
+  display_name: "LoMo — Community Help Network"
+  tags: ["community"]
+
+affordable-housing-portal:
+  display_name: "Affordable Housing Portal"
+  tags: ["community", "open-data", "civic-engagement"]

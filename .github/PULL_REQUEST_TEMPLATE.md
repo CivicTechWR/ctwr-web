@@ -37,14 +37,17 @@ Describe the testing performed and results:
 If applicable, add screenshots or videos to help explain your changes.
 
 ### Before
+
 <!-- Add screenshots of the current state -->
 
 ### After
+
 <!-- Add screenshots of the new state -->
 
 ## ✅ Checklist
 
 ### Code Quality
+
 - [ ] My code follows the project's style guidelines
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
@@ -52,6 +55,7 @@ If applicable, add screenshots or videos to help explain your changes.
 - [ ] My changes generate no new warnings or errors
 
 ### Accessibility
+
 - [ ] I have tested keyboard navigation
 - [ ] I have tested with screen readers
 - [ ] I have verified color contrast ratios
@@ -59,17 +63,20 @@ If applicable, add screenshots or videos to help explain your changes.
 - [ ] I have added appropriate ARIA labels
 
 ### Performance
+
 - [ ] I have tested performance impact
 - [ ] I have optimized images if added
 - [ ] I have minimized HTTP requests
 - [ ] I have considered Core Web Vitals impact
 
 ### Security
+
 - [ ] I have considered security implications
 - [ ] I have not introduced any security vulnerabilities
 - [ ] I have followed secure coding practices
 
 ### Documentation
+
 - [ ] I have updated the README if needed
 - [ ] I have updated the DEVELOPER_README if needed
 - [ ] I have added/updated code comments
@@ -78,16 +85,19 @@ If applicable, add screenshots or videos to help explain your changes.
 ## 🚀 Deployment Notes
 
 ### Breaking Changes
+
 - [ ] This PR contains breaking changes
 - [ ] Breaking changes are documented
 - [ ] Migration guide provided (if applicable)
 
 ### Dependencies
+
 - [ ] No new dependencies added
 - [ ] New dependencies are documented
 - [ ] Dependencies are up to date
 
 ### Environment Variables
+
 - [ ] No new environment variables required
 - [ ] New environment variables are documented
 - [ ] Environment variables are added to .env.example
@@ -95,11 +105,13 @@ If applicable, add screenshots or videos to help explain your changes.
 ## 📊 Performance Impact
 
 ### Metrics
+
 - **Bundle size change**: [Increase/Decrease/No change]
 - **Load time impact**: [Faster/Slower/No change]
 - **Lighthouse score**: [Before/After scores]
 
 ### Optimization
+
 - [ ] Images optimized
 - [ ] CSS minified
 - [ ] JavaScript minified

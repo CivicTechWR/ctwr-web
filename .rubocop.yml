@@ -1,0 +1,13 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+  # Only lint plugin files — Gemfile, config, etc. are not our own Ruby code
+  Include:
+    - "_plugins/**/*.rb"
+  Exclude:
+    - "Gemfile"
+    - "vendor/**/*"
+
+# Long lines acceptable for URIs and error messages
+Layout/LineLength:
+  Max: 120
