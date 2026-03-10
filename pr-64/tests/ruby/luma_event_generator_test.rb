@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "pathname"
 require "jekyll"
 require_relative "../../_plugins/fetch_luma_event"
