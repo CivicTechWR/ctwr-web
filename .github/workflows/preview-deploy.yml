@@ -9,7 +9,7 @@ on:
       - "dev"
   pull_request:
 
-permissions: {}
+permissions: { }
 
 concurrency:
   # Shared with deploy.yml so all pushes to gh-pages are serialized.
