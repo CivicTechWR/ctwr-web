@@ -75,7 +75,7 @@ module CivicTechWR
         req["Cache-Control"] = "no-cache"
 
         res = Net::HTTP.start(uri.hostname, uri.port,
-                              use_ssl: true,
+                              use_ssl: (uri.scheme == "https"),
                               open_timeout: 15,
                               read_timeout: 15) do |http|
           http.request(req)
@@ -93,7 +93,8 @@ module CivicTechWR
           location = res["location"]
           raise "Redirect from #{url} missing location header" if location.to_s.empty?
 
-          return fetch_page(URI.join(url, location).to_s, redirects_remaining - 1)
+          redirect_uri = uri.merge(location)
+          return fetch_page(redirect_uri.to_s, redirects_remaining - 1)
         else
           raise "HTTP #{res.code} received from #{url}" unless RETRYABLE_HTTP_CODES.include?(res.code)
 
@@ -166,8 +167,11 @@ module CivicTechWR
       depth = 0
       in_string = false
       escaped = false
+      index = start_index
 
-      text.chars.each_with_index.drop(start_index).each do |char, index|
+      while index < text.length
+        char = text[index]
+
         if in_string
           if escaped
             escaped = false
@@ -177,6 +181,7 @@ module CivicTechWR
             in_string = false
           end
 
+          index += 1
           next
         end
 
@@ -189,6 +194,8 @@ module CivicTechWR
           depth -= 1
           return text[start_index..index] if depth.zero?
         end
+
+        index += 1
       end
 
       nil
@@ -203,6 +210,7 @@ module CivicTechWR
           node.each { |item| find_event_candidates(item, matches) }
         end
       when Hash
+        matches << node if event_candidate?(node)
         node.each_value { |value| find_event_candidates(value, matches) }
       end
 
