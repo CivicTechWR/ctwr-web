@@ -81,7 +81,7 @@ ctwr-web/
 ├── js/                   # JavaScript bundles + data
 ├── images/               # Image assets (optimized for web)
 ├── scripts/              # Build and lint scripts
-├── tests/                # CSS sanity checks
+├── tests/                # CSS sanity checks + plugin regression tests
 └── .github/workflows/    # GitHub Actions CI/CD
 ```
 
@@ -107,10 +107,11 @@ npm run lint:json          # JSON linting
 npm run lint:shell         # Shell linting
 
 # Testing
-npm run test               # Run all CSS tests
+npm run test               # Run the full automated test suite
 npm run test:css           # CSS component tests
 npm run test:css:visual    # Asset smoke tests
 npm run test:css:all       # Full CSS test suite
+npm run test:luma          # Luma event sync regression tests
 ```
 
 ### Code Quality

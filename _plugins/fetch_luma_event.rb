@@ -12,6 +12,7 @@ require "net/http"
 require "json"
 require "uri"
 require "time"
+require "cgi"
 
 module CivicTechWR
   class LumaEventGenerator < Jekyll::Generator
@@ -19,6 +20,9 @@ module CivicTechWR
     priority :low
 
     LUMA_CALENDAR_URL = "https://luma.com/civictechwr".freeze
+    FETCH_RETRY_LIMIT = 3
+    MAX_REDIRECTS = 5
+    RETRYABLE_HTTP_CODES = %w[408 425 429 500 502 503 504].freeze
 
     FALLBACK = {
       "date_formatted" => "Wednesdays",
@@ -45,6 +49,7 @@ module CivicTechWR
       now    = Time.now.utc
 
       next_event = events
+        .map { |item| normalize_event(item) }
         .select { |item| item["start_at"] && Time.parse(item["start_at"]).utc > now }
         .min_by { |item| item["start_at"] }
 
@@ -56,30 +61,176 @@ module CivicTechWR
       format_event(next_event)
     end
 
-    def fetch_page(url)
-      uri = URI.parse(url)
-      req = Net::HTTP::Get.new(uri)
-      req["User-Agent"] = "Mozilla/5.0 (compatible; Jekyll/4.0; +https://civictechwr.org)"
-      req["Accept"]     = "text/html,application/xhtml+xml"
+    def fetch_page(url, redirects_remaining = MAX_REDIRECTS)
+      attempts = 0
 
-      res = Net::HTTP.start(uri.hostname, uri.port,
-                            use_ssl: true,
-                            open_timeout: 15,
-                            read_timeout: 15) do |http|
-        http.request(req)
+      begin
+        attempts += 1
+
+        uri = URI.parse(url)
+        req = Net::HTTP::Get.new(uri)
+        req["User-Agent"] = "Mozilla/5.0 (compatible; Jekyll/4.0; +https://civictechwr.org)"
+        req["Accept"] = "text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8"
+        req["Accept-Language"] = "en-CA,en;q=0.9"
+        req["Cache-Control"] = "no-cache"
+
+        res = Net::HTTP.start(uri.hostname, uri.port,
+                              use_ssl: (uri.scheme == "https"),
+                              open_timeout: 15,
+                              read_timeout: 15) do |http|
+          http.request(req)
+        end
+
+        case res
+        when Net::HTTPSuccess
+          body = res.body.to_s
+          raise "Empty response body from #{url}" if body.strip.empty?
+
+          return body
+        when Net::HTTPRedirection
+          raise "Too many redirects fetching #{url}" if redirects_remaining <= 0
+
+          location = res["location"]
+          raise "Redirect from #{url} missing location header" if location.to_s.empty?
+
+          redirect_uri = uri.merge(location)
+          return fetch_page(redirect_uri.to_s, redirects_remaining - 1)
+        else
+          raise "HTTP #{res.code} received from #{url}" unless RETRYABLE_HTTP_CODES.include?(res.code)
+
+          raise "Retryable HTTP #{res.code} received from #{url}"
+        end
+      rescue => e
+        raise if attempts >= FETCH_RETRY_LIMIT
+
+        Jekyll.logger.warn "LumaEvents:",
+          "Fetch attempt #{attempts} failed: #{e.message}. Retrying."
+        sleep attempts
+        retry
       end
-
-      raise "HTTP #{res.code} received from #{url}" unless res.is_a?(Net::HTTPSuccess)
-
-      res.body
     end
 
     def extract_events(html)
-      match = html.match(/<script id="__NEXT_DATA__"[^>]*>(.*?)<\/script>/m)
-      raise "Could not find __NEXT_DATA__ JSON in Luma page" unless match
+      events = extract_events_from_page_data(html)
+      return events unless events.empty?
 
-      data = JSON.parse(match[1])
-      data.dig("props", "pageProps", "initialData", "data", "featured_items") || []
+      events = extract_featured_items_blob(html)
+      return events unless events.empty?
+
+      raise "Could not find event data in Luma page"
+    end
+
+    def extract_events_from_page_data(html)
+      data = extract_page_data(html)
+      return [] unless data
+
+      find_event_candidates(data)
+    rescue JSON::ParserError => e
+      Jekyll.logger.warn "LumaEvents:",
+        "Primary JSON extraction failed: #{e.message}. Trying fallback extractor."
+      []
+    end
+
+    def extract_page_data(html)
+      json_payload = extract_next_data_json(html) || extract_embedded_json(html)
+      return nil unless json_payload
+
+      JSON.parse(json_payload)
+    end
+
+    def extract_next_data_json(html)
+      html[/<script id="__NEXT_DATA__"[^>]*>(.*?)<\/script>/m, 1]
+    end
+
+    def extract_embedded_json(html)
+      html.scan(/<script[^>]*type=["']application\/json["'][^>]*>(.*?)<\/script>/m)
+        .flatten
+        .find { |payload| payload.include?("featured_items") && payload.include?("start_at") }
+    end
+
+    def extract_featured_items_blob(html)
+      key_index = html.index('"featured_items"')
+      return [] unless key_index
+
+      array_start = html.index("[", key_index)
+      return [] unless array_start
+
+      array_json = extract_json_array(html, array_start)
+      return [] unless array_json
+
+      JSON.parse(CGI.unescapeHTML(array_json))
+    rescue JSON::ParserError
+      []
+    end
+
+    def extract_json_array(text, start_index)
+      depth = 0
+      in_string = false
+      escaped = false
+      index = start_index
+
+      while index < text.length
+        char = text[index]
+
+        if in_string
+          if escaped
+            escaped = false
+          elsif char == "\\"
+            escaped = true
+          elsif char == '"'
+            in_string = false
+          end
+
+          index += 1
+          next
+        end
+
+        case char
+        when '"'
+          in_string = true
+        when "["
+          depth += 1
+        when "]"
+          depth -= 1
+          return text[start_index..index] if depth.zero?
+        end
+
+        index += 1
+      end
+
+      nil
+    end
+
+    def find_event_candidates(node, matches = [])
+      case node
+      when Array
+        if node.all? { |item| event_candidate?(item) }
+          matches.concat(node)
+        else
+          node.each { |item| find_event_candidates(item, matches) }
+        end
+      when Hash
+        matches << node if event_candidate?(node)
+        node.each_value { |value| find_event_candidates(value, matches) }
+      end
+
+      deduplicate_events(matches)
+    end
+
+    def event_candidate?(item)
+      item.is_a?(Hash) && item["event"].is_a?(Hash) && (item["start_at"] || item.dig("event", "start_at"))
+    end
+
+    def deduplicate_events(items)
+      items.uniq do |item|
+        item["api_id"] || item.dig("event", "api_id") || item.dig("event", "url") || item["start_at"]
+      end
+    end
+
+    def normalize_event(item)
+      return item if item["start_at"]
+
+      item.merge("start_at" => item.dig("event", "start_at"))
     end
 
     def format_event(item)

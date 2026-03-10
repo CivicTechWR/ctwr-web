@@ -1,9 +1,11 @@
+---
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.2
   # Only lint plugin files — Gemfile, config, etc. are not our own Ruby code
   Include:
     - "_plugins/**/*.rb"
+    - "tests/ruby/**/*.rb"
   Exclude:
     - "Gemfile"
     - "vendor/**/*"
@@ -11,3 +13,75 @@ AllCops:
 # Long lines acceptable for URIs and error messages
 Layout/LineLength:
   Max: 120
+
+Gemspec/AttributeAssignment:
+  Enabled: true
+
+Layout/EmptyLinesAfterModuleInclusion:
+  Enabled: true
+
+Lint/ArrayLiteralInRegexp:
+  Enabled: true
+
+Lint/CopDirectiveSyntax:
+  Enabled: true
+
+Lint/RedundantTypeConversion:
+  Enabled: true
+
+Lint/SuppressedExceptionInNumberConversion:
+  Enabled: true
+
+Lint/UselessConstantScoping:
+  Enabled: true
+
+Lint/UselessDefaultValueArgument:
+  Enabled: true
+
+Lint/UselessOr:
+  Enabled: true
+
+Naming/PredicateMethod:
+  Enabled: true
+
+Style/ArrayIntersectWithSingleElement:
+  Enabled: true
+
+Style/CollectionQuerying:
+  Enabled: true
+
+Style/ComparableBetween:
+  Enabled: true
+
+Style/EmptyClassDefinition:
+  Enabled: true
+
+Style/EmptyStringInsideInterpolation:
+  Enabled: true
+
+Style/HashFetchChain:
+  Enabled: true
+
+Style/HashSlice:
+  Enabled: true
+
+Style/ItBlockParameter:
+  Enabled: true
+
+Style/ModuleMemberExistenceCheck:
+  Enabled: true
+
+Style/NegativeArrayIndex:
+  Enabled: true
+
+Style/RedundantArrayFlatten:
+  Enabled: true
+
+Style/RedundantFormat:
+  Enabled: true
+
+Style/ReverseFind:
+  Enabled: true
+
+Performance/ZipWithoutBlock:
+  Enabled: true
