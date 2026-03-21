@@ -85,17 +85,26 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-# SEO
-seo:
-  type: "Organization"
+# SEO - root-level keys read by jekyll-seo-tag
+logo: "/images/logos/civictechwr_logo_black.png"
+
+social:
   name: "Civic Tech Waterloo Region"
-  description: "Community group bringing together people to solve local issues
-    using technology"
-  url: "https://civictechwr.org"
-  logo: "/images/logos/civictechwr_logo_black.png"
-  same_as:
+  links:
     - "https://www.threads.com/@civictechwr"
     - "https://bsky.app/profile/civictechwr.bsky.social"
     - "https://facebook.com/civictechwr"
     - "https://instagram.com/civictechwr"
     - "https://www.linkedin.com/company/civictechwr"
+
+# JSON-LD Organization type for jekyll-seo-tag
+author:
+  type: "Organization"
+  name: "Civic Tech Waterloo Region"
+
+# Google Search Console verification
+# 1. Go to https://search.google.com/search-console
+# 2. Add property for https://civictechwr.org
+# 3. Choose "HTML tag" verification method
+# 4. Paste the content= value below and uncomment
+# google_site_verification: "paste_your_code_here"
