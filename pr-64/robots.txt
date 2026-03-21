@@ -1,1 +1,4 @@
-Sitemap: https://civictechwr.org/pr-64/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://civictechwr.org/sitemap.xml
