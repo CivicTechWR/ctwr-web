@@ -60,7 +60,7 @@ assert_equal "m9qpiym3", embedded_events.first.dig("event", "url"),
 # --- normalize_event: item with no top-level start_at, only event.start_at ---
 norm_generator = CivicTechWR::LumaEventGenerator.new
 item_without_top_level_start = {
-  "event" => {"api_id" => "evt-x", "start_at" => "2099-06-01T18:00:00.000Z", "url" => "abc"}
+  "event" => { "api_id" => "evt-x", "start_at" => "2099-06-01T18:00:00.000Z", "url" => "abc" }
 }
 normalized = norm_generator.send(:normalize_event, item_without_top_level_start)
 assert_equal "2099-06-01T18:00:00.000Z", normalized["start_at"],
