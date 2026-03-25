@@ -24,9 +24,13 @@ module CivicTechWR
     MAX_REDIRECTS = 5
     RETRYABLE_HTTP_CODES = %w[408 425 429 500 502 503 504].freeze
 
+    # Raised only for retryable HTTP status codes so the rescue clause can
+    # distinguish transient server errors from permanent failures (e.g. 404).
+    class TransientFetchError < StandardError; end
+
     FALLBACK = {
       "date_formatted" => "Wednesdays",
-      "time_formatted" => "6:00 PM",
+      "time_formatted" => "5:30 PM",
       "datetime_iso"   => nil,
       "location_short" => "Downtown Kitchener",
       "location_full"  => "",
@@ -37,7 +41,7 @@ module CivicTechWR
     def generate(site)
       site.data["next_meeting"] = fetch_next_event
     rescue => e
-      Jekyll.logger.warn "LumaEvents:", "Failed to fetch event data: #{e.message}. Using fallback."
+      Jekyll.logger.warn "LumaEvents:", "Failed to fetch event data (#{e.class}): #{e.message}. Using fallback."
       site.data["next_meeting"] = FALLBACK
     end
 
@@ -64,49 +68,55 @@ module CivicTechWR
     def fetch_page(url, redirects_remaining = MAX_REDIRECTS)
       attempts = 0
 
-      begin
+      loop do
         attempts += 1
 
-        uri = URI.parse(url)
-        req = Net::HTTP::Get.new(uri)
-        req["User-Agent"] = "Mozilla/5.0 (compatible; Jekyll/4.0; +https://civictechwr.org)"
-        req["Accept"] = "text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8"
-        req["Accept-Language"] = "en-CA,en;q=0.9"
-        req["Cache-Control"] = "no-cache"
+        begin
+          uri = URI.parse(url)
+          req = Net::HTTP::Get.new(uri)
+          req["User-Agent"] = "Mozilla/5.0 (compatible; Jekyll/4.0; +https://civictechwr.org)"
+          req["Accept"] = "text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8"
+          req["Accept-Language"] = "en-CA,en;q=0.9"
+          req["Cache-Control"] = "no-cache"
 
-        res = Net::HTTP.start(uri.hostname, uri.port,
-                              use_ssl: (uri.scheme == "https"),
-                              open_timeout: 15,
-                              read_timeout: 15) do |http|
-          http.request(req)
+          res = Net::HTTP.start(uri.hostname, uri.port,
+                                use_ssl: (uri.scheme == "https"),
+                                open_timeout: 15,
+                                read_timeout: 15) do |http|
+            http.request(req)
+          end
+
+          case res
+          when Net::HTTPSuccess
+            body = res.body.to_s
+            raise "Empty response body from #{url}" if body.strip.empty?
+
+            return body
+          when Net::HTTPRedirection
+            raise "Too many redirects fetching #{url}" if redirects_remaining <= 0
+
+            location = res["location"]
+            raise "Redirect from #{url} missing location header" if location.to_s.empty?
+
+            # Update url iteratively so each hop gets its own retry budget
+            # rather than the recursive approach which caused exponential amplification.
+            url = uri.merge(location).to_s
+            redirects_remaining -= 1
+            attempts = 0
+          else
+            raise "HTTP #{res.code} received from #{url}" unless RETRYABLE_HTTP_CODES.include?(res.code)
+
+            raise TransientFetchError, "Retryable HTTP #{res.code} received from #{url}"
+          end
+        rescue TransientFetchError, Net::OpenTimeout, Net::ReadTimeout,
+               Errno::ECONNREFUSED, Errno::EHOSTUNREACH, SocketError,
+               OpenSSL::SSL::SSLError => e
+          raise if attempts >= FETCH_RETRY_LIMIT
+
+          Jekyll.logger.warn "LumaEvents:",
+            "Fetch attempt #{attempts} failed (#{e.class}): #{e.message}. Retrying."
+          sleep attempts
         end
-
-        case res
-        when Net::HTTPSuccess
-          body = res.body.to_s
-          raise "Empty response body from #{url}" if body.strip.empty?
-
-          return body
-        when Net::HTTPRedirection
-          raise "Too many redirects fetching #{url}" if redirects_remaining <= 0
-
-          location = res["location"]
-          raise "Redirect from #{url} missing location header" if location.to_s.empty?
-
-          redirect_uri = uri.merge(location)
-          return fetch_page(redirect_uri.to_s, redirects_remaining - 1)
-        else
-          raise "HTTP #{res.code} received from #{url}" unless RETRYABLE_HTTP_CODES.include?(res.code)
-
-          raise "Retryable HTTP #{res.code} received from #{url}"
-        end
-      rescue => e
-        raise if attempts >= FETCH_RETRY_LIMIT
-
-        Jekyll.logger.warn "LumaEvents:",
-          "Fetch attempt #{attempts} failed: #{e.message}. Retrying."
-        sleep attempts
-        retry
       end
     end
 
@@ -125,10 +135,6 @@ module CivicTechWR
       return [] unless data
 
       find_event_candidates(data)
-    rescue JSON::ParserError => e
-      Jekyll.logger.warn "LumaEvents:",
-        "Primary JSON extraction failed: #{e.message}. Trying fallback extractor."
-      []
     end
 
     def extract_page_data(html)
@@ -136,6 +142,10 @@ module CivicTechWR
       return nil unless json_payload
 
       JSON.parse(json_payload)
+    rescue JSON::ParserError => e
+      Jekyll.logger.warn "LumaEvents:",
+        "Primary JSON parse failed: #{e.message}. Trying fallback extractor."
+      nil
     end
 
     def extract_next_data_json(html)
@@ -159,7 +169,8 @@ module CivicTechWR
       return [] unless array_json
 
       JSON.parse(CGI.unescapeHTML(array_json))
-    rescue JSON::ParserError
+    rescue JSON::ParserError => e
+      Jekyll.logger.warn "LumaEvents:", "Fallback JSON extraction failed: #{e.message}."
       []
     end
 
@@ -201,20 +212,24 @@ module CivicTechWR
       nil
     end
 
-    def find_event_candidates(node, matches = [])
+    def find_event_candidates(node)
+      matches = []
+      collect_candidates(node, matches)
+      deduplicate_events(matches)
+    end
+
+    def collect_candidates(node, matches)
       case node
       when Array
         if node.all? { |item| event_candidate?(item) }
           matches.concat(node)
         else
-          node.each { |item| find_event_candidates(item, matches) }
+          node.each { |item| collect_candidates(item, matches) }
         end
       when Hash
         matches << node if event_candidate?(node)
-        node.each_value { |value| find_event_candidates(value, matches) }
+        node.each_value { |value| collect_candidates(value, matches) }
       end
-
-      deduplicate_events(matches)
     end
 
     def event_candidate?(item)
