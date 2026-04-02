@@ -167,7 +167,6 @@ pa11y-results/
 # Ruby
 .bundle/
 vendor/
-Gemfile.lock
 
 # Jekyll
 .jekyll-cache/

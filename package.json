@@ -26,9 +26,10 @@
     "test:css": "node tests/css/component-tests.js",
     "test:css:visual": "node tests/css/visual-regression.js",
     "test:css:regression": "bash scripts/css-regression-test.sh",
+    "test:luma": "bundle exec ruby tests/ruby/luma_event_generator_test.rb",
     "validate:css:budget": "bash scripts/validate-css-budget.sh",
     "test:css:all": "npm run test:css && npm run test:css:visual && npm run test:css:regression && npm run validate:css:budget",
-    "test": "npm run test:css:all"
+    "test": "npm run test:css:all && npm run test:luma"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.11.1",
