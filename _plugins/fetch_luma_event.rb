@@ -2,26 +2,23 @@
 
 # _plugins/fetch_luma_event.rb
 #
-# Fetches the next upcoming CivicTech WR hacknight from the Luma calendar page
+# Fetches the next upcoming CivicTech WR hacknight from the Luma iCal feed
 # at Jekyll build time, then stores the result in site.data['next_meeting'].
 #
 # Used by _includes/meeting-section.html to show live event details.
 # If the fetch fails for any reason, static fallback values are used instead.
 
 require "net/http"
-require "json"
 require "uri"
 require "time"
-require "cgi"
 
 module CivicTechWR
   class LumaEventGenerator < Jekyll::Generator
     safe true
     priority :low
 
-    LUMA_CALENDAR_URL = "https://luma.com/civictechwr".freeze
+    LUMA_ICAL_URL = "https://api2.luma.com/ics/get?entity=calendar&id=cal-BVpgpDCgYaCqcPx".freeze
     FETCH_RETRY_LIMIT = 3
-    MAX_REDIRECTS = 5
     RETRYABLE_HTTP_CODES = %w[408 425 429 500 502 503 504].freeze
 
     # Raised only for retryable HTTP status codes so the rescue clause can
@@ -48,24 +45,23 @@ module CivicTechWR
     private
 
     def fetch_next_event
-      html   = fetch_page(LUMA_CALENDAR_URL)
-      events = extract_events(html)
+      ical   = fetch_ical(LUMA_ICAL_URL)
+      events = parse_ical_events(ical)
       now    = Time.now.utc
 
       next_event = events
-        .map { |item| normalize_event(item) }
-        .select { |item| item["start_at"] && Time.parse(item["start_at"]).utc > now }
-        .min_by { |item| item["start_at"] }
+        .select { |e| e[:start_at] && e[:start_at].utc > now }
+        .min_by { |e| e[:start_at] }
 
       unless next_event
-        Jekyll.logger.warn "LumaEvents:", "No upcoming events found in Luma response. Using fallback."
+        Jekyll.logger.warn "LumaEvents:", "No upcoming events found in Luma iCal feed. Using fallback."
         return FALLBACK
       end
 
       format_event(next_event)
     end
 
-    def fetch_page(url, redirects_remaining = MAX_REDIRECTS)
+    def fetch_ical(url)
       attempts = 0
 
       loop do
@@ -75,8 +71,7 @@ module CivicTechWR
           uri = URI.parse(url)
           req = Net::HTTP::Get.new(uri)
           req["User-Agent"] = "Mozilla/5.0 (compatible; Jekyll/4.0; +https://civictechwr.org)"
-          req["Accept"] = "text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8"
-          req["Accept-Language"] = "en-CA,en;q=0.9"
+          req["Accept"] = "text/calendar, */*;q=0.8"
           req["Cache-Control"] = "no-cache"
 
           res = Net::HTTP.start(uri.hostname, uri.port,
@@ -93,15 +88,10 @@ module CivicTechWR
 
             return body
           when Net::HTTPRedirection
-            raise "Too many redirects fetching #{url}" if redirects_remaining <= 0
-
             location = res["location"]
             raise "Redirect from #{url} missing location header" if location.to_s.empty?
 
-            # Update url iteratively so each hop gets its own retry budget
-            # rather than the recursive approach which caused exponential amplification.
-            url = uri.merge(location).to_s
-            redirects_remaining -= 1
+            url = URI.parse(url).merge(location).to_s
             attempts = 0
           else
             raise "HTTP #{res.code} received from #{url}" unless RETRYABLE_HTTP_CODES.include?(res.code)
@@ -120,139 +110,86 @@ module CivicTechWR
       end
     end
 
-    def extract_events(html)
-      events = extract_events_from_page_data(html)
-      return events unless events.empty?
+    # Parse VEVENT blocks from iCal text, returning an array of hashes with
+    # symbolised keys: :summary, :start_at, :end_at, :location, :description, :uid
+    def parse_ical_events(ical_text)
+      # RFC 5545 line unfolding: lines starting with SPACE or TAB continue the previous line
+      unfolded = ical_text.gsub(/\r?\n[ \t]/, "")
 
-      events = extract_featured_items_blob(html)
-      return events unless events.empty?
+      events = []
+      in_event = false
+      current = {}
 
-      raise "Could not find event data in Luma page"
-    end
-
-    def extract_events_from_page_data(html)
-      data = extract_page_data(html)
-      return [] unless data
-
-      find_event_candidates(data)
-    end
-
-    def extract_page_data(html)
-      json_payload = extract_next_data_json(html) || extract_embedded_json(html)
-      return nil unless json_payload
-
-      JSON.parse(json_payload)
-    rescue JSON::ParserError => e
-      Jekyll.logger.warn "LumaEvents:",
-        "Primary JSON parse failed: #{e.message}. Trying fallback extractor."
-      nil
-    end
-
-    def extract_next_data_json(html)
-      html[/<script id="__NEXT_DATA__"[^>]*>(.*?)<\/script>/m, 1]
-    end
-
-    def extract_embedded_json(html)
-      html.scan(/<script[^>]*type=["']application\/json["'][^>]*>(.*?)<\/script>/m)
-        .flatten
-        .find { |payload| payload.include?("featured_items") && payload.include?("start_at") }
-    end
-
-    def extract_featured_items_blob(html)
-      key_index = html.index('"featured_items"')
-      return [] unless key_index
-
-      array_start = html.index("[", key_index)
-      return [] unless array_start
-
-      array_json = extract_json_array(html, array_start)
-      return [] unless array_json
-
-      JSON.parse(CGI.unescapeHTML(array_json))
-    rescue JSON::ParserError => e
-      Jekyll.logger.warn "LumaEvents:", "Fallback JSON extraction failed: #{e.message}."
-      []
-    end
-
-    def extract_json_array(text, start_index)
-      depth = 0
-      in_string = false
-      escaped = false
-      index = start_index
-
-      while index < text.length
-        char = text[index]
-
-        if in_string
-          if escaped
-            escaped = false
-          elsif char == "\\"
-            escaped = true
-          elsif char == '"'
-            in_string = false
-          end
-
-          index += 1
-          next
-        end
-
-        case char
-        when '"'
-          in_string = true
-        when "["
-          depth += 1
-        when "]"
-          depth -= 1
-          return text[start_index..index] if depth.zero?
-        end
-
-        index += 1
-      end
-
-      nil
-    end
-
-    def find_event_candidates(node)
-      matches = []
-      collect_candidates(node, matches)
-      deduplicate_events(matches)
-    end
-
-    def collect_candidates(node, matches)
-      case node
-      when Array
-        if node.all? { |item| event_candidate?(item) }
-          matches.concat(node)
+      unfolded.each_line do |line|
+        line = line.chomp
+        case line
+        when "BEGIN:VEVENT"
+          in_event = true
+          current = {}
+        when "END:VEVENT"
+          events << build_event(current) if current["DTSTART"]
+          in_event = false
+          current = {}
         else
-          node.each { |item| collect_candidates(item, matches) }
+          next unless in_event
+
+          # Split property name (with optional params) from value on first colon
+          if (m = line.match(/\A([^:;]+)(?:;[^:]*)?:(.*)\z/))
+            current[m[1].upcase] = m[2]
+          end
         end
-      when Hash
-        matches << node if event_candidate?(node)
-        node.each_value { |value| collect_candidates(value, matches) }
+      end
+
+      events
+    end
+
+    def build_event(props)
+      {
+        summary:     props["SUMMARY"].to_s,
+        start_at:    parse_ical_dt(props["DTSTART"]),
+        end_at:      parse_ical_dt(props["DTEND"]),
+        location:    unescape_ical(props["LOCATION"].to_s),
+        description: unescape_ical(props["DESCRIPTION"].to_s),
+        uid:         props["UID"].to_s
+      }
+    end
+
+    # Parse iCal datetime strings: YYYYMMDDTHHMMSSZ or YYYYMMDDTHHMMSS or YYYYMMDD
+    def parse_ical_dt(dt_str)
+      return nil if dt_str.to_s.strip.empty?
+
+      s = dt_str.strip
+      if s.match?(/\A\d{8}T\d{6}Z\z/)
+        Time.parse(s.sub(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z/, '\1-\2-\3T\4:\5:\6Z'))
+      elsif s.match?(/\A\d{8}T\d{6}\z/)
+        Time.parse(s.sub(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})/, '\1-\2-\3T\4:\5:\6'))
+      elsif s.match?(/\A\d{8}\z/)
+        Time.parse(s.sub(/(\d{4})(\d{2})(\d{2})/, '\1-\2-\3'))
       end
     end
 
-    def event_candidate?(item)
-      item.is_a?(Hash) && item["event"].is_a?(Hash) && (item["start_at"] || item.dig("event", "start_at"))
+    # Unescape iCal text-value escapes: \n → newline, \, → comma, \; → semicolon
+    def unescape_ical(str)
+      str.gsub("\\n", "\n").gsub("\\,", ",").gsub("\\;", ";").gsub("\\\\", "\\")
     end
 
-    def deduplicate_events(items)
-      items.uniq do |item|
-        item["api_id"] || item.dig("event", "api_id") || item.dig("event", "url") || item["start_at"]
-      end
+    # Extract the first https://luma.com/... URL from the event description
+    def extract_event_url(description)
+      description.to_s[%r{https://luma\.com/[a-z0-9]+}i]
     end
 
-    def normalize_event(item)
-      return item if item["start_at"]
-
-      item.merge("start_at" => item.dig("event", "start_at"))
+    # Derive a short location: "165 King St W, Kitchener" from
+    # "165 King St W, Kitchener, ON N2G 1A7, Canada"
+    def short_location(location)
+      parts = location.split(",").map(&:strip)
+      # Take street + city (first two non-empty comma-delimited parts)
+      short = parts.first(2).join(", ")
+      short.empty? ? "Downtown Kitchener" : short
     end
 
-    def format_event(item)
-      event     = item["event"]
-      start_utc = Time.parse(item["start_at"]).utc
+    def format_event(event)
+      start_utc = event[:start_at].utc
       local     = to_eastern(start_utc)
-      geo       = event["geo_address_info"] || {}
 
       # Format time without leading zero, cross-platform
       hour   = local.hour % 12
@@ -260,13 +197,17 @@ module CivicTechWR
       ampm   = local.hour < 12 ? "AM" : "PM"
       minute = format("%02d", local.min)
 
+      location_full  = event[:location]
+      location_short = short_location(location_full)
+      event_url      = extract_event_url(event[:description]) || "https://luma.com/civictechwr"
+
       result = {
         "date_formatted" => "#{local.strftime('%A, %B')} #{local.day}",
         "time_formatted" => "#{hour}:#{minute} #{ampm}",
         "datetime_iso"   => local.iso8601,
-        "location_short" => geo["short_address"] || geo["city_state"] || "Downtown Kitchener",
-        "location_full"  => geo["full_address"] || "",
-        "event_url"      => "https://lu.ma/#{event['url']}",
+        "location_short" => location_short,
+        "location_full"  => location_full,
+        "event_url"      => event_url,
         "found"          => true
       }
 
@@ -278,13 +219,11 @@ module CivicTechWR
     # Convert a UTC Time to Eastern Time (America/Toronto) using TZInfo if available,
     # otherwise fall back to a manual DST calculation.
     # Returns a Time object whose iso8601 output includes the correct UTC offset
-    # (e.g. "2026-03-11T17:30:00-04:00") so the <time datetime> attribute is accurate.
+    # (e.g. "2026-04-15T17:30:00-04:00") so the <time datetime> attribute is accurate.
     def to_eastern(utc_time)
       require "tzinfo"
       TZInfo::Timezone.get("America/Toronto").to_local(utc_time)
     rescue LoadError
-      # Build a Time with the correct fixed offset rather than shifting UTC seconds,
-      # so that iso8601 emits "-05:00" or "-04:00" rather than "Z".
       offset_hours = dst_offset(utc_time)
       offset_str   = format("%+03d:00", offset_hours)
       shifted      = Time.at(utc_time.to_i + offset_hours * 3600).utc
@@ -299,9 +238,9 @@ module CivicTechWR
       year = utc_time.year
 
       # Second Sunday of March at 2:00 AM EST (= 7:00 AM UTC)
-      mar1         = Time.utc(year, 3, 1)
-      first_sun    = 1 + (7 - mar1.wday) % 7
-      dst_start    = Time.utc(year, 3, first_sun + 7, 7)
+      mar1      = Time.utc(year, 3, 1)
+      first_sun = 1 + (7 - mar1.wday) % 7
+      dst_start = Time.utc(year, 3, first_sun + 7, 7)
 
       # First Sunday of November at 2:00 AM EDT (= 6:00 AM UTC)
       nov1         = Time.utc(year, 11, 1)

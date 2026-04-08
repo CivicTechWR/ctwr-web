@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Luma//Civic Tech WR//EN
+X-WR-CALNAME:Civic Tech WR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20200311T213000Z
+DTEND:20200312T000000Z
+DTSTAMP:20260101T000000Z
+ORGANIZER;CN="Shay":MAILTO:calendar-invite@lu.ma
+UID:evt-past-01@events.lu.ma
+SUMMARY:CivicTechWR Hacknight (past)
+DESCRIPTION:Get up-to-date information at: https://luma.com/oldpast1\n\nAddress:\n165 King St W
+LOCATION:165 King St W, Kitchener, ON N2G 1A7, Canada
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20200318T213000Z
+DTEND:20200319T000000Z
+DTSTAMP:20260101T000000Z
+ORGANIZER;CN="Shay":MAILTO:calendar-invite@lu.ma
+UID:evt-past-02@events.lu.ma
+SUMMARY:CivicTechWR Hacknight (past)
+DESCRIPTION:Get up-to-date information at: https://luma.com/oldpast2\n\nAddress:\n165 King St W
+LOCATION:165 King St W, Kitchener, ON N2G 1A7, Canada
+END:VEVENT
+END:VCALENDAR

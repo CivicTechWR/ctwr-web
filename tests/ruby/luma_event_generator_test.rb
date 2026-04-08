@@ -12,78 +12,94 @@ def assert_equal(expected, actual, message)
   raise "#{message}\nExpected: #{expected.inspect}\nActual: #{actual.inspect}"
 end
 
-def fixture_html(name)
+def assert_match(pattern, actual, message)
+  return if actual.to_s.match?(pattern)
+
+  raise "#{message}\nPattern: #{pattern.inspect}\nActual: #{actual.inspect}"
+end
+
+def fixture_ical(name)
   FIXTURES_DIR.join(name).read
 end
 
 generator = CivicTechWR::LumaEventGenerator.new
 
-events = generator.send(:extract_events, fixture_html("next_data_calendar.html"))
-assert_equal 2, events.length, "Should extract both events from __NEXT_DATA__"
-assert_equal "m9qpiym3", events.first.dig("event", "url"), "Should preserve the first event URL"
-assert_equal "2099-03-11T21:30:00.000Z", events.first["start_at"], "Should preserve the first event start time"
+# --- parse_ical_events: two future events ---
+events = generator.send(:parse_ical_events, fixture_ical("civictechwr.ics"))
+assert_equal 2, events.length, "Should parse both events from fixture iCal"
+assert_equal "CivicTechWR Hacknight", events.first[:summary], "Should preserve event summary"
+assert_equal "evt-fixture-01@events.lu.ma", events.first[:uid], "Should preserve event UID"
+assert_equal "165 King St W, Kitchener, ON N2G 1A7, Canada", events.first[:location],
+  "Should preserve full location"
 
-generator.define_singleton_method(:fetch_page) do |_url, _redirects_remaining = CivicTechWR::LumaEventGenerator::MAX_REDIRECTS|
-  fixture_html("next_data_calendar.html")
+# --- parse_ical_dt: UTC datetime format ---
+first_start = events.first[:start_at]
+assert_equal true, first_start.is_a?(Time), "start_at should be a Time object"
+assert_equal 2099, first_start.utc.year, "Should parse year correctly"
+assert_equal 3, first_start.utc.month, "Should parse month correctly"
+assert_equal 12, first_start.utc.day, "Should parse day correctly"
+assert_equal 21, first_start.utc.hour, "Should parse hour correctly"
+
+# --- extract_event_url: URL in description ---
+url = generator.send(:extract_event_url, events.first[:description])
+assert_equal "https://luma.com/m9qpiym3", url, "Should extract event URL from description"
+
+# --- short_location ---
+short = generator.send(:short_location, "165 King St W, Kitchener, ON N2G 1A7, Canada")
+assert_equal "165 King St W, Kitchener", short, "Should extract short address from full location"
+
+short_fallback = generator.send(:short_location, "")
+assert_equal "Downtown Kitchener", short_fallback, "Should return fallback when location is empty"
+
+# --- unescape_ical: backslash-escape sequences ---
+unescaped = generator.send(:unescape_ical, "Kitchener\\, Ontario\\nCanada")
+assert_equal "Kitchener, Ontario\nCanada", unescaped, "Should unescape iCal text escapes"
+
+# --- fetch_next_event: stub with future events ---
+stub_generator = CivicTechWR::LumaEventGenerator.new
+stub_generator.define_singleton_method(:fetch_ical) do |_url|
+  fixture_ical("civictechwr.ics")
 end
 
-next_event = generator.send(:fetch_next_event)
-assert_equal true, next_event["found"], "Should keep live event data when the main payload parses"
-assert_equal "165 King St W, Kitchener", next_event["location_short"], "Should format the expected location"
-assert_equal "https://lu.ma/m9qpiym3", next_event["event_url"], "Should format the RSVP URL from the extracted event"
+result = stub_generator.send(:fetch_next_event)
+assert_equal true, result["found"], "Should return found=true for future events"
+assert_equal "165 King St W, Kitchener", result["location_short"],
+  "Should format the expected short location"
+assert_equal "https://luma.com/m9qpiym3", result["event_url"],
+  "Should extract and format the RSVP URL from event description"
+assert_match(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}\z/, result["datetime_iso"],
+  "datetime_iso should be an ISO8601 string with UTC offset")
 
-fallback_events = generator.send(:extract_events, fixture_html("broken_next_data_calendar.html"))
-assert_equal 2, fallback_events.length, "Should extract both events from the fallback featured_items blob"
-assert_equal "m9qpiym3", fallback_events.first.dig("event", "url"), "Fallback extractor should preserve the first event URL"
-assert_equal "165 King St W, Kitchener",
-             fallback_events.first.dig("event", "geo_address_info", "short_address"),
-             "Fallback extractor should preserve the short address"
-
-fallback_generator = CivicTechWR::LumaEventGenerator.new
-fallback_generator.define_singleton_method(:fetch_page) do |_url, _redirects_remaining = CivicTechWR::LumaEventGenerator::MAX_REDIRECTS|
-  fixture_html("broken_next_data_calendar.html")
-end
-
-fallback_next_event = fallback_generator.send(:fetch_next_event)
-assert_equal true, fallback_next_event["found"], "Should keep live event data when the fallback extractor is needed"
-assert_equal "https://lu.ma/m9qpiym3", fallback_next_event["event_url"], "Fallback extraction should still format the RSVP URL"
-
-# --- extract_embedded_json path ---
-# Fixture has no __NEXT_DATA__ script; events are in a <script type="application/json"> tag.
-embedded_generator = CivicTechWR::LumaEventGenerator.new
-embedded_events = embedded_generator.send(:extract_events, fixture_html("embedded_json_calendar.html"))
-assert_equal 2, embedded_events.length,
-  "Should extract both events from embedded <script type='application/json'>"
-assert_equal "m9qpiym3", embedded_events.first.dig("event", "url"),
-  "Embedded JSON extractor should preserve the first event URL"
-
-# --- normalize_event: item with no top-level start_at, only event.start_at ---
-norm_generator = CivicTechWR::LumaEventGenerator.new
-item_without_top_level_start = {
-  "event" => { "api_id" => "evt-x", "start_at" => "2099-06-01T18:00:00.000Z", "url" => "abc" }
-}
-normalized = norm_generator.send(:normalize_event, item_without_top_level_start)
-assert_equal "2099-06-01T18:00:00.000Z", normalized["start_at"],
-  "normalize_event should lift event.start_at when top-level start_at is absent"
-
-# --- extract_events raises when page contains no event data ---
-no_data_generator = CivicTechWR::LumaEventGenerator.new
-no_data_raised = false
-begin
-  no_data_generator.send(:extract_events, "<html><body>no event data here</body></html>")
-rescue RuntimeError => e
-  no_data_raised = e.message.include?("Could not find event data")
-end
-assert_equal true, no_data_raised,
-  "extract_events should raise when no event data is found in the page"
-
-# --- fetch_next_event returns FALLBACK when all events are in the past ---
+# --- fetch_next_event: stub with all past events → FALLBACK ---
 past_generator = CivicTechWR::LumaEventGenerator.new
-past_generator.define_singleton_method(:fetch_page) do |_url, _redirects_remaining = CivicTechWR::LumaEventGenerator::MAX_REDIRECTS|
-  fixture_html("past_events_calendar.html")
+past_generator.define_singleton_method(:fetch_ical) do |_url|
+  fixture_ical("past_events.ics")
 end
+
 past_result = past_generator.send(:fetch_next_event)
 assert_equal false, past_result["found"],
   "fetch_next_event should return FALLBACK when all events are in the past"
+assert_equal "https://luma.com/civictechwr", past_result["event_url"],
+  "FALLBACK event_url should be the generic calendar URL"
+
+# --- parse_ical_events: RFC 5545 line unfolding ---
+folded_ical = <<~ICAL
+  BEGIN:VCALENDAR
+  VERSION:2.0
+  BEGIN:VEVENT
+  DTSTART:20990401T180000Z
+  UID:evt-fold-test@events.lu.ma
+  SUMMARY:Folded Line
+   Test Event
+  DESCRIPTION:Get up-to-date information at: https://luma.com/foldtest\\n\\
+   nAddress:\\n123 Main St
+  LOCATION:123 Main St, City
+  END:VEVENT
+  END:VCALENDAR
+ICAL
+folded_events = generator.send(:parse_ical_events, folded_ical)
+assert_equal 1, folded_events.length, "Should parse folded iCal correctly"
+assert_equal "Folded LineTest Event", folded_events.first[:summary],
+  "Should unfold continuation lines per RFC 5545 (fold indicator whitespace is removed)"
 
 puts "Luma event generator regression tests passed."
