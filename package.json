@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@axe-core/cli": "^4.11.1",
-    "@playwright/test": "^1.58.2",
+    "@playwright/test": "^1.59.1",
     "autoprefixer": "^10.4.27",
     "axe-core": "^4.11.2",
     "browserslist": "^4.26.3",
