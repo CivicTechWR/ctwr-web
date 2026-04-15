@@ -26,6 +26,14 @@ updates:
       # Ignore major version updates for now
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+    # Auto-merge minor and patch updates after CI passes
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   # Enable version updates for Ruby (Bundler)
   - package-ecosystem: "bundler"
@@ -49,6 +57,14 @@ updates:
       # Ignore major version updates for now
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+    # Auto-merge minor and patch updates after CI passes
+    groups:
+      bundler-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
@@ -68,3 +84,11 @@ updates:
     labels:
       - "dependencies"
       - "github-actions"
+    # Auto-merge minor and patch updates after CI passes
+    groups:
+      github-actions-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
