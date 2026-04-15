@@ -19,6 +19,7 @@ module CivicTechWR
 
     LUMA_ICAL_URL = "https://api2.luma.com/ics/get?entity=calendar&id=cal-BVpgpDCgYaCqcPx".freeze
     FETCH_RETRY_LIMIT = 3
+    MAX_REDIRECTS = 10
     RETRYABLE_HTTP_CODES = %w[408 425 429 500 502 503 504].freeze
 
     # Raised only for retryable HTTP status codes so the rescue clause can
@@ -62,7 +63,8 @@ module CivicTechWR
     end
 
     def fetch_ical(url)
-      attempts = 0
+      attempts   = 0
+      redirects  = 0
 
       loop do
         attempts += 1
@@ -91,7 +93,10 @@ module CivicTechWR
             location = res["location"]
             raise "Redirect from #{url} missing location header" if location.to_s.empty?
 
-            url = URI.parse(url).merge(location).to_s
+            redirects += 1
+            raise "Too many redirects fetching #{url}" if redirects > MAX_REDIRECTS
+
+            url      = URI.parse(url).merge(location).to_s
             attempts = 0
           else
             raise "HTTP #{res.code} received from #{url}" unless RETRYABLE_HTTP_CODES.include?(res.code)
@@ -155,22 +160,24 @@ module CivicTechWR
     end
 
     # Parse iCal datetime strings: YYYYMMDDTHHMMSSZ or YYYYMMDDTHHMMSS or YYYYMMDD
+    # Always returns UTC to avoid dependence on the build machine's local timezone.
     def parse_ical_dt(dt_str)
       return nil if dt_str.to_s.strip.empty?
 
       s = dt_str.strip
-      if s.match?(/\A\d{8}T\d{6}Z\z/)
-        Time.parse(s.sub(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z/, '\1-\2-\3T\4:\5:\6Z'))
-      elsif s.match?(/\A\d{8}T\d{6}\z/)
-        Time.parse(s.sub(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})/, '\1-\2-\3T\4:\5:\6'))
-      elsif s.match?(/\A\d{8}\z/)
-        Time.parse(s.sub(/(\d{4})(\d{2})(\d{2})/, '\1-\2-\3'))
+      if (m = s.match(/\A(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z\z/))
+        Time.utc(m[1].to_i, m[2].to_i, m[3].to_i, m[4].to_i, m[5].to_i, m[6].to_i)
+      elsif (m = s.match(/\A(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})\z/))
+        Time.utc(m[1].to_i, m[2].to_i, m[3].to_i, m[4].to_i, m[5].to_i, m[6].to_i)
+      elsif (m = s.match(/\A(\d{4})(\d{2})(\d{2})\z/))
+        Time.utc(m[1].to_i, m[2].to_i, m[3].to_i)
       end
     end
 
-    # Unescape iCal text-value escapes: \n → newline, \, → comma, \; → semicolon
+    # Unescape iCal text-value escapes per RFC 5545:
+    # \n or \N → newline, \, → comma, \; → semicolon, \\ → backslash
     def unescape_ical(str)
-      str.gsub("\\n", "\n").gsub("\\,", ",").gsub("\\;", ";").gsub("\\\\", "\\")
+      str.gsub(/\\[nN]/, "\n").gsub("\\,", ",").gsub("\\;", ";").gsub("\\\\", "\\")
     end
 
     # Extract the first https://luma.com/... URL from the event description
