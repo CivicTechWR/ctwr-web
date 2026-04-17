@@ -880,6 +880,7 @@ strong {
   margin-left: auto;
   display: flex;
   align-items: center;
+  gap: var(--space-2);
 }
 
 /* MOBILE STYLES: 0-768px (phones) */
@@ -941,6 +942,8 @@ strong {
     width: 100%;
     padding: var(--space-2) var(--space-4);
     margin-top: var(--space-2);
+    flex-direction: column;
+    gap: var(--space-2);
   }
 
   /* Button uses btn--full-mobile modifier class for width control */
