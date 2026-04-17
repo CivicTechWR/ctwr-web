@@ -85,6 +85,42 @@ ctwr-web/
 └── .github/workflows/    # GitHub Actions CI/CD
 ```
 
+## 📅 Luma Event Sync
+
+The meeting section on the homepage shows live event data fetched from Luma at build time.
+
+**How it works:**
+
+`_plugins/fetch_luma_event.rb` is a Jekyll generator that runs during every build. It fetches the
+Luma iCal feed, finds the next upcoming event, and stores it in `site.data['next_meeting']`.
+`_includes/meeting-section.html` renders this data into the static HTML.
+
+- **iCal feed**: `https://api2.luma.com/ics/get?entity=calendar&id=cal-BVpgpDCgYaCqcPx`
+- **Fallback**: if the fetch fails or no future events exist, a generic "Wednesdays at 5:30 PM,
+  Downtown Kitchener" message is shown with a link to the Luma calendar.
+
+**Why it must deploy via GitHub Actions (not legacy GitHub Pages):**
+
+GitHub Pages' legacy build mode runs Jekyll with `--safe`, which disables all custom plugins.
+The site **must** be deployed by pushing to the `gh-pages` branch (done automatically by
+`.github/workflows/deploy.yml` using `peaceiris/actions-gh-pages`), and GitHub Pages must be
+configured to serve from the `gh-pages` branch — **not** the `main` branch.
+
+> If you ever see "Wednesdays at 6:00 PM" (the Liquid template default) on the live site, the
+> Pages source is misconfigured. Go to **Settings → Pages** and set the source to
+> **Deploy from a branch → gh-pages → / (root)**.
+
+**Rebuild schedule:**
+
+The site rebuilds automatically on two schedules so event data stays current:
+- **Monday 3 PM UTC** — refresh before the Wednesday hacknight
+- **Thursday 2 AM UTC** — refresh after Wednesday hacknight ends (so the next event shows)
+
+Run the plugin regression tests with:
+```bash
+npm run test:luma
+```
+
 ## 🛠️ Development
 
 ### Available Scripts

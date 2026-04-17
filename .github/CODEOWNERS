@@ -1,1 +1,6 @@
-* @CivicTechWR/organizers
+# Primary reviewers for all files
+* @CivicTechWR/website
+
+# Keep organizers looped in on workflow and governance changes
+/.github/workflows/** @CivicTechWR/website @CivicTechWR/organizers
+/docs/**              @CivicTechWR/website @CivicTechWR/organizers
