@@ -5,9 +5,11 @@ on:
   push:
     branches: [main]
   schedule:
-    # Rebuild every Monday at 3 PM UTC (11 AM EDT / 10 AM EST)
-    # so the upcoming Wednesday hacknight details are always fresh.
+    # Monday 3 PM UTC (11 AM EDT) — refresh before the week's hacknight.
     - cron: "0 15 * * 1"
+    # Thursday 2 AM UTC (Wed 10 PM EDT) — refresh after Wednesday hacknight ends
+    # so the site shows the next upcoming event rather than the just-finished one.
+    - cron: "0 2 * * 4"
   workflow_dispatch:
 
 permissions:
