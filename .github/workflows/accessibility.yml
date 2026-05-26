@@ -54,8 +54,12 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "22"
+          cache: "npm"
 
-      - name: Run Pa11y CI against built site
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Run accessibility checks against built site
         run: |
           echo "Starting http-server on port 4000..."
           npx --yes http-server _site -p 4000 &
@@ -64,5 +68,10 @@ jobs:
           sleep 5
           echo "Testing server connectivity..."
           curl -I http://127.0.0.1:4000/ || echo "Server not responding"
-          echo "Running pa11y-ci..."
+          echo "Running pa11y-ci (HTML_CodeSniffer / WCAG2AA)..."
           npx --yes pa11y-ci --config .pa11yci.json
+          echo "Running axe-core checks..."
+          PAGES=("http://127.0.0.1:4000/" "http://127.0.0.1:4000/about.html" "http://127.0.0.1:4000/projects.html")
+          for url in "${PAGES[@]}"; do
+            npx @axe-core/cli --exit "$url" --chrome-options="no-sandbox,disable-setuid-sandbox,disable-dev-shm-usage"
+          done
