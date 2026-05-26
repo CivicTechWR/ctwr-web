@@ -7,7 +7,16 @@ on:
       - "perf/**"
       - "feature/**"
       - "dev"
+    paths-ignore:
+      - ".github/**"
+      - "tests/**"
+      - "docs/**"
   pull_request:
+    paths-ignore:
+      - ".github/**"
+      - "tests/**"
+      - "docs/**"
+
 
 permissions: { }
 
