@@ -75,6 +75,11 @@
     "basic-ftp": "^5.3.1",
     "fast-uri": "^3.1.2",
     "ip-address": "^10.2.0",
-    "ws": "^8.21.0"
+    "puppeteer-core": {
+      "ws": "^8.21.0"
+    },
+    "selenium-webdriver": {
+      "ws": "^8.21.0"
+    }
   }
 }
