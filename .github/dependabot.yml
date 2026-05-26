@@ -22,6 +22,20 @@ updates:
     labels:
       - "dependencies"
       - "javascript"
+    groups:
+      postcss:
+        patterns:
+          - "postcss*"
+          - "autoprefixer"
+      stylelint:
+        patterns:
+          - "stylelint*"
+      pa11y:
+        patterns:
+          - "pa11y*"
+      playwright:
+        patterns:
+          - "@playwright/*"
     ignore:
       # Ignore major version updates for now
       - dependency-name: "*"
@@ -68,3 +82,7 @@ updates:
     labels:
       - "dependencies"
       - "github-actions"
+    groups:
+      actions:
+        patterns:
+          - "actions/*"
