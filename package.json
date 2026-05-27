@@ -40,7 +40,7 @@
     "markdownlint-cli": "^0.48.0",
     "lighthouse": "^12.8.2",
     "pa11y": "^9.1.1",
-    "pa11y-ci": "^4.1.0",
+    "pa11y-ci": "^4.1.1",
     "postcss": "^8.5.15",
     "postcss-cli": "^11.0.1",
     "postcss-combine-duplicated-selectors": "^10.0.2",
