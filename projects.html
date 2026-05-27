@@ -7,7 +7,7 @@ preload_fetch: "js/projects.json"
 ---
 
 <div class="has-fixed-nav">
-  <header class="site-header">
+  <div class="site-header" role="region" aria-label="Page introduction">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 col-12">
@@ -50,7 +50,7 @@ preload_fetch: "js/projects.json"
         </section>
       </div>
     </div>
-  </header>
+  </div>
 
   <main id="main-content" class="projects-main-centered shape-container">
     <!-- Abstract Shapes for Projects Header Section -->
@@ -304,7 +304,7 @@ preload_fetch: "js/projects.json"
       );
       githubLink.textContent = "GitHub";
 
-      const title = document.createElement("h4");
+      const title = document.createElement("h3");
       title.className = "projects-title";
       title.textContent = project.display_name || project.name;
 
@@ -406,7 +406,7 @@ preload_fetch: "js/projects.json"
       );
       githubLink.textContent = "GitHub";
 
-      const titleEl = document.createElement("h4");
+      const titleEl = document.createElement("h3");
       titleEl.className = "projects-title";
       titleEl.textContent = displayName;
 
