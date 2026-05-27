@@ -62,13 +62,15 @@ for (const page of PAGES_WITH_NEWSLETTER) {
 
     test("browser rejects empty submission", async ({ page: pw }) => {
       await pw.locator("#mc-embedded-subscribe-main").click();
-      await expect(pw).not.toHaveURL(/list-manage\.com/);
+      const valid = await pw.locator("#mce-EMAIL-main").evaluate((el) => el.checkValidity());
+      expect(valid).toBe(false);
     });
 
     test("browser rejects invalid email", async ({ page: pw }) => {
       await pw.locator("#mce-EMAIL-main").fill("not-an-email");
       await pw.locator("#mc-embedded-subscribe-main").click();
-      await expect(pw).not.toHaveURL(/list-manage\.com/);
+      const valid = await pw.locator("#mce-EMAIL-main").evaluate((el) => el.checkValidity());
+      expect(valid).toBe(false);
     });
 
     test("accepts a valid email without navigating to Mailchimp", async ({
