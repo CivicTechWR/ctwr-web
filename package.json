@@ -47,7 +47,7 @@
     "postcss-sort-media-queries": "^4.2.1",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^36.0.1",
-    "terser": "^5.46.2",
+    "terser": "^5.48.0",
     "yaml-lint": "^1.7.0"
   },
   "overrides": {
