@@ -24,6 +24,12 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
+      # contents: write is required by peaceiris/actions-gh-pages to push the
+      # built site to gh-pages with keep_files: true (which preserves pr-N/
+      # preview subdirectories). Migrating to the native actions/deploy-pages
+      # API would allow pages: write + id-token: write instead, but that API
+      # does not support keep_files and would wipe preview directories on every
+      # production deploy. Tracked as FIND-05 in the threat model.
       contents: write
     steps:
       - name: Checkout code
