@@ -58,18 +58,6 @@
     "minimatch@3.1.5": {
       "brace-expansion": "^1.1.14"
     },
-    "markdownlint-cli": {
-      "brace-expansion": "^5.0.6"
-    },
-    "axios": "^1.16.1",
-    "basic-ftp": "^5.3.1",
-    "fast-uri": "^3.1.2",
-    "ip-address": "^10.2.0",
-    "puppeteer-core": {
-      "ws": "^8.21.0"
-    },
-    "selenium-webdriver": {
-      "ws": "^8.21.0"
-    }
+    "tmp": "0.2.6"
   }
 }
