@@ -64,3 +64,4 @@ jobs:
 
       - name: Run Bundler Audit
         run: bundle exec bundler-audit check --update
+

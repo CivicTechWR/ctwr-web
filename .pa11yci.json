@@ -2,9 +2,12 @@
   "defaults": {
     "standard": "WCAG2AA",
     "timeout": 30000,
-    "screenCapture": "pa11y-results",
     "chromeLaunchConfig": {
-      "args": ["--no-sandbox"]
+      "args": [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage"
+      ]
     }
   },
   "urls": [
