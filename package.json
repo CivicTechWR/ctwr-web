@@ -25,6 +25,7 @@
     "test:luma": "bundle exec ruby tests/ruby/luma_event_generator_test.rb",
     "validate:css:budget": "bash scripts/validate-css-budget.sh",
     "test:css:all": "npm run test:css && npm run test:css:visual && npm run validate:css:budget",
+    "test:e2e": "npx playwright test",
     "test": "npm run test:css:all && npm run test:luma"
   },
   "devDependencies": {
