@@ -5,7 +5,19 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "images/**"
+      - "fonts/**"
+      - "CNAME"
+      - "robots.txt"
+      - "LICENSE"
   pull_request:
+    paths-ignore:
+      - "images/**"
+      - "fonts/**"
+      - "CNAME"
+      - "robots.txt"
+      - "LICENSE"
 
 permissions: { }
 
