@@ -41,7 +41,7 @@
     "lighthouse": "^12.8.2",
     "pa11y": "^9.1.1",
     "pa11y-ci": "^4.1.0",
-    "postcss": "^8.5.13",
+    "postcss": "^8.5.15",
     "postcss-cli": "^11.0.1",
     "postcss-combine-duplicated-selectors": "^10.0.2",
     "postcss-sort-media-queries": "^4.2.1",
