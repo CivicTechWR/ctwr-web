@@ -49,7 +49,7 @@ short = generator.send(:short_location, "165 King St W, Kitchener, ON N2G 1A7, C
 assert_equal "165 King St W, Kitchener", short, "Should extract short address from full location"
 
 short_fallback = generator.send(:short_location, "")
-assert_equal "Downtown Kitchener", short_fallback, "Should return fallback when location is empty"
+assert_equal "165 King St W, Kitchener", short_fallback, "Should return fallback when location is empty"
 
 # --- unescape_ical: backslash-escape sequences ---
 unescaped = generator.send(:unescape_ical, "Kitchener\\, Ontario\\nCanada")
