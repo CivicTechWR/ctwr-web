@@ -72,7 +72,9 @@ jobs:
 
       - name: Install Chrome for Puppeteer
         if: steps.cache-puppeteer.outputs.cache-hit != 'true'
-        run: npx puppeteer browsers install chrome
+        run: |
+          rm -rf ~/.cache/puppeteer/chrome
+          npx puppeteer browsers install chrome
 
       - name: Run accessibility checks against built site
         run: |
