@@ -2,6 +2,12 @@
 
 This file documents non-obvious constraints, workflows, and architecture decisions for this repository. README.md covers general setup; this file covers the things that would take you an hour to discover on your own.
 
+## The project and why it matters
+
+CivicTech Waterloo Region is a community of people who cherish their region and want to see it grow. The website is not just a static page — it is the front door for residents, organizers, volunteers, and contributors trying to connect with that community. Every regression we introduce is a door that doesn't open for someone. Every improvement we make is an invitation.
+
+Approach all work here with that in mind. Be respectful and intentional. Move carefully. Test thoroughly. Document for the contributors who come after you. When a change is risky, take the slower path. When something breaks, fix the root cause, not just the symptom.
+
 ## Table of Contents
 
 1. [Repo at a glance](#1-repo-at-a-glance)
