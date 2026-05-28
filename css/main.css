@@ -694,13 +694,6 @@ strong {
   outline: none;
 }
 
-/* Hide checkbox used for mobile toggle */
-.nav-toggle {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
 /* Sticky wrapper for nav */
 .sticky-wrapper {
   position: relative;
@@ -913,8 +906,8 @@ strong {
     padding: var(--space-4) 0;
   }
 
-  /* Show navigation when checkbox is checked */
-  #nav-toggle:checked ~ .navbar-collapse {
+  /* Show navigation when toggle button is active */
+  .navbar-collapse.is-open {
     display: flex;
     flex-direction: column;
     align-items: stretch;
