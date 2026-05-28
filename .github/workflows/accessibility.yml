@@ -63,6 +63,9 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
+      - name: Install Chrome for Puppeteer
+        run: npx puppeteer browsers install chrome
+
       - name: Run accessibility checks against built site
         run: |
           echo "Starting http-server on port 4000..."
