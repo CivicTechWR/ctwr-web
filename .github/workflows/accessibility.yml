@@ -63,7 +63,15 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
+      - name: Cache Puppeteer browsers
+        id: cache-puppeteer
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/puppeteer
+          key: puppeteer-${{ runner.os }}-${{ hashFiles('package.json') }}
+
       - name: Install Chrome for Puppeteer
+        if: steps.cache-puppeteer.outputs.cache-hit != 'true'
         run: npx puppeteer browsers install chrome
 
       - name: Run accessibility checks against built site
