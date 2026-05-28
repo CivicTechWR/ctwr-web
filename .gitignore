@@ -131,7 +131,7 @@ css/autoprefixed/
 .claude/
 claudedocs/
 claude.md
-CLAUDE.md
+!CLAUDE.md
 AGENT_TASK_*.md
 CLEANUP_SUMMARY.md
 COMPREHENSIVE_CODE_REVIEW_*.md
