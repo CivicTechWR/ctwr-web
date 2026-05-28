@@ -124,7 +124,7 @@
       );
       githubLink.textContent = "GitHub";
 
-      const title = document.createElement("h4");
+      const title = document.createElement("h3");
       title.className = "projects-title";
       title.textContent = project.display_name || project.name;
 
@@ -166,9 +166,13 @@
 
     function loadProjects() {
       fetch("/js/projects.json")
-        .then((r) => r.json())
+        .then((r) => {
+          if (!r.ok) throw new Error("projects.json responded " + r.status);
+          return r.json();
+        })
         .then((projects) => {
           const container = document.getElementById("project-container");
+          if (!container) return;
           container.innerHTML = "";
           projects.forEach((p) => container.appendChild(buildFeaturedCard(p)));
 
@@ -182,13 +186,15 @@
           updateFilterBar();
           applyFilter(getActiveFilter());
         })
-        .catch(() => {
+        .catch((err) => {
+          console.error("[projects] Failed to load featured projects:", err);
           const container = document.getElementById("project-container");
-          const err = document.createElement("div");
-          err.className = "col-12 text-center";
-          err.innerHTML =
+          if (!container) return;
+          const errDiv = document.createElement("div");
+          errDiv.className = "col-12 text-center";
+          errDiv.innerHTML =
             "<p>Sorry, we couldn't load the projects. Please try again later.</p>";
-          container.appendChild(err);
+          container.appendChild(errDiv);
         });
     }
 
@@ -226,7 +232,7 @@
       );
       githubLink.textContent = "GitHub";
 
-      const titleEl = document.createElement("h4");
+      const titleEl = document.createElement("h3");
       titleEl.className = "projects-title";
       titleEl.textContent = displayName;
 
@@ -256,17 +262,25 @@
 
     function loadGitHubProjects() {
       Promise.all([
-        fetch(
-          "https://api.github.com/orgs/CivicTechWR/repos?per_page=100",
-        ).then((r) => r.json()),
+        fetch("https://api.github.com/orgs/CivicTechWR/repos?per_page=100").then(
+          (r) => {
+            if (!r.ok) throw new Error("GitHub API responded " + r.status);
+            return r.json();
+          },
+        ),
         fetch("/js/github_overrides.json")
-          .then((r) => r.json())
-          .catch(() => ({})),
+          .then((r) => {
+            if (!r.ok) throw new Error("github_overrides.json responded " + r.status);
+            return r.json();
+          })
+          .catch((err) => {
+            console.error("[projects] Could not load github_overrides.json, overrides will not be applied:", err);
+            return {};
+          }),
       ])
         .then(([repos, overrides]) => {
-          const container = document.getElementById(
-            "github-projects-container",
-          );
+          const container = document.getElementById("github-projects-container");
+          if (!container) return;
           container.innerHTML = "";
 
           repos
@@ -288,15 +302,15 @@
           updateFilterBar();
           applyFilter(getActiveFilter());
         })
-        .catch(() => {
-          const container = document.getElementById(
-            "github-projects-container",
-          );
-          const err = document.createElement("div");
-          err.className = "col-12 text-center";
-          err.innerHTML =
+        .catch((err) => {
+          console.error("[projects] Failed to load GitHub projects:", err);
+          const container = document.getElementById("github-projects-container");
+          if (!container) return;
+          const errDiv = document.createElement("div");
+          errDiv.className = "col-12 text-center";
+          errDiv.innerHTML =
             "<p>Sorry, we couldn't load the other projects. Please try again later.</p>";
-          container.appendChild(err);
+          container.appendChild(errDiv);
         });
     }
 
