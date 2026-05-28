@@ -96,8 +96,8 @@ EOF
 ```
 **Rule:** The required check name must match the job's `name:` field (display name), not the job key (YAML key).
 
-**`pa11y` failing with "Chrome folder exists but executable missing"**
-The pa11y job uses puppeteer-core, which does not auto-download Chrome. The workflow caches `~/.cache/puppeteer` via `actions/cache` keyed on `package.json`, and runs `npx puppeteer browsers install chrome` only on a cache miss. If the cache becomes corrupt (folder present, binary missing), delete the cache entry in the GitHub Actions UI (Settings → Caches) and rerun. If the cache step is missing entirely, add it back — see `accessibility.yml` for the current pattern.
+**`pa11y` failing with Chrome-related errors**
+The pa11y job uses `google-chrome-stable` and `chromedriver` pre-installed on the ubuntu runner. The `Configure Chrome for accessibility testing` step sets `PUPPETEER_EXECUTABLE_PATH` to the system Chrome (for pa11y-ci) and symlinks the system `chromedriver` binary into `node_modules/chromedriver/lib/chromedriver/` (for `@axe-core/cli`). If pa11y fails with a Chrome or chromedriver error, verify the step is present in `accessibility.yml` and that `google-chrome-stable` and `chromedriver` are available on the runner (both are pre-installed on ubuntu-latest).
 
 **`super-linter` / `SHELL_SHFMT` failing on new shell scripts**
 All `.sh` files must use **tabs** for indentation (shfmt default). Run `shfmt -w <script.sh>` locally before committing.
