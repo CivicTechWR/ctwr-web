@@ -30,8 +30,8 @@ module CivicTechWR
       "date_formatted" => "Wednesdays",
       "time_formatted" => "5:30 PM",
       "datetime_iso"   => nil,
-      "location_short" => "Downtown Kitchener",
-      "location_full"  => "",
+      "location_short" => "165 King St W, Kitchener",
+      "location_full"  => "165 King St W, Kitchener, ON",
       "event_url"      => "https://luma.com/civictechwr",
       "found"          => false
     }.freeze
@@ -191,7 +191,7 @@ module CivicTechWR
       parts = location.split(",").map(&:strip)
       # Take street + city (first two non-empty comma-delimited parts)
       short = parts.first(2).join(", ")
-      short.empty? ? "Downtown Kitchener" : short
+      short.empty? ? "165 King St W, Kitchener" : short
     end
 
     def format_event(event)
