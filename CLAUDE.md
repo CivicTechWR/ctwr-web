@@ -27,7 +27,7 @@ Approach all work here with that in mind. Be respectful and intentional. Move ca
 ## 1. Repo at a glance
 
 | Item | Detail |
-|------|--------|
+| ------ | -------- |
 | Framework | Jekyll static site, deployed to GitHub Pages |
 | CSS | Single assembled file `css/main.css` (3,700 lines) — modularization in progress |
 | JS | `js/optimized-bundle.min.js` (minified from `js/optimized-bundle.js`), `js/projects.js`, `js/nav-toggle.js`, `js/mailchimp-embed.js` |
@@ -65,7 +65,7 @@ Always chain all three commands so enforce_admins is never left disabled if a st
 ### Required status checks (as of 2026-05-28)
 
 | Check name | Workflow | What it runs |
-|-----------|----------|-------------|
+| ----------- | ---------- | ------------- |
 | `super-linter` | Lint | Super-Linter (bash, shell shfmt, YAML, git markers, etc.) |
 | `htmlhint` | Lint | HTMLHint on all `.html` files |
 | `node-lint` | Lint | `npm run lint` (CSS, markdown, YAML, JSON, shell, CSP inline) |
@@ -165,7 +165,7 @@ css/
 **Recommended extraction order (low-risk first):**
 
 | Phase | Sections | Risk |
-|-------|----------|------|
+| ------- | ---------- | ------ |
 | 1 | variables, fonts, preloader, icons, sponsors, shapes, featured-numbers, grid | Low — no cascade dependencies |
 | 2 | typography, page-header, avatar, forms, newsletter | Low-medium |
 | 3 | buttons, navigation, hero | Medium — `_includes/critical-css.html` must stay in sync |
@@ -217,7 +217,7 @@ After the CSS modularization (when `css/src/main.css` becomes the entry point), 
 ## 7. JavaScript files
 
 | File | Purpose | Notes |
-|------|---------|-------|
+| ------ | --------- | ------- |
 | `js/optimized-bundle.js` | Main site JS (preloader, scroll nav, smooth scroll, lazy loading) | Source file; minified to `optimized-bundle.min.js` via `npm run minify:js` |
 | `js/projects.js` | Fetches and renders project cards, GitHub API integration, filter bar | Runs only on `projects.html`; has `r.ok` checks and null guards on all DOM ops |
 | `js/nav-toggle.js` | Mobile nav button toggle — open/close, outside-click dismiss, Escape key | Tiny; no dependencies |
