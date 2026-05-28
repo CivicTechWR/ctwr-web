@@ -31,7 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     env:
       # Use stable, PR-numbered preview paths to avoid branch-name drift.
       PREVIEW_DIR: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.ref_name }}
@@ -79,11 +78,19 @@ jobs:
           # keep_files preserves production files and other PR previews.
           keep_files: true
 
+  comment-pr:
+    # Separated from deploy-preview so pull-requests: write is never held
+    # alongside contents: write in the same job token.
+    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
+    needs: deploy-preview
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
       - name: Comment PR with preview URL
-        if: github.event_name == 'pull_request'
         uses: actions/github-script@v9
         env:
-          PREVIEW_DIR: ${{ env.PREVIEW_DIR }}
+          PREVIEW_DIR: ${{ format('pr-{0}', github.event.pull_request.number) }}
         with:
           script: |
             const previewDir = process.env.PREVIEW_DIR;
