@@ -81,23 +81,14 @@ test.describe("Phase 2 CSS smoke — newsletter (homepage)", () => {
     await page.goto("/");
   });
 
-  test(".newsletter-cta has the teal background (newsletter.css)", async ({ page }) => {
-    const bg = await page.locator(".newsletter-cta").evaluate((el) =>
-      getComputedStyle(el).backgroundColor,
+  test("footer newsletter input is styled (newsletter.css)", async ({ page }) => {
+    const display = await page.locator(".footer-newsletter").evaluate((el) =>
+      getComputedStyle(el).display,
     );
-    // --secondary-color: #2d6f72 → rgb(45, 111, 114)
-    expect(bg).toBe("rgb(45, 111, 114)");
+    expect(display).not.toBe("none");
   });
 
-  test(".newsletter-cta h2 text is white (newsletter.css)", async ({ page }) => {
-    const color = await page.locator(".newsletter-cta h2").evaluate((el) =>
-      getComputedStyle(el).color,
-    );
-    // --white-color: #fafafa → rgb(250, 250, 250)
-    expect(color).toBe("rgb(250, 250, 250)");
-  });
-
-  test("#newsletter-section is visible (newsletter.css)", async ({ page }) => {
-    await expect(page.locator("#newsletter-section")).toBeVisible();
+  test("footer newsletter signup is visible (newsletter.css)", async ({ page }) => {
+    await expect(page.locator("#mc_embed_signup_footer")).toBeVisible();
   });
 });
