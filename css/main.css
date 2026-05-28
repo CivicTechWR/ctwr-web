@@ -5,13 +5,15 @@
  * css/main.css and css/main.min.css are committed to git because GitHub Pages
  * only runs Jekyll — no npm scripts execute during the Pages build.
  *
- * Load order (Phase 1+2 extracted, Phases 3-4 inline below):
+ * Load order:
  * 1. Base       — variables, fonts, typography
  * 2. Layout     — grid
  * 3. Components — preloader, icons, featured-numbers, sponsors,
- *                 avatar, forms, page-header, newsletter
+ *                 avatar, forms, page-header, newsletter, navigation,
+ *                 buttons, hero, services, footer, projects-cards, organizers
  * 4. Utilities  — shapes
- * 5. Remaining inline — nav, buttons, hero, ... (future phases)
+ * 5. Pages      — about, projects
+ * 6. Global     — body reset, utilities, *:focus (must remain last)
  */
 
 /* === Base === */
@@ -2309,19 +2311,9 @@ h6 + .btn {
   height: 45px;
 }
 
-/* === Remaining inline CSS (Phase 4 extracts progressively) === */
+/* === Components (Phase 4) === */
 
-/* ==========================================================================
-   COMPONENT LAYER - Reusable UI components
-   ========================================================================== */
-
-/* Navigation styles moved to css/src/components/navigation.css */
-
-/* Buttons styles moved to css/src/components/buttons.css */
-
-/* Hero styles moved to css/src/components/hero.css */
-
-/* Services - What we do section */
+/* Services - What we do section and meeting section */
 
 /* ---------------------------------------
   SERVICES SECTION - What we do
@@ -2483,7 +2475,7 @@ h6 + .btn {
   Extracted from style.css for better organization
 ----------------------------------------- */
 
-/* Main Footer Styles */
+/* Main Footer Styles (legacy — .footer-redesign is the active layout) */
 
 .site-footer {
   border-top: 1px solid var(--border-color);
@@ -2716,9 +2708,9 @@ h6 + .btn {
 
 /* Responsive Footer Styles */
 
-/* Projects - Project showcase cards */
+/* Projects cards — homepage project showcase component */
 
-/* Projects Component */
+/* (.project-card for the projects page lives in pages/projects.css) */
 
 .projects-thumb {
   background: var(--white-alpha-70);
@@ -2771,13 +2763,7 @@ h6 + .btn {
   margin-bottom: var(--space-1);
 }
 
-/* ---------------------------------------
-  RESPONSIVE STYLES
------------------------------------------ */
-
-/* Organizers - Team and organizers section */
-
-/* Organizers Component */
+/* Organizers - Team and organizers section component */
 
 .organizers-section .organizers-grid {
   display: grid;
@@ -2851,15 +2837,7 @@ h6 + .btn {
   margin-top: var(--space-6);
 }
 
-/* ---------------------------------------
-  RESPONSIVE STYLES
------------------------------------------ */
-
-/* ==========================================================================
-   PAGE LAYER - Page-specific styles
-   ========================================================================== */
-
-/* About page specific styles */
+/* === Pages === */
 
 /* About page specific styles */
 
@@ -2969,8 +2947,6 @@ h6 + .btn {
   color: inherit;
   text-decoration: underline;
 }
-
-/* Projects page specific styles */
 
 /* Projects page specific styles */
 
@@ -3140,31 +3116,13 @@ h6 + .btn {
   text-transform: capitalize;
 }
 
+/* === Global base — body reset, utilities, *:focus (load-bearing last position) ===
+
 /* ==========================================================================
-   MAIN STYLES - Remaining styles from original style.css
+   GLOBAL BASE — body reset, global utilities, accessibility
+   *:focus is intentionally last: it sits after all component focus overrides
+   so lower-specificity wins remain intact (see CLAUDE.md §4).
    ========================================================================== */
-
-/* Main stylesheet - Contains remaining styles after component extraction */
-
-/*
-
-TemplateMo 578 First Portfolio
-https://templatemo.com/tm-578-first-portfolio
-
-CivicTech Waterloo Region Website Styles
-Customized for CTWR branding and accessibility requirements
-Author: CivicTechWR
-Version: 2.0.0
-Last Updated: October 2024
-
-Key Features:
-- WCAG 2.1 AA compliant
-- Mobile-first responsive design
-- CSS custom properties for theming
-- Optimized for performance
-- Enhanced accessibility features
-
-*/
 
 body {
   background: var(--white-color);
@@ -3172,29 +3130,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
-/* Typography styles moved to css/base/typography.css */
-
-/* Focus styles for accessibility */
-
-*:focus {
-  outline: 2px solid var(--secondary-color);
-  outline-offset: 2px;
-}
-
-/* Navigation styles moved to css/components/navigation.css */
-
-/* Removed old .btn-outline:focus styles - now handled by unified button system */
-
-/* Section padding moved to css/base/typography.css */
-
-/* Typography styles moved to css/base/typography.css */
-
-/* Section title wrap moved to css/base/typography.css */
-
-/* Hero styles moved to css/components/hero.css */
-
-/* Removed duplicate .btn definition - now handled by css/components/buttons.css */
 
 /* Link utility classes */
 
@@ -3213,47 +3148,6 @@ body {
   font-weight: var(--font-weight-bold);
 }
 
-/* Note: .nav-link and .navbar-nav .nav-link colors are defined in NAVIGATION section above
-   - White for dark header background (lines 270-282)
-   - Gray for mobile/sticky state (lines 224-226, 1422-1426)
-   This comment prevents duplicate/conflicting selectors */
-
-/* Footer styles moved to css/components/footer.css */
-
-/* @keyframes fade-in-up moved to css/src/components/hero.css */
-
-/* Hero responsive styles moved to css/src/components/hero.css */
-
-/* Profile and About styles moved to css/components/profile.css */
-
-/* ---------------------------------------
-  FEATURED
------------------------------------------ */
-
-/* Services styles moved to css/components/services.css */
-
-/* Site footer and social icon styles moved to css/components/footer.css */
-
-/* ---------------------------------------
-  RESPONSIVE STYLES
------------------------------------------ */
-
-/* Hero responsive styles moved to css/components/hero.css */
-
-/* Typography responsive styles moved to css/base/typography.css */
-
-/* About/profile responsive styles moved to css/components/profile.css */
-
-/* Projects responsive styles moved to css/components/projects.css */
-
-/* Page header styles moved to css/components/page-header.css */
-
-/* Footer utilities moved to css/components/footer-utilities.css */
-
-/* ==========================================================================
-   REDUCED MOTION - Accessibility: disable animations for users who prefer it
-   ========================================================================== */
-
 /* Mailchimp anti-spam honeypot field */
 
 .mc-honeypot {
@@ -3265,6 +3159,18 @@ body {
 
 .footer-links-divider-before {
   margin-top: 0.75rem;
+}
+
+/* ==========================================================================
+   REDUCED MOTION - Accessibility: disable animations for users who prefer it
+   ========================================================================== */
+
+/* Focus styles for accessibility — MUST remain last in assembled output.
+   Lower specificity than component :focus rules (cascade order is intentional). */
+
+*:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 @media (min-width: 576px) {
