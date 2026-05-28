@@ -2183,6 +2183,10 @@ h6 + .btn {
 /* Icon Components */
 
 /* SVG Icon Sprite Styling */
+.svg-sprite-defs {
+  display: none;
+}
+
 .icon {
   display: inline-block;
   fill: currentcolor;
