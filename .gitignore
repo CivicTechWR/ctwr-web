@@ -88,6 +88,17 @@ Thumbs.db
 *.swp
 *.tmp
 
+# Tool state (Claude Code, MCP, Playwright MCP)
+.agents/
+.mcp.json
+.playwright-mcp/
+
+# Generated security/analysis reports
+docs/threat-model-*/
+
+# Root-level screenshot artifacts from dev sessions
+/*.png
+
 # Archive files
 *.7z
 *.dmg
