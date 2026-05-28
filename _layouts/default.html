@@ -35,9 +35,11 @@
       crossorigin
     />
     {% endif %}
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-    <link rel="dns-prefetch" href="//lu.ma" />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self' https://chimpstatic.com; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://api.github.com https://*.list-manage.com; form-action https://civictechwr.us11.list-manage.com; frame-src 'none'; object-src 'none'; base-uri 'self';"
+    />
+    <link rel="dns-prefetch" href="//lu.ma" /> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
     <link href="{{ css_file }}" rel="stylesheet" />
   </head>
   <body>
@@ -51,18 +53,6 @@
     ></div>
     {% include header.html %} {{ content }}
     <script src="js/optimized-bundle.min.js"></script>
-    <script id="mcjs">
-      !(function (c, h, i, m, p) {
-        ((m = c.createElement(h)),
-          (p = c.getElementsByTagName(h)[0]),
-          (m.async = 1),
-          (m.src = i),
-          p.parentNode.insertBefore(m, p));
-      })(
-        document,
-        "script",
-        "https://chimpstatic.com/mcjs-connected/js/users/70e9ca4ba196596a75a7b6a3e/7634ad86559d5b0d40a1cddd0.js",
-      );
-    </script>
+    <script src="js/mailchimp-embed.js"></script>
   </body>
 </html>
