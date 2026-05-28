@@ -5,12 +5,13 @@
  * css/main.css and css/main.min.css are committed to git because GitHub Pages
  * only runs Jekyll — no npm scripts execute during the Pages build.
  *
- * Load order (Phase 1 extracted, Phases 2-4 inline below):
- * 1. Base    — variables, fonts
- * 2. Layout  — grid
- * 3. Components — preloader, icons, featured-numbers, sponsors
+ * Load order (Phase 1+2 extracted, Phases 3-4 inline below):
+ * 1. Base       — variables, fonts, typography
+ * 2. Layout     — grid
+ * 3. Components — preloader, icons, featured-numbers, sponsors,
+ *                 avatar, forms, page-header, newsletter
  * 4. Utilities  — shapes
- * 5. Remaining inline — typography, nav, buttons, hero, ... (future phases)
+ * 5. Remaining inline — nav, buttons, hero, ... (future phases)
  */
 
 /* === Base === */
@@ -218,6 +219,214 @@
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
     U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
     U+2215, U+FEFF, U+FFFD;
+}
+
+/* Typography - Base text styles using CSS custom properties */
+
+/* ---------------------------------------
+  TYPOGRAPHY - Base Text Styles
+  Extracted from style.css for better organization
+----------------------------------------- */
+
+/* Heading Styles */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-5);
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+  margin-bottom: var(--space-6);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  color: var(--secondary-color);
+  margin-bottom: var(--space-6);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+  color: var(--dark-color);
+  margin-bottom: var(--space-5);
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+  color: var(--dark-color);
+  margin-bottom: var(--space-4);
+}
+
+h5 {
+  font-size: var(--h5-font-size);
+  line-height: normal;
+  color: var(--dark-color);
+  margin-bottom: var(--space-4);
+}
+
+h6 {
+  font-size: var(--h6-font-size);
+  color: var(--dark-color);
+  margin-bottom: var(--space-3);
+}
+
+/* Spacing between consecutive headings */
+
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+  margin-top: var(--space-3);
+}
+
+/* Two consecutive headings of same level need more space */
+
+h2 + h2,
+h3 + h3,
+h4 + h4 {
+  margin-top: var(--space-6);
+}
+
+/* Utility class for headings that need extra spacing */
+
+.heading-spaced {
+  margin-bottom: var(--space-7);
+}
+
+/* Body Text */
+
+p {
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-normal);
+  margin-bottom: var(--space-6);
+}
+
+/* Lists */
+
+ul,
+ol {
+  margin-bottom: var(--space-5);
+  padding-left: var(--space-6);
+}
+
+ul li,
+ol li {
+  margin-bottom: var(--space-2);
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-normal);
+}
+
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: var(--space-5);
+}
+
+/* Figure elements */
+
+figure {
+  margin-bottom: var(--space-6);
+}
+
+figure:last-child {
+  margin-bottom: 0;
+}
+
+/* Interactive Elements */
+
+a,
+button {
+  touch-action: manipulation;
+  transition: all 0.3s;
+}
+
+/* Link Styles */
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    -webkit-text-decoration 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-decoration 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-decoration 0.2s ease,
+    -webkit-text-decoration 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+a:focus {
+  color: var(--primary-color);
+  text-decoration: underline;
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+a:not(.btn):visited {
+  color: var(--secondary-color);
+}
+
+a:not(.btn):visited:hover {
+  color: var(--primary-color);
+}
+
+/* Text Selection */
+
+::-moz-selection {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+::selection {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+/* Text Utilities */
+
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Section Title Wrapper */
+
+.section-title-wrap {
+  background: var(--secondary-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-6);
+}
+
+/* Responsive Typography */
+
+/* Section Padding */
+
+.section-padding {
+  padding: var(--section-padding-md);
 }
 
 /* === Layout === */
@@ -526,6 +735,263 @@
 /* Responsive sizing for tablets */
 
 /* Responsive sizing for mobile */
+
+/* === Components (Phase 2) === */
+
+/* Avatar - Profile and user images */
+
+/* Avatar Image Components */
+
+.avatar-image {
+  border-radius: var(--radius-full);
+  width: 160px;
+  height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.avatar-image-large {
+  width: 90.4px;
+  height: 90.4px;
+}
+
+/* Forms - Contact forms and inputs */
+
+/* Contact and Form Components */
+
+/*
+.contact {
+  background: var(--section-bg-color);
+}
+
+.contact-info {
+  background: var(--white-color);
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  padding: 60px var(--card-padding-sm) var(--card-padding-sm) var(--card-padding-sm);
+  height: 100%;
+}
+
+.contact-info-border-start {
+  border-right: 1px solid var(--border-color);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.contact-form {
+  margin-left: 10px;
+}
+*/
+
+/* Custom Form Styles */
+
+.custom-form .form-control {
+  background: var(--white-color);
+  box-shadow: none;
+  border: 2px solid var(--border-color);
+  color: var(--p-color);
+  margin-bottom: var(--space-5);
+  padding-top: 13px;
+  padding-bottom: 13px;
+  outline: none;
+}
+
+.form-floating > label {
+  color: var(--p-color);
+}
+
+.form-check-inline {
+  vertical-align: middle;
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: var(--space-5);
+  padding: 0;
+}
+
+.custom-form .form-check-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.form-check-label-text {
+  color: var(--p-color);
+  display: block;
+  font-size: var(--copyright-font-size);
+  margin-top: 5px;
+}
+
+/* Page Header - Page titles and headers */
+
+/* Page Header Component */
+
+.site-header {
+  padding: var(--space-6);
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  color: var(--dark-color);
+}
+
+.page-subtitle {
+  font-size: var(--font-size-mobile-lg);
+  color: var(--p-color);
+  margin-bottom: 0;
+}
+
+/* Newsletter - Newsletter signup forms */
+
+/* ==========================================================================
+   Newsletter Component Styles
+   ========================================================================== */
+
+/* Newsletter CTA Section */
+
+.newsletter-cta {
+  background: var(--secondary-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter-signup-main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-form-wrapper {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.newsletter-input-main {
+  min-width: 250px;
+  padding: var(--space-3) var(--space-5);
+  border: 2px solid var(--border-color, #000);
+  border-radius: var(--border-radius, 8px);
+  font-size: 1rem;
+  font-family: var(--body-font-family, "DM Sans", sans-serif);
+  background: var(--white-color);
+  color: var(--dark-color);
+  -webkit-text-fill-color: currentcolor;
+  transition: all 0.3s ease;
+}
+
+.newsletter-cta h2,
+.newsletter-cta p {
+  color: var(--white-color);
+}
+
+.newsletter-input-main:focus {
+  outline: 2px solid var(--primary-color, #fc6c6d);
+  outline-offset: -2px;
+  border-color: var(--primary-color, #fc6c6d);
+  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
+}
+
+.newsletter-input-main::-moz-placeholder {
+  color: #5f5f5f;
+}
+
+.newsletter-input-main::placeholder {
+  color: #5f5f5f;
+}
+
+.newsletter-btn-main {
+  flex: 0 0 auto;
+  padding: var(--space-3) var(--space-6);
+  white-space: nowrap;
+  font-weight: 500;
+  min-width: 140px;
+  background: var(--white-color);
+  color: var(--secondary-color);
+}
+
+/* Footer Newsletter Styles */
+
+.footer-newsletter {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.footer-newsletter form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-newsletter input[type="email"] {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid var(--white-alpha-20);
+  border-radius: var(--border-radius, 8px);
+  font-size: 0.95rem;
+  font-family: var(--body-font-family, "DM Sans", sans-serif);
+  background: var(--white-color);
+  color: var(--dark-color);
+  -webkit-text-fill-color: currentcolor;
+  transition: all 0.3s ease;
+}
+
+.footer-newsletter input[type="email"]:focus {
+  outline: 2px solid var(--primary-color, #fc6c6d);
+  outline-offset: -2px;
+  border-color: var(--primary-color, #fc6c6d);
+  background: var(--white-color);
+  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
+}
+
+.footer-newsletter input[type="email"]::-moz-placeholder {
+  color: #5f5f5f;
+}
+
+.footer-newsletter input[type="email"]::placeholder {
+  color: #5f5f5f;
+}
+
+.footer-newsletter input[type="submit"] {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* Responsive styles */
+
+/* Success/Error Message Styling */
+
+#mce-error-response,
+#mce-success-response {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius, 8px);
+  font-size: 0.9rem;
+}
+
+#mce-error-response {
+  background-color: #f5e8e8; /* rgba(185,28,28,0.08) over #fafafa */
+  color: #b91c1c; /* WCAG AA 5.0:1 on this bg, 5.9:1 on white */
+  border: 1px solid #b91c1c;
+}
+
+#mce-success-response {
+  background-color: #f0f3f3; /* rgba(45,111,114,0.05) over #fafafa */
+  color: #2d6f72; /* WCAG AA 4.6:1 on this bg, 4.9:1 on white */
+  border: 1px solid #2d6f72;
+}
+
+/* Loading state */
+
+.newsletter-form-wrapper.loading .newsletter-btn-main {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 /* === Utilities === */
 
@@ -1036,215 +1502,7 @@
   height: 45px;
 }
 
-/* === Remaining inline CSS (Phases 2-4 extract progressively) === */
-
-/* Typography - Base text styles using CSS custom properties */
-
-/* ---------------------------------------
-  TYPOGRAPHY - Base Text Styles
-  Extracted from style.css for better organization
------------------------------------------ */
-
-/* Heading Styles */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--body-font-family);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-5);
-}
-
-h1 {
-  font-size: var(--h1-font-size);
-  margin-bottom: var(--space-6);
-}
-
-h2 {
-  font-size: var(--h2-font-size);
-  color: var(--secondary-color);
-  margin-bottom: var(--space-6);
-}
-
-h3 {
-  font-size: var(--h3-font-size);
-  color: var(--dark-color);
-  margin-bottom: var(--space-5);
-}
-
-h4 {
-  font-size: var(--h4-font-size);
-  color: var(--dark-color);
-  margin-bottom: var(--space-4);
-}
-
-h5 {
-  font-size: var(--h5-font-size);
-  line-height: normal;
-  color: var(--dark-color);
-  margin-bottom: var(--space-4);
-}
-
-h6 {
-  font-size: var(--h6-font-size);
-  color: var(--dark-color);
-  margin-bottom: var(--space-3);
-}
-
-/* Spacing between consecutive headings */
-
-h1 + h2,
-h2 + h3,
-h3 + h4,
-h4 + h5,
-h5 + h6 {
-  margin-top: var(--space-3);
-}
-
-/* Two consecutive headings of same level need more space */
-
-h2 + h2,
-h3 + h3,
-h4 + h4 {
-  margin-top: var(--space-6);
-}
-
-/* Utility class for headings that need extra spacing */
-
-.heading-spaced {
-  margin-bottom: var(--space-7);
-}
-
-/* Body Text */
-
-p {
-  color: var(--p-color);
-  font-size: var(--p-font-size);
-  font-weight: var(--font-weight-normal);
-  margin-bottom: var(--space-6);
-}
-
-/* Lists */
-
-ul,
-ol {
-  margin-bottom: var(--space-5);
-  padding-left: var(--space-6);
-}
-
-ul li,
-ol li {
-  margin-bottom: var(--space-2);
-  color: var(--p-color);
-  font-size: var(--p-font-size);
-  font-weight: var(--font-weight-normal);
-}
-
-ul:last-child,
-ol:last-child {
-  margin-bottom: 0;
-}
-
-/* Images */
-
-img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: var(--space-5);
-}
-
-/* Figure elements */
-
-figure {
-  margin-bottom: var(--space-6);
-}
-
-figure:last-child {
-  margin-bottom: 0;
-}
-
-/* Interactive Elements */
-
-a,
-button {
-  touch-action: manipulation;
-  transition: all 0.3s;
-}
-
-/* Link Styles */
-
-a {
-  color: var(--secondary-color);
-  text-decoration: none;
-  transition:
-    color 0.2s ease,
-    -webkit-text-decoration 0.2s ease;
-  transition:
-    color 0.2s ease,
-    text-decoration 0.2s ease;
-  transition:
-    color 0.2s ease,
-    text-decoration 0.2s ease,
-    -webkit-text-decoration 0.2s ease;
-}
-
-a:hover {
-  color: var(--primary-color);
-  text-decoration: underline;
-}
-
-a:focus {
-  color: var(--primary-color);
-  text-decoration: underline;
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-a:not(.btn):visited {
-  color: var(--secondary-color);
-}
-
-a:not(.btn):visited:hover {
-  color: var(--primary-color);
-}
-
-/* Text Selection */
-
-::-moz-selection {
-  background: var(--secondary-color);
-  color: var(--white-color);
-}
-
-::selection {
-  background: var(--secondary-color);
-  color: var(--white-color);
-}
-
-/* Text Utilities */
-
-b,
-strong {
-  font-weight: var(--font-weight-bold);
-}
-
-/* Section Title Wrapper */
-
-.section-title-wrap {
-  background: var(--secondary-color);
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-6);
-}
-
-/* Responsive Typography */
-
-/* Section Padding */
-
-.section-padding {
-  padding: var(--section-padding-md);
-}
+/* === Remaining inline CSS (Phases 3-4 extract progressively) === */
 
 /* ==========================================================================
    COMPONENT LAYER - Reusable UI components
@@ -2436,23 +2694,6 @@ h6 + .btn {
 
 /* Responsive Footer Styles */
 
-/* Avatar - Profile and user images */
-
-/* Avatar Image Components */
-
-.avatar-image {
-  border-radius: var(--radius-full);
-  width: 160px;
-  height: 160px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.avatar-image-large {
-  width: 90.4px;
-  height: 90.4px;
-}
-
 /* Projects - Project showcase cards */
 
 /* Projects Component */
@@ -2511,75 +2752,6 @@ h6 + .btn {
 /* ---------------------------------------
   RESPONSIVE STYLES
 ----------------------------------------- */
-
-/* Forms - Contact forms and inputs */
-
-/* Contact and Form Components */
-
-/*
-.contact {
-  background: var(--section-bg-color);
-}
-
-.contact-info {
-  background: var(--white-color);
-  border-top-right-radius: var(--radius-md);
-  border-bottom-right-radius: var(--radius-md);
-  padding: 60px var(--card-padding-sm) var(--card-padding-sm) var(--card-padding-sm);
-  height: 100%;
-}
-
-.contact-info-border-start {
-  border-right: 1px solid var(--border-color);
-  border-radius: var(--radius-md) 0 0 var(--radius-md);
-}
-
-.contact-form {
-  margin-left: 10px;
-}
-*/
-
-/* Custom Form Styles */
-
-.custom-form .form-control {
-  background: var(--white-color);
-  box-shadow: none;
-  border: 2px solid var(--border-color);
-  color: var(--p-color);
-  margin-bottom: var(--space-5);
-  padding-top: 13px;
-  padding-bottom: 13px;
-  outline: none;
-}
-
-.form-floating > label {
-  color: var(--p-color);
-}
-
-.form-check-inline {
-  vertical-align: middle;
-  width: 100%;
-  position: relative;
-  margin-right: 0;
-  margin-top: 0;
-  margin-bottom: var(--space-5);
-  padding: 0;
-}
-
-.custom-form .form-check-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.form-check-label-text {
-  color: var(--p-color);
-  display: block;
-  font-size: var(--copyright-font-size);
-  margin-top: 5px;
-}
 
 /* Organizers - Team and organizers section */
 
@@ -2660,175 +2832,6 @@ h6 + .btn {
 /* ---------------------------------------
   RESPONSIVE STYLES
 ----------------------------------------- */
-
-/* Page Header - Page titles and headers */
-
-/* Page Header Component */
-
-.site-header {
-  padding: var(--space-6);
-}
-
-.page-title {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: var(--space-4);
-  color: var(--dark-color);
-}
-
-.page-subtitle {
-  font-size: var(--font-size-mobile-lg);
-  color: var(--p-color);
-  margin-bottom: 0;
-}
-
-/* Newsletter - Newsletter signup forms */
-
-/* ==========================================================================
-   Newsletter Component Styles
-   ========================================================================== */
-
-/* Newsletter CTA Section */
-
-.newsletter-cta {
-  background: var(--secondary-color);
-  position: relative;
-  overflow: hidden;
-}
-
-.newsletter-signup-main {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.newsletter-form-wrapper {
-  display: flex;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-}
-
-.newsletter-input-main {
-  min-width: 250px;
-  padding: var(--space-3) var(--space-5);
-  border: 2px solid var(--border-color, #000);
-  border-radius: var(--border-radius, 8px);
-  font-size: 1rem;
-  font-family: var(--body-font-family, "DM Sans", sans-serif);
-  background: var(--white-color);
-  color: var(--dark-color);
-  -webkit-text-fill-color: currentcolor;
-  transition: all 0.3s ease;
-}
-
-.newsletter-cta h2,
-.newsletter-cta p {
-  color: var(--white-color);
-}
-
-.newsletter-input-main:focus {
-  outline: 2px solid var(--primary-color, #fc6c6d);
-  outline-offset: -2px;
-  border-color: var(--primary-color, #fc6c6d);
-  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
-}
-
-.newsletter-input-main::-moz-placeholder {
-  color: #5f5f5f;
-}
-
-.newsletter-input-main::placeholder {
-  color: #5f5f5f;
-}
-
-.newsletter-btn-main {
-  flex: 0 0 auto;
-  padding: var(--space-3) var(--space-6);
-  white-space: nowrap;
-  font-weight: 500;
-  min-width: 140px;
-  background: var(--white-color);
-  color: var(--secondary-color);
-}
-
-/* Footer Newsletter Styles */
-
-.footer-newsletter {
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-4);
-}
-
-.footer-newsletter form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.footer-newsletter input[type="email"] {
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  border: 2px solid var(--white-alpha-20);
-  border-radius: var(--border-radius, 8px);
-  font-size: 0.95rem;
-  font-family: var(--body-font-family, "DM Sans", sans-serif);
-  background: var(--white-color);
-  color: var(--dark-color);
-  -webkit-text-fill-color: currentcolor;
-  transition: all 0.3s ease;
-}
-
-.footer-newsletter input[type="email"]:focus {
-  outline: 2px solid var(--primary-color, #fc6c6d);
-  outline-offset: -2px;
-  border-color: var(--primary-color, #fc6c6d);
-  background: var(--white-color);
-  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
-}
-
-.footer-newsletter input[type="email"]::-moz-placeholder {
-  color: #5f5f5f;
-}
-
-.footer-newsletter input[type="email"]::placeholder {
-  color: #5f5f5f;
-}
-
-.footer-newsletter input[type="submit"] {
-  width: 100%;
-  margin-top: 0.25rem;
-}
-
-/* Responsive styles */
-
-/* Success/Error Message Styling */
-
-#mce-error-response,
-#mce-success-response {
-  margin: 1rem 0;
-  padding: 0.75rem 1rem;
-  border-radius: var(--border-radius, 8px);
-  font-size: 0.9rem;
-}
-
-#mce-error-response {
-  background-color: #f5e8e8; /* rgba(185,28,28,0.08) over #fafafa */
-  color: #b91c1c; /* WCAG AA 5.0:1 on this bg, 5.9:1 on white */
-  border: 1px solid #b91c1c;
-}
-
-#mce-success-response {
-  background-color: #f0f3f3; /* rgba(45,111,114,0.05) over #fafafa */
-  color: #2d6f72; /* WCAG AA 4.6:1 on this bg, 4.9:1 on white */
-  border: 1px solid #2d6f72;
-}
-
-/* Loading state */
-
-.newsletter-form-wrapper.loading .newsletter-btn-main {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
 
 /* ==========================================================================
    PAGE LAYER - Page-specific styles
@@ -3490,6 +3493,18 @@ body {
     max-width: 120px;
     max-height: 50px;
   }
+  .newsletter-form-wrapper {
+    flex-direction: column;
+  }
+
+  .newsletter-input-main {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .newsletter-btn-main {
+    width: 100%;
+  }
   .abstract-shape {
     transform: scale(0.7);
     opacity: 0.4;
@@ -3666,47 +3681,9 @@ body {
     padding-right: var(--space-4);
     padding-left: var(--space-4);
   }
-  .newsletter-form-wrapper {
-    flex-direction: column;
-  }
-
-  .newsletter-input-main {
-    width: 100%;
-    min-width: 100%;
-  }
-
-  .newsletter-btn-main {
-    width: 100%;
-  }
 }
 
 @media (max-width: 575.98px) {
-  .sponsor-grid {
-    gap: var(--space-4);
-    row-gap: var(--space-4);
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .sponsors-item-height {
-    min-height: 80px;
-    height: 80px;
-    padding: 0 var(--space-2);
-    margin-bottom: var(--space-3);
-  }
-
-  .sponsors-image {
-    max-width: 140px;
-    max-height: 60px;
-  }
-
-  .previous-sponsors-image {
-    max-width: 100px;
-    max-height: 45px;
-  }
-  .abstract-shape {
-    transform: scale(0.5);
-    opacity: 0.3;
-  }
   h1 {
     font-size: var(--font-size-3xl);
   }
@@ -3734,6 +3711,32 @@ body {
   .section-padding {
     padding: var(--space-4);
     padding-top: var(--space-8);
+  }
+  .sponsor-grid {
+    gap: var(--space-4);
+    row-gap: var(--space-4);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sponsors-item-height {
+    min-height: 80px;
+    height: 80px;
+    padding: 0 var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .sponsors-image {
+    max-width: 140px;
+    max-height: 60px;
+  }
+
+  .previous-sponsors-image {
+    max-width: 100px;
+    max-height: 45px;
+  }
+  .abstract-shape {
+    transform: scale(0.5);
+    opacity: 0.3;
   }
   .hero-title {
     font-size: var(--font-size-2xl);
