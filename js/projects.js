@@ -213,7 +213,7 @@
       if (tags.length) col.dataset.tags = tags.join(" ");
 
       const card = document.createElement("div");
-      card.className = "project-card";
+      card.className = "project-card project-card--text";
 
       const info = document.createElement("div");
       info.className = "project-info";
