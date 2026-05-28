@@ -11,8 +11,7 @@ VIOLATIONS=0
 check_file() {
 	local file="$1"
 	local matches
-	# Exclude SVG path/polygon/rect attributes that use style legitimately
-	matches=$(grep -n 'style="' "$file" 2>/dev/null || true)
+	matches=$(grep -Ein 'style[[:space:]]*=[[:space:]]*["'"'"']' "$file" 2>/dev/null || true)
 	if [ -n "$matches" ]; then
 		echo "VIOLATION: $file"
 		echo "$matches"
