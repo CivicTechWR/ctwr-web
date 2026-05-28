@@ -76,10 +76,6 @@ jobs:
           npx --yes pa11y-ci --config .pa11yci.json
           echo "Running axe-core checks..."
           PAGES=("http://127.0.0.1:4000/" "http://127.0.0.1:4000/about.html" "http://127.0.0.1:4000/projects.html")
-          AXE_FAILED=0
           for url in "${PAGES[@]}"; do
-            npx @axe-core/cli "$url" --chrome-options="no-sandbox,disable-setuid-sandbox,disable-dev-shm-usage" || AXE_FAILED=1
+            npx @axe-core/cli "$url" --chrome-options="no-sandbox,disable-setuid-sandbox,disable-dev-shm-usage"
           done
-          if [ "$AXE_FAILED" -eq 1 ]; then
-            echo "::warning::axe-core found accessibility violations — see logs above. Run axe locally to investigate."
-          fi
