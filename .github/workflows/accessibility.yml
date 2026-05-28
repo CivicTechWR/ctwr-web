@@ -63,8 +63,10 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
-      - name: Configure Chrome for Puppeteer
-        run: echo "PUPPETEER_EXECUTABLE_PATH=$(which google-chrome-stable)" >> $GITHUB_ENV
+      - name: Configure Chrome for accessibility testing
+        run: |
+          echo "PUPPETEER_EXECUTABLE_PATH=$(which google-chrome-stable)" >> $GITHUB_ENV
+          echo "CHROMEDRIVER_FILEPATH=$(which chromedriver)" >> $GITHUB_ENV
 
       - name: Run accessibility checks against built site
         run: |
