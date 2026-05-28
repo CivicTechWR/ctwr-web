@@ -19,7 +19,8 @@ Approach all work here with that in mind. Be respectful and intentional. Move ca
 7. [JavaScript files](#7-javascript-files)
 8. [Navigation toggle](#8-navigation-toggle)
 9. [Dormant files — do not activate](#9-dormant-files--do-not-activate)
-10. [Key conventions](#10-key-conventions)
+10. [E2E testing — Playwright setup and maintenance](#10-e2e-testing--playwright-setup-and-maintenance)
+11. [Key conventions](#11-key-conventions)
 
 ---
 
@@ -250,7 +251,54 @@ The mobile nav toggle uses a `<button>` with `aria-expanded` / `aria-controls` (
 
 ---
 
-## 10. Key conventions
+## 10. E2E testing — Playwright setup and maintenance
+
+### What exists
+
+`tests/e2e/newsletter-form.spec.js` — 84-line Playwright spec that runs 8 tests per page across `/`, `/about.html`, and `/projects.html` (24 tests total). It covers: section visibility, email input attributes, subscribe button, honeypot field and hiding, form action/method/target, browser-side validation (empty and invalid email), and valid email acceptance.
+
+**CI job:** `.github/workflows/e2e.yml` (`e2e` job) — builds the site fresh, installs Chromium, then runs `npm run test:e2e`.
+
+**Config:** `playwright.config.js`
+- `testDir: ./tests/e2e`, `baseURL: http://127.0.0.1:4000`
+- Chromium only; 2 retries in CI, 0 locally
+- `webServer`: starts `bundle exec jekyll serve --no-watch --skip-initial-build` locally; reuses an existing server if one is running
+
+### Running locally
+
+```bash
+# First time only — install Chromium
+npx playwright install chromium
+
+# Build the site first (--skip-initial-build means Playwright won't build it)
+bundle exec jekyll build
+
+# Run all E2E tests
+npm run test:e2e
+
+# Run with the interactive UI (useful when writing new specs)
+npx playwright test --ui
+```
+
+**Gotcha:** `playwright.config.js` passes `--skip-initial-build` to Jekyll so the dev server starts fast. This means if you haven't built recently, tests will run against stale HTML. Always rebuild before running E2E locally when you've changed templates or CSS.
+
+### Maintenance expectations
+
+**When adding a new feature or template change:** Write a corresponding E2E spec (or extend an existing one) before merging. The newsletter spec is the model — test the component's presence, key attributes, and user interactions. Do not just test that an element exists; test that it behaves correctly.
+
+**When extracting CSS (Phase 2, 3, 4 modularization):** Add a smoke-test spec that verifies the extracted component still renders. At minimum: visible on the page, no obvious layout collapse. See the Phase 1 spec pattern as a reference — check that key elements have non-zero dimensions and are within the viewport.
+
+**When modifying `_includes/` or `_layouts/`:** Check whether any existing spec covers the changed element. If the change touches an ID or class that a spec locates by, update the spec. Broken locators silently pass in Playwright if the element is simply absent — use `toBeVisible()` not just `toBeAttached()`.
+
+**When the E2E job fails in CI:** The most common causes are a stale Jekyll build (the CI step builds fresh, so this is rarely the issue there) or a broken locator after an HTML change. Run `npm run test:e2e` locally against the latest build to reproduce, then fix the spec or the HTML.
+
+### Spec file location
+
+All E2E specs live in `tests/e2e/`. Name files `<feature>.spec.js`. One spec file per feature area. The CI workflow picks up any `*.spec.js` under that directory automatically.
+
+---
+
+## 11. Key conventions
 
 **Shell scripts:** Use tabs for indentation (shfmt requirement). Run `shfmt -w <script>` before committing.
 
