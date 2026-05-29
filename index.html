@@ -274,7 +274,7 @@ description: "CivicTechWR brings together people from different sectors to work 
                       rel="noopener noreferrer"
                       >{{project.name}}</a
                     >
-                    <small class="projects-tag">Year: {{project.year}}</small>
+                    <small class="projects-tag">Year: {{project.year | join: ", "}}</small>
                   </div>
                   <a href="{{project.url}}">
                     <img
@@ -304,7 +304,7 @@ description: "CivicTechWR brings together people from different sectors to work 
                       rel="noopener noreferrer"
                       >{{project.name}}</a
                     >
-                    <small class="projects-tag">Year: {{project.year}}</small>
+                    <small class="projects-tag">Year: {{project.year | join: ", "}}</small>
                   </div>
                   <a href="{{project.url}}">
                     <img
