@@ -2995,6 +2995,15 @@ h6 + .btn {
   border-color: var(--secondary-color);
 }
 
+/* Text-only cards (GitHub repos) have no animated image — remove fixed height
+   so descriptions are not clipped by overflow: hidden. */
+
+.project-card--text {
+  height: auto;
+  min-height: 350px;
+  overflow: visible;
+}
+
 .project-info {
   position: relative;
   z-index: 2;
