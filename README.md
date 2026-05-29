@@ -75,13 +75,13 @@ ctwr-web/
 ├── _includes/            # Reusable components (header, footer, meeting section)
 ├── _site/                # Build output (ignored)
 ├── css/                  # Stylesheets
-│   ├── main.css          # Primary stylesheet
-│   ├── minified/         # Minified output (generated)
-│   └── purged/           # Purged output (generated)
+│   ├── main.css          # Assembled PostCSS output (committed)
+│   ├── main.min.css      # Minified output (committed)
+│   └── src/              # CSS source partials (base, layout, components, pages)
 ├── js/                   # JavaScript bundles + data
 ├── images/               # Image assets (optimized for web)
 ├── scripts/              # Build and lint scripts
-├── tests/                # CSS sanity checks + plugin regression tests
+├── tests/                # CSS tests, Luma plugin tests, E2E specs (Playwright)
 └── .github/workflows/    # GitHub Actions CI/CD
 ```
 
@@ -96,8 +96,8 @@ Luma iCal feed, finds the next upcoming event, and stores it in `site.data['next
 `_includes/meeting-section.html` renders this data into the static HTML.
 
 - **iCal feed**: `https://api2.luma.com/ics/get?entity=calendar&id=cal-BVpgpDCgYaCqcPx`
-- **Fallback**: if the fetch fails or no future events exist, a generic "Wednesdays at 5:30 PM,
-  Downtown Kitchener" message is shown with a link to the Luma calendar.
+- **Fallback**: if the fetch fails or no future events exist, a static "Wednesdays at 5:30 PM,
+  165 King St W, Kitchener" message is shown with a link to the Luma calendar.
 
 **Why it must deploy via GitHub Actions (not legacy GitHub Pages):**
 
@@ -155,16 +155,15 @@ npm run test:luma          # Luma event sync regression tests
 This project maintains code quality standards:
 
 - **HTML**: Validated with HTMLHint (CI)
+- **CSS**: Linted with Stylelint
+- **Markdown/YAML/JSON**: Linted via npm scripts
+- **Accessibility**: Tested with Pa11y CI and axe-core
+- **Security**: Audited with Bundler Audit and Gitleaks
 
 ## 🚀 Deployments
 
 See `docs/deployments.md` for production and preview deploy details, including
 the preview URL format and troubleshooting tips.
-
-- **CSS**: Linted with Stylelint
-- **Markdown/YAML/JSON**: Linted via npm scripts
-- **Accessibility**: Tested with Pa11y CI
-- **Security**: Audited with Bundler Audit
 
 ## 🎨 Design System
 
@@ -198,7 +197,6 @@ This website is built with accessibility in mind:
 
 Optimized for speed and user experience:
 
-- **Critical CSS** inlined for faster initial render
 - **Resource hints** (preload, preconnect, dns-prefetch)
 - **Lazy loading** for images below the fold
 - **WebP images** for modern browsers
