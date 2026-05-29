@@ -136,6 +136,12 @@
       info.appendChild(title);
       info.appendChild(yearTag);
 
+      if (project.description) {
+        const desc = document.createElement("p");
+        desc.textContent = project.description;
+        info.appendChild(desc);
+      }
+
       const pills = buildTagPills(tags);
       if (pills) info.appendChild(pills);
 
@@ -213,7 +219,7 @@
       if (tags.length) col.dataset.tags = tags.join(" ");
 
       const card = document.createElement("div");
-      card.className = "project-card";
+      card.className = "project-card project-card--text";
 
       const info = document.createElement("div");
       info.className = "project-info";
