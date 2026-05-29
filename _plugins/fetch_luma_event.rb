@@ -188,6 +188,10 @@ module CivicTechWR
     # Derive a short location: "165 King St W, Kitchener" from
     # "165 King St W, Kitchener, ON N2G 1A7, Canada"
     def short_location(location)
+      # Luma substitutes the event URL in LOCATION when the address is hidden
+      # until RSVP — treat any URL as "no physical address provided"
+      return "165 King St W, Kitchener" if location.to_s.start_with?("https://", "http://")
+
       parts = location.split(",").map(&:strip)
       # Take street + city (first two non-empty comma-delimited parts)
       short = parts.first(2).join(", ")
