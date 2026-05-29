@@ -136,6 +136,12 @@
       info.appendChild(title);
       info.appendChild(yearTag);
 
+      if (project.description) {
+        const desc = document.createElement("p");
+        desc.textContent = project.description;
+        info.appendChild(desc);
+      }
+
       const pills = buildTagPills(tags);
       if (pills) info.appendChild(pills);
 
