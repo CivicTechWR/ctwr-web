@@ -51,6 +51,9 @@ assert_equal "165 King St W, Kitchener", short, "Should extract short address fr
 short_fallback = generator.send(:short_location, "")
 assert_equal "165 King St W, Kitchener", short_fallback, "Should return fallback when location is empty"
 
+short_url = generator.send(:short_location, "https://luma.com/event/evt-abc123")
+assert_equal "165 King St W, Kitchener", short_url, "Should return fallback when Luma substitutes event URL for hidden address"
+
 # --- unescape_ical: backslash-escape sequences ---
 unescaped = generator.send(:unescape_ical, "Kitchener\\, Ontario\\nCanada")
 assert_equal "Kitchener, Ontario\nCanada", unescaped, "Should unescape iCal text escapes"
