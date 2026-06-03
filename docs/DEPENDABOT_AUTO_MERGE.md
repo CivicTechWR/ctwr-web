@@ -8,7 +8,7 @@ This PR enables automatic merging of Dependabot PRs for minor and patch updates,
 - Uses `dependabot/fetch-metadata` (SHA-pinned to v2.5.0) to get update type
 - Auto-approves Dependabot PRs for minor/patch updates
 - Enables auto-merge after approval
-- Uses `pull_request` trigger (not `pull_request_target`)
+- Uses `pull_request_target` so the workflow always runs from main — prevents a Dependabot action-bump PR from executing an unreviewed version of this workflow (safe: no PR code is checked out)
 - Only runs for `dependabot[bot]` actor
 - Workflow-level permissions locked to `{}` — write access scoped to the job only
 
@@ -26,7 +26,7 @@ This PR enables automatic merging of Dependabot PRs for minor and patch updates,
 ## How It Works
 
 1. Dependabot creates a PR for a minor or patch update
-2. The `dependabot-auto-merge` workflow runs on `pull_request` event
+2. The `dependabot-auto-merge` workflow runs on `pull_request_target` event
 3. Workflow fetches metadata to determine update type
 4. If minor/patch update:
    - Workflow auto-approves the PR
@@ -62,7 +62,7 @@ After enabling auto-merge in repository settings:
 
 ## Security Considerations
 
-- Uses `pull_request` trigger (not `pull_request_target`) for safety
+- Uses `pull_request_target` so the workflow runs from the trusted base branch, not the PR branch
 - Only runs when actor is `dependabot[bot]`
 - Requires all branch protection rules to pass before merging
 - Only auto-merges semver-minor and semver-patch updates

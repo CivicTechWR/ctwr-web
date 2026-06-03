@@ -1,11 +1,14 @@
 # Auto-approve and enable auto-merge for Dependabot PRs
 # Based on: https://docs.github.com/en/code-security/tutorials/secure-your-dependencies/automating-dependabot-with-github-actions
-# This workflow runs when Dependabot creates or updates a PR
-# It will auto-approve and enable auto-merge for minor/patch updates after CI passes
+# Uses pull_request_target so the workflow always runs from main (base branch),
+# preventing a Dependabot action-bump PR from executing an unreviewed workflow version.
+# Safe because this workflow never checks out or runs any PR code.
 
 name: Dependabot Auto-Merge
 
-on: pull_request
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
 
 permissions: {}
 
