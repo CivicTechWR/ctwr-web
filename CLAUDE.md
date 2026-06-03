@@ -284,6 +284,8 @@ npx playwright test --ui
 
 ### Maintenance expectations
 
+**E2E coverage is a standing priority.** Gaps should be closed, not tracked indefinitely. If a feature has interactive behaviour and no spec, write one before the next unrelated PR merges.
+
 **When adding a new feature or template change:** Write a corresponding E2E spec (or extend an existing one) before merging. The newsletter spec is the model — test the component's presence, key attributes, and user interactions. Do not just test that an element exists; test that it behaves correctly.
 
 **When extracting CSS (Phase 2, 3, 4 modularization):** Add a smoke-test spec that verifies the extracted component still renders. At minimum: visible on the page, no obvious layout collapse. See the Phase 1 spec pattern as a reference — check that key elements have non-zero dimensions and are within the viewport.
