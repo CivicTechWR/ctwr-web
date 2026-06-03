@@ -62,10 +62,6 @@
   text-decoration: underline;
 }
 
-.about-section {
-  padding: var(--space-6) var(--space-4);
-}
-
 .shoutout-section {
   text-align: center;
   margin-top: var(--space-7);

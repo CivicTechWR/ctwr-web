@@ -129,21 +129,6 @@
   -webkit-text-fill-color: currentcolor;
 }
 
-/* Ghost Button - Minimal styling */
-.btn--ghost {
-  background: transparent;
-  border-color: transparent;
-  color: var(--secondary-color);
-  -webkit-text-fill-color: currentcolor;
-}
-
-.btn--ghost:hover {
-  background: var(--secondary-color);
-  border-color: var(--white-color);
-  color: var(--white-color);
-  -webkit-text-fill-color: currentcolor;
-}
-
 /* ==========================================================================
    BUTTON SIZES
    ========================================================================== */
