@@ -52,7 +52,6 @@ After this PR merges and auto-merge is enabled in repository settings, manually 
 gh pr review --approve <PR_NUMBER>
 gh pr merge <PR_NUMBER> --auto --squash
 ```
-
 ## Testing
 
 After enabling auto-merge in repository settings:
@@ -67,4 +66,3 @@ After enabling auto-merge in repository settings:
 - Only runs when actor is `dependabot[bot]`
 - Requires all branch protection rules to pass before merging
 - Only auto-merges semver-minor and semver-patch updates
-
