@@ -15,15 +15,6 @@ on:
       - "CNAME"
       - "robots.txt"
   pull_request:
-    paths-ignore:
-      - ".github/**"
-      - "tests/**"
-      - "scripts/**"
-      - "docs/**"
-      - "README.md"
-      - "LICENSE"
-      - "CNAME"
-      - "robots.txt"
   schedule:
     - cron: "0 12 * * 1"
 
