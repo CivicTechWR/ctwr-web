@@ -19,7 +19,8 @@ for (const page of PAGES_WITH_NEWSLETTER) {
       await expect(input).toBeVisible();
       await expect(input).toHaveAttribute("type", "email");
       await expect(input).toHaveAttribute("required");
-      await expect(input).toHaveAttribute("aria-label", "Email Address");
+      // Label association via <label for> replaces aria-label
+      await expect(pw.locator('label[for="mce-EMAIL"]')).toContainText("Email Address");
     });
 
     test("subscribe button is present", async ({ page: pw }) => {
