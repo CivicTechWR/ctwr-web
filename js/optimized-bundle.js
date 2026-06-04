@@ -89,6 +89,7 @@ function initSmoothScroll() {
         e.preventDefault();
 
         const targetId = link.getAttribute("href");
+        if (!targetId || !targetId.startsWith("#")) return;
         const targetElement = document.querySelector(targetId);
 
         if (targetElement) {
@@ -260,7 +261,7 @@ class PerformanceMonitor {
       });
       fidObserver.observe({ entryTypes: ["first-input"] });
     } catch (error) {
-      // Silently fail if not supported
+      console.error("[CWV] Failed to observe Core Web Vitals:", error);
     }
   }
 

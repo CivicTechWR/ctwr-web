@@ -173,6 +173,8 @@ css/
 
 **Critical gotcha — cascade order is load-bearing.** The `*:focus` rule at the end of the file intentionally sits *after* all component focus overrides (lower specificity wins are expected). Do not move it to `base/reset.css` without verifying all component focus styles still apply.
 
+**Note on PostCSS and `*:focus` position.** `postcss-sort-media-queries` collects all `@media` rules and sorts them, which means the assembled `css/main.css` places sorted media queries *after* the `*:focus` rule in the file. This looks wrong but is currently harmless: no `:focus` rules exist inside any `@media` block, so nothing in the media queries overrides the base outline. If you add a `:focus` rule inside a media query in the future, verify it doesn't conflict with `*:focus`. To check: `awk '/^@media/{m=1} m && /:focus/{print NR": "$0} /^}$/{m=0}' css/main.css`
+
 **Critical gotcha — `postcss-combine-duplicated-selectors` cross-file behavior.** Two `.about-image` blocks exist in the same file and are auto-merged by this plugin. After the split they will be in separate files — verify the plugin still merges them (it should, since it runs on the assembled output) and that the merge preserves `margin-bottom`.
 
 ### Before starting any extraction
