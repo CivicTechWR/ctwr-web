@@ -12,8 +12,7 @@ on:
     - cron: "0 2 * * 4"
   workflow_dispatch:
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   # Shared with preview-deploy so pushes to gh-pages are serialized.
