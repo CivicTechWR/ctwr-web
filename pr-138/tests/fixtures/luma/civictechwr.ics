@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Luma//Civic Tech WR//EN
+X-WR-CALNAME:Civic Tech WR
+X-WR-CALDESC:Luma Calendar
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20990312T213000Z
+DTEND:20990313T000000Z
+DTSTAMP:20260101T000000Z
+ORGANIZER;CN="Shay":MAILTO:calendar-invite@lu.ma
+UID:evt-fixture-01@events.lu.ma
+SUMMARY:CivicTechWR Hacknight
+DESCRIPTION:Get up-to-date information at: https://luma.com/m9qpiym3\n\nAd
+ dress:\n165 King St W\nKitchener\, Ontario\nCanada\n\nHosted by Shay
+LOCATION:165 King St W, Kitchener, ON N2G 1A7, Canada
+GEO:43.4507027;-80.4922619
+SEQUENCE:1
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20990319T213000Z
+DTEND:20990320T000000Z
+DTSTAMP:20260101T000000Z
+ORGANIZER;CN="Shay":MAILTO:calendar-invite@lu.ma
+UID:evt-fixture-02@events.lu.ma
+SUMMARY:CivicTechWR Hacknight
+DESCRIPTION:Get up-to-date information at: https://luma.com/ri0wk3us\n\nAd
+ dress:\n165 King St W\nKitchener\, Ontario\nCanada\n\nHosted by Shay
+LOCATION:165 King St W, Kitchener, ON N2G 1A7, Canada
+GEO:43.4507027;-80.4922619
+SEQUENCE:1
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
