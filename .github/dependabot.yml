@@ -1,88 +1,34 @@
-# Dependabot configuration for CivicTech Waterloo Region Website
-# https://docs.github.com/en/code-security/dependabot
-
----
 version: 2
 updates:
-  # Enable version updates for npm
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "monthly"
-      time: "09:00"
-      timezone: "America/Toronto"
-    open-pull-requests-limit: 10
-    reviewers:
-      - "CTWR-Org"
-    assignees:
-      - "CTWR-Org"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "javascript"
+      interval: "weekly"
+    open-pull-requests-limit: 0
     groups:
-      postcss:
+      security-updates:
+        applies-to: security-updates
         patterns:
-          - "postcss*"
-          - "autoprefixer"
-      stylelint:
-        patterns:
-          - "stylelint*"
-      pa11y:
-        patterns:
-          - "pa11y*"
-      playwright:
-        patterns:
-          - "@playwright/*"
-    ignore:
-      # Ignore major version updates for now
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+          - "*"
 
-  # Enable version updates for Ruby (Bundler)
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
-      interval: "monthly"
-      time: "09:00"
-      timezone: "America/Toronto"
-    open-pull-requests-limit: 5
-    reviewers:
-      - "CTWR-Org"
-    assignees:
-      - "CTWR-Org"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "ruby"
-    ignore:
-      # Ignore major version updates for now
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+      interval: "weekly"
+    open-pull-requests-limit: 0
+    groups:
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
 
-  # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
-      time: "09:00"
-      timezone: "America/Toronto"
-    open-pull-requests-limit: 5
-    reviewers:
-      - "CTWR-Org"
-    assignees:
-      - "CTWR-Org"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "github-actions"
+      interval: "weekly"
+    open-pull-requests-limit: 0
     groups:
-      actions:
+      security-updates:
+        applies-to: security-updates
         patterns:
-          - "actions/*"
+          - "*"
