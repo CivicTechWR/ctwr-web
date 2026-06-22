@@ -109,6 +109,9 @@ npm run minify
 git add css/main.min.css js/optimized-bundle.min.js
 ```
 
+**`super-linter` failing on `TRIVY` (e.g. a CVE flagged in `Gemfile.lock` or `package-lock.json`)**
+Super-Linter bundles **Trivy**, which scans `Gemfile.lock` and `package-lock.json` against a vulnerability DB it **downloads fresh on every run**. A branch that was green can therefore fail later with **no code change** when a new CVE is published against an already-pinned dependency — and Trivy flags advisories that the dedicated `Scan Ruby gems for vulnerabilities` (bundler-audit) and `Scan npm dependencies for vulnerabilities` checks miss, because they use different advisory databases. Fix at the source on `main`, not per-branch: bump the flagged dependency (often a lockfile-only `bundle update <gem> --conservative` for a transitive gem), merge to `main`, then rebase open PRs (`@dependabot rebase`, or `gh pr update-branch <N>`) so they pick it up. Example: 2026-06 `concurrent-ruby` 1.3.6 → 1.3.7 (CVE-2026-54904), PR #139.
+
 ---
 
 ## 4. CSS architecture — current state and modularization plan
