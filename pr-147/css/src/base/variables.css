@@ -1,0 +1,184 @@
+:root {
+  /* ==========================================================================
+     COLOR PALETTE - Only 4 colors + gray for backgrounds
+     #FC6C6D (coral), #2D6F72 (teal), #fff (white), #000 (black), #f5f5f5 (gray-50)
+     ========================================================================== */
+
+  /* Brand Colors */
+  --primary-color: #fc6c6d; /* Coral */
+  --secondary-color: #2d6f72; /* Teal */
+
+  /* Neutrals */
+  --white-color: #fafafa;
+  --dark-color: #000;
+  --gray-50: #f5f5f5; /* Backgrounds only */
+
+  /* Aliases for compatibility */
+  --p-color: var(--dark-color);
+  --section-bg-color: var(--gray-50);
+  --border-color: var(--gray-50);
+  --featured-border-color: var(--secondary-color);
+  --body-font-family: "DM Sans", sans-serif;
+  --h1-font-size: 3.875rem;
+  --h2-font-size: 3rem;
+  --h3-font-size: 2.25rem;
+  --h4-font-size: 2rem;
+  --h5-font-size: 1.5rem;
+  --h6-font-size: 1.375rem;
+  --p-font-size: 1rem;
+  --menu-font-size: 0.75rem;
+  --copyright-font-size: 0.875rem;
+
+  /* Modern font size scale for responsive typography */
+  --font-size-mobile-xs: 0.75rem;
+  --font-size-mobile-sm: 0.875rem;
+  --font-size-mobile-md: 1rem;
+  --font-size-mobile-lg: 1.125rem;
+  --font-size-mobile-xl: 1.25rem;
+  --font-size-mobile-2xl: 1.625rem; /* Phase 2 standardization */
+  --font-size-mobile-3xl: 1.75rem; /* Phase 2 standardization */
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2.25rem;
+  --font-size-4xl: 3rem;
+  --font-size-display-sm: 2rem; /* Section display headings */
+  --font-size-display-md: 5.625rem; /* Phase 2 standardization - Large display sizes */
+
+  /* Font weights - Phase 2 standardization */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600; /* Interpolated from variable font */
+  --font-weight-bold: 700;
+
+  /* Line height scale - Phase 2 standardization */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* Icon dimensions - Phase 2 standardization */
+  --icon-size-sm: 35.5px;
+  --icon-size-md: 44px;
+  --icon-size-lg: 47px;
+
+  /* Alpha Color Variants - Transparency effects */
+  --white-alpha-90: rgba(255, 255, 255, 0.9);
+  --white-alpha-80: rgba(255, 255, 255, 0.8);
+  --white-alpha-70: rgba(255, 255, 255, 0.7);
+  --white-alpha-20: rgba(255, 255, 255, 0.2);
+  --white-alpha-10: rgba(255, 255, 255, 0.1);
+
+  /* Spacing Scale - Consistent spacing system */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 40px;
+  --space-10: 80px;
+  --space-12: 96px;
+  --space-15: 120px;
+
+  /* Section spacing for large layout padding */
+  --section-padding-sm: 80px;
+  --section-padding-md: 120px;
+  --section-padding-lg: 160px;
+  --section-padding-xl: 200px;
+
+  /* Additional spacing for specific components */
+  --page-padding: 100px;
+  --card-padding: 40px;
+  --card-padding-sm: 30px;
+  --card-padding-xs: 15px;
+
+  /* Simplified Border Radius - Modern radius system */
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-card: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  --radius-2xl: 2rem;
+  --border-radius: 8px;
+
+  /**
+   * BREAKPOINT SYSTEM
+   *
+   * Standard breakpoints follow Bootstrap 4 convention for grid compatibility:
+   * - xs: 0px (default, no media query needed)
+   * - sm: 576px and up (small devices, landscape phones)
+   * - md: 768px and up (medium devices, tablets)
+   * - lg: 992px and up (large devices, desktops)
+   * - xl: 1200px and up (extra large devices, large desktops)
+   * - xxl: 1600px and up (custom: ultra-wide monitors)
+   *
+   * Usage in media queries:
+   * @media (max-width: 767.98px) { ... }  // Mobile and tablet
+   * @media (min-width: 992px) { ... }  // Desktop and up
+   * @media (min-width: 768px) and (max-width: 991.98px) { ... }  // Tablet only
+   *
+   * NOTE: CSS custom properties cannot be used directly in @media queries.
+   * The variables below are for documentation and JavaScript access only.
+   */
+
+  /* Standard breakpoints (mobile-first) */
+  --breakpoint-xs: 0; /* Extra small: 0px and up */
+  --breakpoint-sm: 576px; /* Small: 576px and up */
+  --breakpoint-md: 768px; /* Medium: 768px and up */
+  --breakpoint-lg: 992px; /* Large: 992px and up */
+  --breakpoint-xl: 1200px; /* Extra large: 1200px and up */
+  --breakpoint-xxl: 1600px; /* Extra extra large: 1600px and up */
+
+  /* Semantic aliases for clarity */
+  --breakpoint-mobile: 576px; /* Small mobile devices (Phase 3: consolidated from 480px) */
+  --breakpoint-tablet: 768px; /* Tablets (same as md) */
+  --breakpoint-desktop: 992px; /* Desktop (same as lg) */
+
+  /* Max-width boundaries (for documentation and JavaScript) */
+  --breakpoint-xs-max: 575px; /* Max before sm */
+  --breakpoint-sm-max: 767px; /* Max before md */
+  --breakpoint-md-max: 991px; /* Max before lg */
+  --breakpoint-lg-max: 1199px; /* Max before xl */
+  --breakpoint-xl-max: 1599px; /* Max before xxl */
+
+  /* Shadows - black with opacity */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.2);
+  --shadow-heavy: rgba(0, 0, 0, 0.4);
+  --shadow-md: rgba(0, 0, 0, 0.175);
+  --shadow-lg: rgba(0, 0, 0, 0.18);
+  --shadow-2xl: rgba(0, 0, 0, 0.5);
+
+  /* Overlays - white with opacity */
+  --overlay-light: rgba(255, 255, 255, 0.1);
+  --overlay-medium: rgba(255, 255, 255, 0.2);
+  --overlay-heavy: rgba(255, 255, 255, 0.7);
+
+  /* Teal (secondary) with opacity */
+  --secondary-alpha-1: rgba(45, 111, 114, 0.1);
+  --secondary-alpha-2: rgba(45, 111, 114, 0.2);
+  --secondary-alpha-3: rgba(45, 111, 114, 0.3);
+
+  /* Form states */
+  /* --success-bg uses 5% teal tint (vs 10%) so teal text meets WCAG AA 4.5:1 */
+  --success-color: var(--secondary-color);
+  --success-bg: rgba(45, 111, 114, 0.05);
+  --success-border: var(--secondary-color);
+  /* --error-color uses dark red; brand coral (#fc6c6d) fails WCAG AA (2.5:1) as text */
+  --error-color: #b91c1c;
+  --error-bg: rgba(185, 28, 28, 0.08);
+  --error-border: #b91c1c;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(
+    135deg,
+    rgba(45, 111, 114, 0.9) 0%,
+    rgba(252, 108, 109, 0.8) 100%
+  );
+  --gradient-newsletter: linear-gradient(
+    135deg,
+    var(--gray-50) 0%,
+    var(--white-color) 100%
+  );
+}
