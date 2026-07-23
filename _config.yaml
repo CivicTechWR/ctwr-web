@@ -9,6 +9,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   local community using technology-based solutions.
 baseurl: "" # The subpath of your site, e.g., /blog
 url: "https://civictechwr.org" # The base URL of your site
+image: /images/hacknight-1.jpg # default social preview image (og:image / twitter:image), via jekyll-seo-tag
 
 # Socials
 slack_invite: https://join.slack.com/t/civictechwr/shared_invite/zt-2hk4c93hv-DEIbxR_z1xKj8cZmayVHTw

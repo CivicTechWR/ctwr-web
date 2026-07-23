@@ -2,7 +2,32 @@
 mtg.date_formatted | default: "Wednesdays" %} {% assign mtg_time =
 mtg.time_formatted | default: "6:00 PM" %} {% assign mtg_loc =
 mtg.location_short | default: "165 King St W, Kitchener" %} {% assign mtg_url =
-mtg.event_url | default: "https://luma.com/civictechwr" %}
+mtg.event_url | default: "https://luma.com/civictechwr" %} {% assign mtg_name =
+mtg.name | default: "CivicTechWR Hacknight" %}
+{% if mtg.datetime_iso %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": {{ mtg_name | jsonify }},
+    "startDate": {{ mtg.datetime_iso | jsonify }},
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": {{ mtg_loc | jsonify }},
+      "address": {{ mtg.location_full | default: mtg_loc | jsonify }}
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Civic Tech Waterloo Region",
+      "url": "https://civictechwr.org"
+    },
+    "url": {{ mtg_url | jsonify }},
+    "image": ["https://civictechwr.org/images/hacknight-1.jpg"]
+  }
+</script>
+{% endif %}
 <section
   class="featured section-padding section-secondary-bg meeting-section-alt"
   id="{{ include.section_id | default: 'section_next_meeting' }}"

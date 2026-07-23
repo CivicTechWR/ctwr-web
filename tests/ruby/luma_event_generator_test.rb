@@ -54,6 +54,16 @@ assert_equal "165 King St W, Kitchener", short_fallback, "Should return fallback
 short_url = generator.send(:short_location, "https://luma.com/event/evt-abc123")
 assert_equal "165 King St W, Kitchener", short_url, "Should return fallback when Luma substitutes event URL for hidden address"
 
+# --- full_location ---
+full = generator.send(:full_location, "165 King St W, Kitchener, ON N2G 1A7, Canada")
+assert_equal "165 King St W, Kitchener, ON N2G 1A7, Canada", full, "Should preserve the full location string as-is"
+
+full_fallback = generator.send(:full_location, "")
+assert_equal "165 King St W, Kitchener, ON", full_fallback, "Should return fallback when location is empty"
+
+full_url = generator.send(:full_location, "https://luma.com/event/evt-abc123")
+assert_equal "165 King St W, Kitchener, ON", full_url, "Should return fallback when Luma substitutes event URL for hidden address"
+
 # --- unescape_ical: backslash-escape sequences ---
 unescaped = generator.send(:unescape_ical, "Kitchener\\, Ontario\\nCanada")
 assert_equal "Kitchener, Ontario\nCanada", unescaped, "Should unescape iCal text escapes"
@@ -66,6 +76,8 @@ end
 
 result = stub_generator.send(:fetch_next_event)
 assert_equal true, result["found"], "Should return found=true for future events"
+assert_equal "CivicTechWR Hacknight", result["name"],
+  "Should carry the event summary through as the Event schema name"
 assert_equal "165 King St W, Kitchener", result["location_short"],
   "Should format the expected short location"
 assert_equal "https://luma.com/m9qpiym3", result["event_url"],
@@ -84,6 +96,8 @@ assert_equal false, past_result["found"],
   "fetch_next_event should return FALLBACK when all events are in the past"
 assert_equal "https://luma.com/civictechwr", past_result["event_url"],
   "FALLBACK event_url should be the generic calendar URL"
+assert_equal "CivicTechWR Hacknight", past_result["name"],
+  "FALLBACK name should still be usable as an Event schema name"
 
 # --- parse_ical_events: RFC 5545 line unfolding ---
 folded_ical = <<~ICAL
