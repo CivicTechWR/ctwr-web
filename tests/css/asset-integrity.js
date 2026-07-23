@@ -10,8 +10,8 @@ assert.ok(fs.existsSync(meetingIncludePath), 'Missing meeting-section include');
 const meetingHtml = fs.readFileSync(meetingIncludePath, 'utf8');
 const assetPaths = [];
 
-const srcRegex = /src="([^"]+)"/g;
-const srcsetRegex = /srcset="([^"]+)"/g;
+const srcRegex = /src\s*=\s*["']([^"']+)["']/gi;
+const srcsetRegex = /srcset\s*=\s*["']([^"']+)["']/gi;
 
 for (const match of meetingHtml.matchAll(srcRegex)) {
   assetPaths.push(match[1]);
@@ -30,7 +30,10 @@ assert.ok(localAssets.length > 0, 'No meeting image assets found');
 
 localAssets.forEach((asset) => {
   const filePath = path.join(process.cwd(), asset.replace(/^\//, ''));
-  assert.ok(fs.existsSync(filePath), `Missing asset file: ${asset}`);
+  assert.ok(
+    fs.existsSync(filePath) && fs.statSync(filePath).isFile(),
+    `Missing asset file: ${asset}`
+  );
 });
 
 const criticalCssPath = path.join('_includes', 'critical-css.html');

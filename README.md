@@ -148,6 +148,7 @@ npm run test:css           # CSS component tests
 npm run test:css:assets    # Asset smoke tests
 npm run test:css:all       # Full CSS test suite
 npm run test:luma          # Luma event sync regression tests
+npm run test:js            # JavaScript sanitizer tests (safeUrl())
 ```
 
 ### Code Quality
