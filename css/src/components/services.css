@@ -34,8 +34,13 @@
   color: var(--white-color);
 }
 
-.section-secondary-bg a:not(.btn):hover {
-  color: var(--primary-color);
+.section-secondary-bg a:not(.btn):hover,
+.section-secondary-bg a:not(.btn):focus {
+  /* The accessible coral variant (--primary-color-accessible) is nearly
+     the same luminance as this section's teal background (~1:1 contrast) —
+     stay on the section's own white text/outline instead. */
+  color: var(--white-color);
+  outline-color: var(--white-color);
   text-decoration: underline;
 }
 

@@ -11,7 +11,7 @@
   top: -40px;
   left: 0;
   background: var(--primary-color);
-  color: var(--white-color);
+  color: var(--dark-color);
   padding: var(--space-2);
   text-decoration: none;
   z-index: 100;
@@ -19,7 +19,7 @@
 
 .skip-link:focus {
   top: 0;
-  outline: 2px solid var(--white-color);
+  outline: 2px solid var(--dark-color);
   outline-offset: 2px;
 }
 
