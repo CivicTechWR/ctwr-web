@@ -10,8 +10,8 @@ assert.ok(fs.existsSync(meetingIncludePath), 'Missing meeting-section include');
 const meetingHtml = fs.readFileSync(meetingIncludePath, 'utf8');
 const assetPaths = [];
 
-const srcRegex = /src\s*=\s*["']([^"']+)["']/gi;
-const srcsetRegex = /srcset\s*=\s*["']([^"']+)["']/gi;
+const srcRegex = /(?<![\w-])src\s*=\s*["']([^"']+)["']/gi;
+const srcsetRegex = /(?<![\w-])srcset\s*=\s*["']([^"']+)["']/gi;
 
 for (const match of meetingHtml.matchAll(srcRegex)) {
   assetPaths.push(match[1]);
