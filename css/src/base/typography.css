@@ -134,14 +134,14 @@ a {
 }
 
 a:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
   text-decoration: underline;
 }
 
 a:focus {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
   text-decoration: underline;
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--primary-color-accessible);
   outline-offset: 2px;
 }
 
@@ -150,7 +150,7 @@ a:not(.btn):visited {
 }
 
 a:not(.btn):visited:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 /* Text Selection */

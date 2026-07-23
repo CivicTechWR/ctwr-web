@@ -7,6 +7,11 @@
   /* Brand Colors */
   --primary-color: #fc6c6d; /* Coral */
   --secondary-color: #2d6f72; /* Teal */
+  /* Coral fails WCAG AA (2.6-2.8:1) as hover/focus text or outline on white/light
+     backgrounds. This darker shade keeps the brand's warm hover feedback while
+     passing AA (~5.8:1 against --white-color). Use for hover/focus text and
+     outlines only — not as a base/resting link color. */
+  --primary-color-accessible: #b23c3d;
 
   /* Neutrals */
   --white-color: #fafafa;
