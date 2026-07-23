@@ -1,0 +1,201 @@
+/* Services - What we do section and meeting section */
+/* ---------------------------------------
+  SERVICES SECTION - What we do
+  Extracted from style.css for better organization
+----------------------------------------- */
+
+.services,
+.featured {
+  background: var(--section-bg-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Meeting section with teal background */
+.section-secondary-bg {
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-top: none;
+  border-bottom: none;
+}
+
+.section-secondary-bg h1,
+.section-secondary-bg h2,
+.section-secondary-bg h3,
+.section-secondary-bg h4,
+.section-secondary-bg h5,
+.section-secondary-bg h6 {
+  color: var(--white-color);
+}
+
+.section-secondary-bg p,
+.section-secondary-bg li,
+.section-secondary-bg a:not(.btn) {
+  color: var(--white-color);
+}
+
+.section-secondary-bg a:not(.btn):hover,
+.section-secondary-bg a:not(.btn):focus {
+  /* The accessible coral variant (--primary-color-accessible) is nearly
+     the same luminance as this section's teal background (~1:1 contrast) —
+     stay on the section's own white text/outline instead. */
+  color: var(--white-color);
+  outline-color: var(--white-color);
+  text-decoration: underline;
+}
+
+/* Meeting section styles */
+.meeting-section-alt {
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-top: none;
+  border-bottom: none;
+  padding: var(--space-6);
+}
+
+/* Meeting content container */
+.meeting-content {
+  /*display: flex;*/
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  min-height: 400px;
+}
+
+/* Meeting title */
+.meeting-title {
+  color: var(--white-color);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+  text-align: left;
+}
+
+/* Meeting card */
+.meeting-card {
+  background: transparent;
+  border: 1px solid var(--overlay-medium);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  backdrop-filter: blur(10px);
+  max-width: 100%;
+}
+
+/* Meeting details container */
+.meeting-details {
+  margin-bottom: var(--space-6);
+}
+
+/* Individual meeting detail item */
+.meeting-detail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--overlay-light);
+}
+
+.meeting-detail-item:last-child {
+  border-bottom: none;
+}
+
+/* Meeting icon */
+.meeting-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  color: var(--white-color);
+  font-size: var(--font-size-mobile-xl);
+  flex-shrink: 0;
+}
+
+/* Meeting text */
+.meeting-text {
+  color: var(--white-color);
+  font-size: var(--font-size-mobile-lg);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Meeting CTA */
+.meeting-cta {
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (min-width: 992px) {
+  .meeting-section-alt .row {
+    align-items: stretch;
+  }
+
+  .meeting-content {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .meeting-title {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .meeting-section-alt {
+    padding: var(--space-6) 0;
+  }
+
+  .meeting-card {
+    padding: var(--space-5);
+  }
+
+  .meeting-detail-item {
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+  }
+
+  .meeting-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: var(--font-size-mobile-md);
+  }
+
+  .meeting-text {
+    font-size: var(--font-size-mobile-md);
+  }
+}
+
+/* Meeting section context overrides */
+.meeting-section-alt .col-lg-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.meeting-section-alt .meeting-content {
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+}
+
+.meeting-section-alt .meeting-card {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767.98px) {
+  .meeting-section-alt .meeting-content {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .meeting-section-alt .meeting-content {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+}
