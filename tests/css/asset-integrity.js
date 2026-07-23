@@ -4,10 +4,15 @@ const path = require('path');
 
 console.log('Running CSS Asset Smoke Tests...');
 
-const meetingIncludePath = path.join('_includes', 'meeting-section.html');
-assert.ok(fs.existsSync(meetingIncludePath), 'Missing meeting-section include');
+const htmlSourcesToCheck = [
+  path.join('_includes', 'meeting-section.html'),
+  'index.html',
+  'about.html',
+];
+htmlSourcesToCheck.forEach((filePath) => {
+  assert.ok(fs.existsSync(filePath), `Missing HTML source: ${filePath}`);
+});
 
-const meetingHtml = fs.readFileSync(meetingIncludePath, 'utf8');
 const assetPaths = [];
 
 const srcRegex = /(?:^|[\s<])src\s*=\s*["']([^"']+)["']/gi;
@@ -30,20 +35,24 @@ assert.deepStrictEqual(
   'srcsetRegex should match real srcset attributes'
 );
 
-for (const match of meetingHtml.matchAll(srcRegex)) {
-  assetPaths.push(match[1]);
-}
+htmlSourcesToCheck.forEach((filePath) => {
+  const html = fs.readFileSync(filePath, 'utf8');
 
-for (const match of meetingHtml.matchAll(srcsetRegex)) {
-  const srcsetEntries = match[1]
-    .split(',')
-    .map((entry) => entry.trim().split(' ')[0])
-    .filter(Boolean);
-  assetPaths.push(...srcsetEntries);
-}
+  for (const match of html.matchAll(srcRegex)) {
+    assetPaths.push(match[1]);
+  }
+
+  for (const match of html.matchAll(srcsetRegex)) {
+    const srcsetEntries = match[1]
+      .split(',')
+      .map((entry) => entry.trim().split(' ')[0])
+      .filter(Boolean);
+    assetPaths.push(...srcsetEntries);
+  }
+});
 
 const localAssets = assetPaths.filter((asset) => asset.startsWith('/images/'));
-assert.ok(localAssets.length > 0, 'No meeting image assets found');
+assert.ok(localAssets.length > 0, 'No local image assets found across checked HTML sources');
 
 localAssets.forEach((asset) => {
   const filePath = path.join(process.cwd(), asset.replace(/^\//, ''));
