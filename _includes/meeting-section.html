@@ -9,14 +9,14 @@ mtg.name | default: "CivicTechWR Hacknight" %}
   {
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": {{ mtg_name | jsonify }},
+    "name": {{ mtg_name | jsonify | replace: "<", "\u003c" }},
     "startDate": {{ mtg.datetime_iso | jsonify }},
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": {
       "@type": "Place",
-      "name": {{ mtg_loc | jsonify }},
-      "address": {{ mtg.location_full | default: mtg_loc | jsonify }}
+      "name": {{ mtg_loc | jsonify | replace: "<", "\u003c" }},
+      "address": {{ mtg.location_full | default: mtg_loc | jsonify | replace: "<", "\u003c" }}
     },
     "organizer": {
       "@type": "Organization",
