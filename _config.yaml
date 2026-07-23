@@ -29,6 +29,7 @@ exclude:
   - "LICENSE.txt"
   - "docs"
   - "scripts"
+  - "tests"
   - "eslint.config.js"
   - ".stylelintrc.json"
   - ".htmlhintrc"
