@@ -4,19 +4,25 @@
     // ── helpers ──────────────────────────────────────────────────────────────
     function safeUrl(url) {
       if (!url) return "#";
-      // Browsers normalize embedded backslashes and tab/newline/CR characters
-      // during URL parsing (WHATWG URL spec), which can turn a seemingly-safe
-      // relative path (e.g. "/\evil.com" or "/\t/evil.com") into a
-      // protocol-relative reference to an attacker-controlled host.
-      if (/[\t\n\r\\]/.test(url)) return "#";
-      // Protocol-relative URLs ("//evil.com") start with "/" too but resolve
-      // to an attacker-controlled host using the current page's scheme —
-      // must be excluded from the relative-path allowance below.
-      return url.startsWith("https://") ||
-        url.startsWith("http://") ||
-        (url.startsWith("/") && !url.startsWith("//"))
-        ? url
-        : "#";
+      // Let the platform's own URL parser do the normalization instead of
+      // guessing at bypass characters one at a time (see issue #151):
+      // browsers resolve things like "//evil.com" or "/\evil.com" to an
+      // off-origin host in ways that are easy to miss with string prefixes.
+      const base =
+        (typeof window !== "undefined" && window.location && window.location.href) ||
+        "https://civictechwr.org/";
+      let resolved;
+      try {
+        resolved = new URL(url, base);
+      } catch (e) {
+        return "#";
+      }
+      if (resolved.protocol !== "https:" && resolved.protocol !== "http:") return "#";
+      // Absolute http(s) URLs may point anywhere (e.g. project.github linking
+      // to github.com). Anything else must resolve to this site's own origin.
+      const isAbsoluteHttpInput = /^https?:\/\//i.test(url);
+      if (!isAbsoluteHttpInput && resolved.origin !== new URL(base).origin) return "#";
+      return url;
     }
 
     function formatTag(tag) {
