@@ -25,9 +25,11 @@
 ### Task 1: AGENTS.md
 
 **Files:**
+
 - Create: `AGENTS.md`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: nothing consumed by later tasks — this is a standalone deliverable.
 
@@ -67,10 +69,12 @@ Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
 ### Task 2: Makefile
 
 **Files:**
+
 - Create: `Makefile`
 
 **Interfaces:**
-- Consumes: nothing directly, but the `groundtruth` target's recipe calls `bash scripts/generate-ground-truth.sh`, which Task 3 creates. The Makefile can be committed before that script exists — `make groundtruth` just won't work until Task 3 lands — but do not run `make groundtruth` for real until Task 3 is done (Step 3 below only checks the recipe is *wired correctly*, not that the script runs).
+
+- Consumes: nothing directly, but the `groundtruth` target's recipe calls `bash scripts/generate-ground-truth.sh`, which Task 3 creates. The Makefile can be committed before that script exists — `make groundtruth` just won't work until Task 3 lands — but do not run `make groundtruth` for real until Task 3 is done (Step 3 below only checks the recipe is _wired correctly_, not that the script runs).
 - Produces: the target names `all`, `help`, `install`, `build`, `lint`, `test`, `e2e`, `ci`, `serve`, `groundtruth`, `clean` — later tasks and the final integration task refer to these exact names.
 
 - [ ] **Step 1: Create `Makefile`**
@@ -81,34 +85,34 @@ Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
 all: build ## Default target: build the site
 
 help: ## Show this help
-	@echo "Available targets: all install build lint test e2e ci serve groundtruth clean"
+ @echo "Available targets: all install build lint test e2e ci serve groundtruth clean"
 
 install: ## Install Ruby gems and npm dependencies
-	bundle install
-	npm ci
+ bundle install
+ npm ci
 
 build: ## Build the production site (minify assets, JEKYLL_ENV=production)
-	npm run build:prod
+ npm run build:prod
 
 lint: ## Run all linters (css, markdown, yaml, json, shell, csp)
-	npm run lint
+ npm run lint
 
 test: ## Run the CSS and Luma test suites
-	npm run test
+ npm run test
 
 e2e: ## Run the Playwright end-to-end test suite
-	npm run test:e2e
+ npm run test:e2e
 
 ci: lint test build e2e ## Run the full local CI rehearsal
 
 serve: ## Start the local Jekyll dev server with livereload
-	npm run serve
+ npm run serve
 
 groundtruth: ## Regenerate ground-truth.json from current repo state
-	bash scripts/generate-ground-truth.sh > ground-truth.json
+ bash scripts/generate-ground-truth.sh > ground-truth.json
 
 clean: ## Remove local build byproducts
-	rm -rf _site lighthouse-report.json css-analysis.json
+ rm -rf _site lighthouse-report.json css-analysis.json
 ```
 
 - [ ] **Step 2: Validate against checkmake**
@@ -142,10 +146,12 @@ Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
 ### Task 3: `scripts/generate-ground-truth.sh` + `.gitignore`
 
 **Files:**
+
 - Create: `scripts/generate-ground-truth.sh`
 - Modify: `.gitignore`
 
 **Interfaces:**
+
 - Consumes: nothing from earlier tasks.
 - Produces: a script at `scripts/generate-ground-truth.sh` that, when run from anywhere (it `cd`s to the repo root itself via `git rev-parse --show-toplevel`), prints a single JSON object to stdout with top-level keys `generated_at`, `commit`, `css_modularization`, `build_assets_sync`, `dormant_files`, `branch_protection_required_checks`, `e2e_specs`. This exact shape is what Task 2's `groundtruth` Makefile target redirects into `ground-truth.json`.
 
@@ -172,16 +178,16 @@ partial_file_count=0
 build_matches_committed=false
 
 if [ -d css/src ]; then
-	src_dir_exists=true
-	partial_file_count="$(find css/src -name '*.css' | wc -l | tr -d ' ')"
+ src_dir_exists=true
+ partial_file_count="$(find css/src -name '*.css' | wc -l | tr -d ' ')"
 
-	if [ -f css/src/main.css ]; then
-		if npx postcss css/src/main.css --output "$tmp_dir/main.css" --config postcss.config.js >/dev/null 2>&1; then
-			if diff -q "$tmp_dir/main.css" css/main.css >/dev/null 2>&1; then
-				build_matches_committed=true
-			fi
-		fi
-	fi
+ if [ -f css/src/main.css ]; then
+  if npx postcss css/src/main.css --output "$tmp_dir/main.css" --config postcss.config.js >/dev/null 2>&1; then
+   if diff -q "$tmp_dir/main.css" css/main.css >/dev/null 2>&1; then
+    build_matches_committed=true
+   fi
+  fi
+ fi
 fi
 
 # --- build_assets_sync ---
@@ -189,103 +195,107 @@ main_min_css_matches=false
 js_bundle_min_matches=false
 
 if [ -f css/main.css ]; then
-	if npx cleancss -o "$tmp_dir/main.min.css" css/main.css >/dev/null 2>&1; then
-		if diff -q "$tmp_dir/main.min.css" css/main.min.css >/dev/null 2>&1; then
-			main_min_css_matches=true
-		fi
-	fi
+ if npx cleancss -o "$tmp_dir/main.min.css" css/main.css >/dev/null 2>&1; then
+  if diff -q "$tmp_dir/main.min.css" css/main.min.css >/dev/null 2>&1; then
+   main_min_css_matches=true
+  fi
+ fi
 fi
 
 if [ -f js/optimized-bundle.js ]; then
-	if npx terser js/optimized-bundle.js -o "$tmp_dir/optimized-bundle.min.js" --compress --mangle >/dev/null 2>&1; then
-		if diff -q "$tmp_dir/optimized-bundle.min.js" js/optimized-bundle.min.js >/dev/null 2>&1; then
-			js_bundle_min_matches=true
-		fi
-	fi
+ if npx terser js/optimized-bundle.js -o "$tmp_dir/optimized-bundle.min.js" --compress --mangle >/dev/null 2>&1; then
+  if diff -q "$tmp_dir/optimized-bundle.min.js" js/optimized-bundle.min.js >/dev/null 2>&1; then
+   js_bundle_min_matches=true
+  fi
+ fi
 fi
 
 # --- dormant_files ---
 critical_css_referenced=false
 if grep -rl "critical-css" _layouts _includes --include="*.html" 2>/dev/null | grep -v "_includes/critical-css.html" | grep -q .; then
-	critical_css_referenced=true
+ critical_css_referenced=true
 fi
 
 # --- branch_protection_required_checks ---
 required_checks_json="null"
 if gh auth status >/dev/null 2>&1; then
-	if checks="$(gh api repos/CivicTechWR/ctwr-web/branches/main/protection/required_status_checks --jq '[.checks[].context]' 2>/dev/null)"; then
-		required_checks_json="$checks"
-	fi
+ if checks="$(gh api repos/CivicTechWR/ctwr-web/branches/main/protection/required_status_checks --jq '[.checks[].context]' 2>/dev/null)"; then
+  required_checks_json="$checks"
+ fi
 fi
 
 # --- e2e_specs ---
 mapfile -t e2e_files < <(git ls-files 'tests/e2e/*.spec.js' | xargs -n1 basename | sort)
 e2e_count="${#e2e_files[@]}"
 if [ "$e2e_count" -eq 0 ]; then
-	e2e_files_json="[]"
+ e2e_files_json="[]"
 else
-	e2e_files_json="$(printf '%s\n' "${e2e_files[@]}" | jq -R . | jq -s .)"
+ e2e_files_json="$(printf '%s\n' "${e2e_files[@]}" | jq -R . | jq -s .)"
 fi
 
 jq -n \
-	--arg generated_at "$generated_at" \
-	--arg commit "$commit" \
-	--argjson src_dir_exists "$src_dir_exists" \
-	--argjson partial_file_count "$partial_file_count" \
-	--argjson build_matches_committed "$build_matches_committed" \
-	--argjson main_min_css_matches "$main_min_css_matches" \
-	--argjson js_bundle_min_matches "$js_bundle_min_matches" \
-	--argjson critical_css_referenced "$critical_css_referenced" \
-	--argjson required_checks "$required_checks_json" \
-	--argjson e2e_count "$e2e_count" \
-	--argjson e2e_files "$e2e_files_json" \
-	'{
-		generated_at: $generated_at,
-		commit: $commit,
-		css_modularization: {
-			src_dir_exists: $src_dir_exists,
-			partial_file_count: $partial_file_count,
-			build_matches_committed: $build_matches_committed
-		},
-		build_assets_sync: {
-			main_min_css_matches: $main_min_css_matches,
-			js_bundle_min_matches: $js_bundle_min_matches
-		},
-		dormant_files: {
-			critical_css_html_referenced: $critical_css_referenced
-		},
-		branch_protection_required_checks: $required_checks,
-		e2e_specs: {
-			count: $e2e_count,
-			files: $e2e_files
-		}
-	}'
+ --arg generated_at "$generated_at" \
+ --arg commit "$commit" \
+ --argjson src_dir_exists "$src_dir_exists" \
+ --argjson partial_file_count "$partial_file_count" \
+ --argjson build_matches_committed "$build_matches_committed" \
+ --argjson main_min_css_matches "$main_min_css_matches" \
+ --argjson js_bundle_min_matches "$js_bundle_min_matches" \
+ --argjson critical_css_referenced "$critical_css_referenced" \
+ --argjson required_checks "$required_checks_json" \
+ --argjson e2e_count "$e2e_count" \
+ --argjson e2e_files "$e2e_files_json" \
+ '{
+  generated_at: $generated_at,
+  commit: $commit,
+  css_modularization: {
+   src_dir_exists: $src_dir_exists,
+   partial_file_count: $partial_file_count,
+   build_matches_committed: $build_matches_committed
+  },
+  build_assets_sync: {
+   main_min_css_matches: $main_min_css_matches,
+   js_bundle_min_matches: $js_bundle_min_matches
+  },
+  dormant_files: {
+   critical_css_html_referenced: $critical_css_referenced
+  },
+  branch_protection_required_checks: $required_checks,
+  e2e_specs: {
+   count: $e2e_count,
+   files: $e2e_files
+  }
+ }'
 ```
 
 - [ ] **Step 2: Make it executable and lint it**
 
 Run:
+
 ```bash
 chmod +x scripts/generate-ground-truth.sh
 shfmt -d scripts/generate-ground-truth.sh
 shellcheck scripts/generate-ground-truth.sh
 ```
+
 Expected: `shfmt -d` prints nothing (no formatting diff), `shellcheck` prints nothing (exit 0).
 
 - [ ] **Step 3: Run it for real and verify output + no working-tree mutation**
 
 Run:
+
 ```bash
 bash scripts/generate-ground-truth.sh | jq empty && echo "valid json"
 git status --short
 ```
+
 Expected: `valid json` printed, and `git status --short` shows nothing beyond whatever this task has already staged/committed so far — specifically, `css/main.css`, `css/main.min.css`, and `js/optimized-bundle.js`/`.min.js` must show **no** modifications. (This was already verified once during planning against the real repo — reproduce it here as part of the task's own test cycle, not just trust the planning-time run.)
 
 - [ ] **Step 4: Add `ground-truth.json` to `.gitignore`**
 
 Add this line under the existing `# Analysis files` section at the bottom of `.gitignore`:
 
-```
+```text
 ground-truth.json
 ```
 
@@ -312,6 +322,7 @@ Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
 **Files:** none created or modified — this task only runs and verifies.
 
 **Interfaces:**
+
 - Consumes: `make groundtruth` (Task 2) invoking `scripts/generate-ground-truth.sh` (Task 3).
 - Produces: nothing for later tasks — this is the final verification before handoff.
 
@@ -328,7 +339,7 @@ Expected: shows `?? ground-truth.json` (untracked, thanks to the `.gitignore` en
 - [ ] **Step 3: Confirm the new files pass the full lint pipeline as CI would run it, through the Makefile itself**
 
 Run: `make lint`
-Expected: exits 0 (this runs `npm run lint` via the Task 2 Makefile target, so it verifies both that the new files pass lint *and* that the `lint` target is wired correctly). This exercises `lint:md` (covers `AGENTS.md`), `lint:shell` (covers `scripts/generate-ground-truth.sh`), and the others — none of which should be affected by these additions, but this confirms it rather than assuming it.
+Expected: exits 0 (this runs `npm run lint` via the Task 2 Makefile target, so it verifies both that the new files pass lint _and_ that the `lint` target is wired correctly). This exercises `lint:md` (covers `AGENTS.md`), `lint:shell` (covers `scripts/generate-ground-truth.sh`), and the others — none of which should be affected by these additions, but this confirms it rather than assuming it.
 
 - [ ] **Step 4: Clean up the local verification artifact**
 

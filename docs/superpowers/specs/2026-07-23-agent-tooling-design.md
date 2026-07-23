@@ -49,34 +49,34 @@ required CI checks by name.
 .PHONY: help install build lint test e2e ci serve groundtruth clean
 
 help:
-	@echo "Available targets: install build lint test e2e ci serve groundtruth clean"
+    @echo "Available targets: install build lint test e2e ci serve groundtruth clean"
 
 install:
-	bundle install
-	npm ci
+    bundle install
+    npm ci
 
 build:
-	npm run build:prod
+    npm run build:prod
 
 lint:
-	npm run lint
+    npm run lint
 
 test:
-	npm run test
+    npm run test
 
 e2e:
-	npm run test:e2e
+    npm run test:e2e
 
 ci: lint test build e2e
 
 serve:
-	npm run serve
+    npm run serve
 
 groundtruth:
-	bash scripts/generate-ground-truth.sh > ground-truth.json
+    bash scripts/generate-ground-truth.sh > ground-truth.json
 
 clean:
-	rm -rf _site lighthouse-report.json css-analysis.json
+    rm -rf _site lighthouse-report.json css-analysis.json
 ```
 
 **Rationale:** CLAUDE.md's engineering-hygiene doctrine already says "run
