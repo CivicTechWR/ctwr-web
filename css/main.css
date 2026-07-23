@@ -27,6 +27,11 @@
   /* Brand Colors */
   --primary-color: #fc6c6d; /* Coral */
   --secondary-color: #2d6f72; /* Teal */
+  /* Coral fails WCAG AA (2.6-2.8:1) as hover/focus text or outline on white/light
+     backgrounds. This darker shade keeps the brand's warm hover feedback while
+     passing AA (~5.8:1 against --white-color). Use for hover/focus text and
+     outlines only — not as a base/resting link color. */
+  --primary-color-accessible: #b23c3d;
 
   /* Neutrals */
   --white-color: #fafafa;
@@ -377,14 +382,14 @@ a {
 }
 
 a:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
   text-decoration: underline;
 }
 
 a:focus {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
   text-decoration: underline;
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--primary-color-accessible);
   outline-offset: 2px;
 }
 
@@ -393,7 +398,7 @@ a:not(.btn):visited {
 }
 
 a:not(.btn):visited:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 /* Text Selection */
@@ -863,10 +868,10 @@ strong {
 }
 
 .newsletter-input-main:focus {
-  outline: 2px solid var(--primary-color, #fc6c6d);
+  outline: 2px solid var(--primary-color-accessible, #b23c3d);
   outline-offset: -2px;
-  border-color: var(--primary-color, #fc6c6d);
-  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
+  border-color: var(--primary-color-accessible, #b23c3d);
+  box-shadow: 0 0 0 3px rgb(178 60 61 / 0.25);
 }
 
 .newsletter-input-main::-moz-placeholder {
@@ -914,11 +919,11 @@ strong {
 }
 
 .footer-newsletter input[type="email"]:focus {
-  outline: 2px solid var(--primary-color, #fc6c6d);
+  outline: 2px solid var(--primary-color-accessible, #b23c3d);
   outline-offset: -2px;
-  border-color: var(--primary-color, #fc6c6d);
+  border-color: var(--primary-color-accessible, #b23c3d);
   background: var(--white-color);
-  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
+  box-shadow: 0 0 0 3px rgb(178 60 61 / 0.25);
 }
 
 .footer-newsletter input[type="email"]::-moz-placeholder {
@@ -982,7 +987,7 @@ strong {
   top: -40px;
   left: 0;
   background: var(--primary-color);
-  color: var(--white-color);
+  color: var(--dark-color);
   padding: var(--space-2);
   text-decoration: none;
   z-index: 100;
@@ -990,7 +995,7 @@ strong {
 
 .skip-link:focus {
   top: 0;
-  outline: 2px solid var(--white-color);
+  outline: 2px solid var(--dark-color);
   outline-offset: 2px;
 }
 
@@ -2293,8 +2298,13 @@ h6 + .btn {
   color: var(--white-color);
 }
 
-.section-secondary-bg a:not(.btn):hover {
-  color: var(--primary-color);
+.section-secondary-bg a:not(.btn):hover,
+.section-secondary-bg a:not(.btn):focus {
+  /* The accessible coral variant (--primary-color-accessible) is nearly
+     the same luminance as this section's teal background (~1:1 contrast) —
+     stay on the section's own white text/outline instead. */
+  color: var(--white-color);
+  outline-color: var(--white-color);
   text-decoration: underline;
 }
 
@@ -2725,13 +2735,13 @@ h6 + .btn {
 }
 
 .organizers-section .organizer-contact a:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 .organizers-section .organizer-contact a:focus {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 .organizers-section .shoutout-link {
@@ -2741,13 +2751,13 @@ h6 + .btn {
 }
 
 .organizers-section .shoutout-link:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 .organizers-section .shoutout-link:focus {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 .organizers-section .shoutout-member {
@@ -3086,7 +3096,7 @@ body {
 }
 
 .text-decoration-underline:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 /* Copyright/footer link specificity - inherit standard link colors but add bold weight */

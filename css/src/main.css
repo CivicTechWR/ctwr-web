@@ -76,7 +76,7 @@ body {
 }
 
 .text-decoration-underline:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 /* Copyright/footer link specificity - inherit standard link colors but add bold weight */

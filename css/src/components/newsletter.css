@@ -42,10 +42,10 @@
 }
 
 .newsletter-input-main:focus {
-  outline: 2px solid var(--primary-color, #fc6c6d);
+  outline: 2px solid var(--primary-color-accessible, #b23c3d);
   outline-offset: -2px;
-  border-color: var(--primary-color, #fc6c6d);
-  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
+  border-color: var(--primary-color-accessible, #b23c3d);
+  box-shadow: 0 0 0 3px rgb(178 60 61 / 0.25);
 }
 
 .newsletter-input-main::placeholder {
@@ -88,11 +88,11 @@
 }
 
 .footer-newsletter input[type="email"]:focus {
-  outline: 2px solid var(--primary-color, #fc6c6d);
+  outline: 2px solid var(--primary-color-accessible, #b23c3d);
   outline-offset: -2px;
-  border-color: var(--primary-color, #fc6c6d);
+  border-color: var(--primary-color-accessible, #b23c3d);
   background: var(--white-color);
-  box-shadow: 0 0 0 3px rgba(252, 108, 109, 0.25);
+  box-shadow: 0 0 0 3px rgb(178 60 61 / 0.25);
 }
 
 .footer-newsletter input[type="email"]::placeholder {
