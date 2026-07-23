@@ -194,3 +194,4 @@ yarn.lock
 css-analysis.json
 defined-selectors.txt
 used-classes.txt
+ground-truth.json
