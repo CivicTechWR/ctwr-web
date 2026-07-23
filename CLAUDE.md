@@ -116,7 +116,7 @@ Super-Linter bundles **Trivy**, which scans `Gemfile.lock` and `package-lock.jso
 
 ## 4. CSS architecture — modularized source, generated output
 
-**CSS modularization is complete** (merged across 4 PRs by 2026-05-28). `css/src/*.css` — 22 partial files — is the real source of truth. **`css/main.css` is a generated build artifact, not a hand-edited file.** Editing it directly is a trap: the next `npm run build:css` silently regenerates it from `css/src/` and overwrites any direct edit with no warning.
+**CSS modularization is complete** (merged across 4 PRs by 2026-05-28). `css/src/` — 22 partial files across `base/`, `layout/`, `components/`, `utilities/`, and `pages/` subdirectories — is the real source of truth. **`css/main.css` is a generated build artifact, not a hand-edited file.** Editing it directly is a trap: the next `npm run build:css` silently regenerates it from `css/src/` and overwrites any direct edit with no warning.
 
 **Actual directory structure** (verify with `find css/src -name '*.css' | sort` if this ever looks stale again):
 ```
@@ -155,9 +155,9 @@ Note: `base/reset.css` and `layout/utilities.css` from the original extraction p
 
 **After changing anything in `css/src/`:** run `npm run build:css && npm run minify:css`, and commit both `css/main.css` and `css/main.min.css` alongside your `css/src/` change. The `build-assets` CI job rebuilds from `css/src/` and diffs against the committed `css/main.css`/`css/main.min.css` — it will fail if you forget either step, and it will *not* catch a direct edit to `css/main.css` that was never applied to the real `css/src/` source (the rebuild just silently overwrites it back to whatever `css/src/` says).
 
-**Critical gotcha — cascade order is load-bearing.** The `*:focus` rule in `css/src/main.css`'s tail is intentionally the last thing in the assembled output, sitting *after* all component focus overrides (lower specificity wins are expected). Do not move it without verifying all component focus styles still apply.
+**Critical gotcha — cascade order is load-bearing.** The `*:focus` rule in `css/src/main.css`'s tail is intentionally the last non-media, non-base rule in the assembled output, sitting *after* all component focus overrides (lower specificity wins are expected) — sorted `@media` blocks still land after it (see below). Do not move it without verifying all component focus styles still apply.
 
-**Note on PostCSS and `*:focus` position.** `postcss-sort-media-queries` collects all `@media` rules and sorts them, which means the assembled `css/main.css` places sorted media queries *after* the `*:focus` rule in the file. This looks wrong but is currently harmless: no `:focus` rules exist inside any `@media` block, so nothing in the media queries overrides the base outline. If you add a `:focus` rule inside a media query in the future, verify it doesn't conflict with `*:focus`. To check: `awk '/^@media/{m=1} m && /:focus/{print NR": "$0} /^}$/{m=0}' css/main.css`
+**Note on PostCSS and `*:focus` position.** `postcss-sort-media-queries` collects all `@media` rules and sorts them, which means the assembled `css/main.css` places sorted media queries *after* the `*:focus` rule in the file. This looks wrong but is currently harmless: no `:focus` rules exist inside any `@media` block, so nothing in the media queries overrides the base outline. If you add a `:focus` rule inside a media query in the future, verify it doesn't conflict with `*:focus`. To check (brace-depth aware, so it won't miss a `:focus` nested inside an unindented rule closing brace): `awk '/^@media/{m=1;d=0} m{if(/:focus/)print NR": "$0; d+=gsub(/{/,"{")-gsub(/}/,"}"); if(d<=0)m=0}' css/main.css`
 
 **Critical gotcha — `postcss-combine-duplicated-selectors` cross-file behavior.** Two `.about-image` blocks exist across separate `css/src/` partials and are auto-merged by this plugin at build time (it runs on the assembled output, so cross-file duplicates are still caught). If you touch either, verify the merge still preserves `margin-bottom`.
 
