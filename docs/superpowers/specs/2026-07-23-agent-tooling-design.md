@@ -100,7 +100,7 @@ stale:
   "commit": "<git rev-parse HEAD>",
   "css_modularization": {
     "src_dir_exists": true,
-    "partial_file_count": 22,
+    "partial_file_count": 23,
     "build_matches_committed": true
   },
   "build_assets_sync": {
@@ -162,8 +162,8 @@ above.
   scripts/generate-ground-truth.sh` must pass, per this repo's shell-script
   convention.
 - Manual run of `make groundtruth` must produce valid JSON and each field
-  must match manual verification (e.g. `ls css/src/*.css | wc -l` for
-  `partial_file_count`).
+  must match manual verification (e.g. `find css/src -name '*.css' | wc -l`
+  for `partial_file_count`).
 - `make ci` must actually run all four steps in order and fail fast on the
   first failure (standard `make` behavior with sequential prerequisites).
 - No existing npm script, CI workflow, or file is modified — this is

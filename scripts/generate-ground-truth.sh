@@ -17,7 +17,9 @@ build_matches_committed=false
 
 if [ -d css/src ]; then
 	src_dir_exists=true
-	partial_file_count="$(find css/src -name '*.css' | wc -l | tr -d ' ')"
+	if count_output="$(find css/src -name '*.css' 2>/dev/null | wc -l | tr -d ' ')"; then
+		partial_file_count="$count_output"
+	fi
 
 	if [ -f css/src/main.css ]; then
 		if npx postcss css/src/main.css --output "$tmp_dir/main.css" --config postcss.config.js >/dev/null 2>&1; then
