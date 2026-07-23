@@ -13,7 +13,7 @@ Approach all work here with that in mind. Be respectful and intentional. Move ca
 1. [Repo at a glance](#1-repo-at-a-glance)
 2. [Merging PRs — the admin bypass workflow](#2-merging-prs--the-admin-bypass-workflow)
 3. [CI — what the checks are and common failure modes](#3-ci--what-the-checks-are-and-common-failure-modes)
-4. [CSS architecture — current state and modularization plan](#4-css-architecture--current-state-and-modularization-plan)
+4. [CSS architecture — modularized source, generated output](#4-css-architecture--modularized-source-generated-output)
 5. [CSP constraints — no inline styles or scripts](#5-csp-constraints--no-inline-styles-or-scripts)
 6. [GitHub Pages build constraint](#6-github-pages-build-constraint)
 7. [JavaScript files](#7-javascript-files)
@@ -114,75 +114,54 @@ Super-Linter bundles **Trivy**, which scans `Gemfile.lock` and `package-lock.jso
 
 ---
 
-## 4. CSS architecture — current state and modularization plan
+## 4. CSS architecture — modularized source, generated output
 
-### Current state
+**CSS modularization is complete** (merged across 4 PRs by 2026-05-28). `css/src/` — 22 partial files across `base/`, `layout/`, `components/`, `utilities/`, and `pages/` subdirectories — is the real source of truth. **`css/main.css` is a generated build artifact, not a hand-edited file.** Editing it directly is a trap: the next `npm run build:css` silently regenerates it from `css/src/` and overwrites any direct edit with no warning.
 
-`css/main.css` is a ~3,700-line monolithic file. Section comments reference component files (`css/components/hero.css`, etc.) that do not yet exist — the split was planned but not executed.
-
-**Build pipeline:**
-- Source: `css/main.css` (assembled output committed to git)
-- Minified output: `css/main.min.css` (also committed — see [GitHub Pages constraint](#6-github-pages-build-constraint))
-- PostCSS config: `postcss.config.js` (autoprefixer, sort/combine media queries, combine duplicated selectors)
-- Build command: `npm run build:css` → `scripts/build-css.sh` → `npx postcss css/main.css --replace`
-
-### Modularization plan
-
-The goal is to split `main.css` into partial files under `css/src/` using `postcss-import`. The assembled output continues to be written to `css/main.css`.
-
-**Planned directory structure:**
+**Actual directory structure** (verify with `find css/src -name '*.css' | sort` if this ever looks stale again):
 ```
 css/
-  main.css                 ← assembled output (committed, served by GitHub Pages)
+  main.css                 ← generated output (committed, served by GitHub Pages — DO NOT hand-edit)
   main.min.css             ← minified output (committed)
   src/
-    main.css               ← entry point (@import only, no rules)
+    main.css               ← entry point: @imports below, plus a small "Global base" tail
+                              (body reset, .text-decoration-underline and a few other
+                              utility classes, reduced-motion media query, *:focus — see below)
     base/
-      variables.css        ← :root design tokens (lines 1–202)
-      fonts.css            ← @font-face (lines 3537–3555)
-      reset.css            ← box-sizing, body
-      typography.css       ← headings, p, a, lists (lines 204–447)
+      variables.css        ← :root design tokens
+      fonts.css             ← @font-face
+      typography.css        ← headings, p, a, lists, link states
     layout/
-      grid.css             ← .container, .row, col-* (lines 448–648)
-      utilities.css        ← position/size utilities, .text-*
+      grid.css              ← .container, .row, col-*
     components/
-      navigation.css       ← navbar, toggler, collapse (lines 649–1016)
-      buttons.css          ← full BEM button system (lines 1018–1415)
-      hero.css             ← hero section + animations (lines 1417–1670)
-      services.css         ← section backgrounds, meeting section (lines 1671–1866)
-      footer.css           ← footer (consolidate old + new before extracting)
-      preloader.css        ← .preloader, @keyframes spinner
-      icons.css            ← .svg-sprite-defs, .icon
-      featured-numbers.css ← .featured-numbers
-      sponsors.css         ← .sponsor-grid, responsive
-      forms.css            ← form controls (strip dead commented rules first)
-      organizers.css       ← organizer cards (de-duplicate before extracting)
-      page-header.css      ← .site-header, .page-title
-      newsletter.css       ← newsletter CTA, Mailchimp IDs
-      shapes.css           ← .shape-* variants + @keyframes
+      preloader.css, icons.css, featured-numbers.css, sponsors.css,
+      avatar.css, forms.css, page-header.css, newsletter.css,
+      navigation.css, buttons.css, hero.css, services.css, footer.css,
+      projects-cards.css, organizers.css
+    utilities/
+      shapes.css             ← .shape-* variants + @keyframes
     pages/
-      about.css            ← about-page-specific styles
-      projects.css         ← projects page, filter bar, tag pills
+      about.css, projects.css
 ```
 
-**Recommended extraction order (low-risk first):**
+Note: `base/reset.css` and `layout/utilities.css` from the original extraction plan were never split out as separate files — that content (body reset, `.text-decoration-underline`, etc.) lives directly in `css/src/main.css`'s "Global base" tail section instead. Functionally equivalent; just not a 1:1 match to the originally planned file layout.
 
-| Phase | Sections | Risk |
-| ------- | ---------- | ------ |
-| 1 | variables, fonts, preloader, icons, sponsors, shapes, featured-numbers, grid | Low — no cascade dependencies |
-| 2 | typography, page-header, avatar, forms, newsletter | Low-medium |
-| 3 | buttons, navigation, hero | Medium — `_includes/critical-css.html` must stay in sync |
-| 4 | organizers+about (de-dup first), services+meeting, footer (consolidate legacy first), projects | High — requires surgery before extracting |
+**Build pipeline:**
+- Source: `css/src/main.css` (entry point) → `css/src/**/*.css` (partials, via `postcss-import`)
+- Generated output: `css/main.css` (committed — required, since GitHub Pages only runs Jekyll, not npm scripts; see [GitHub Pages constraint](#6-github-pages-build-constraint))
+- Minified output: `css/main.min.css` (also committed)
+- PostCSS config: `postcss.config.js` (postcss-import, autoprefixer, sort/combine media queries, combine duplicated selectors)
+- Build command: `npm run build:css` → `scripts/build-css.sh` → `npx postcss css/src/main.css --output css/main.css --config postcss.config.js`
 
-**Critical gotcha — cascade order is load-bearing.** The `*:focus` rule at the end of the file intentionally sits *after* all component focus overrides (lower specificity wins are expected). Do not move it to `base/reset.css` without verifying all component focus styles still apply.
+**After changing anything in `css/src/`:** run `npm run build:css && npm run minify:css`, and commit both `css/main.css` and `css/main.min.css` alongside your `css/src/` change. The `build-assets` CI job rebuilds from `css/src/` and diffs against the committed `css/main.css`/`css/main.min.css` — it will fail if you forget either step, and it will *not* catch a direct edit to `css/main.css` that was never applied to the real `css/src/` source (the rebuild just silently overwrites it back to whatever `css/src/` says).
 
-**Note on PostCSS and `*:focus` position.** `postcss-sort-media-queries` collects all `@media` rules and sorts them, which means the assembled `css/main.css` places sorted media queries *after* the `*:focus` rule in the file. This looks wrong but is currently harmless: no `:focus` rules exist inside any `@media` block, so nothing in the media queries overrides the base outline. If you add a `:focus` rule inside a media query in the future, verify it doesn't conflict with `*:focus`. To check: `awk '/^@media/{m=1} m && /:focus/{print NR": "$0} /^}$/{m=0}' css/main.css`
+**Critical gotcha — cascade order is load-bearing.** The `*:focus` rule in `css/src/main.css`'s tail is intentionally the last non-media, non-base rule in the assembled output, sitting *after* all component focus overrides (lower specificity wins are expected) — sorted `@media` blocks still land after it (see below). Do not move it without verifying all component focus styles still apply.
 
-**Critical gotcha — `postcss-combine-duplicated-selectors` cross-file behavior.** Two `.about-image` blocks exist in the same file and are auto-merged by this plugin. After the split they will be in separate files — verify the plugin still merges them (it should, since it runs on the assembled output) and that the merge preserves `margin-bottom`.
+**Note on PostCSS and `*:focus` position.** `postcss-sort-media-queries` collects all `@media` rules and sorts them, which means the assembled `css/main.css` places sorted media queries *after* the `*:focus` rule in the file. This looks wrong but is currently harmless: no `:focus` rules exist inside any `@media` block, so nothing in the media queries overrides the base outline. If you add a `:focus` rule inside a media query in the future, verify it doesn't conflict with `*:focus`. To check (brace-depth aware, so it won't miss a `:focus` nested inside an unindented rule closing brace): `awk '/^@media/{m=1;d=0} m{if(/:focus/)print NR": "$0; d+=gsub(/{/,"{")-gsub(/}/,"}"); if(d<=0)m=0}' css/main.css`
 
-### Before starting any extraction
+**Critical gotcha — `postcss-combine-duplicated-selectors` cross-file behavior.** Two `.about-image` blocks exist across separate `css/src/` partials and are auto-merged by this plugin at build time (it runs on the assembled output, so cross-file duplicates are still caught). If you touch either, verify the merge still preserves `margin-bottom`.
 
-Run `npm run build:css && npm run test:css && npm run lint:css` to establish a baseline. After each extraction, run the same suite and diff the `css/main.css` output against the baseline to confirm zero meaningful changes.
+**Before touching any `css/src/` file:** run `npm run build:css && npm run test:css && npm run lint:css` to establish a baseline. After your change, run the same suite and diff the `css/main.css` output against the baseline to confirm only the intended rules changed.
 
 ---
 
@@ -215,7 +194,7 @@ script-src 'self' https://chimpstatic.com https://form-assets.mailchimp.com
 
 After any change to `css/main.css` source or `js/optimized-bundle.js`, you must run `npm run minify` and commit the minified output. The `build-assets` CI job enforces this by rebuilding and diffing.
 
-After the CSS modularization (when `css/src/main.css` becomes the entry point), the build step will be `npm run build:css` → writes assembled output to `css/main.css` → commit that file.
+CSS modularization is complete: `css/src/main.css` is the entry point, and `npm run build:css` writes the assembled output to `css/main.css` — commit that file (and `css/main.min.css`) alongside any `css/src/` change. See [§4](#4-css-architecture--modularized-source-generated-output).
 
 ---
 
