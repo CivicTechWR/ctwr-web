@@ -4,6 +4,7 @@
   if (!p || !p.parentNode) return;
   m.async = 1;
   m.src = i;
+  m.onerror = function () {};
   p.parentNode.insertBefore(m, p);
 })(
   document,
