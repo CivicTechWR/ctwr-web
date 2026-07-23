@@ -10,8 +10,25 @@ assert.ok(fs.existsSync(meetingIncludePath), 'Missing meeting-section include');
 const meetingHtml = fs.readFileSync(meetingIncludePath, 'utf8');
 const assetPaths = [];
 
-const srcRegex = /src="([^"]+)"/g;
-const srcsetRegex = /srcset="([^"]+)"/g;
+const srcRegex = /(?:^|[\s<])src\s*=\s*["']([^"']+)["']/gi;
+const srcsetRegex = /(?:^|[\s<])srcset\s*=\s*["']([^"']+)["']/gi;
+
+// Regression test: the attribute boundary must reject hyphenated/dotted
+// lookalikes ("data-src", "data.src") while still matching real src/srcset
+// attributes regardless of quote style or case.
+const boundaryFixture =
+  '<img data-src="/images/lazy.jpg" data.src="/images/dotted.jpg" ' +
+  "SRC='/images/real.jpg' srcset=\"/images/x.webp\">";
+assert.deepStrictEqual(
+  [...boundaryFixture.matchAll(srcRegex)].map((m) => m[1]),
+  ['/images/real.jpg'],
+  'srcRegex should ignore data-src/data.src and match real src attributes regardless of case/quote style'
+);
+assert.deepStrictEqual(
+  [...boundaryFixture.matchAll(srcsetRegex)].map((m) => m[1]),
+  ['/images/x.webp'],
+  'srcsetRegex should match real srcset attributes'
+);
 
 for (const match of meetingHtml.matchAll(srcRegex)) {
   assetPaths.push(match[1]);
@@ -30,7 +47,10 @@ assert.ok(localAssets.length > 0, 'No meeting image assets found');
 
 localAssets.forEach((asset) => {
   const filePath = path.join(process.cwd(), asset.replace(/^\//, ''));
-  assert.ok(fs.existsSync(filePath), `Missing asset file: ${asset}`);
+  assert.ok(
+    fs.existsSync(filePath) && fs.statSync(filePath).isFile(),
+    `Missing asset file: ${asset}`
+  );
 });
 
 const criticalCssPath = path.join('_includes', 'critical-css.html');

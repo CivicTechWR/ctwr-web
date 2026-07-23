@@ -4,9 +4,17 @@
     // ── helpers ──────────────────────────────────────────────────────────────
     function safeUrl(url) {
       if (!url) return "#";
+      // Browsers normalize embedded backslashes and tab/newline/CR characters
+      // during URL parsing (WHATWG URL spec), which can turn a seemingly-safe
+      // relative path (e.g. "/\evil.com" or "/\t/evil.com") into a
+      // protocol-relative reference to an attacker-controlled host.
+      if (/[\t\n\r\\]/.test(url)) return "#";
+      // Protocol-relative URLs ("//evil.com") start with "/" too but resolve
+      // to an attacker-controlled host using the current page's scheme —
+      // must be excluded from the relative-path allowance below.
       return url.startsWith("https://") ||
         url.startsWith("http://") ||
-        url.startsWith("/")
+        (url.startsWith("/") && !url.startsWith("//"))
         ? url
         : "#";
     }
@@ -320,8 +328,18 @@
         });
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      loadProjects();
-      loadGitHubProjects();
-    });
+    // Guarded so Node can require() this file (see module.exports below)
+    // without a DOMContentLoaded listener attempt blowing up outside a browser.
+    if (typeof document !== "undefined") {
+      document.addEventListener("DOMContentLoaded", () => {
+        loadProjects();
+        loadGitHubProjects();
+      });
+    }
+
+    // Test hook: exposes safeUrl to Node's require() for tests/js/safe-url.js.
+    // module is undefined in the browser, so this block never runs there.
+    if (typeof module !== "undefined" && module.exports) {
+      module.exports = { safeUrl };
+    }
   })();
