@@ -19,7 +19,7 @@
 
 .skip-link:focus {
   top: 0;
-  outline: 2px solid var(--white-color);
+  outline: 2px solid var(--dark-color);
   outline-offset: 2px;
 }
 
