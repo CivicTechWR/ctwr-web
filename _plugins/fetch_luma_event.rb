@@ -27,6 +27,7 @@ module CivicTechWR
     class TransientFetchError < StandardError; end
 
     FALLBACK = {
+      "name"           => "CivicTechWR Hacknight",
       "date_formatted" => "Wednesdays",
       "time_formatted" => "5:30 PM",
       "datetime_iso"   => nil,
@@ -198,6 +199,14 @@ module CivicTechWR
       short.empty? ? "165 King St W, Kitchener" : short
     end
 
+    # Full-length counterpart to short_location — same URL-substitution guard,
+    # since Luma hides the address behind an RSVP link the same way here too.
+    def full_location(location)
+      return "165 King St W, Kitchener, ON" if location.to_s.start_with?("https://", "http://")
+
+      location.to_s.empty? ? "165 King St W, Kitchener, ON" : location
+    end
+
     def format_event(event)
       start_utc = event[:start_at].utc
       local     = to_eastern(start_utc)
@@ -208,11 +217,13 @@ module CivicTechWR
       ampm   = local.hour < 12 ? "AM" : "PM"
       minute = format("%02d", local.min)
 
-      location_full  = event[:location]
-      location_short = short_location(location_full)
+      location_full  = full_location(event[:location])
+      location_short = short_location(event[:location])
       event_url      = extract_event_url(event[:description]) || "https://luma.com/civictechwr"
+      name           = event[:summary].empty? ? FALLBACK["name"] : event[:summary]
 
       result = {
+        "name"           => name,
         "date_formatted" => "#{local.strftime('%A, %B')} #{local.day}",
         "time_formatted" => "#{hour}:#{minute} #{ampm}",
         "datetime_iso"   => local.iso8601,
