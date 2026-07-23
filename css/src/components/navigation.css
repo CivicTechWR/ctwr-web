@@ -11,7 +11,7 @@
   top: -40px;
   left: 0;
   background: var(--primary-color);
-  color: var(--white-color);
+  color: var(--dark-color);
   padding: var(--space-2);
   text-decoration: none;
   z-index: 100;

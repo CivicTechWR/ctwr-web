@@ -18,13 +18,13 @@
 }
 
 .organizers-section .organizer-contact a:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 .organizers-section .organizer-contact a:focus {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 .organizers-section .shoutout-link {
@@ -34,13 +34,13 @@
 }
 
 .organizers-section .shoutout-link:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 .organizers-section .shoutout-link:focus {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
-  color: var(--primary-color);
+  color: var(--primary-color-accessible);
 }
 
 .organizers-section .shoutout-member {
