@@ -87,6 +87,19 @@ no_end_result = generator.send(:format_event, no_end_event)
 assert_equal nil, no_end_result["datetime_iso_end"],
   "datetime_iso_end should be nil (not raise) when the source iCal event has no DTEND"
 
+# --- format_event: datetime_iso_end is nil when DTEND is at or before DTSTART ---
+# RFC 5545 requires DTEND to be strictly after DTSTART; a feed bug shouldn't
+# publish an illogical endDate <= startDate in the site's Event JSON-LD.
+equal_end_event = distinct_event.merge(end_at: distinct_event[:start_at])
+equal_end_result = generator.send(:format_event, equal_end_event)
+assert_equal nil, equal_end_result["datetime_iso_end"],
+  "datetime_iso_end should be nil when DTEND equals DTSTART"
+
+before_end_event = distinct_event.merge(end_at: distinct_event[:start_at] - 3600)
+before_end_result = generator.send(:format_event, before_end_event)
+assert_equal nil, before_end_result["datetime_iso_end"],
+  "datetime_iso_end should be nil when DTEND is before DTSTART"
+
 # --- parse_ical_dt: malformed but syntactically-matched date components return nil, not raise ---
 # Month 13 reliably raises ArgumentError from Time.utc.
 malformed_month = generator.send(:parse_ical_dt, "20991301T000000Z")
@@ -98,6 +111,14 @@ assert_equal nil, malformed_month, "parse_ical_dt should return nil (not raise A
 malformed_day = generator.send(:parse_ical_dt, "20990230T000000Z")
 assert_equal nil, malformed_day,
   "parse_ical_dt should return nil for an overflowing day instead of silently normalizing to a different date"
+
+# --- parse_ical_dt: a leap second (:60) is preserved (clamped to :59), not rejected as invalid ---
+# Time.utc(..., 60) rolls over to the next minute rather than raising or preserving
+# :60, which would otherwise make the round-trip validation reject a legitimate
+# RFC 5545 leap-second timestamp as if it were malformed.
+leap_second = generator.send(:parse_ical_dt, "20161231T235960Z")
+assert_equal true, leap_second.is_a?(Time), "parse_ical_dt should not reject a leap-second (:60) timestamp"
+assert_equal 59, leap_second.sec, "A :60 leap second should be clamped to :59 per the RFC's no-leap-second-support fallback"
 
 # --- parse_ical_events: a malformed DTSTART is skipped rather than crashing the whole feed ---
 malformed_ical = <<~ICAL

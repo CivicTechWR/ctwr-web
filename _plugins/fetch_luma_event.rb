@@ -183,15 +183,20 @@ module CivicTechWR
     end
 
     # Time.utc silently normalizes an out-of-range day (e.g. Feb 30 -> Mar 2)
-    # instead of raising, unlike month/hour/minute/second which do raise
-    # ArgumentError. Compare the constructed Time's components back against the
-    # parsed input so a corrupted day is rejected (nil) rather than silently
-    # becoming a different, valid-looking date.
+    # instead of raising, unlike month/hour/minute which do raise ArgumentError.
+    # Compare the constructed Time's components back against the parsed input
+    # so a corrupted day is rejected (nil) rather than silently becoming a
+    # different, valid-looking date.
     def build_validated_utc(year_s, month_s, day_s, hour_s, min_s, sec_s)
       year, month, day, hour, min, sec = [year_s, month_s, day_s, hour_s, min_s, sec_s].map(&:to_i)
-      t = Time.utc(year, month, day, hour, min, sec)
+      # RFC 5545 allows :60 to represent a leap second, but Time.utc(..., 60)
+      # rolls over to the next minute rather than preserving it -- clamp to :59
+      # (the RFC's own fallback for systems without leap-second support) before
+      # validating, so a legitimate leap-second timestamp isn't rejected as nil.
+      validated_sec = sec == 60 ? 59 : sec
+      t = Time.utc(year, month, day, hour, min, validated_sec)
       return nil unless t.year == year && t.month == month && t.day == day &&
-                        t.hour == hour && t.min == min && t.sec == sec
+                        t.hour == hour && t.min == min && t.sec == validated_sec
 
       t
     end
@@ -231,7 +236,10 @@ module CivicTechWR
     def format_event(event)
       start_utc = event[:start_at].utc
       local     = to_eastern(start_utc)
-      local_end = event[:end_at] ? to_eastern(event[:end_at].utc) : nil
+      # RFC 5545 requires DTEND to be strictly after DTSTART; omit an end time
+      # that isn't (rather than publishing an illogical endDate <= startDate
+      # in the site's Event JSON-LD) instead of trusting the feed blindly.
+      local_end = (event[:end_at] && event[:end_at] > event[:start_at]) ? to_eastern(event[:end_at].utc) : nil
 
       # Format time without leading zero, cross-platform
       hour   = local.hour % 12
