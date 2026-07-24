@@ -88,10 +88,16 @@ assert_equal nil, no_end_result["datetime_iso_end"],
   "datetime_iso_end should be nil (not raise) when the source iCal event has no DTEND"
 
 # --- parse_ical_dt: malformed but syntactically-matched date components return nil, not raise ---
-# Month 13 reliably raises ArgumentError from Time.utc (unlike an overflowing day,
-# e.g. Feb 30, which Ruby silently normalizes into March rather than rejecting).
+# Month 13 reliably raises ArgumentError from Time.utc.
 malformed_month = generator.send(:parse_ical_dt, "20991301T000000Z")
 assert_equal nil, malformed_month, "parse_ical_dt should return nil (not raise ArgumentError) for out-of-range date components"
+
+# --- parse_ical_dt: an overflowing day (Feb 30) must not silently normalize into March ---
+# Time.utc(2099, 2, 30, ...) does NOT raise -- it silently rolls over to March 2.
+# parse_ical_dt must catch this via component comparison, not just rescue ArgumentError.
+malformed_day = generator.send(:parse_ical_dt, "20990230T000000Z")
+assert_equal nil, malformed_day,
+  "parse_ical_dt should return nil for an overflowing day instead of silently normalizing to a different date"
 
 # --- parse_ical_events: a malformed DTSTART is skipped rather than crashing the whole feed ---
 malformed_ical = <<~ICAL
