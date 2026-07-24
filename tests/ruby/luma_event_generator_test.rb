@@ -78,14 +78,48 @@ distinct_event = {
 distinct_result = generator.send(:format_event, distinct_event)
 assert_equal "Special Guest Speaker Night", distinct_result["name"],
   "Should carry the real event summary through, not silently fall back to FALLBACK[\"name\"]"
-assert_match(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}\z/, distinct_result["datetime_iso_end"],
-  "datetime_iso_end should be an ISO8601 string with UTC offset when the source event has an end time")
+assert_equal "2099-04-01T20:00:00-04:00", distinct_result["datetime_iso_end"],
+  "datetime_iso_end should be the exact Eastern-converted timestamp, not just ISO8601-shaped"
 
 # --- format_event: datetime_iso_end is nil when the source event has no end_at ---
 no_end_event = distinct_event.merge(end_at: nil)
 no_end_result = generator.send(:format_event, no_end_event)
 assert_equal nil, no_end_result["datetime_iso_end"],
   "datetime_iso_end should be nil (not raise) when the source iCal event has no DTEND"
+
+# --- parse_ical_dt: malformed but syntactically-matched date components return nil, not raise ---
+# Month 13 reliably raises ArgumentError from Time.utc (unlike an overflowing day,
+# e.g. Feb 30, which Ruby silently normalizes into March rather than rejecting).
+malformed_month = generator.send(:parse_ical_dt, "20991301T000000Z")
+assert_equal nil, malformed_month, "parse_ical_dt should return nil (not raise ArgumentError) for out-of-range date components"
+
+# --- parse_ical_events: a malformed DTSTART is skipped rather than crashing the whole feed ---
+malformed_ical = <<~ICAL
+  BEGIN:VCALENDAR
+  VERSION:2.0
+  BEGIN:VEVENT
+  DTSTART:20991301T000000Z
+  UID:evt-malformed@events.lu.ma
+  SUMMARY:Malformed Date Event
+  END:VEVENT
+  BEGIN:VEVENT
+  DTSTART:20990415T213000Z
+  DTEND:20990416T000000Z
+  UID:evt-valid@events.lu.ma
+  SUMMARY:Valid Event After Malformed One
+  END:VEVENT
+  END:VCALENDAR
+ICAL
+malformed_events = generator.send(:parse_ical_events, malformed_ical)
+assert_equal 2, malformed_events.length,
+  "Should still parse both events structurally (only the date field itself becomes nil)"
+assert_equal nil, malformed_events.first[:start_at],
+  "Malformed DTSTART should parse to nil rather than raising"
+malformed_generator = CivicTechWR::LumaEventGenerator.new
+malformed_generator.define_singleton_method(:fetch_ical) { |_url| malformed_ical }
+malformed_result = malformed_generator.send(:fetch_next_event)
+assert_equal "Valid Event After Malformed One", malformed_result["name"],
+  "Should skip the event with a malformed DTSTART and still surface the next valid event, rather than crashing to FALLBACK"
 
 # --- unescape_ical: backslash-escape sequences ---
 unescaped = generator.send(:unescape_ical, "Kitchener\\, Ontario\\nCanada")

@@ -163,6 +163,9 @@ module CivicTechWR
 
     # Parse iCal datetime strings: YYYYMMDDTHHMMSSZ or YYYYMMDDTHHMMSS or YYYYMMDD
     # Always returns UTC to avoid dependence on the build machine's local timezone.
+    # Returns nil (rather than raising) for syntactically-matched but out-of-range
+    # components (e.g. month 13) so one malformed DTSTART/DTEND in the feed just
+    # drops that field/event instead of aborting the whole fetch to FALLBACK.
     def parse_ical_dt(dt_str)
       return nil if dt_str.to_s.strip.empty?
 
@@ -174,6 +177,8 @@ module CivicTechWR
       elsif (m = s.match(/\A(\d{4})(\d{2})(\d{2})\z/))
         Time.utc(m[1].to_i, m[2].to_i, m[3].to_i)
       end
+    rescue ArgumentError
+      nil
     end
 
     # Unescape iCal text-value escapes per RFC 5545:
