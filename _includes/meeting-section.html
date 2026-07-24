@@ -11,7 +11,8 @@ mtg.name | default: "CivicTechWR Hacknight" %}
     "@type": "Event",
     "name": {{ mtg_name | jsonify | replace: "<", "\u003c" }},
     "startDate": {{ mtg.datetime_iso | jsonify }},
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    {% if mtg.datetime_iso_end %}"endDate": {{ mtg.datetime_iso_end | jsonify }},
+    {% endif %}"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": {
       "@type": "Place",
@@ -23,6 +24,19 @@ mtg.name | default: "CivicTechWR Hacknight" %}
       "name": "Civic Tech Waterloo Region",
       "url": "https://civictechwr.org"
     },
+    "performer": {
+      "@type": "Organization",
+      "name": "Civic Tech Waterloo Region",
+      "url": "https://civictechwr.org"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": {{ mtg_url | jsonify }},
+      "price": "0",
+      "priceCurrency": "CAD",
+      "availability": "https://schema.org/InStock"
+    },
+    "description": "Join Civic Tech Waterloo Region for a free, weekly hacknight — a drop-in gathering where community members, designers, and technologists collaborate on local civic tech projects. Everyone is welcome, no tech skills required.",
     "url": {{ mtg_url | jsonify }},
     "image": ["https://civictechwr.org/images/hacknight-1.jpg"]
   }

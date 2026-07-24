@@ -27,14 +27,15 @@ module CivicTechWR
     class TransientFetchError < StandardError; end
 
     FALLBACK = {
-      "name"           => "CivicTechWR Hacknight",
-      "date_formatted" => "Wednesdays",
-      "time_formatted" => "5:30 PM",
-      "datetime_iso"   => nil,
-      "location_short" => "165 King St W, Kitchener",
-      "location_full"  => "165 King St W, Kitchener, ON",
-      "event_url"      => "https://luma.com/civictechwr",
-      "found"          => false
+      "name"             => "CivicTechWR Hacknight",
+      "date_formatted"   => "Wednesdays",
+      "time_formatted"   => "5:30 PM",
+      "datetime_iso"     => nil,
+      "datetime_iso_end" => nil,
+      "location_short"   => "165 King St W, Kitchener",
+      "location_full"    => "165 King St W, Kitchener, ON",
+      "event_url"        => "https://luma.com/civictechwr",
+      "found"            => false
     }.freeze
 
     def generate(site)
@@ -210,6 +211,7 @@ module CivicTechWR
     def format_event(event)
       start_utc = event[:start_at].utc
       local     = to_eastern(start_utc)
+      local_end = event[:end_at] ? to_eastern(event[:end_at].utc) : nil
 
       # Format time without leading zero, cross-platform
       hour   = local.hour % 12
@@ -223,14 +225,15 @@ module CivicTechWR
       name           = event[:summary].empty? ? FALLBACK["name"] : event[:summary]
 
       result = {
-        "name"           => name,
-        "date_formatted" => "#{local.strftime('%A, %B')} #{local.day}",
-        "time_formatted" => "#{hour}:#{minute} #{ampm}",
-        "datetime_iso"   => local.iso8601,
-        "location_short" => location_short,
-        "location_full"  => location_full,
-        "event_url"      => event_url,
-        "found"          => true
+        "name"             => name,
+        "date_formatted"   => "#{local.strftime('%A, %B')} #{local.day}",
+        "time_formatted"   => "#{hour}:#{minute} #{ampm}",
+        "datetime_iso"     => local.iso8601,
+        "datetime_iso_end" => local_end&.iso8601,
+        "location_short"   => location_short,
+        "location_full"    => location_full,
+        "event_url"        => event_url,
+        "found"            => true
       }
 
       Jekyll.logger.info "LumaEvents:",

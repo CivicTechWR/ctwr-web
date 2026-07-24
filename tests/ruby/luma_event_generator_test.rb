@@ -78,6 +78,14 @@ distinct_event = {
 distinct_result = generator.send(:format_event, distinct_event)
 assert_equal "Special Guest Speaker Night", distinct_result["name"],
   "Should carry the real event summary through, not silently fall back to FALLBACK[\"name\"]"
+assert_match(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}\z/, distinct_result["datetime_iso_end"],
+  "datetime_iso_end should be an ISO8601 string with UTC offset when the source event has an end time")
+
+# --- format_event: datetime_iso_end is nil when the source event has no end_at ---
+no_end_event = distinct_event.merge(end_at: nil)
+no_end_result = generator.send(:format_event, no_end_event)
+assert_equal nil, no_end_result["datetime_iso_end"],
+  "datetime_iso_end should be nil (not raise) when the source iCal event has no DTEND"
 
 # --- unescape_ical: backslash-escape sequences ---
 unescaped = generator.send(:unescape_ical, "Kitchener\\, Ontario\\nCanada")
@@ -101,6 +109,8 @@ assert_equal "https://luma.com/m9qpiym3", result["event_url"],
   "Should extract and format the RSVP URL from event description"
 assert_match(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}\z/, result["datetime_iso"],
   "datetime_iso should be an ISO8601 string with UTC offset")
+assert_match(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}\z/, result["datetime_iso_end"],
+  "datetime_iso_end should be an ISO8601 string with UTC offset (fixture event has a DTEND)")
 
 # --- fetch_next_event: stub with all past events → FALLBACK ---
 past_generator = CivicTechWR::LumaEventGenerator.new
