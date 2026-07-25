@@ -34,7 +34,8 @@ mtg.name | default: "CivicTechWR Hacknight" %}
       "url": {{ mtg_url | jsonify }},
       "price": "0",
       "priceCurrency": "CAD",
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "validFrom": {{ site.time | date_to_xmlschema | jsonify }}
     },
     "description": "Join Civic Tech Waterloo Region for a free, weekly hacknight — a drop-in gathering where community members, designers, and technologists collaborate on local civic tech projects. Everyone is welcome, no tech skills required.",
     "url": {{ mtg_url | jsonify }},
