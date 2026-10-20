@@ -1,0 +1,17 @@
+/* Icons - SVG icon styling */
+/* Icon Components */
+
+/* SVG Icon Sprite Styling */
+.svg-sprite-defs {
+  display: none;
+}
+
+.icon {
+  display: inline-block;
+  fill: currentcolor;
+  vertical-align: middle;
+}
+
+.form-check-icon {
+  color: var(--secondary-color);
+}
