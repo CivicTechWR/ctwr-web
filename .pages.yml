@@ -1,0 +1,77 @@
+---
+media:
+  input: images
+  output: /images
+  categories: [image]
+
+content:
+  - name: projects
+    label: Featured projects
+    type: file
+    path: _data/projects.yml
+    format: yaml
+    list: true
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+      - name: logo
+        label: Logo
+        type: image
+      - name: url
+        label: Website
+        type: string
+      - name: github
+        label: GitHub repo
+        type: string
+      - name: year
+        label: Years
+        type: number
+        list: true
+      - name: role
+        label: Our role
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+
+  - name: partners
+    label: Partners
+    type: file
+    path: _data/partners.yml
+    format: yaml
+    list: true
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: logo
+        label: Logo
+        type: image
+        path: sponsors
+      - name: current
+        label: Current partner
+        type: boolean
+
+  - name: navigation
+    label: Navigation menu
+    type: file
+    path: _data/navigation.yml
+    format: yaml
+    list: true
+    fields:
+      - name: text
+        label: Label
+        type: string
+        required: true
+      - name: url
+        label: Link
+        type: string
+        required: true
