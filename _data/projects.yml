@@ -1,6 +1,6 @@
 - name: ConnectedKW
   description: A volunteer-run community guide curating events and resources for
-    Waterloo Region residents. Test change
+    Waterloo Region residents.
   logo: /images/connected-kw.webp
   url: https://www.connectedkw.com/
   github: https://github.com/CivicTechWR
