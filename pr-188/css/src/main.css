@@ -1,0 +1,117 @@
+/**
+ * CivicTechWR CSS Entry Point
+ * Build: npm run build:css  →  postcss css/src/main.css --output css/main.css
+ *
+ * css/main.css and css/main.min.css are committed to git because GitHub Pages
+ * only runs Jekyll — no npm scripts execute during the Pages build.
+ *
+ * Load order:
+ * 1. Base       — variables, fonts, typography
+ * 2. Layout     — grid
+ * 3. Components — preloader, icons, featured-numbers, sponsors,
+ *                 avatar, forms, page-header, newsletter, navigation,
+ *                 buttons, hero, services, footer, projects-cards, organizers
+ * 4. Utilities  — shapes
+ * 5. Pages      — about, projects
+ * 6. Global     — body reset, utilities, *:focus (must remain last)
+ */
+
+/* === Base === */
+@import "base/variables.css";
+@import "base/fonts.css";
+@import "base/typography.css";
+
+/* === Layout === */
+@import "layout/grid.css";
+
+/* === Components (Phase 1) === */
+@import "components/preloader.css";
+@import "components/icons.css";
+@import "components/featured-numbers.css";
+@import "components/sponsors.css";
+
+/* === Components (Phase 2) === */
+@import "components/avatar.css";
+@import "components/forms.css";
+@import "components/page-header.css";
+@import "components/newsletter.css";
+
+/* === Components (Phase 3) === */
+@import "components/navigation.css";
+@import "components/buttons.css";
+@import "components/hero.css";
+
+/* === Utilities === */
+@import "utilities/shapes.css";
+
+/* === Components (Phase 4) === */
+@import "components/services.css";
+@import "components/footer.css";
+@import "components/projects-cards.css";
+@import "components/organizers.css";
+
+/* === Pages === */
+@import "pages/about.css";
+@import "pages/projects.css";
+
+/* === Global base — body reset, utilities, *:focus (load-bearing last position) ===
+
+/* ==========================================================================
+   GLOBAL BASE — body reset, global utilities, accessibility
+   *:focus is intentionally last: it sits after all component focus overrides
+   so lower-specificity wins remain intact (see CLAUDE.md §4).
+   ========================================================================== */
+
+body {
+  background: var(--white-color);
+  font-family: var(--body-font-family);
+  margin: 0;
+  padding: 0;
+}
+
+/* Link utility classes */
+.text-decoration-underline {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.text-decoration-underline:hover {
+  color: var(--primary-color-accessible);
+}
+
+/* Copyright/footer link specificity - inherit standard link colors but add bold weight */
+.copyright-text-wrap a {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Mailchimp anti-spam honeypot field */
+.mc-honeypot {
+  position: absolute;
+  left: -5000px;
+}
+
+/* Footer link group separator */
+.footer-links-divider-before {
+  margin-top: 0.75rem;
+}
+
+/* ==========================================================================
+   REDUCED MOTION - Accessibility: disable animations for users who prefer it
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus styles for accessibility — MUST remain last in assembled output.
+   Lower specificity than component :focus rules (cascade order is intentional). */
+*:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
