@@ -20,7 +20,7 @@
     "lint:json": "bash scripts/lint-json.sh",
     "lint:shell": "bash scripts/lint-shell.sh",
     "analyze:css": "cssstats css/main.css --json > css-analysis.json",
-    "test:performance": "lighthouse http://localhost:4000 --output=json --output-path=./lighthouse-report.json --chrome-flags='--headless' --quiet",
+    "test:performance": "npx --yes lighthouse@13.6.0 http://localhost:4000 --output=json --output-path=./lighthouse-report.json --chrome-flags='--headless' --quiet",
     "test:css": "node tests/css/component-tests.js",
     "test:css:assets": "node tests/css/asset-integrity.js",
     "test:luma": "bundle exec ruby tests/ruby/luma_event_generator_test.rb",
@@ -39,8 +39,7 @@
     "clean-css-cli": "^5.6.3",
     "css-tree": "^2.3.1",
     "cssstats-cli": "^4.0.5",
-    "lighthouse": "^12.8.2",
-    "markdownlint-cli": "^0.49.0",
+    "markdownlint-cli": "^0.50.0",
     "pa11y": "^9.1.1",
     "pa11y-ci": "^4.1.1",
     "postcss": "^8.5.25",
@@ -62,14 +61,10 @@
     "minimatch@3.1.5": {
       "brace-expansion": "^1.1.21"
     },
-    "minimatch@9.0.9": {
-      "brace-expansion": "^2.1.7"
-    },
-    "minimatch@10.2.5": {
-      "brace-expansion": "^5.0.12"
-    },
     "tmp": "0.2.7",
     "axios": "^1.21.0",
-    "js-yaml": "^4.3.2"
+    "markdownlint": {
+      "re2js": "~2.8.8"
+    }
   }
 }
