@@ -47,11 +47,12 @@ Approach all work here with that in mind. Be respectful and intentional. Move ca
 
 ```bash
 gh api -X DELETE repos/CivicTechWR/ctwr-web/branches/main/protection/enforce_admins && \
-gh pr merge <N> --repo CivicTechWR/ctwr-web --squash --admin --subject "type(scope): description (#<N>)"; \
+{ gh pr merge <N> --repo CivicTechWR/ctwr-web --squash --admin --subject "type(scope): description (#<N>)" || echo "MERGE FAILED"; }; \
 gh api -X POST repos/CivicTechWR/ctwr-web/branches/main/protection/enforce_admins -q '.enabled'
 ```
 
-- **`&&` then `;` is deliberate.** The merge only runs if disabling succeeded, but the re-enable after `;` runs **whether or not the merge succeeded**. Do not chain all three with `&&`: a failed merge would then skip the re-enable and leave `main` unprotected.
+- **The shape is deliberate: the re-enable must run no matter what.** The merge only runs if disabling succeeded. The `|| echo "MERGE FAILED"` keeps a failed merge from stopping the command, so the re-enable after `;` still runs — including in a shell with `set -e` (a script or CI step), where a bare failing `gh pr merge` would otherwise exit before reaching the `;`. Do not chain all three with `&&`, and do not drop the `|| echo`: either way a failed merge skips the re-enable and leaves `main` unprotected.
+- **`MERGE FAILED` means nothing merged**, even though protection was briefly disabled and re-enabled. Fix the cause and run the whole command again.
 - **The last line must print `true`.** If it prints anything else, run that line again until it does.
 - **Keep `--repo`.** `gh pr merge` infers the repository from the current directory; outside a clone it fails with `fatal: not a git repository`. (The `gh api` lines name the repo in the URL, so they succeed either way — which can make it look like the merge ran when it didn't.) Confirm the merge with `gh pr view <N> --repo CivicTechWR/ctwr-web --json state`.
 
