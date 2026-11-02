@@ -241,7 +241,19 @@ The mobile nav toggle uses a `<button>` with `aria-expanded` / `aria-controls` (
 
 ### What exists
 
-`tests/e2e/newsletter-form.spec.js` — 84-line Playwright spec that runs 8 tests per page across `/`, `/about.html`, and `/projects.html` (24 tests total). It covers: section visibility, email input attributes, subscribe button, honeypot field and hiding, form action/method/target, browser-side validation (empty and invalid email), and valid email acceptance.
+7 spec files, **84 tests** in total (as of 2026-11; verify with `npx playwright test --list`, whose last line prints the total):
+
+| Spec | Tests | Covers |
+| ---- | ----- | ------ |
+| `newsletter-form.spec.js` | 27 (9 × `/`, `/about.html`, `/projects.html`) | Section visibility, email input attributes, subscribe button, honeypot field and its hiding, form action/method/target, browser-side validation (empty and invalid email), valid email accepted without navigating to Mailchimp |
+| `navigation.spec.js` | 3 | Mobile nav toggle: opens on click, closes on outside click, closes on Escape (see [§8](#8-navigation-toggle)) |
+| `projects-filter.spec.js` | 5 | Projects page: filter bar, "All" active by default, featured cards from `projects.json`, GitHub cards after the API fetch, tag filter switches the active button |
+| `css-phase1-smoke.spec.js` | 11 | Base/layout partials: `:root` tokens, box-sizing, `.container`, SVG sprite hidden, icons, sponsor grids, shapes |
+| `css-phase2-smoke.spec.js` | 9 | Typography, page header, newsletter styling |
+| `css-phase3-smoke.spec.js` | 14 | Navigation, buttons, hero, skip-link and `.sr-only` |
+| `css-phase4-smoke.spec.js` | 15 | Services, footer, project cards, organizers, About page |
+
+The four `css-phase*-smoke` specs date from the CSS modularization ([§4](#4-css-architecture--modularized-source-generated-output)). Their test names name the partial they guard in parentheses, e.g. `(buttons.css)`, so a failure points straight at the source file.
 
 **CI job:** `.github/workflows/e2e.yml` (`e2e` job) — builds the site fresh, installs Chromium, then runs `npm run test:e2e`.
 
@@ -274,7 +286,7 @@ npx playwright test --ui
 
 **When adding a new feature or template change:** Write a corresponding E2E spec (or extend an existing one) before merging. The newsletter spec is the model — test the component's presence, key attributes, and user interactions. Do not just test that an element exists; test that it behaves correctly.
 
-**When extracting CSS (Phase 2, 3, 4 modularization):** Add a smoke-test spec that verifies the extracted component still renders. At minimum: visible on the page, no obvious layout collapse. See the Phase 1 spec pattern as a reference — check that key elements have non-zero dimensions and are within the viewport.
+**When adding, splitting or moving a CSS partial in `css/src/`:** Add or extend a smoke test that verifies the affected component still renders. At minimum: visible on the page, no obvious layout collapse. Follow the `css-phase*-smoke` pattern: check that key elements have non-zero dimensions and are within the viewport, and end the test name with the partial it covers, e.g. `(buttons.css)`.
 
 **When modifying `_includes/` or `_layouts/`:** Check whether any existing spec covers the changed element. If the change touches an ID or class that a spec locates by, update the spec. Broken locators silently pass in Playwright if the element is simply absent — use `toBeVisible()` not just `toBeAttached()`.
 
