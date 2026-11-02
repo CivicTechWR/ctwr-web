@@ -29,12 +29,8 @@ audit: ## Run the dependency scans CI runs (npm audit --audit-level=critical, bu
 e2e: ## Run the Playwright end-to-end suite (needs a fresh build; make ci builds first)
 	npm run test:e2e
 
-a11y: ## Run pa11y-ci against the built site on 127.0.0.1:4000 (needs a fresh build and Chrome)
-	@bash -c 'set -euo pipefail; \
-		bundle exec jekyll serve --no-watch --skip-initial-build --host 127.0.0.1 --port 4000 >/dev/null 2>&1 & pid=$$!; \
-		trap "kill $$pid 2>/dev/null || true" EXIT; \
-		for _ in $$(seq 30); do curl -fs -o /dev/null http://127.0.0.1:4000/ && break; sleep 1; done; \
-		npx pa11y-ci --config .pa11yci.json'
+a11y: ## Run pa11y-ci against the built site on 127.0.0.1:4000 (needs make build first, Chrome, and port 4000 free)
+	bash scripts/a11y-local.sh
 
 ci: lint test audit build e2e ## Run the local CI rehearsal (add make a11y for the accessibility job)
 
