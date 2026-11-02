@@ -23,7 +23,9 @@ if [ -d css/src ]; then
 
 	if [ -f css/src/main.css ]; then
 		if npx postcss css/src/main.css --output "$tmp_dir/main.css" --config postcss.config.js >/dev/null 2>&1; then
-			if diff -q "$tmp_dir/main.css" css/main.css >/dev/null 2>&1; then
+			# -B: ignore blank-line-only differences; postcss emits them inconsistently
+			# across environments and they do not change the CSS.
+			if diff -q -B "$tmp_dir/main.css" css/main.css >/dev/null 2>&1; then
 				build_matches_committed=true
 			fi
 		fi
