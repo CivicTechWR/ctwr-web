@@ -39,24 +39,24 @@ Approach all work here with that in mind. Be respectful and intentional. Move ca
 
 ## 2. Merging PRs — the admin bypass workflow
 
-**The problem:** Branch protection requires code owner approval (`@CivicTechWR/website`). The primary maintainer (`BreakableHoodie`) is in `@CivicTechWR/organizers` but not `@CivicTechWR/website`, so they cannot self-approve. `enforce_admins: true` also blocks `gh pr merge --admin` by default.
+**The problem:** Branch protection requires an approving review from a code owner (`@CivicTechWR/website`). GitHub never lets a PR's author approve their own PR, regardless of team membership — so when the only available code owner is the person who opened the PR (common for the primary maintainer, `BreakableHoodie`), nobody can approve it. `enforce_admins: true` also blocks `gh pr merge --admin` by default.
 
-**The workflow** (used when all CI is green and no reviewer is available):
+**Prefer a second reviewer.** Ask another `@CivicTechWR/website` member to approve first; the bypass below is for when CI is green and no other reviewer is available. Be most reluctant to bypass on dependency/lockfile PRs — supply-chain problems hide in lockfile diffs, and a second pair of eyes is the point.
+
+**The workflow** — run it as one command, exactly in this shape:
 
 ```bash
-# 1. Disable enforce_admins
-gh api -X DELETE repos/CivicTechWR/ctwr-web/branches/main/protection/enforce_admins
-
-# 2. Merge (squash preferred)
-gh pr merge <N> --squash --admin --subject "commit subject line"
-
-# 3. Re-enable immediately — do not skip this step
-gh api -X POST repos/CivicTechWR/ctwr-web/branches/main/protection/enforce_admins
+gh api -X DELETE repos/CivicTechWR/ctwr-web/branches/main/protection/enforce_admins && \
+{ gh pr merge <N> --repo CivicTechWR/ctwr-web --squash --admin --subject "type(scope): description (#<N>)" || echo "MERGE FAILED"; }; \
+gh api -X POST repos/CivicTechWR/ctwr-web/branches/main/protection/enforce_admins -q '.enabled'
 ```
 
-Always chain all three commands so enforce_admins is never left disabled if a step fails.
+- **The shape is deliberate: the re-enable must run no matter what.** The merge only runs if disabling succeeded. The `|| echo "MERGE FAILED"` keeps a failed merge from stopping the command, so the re-enable after `;` still runs — including in a shell with `set -e` (a script or CI step), where a bare failing `gh pr merge` would otherwise exit before reaching the `;`. Do not chain all three with `&&`, and do not drop the `|| echo`: either way a failed merge skips the re-enable and leaves `main` unprotected.
+- **`MERGE FAILED` means nothing merged**, even though protection was briefly disabled and re-enabled. Fix the cause and run the whole command again.
+- **The last line must print `true`.** If it prints anything else, run that line again until it does.
+- **Keep `--repo`.** `gh pr merge` infers the repository from the current directory; outside a clone it fails with `fatal: not a git repository`. (The `gh api` lines name the repo in the URL, so they succeed either way — which can make it look like the merge ran when it didn't.) Confirm the merge with `gh pr view <N> --repo CivicTechWR/ctwr-web --json state`.
 
-**Never merge with failing CI.** Always check `gh pr checks <N>` and `gh pr view <N> --json mergeStateStatus` before running this workflow. Check for open review comments too.
+**Never merge with failing CI.** Always check `gh pr checks <N> --repo CivicTechWR/ctwr-web` and `gh pr view <N> --repo CivicTechWR/ctwr-web --json mergeStateStatus` before running this workflow. Check for open review comments too.
 
 ---
 
@@ -153,7 +153,9 @@ Note: `base/reset.css` and `layout/utilities.css` from the original extraction p
 - PostCSS config: `postcss.config.js` (postcss-import, autoprefixer, sort/combine media queries, combine duplicated selectors)
 - Build command: `npm run build:css` → `scripts/build-css.sh` → `npx postcss css/src/main.css --output css/main.css --config postcss.config.js`
 
-**After changing anything in `css/src/`:** run `npm run build:css && npm run minify:css`, and commit both `css/main.css` and `css/main.min.css` alongside your `css/src/` change. The `build-assets` CI job rebuilds from `css/src/` and diffs against the committed `css/main.css`/`css/main.min.css` — it will fail if you forget either step, and it will *not* catch a direct edit to `css/main.css` that was never applied to the real `css/src/` source (the rebuild just silently overwrites it back to whatever `css/src/` says).
+**After changing anything in `css/src/`:** run `npm run build:css && npm run minify:css`, and commit both `css/main.css` and `css/main.min.css` alongside your `css/src/` change. **CI does not check `css/main.css` against `css/src/`.** The `build-assets` job only runs `npm run minify` (minifying the *committed* `css/main.css`) and diffs `css/main.min.css` and `js/optimized-bundle.min.js`. So it catches a forgotten `minify:css`, but **not** a forgotten `build:css`: if you edit `css/src/` and skip `build:css`, the stale `css/main.css` and its matching `css/main.min.css` both pass and ship. It also won't catch a direct edit to `css/main.css` — that passes CI and is then silently reverted by the next contributor who runs `build:css`. Running `build:css` locally is on you.
+
+**Local rebuild noise:** in some environments `npm run build:css` produces a `css/main.css` that differs from the committed file only by removed blank lines (seen 2026-11 in a Node 22 sandbox, while CI uses Node 24; root cause not confirmed). `css/main.min.css` is byte-identical either way. If your only diff is blank lines, don't commit it.
 
 **Critical gotcha — cascade order is load-bearing.** The `*:focus` rule in `css/src/main.css`'s tail is intentionally the last non-media, non-base rule in the assembled output, sitting *after* all component focus overrides (lower specificity wins are expected) — sorted `@media` blocks still land after it (see below). Do not move it without verifying all component focus styles still apply.
 
@@ -192,7 +194,7 @@ script-src 'self' https://chimpstatic.com https://form-assets.mailchimp.com
 - `css/main.min.css` (minified) must be committed to git
 - `js/optimized-bundle.min.js` (minified) must be committed to git
 
-After any change to `css/main.css` source or `js/optimized-bundle.js`, you must run `npm run minify` and commit the minified output. The `build-assets` CI job enforces this by rebuilding and diffing.
+After any change to `css/main.css` source or `js/optimized-bundle.js`, you must run `npm run minify` and commit the minified output. The `build-assets` CI job enforces the minified half of this by re-minifying and diffing; it does not rebuild `css/main.css` from `css/src/` (see [§4](#4-css-architecture--modularized-source-generated-output)).
 
 CSS modularization is complete: `css/src/main.css` is the entry point, and `npm run build:css` writes the assembled output to `css/main.css` — commit that file (and `css/main.min.css`) alongside any `css/src/` change. See [§4](#4-css-architecture--modularized-source-generated-output).
 
