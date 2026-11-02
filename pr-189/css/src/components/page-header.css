@@ -1,0 +1,19 @@
+/* Page Header - Page titles and headers */
+/* Page Header Component */
+
+.site-header {
+  padding: var(--space-6);
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  color: var(--dark-color);
+}
+
+.page-subtitle {
+  font-size: var(--font-size-mobile-lg);
+  color: var(--p-color);
+  margin-bottom: 0;
+}
