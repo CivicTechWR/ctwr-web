@@ -83,6 +83,12 @@ defaults:
       comments: false
       share: false
       read_time: true
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /blog/:title/
 
 # Plugins
 plugins:

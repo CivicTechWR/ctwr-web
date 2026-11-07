@@ -17,7 +17,6 @@
  */
 
 /* === Base === */
-
 :root {
   /* ==========================================================================
      COLOR PALETTE - Only 4 colors + gray for backgrounds
@@ -207,9 +206,7 @@
     var(--white-color) 100%
   );
 }
-
 /* Fonts - Self-hosted font files */
-
 /* Self-hosted DM Sans font - Latin subset only
  * Replaces Google Fonts API to eliminate external DNS lookup and improve performance
  * Variable font supporting weights 400-700
@@ -227,16 +224,13 @@
     U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
     U+2215, U+FEFF, U+FFFD;
 }
-
 /* Typography - Base text styles using CSS custom properties */
-
 /* ---------------------------------------
   TYPOGRAPHY - Base Text Styles
   Extracted from style.css for better organization
 ----------------------------------------- */
 
 /* Heading Styles */
-
 h1,
 h2,
 h3,
@@ -285,7 +279,6 @@ h6 {
 }
 
 /* Spacing between consecutive headings */
-
 h1 + h2,
 h2 + h3,
 h3 + h4,
@@ -295,7 +288,6 @@ h5 + h6 {
 }
 
 /* Two consecutive headings of same level need more space */
-
 h2 + h2,
 h3 + h3,
 h4 + h4 {
@@ -303,13 +295,11 @@ h4 + h4 {
 }
 
 /* Utility class for headings that need extra spacing */
-
 .heading-spaced {
   margin-bottom: var(--space-7);
 }
 
 /* Body Text */
-
 p {
   color: var(--p-color);
   font-size: var(--p-font-size);
@@ -318,7 +308,6 @@ p {
 }
 
 /* Lists */
-
 ul,
 ol {
   margin-bottom: var(--space-5);
@@ -339,7 +328,6 @@ ol:last-child {
 }
 
 /* Images */
-
 img {
   max-width: 100%;
   height: auto;
@@ -347,7 +335,6 @@ img {
 }
 
 /* Figure elements */
-
 figure {
   margin-bottom: var(--space-6);
 }
@@ -357,7 +344,6 @@ figure:last-child {
 }
 
 /* Interactive Elements */
-
 a,
 button {
   touch-action: manipulation;
@@ -365,7 +351,6 @@ button {
 }
 
 /* Link Styles */
-
 a {
   color: var(--secondary-color);
   text-decoration: none;
@@ -402,26 +387,22 @@ a:not(.btn):visited:hover {
 }
 
 /* Text Selection */
-
 ::-moz-selection {
   background: var(--secondary-color);
   color: var(--white-color);
 }
-
 ::selection {
   background: var(--secondary-color);
   color: var(--white-color);
 }
 
 /* Text Utilities */
-
 b,
 strong {
   font-weight: var(--font-weight-bold);
 }
 
 /* Section Title Wrapper */
-
 .section-title-wrap {
   background: var(--secondary-color);
   border-radius: var(--radius-md);
@@ -431,25 +412,20 @@ strong {
 /* Responsive Typography */
 
 /* Section Padding */
-
 .section-padding {
   padding: var(--section-padding-md);
 }
 
 /* === Layout === */
-
 /* ==========================================================================
    LAYOUT LAYER - Grid system and utilities
    ========================================================================== */
 
 /* Custom Bootstrap - Only includes used classes (2.7KB vs 237KB) */
-
 /* Custom Bootstrap CSS - Only includes classes actually used by CTWR website */
-
 /* This reduces the 281KB Bootstrap CSS to ~15KB */
 
 /* Box-sizing fix - critical for proper grid layout */
-
 *,
 *::before,
 *::after {
@@ -457,7 +433,6 @@ strong {
 }
 
 /* Grid System */
-
 .container {
   width: 100%;
   padding-right: 15px;
@@ -472,7 +447,6 @@ strong {
 }
 
 /* All columns need padding to offset row's negative margins */
-
 [class*="col-"] {
   position: relative;
   width: 100%;
@@ -499,59 +473,46 @@ strong {
 }
 
 /* Flexbox utilities */
-
 .d-flex {
   display: flex;
 }
-
 .justify-content-center {
   justify-content: center;
 }
-
 .align-items-start {
   align-items: start;
 }
-
 .align-items-end {
   align-items: end;
 }
-
 .align-items-center {
   align-items: center;
 }
-
 .align-items-stretch {
   align-items: stretch;
 }
 
 /* Spacing utilities */
-
 .mt-4 {
   margin-top: var(--space-5);
 }
-
 .mt-5 {
   margin-top: var(--space-7);
 }
-
 .mb-3 {
   margin-bottom: var(--space-4);
 }
-
 .mb-4 {
   margin-bottom: var(--space-5);
 }
-
 .mb-5 {
   margin-bottom: var(--space-7);
 }
-
 .pt-2 {
   padding-top: var(--space-2);
 }
 
 /* Text utilities */
-
 .text-center {
   text-align: center;
 }
@@ -569,16 +530,13 @@ strong {
 /* Button styles handled by css/components/buttons.css */
 
 /* Image utilities */
-
 .img-fluid {
   max-width: 100%;
   height: auto;
 }
 
 /* === Components (Phase 1) === */
-
 /* Preloader - Loading spinner */
-
 /* Preloader Component */
 
 .preloader {
@@ -622,13 +580,10 @@ strong {
     transform: rotate(360deg);
   }
 }
-
 /* Icons - SVG icon styling */
-
 /* Icon Components */
 
 /* SVG Icon Sprite Styling */
-
 .svg-sprite-defs {
   display: none;
 }
@@ -642,9 +597,7 @@ strong {
 .form-check-icon {
   color: var(--secondary-color);
 }
-
 /* Featured - Featured numbers and statistics */
-
 /* Featured Numbers Component */
 
 .featured-numbers {
@@ -664,13 +617,10 @@ strong {
 .featured-border-start {
   border-left: 1px solid var(--border-color);
 }
-
 /* Sponsors - Partner and sponsor logos */
-
 /* Sponsors Component */
 
 /* Sponsor grid container - uses CSS Grid for consistent layout */
-
 .sponsor-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -681,7 +631,6 @@ strong {
 }
 
 /* Container for each sponsor logo - provides consistent bounds */
-
 .sponsors-item-height {
   width: 100%;
   min-height: 100px;
@@ -694,7 +643,6 @@ strong {
 }
 
 /* Current partner logos - larger and more prominent */
-
 .sponsors-image {
   display: block;
   -o-object-fit: contain;
@@ -717,7 +665,6 @@ strong {
 }
 
 /* Previous partner logos - smaller to show hierarchy */
-
 .previous-sponsors-image {
   display: block;
   -o-object-fit: contain;
@@ -744,9 +691,7 @@ strong {
 /* Responsive sizing for mobile */
 
 /* === Components (Phase 2) === */
-
 /* Avatar - Profile and user images */
-
 /* Avatar Image Components */
 
 .avatar-image {
@@ -756,11 +701,9 @@ strong {
   -o-object-fit: cover;
      object-fit: cover;
 }
-
 /* Forms - Custom inputs */
 
 /* Custom Form Styles */
-
 .custom-form .form-control {
   background: var(--white-color);
   box-shadow: none;
@@ -800,9 +743,7 @@ strong {
   font-size: var(--copyright-font-size);
   margin-top: 5px;
 }
-
 /* Page Header - Page titles and headers */
-
 /* Page Header Component */
 
 .site-header {
@@ -821,15 +762,12 @@ strong {
   color: var(--p-color);
   margin-bottom: 0;
 }
-
 /* Newsletter - Newsletter signup forms */
-
 /* ==========================================================================
    Newsletter Component Styles
    ========================================================================== */
 
 /* Newsletter CTA Section */
-
 .newsletter-cta {
   background: var(--secondary-color);
   position: relative;
@@ -893,7 +831,6 @@ strong {
 }
 
 /* Footer Newsletter Styles */
-
 .footer-newsletter {
   margin-top: var(--space-4);
   margin-bottom: var(--space-4);
@@ -942,7 +879,6 @@ strong {
 /* Responsive styles */
 
 /* Success/Error Message Styling */
-
 #mce-error-response,
 #mce-success-response {
   margin: 1rem 0;
@@ -964,16 +900,13 @@ strong {
 }
 
 /* Loading state */
-
 .newsletter-form-wrapper.loading .newsletter-btn-main {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
 /* === Components (Phase 3) === */
-
 /* Navigation - Header and navigation system */
-
 /* ---------------------------------------
   NAVIGATION - REBUILT FROM SCRATCH
   Mobile-first responsive navigation system
@@ -981,7 +914,6 @@ strong {
 ----------------------------------------- */
 
 /* Skip navigation for accessibility */
-
 .skip-link {
   position: absolute;
   top: -40px;
@@ -1000,7 +932,6 @@ strong {
 }
 
 /* Screen reader only content */
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1014,17 +945,14 @@ strong {
 }
 
 /* Keyboard navigation improvements */
-
 /* tabindex="-1" elements are only programmatically focused (skip link targets,
    dialog focus trapping). Suppressing outline is intentional; keyboard users
    cannot tab to these elements directly. a11ylint: false-positive */
-
 [tabindex="-1"]:focus {
   outline: none;
 }
 
 /* Sticky wrapper for nav */
-
 .sticky-wrapper {
   position: relative;
   z-index: 222;
@@ -1032,7 +960,6 @@ strong {
 }
 
 /* Base navbar styles - applies to all screen sizes */
-
 .navbar {
   background: var(--dark-color);
   position: sticky;
@@ -1054,7 +981,6 @@ strong {
 }
 
 /* Sticky state styles */
-
 .is-sticky .navbar {
   box-shadow: 0 1rem 3rem var(--shadow-lg);
 }
@@ -1065,7 +991,6 @@ strong {
 }
 
 /* Brand/Logo */
-
 .navbar-header {
   display: flex;
   align-items: center;
@@ -1074,7 +999,6 @@ strong {
 }
 
 /* Navbar Icon */
-
 .navbar-icon {
   background: var(--white-color);
   border-radius: var(--radius-full);
@@ -1103,7 +1027,6 @@ strong {
 
 /* :focus rule overrides color/decoration only; visible focus ring is provided
    by the :focus-visible rule below. a11ylint: false-positive on :focus */
-
 .navbar-brand:hover,
 .navbar-brand:focus {
   color: var(--white-color);
@@ -1129,7 +1052,6 @@ strong {
 }
 
 /* Hamburger toggle button */
-
 .navbar-toggler {
   display: none;
   order: 3;
@@ -1152,7 +1074,6 @@ strong {
 }
 
 /* Navigation collapse container */
-
 .navbar-collapse {
   display: flex;
   flex-direction: row;
@@ -1162,7 +1083,6 @@ strong {
 }
 
 /* Navigation list */
-
 .navbar-nav {
   display: flex;
   flex-direction: row;
@@ -1208,7 +1128,6 @@ strong {
 }
 
 /* Right-aligned actions (e.g., dashboard button) */
-
 .navbar-collapse .ms-auto {
   margin-left: auto;
   display: flex;
@@ -1221,9 +1140,7 @@ strong {
 /* TABLET STYLES: 768-992px (tablets) */
 
 /* DESKTOP STYLES: 992px+ */
-
 /* Buttons - Unified button system with BEM methodology */
-
 /**
  * Unified Button System - BEM Methodology
  * Replaces 17+ fragmented button classes with a cohesive system
@@ -1309,7 +1226,6 @@ strong {
    ========================================================================== */
 
 /* Primary Button - Teal background (main CTA) */
-
 .btn--primary {
   background: var(--secondary-color);
   border-color: var(--secondary-color);
@@ -1327,7 +1243,6 @@ strong {
 /* Secondary Button - Removed (unused) */
 
 /* Outline Button - Transparent with border */
-
 .btn--outline {
   background: transparent;
   border-color: var(--secondary-color);
@@ -1343,7 +1258,6 @@ strong {
 }
 
 /* Light Inverse Button - For dark backgrounds */
-
 .btn--light {
   background: var(--secondary-color);
   border: 2px solid var(--secondary-color);
@@ -1364,21 +1278,18 @@ strong {
    ========================================================================== */
 
 /* Small Button */
-
 .btn--sm {
   padding: var(--space-2) var(--space-4);
   font-size: var(--font-size-mobile-sm);
 }
 
 /* Large Button */
-
 .btn--lg {
   padding: var(--space-4) var(--space-6);
   font-size: var(--font-size-mobile-lg);
 }
 
 /* Extra Small (for badges like GitHub) */
-
 .btn--xs {
   padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-mobile-xs);
@@ -1390,20 +1301,17 @@ strong {
    ========================================================================== */
 
 /* Full Width Button */
-
 .btn--full {
   display: block;
   width: 100%;
 }
 
 /* Pill-shaped Button */
-
 .btn--pill {
   border-radius: var(--radius-full);
 }
 
 /* Square Button (icon buttons) */
-
 .btn--square {
   width: 2.75rem;
   height: 2.75rem;
@@ -1414,7 +1322,6 @@ strong {
 }
 
 /* Button with Icon */
-
 .btn__icon {
   display: inline-block;
   margin-right: var(--space-2); /* Fixed: Use design system variable (8px) */
@@ -1427,7 +1334,6 @@ strong {
 }
 
 /* Spacing for buttons after paragraphs or headings */
-
 p + .btn,
 h1 + .btn,
 h2 + .btn,
@@ -1443,7 +1349,6 @@ h6 + .btn {
    ========================================================================== */
 
 /* Footer Donate Button - Use primary coral for prominence */
-
 .btn--donate {
   background: var(--primary-color);
   border-color: var(--primary-color);
@@ -1461,7 +1366,6 @@ h6 + .btn {
 }
 
 /* Footer General Button - High contrast for visibility on light footer */
-
 .btn--footer {
   background: var(--secondary-color);
   border-color: var(--secondary-color);
@@ -1477,7 +1381,6 @@ h6 + .btn {
 }
 
 /* GitHub Badge Button */
-
 .btn--badge {
   background: var(--secondary-color);
   border-color: var(--secondary-color);
@@ -1499,7 +1402,6 @@ h6 + .btn {
 }
 
 /* Meeting CTA Button - Prominent on teal background */
-
 .btn--meeting {
   background: var(--primary-color);
   border-color: var(--primary-color);
@@ -1541,7 +1443,6 @@ h6 + .btn {
 }
 
 /* Ensure consistent button heights in groups */
-
 .btn-group .btn {
   min-height: 44px; /* Consistent minimum height for touch targets */
   display: flex;
@@ -1550,7 +1451,6 @@ h6 + .btn {
 }
 
 /* Login Button - Header login button */
-
 .btn--login {
   background: transparent;
   border: 2px solid var(--white-color);
@@ -1568,9 +1468,7 @@ h6 + .btn {
 }
 
 /* Desktop: Prevent wrapping, keep buttons in single row */
-
 /* Hero - Main landing section */
-
 /* ---------------------------------------
   HERO SECTION - Main landing area
   Extracted from style.css for better organization
@@ -1648,7 +1546,6 @@ h6 + .btn {
 }
 
 /* Used by .hero-text animation */
-
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -1735,7 +1632,6 @@ h6 + .btn {
 }
 
 /* Hero Image Styles */
-
 .hero-image-wrap {
   position: relative;
   z-index: 1;
@@ -1750,13 +1646,11 @@ h6 + .btn {
 /* Responsive Hero Styles */
 
 /* === Utilities === */
-
 /* ==========================================================================
    UTILITY LAYER - Abstract shapes and helpers
    ========================================================================== */
 
 /* Abstract Shapes - Decorative background elements */
-
 /* Abstract Shapes CSS */
 
 .shape-container {
@@ -1773,7 +1667,6 @@ h6 + .btn {
 }
 
 /* Shape 1 - Circle */
-
 .shape-circle {
   width: 150px;
   height: 150px;
@@ -1785,7 +1678,6 @@ h6 + .btn {
 }
 
 /* Shape 2 - Square */
-
 .shape-square {
   width: 100px;
   height: 100px;
@@ -1798,7 +1690,6 @@ h6 + .btn {
 }
 
 /* Shape 3 - Triangle */
-
 .shape-triangle {
   width: 0;
   height: 0;
@@ -1811,7 +1702,6 @@ h6 + .btn {
 }
 
 /* Shape 4 - Blob */
-
 .shape-blob {
   width: 180px;
   height: 180px;
@@ -1823,7 +1713,6 @@ h6 + .btn {
 }
 
 /* Shape 5 - Rectangle */
-
 .shape-rectangle {
   width: 120px;
   height: 60px;
@@ -1836,7 +1725,6 @@ h6 + .btn {
 }
 
 /* Shape 6 - Donut */
-
 .shape-donut {
   width: 100px;
   height: 100px;
@@ -1849,7 +1737,6 @@ h6 + .btn {
 }
 
 /* Shape 7 - Zigzag */
-
 .shape-zigzag {
   width: 120px;
   height: 60px;
@@ -1870,7 +1757,6 @@ h6 + .btn {
 }
 
 /* Shape 8 - Star */
-
 .shape-star {
   width: 80px;
   height: 80px;
@@ -1893,7 +1779,6 @@ h6 + .btn {
 }
 
 /* Shape 9 - Hexagon */
-
 .shape-hexagon {
   width: 100px;
   height: 90px;
@@ -1905,7 +1790,6 @@ h6 + .btn {
 }
 
 /* Shape 10 - Cross */
-
 .shape-cross {
   width: 80px;
   height: 80px;
@@ -1930,7 +1814,6 @@ h6 + .btn {
 }
 
 /* Shape 11 - Wave */
-
 .shape-wave {
   width: 150px;
   height: 60px;
@@ -1951,7 +1834,6 @@ h6 + .btn {
 }
 
 /* Shape 12 - Diamond */
-
 .shape-diamond {
   width: 90px;
   height: 90px;
@@ -1961,7 +1843,6 @@ h6 + .btn {
 }
 
 /* Animations */
-
 @keyframes float {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -2013,7 +1894,6 @@ h6 + .btn {
 /* ---------------------------------------
   POSITION UTILITIES
 ----------------------------------------- */
-
 .top-3p {
   top: 3%;
   bottom: auto;
@@ -2242,7 +2122,6 @@ h6 + .btn {
 /* ---------------------------------------
   SIZE UTILITIES
 ----------------------------------------- */
-
 .shape-size-60 {
   width: 60px;
   height: 60px;
@@ -2259,9 +2138,7 @@ h6 + .btn {
 }
 
 /* === Components (Phase 4) === */
-
 /* Services - What we do section and meeting section */
-
 /* ---------------------------------------
   SERVICES SECTION - What we do
   Extracted from style.css for better organization
@@ -2275,7 +2152,6 @@ h6 + .btn {
 }
 
 /* Meeting section with teal background */
-
 .section-secondary-bg {
   background: var(--secondary-color);
   color: var(--white-color);
@@ -2309,7 +2185,6 @@ h6 + .btn {
 }
 
 /* Meeting section styles */
-
 .meeting-section-alt {
   background: var(--secondary-color);
   color: var(--white-color);
@@ -2319,7 +2194,6 @@ h6 + .btn {
 }
 
 /* Meeting content container */
-
 .meeting-content {
   /*display: flex;*/
   flex-direction: column;
@@ -2329,7 +2203,6 @@ h6 + .btn {
 }
 
 /* Meeting title */
-
 .meeting-title {
   color: var(--white-color);
   font-size: 1.75rem;
@@ -2339,7 +2212,6 @@ h6 + .btn {
 }
 
 /* Meeting card */
-
 .meeting-card {
   background: transparent;
   border: 1px solid var(--overlay-medium);
@@ -2350,13 +2222,11 @@ h6 + .btn {
 }
 
 /* Meeting details container */
-
 .meeting-details {
   margin-bottom: var(--space-6);
 }
 
 /* Individual meeting detail item */
-
 .meeting-detail-item {
   display: flex;
   align-items: center;
@@ -2370,7 +2240,6 @@ h6 + .btn {
 }
 
 /* Meeting icon */
-
 .meeting-icon {
   display: flex;
   align-items: center;
@@ -2385,7 +2254,6 @@ h6 + .btn {
 }
 
 /* Meeting text */
-
 .meeting-text {
   color: var(--white-color);
   font-size: var(--font-size-mobile-lg);
@@ -2394,7 +2262,6 @@ h6 + .btn {
 }
 
 /* Meeting CTA */
-
 .meeting-cta {
   text-align: center;
 }
@@ -2402,7 +2269,6 @@ h6 + .btn {
 /* Responsive adjustments */
 
 /* Meeting section context overrides */
-
 .meeting-section-alt .col-lg-6 {
   display: flex;
   flex-direction: column;
@@ -2419,16 +2285,13 @@ h6 + .btn {
   margin-left: auto;
   margin-right: auto;
 }
-
 /* Footer - Site footer */
-
 /* ---------------------------------------
   FOOTER COMPONENT - Site footer
   Extracted from style.css for better organization
 ----------------------------------------- */
 
 /* Main Footer Styles (legacy — .footer-redesign is the active layout) */
-
 .site-footer {
   border-top: 1px solid var(--border-color);
   padding-bottom: var(--space-7);
@@ -2485,7 +2348,6 @@ h6 + .btn {
 }
 
 /* Footer Redesign - Modern Footer Layout */
-
 .footer-redesign {
   background: var(--gray-50);
   /*border-top: 1px solid var(--dark-color);*/
@@ -2600,7 +2462,6 @@ h6 + .btn {
 }
 
 /* Footer copyright text - improved contrast for WCAG AA compliance */
-
 .footer-copyright-wrapper p {
   color: var(--dark-color); /* Improved contrast ratio for WCAG AA compliance */
   font-size: var(--copyright-font-size);
@@ -2609,7 +2470,6 @@ h6 + .btn {
 }
 
 /* Social Icons */
-
 .social-icon {
   list-style: none;
   padding: 0;
@@ -2648,7 +2508,6 @@ h6 + .btn {
 }
 
 /* Footer Accent Utilities */
-
 .footer-col-title-accent {
   color: var(--secondary-color);
 }
@@ -2659,9 +2518,7 @@ h6 + .btn {
 }
 
 /* Responsive Footer Styles */
-
 /* Projects cards — homepage project showcase component */
-
 /* (.project-card for the projects page lives in pages/projects.css) */
 
 .projects-thumb {
@@ -2686,7 +2543,6 @@ h6 + .btn {
 
 /* .projects-thumb is a div; it gets focus via its child <a>.
    :focus-within applies when the focusable child is keyboard-focused. */
-
 .projects-thumb:focus-within {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
@@ -2714,7 +2570,6 @@ h6 + .btn {
   text-transform: uppercase;
   margin-bottom: var(--space-1);
 }
-
 /* Organizers - Team and organizers section component */
 
 .organizers-section .organizers-grid {
@@ -2770,7 +2625,6 @@ h6 + .btn {
 }
 
 /* About section images */
-
 .about-image {
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-6);
@@ -2783,14 +2637,12 @@ h6 + .btn {
 }
 
 /* Ensure images have proper spacing from adjacent content */
-
 .about-image + *,
 * + .about-image {
   margin-top: var(--space-6);
 }
 
 /* === Pages === */
-
 /* About page specific styles */
 
 .about-main-centered {
@@ -2895,7 +2747,6 @@ h6 + .btn {
   color: inherit;
   text-decoration: underline;
 }
-
 /* Projects page specific styles */
 
 .projects-main-centered {
@@ -2945,7 +2796,6 @@ h6 + .btn {
 
 /* Text-only cards (GitHub repos) have no animated image — remove fixed height
    so descriptions are not clipped by overflow: hidden. */
-
 .project-card--text {
   height: auto;
   min-height: 350px;
@@ -2970,7 +2820,6 @@ h6 + .btn {
 }
 
 /* Projects info section - fix GitHub badge floating */
-
 .projects-info {
   position: relative;
   z-index: 2;
@@ -2985,7 +2834,6 @@ h6 + .btn {
 }
 
 /* Projects - Filter bar */
-
 .projects-filter-wrap {
   margin-bottom: var(--space-6);
 }
@@ -3054,7 +2902,6 @@ h6 + .btn {
 }
 
 /* Tag pills on project cards */
-
 .project-tag-pills {
   display: flex;
   flex-wrap: wrap;
@@ -3071,6 +2918,69 @@ h6 + .btn {
   font-weight: var(--font-weight-medium);
   padding: 2px var(--space-2);
   text-transform: capitalize;
+}
+/* Blog index and recap posts */
+
+.post {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+}
+
+.post-header {
+  margin-bottom: var(--space-6);
+}
+
+.post-back {
+  margin-bottom: var(--space-4);
+}
+
+.post-meta,
+.blog-list-item time {
+  color: var(--p-color);
+  font-size: var(--font-size-mobile-sm);
+}
+
+.post-content h2 {
+  font-size: var(--font-size-mobile-2xl);
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-3);
+}
+
+.post-content ul {
+  margin-bottom: var(--space-4);
+}
+
+.post-content li {
+  margin-bottom: var(--space-2);
+}
+
+.post-content hr {
+  margin: var(--space-7) 0;
+}
+
+.blog-season {
+  margin-bottom: var(--space-7);
+}
+
+.blog-season-title {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-4);
+}
+
+.blog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-list-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--section-bg-color);
 }
 
 /* === Global base — body reset, utilities, *:focus (load-bearing last position) ===
@@ -3089,7 +2999,6 @@ body {
 }
 
 /* Link utility classes */
-
 .text-decoration-underline {
   color: var(--secondary-color);
   text-decoration: underline;
@@ -3100,20 +3009,17 @@ body {
 }
 
 /* Copyright/footer link specificity - inherit standard link colors but add bold weight */
-
 .copyright-text-wrap a {
   font-weight: var(--font-weight-bold);
 }
 
 /* Mailchimp anti-spam honeypot field */
-
 .mc-honeypot {
   position: absolute;
   left: -5000px;
 }
 
 /* Footer link group separator */
-
 .footer-links-divider-before {
   margin-top: 0.75rem;
 }
@@ -3124,7 +3030,6 @@ body {
 
 /* Focus styles for accessibility — MUST remain last in assembled output.
    Lower specificity than component :focus rules (cascade order is intentional). */
-
 *:focus {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;

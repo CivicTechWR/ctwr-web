@@ -13,6 +13,8 @@
   "urls": [
     "http://127.0.0.1:4000/",
     "http://127.0.0.1:4000/about.html",
-    "http://127.0.0.1:4000/projects.html"
+    "http://127.0.0.1:4000/projects.html",
+    "http://127.0.0.1:4000/blog/",
+    "http://127.0.0.1:4000/blog/season-9-week-1/"
   ]
 }
