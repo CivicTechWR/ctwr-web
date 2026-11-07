@@ -1,0 +1,32 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+description: "Weekly hacknight recaps and news from CivicTech Waterloo Region."
+---
+
+<div class="has-fixed-nav">
+  <main id="main-content" class="post">
+    <header class="post-header">
+      <h1 class="page-title">Blog</h1>
+      <p class="page-subtitle">
+        What we worked on at each Wednesday hacknight.
+      </p>
+    </header>
+    {% assign seasons = site.posts | group_by: "season" %}
+    {% for season in seasons %}
+    <section class="blog-season" aria-labelledby="season-{{ season.name }}">
+      <h2 id="season-{{ season.name }}" class="blog-season-title">Season {{ season.name }}</h2>
+      <ul class="blog-list">
+        {% for post in season.items %}
+        <li class="blog-list-item">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endfor %}
+  </main>
+  {% include footer.html %}
+</div>
