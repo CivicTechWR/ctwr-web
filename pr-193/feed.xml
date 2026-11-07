@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://civictechwr.org/pr-193/feed.xml" rel="self" type="application/atom+xml" /><link href="https://civictechwr.org/pr-193/" rel="alternate" type="text/html" /><updated>2026-11-07T18:14:18-05:00</updated><id>https://civictechwr.org/pr-193/feed.xml</id><title type="html">Civic Tech Waterloo Region</title><subtitle>Civic Tech Waterloo Region is a community group that brings together people from different sectors and industries to actively solve issues facing our local community using technology-based solutions.</subtitle><author><name>Civic Tech Waterloo Region</name></author><entry><title type="html">Season 9, Week 4: Truth and Reconciliation</title><link href="https://civictechwr.org/pr-193/blog/season-9-week-4/" rel="alternate" type="text/html" title="Season 9, Week 4: Truth and Reconciliation" /><published>2026-09-30T00:00:00-04:00</published><updated>2026-09-30T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-9-week-4</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-9-week-4/"><![CDATA[<p>On the National Day for Truth and Reconciliation, we welcomed Elder Wanda Wilson of the Mohawk Nation, Turtle Clan.</p>
+
+<p>Wanda spoke about what the day means and about the lasting harm residential schools did to individuals, families, and communities. She talked about facing uncomfortable truths, what it means to forgive, and why preserving language and culture matters. She also shared her own path as a mother, a nurse, and a guest educator. A short summary can’t do it justice, and we’re grateful she spent the evening with us.</p>
+
+<p>To learn more about the Turtle building Wanda mentioned, visit <a href="https://niagaraturtle.org/">niagaraturtle.org</a>.</p>
+
+<h2 id="project-updates">Project updates</h2>
+
+<p><strong>Waterloo Region Votes</strong> finished its election poster. You can <a href="https://waterlooregionvotes.org/assets/marketing/2026/waterlooregionvotes-letter-sized-poster-2026.pdf">download the letter-size version</a> or find other formats on the <a href="https://waterlooregionvotes.org/resources/">election resources page</a>. Print one for your building, workplace, or community board.</p>
+
+<p><strong>One Million Neighbours</strong> put last week’s sample data on the map. The team is now working with data at two levels, single locations and whole areas, and deciding which measures to calculate.</p>
+
+<p><strong>Beside</strong> moved onto GitHub and is setting up a project board to plan its work.</p>
+
+<p><strong>Accommodation</strong> finished and published its survey. Please take it, and share it.</p>
+
+<h2 id="get-involved">Get involved</h2>
+
+<p>Waterloo Region Votes still needs people to record all-candidates meetings in the lead-up to the October 26 election. Several are happening next week. If you can bring a phone, come to a hacknight and we’ll connect you with the team.</p>]]></content><author><name>Jackie</name></author><summary type="html"><![CDATA[On the National Day for Truth and Reconciliation, we welcomed Elder Wanda Wilson of the Mohawk Nation, Turtle Clan.]]></summary></entry><entry><title type="html">Season 9, Week 3: Managing projects with volunteers</title><link href="https://civictechwr.org/pr-193/blog/season-9-week-3/" rel="alternate" type="text/html" title="Season 9, Week 3: Managing projects with volunteers" /><published>2026-09-23T00:00:00-04:00</published><updated>2026-09-23T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-9-week-3</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-9-week-3/"><![CDATA[<p>This week Jessica, who leads project support at CivicTechWR, gave a talk on how she runs projects with volunteer teams. Her advice included:</p>
+
+<ul>
+  <li>Decide early what your project is for and how you’ll know it’s working.</li>
+  <li>Keep plans and conversations where everyone can see them, for example in GitHub Projects and Discussions.</li>
+  <li>Prioritize tasks by how urgent they are, not just by their deadline.</li>
+  <li>When you hand out tasks, pay attention to what makes each person feel their time is well spent.</li>
+</ul>
+
+<h2 id="project-updates">Project updates</h2>
+
+<p><strong>LoMo</strong> set up project management, listed the features in progress, and worked on the messaging screen and other small bugs. Next up is working through feedback on the design and on how people move through the app.</p>
+
+<p><strong>Home Hub</strong> made progress on password reset and on adding terms of service to sign-up, and started work on handling incoming email. The team is also working on the parts of a pilot launch that aren’t code: a landing page, a video, and supporting content.</p>
+
+<p><strong>Waterloo Region Votes</strong> has a new poster. Volunteers are adding timestamps to recordings of all-candidates meetings, and research and data entry on candidate questionnaires continues. The team could use help putting posters up around the region.</p>
+
+<p><strong>One Million Neighbours</strong> uploaded a test file to ConnectedKW to help pull in real data, and is getting everyone set up to run the project on their own computers. Next is putting that data on a map and talking through the user experience.</p>
+
+<p><strong>Accommodation</strong> published its questionnaire and made a QR code for it. Next the team plans to build a landing page and share the results publicly as statistical reports.</p>
+
+<p><strong>Beside</strong> kept narrowing down what to build. The team considered celebrating shared progress when friends reach a goal together, and decided against money-based rewards.</p>
+
+<p><strong>SafeQR</strong> won’t continue this season.</p>
+
+<h2 id="get-involved">Get involved</h2>
+
+<p>If you live in Ward 5, ask your neighbourhood association to record its all-candidates meeting. It helps Waterloo Region Votes share the meeting with voters who couldn’t attend.</p>
+
+<p>On December 2, the University of Waterloo’s Engineering and Peace class will help our teams with user testing.</p>
+
+<p>A CBC reporter is also open to hearing about other local civic tech projects.</p>]]></content><author><name>Jackie</name></author><summary type="html"><![CDATA[This week Jessica, who leads project support at CivicTechWR, gave a talk on how she runs projects with volunteer teams. Her advice included:]]></summary></entry><entry><title type="html">Season 9, Week 2: Ideation Week</title><link href="https://civictechwr.org/pr-193/blog/season-9-week-2/" rel="alternate" type="text/html" title="Season 9, Week 2: Ideation Week" /><published>2026-09-16T00:00:00-04:00</published><updated>2026-09-16T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-9-week-2</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-9-week-2/"><![CDATA[<p>Week 2 was about planning. Teams used the evening to decide what they can realistically finish this season and who’s going to do it.</p>
+
+<h2 id="project-updates">Project updates</h2>
+
+<p><strong>Waterloo Region Votes</strong> emailed candidates the night before, and 11% had already replied by the time we met. With the election coming up fast, the team needs help in three places:</p>
+
+<ul>
+  <li>following candidates on Facebook and Instagram to keep the events page current</li>
+  <li>tracking down candidate questionnaires that local organizations publish</li>
+  <li>recording all-candidates meetings on a phone. Four of them are on September 27, and we can lend you a tripod.</li>
+</ul>
+
+<p><strong>One Million Neighbours</strong> settled its scope for the season. It’ll start with letting people choose their own neighbourhood boundaries and add more if time allows. The team has a good mix of skills and is tracking work on GitHub.</p>
+
+<p><strong>LoMo</strong> set a clear goal for the season: a usable app with a readable design, stronger admin controls, and access limited to the community it serves. The team is turning its to-do list into GitHub issues and would love help with testing. That means using the app and writing down anything that breaks or confuses you.</p>
+
+<p><strong>Home Hub</strong> made progress on two milestone tasks, including a feature that lets housing providers say a home is open to accessibility changes.</p>
+
+<p><strong>Accommodation</strong> finished its questionnaire and is getting ready to share it with a QR code and posters around town.</p>
+
+<p><strong>SafeQR</strong> found real cases of QR code scams in Stratford and Kelowna. The next step is finding a local organization interested in trying it.</p>
+
+<p><strong>Beside</strong> spent the evening defining the idea. It may come back as a project in a future season once its scope is clearer.</p>
+
+<h2 id="get-involved">Get involved</h2>
+
+<p>We’re collecting photos of Waterloo Region to use as poster backgrounds. If you have some you’d like to share, bring them to a hacknight.</p>
+
+<p>CivicTechWR meets Wednesday evenings. Come by any week, no experience needed.</p>]]></content><author><name>Jackie</name></author><summary type="html"><![CDATA[Week 2 was about planning. Teams used the evening to decide what they can realistically finish this season and who’s going to do it.]]></summary></entry><entry><title type="html">Season 9, Week 1: Pitch Night</title><link href="https://civictechwr.org/pr-193/blog/season-9-week-1/" rel="alternate" type="text/html" title="Season 9, Week 1: Pitch Night" /><published>2026-09-09T00:00:00-04:00</published><updated>2026-09-09T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-9-week-1</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-9-week-1/"><![CDATA[<p>Season 9 is here. We opened with Pitch Night, where returning teams shared what they plan to finish this fall and newcomers pitched ideas of their own. Here’s what we heard.</p>
+
+<h2 id="returning-projects">Returning projects</h2>
+
+<h3 id="lomo-lonely-no-more">LoMo (Lonely No More)</h3>
+
+<p>LoMo grew out of the Indigenous Food Sovereignty Collective’s mutual aid work during Covid. Volunteers were coordinating help by hand across six or more platforms and answering 50 to 100 messages a day. LoMo is a matching tool for people offering or looking for help, whether that’s food, household items, a walk, a microgrant, or a ceremony.</p>
+
+<p>About 70% of the features are built, including admin tools, login, in-app messaging, and a basic design system. This season the team wants to finish the remaining features, polish the visual and mobile design, test the prototype for bugs and language, and start the process of becoming a funded nonprofit.</p>
+
+<p>The team is looking for developers (Next.js, Convex, Better Auth), designers, people with experience in trauma-informed language, and a project manager.</p>
+
+<h3 id="home-hub">Home Hub</h3>
+
+<p>Home Hub, formerly Accessible Housing Bridge, is a collaboration with Union Co-op. It connects people who need specific accessibility features with housing that has them.</p>
+
+<p>The demo site works like a members-only rental listing site, with detailed accessibility descriptions for each home. The team finished 62% of last season’s goals. Still to come are listing details, password reset, email, and site copy. The goal this season is to be ready for a pilot launch.</p>
+
+<p>The team is looking for UI/UX designers, front-end developers (Next.js, TypeScript), back-end developers (TypeScript, Drizzle, Postgres), writers and researchers, and accessibility testers.</p>
+
+<h3 id="waterloo-region-votes">Waterloo Region Votes</h3>
+
+<p>Waterloo Region Votes is a multi-year project that gathers candidate profiles, election information, events, and articles in one place ahead of the October 26 municipal election.</p>
+
+<p>You can already search for candidates by location. The team is now racing to fill in content before election day, including candidate questionnaires, articles, and events.</p>
+
+<p>They need volunteers to record all-candidates meetings, plus help with data entry. If you can work a spreadsheet, you can help.</p>
+
+<h3 id="one-million-neighbours">One Million Neighbours</h3>
+
+<p>One Million Neighbours maps green space, schools, libraries, transit, and healthcare by neighbourhood to show where services are missing.</p>
+
+<p>Version 1 came out earlier this year and counted these places in each neighbourhood. It got a lot of feedback from the public. Version 2 will add more detailed measures, like park size and how often the bus comes, along with better population projections and the option to draw neighbourhoods by ward, by city, or your own way.</p>
+
+<p>The team is looking for front-end developers, UX/UI designers, and people who like wrangling data.</p>
+
+<h2 id="new-pitches">New pitches</h2>
+
+<p><strong>SafeQR</strong> would check that a QR code is legitimate before people scan it. The next step is finding out whether community organizations and the people scanning actually want it.</p>
+
+<p><strong>Beside</strong> is a social app, part group chat and part activity feed, for keeping long-distance friends in touch through small daily moments. The group felt it was too big for one four-month season and that it needed a clearer connection to a civic problem first.</p>
+
+<p><strong>My ADHD Café</strong> imagines a café designed for neurodivergent people, with sensory-friendly spaces and no ordering at the counter. Another version is a rating system for how well existing venues meet those needs. A short public survey comes first, and partnering with an existing café could be a good way to test the idea.</p>
+
+<h2 id="coming-up">Coming up</h2>
+
+<p>Next week is Ideation Week. Each team will sketch out what it wants to get done over the 14 weeks of the season and what it needs to get there.</p>
+
+<h2 id="get-involved">Get involved</h2>
+
+<p>Waterloo Tech Week runs September 12 to 17 (<a href="https://waterlootechweek.ca">waterlootechweek.ca</a>). The Waterloo Maker Faire (<a href="https://waterloomakerfaire.org">waterloomakerfaire.org</a>) and <a href="https://climateactionwr.ca/climate-fest-2026">Climatefest</a> are both on Sunday, September 13.</p>
+
+<p>CivicTechWR meets Wednesday evenings, and you don’t need to be technical to join. If one of these projects caught your eye, come out and say hi.</p>]]></content><author><name>Jackie</name></author><summary type="html"><![CDATA[Season 9 is here. We opened with Pitch Night, where returning teams shared what they plan to finish this fall and newcomers pitched ideas of their own. Here’s what we heard.]]></summary></entry><entry><title type="html">Season 8, Weeks 1 and 2: Pitch Nights</title><link href="https://civictechwr.org/pr-193/blog/season-8-weeks-1-2/" rel="alternate" type="text/html" title="Season 8, Weeks 1 and 2: Pitch Nights" /><published>2026-05-13T00:00:00-04:00</published><updated>2026-05-13T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-8-weeks-1-2</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-8-weeks-1-2/"><![CDATA[<p>Season 8 started with two pitch nights, on May 6 and May 13. Here’s what community members pitched.</p>
+
+<h2 id="returning-projects">Returning projects</h2>
+
+<p><strong>LoMo</strong> is a mutual aid app that connects people who need help with people offering it. After a season of work, the team wants to take it from prototype to something ready for a first group of 300 to 600 people. It most needs developers and designers.</p>
+
+<p><strong>KW Accessible Housing Bridge</strong> lists accessible rental units in Waterloo Region. This season the team wants to take it through user testing and get it ready to launch. It needs user researchers, front-end, back-end, and DevOps developers, writers for its resources, and testers.</p>
+
+<p><strong>Waterloo Region Votes</strong> is upgrading waterlooregionvotes.org and bringing it up to date for the 2026 election. It most needs people to reach out to community groups and to gather information for the site.</p>
+
+<h2 id="new-pitches">New pitches</h2>
+
+<p><strong>Election widgets</strong> would be small tools municipal candidates can add to their websites. Ideas include explaining what city and regional governments each do, showing where donations come from, collecting residents’ concerns and ideas, and making decisions together.</p>
+
+<p><strong>BookMyTherapy</strong> would connect South Asian people in Canada with mental health services that fit their culture and are offered in several languages. It aims to be a low-stigma, low-barrier option at a time of long waitlists and high costs.</p>
+
+<p><strong>Mosaic</strong> would connect young people entering the job market with employers looking for particular skills, using small projects as a way to try working together first.</p>
+
+<p><strong>Eviction prevention</strong> would replace a huge spreadsheet the Social Development Centre uses to track people facing eviction as they move through its process. The goals are fewer mistakes and better data for the region.</p>
+
+<p><strong>A meeting space booking platform</strong> would list bookable community spaces and when they’re free, all in one place. The City of Waterloo’s Gathering Spaces Map lists venues and who to contact, but it doesn’t offer an easy way to see availability or book.</p>
+
+<p><strong>Canadaorganizes.ca</strong>, from Indivisible, would help people across Canada find others taking part in non-violent, pro-democracy action near them. The team wants help with a postal code lookup, organizing resources, finding and creating events, hosting training, and linking to other tech tools.</p>
+
+<p><strong>The Community Legal Information Project</strong> would give people who can’t easily get legal help clear information, not legal advice, so they can find their way through the justice system and make informed decisions. The team is interested in AI tools and data collection.</p>]]></content><author><name>Jackie</name></author><summary type="html"><![CDATA[Season 8 started with two pitch nights, on May 6 and May 13. Here’s what community members pitched.]]></summary></entry><entry><title type="html">Season 7, Week 11</title><link href="https://civictechwr.org/pr-193/blog/season-7-week-11/" rel="alternate" type="text/html" title="Season 7, Week 11" /><published>2026-03-18T00:00:00-04:00</published><updated>2026-03-18T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-7-week-11</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-7-week-11/"><![CDATA[<h2 id="project-updates">Project updates</h2>
+
+<p><strong>Accessible Housing</strong> worked on the problems people were having running the project locally and set up a demo environment. The site’s text is in progress and will go into the demo next. The team also talked about a new name. It’s AHA for now.</p>
+
+<p><strong>LoMo</strong> reviewed its milestones and open issues and split them among the group. Last week’s login problem is fixed, and the team started setting up tokens to help automate its work. Next is handing out tasks, building out the app’s screens, and more design work.</p>
+
+<p><strong>Waterloo Region Votes</strong> went through its to-do list and picked out what has to be ready for the project showcase. The team worked on the structure of the tabbed layout and collected questions for everyone to test during the demo. Next it will assign specific issues to specific people.</p>]]></content><author><name>Jackie</name></author><summary type="html"><![CDATA[Project updates]]></summary></entry><entry><title type="html">Season 7, Week 10</title><link href="https://civictechwr.org/pr-193/blog/season-7-week-10/" rel="alternate" type="text/html" title="Season 7, Week 10" /><published>2026-03-11T00:00:00-04:00</published><updated>2026-03-11T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-7-week-10</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-7-week-10/"><![CDATA[<h2 id="project-updates">Project updates</h2>
+
+<p><strong>Accessible Housing</strong> welcomed a new volunteer and got everyone access to run the project on their own computers. The team went through the accessibility fields in its spreadsheet with its community partner. It also reworked the database so each record is a single unit, the way MLS listings work, instead of a whole building, and removed features the new model no longer needs. The team is getting a demo ready for next Friday to get feedback from stakeholders.</p>
+
+<p>The team needs developers and a designer to work on a logo and visual identity.</p>
+
+<p><strong>LoMo</strong> went through its front-end design and feature requirements page by page. The team merged its React front end and Django back end into one codebase, which puts it on good footing. The design is nearly done, all low fidelity for now, and the team is testing it against real use cases. A login issue in Django should be easy to fix, and once it is, work on the API can start. After that comes connecting the front end to the back end and fleshing out features.</p>
+
+<p>LoMo is short on developers.</p>
+
+<p><strong>Waterloo Region Votes</strong> kept exploring a tabbed layout built around candidate pages, where voters can filter for the races that affect them. The team talked about weaving topics and resources through the whole site, and about where the project fits among other voting resources so it reaches interested voters. Some questions need answers before it goes further. Linking to candidate questionnaires is fine, but copying them needs permission. Not every candidate wants endorsements from advocacy groups shown, so the team needs a policy on that. The current site is still the ward-based version from 2022, and the team will keep working on how people find their way around it.</p>
+
+<p>Waterloo Region Votes needs people to test the development site and may need help contacting sources about using their information.</p>]]></content><author><name>Jackie</name></author><summary type="html"><![CDATA[Project updates]]></summary></entry><entry><title type="html">Season 5, Week 9</title><link href="https://civictechwr.org/pr-193/blog/season-5-week-9/" rel="alternate" type="text/html" title="Season 5, Week 9" /><published>2025-08-06T00:00:00-04:00</published><updated>2025-08-06T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-5-week-9</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-5-week-9/"><![CDATA[<h2 id="project-updates">Project updates</h2>
+
+<p><strong>One Million Neighbours</strong> worked on finishing the dataset behind its map. The database and the API are done, and the map will show several measures for each neighbourhood. A long conversation about combining those measures into one score to rank neighbourhoods raised hard questions the team hasn’t answered yet. Next it will polish the front end and add map layers you can switch on and off to see which neighbourhoods have services and resources and which don’t.</p>
+
+<p><strong>Project Ploughshares</strong> made progress on two scrapers. One collects data from MarketLine, the source Ploughshares uses. The other tracks Google Alerts by keyword and saves the results, which next need to go to the Gemini-based analyzer. After that, the team will package the tools, deploy them for Ploughshares to use, connect them to the database, and get the PDF crawler running.</p>
+
+<p><strong>PECH</strong> polished the site’s main page and is building the data page. Two team members are finalizing its content, and the team knows where the dashboard and the data story will go. The analysis now has three metrics, with more to come, and a plan for showing each one. Next the team will finish the content, catch up with its designer, and finish the analysis so the dashboard can go up.</p>
+
+<p><strong>Our organizers</strong> are preparing for the showcase and catching up on recaps from the last few weeks.</p>
+
+<h2 id="coming-up">Coming up</h2>
+
+<p>The project showcase is moving from September 3 to September 10 to line up with Waterloo Tech Week (September 8 to 11). That gives every project one more week.</p>
+
+<h2 id="get-involved">Get involved</h2>
+
+<p>One Million Neighbours is looking for a statistician who knows principal component analysis. PECH also has a geography measure and would like to work with the other teams doing geographic work.</p>]]></content><author><name>Mohamed</name></author><summary type="html"><![CDATA[Project updates]]></summary></entry><entry><title type="html">Season 5, Week 8</title><link href="https://civictechwr.org/pr-193/blog/season-5-week-8/" rel="alternate" type="text/html" title="Season 5, Week 8" /><published>2025-07-30T00:00:00-04:00</published><updated>2025-07-30T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-5-week-8</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-5-week-8/"><![CDATA[<h2 id="project-updates">Project updates</h2>
+
+<p><strong>PECH</strong> has a landing page. Next the team will improve it and add the rest of the site’s pages.</p>
+
+<p><strong>Project Ploughshares</strong> worked on an AI crawler that collects weapons export data from MarketLine. The team ran into trouble processing PDFs, so it plans to build a crawler just for PDFs and test it on samples where the right answer is already known. Next it will make a shared repository for the code, welcome more volunteers, and look for more data sources using advanced Google searches.</p>
+
+<p><strong>One Million Neighbours</strong> welcomed new volunteers, and two of them turned Statistics Canada data into something the project can use. The team also talked about how to keep the project going after launch. Next is getting the new data onto the map.</p>
+
+<p><strong>Our organizers</strong> drafted the agenda for the September showcase and settled on its purpose. They also drafted a sponsorship package and worked on a “Built with CivicTech Waterloo Region” tag that projects can put on their websites. Next are gold, silver, and bronze badges for sponsors, and getting the event out on social media and digital posters.</p>
+
+<h2 id="get-involved">Get involved</h2>
+
+<p>One Million Neighbours could use someone who knows Leaflet or JavaScript.</p>]]></content><author><name>Mohamed</name></author><summary type="html"><![CDATA[Project updates]]></summary></entry><entry><title type="html">Season 5, Week 7</title><link href="https://civictechwr.org/pr-193/blog/season-5-week-7/" rel="alternate" type="text/html" title="Season 5, Week 7" /><published>2025-07-23T00:00:00-04:00</published><updated>2025-07-23T00:00:00-04:00</updated><id>https://civictechwr.org/pr-193/blog/season-5-week-7</id><content type="html" xml:base="https://civictechwr.org/pr-193/blog/season-5-week-7/"><![CDATA[<h2 id="project-updates">Project updates</h2>
+
+<p><strong>One Million Neighbours</strong> welcomed two volunteers who are working on the data. The team built a view of parks and population for each postal area, which shows the areas that have no parks at all. A new member is building an interactive map. Next the team wants to show the data in a clean table, make the interface nicer, and connect it to the database.</p>
+
+<p><strong>PECH</strong> worked on the story it wants its data to tell and on its project plan. The team also posted a quick survey in our Slack to see which logo people like best. Next it will set up a repository for the site’s content and write it, plan the work so it’s done in five weeks, work out how to calculate the metrics from the data, and deploy the site.</p>
+
+<p><strong>Project Ploughshares</strong> worked through how to collect data from its sources automatically. The team compared AI model APIs and their rate limits, and will probably use Gemini. They also talked about how to get reliable, structured results from the model’s output. Next they’ll set up authentication and send what the scraper collects to the database they already have.</p>
+
+<h2 id="get-involved">Get involved</h2>
+
+<p>PECH wants feedback on its logo options. Look for the survey link in our Slack’s general channel.</p>]]></content><author><name>Mohamed</name></author><summary type="html"><![CDATA[Project updates]]></summary></entry></feed>
