@@ -1,4 +1,3 @@
----
 - text: Home
   url: /
 - text: Featured Projects
@@ -7,3 +6,5 @@
   url: /about.html
 - text: Blog
   url: https://civictechwr.github.io/blog/
+- text: Project Updates
+  url: /project_updates.html
