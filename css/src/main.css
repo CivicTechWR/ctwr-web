@@ -53,6 +53,7 @@
 /* === Pages === */
 @import "pages/about.css";
 @import "pages/projects.css";
+@import "pages/blog.css";
 
 /* === Global base — body reset, utilities, *:focus (load-bearing last position) ===
 
