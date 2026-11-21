@@ -10,6 +10,12 @@ test.describe("Blog", () => {
     await expect(page.locator("h1.page-title")).toHaveText("Blog");
   });
 
+  test("no link on the homepage still points to the old blog", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator('a[href*="civictechwr.github.io/blog"]')).toHaveCount(0);
+    await expect(page.locator('footer a[href="/blog/"]').first()).toBeVisible();
+  });
+
   test("index lists posts grouped by season, newest first, then earlier posts", async ({ page }) => {
     await page.goto("/blog/");
     const seasons = page.locator(".blog-season-title");
