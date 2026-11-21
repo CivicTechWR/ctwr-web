@@ -21,7 +21,7 @@
       type="image/x-icon"
     />
     {% seo %} {% if jekyll.environment == "production" %} {% assign css_file =
-    "css/main.min.css" %} {% else %} {% assign css_file = "css/main.css" %} {%
+    "/css/main.min.css" %} {% else %} {% assign css_file = "/css/main.css" %} {%
     endif %}
 
     <link rel="preload" href="{{ css_file }}" as="style" />
@@ -52,8 +52,8 @@
       aria-atomic="true"
     ></div>
     {% include header.html %} {{ content }}
-    <script src="js/optimized-bundle.min.js"></script>
-    <script src="js/nav-toggle.js"></script>
-    <script src="js/mailchimp-embed.js"></script>
+    <script src="/js/optimized-bundle.min.js"></script>
+    <script src="/js/nav-toggle.js"></script>
+    <script src="/js/mailchimp-embed.js"></script>
   </body>
 </html>
