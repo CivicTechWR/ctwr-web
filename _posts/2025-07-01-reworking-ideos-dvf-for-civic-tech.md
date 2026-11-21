@@ -48,7 +48,7 @@ The score puts you in one of two categories: CTWR Supported, or Not CTWR Support
 ![Score ranges split into Not Supported (4 to 12) and CTWR Supported (13 to 20), with what each means](/images/blog/reworking-ideos-dvf-for-civic-tech-2.webp)
 
 CTWR Supported means:
-- The project gets priorty to demo on Week 12 (Demo Day)
+- The project gets priority to demo on Week 12 (Demo Day)
 - Regularly check in to support progress.
 - Featured in conversations with sponsors and partners.
 
