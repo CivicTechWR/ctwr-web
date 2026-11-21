@@ -107,3 +107,14 @@
   color: inherit;
   text-decoration: underline;
 }
+
+.how-we-work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.how-we-work-grid h3 {
+  font-size: var(--h6-font-size);
+}
