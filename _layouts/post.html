@@ -5,7 +5,7 @@ layout: default
 <div class="has-fixed-nav">
   <main id="main-content" class="post">
     <article class="post-article">
-      <p class="post-back"><a href="/blog/">&larr; All posts</a></p>
+      <p class="post-back"><a href="{{ '/blog/' | relative_url }}">&larr; All posts</a></p>
       <header class="post-header">
         <h1 class="page-title">{{ page.title }}</h1>
         <p class="post-meta">
@@ -13,7 +13,9 @@ layout: default
           {% if page.discourse_url %}· Adapted from <a href="{{ page.discourse_url }}">{{ page.author }}'s recap</a>{% elsif page.author %}· Written by {{ page.author }}{% endif %}
         </p>
       </header>
-      <div class="post-content">{{ content }}</div>
+      {%- comment -%}Posts write image paths as /images/...; prefix them with baseurl so PR previews under /pr-N/ load their own copies.{%- endcomment -%}
+      {%- assign images_src = ' src="' | append: site.baseurl | append: '/images/' %}
+      <div class="post-content">{{ content | replace: ' src="/images/', images_src }}</div>
     </article>
   </main>
   {% include footer.html %}

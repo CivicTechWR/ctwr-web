@@ -2,14 +2,14 @@
   <nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="{{ '/' | relative_url }}">
           <picture>
             <source
-              srcset="/images/logos/civictechwr_logo_white.webp"
+              srcset="{{ '/images/logos/civictechwr_logo_white.webp' | relative_url }}"
               type="image/webp"
             />
             <img
-              src="/images/logos/civictechwr_logo_white.png"
+              src="{{ '/images/logos/civictechwr_logo_white.png' | relative_url }}"
               alt=""
               class="logo"
             />
@@ -32,7 +32,7 @@
         <ul class="navbar-nav">
           {% for link in site.data.navigation %}
           <li class="nav-item">
-            <a class="nav-link" href="{{link.url}}">
+            <a class="nav-link" href="{{ link.url | relative_url }}">
               <span class="nav-link-title">{{link.text}}</span>
             </a>
           </li>

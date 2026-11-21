@@ -4,11 +4,11 @@
       <a href="https://civictechwr.org">
         <picture>
           <source
-            srcset="/images/logos/civictechwr_logo_black.webp"
+            srcset="{{ '/images/logos/civictechwr_logo_black.webp' | relative_url }}"
             type="image/webp"
           />
           <img
-            src="/images/logos/civictechwr_logo_black.png"
+            src="{{ '/images/logos/civictechwr_logo_black.png' | relative_url }}"
             alt="CivicTechWR Logo"
             class="footer-brand-logo"
             width="120"
@@ -96,9 +96,9 @@
       <div class="footer-col-title">SITEMAP</div>
       <ul class="footer-links-list">
         <li><a href="https://civictechwr.org">Homepage</a></li>
-        <li><a href="/projects.html">Featured Projects</a></li>
-        <li><a href="/about.html">About Us</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        <li><a href="{{ '/projects.html' | relative_url }}">Featured Projects</a></li>
+        <li><a href="{{ '/about.html' | relative_url }}">About Us</a></li>
+        <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
         <li><a href="https://discourse.ctwr.org/">Member Dashboard</a></li>
         <li>
           <a
@@ -225,7 +225,7 @@
           <use href="#icon-facebook"></use></svg
       ></a>
       <a
-        href="/blog/"
+        href="{{ '/blog/' | relative_url }}"
         aria-label="Blog"
         ><svg class="icon" width="24" height="24">
           <use href="#icon-medium"></use></svg
