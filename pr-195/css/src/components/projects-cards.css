@@ -1,0 +1,71 @@
+/* Projects cards — homepage project showcase component */
+/* (.project-card for the projects page lives in pages/projects.css) */
+
+.projects-thumb {
+  background: var(--white-alpha-70);
+  border: 2px solid var(--white-alpha-70);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-8);
+  height: 450px;
+  transition: all ease 0.5s;
+}
+
+.projects-thumb:hover {
+  border-color: var(--secondary-color);
+}
+
+.projects-thumb:hover .projects-image,
+.projects-thumb:focus-within .projects-image {
+  transform: rotate(0) translateY(0);
+}
+
+/* .projects-thumb is a div; it gets focus via its child <a>.
+   :focus-within applies when the focusable child is keyboard-focused. */
+.projects-thumb:focus-within {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-color: var(--secondary-color);
+}
+
+.projects-thumb .popup-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.projects-image {
+  border-radius: var(--radius-lg);
+  display: block;
+  width: 100%;
+  transform: rotate(10deg) translateY(var(--space-10));
+  transition: all ease 0.5s;
+}
+
+.projects-tag {
+  font-size: var(--menu-font-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}
+
+@media (max-width: 575.98px) {
+  .projects .col-lg-4:last-child {
+    margin-bottom: 0;
+  }
+
+  .projects-thumb {
+    height: auto;
+    min-height: 300px;
+    margin-top: 0;
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+  }
+
+  .projects .about-thumb {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
