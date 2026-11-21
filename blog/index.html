@@ -2,7 +2,7 @@
 layout: default
 title: Blog
 permalink: /blog/
-description: "Weekly hacknight recaps and news from CivicTech Waterloo Region."
+description: "Hacknight recaps, project stories, and news from CivicTech Waterloo Region."
 ---
 
 <div class="has-fixed-nav">
@@ -10,13 +10,15 @@ description: "Weekly hacknight recaps and news from CivicTech Waterloo Region."
     <header class="post-header">
       <h1 class="page-title">Blog</h1>
       <p class="page-subtitle">
-        What we worked on at each Wednesday hacknight.
+        Hacknight recaps, project stories, and news from CivicTech Waterloo Region.
       </p>
     </header>
     {% assign seasons = site.posts | group_by: "season" %}
+    {% comment %}Posts without a season (from before the season format) group under "Earlier posts".{% endcomment %}
     {% for season in seasons %}
-    <section class="blog-season" aria-labelledby="season-{{ season.name }}">
-      <h2 id="season-{{ season.name }}" class="blog-season-title">Season {{ season.name }}</h2>
+    {% assign season_id = season.name | default: "earlier" %}
+    <section class="blog-season" aria-labelledby="season-{{ season_id }}">
+      <h2 id="season-{{ season_id }}" class="blog-season-title">{% if season.name == "" or season.name == nil %}Earlier posts{% else %}Season {{ season.name }}{% endif %}</h2>
       <ul class="blog-list">
         {% for post in season.items %}
         <li class="blog-list-item">

@@ -10,12 +10,13 @@ test.describe("Blog", () => {
     await expect(page.locator("h1.page-title")).toHaveText("Blog");
   });
 
-  test("index lists recaps grouped by season, newest first", async ({ page }) => {
+  test("index lists posts grouped by season, newest first, then earlier posts", async ({ page }) => {
     await page.goto("/blog/");
     const seasons = page.locator(".blog-season-title");
     await expect(seasons.first()).toBeVisible();
     const titles = await seasons.allTextContents();
-    const numbers = titles.map((t) => Number(t.replace(/\D/g, "")));
+    expect(titles.at(-1)).toBe("Earlier posts");
+    const numbers = titles.slice(0, -1).map((t) => Number(t.replace(/\D/g, "")));
     expect(numbers).toEqual([...numbers].sort((a, b) => b - a));
     await expect(page.locator(".blog-list-item a").first()).toBeVisible();
   });
