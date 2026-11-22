@@ -85,14 +85,13 @@ body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(
 .ct-season-now { margin: var(--space-5) var(--space-5) 0; font-weight: 700; font-size: 20px; }
 .ct-season-track { list-style: none; margin: 0; display: grid; grid-template-columns: repeat(var(--weeks, 16), minmax(0, 1fr)); gap: 6px; padding: var(--space-5) var(--space-5) var(--space-6); }
 .ct-season-wk { height: 56px; border: var(--border-thin) solid var(--ink); position: relative; background: var(--cream); display: grid; place-items: center; color: var(--ink); }
-.ct-season-num { font-family: var(--font-pixel); font-size: 15px; line-height: 1; }
+.ct-season-num { position: relative; font-family: var(--font-pixel); font-size: 15px; line-height: 1; background: var(--paper); color: var(--ink); padding: 2px 3px; }
 [data-phase="pitch"] { background: var(--meadow-1); } [data-phase="ideation"] { background: var(--meadow-2); }
 [data-phase="planning"] { background: var(--meadow-3); } [data-phase="build"] { background: var(--meadow-4); }
 [data-phase="user"] { background: var(--meadow-6); } [data-phase="finish"] { background: var(--meadow-7); color: var(--ink); }
 [data-phase="prep"] { background: var(--meadow-8); color: var(--on-dark); } [data-phase="showcase"] { background: var(--meadow-10); color: var(--on-dark); }
 [data-phase="demo"] { background: var(--meadow-8); color: var(--on-dark); }
 .ct-season-wk[data-done="true"]::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(22,22,22,.2) 0 2px, transparent 2px 10px); }
-.ct-season-wk[data-done="true"] .ct-season-num { position: relative; background: var(--paper); color: var(--ink); padding: 2px 3px; }
 .ct-season-wk[data-now="true"] { outline: 4px solid var(--ink); outline-offset: 3px; z-index: 1; }
 .ct-season-wk[data-now="true"]::after { content: "\25B2"; position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%); font-size: 16px; color: var(--ink); }
 .ct-season-legend { list-style: none; margin: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); padding: var(--space-4) var(--space-5) var(--space-5); border-top: var(--border-thin) dashed var(--ink); font-size: 15px; font-weight: 500; }
