@@ -1,14 +1,14 @@
 ---
 import Section from '../Section.astro'; import Tag from '../Tag.astro'; import Shape from '../Shape.astro'; import Photo from '../Photo.astro';
 import type { Section as S } from '../../content.config';
-interface Props { s: Extract<S, { type: 'page_title' }>; bg: string; rule: boolean; heading?: string }
-const { s, bg, rule, heading } = Astro.props;
+interface Props { s: Extract<S, { type: 'page_title' }>; bg: string; rule: boolean }
+const { s, bg, rule } = Astro.props;
 ---
 <Section bg={bg} border={rule} class="page-title">
   <div class="split" style="gap: 48px; justify-content: space-between;">
     <div class="col" style="flex: 1 1 520px; gap: 28px;">
       {s.kicker && <Tag>{s.kicker}</Tag>}
-      <h1 class="ct-hb ct-hb-l ct-hb-meadow-4 ct-tilt-left">{heading ?? s.heading}</h1>
+      <h1 class="ct-hb ct-hb-l ct-hb-meadow-4 ct-tilt-left">{s.heading}</h1>
       {s.intro && <p class="lead" style="margin-top: 8px; max-width: 640px;">{s.intro}</p>}
     </div>
     {s.image && <div style="flex: 0 1 420px;"><Photo src={s.image.src || undefined} alt={s.image.alt} placeholder={s.image.alt} /></div>}

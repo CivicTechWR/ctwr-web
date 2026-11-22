@@ -15,8 +15,8 @@ import MediaText from './sections/MediaText.astro';
 import Text from './sections/Text.astro';
 import PostList, { type PostListContext } from './sections/PostList.astro';
 
-interface Props { sections: Section[]; posts?: PostListContext; titleOverride?: string }
-const { sections, posts, titleOverride } = Astro.props;
+interface Props { sections: Section[]; posts?: PostListContext }
+const { sections, posts } = Astro.props;
 
 const DEFAULT_BG: Record<Section['type'], string> = {
   hero: 'cream', page_title: 'cream', explainer: 'paper', hack_night: 'cream', season: 'paper', projects: 'cream',
@@ -34,7 +34,7 @@ const items = sections.map((s, i) => {
 {items.map(({ s, bg, rule, kickerColor }) => {
   switch (s.type) {
     case 'hero': return <Hero s={s} bg={bg} rule={rule} />;
-    case 'page_title': return <PageTitle s={s} bg={bg} rule={rule} heading={titleOverride} />;
+    case 'page_title': return <PageTitle s={s} bg={bg} rule={rule} />;
     case 'explainer': return <Explainer s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
     case 'hack_night': return <HackNight s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
     case 'season': return <Season s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;

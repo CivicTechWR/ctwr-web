@@ -12,5 +12,5 @@ const { blog, posts: all } = await blogListing();
 const posts = all.filter((p) => p.data.tags.includes(tag));
 ---
 <Base title={`${tag} · ${blog.title}`} description={blog.description}>
-  <Sections sections={blog.sections} titleOverride={tag} posts={{ posts, total: posts.length, page: 1, pages: 1, activeTag: tag }} />
+  <Sections sections={blog.sections} posts={{ posts, total: posts.length, page: 1, pages: 1, activeTag: tag }} />
 </Base>
