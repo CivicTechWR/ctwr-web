@@ -167,7 +167,7 @@ content:
               - { name: background, component: background }
               - { name: anchor, component: anchor }
           - name: season
-            label: Season tracker + upcoming nights
+            label: Season tracker
             fields:
               - { name: kicker, label: Kicker, type: string }
               - { name: heading, label: Heading, type: string, required: true }
@@ -176,7 +176,6 @@ content:
               - { name: link, label: Link, component: link }
               - { name: image, label: Photo, component: image }
               - { name: caption, label: Photo caption, type: string }
-              - { name: upcoming_heading, label: Upcoming nights heading, type: string }
               - { name: background, component: background }
               - { name: anchor, component: anchor }
           - name: projects
@@ -444,17 +443,6 @@ content:
         list: true
         options:
           values: [pitch, ideation, planning, build, user, finish, prep, showcase]
-      - name: notes
-        label: Notes for upcoming hacknights
-        type: object
-        list: true
-        fields:
-          - name: week
-            label: Week
-            type: number
-          - name: text
-            label: Note
-            type: text
 
 
   - name: projects

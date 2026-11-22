@@ -16,7 +16,6 @@ export type Season = {
   name: string;
   current_week: number;
   weeks: Phase[];
-  notes?: { week: number; text: string }[];
 };
 
 export const navigation = () => load<NavItem[]>('navigation');

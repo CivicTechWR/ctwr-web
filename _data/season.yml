@@ -3,13 +3,3 @@ name: Season 9 · Fall 2026
 current_week: 13
 # One entry per week, in order. Phases: pitch, ideation, planning, build, user, finish, prep, showcase
 weeks: [pitch, ideation, planning, build, build, build, build, build, build, build, build, user, finish, finish, prep, showcase]
-# Optional notes shown on the "Coming up" cards, by week number
-notes:
-  - week: 13
-    text: Teams act on what they learned from user testing. Pick a table and pitch in.
-  - week: 14
-    text: Last build week, plus a guest speaker.
-  - week: 15
-    text: Teams get their demos ready for the project showcase.
-  - week: 16
-    text: Every team presents what they built this season. Bring friends!

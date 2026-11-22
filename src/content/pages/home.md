@@ -85,12 +85,11 @@ sections:
       Most of the season is design and build, with a round of user testing
       before teams finish up and present at the project showcase.
     link:
-      label: See the full season timeline
-      url: /resources/#season-timeline
+      label: See all upcoming events
+      url: https://luma.com/civictechwr
     image:
       alt: A team presenting at last season's project showcase
     caption: Every season ends with a project showcase.
-    upcoming_heading: Coming up on Wednesdays
     background: auto
   - type: projects
     kicker: Built at hacknight

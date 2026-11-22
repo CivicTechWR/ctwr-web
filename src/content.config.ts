@@ -59,7 +59,7 @@ const section = z.discriminatedUnion('type', [
     video: z.object({ title: z.string().optional(), url: z.string().optional(), poster: z.string().optional(), status: z.string().optional() }).optional() }),
   z.object({ type: z.literal('hack_night'), ...common, ...heading, intro: z.string().optional(), image: image.optional(), card: card.optional(), details: z.string().optional(), button: button.optional(),
     agenda: z.array(z.object({ time: z.string(), title: z.string(), text: z.string().optional(), icon: z.enum(['pizza', 'megaphone', 'list', 'laptop', 'flag', 'chat']).default('list'), optional: z.boolean().default(false) })).default([]) }),
-  z.object({ type: z.literal('season'), ...common, ...heading, lead: z.string().optional(), body: z.string().optional(), link: link.optional(), image: image.optional(), caption: z.string().optional(), upcoming_heading: z.string().default('Coming up on Wednesdays') }),
+  z.object({ type: z.literal('season'), ...common, ...heading, lead: z.string().optional(), body: z.string().optional(), link: link.optional(), image: image.optional(), caption: z.string().optional() }),
   z.object({ type: z.literal('projects'), ...common, ...heading, button: link.optional(), limit: z.number().int().min(1).max(9).default(3) }),
   z.object({ type: z.literal('gallery'), ...common, ...heading, button: link.optional(), window_title: z.string().optional(), images: z.array(image).default([]), link: z.string().optional(), note: z.string().optional() }),
   z.object({ type: z.literal('cta'), ...common, heading: z.string(), body: z.string().optional(), buttons: z.array(button).default([]), card: card.optional() }),

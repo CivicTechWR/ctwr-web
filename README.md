@@ -23,7 +23,7 @@ All the words on the site live in Pages CMS. The code decides how things look; t
 | **Project updates** | `src/content/updates/*.md` | Short weekly updates: pick the project, set the date, write the update. They list newest first at the bottom of the project's page. |
 | **Site settings** | `_data/site.yml` | Header button, footer tagline, footer link columns, Luma calendar link, Open Collective page. |
 | **Navigation menu** | `_data/navigation.yml` | Header links. |
-| **This season** | `_data/season.yml` | Season name, current week, week-by-week phases, notes for upcoming nights. |
+| **This season** | `_data/season.yml` | Season name, current week, week-by-week phases. |
 | **Partners** | `_data/partners.yml` | Unchanged from the current site; shown by the Partner logos section. |
 
 ### Section types
@@ -34,7 +34,7 @@ All the words on the site live in Pages CMS. The code decides how things look; t
 | Page title | The tilted title block at the top of an inner page, with an optional photo |
 | Video and bullets | "What is CivicTechWR?" — video, text and up to 3 bullet points |
 | Hacknight agenda + next event | The timeline (editable stops) beside the next Luma event, or beside a side card |
-| Season tracker + upcoming nights | Text and photo, the 16-week tracker, and the next four Luma events |
+| Season tracker | Text and photo, a link, and the 16-week tracker |
 | Projects that need help | Cards for projects with *Help wanted* skills |
 | Photo gallery | A window of photos (used for Instagram) |
 | Call to action band | Big heading, buttons and an optional side card |
@@ -81,7 +81,7 @@ Interface labels that aren't content ("Read post", "Register on Luma", "Help wan
 - **Each Wednesday**: This season → bump *Current week*. Project updates → Add entry for each team.
 - **A project wraps up**: Projects → untick *Active* and fill in *Problem* and *Outcome*.
 
-The next hacknight and the upcoming list come from Luma, so they update whenever the site rebuilds.
+The next hacknight comes from Luma, so it updates whenever the site rebuilds.
 
 This demo lives on the `astro-demo` branch of `CivicTechWR/ctwr-web` and has no deploy workflow, so Pages CMS saves commit to the branch without publishing anything. Run `npm run build` locally to see edits.
 
