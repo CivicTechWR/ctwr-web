@@ -1,18 +1,27 @@
 ---
-import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Button from '../Button.astro'; import Photo from '../Photo.astro';
+// Text beside a photo or a card. With a card, the photo moves under the text.
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Buttons from '../Buttons.astro'; import Photo from '../Photo.astro';
+import InfoCard from '../InfoCard.astro'; import ItemList from '../ItemList.astro';
 import { rich } from '../../lib/rich';
 import type { Section as S } from '../../content.config';
 interface Props { s: Extract<S, { type: 'media_text' }>; bg: string; rule: boolean; kickerColor: string }
 const { s, bg, rule, kickerColor } = Astro.props;
 const left = s.image_side === 'left';
+const img = s.image && { src: s.image.src || undefined, alt: s.image.alt, placeholder: s.image.alt, tilt: left ? 'left' as const : 'right' as const };
 ---
 <Section bg={bg} border={rule}>
-  <div class="split">
+  <div class:list={['split', s.card && 'split--top']}>
     <div class="col" style={`flex: 1 1 480px; order: ${left ? 2 : 1};`}>
       <SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle>
+      {s.lead && <p class="statement">{s.lead}</p>}
+      {s.items_heading && <p class="list-h">{s.items_heading}</p>}
+      <ItemList items={s.items} style={s.list_style} />
       {s.body && <div class="rt" style="max-width: 600px;" set:html={rich(s.body)} />}
-      {s.buttons.length > 0 && <div class="actions">{s.buttons.map((b) => <Button href={b.url} variant={b.style}>{b.label}</Button>)}</div>}
+      <Buttons buttons={s.buttons} />
+      {s.card && img && <div style="max-width: 460px; margin-top: 24px;"><Photo {...img} /></div>}
     </div>
-    {s.image && <div style={`flex: 0 1 460px; order: ${left ? 1 : 2};`}><Photo src={s.image.src || undefined} alt={s.image.alt} placeholder={s.image.alt} tilt={left ? 'left' : 'right'} /></div>}
+    <div style={`flex: 0 1 460px; order: ${left ? 1 : 2};`}>
+      {s.card ? <InfoCard card={s.card} /> : img && <Photo {...img} />}
+    </div>
   </div>
 </Section>

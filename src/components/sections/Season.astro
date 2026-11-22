@@ -14,7 +14,7 @@ const nights = await upcomingHackNights(4);
   <div style="margin-bottom: 40px;"><SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle></div>
   <div class="split" style="gap: 32px 56px; margin: -8px 0 48px;">
     <div class="col" style="flex: 1 1 480px; gap: 16px;">
-      {s.lead && <p style="margin: 0; font-weight: 700; font-size: 20px;">{s.lead}</p>}
+      {s.lead && <p class="list-h">{s.lead}</p>}
       {s.body && <div class="rt" set:html={rich(s.body)} />}
       {s.link && <a href={s.link.url} class="ct-link">{s.link.label}</a>}
     </div>
@@ -24,7 +24,7 @@ const nights = await upcomingHackNights(4);
   {nights.length > 0 && <>
     <div class="row-between" style="align-items: baseline; margin: 64px 0 28px;">
       <h3 class="sub-title">{s.upcoming_heading}</h3>
-      <a class="ct-link" href={LUMA_CALENDAR}>All hack nights on Luma</a>
+      <a class="ct-link" href={LUMA_CALENDAR}>All hacknights on Luma</a>
     </div>
     <UpcomingNights events={nights} season={season} />
   </>}

@@ -1,11 +1,11 @@
 ---
 title: Blog
-description: Hack night recaps, talks, project stories and news from CivicTechWR.
+description: Hacknight recaps, talks, project stories and news from CivicTechWR.
 sections:
   - type: page_title
     kicker: Blog
     heading: News and recaps
-    intro: Hack night recaps, talks, project stories and news from CivicTechWR.
+    intro: Hacknight recaps, talks, project stories and news from CivicTechWR.
 
   - type: post_list
     window_title: all_posts.txt

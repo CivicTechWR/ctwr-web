@@ -45,6 +45,41 @@ components:
       - name: alt
         label: Alt text (describe the photo for people who can't see it)
         type: string
+  background:
+    type: select
+    label: Background
+    default: auto
+    options:
+      values: [auto, cream, white, deep]
+  anchor:
+    type: string
+    label: Anchor (optional; lowercase-with-dashes, so /about/#partners links here)
+    pattern:
+      regex: ^[a-z0-9-]*$
+      message: Use lowercase letters, numbers and dashes
+  list_style:
+    type: select
+    label: List markers
+    default: bullets
+    options:
+      values: [bullets, shapes, checks, squares]
+  card:
+    type: object
+    label: Side card
+    fields:
+      - { name: title, label: Window title, type: string }
+      - { name: heading, label: Heading, type: string }
+      - { name: body, label: Text, type: rich-text }
+      - { name: items, label: "List items (**bold** and [links](/url) work)", type: string, list: true }
+      - { name: list_style, component: list_style }
+      - name: widget
+        label: Extra
+        type: select
+        default: none
+        options:
+          values: [none, ledger, donate]
+      - { name: button, label: Button, component: button }
+      - { name: note, label: Small note at the bottom, type: string }
 
 content:
   - name: pages
@@ -77,12 +112,8 @@ content:
               - { name: intro, label: Intro, type: text }
               - { name: buttons, label: Buttons, component: button, list: { max: 2 } }
               - { name: image, label: Photo, component: image }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: page_title
             label: Page title
             fields:
@@ -90,12 +121,8 @@ content:
               - { name: heading, label: Heading, type: string, required: true }
               - { name: intro, label: Intro, type: text }
               - { name: image, label: Photo (optional), component: image }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: explainer
             label: Video and bullets
             fields:
@@ -111,14 +138,10 @@ content:
                   - { name: url, label: Video link, type: string }
                   - { name: poster, label: Poster image, type: image }
                   - { name: status, label: Status badge, type: string }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: hack_night
-            label: Hack night agenda + next event
+            label: Hacknight agenda + next event
             fields:
               - { name: kicker, label: Kicker, type: string }
               - { name: heading, label: Heading, type: string, required: true }
@@ -137,13 +160,12 @@ content:
                     options:
                       values: [pizza, megaphone, list, laptop, flag, chat]
                   - { name: optional, label: Optional, type: boolean }
-              - { name: image, label: Photo, component: image }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: image, label: Photo (shown if there's no card), component: image }
+              - { name: card, label: Side card (replaces the next-event window), component: card }
+              - { name: details, label: Text under the card, type: rich-text }
+              - { name: button, label: Button, component: button }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: season
             label: Season tracker + upcoming nights
             fields:
@@ -155,12 +177,8 @@ content:
               - { name: image, label: Photo, component: image }
               - { name: caption, label: Photo caption, type: string }
               - { name: upcoming_heading, label: Upcoming nights heading, type: string }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: projects
             label: Projects that need help
             fields:
@@ -168,12 +186,8 @@ content:
               - { name: heading, label: Heading, type: string, required: true }
               - { name: button, label: Button, component: link }
               - { name: limit, label: How many projects, type: number, default: 3 }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: gallery
             label: Photo gallery
             fields:
@@ -184,32 +198,17 @@ content:
               - { name: images, label: Photos, component: image, list: { max: 8 } }
               - { name: link, label: Photos link to, type: string }
               - { name: note, label: Small note under the photos, type: string }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: cta
             label: Call to action band
             fields:
               - { name: heading, label: Heading (Enter for a new line), type: text, required: true }
               - { name: body, label: Text, type: rich-text }
               - { name: buttons, label: Buttons, component: button, list: { max: 2 } }
-              - name: card
-                label: Side card
-                type: object
-                fields:
-                  - { name: title, label: Window title, type: string }
-                  - { name: heading, label: Heading, type: string }
-                  - { name: body, label: Text, type: rich-text }
-                  - { name: button, label: Button, component: button }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: card, component: card }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: text_cta
             label: Text with a button
             fields:
@@ -217,19 +216,20 @@ content:
               - { name: heading, label: Heading, type: string, required: true }
               - { name: body, label: Text, type: rich-text }
               - { name: button, label: Button, component: button }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: media_text
             label: Photo and text
             fields:
               - { name: kicker, label: Kicker, type: string }
               - { name: heading, label: Heading, type: string, required: true }
+              - { name: lead, label: Big statement, type: text }
+              - { name: items_heading, label: List heading, type: string }
+              - { name: items, label: "List items (**bold** and [links](/url) work)", type: string, list: true }
+              - { name: list_style, component: list_style }
               - { name: body, label: Text, type: rich-text }
               - { name: image, label: Photo, component: image }
+              - { name: card, label: Side card (the photo moves under the text), component: card }
               - name: image_side
                 label: Photo side
                 type: select
@@ -237,24 +237,16 @@ content:
                 options:
                   values: [left, right]
               - { name: buttons, label: Buttons, component: button, list: { max: 2 } }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: text
             label: Text
             fields:
               - { name: kicker, label: Kicker, type: string }
               - { name: heading, label: Heading, type: string, required: true }
               - { name: body, label: Text, type: rich-text, required: true }
-              - name: background
-                label: Background
-                type: select
-                default: auto
-                options:
-                  values: [auto, cream, white, deep]
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
           - name: post_list
             label: Blog post list (blog page only)
             fields:
@@ -267,12 +259,91 @@ content:
                 fields:
                   - { name: label, label: Label, type: string, required: true }
                   - { name: tag, label: Tag it filters by, type: string, required: true }
-              - name: background
-                label: Background
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: cards
+            label: Cards (windows or coloured tiles)
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: intro, label: Intro, type: text }
+              - name: style
+                label: Style
                 type: select
-                default: auto
+                default: window
                 options:
-                  values: [auto, cream, white, deep]
+                  values: [window, tile]
+              - { name: columns, label: Columns (2–4), type: number, default: 3, options: { min: 2, max: 4 } }
+              - name: cards
+                label: Cards
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: Window title (windows only), type: string }
+                  - { name: tag, label: Tag (windows only), type: string }
+                  - { name: heading, label: Heading, type: string }
+                  - { name: body, label: Text, type: rich-text }
+                  - { name: items, label: List items, type: string, list: true }
+                  - { name: note, label: "Boxed note (**bold** works)", type: string }
+                  - { name: link, label: Link, component: link }
+                  - { name: highlight, label: Highlight (dark blue), type: boolean }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: project_list
+            label: Project list (active or past)
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: intro, label: Intro, type: text }
+              - name: show
+                label: Show
+                type: select
+                default: active
+                options:
+                  values: [active, past]
+              - { name: filters, label: Skill filter buttons, type: boolean }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: steps
+            label: Numbered steps
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - name: steps
+                label: Steps
+                type: object
+                list: true
+                fields:
+                  - { name: heading, label: Heading, type: string, required: true }
+                  - { name: body, label: Text, type: text }
+              - { name: buttons, label: Buttons, component: button, list: { max: 2 } }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: partners
+            label: Partner logos
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: note, label: Note under the logos, type: rich-text }
+              - { name: show_previous, label: Also show past partners, type: boolean }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: links
+            label: Row of link buttons
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: links, label: Links, component: link, list: true }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: season_timeline
+            label: Season timeline
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: intro, label: Intro, type: text }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
 
   - name: site
     label: Site settings
@@ -297,6 +368,7 @@ content:
           - { name: copyright, label: Copyright name, type: string }
           - { name: badge, label: Badge text, type: string }
       - { name: luma_calendar, label: Luma calendar link, type: string }
+      - { name: open_collective, label: Open Collective page (donations and the public ledger), type: string }
 
   - name: blog
     label: Blog posts
@@ -373,7 +445,7 @@ content:
         options:
           values: [pitch, ideation, planning, build, user, finish, prep, showcase]
       - name: notes
-        label: Notes for upcoming hack nights
+        label: Notes for upcoming hacknights
         type: object
         list: true
         fields:
@@ -386,21 +458,34 @@ content:
 
 
   - name: projects
-    label: Featured projects
-    type: file
-    path: _data/projects.yml
-    format: yaml
-    list: true
+    label: Projects
+    type: collection
+    path: src/content/projects
+    filename: "{primary}.md"
+    view:
+      fields: [name, status, active]
+      primary: name
+      sort: [order, name]
+      default:
+        sort: order
+        order: asc
     fields:
       - name: name
         label: Name
         type: string
         required: true
-      - name: description
-        label: Description
+      - name: active
+        label: Active this season (untick to move it to Past projects)
+        type: boolean
+        default: true
+      - name: status
+        label: Status label (shown on the card, e.g. "Active · Season 9")
+        type: string
+      - name: summary
+        label: Short summary (one sentence, for cards and the top of the page)
         type: text
       - name: logo
-        label: Logo
+        label: Image
         type: image
       - name: url
         label: Website
@@ -416,23 +501,61 @@ content:
         label: Our role
         type: string
         list: true
-      - name: tags
-        label: Tags
-        type: string
-        list: true
-      - name: status
-        label: Status label (shown on the card)
-        type: string
-      - name: summary
-        label: Short summary (one sentence, for cards)
-        type: text
       - name: needs
-        label: Help wanted (shows the project under "Projects that need you")
+        label: Help wanted (active projects with this filled in show on the home page)
         type: string
         list: true
+      - name: skills
+        label: Skills (for the filter buttons on the Projects page)
+        type: select
+        list: true
+        options:
+          values: [design, code, data, research, outreach]
       - name: fund
         label: Funding link
         type: string
+      - name: problem
+        label: Problem (past projects)
+        type: text
+      - name: outcome
+        label: Outcome (past projects)
+        type: text
+      - name: order
+        label: Order (lower comes first)
+        type: number
+        default: 100
+      - name: body
+        label: About the project
+        type: rich-text
+
+  - name: updates
+    label: Project updates
+    type: collection
+    path: src/content/updates
+    filename: "{year}-{month}-{day}-{fields.project}.md"
+    view:
+      fields: [date, project]
+      primary: project
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: project
+        label: Project
+        type: reference
+        required: true
+        options:
+          collection: projects
+          value: "{primary}"
+          label: "{primary}"
+      - name: date
+        label: Date (the hacknight it's about)
+        type: date
+        required: true
+      - name: body
+        label: Update
+        type: rich-text
 
   - name: partners
     label: Partners

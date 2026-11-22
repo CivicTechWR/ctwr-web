@@ -1,0 +1,14 @@
+---
+// A row of CMS buttons. The first primary button gets an arrow; on deep backgrounds primary turns green.
+import Button from './Button.astro';
+type B = { label: string; url: string; style: 'primary' | 'secondary' };
+interface Props { buttons: B[]; size?: 'md' | 'lg'; deep?: boolean; style?: string }
+const { buttons, size = 'md', deep = false, style } = Astro.props;
+---
+{buttons.length > 0 && (
+  <div class="actions" style={style}>
+    {buttons.map((b, i) => (
+      <Button href={b.url} variant={b.style === 'primary' && deep ? 'meadow-4' : b.style} size={size} arrow={i === 0 && b.style === 'primary'}>{b.label}</Button>
+    ))}
+  </div>
+)}

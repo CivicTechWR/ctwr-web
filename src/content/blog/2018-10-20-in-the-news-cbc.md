@@ -1,5 +1,5 @@
 ---
-title: "CivicTech WR in the news - CBC - Oct 20, 2018"
+title: "CivicTechWR in the news - CBC - Oct 20, 2018"
 date: 2018-10-20
 image: /images/blog/in-the-news-cbc-1.webp
 tags:

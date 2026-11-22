@@ -1,0 +1,29 @@
+---
+// Sends donors to Open Collective's contribution page with the amount and frequency picked here. Works without JavaScript.
+import { OPEN_COLLECTIVE } from '../lib/opencollective';
+const AMOUNTS = [10, 25, 50];
+---
+<form class="donate" action={`${OPEN_COLLECTIVE.replace(/\/$/, '')}/donate`} method="get">
+  <fieldset>
+    <legend>How often?</legend>
+    <div class="choice choice--2">
+      <label><input type="radio" name="interval" value="" checked /><span>One time</span></label>
+      <label><input type="radio" name="interval" value="month" /><span>Monthly</span></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Amount (CAD)</legend>
+    <div class="choice choice--4">
+      {AMOUNTS.map((a) => <label><input type="radio" name="amount" value={a} checked={a === 25} /><span>${a}</span></label>)}
+      <label><input type="radio" name="amount" value="" /><span>Other</span></label>
+    </div>
+  </fieldset>
+  <button type="submit" class="ct-btn ct-btn-primary ct-btn-arrow">Give via Open Collective</button>
+</form>
+
+<script>
+  // "One time" and "Other" have no value; leave them out of the URL so Open Collective uses its defaults.
+  document.querySelectorAll<HTMLFormElement>('form.donate').forEach((form) =>
+    form.addEventListener('submit', () => form.querySelectorAll<HTMLInputElement>('input:checked[value=""]').forEach((i) => (i.disabled = true))),
+  );
+</script>

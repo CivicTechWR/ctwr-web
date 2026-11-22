@@ -9,7 +9,7 @@ tags:
 
 Cross posted from our Medium Account: <https://medium.com/civictechwr/urban-design-happiness-e177132b0a47>
 
-While I feel like saying this about every guest speaker we’ve hosted, for [CivicTech WR](https://medium.com/u/e2a08d065cd3?source=post_page---user_mention--e177132b0a47---------------------------------------)’s February event, we had a special treat. [Robin Mazumder](https://robinmazumder.com/)shared his story with us, and I think it’s safe to say that we all learned a lot about how the design of our cities can impact our health and well-being.
+While I feel like saying this about every guest speaker we’ve hosted, for [CivicTechWR](https://medium.com/u/e2a08d065cd3?source=post_page---user_mention--e177132b0a47---------------------------------------)’s February event, we had a special treat. [Robin Mazumder](https://robinmazumder.com/)shared his story with us, and I think it’s safe to say that we all learned a lot about how the design of our cities can impact our health and well-being.
 
 <!-- more -->
 

@@ -3,3 +3,6 @@ dist/
 preview/
 .astro/
 .DS_Store
+
+# Design mockups (local reference only)
+CivicTechWR Website Mockups*/

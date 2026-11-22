@@ -1,0 +1,33 @@
+---
+// A grid of cards: retro windows, or flat colour tiles. Colours follow the palette in order; a highlighted card goes deep blue.
+import Section from '../Section.astro'; import SectionHeader from '../SectionHeader.astro'; import Window from '../Window.astro';
+import Chip from '../Chip.astro'; import Button from '../Button.astro'; import ItemList from '../ItemList.astro'; import Shape from '../Shape.astro';
+import { rich, inline } from '../../lib/rich';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'cards' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+const COLORS = ['meadow-2', 'meadow-1', 'meadow-4', 'meadow-6'];
+const slug = (t?: string) => (t ?? 'card').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+---
+<Section bg={bg} border={rule}>
+  <SectionHeader kicker={s.kicker} kickerColor={kickerColor} heading={s.heading} intro={s.intro} />
+  <ul class="card-grid" style={`--cols: ${s.columns}`}>
+    {s.cards.map((c, i) => {
+      const color = c.highlight ? 'meadow-8' : COLORS[i % COLORS.length];
+      const body = <>
+        {c.tag && <div><Chip>{c.tag}</Chip></div>}
+        {c.heading && <h3 class="card-h">{c.heading}</h3>}
+        {c.body && <div class="rt" set:html={rich(c.body)} />}
+        <ItemList items={c.items} />
+        {c.note && <p class="card-note" set:html={inline(c.note)} />}
+        {c.link && (s.style === 'tile' && c.highlight
+          ? <div class="card-foot"><Button href={c.link.url} variant="meadow-4" size="sm" arrow>{c.link.label}</Button></div>
+          : <a class:list={['card-foot', s.style === 'tile' ? 'tile-link' : 'ct-link']} href={c.link.url}>{c.link.label}{s.style === 'tile' && ' →'}</a>)}
+      </>;
+      return s.style === 'tile'
+        ? <li class:list={['tile', `tile--${color}`]}>{body}</li>
+        : <li><Window title={c.title ?? `${slug(c.heading)}.txt`} bar={color} as="article" class="card">{body}</Window></li>;
+    })}
+  </ul>
+  <Shape slot="deco" type={s.style === 'tile' ? 'dots' : 'plus'} color="meadow-8" size={0.6} at="top: 56px; right: 5%;" />
+</Section>

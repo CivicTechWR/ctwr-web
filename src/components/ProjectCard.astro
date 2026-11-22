@@ -1,24 +1,34 @@
 ---
+// Active projects show what help they need; past projects show a short case study.
 import Window from './Window.astro';
 import Chip from './Chip.astro';
 import Button from './Button.astro';
-import type { Project } from '../lib/data';
+import { projectHref, type Project } from '../lib/projects';
 interface Props { project: Project; bar?: string }
-const { project: p, bar = 'meadow-1' } = Astro.props;
+const { project, bar = 'meadow-1' } = Astro.props;
+const p = project.data;
+const href = projectHref(project);
+const past = !p.active;
+const title = past ? ['Case study', ...p.year].join(' · ') : (p.status ?? 'Project');
 const chipColors = ['meadow-4', 'meadow-2', 'meadow-1', 'cream'];
 ---
-<Window title={p.status ?? 'Project'} bar={bar} as="article" class="ct-card">
+<Window title={title} bar={bar} as="article" class="ct-card" label={p.name}>
   {p.logo
-    ? <img class="ct-card-thumb" src={p.logo} alt={`${p.name} screenshot`} loading="lazy" />
+    ? <img class="ct-card-thumb" src={p.logo} alt="" loading="lazy" />
     : <div class="ct-photo-empty ct-card-thumb" role="img" aria-label="Photo to come"><span>PHOTO</span></div>}
-  <h3 class="ct-card-name">{p.name}</h3>
+  <h3 class="ct-card-name"><a class="card-link" href={href}>{p.name}</a></h3>
   <p class="ct-card-desc">{p.summary ?? p.description}</p>
-  {p.needs?.length ? <>
-    <p class="ct-card-h">Help wanted</p>
-    <div class="ct-card-chips">{p.needs.map((n, i) => <Chip color={chipColors[i % 4]}>{n}</Chip>)}</div>
-  </> : null}
+  {past
+    ? (p.problem || p.outcome) && <dl class="facts">
+        {p.problem && <><dt>Problem</dt><dd>{p.problem}</dd></>}
+        {p.outcome && <><dt>Outcome</dt><dd>{p.outcome}</dd></>}
+      </dl>
+    : p.needs.length > 0 && <>
+        <p class="ct-card-h">Help wanted</p>
+        <div class="ct-card-chips">{p.needs.map((n, i) => <Chip color={chipColors[i % 4]}>{n}</Chip>)}</div>
+      </>}
   <div class="ct-card-actions">
-    {(p.url ?? p.github) && <a class="ct-link" href={p.url ?? p.github}>See the project</a>}
-    {p.fund && <Button href={p.fund} variant="meadow-4" size="sm">Fund this project</Button>}
+    <a class="ct-link" href={href}>{past ? 'Read the case study' : 'See the project'}<span class="ct-sr">: {p.name}</span></a>
+    {!past && p.fund && <Button href={p.fund} variant="meadow-4" size="sm">Fund this project</Button>}
   </div>
 </Window>

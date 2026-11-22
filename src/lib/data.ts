@@ -10,20 +10,7 @@ function load<T>(name: string): T {
 }
 
 export type NavItem = { text: string; url: string };
-export type Project = {
-  name: string;
-  description?: string;
-  summary?: string;
-  logo?: string;
-  url?: string;
-  github?: string;
-  year?: number[];
-  role?: string[];
-  tags?: string[];
-  status?: string;
-  needs?: string[];
-  fund?: string;
-};
+export type Partner = { name: string; logo?: string; url?: string; current?: boolean };
 export type Phase = 'pitch' | 'ideation' | 'planning' | 'build' | 'user' | 'finish' | 'prep' | 'showcase';
 export type Season = {
   name: string;
@@ -33,7 +20,7 @@ export type Season = {
 };
 
 export const navigation = () => load<NavItem[]>('navigation');
-export const projects = () => load<Project[]>('projects');
+export const partners = () => load<Partner[]>('partners');
 export const season = () => load<Season>('season');
 
 export const PHASES: Record<Phase, string> = {
@@ -52,5 +39,6 @@ export type Site = {
   header_button: Link;
   footer: { tagline: string; button: Link; groups: { title: string; links: Link[] }[]; copyright: string; badge?: string };
   luma_calendar: string;
+  open_collective: string;
 };
 export const site = () => load<Site>('site');

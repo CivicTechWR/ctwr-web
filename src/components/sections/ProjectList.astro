@@ -1,0 +1,43 @@
+---
+import Section from '../Section.astro'; import SectionHeader from '../SectionHeader.astro'; import ProjectCard from '../ProjectCard.astro';
+import { allProjects } from '../../lib/projects';
+import { SKILLS, type Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'project_list' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+const list = (await allProjects()).filter((p) => p.data.active === (s.show === 'active'));
+const skills = SKILLS.filter((k) => list.some((p) => p.data.skills.includes(k)));
+const BARS = ['meadow-1', 'meadow-2', 'meadow-4'];
+const label = (k: string) => k[0].toUpperCase() + k.slice(1);
+---
+{list.length > 0 && (
+  <Section bg={bg} border={rule}>
+    <SectionHeader kicker={s.kicker} kickerColor={kickerColor} heading={s.heading} intro={s.intro} />
+    <div class="project-list" data-filterable={s.filters ? '' : undefined}>
+      {s.filters && skills.length > 0 && (
+        <ul class="filters" aria-label="Filter projects by skill">
+          <li><button type="button" data-skill="" aria-pressed="true">All skills</button></li>
+          {skills.map((k) => <li><button type="button" data-skill={k} aria-pressed="false">{label(k)}</button></li>)}
+        </ul>
+      )}
+      <div class="cards">
+        {list.map((p, i) => <div data-skills={p.data.skills.join(' ')}><ProjectCard project={p} bar={BARS[i % 3]} /></div>)}
+      </div>
+    </div>
+  </Section>
+)}
+
+<script>
+  // Skill filters. /projects/?skill=design opens with Design picked.
+  document.querySelectorAll<HTMLElement>('.project-list[data-filterable]').forEach((list) => {
+    const buttons = list.querySelectorAll<HTMLButtonElement>('button[data-skill]');
+    const pick = (skill: string) => {
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.skill === skill)));
+      list.querySelectorAll<HTMLElement>('[data-skills]').forEach((card) => {
+        card.hidden = !!skill && !card.dataset.skills!.split(' ').includes(skill);
+      });
+    };
+    buttons.forEach((b) => b.addEventListener('click', () => pick(b.dataset.skill!)));
+    const wanted = new URLSearchParams(location.search).get('skill');
+    if (wanted && list.querySelector(`button[data-skill="${CSS.escape(wanted)}"]`)) pick(wanted);
+  });
+</script>

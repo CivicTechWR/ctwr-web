@@ -1,5 +1,5 @@
 ---
-title: "CivicTech WR in the news - The Record - Aug 19, 2018"
+title: "CivicTechWR in the news - The Record - Aug 19, 2018"
 date: 2018-08-19
 image: /images/blog/in-the-news-the-record-1.webp
 tags:

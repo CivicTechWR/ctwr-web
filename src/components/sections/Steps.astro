@@ -1,0 +1,22 @@
+---
+import Section from '../Section.astro'; import SectionHeader from '../SectionHeader.astro'; import Buttons from '../Buttons.astro'; import Shape from '../Shape.astro';
+import { rich } from '../../lib/rich';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'steps' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+const COLORS = ['meadow-2', 'meadow-1', 'meadow-4', 'meadow-6'];
+---
+<Section bg={bg} border={rule}>
+  <SectionHeader kicker={s.kicker} kickerColor={kickerColor} heading={s.heading} />
+  <ol class="steps">
+    {s.steps.map((step, i) => (
+      <li>
+        <span class="steps-num" style={`background: var(--${COLORS[i % COLORS.length]});`} aria-hidden="true">{i + 1}</span>
+        <h3 class="card-h">{step.heading}</h3>
+        {step.body && <div class="rt" set:html={rich(step.body)} />}
+      </li>
+    ))}
+  </ol>
+  <Buttons buttons={s.buttons} style="margin-top: 40px;" />
+  <Shape slot="deco" type="half" color="meadow-8" size={0.6} at="bottom: 72px; right: 8%;" />
+</Section>

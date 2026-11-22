@@ -18,7 +18,7 @@ const nights = events.map((e, i) => {
     return (
       <li class="ct-night" data-now={now ? 'true' : undefined}>
         <div class="ct-night-top" style={`background: var(--${bg});${DARK.includes(bg) ? ' color: #fff;' : ''}`}>
-          <span>{now ? 'This week' : phase ? `Week ${week}` : 'Next season'}</span><span>{phase ? PHASES[phase] : 'Hack night'}</span>
+          <span>{now ? 'This week' : phase ? `Week ${week}` : 'Next season'}</span><span>{phase ? PHASES[phase] : 'Hacknight'}</span>
         </div>
         <div class="ct-night-body">
           <p class="ct-night-date">{fmt.short(e.start)}</p>

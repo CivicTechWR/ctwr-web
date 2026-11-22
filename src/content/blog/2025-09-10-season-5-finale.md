@@ -21,6 +21,6 @@ Big thanks to our presenters from **Project Ploughshares, PECH, and One Million 
 We’re taking a short break next week.
 No meetup on Wednesday, September 17.
 
-We’ll be back on Wednesday, September 24 at 6:00 PM at Builders Club for our regular hack night 🛠️
+We’ll be back on Wednesday, September 24 at 6:00 PM at Builders Club for our regular hacknight 🛠️
 
 Looking forward to seeing you then! 💙

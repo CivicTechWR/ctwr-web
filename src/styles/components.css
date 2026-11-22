@@ -142,7 +142,7 @@ body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(
 .ct-event-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; padding: 0 var(--space-5) var(--space-5); }
 @media (max-width: 479px) { .ct-event-body { flex-direction: column; } .ct-event-thumb { width: 100%; height: auto; aspect-ratio: 16 / 9; transform: none; } .ct-event-date { flex-direction: row; width: auto; gap: 10px; padding: 8px 14px; } .ct-event-day { font-size: 28px; margin: 0; } }
 
-/* Agenda (hack night timeline) */
+/* Agenda (hacknight timeline) */
 .ct-agenda { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-4); align-items: start; }
 .ct-agenda::before { content: ""; position: absolute; left: 0; right: 0; top: 34px; border-top: 4px dashed var(--ink); z-index: 0; }
 .ct-agenda-end { position: relative; z-index: 1; margin: 18px 0 0; font-family: var(--font-pixel); font-size: 16px; white-space: nowrap; background: var(--ink); color: var(--meadow-1); padding: 6px 10px; border: var(--border) solid var(--ink); }
@@ -178,7 +178,7 @@ body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(
   .ct-agenda .ct-agenda-text { grid-column: 2; align-self: start; }
 }
 
-/* Hack night list */
+/* Hacknight list */
 .ct-nights { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--space-5); }
 .ct-night { background: var(--paper); border: var(--border) solid var(--ink); box-shadow: var(--shadow-md); display: flex; flex-direction: column; }
 .ct-night-top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); padding: 8px 12px; border-bottom: var(--border) solid var(--ink); font-family: var(--font-pixel); font-size: 14px; text-transform: uppercase; }

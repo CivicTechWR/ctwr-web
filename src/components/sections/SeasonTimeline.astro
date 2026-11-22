@@ -1,0 +1,27 @@
+---
+import Section from '../Section.astro'; import SectionHeader from '../SectionHeader.astro'; import SeasonTracker from '../SeasonTracker.astro';
+import { season as loadSeason, PHASES, type Phase } from '../../lib/data';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'season_timeline' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+// Phases and weeks come from "This season" in Pages CMS.
+const season = loadSeason();
+const phases: { phase: Phase; from: number; to: number }[] = [];
+season.weeks.forEach((phase, i) => {
+  const last = phases.at(-1);
+  if (last && last.phase === phase) last.to = i + 1;
+  else phases.push({ phase, from: i + 1, to: i + 1 });
+});
+---
+<Section bg={bg} border={rule}>
+  <SectionHeader kicker={s.kicker} kickerColor={kickerColor} heading={s.heading} intro={s.intro} />
+  <SeasonTracker season={season} />
+  <ol class="phases">
+    {phases.map((p) => (
+      <li>
+        <span class="phases-weeks">{p.from === p.to ? `Week ${p.from}` : `Weeks ${p.from}–${p.to}`}</span>
+        <span class="phases-name"><b class="ct-season-swatch" data-phase={p.phase} aria-hidden="true"></b>{PHASES[p.phase]}</span>
+      </li>
+    ))}
+  </ol>
+</Section>

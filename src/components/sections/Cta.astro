@@ -1,27 +1,18 @@
 ---
-import Section from '../Section.astro'; import Button from '../Button.astro'; import Window from '../Window.astro'; import Shape from '../Shape.astro';
+import Section from '../Section.astro'; import Buttons from '../Buttons.astro'; import InfoCard from '../InfoCard.astro'; import Shape from '../Shape.astro';
 import { rich, lines } from '../../lib/rich';
 import type { Section as S } from '../../content.config';
 interface Props { s: Extract<S, { type: 'cta' }>; bg: string; rule: boolean }
 const { s, bg, rule } = Astro.props;
-const deep = bg === 'deep';
 ---
 <Section bg={bg} border={rule}>
   <div class="split" style="gap: 40px; justify-content: space-between;">
     <div class="col" style="flex: 1 1 560px;">
       <h2 class="cta-title">{lines(s.heading).map((l, i) => <>{i > 0 && <br />}{l}</>)}</h2>
       {s.body && <div class="rt" style="font-size: 20px; max-width: 560px;" set:html={rich(s.body)} />}
-      {s.buttons.length > 0 && <div class="actions">
-        {s.buttons.map((b, i) => <Button href={b.url} variant={b.style === 'primary' && deep ? 'meadow-4' : b.style} size="lg" arrow={i === 0 && b.style === 'primary'}>{b.label}</Button>)}
-      </div>}
+      <Buttons buttons={s.buttons} size="lg" deep={bg === 'deep'} />
     </div>
-    {s.card && <div style="flex: 0 1 380px;">
-      <Window title={s.card.title ?? 'note.txt'} bar="meadow-4">
-        <p style="margin: 0 0 16px; font-weight: 700; font-size: 20px;">{s.card.heading}</p>
-        {s.card.body && <div class="rt" style="margin-bottom: 20px;" set:html={rich(s.card.body)} />}
-        {s.card.button && <Button href={s.card.button.url} variant={s.card.button.style}>{s.card.button.label}</Button>}
-      </Window>
-    </div>}
+    {s.card && <div style="flex: 0 1 380px;"><InfoCard card={s.card} bar="meadow-4" /></div>}
   </div>
   <Shape slot="deco" type="squiggle" color="meadow-4" size={0.8} at="bottom: 30px; left: 50%;" />
 </Section>

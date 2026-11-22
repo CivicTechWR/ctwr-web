@@ -1,0 +1,25 @@
+---
+import Section from '../Section.astro'; import SectionHeader from '../SectionHeader.astro'; import Shape from '../Shape.astro';
+import { partners } from '../../lib/data';
+import { rich } from '../../lib/rich';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'partners' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+// Logos come from Partners in Pages CMS.
+const all = partners();
+const groups = [
+  { list: all.filter((p) => p.current) },
+  { title: 'Past partners', list: s.show_previous ? all.filter((p) => !p.current) : [] },
+];
+---
+<Section bg={bg} border={rule}>
+  <SectionHeader kicker={s.kicker} kickerColor={kickerColor} heading={s.heading} />
+  {groups.filter((g) => g.list.length).map((g) => <>
+    {g.title && <h3 class="card-h" style="margin: 48px 0 20px;">{g.title}</h3>}
+    <ul class="logos">
+      {g.list.map((p) => <li>{p.logo ? <img src={p.logo} alt={p.name} loading="lazy" /> : <span>{p.name}</span>}</li>)}
+    </ul>
+  </>)}
+  {s.note && <div class="rt" style="margin-top: 28px;" set:html={rich(s.note)} />}
+  <Shape slot="deco" type="squiggle" size={0.55} at="top: 64px; right: 6%;" />
+</Section>

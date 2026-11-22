@@ -14,6 +14,12 @@ import TextCta from './sections/TextCta.astro';
 import MediaText from './sections/MediaText.astro';
 import Text from './sections/Text.astro';
 import PostList, { type PostListContext } from './sections/PostList.astro';
+import ProjectList from './sections/ProjectList.astro';
+import Partners from './sections/Partners.astro';
+import Cards from './sections/Cards.astro';
+import Steps from './sections/Steps.astro';
+import Links from './sections/Links.astro';
+import SeasonTimeline from './sections/SeasonTimeline.astro';
 
 interface Props { sections: Section[]; posts?: PostListContext }
 const { sections, posts } = Astro.props;
@@ -21,6 +27,7 @@ const { sections, posts } = Astro.props;
 const DEFAULT_BG: Record<Section['type'], string> = {
   hero: 'cream', page_title: 'cream', explainer: 'paper', hack_night: 'cream', season: 'paper', projects: 'cream',
   gallery: 'paper', cta: 'deep', text_cta: 'cream', media_text: 'paper', text: 'paper', post_list: 'paper',
+  cards: 'cream', project_list: 'paper', steps: 'paper', partners: 'paper', links: 'cream', season_timeline: 'paper',
 };
 const BG = { cream: 'cream', white: 'paper', deep: 'deep' } as const;
 const KICKERS = ['meadow-4', 'meadow-2', 'meadow-6'];
@@ -32,7 +39,9 @@ const items = sections.map((s, i) => {
 });
 ---
 {items.map(({ s, bg, rule, kickerColor }) => {
-  switch (s.type) {
+  const el = render();
+  return s.anchor ? <div id={s.anchor}>{el}</div> : el;
+  function render() { switch (s.type) {
     case 'hero': return <Hero s={s} bg={bg} rule={rule} />;
     case 'page_title': return <PageTitle s={s} bg={bg} rule={rule} />;
     case 'explainer': return <Explainer s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
@@ -45,5 +54,11 @@ const items = sections.map((s, i) => {
     case 'media_text': return <MediaText s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
     case 'text': return <Text s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
     case 'post_list': return posts ? <PostList s={s} bg={bg} rule={rule} ctx={posts} /> : null;
-  }
+    case 'project_list': return <ProjectList s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'partners': return <Partners s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'cards': return <Cards s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'steps': return <Steps s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'links': return <Links s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'season_timeline': return <SeasonTimeline s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+  } }
 })}

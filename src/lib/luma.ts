@@ -1,4 +1,4 @@
-// Upcoming hack nights from the public Luma iCal feed, fetched once at build time.
+// Upcoming hacknights from the public Luma iCal feed, fetched once at build time.
 // Port of _plugins/fetch_luma_event.rb. If the feed can't be reached, the
 // fallback list below is used, so a build never fails because of Luma.
 // Rebuild the site on a schedule (see .github/workflows/deploy.yml) to keep it fresh.

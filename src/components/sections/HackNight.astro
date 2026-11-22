@@ -1,6 +1,7 @@
 ---
 import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Window from '../Window.astro'; import Shape from '../Shape.astro'; import Photo from '../Photo.astro';
-import Agenda from '../Agenda.astro'; import EventCard from '../EventCard.astro';
+import Agenda from '../Agenda.astro'; import EventCard from '../EventCard.astro'; import InfoCard from '../InfoCard.astro'; import Button from '../Button.astro';
+import { rich } from '../../lib/rich';
 import { season as loadSeason, PHASES } from '../../lib/data';
 import { upcomingHackNights, LUMA_CALENDAR } from '../../lib/luma';
 import type { Section as S } from '../../content.config';
@@ -10,16 +11,21 @@ const [next] = await upcomingHackNights(1);
 const season = loadSeason();
 const phase = season.weeks[season.current_week - 1];
 ---
-<Section bg={bg} border={rule} id="next-hack-night">
+<Section bg={bg} border={rule} id="next-hacknight">
   <div class="split split--top">
     <div class="col" style="flex: 1 1 520px; gap: 20px;">
       <SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle>
       {s.intro && <p class="lead" style="margin-bottom: 16px; max-width: 560px;">{s.intro}</p>}
       {s.agenda.length > 0 && <Agenda stops={s.agenda} />}
     </div>
-    <div style="flex: 1 1 440px; display: flex; flex-direction: column; gap: 56px; padding-top: 8px;">
-      {next ? <EventCard event={next} focus={phase && `${PHASES[phase]} week`} />
-            : <Window title="Next hack night"><p style="margin: 0;">Between seasons. <a class="ct-link" href={LUMA_CALENDAR}>See what's next on Luma</a></p></Window>}
+    <div style="flex: 1 1 440px; display: flex; flex-direction: column; gap: 32px; padding-top: 8px;">
+      {s.card ? <InfoCard card={s.card} />
+        : next ? <EventCard event={next} focus={phase && `${PHASES[phase]} week`} />
+        : <Window title="Next hacknight"><p style="margin: 0;">Between seasons. <a class="ct-link" href={LUMA_CALENDAR}>See what's next on Luma</a></p></Window>}
+      {(s.details || s.button) && <div class="col" style="gap: 16px;">
+        {s.details && <div class="rt" set:html={rich(s.details)} />}
+        {s.button && <Button href={s.button.url} variant={s.button.style} arrow>{s.button.label}</Button>}
+      </div>}
       {s.image && <Photo src={s.image.src || undefined} alt={s.image.alt} placeholder={s.image.alt} tilt="left" />}
     </div>
   </div>

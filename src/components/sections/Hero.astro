@@ -1,5 +1,5 @@
 ---
-import Section from '../Section.astro'; import Tag from '../Tag.astro'; import Button from '../Button.astro'; import Shape from '../Shape.astro';
+import Section from '../Section.astro'; import Tag from '../Tag.astro'; import Buttons from '../Buttons.astro'; import Shape from '../Shape.astro';
 import type { Section as S } from '../../content.config';
 interface Props { s: Extract<S, { type: 'hero' }>; bg: string; rule: boolean }
 const { s, bg, rule } = Astro.props;
@@ -18,9 +18,7 @@ const LOOK = [{ c: 'meadow-2', t: 'left' }, { c: 'meadow-4', t: 'right', shape: 
         })}
       </h1>
       {s.intro && <p class="lead" style="margin-top: 18px;">{s.intro}</p>}
-      {s.buttons.length > 0 && <div class="actions" style="margin-top: 8px;">
-        {s.buttons.map((b, i) => <Button href={b.url} variant={b.style} size="lg" arrow={i === 0 && b.style === 'primary'}>{b.label}</Button>)}
-      </div>}
+      <Buttons buttons={s.buttons} size="lg" style="margin-top: 8px;" />
     </div>
     {s.image?.src && <div style="flex: 0 1 400px;"><img class="hero-photo" src={s.image.src} alt={s.image.alt} width="1200" height="900" fetchpriority="high" /></div>}
   </div>

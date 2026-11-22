@@ -1,0 +1,23 @@
+---
+// The window that sits beside a section's text. Shared by Call to action, Photo and text, and Hacknight sections.
+import Window from './Window.astro';
+import Button from './Button.astro';
+import ItemList from './ItemList.astro';
+import Ledger from './Ledger.astro';
+import DonateForm from './DonateForm.astro';
+import { rich } from '../lib/rich';
+import type { Card } from '../content.config';
+interface Props { card: Card; bar?: string }
+const { card, bar } = Astro.props;
+// Money windows are blue, everything else is green: a design rule, not content.
+const barColor = bar ?? (card.widget === 'none' ? 'meadow-1' : 'meadow-8');
+---
+<Window title={card.title ?? 'note.txt'} bar={barColor} class="info-card">
+  {card.heading && <p class="info-card-h">{card.heading}</p>}
+  {card.body && <div class="rt" set:html={rich(card.body)} />}
+  <ItemList items={card.items} style={card.list_style} />
+  {card.widget === 'ledger' && <Ledger />}
+  {card.widget === 'donate' && <DonateForm />}
+  {card.button && <div><Button href={card.button.url} variant={card.button.style} arrow={card.button.style === 'secondary' || card.widget !== 'none'}>{card.button.label}</Button></div>}
+  {card.note && <p class="note" style="margin: 0;">{card.note}</p>}
+</Window>

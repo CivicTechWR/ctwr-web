@@ -10,13 +10,13 @@ footer:
   groups:
     - title: Get involved
       links:
-        - label: Come to a hack night
-          url: /get-involved/#first-hack-night
+        - label: Come to a hacknight
+          url: /get-involved/#first-hacknight
         - label: Join a project
           url: /projects/
         - label: Bring us a problem
           url: /get-involved/#bring-a-problem
-        - label: Hack nights on Luma
+        - label: Hacknights on Luma
           url: https://luma.com/civictechwr
     - title: About
       links:
@@ -37,5 +37,6 @@ footer:
         - label: Open Collective
           url: https://opencollective.com/civic-tech-waterloo-region
   copyright: CivicTech Waterloo Region
-  badge: HACK NIGHT • WED 6PM
+  badge: HACKNIGHT • WED 6PM
 luma_calendar: https://luma.com/civictechwr
+open_collective: https://opencollective.com/civic-tech-waterloo-region

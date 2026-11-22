@@ -1,0 +1,12 @@
+---
+// A short list with a design-system marker: Memphis shapes, checkboxes, colour squares or plain bullets.
+import { inline } from '../lib/rich';
+import type { ListStyle } from '../content.config';
+interface Props { items: string[]; style?: ListStyle }
+const { items, style = 'bullets' } = Astro.props;
+---
+{items.length > 0 && (
+  <ul class:list={['items', `items--${style}`]}>
+    {items.map((item) => <li><i aria-hidden="true"></i><span set:html={inline(item)} /></li>)}
+  </ul>
+)}

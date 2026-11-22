@@ -9,7 +9,7 @@ import '../styles/components.css';
 import '../styles/site.css';
 
 interface Props { title: string; description?: string }
-const { title, description = 'Free weekly hack nights where anyone can use design and technology to work on local problems in Waterloo Region.' } = Astro.props;
+const { title, description = 'Free weekly hacknights where anyone can use design and technology to work on local problems in Waterloo Region.' } = Astro.props;
 const fullTitle = title === 'Home' ? 'CivicTechWR · Local issues + skilled volunteers' : `${title} · CivicTechWR`;
 ---
 <!doctype html>

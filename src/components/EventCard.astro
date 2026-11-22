@@ -7,9 +7,9 @@ const doors = new Date(+event.start - 15 * 60_000);
 const time = `Doors ${fmt.time(doors).replace(/ [AP]M$/, '')} · ${fmt.time(event.start).replace(/ [AP]M$/, '')} – ${event.end ? fmt.time(event.end) : '8:00 PM'}`;
 const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location + ', ON')}`;
 ---
-<article class="ct-win ct-event" aria-label={`Next hack night: ${fmt.long(event.start)}`}>
+<article class="ct-win ct-event" aria-label={`Next hacknight: ${fmt.long(event.start)}`}>
   <div class="ct-win-bar ct-bar-meadow-4">
-    <span class="ct-win-title">Next hack night</span>
+    <span class="ct-win-title">Next hacknight</span>
     <span class="ct-win-btns" aria-hidden="true"><i></i><i></i><i></i></span>
   </div>
   <div class="ct-event-body">
@@ -24,6 +24,6 @@ const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponen
   </div>
   <div class="ct-event-actions">
     <Button href={event.url} arrow>Register on Luma</Button>
-    <a class="ct-link" href={LUMA_CALENDAR}>All hack nights on Luma</a>
+    <a class="ct-link" href={LUMA_CALENDAR}>All hacknights on Luma</a>
   </div>
 </article>

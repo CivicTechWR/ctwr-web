@@ -12,15 +12,15 @@ sections:
     intro: Join our community every Wednesday to work on local civic challenges
       through design and technology.
     buttons:
-      - label: Come to your first hack night
-        url: /get-involved/#first-hack-night
+      - label: Come to your first hacknight
+        url: /get-involved/#first-hacknight
         style: primary
       - label: Support us
         url: /get-involved/#donate
         style: secondary
     image:
       src: /images/hacknight-group.jpg
-      alt: About 20 people standing together at a CivicTechWR hack night
+      alt: About 20 people standing together at a CivicTechWR hacknight
     background: auto
   - type: explainer
     kicker: New here?
@@ -69,13 +69,13 @@ sections:
         icon: flag
         optional: false
       - time: 8:00
-        title: Post-hack night hangout
+        title: Post-hacknight hangout
         text: Stick around and keep chatting, till late
         icon: chat
         optional: true
     image:
       src: /images/hacknight-tables.jpg
-      alt: People chatting and working around tables at a CivicTechWR hack night
+      alt: People chatting and working around tables at a CivicTechWR hacknight
     background: auto
   - type: season
     kicker: What happens on Wednesday?
@@ -93,7 +93,7 @@ sections:
     upcoming_heading: Coming up on Wednesdays
     background: auto
   - type: projects
-    kicker: Built at hack night
+    kicker: Built at hacknight
     heading: Projects that need you
     button:
       label: See all projects
@@ -109,11 +109,11 @@ sections:
     window_title: instagram · recent posts
     images:
       - src: /images/hacknight-group.jpg
-        alt: A big group photo at a CivicTechWR hack night
+        alt: A big group photo at a CivicTechWR hacknight
       - src: /images/hacknight-tables.jpg
-        alt: People chatting around tables at a hack night
+        alt: People chatting around tables at a hacknight
       - src: /images/hacknight-presenting.jpg
-        alt: A project presentation at a hack night
+        alt: A project presentation at a hacknight
       - src: /images/about-us.jpg
         alt: Four CivicTechWR members smiling outdoors
     link: https://instagram.com/civictechwr
@@ -123,11 +123,11 @@ sections:
     heading: |-
       Come as you are.
       Leave with a team.
-    body: Your first hack night is the best way in. Grab some food, meet people, and
+    body: Your first hacknight is the best way in. Grab some food, meet people, and
       pick a table.
     buttons:
-      - label: Come to your first hack night
-        url: /get-involved/#first-hack-night
+      - label: Come to your first hacknight
+        url: /get-involved/#first-hacknight
         style: primary
       - label: Join Slack
         url: https://join.slack.com/t/civictechwr

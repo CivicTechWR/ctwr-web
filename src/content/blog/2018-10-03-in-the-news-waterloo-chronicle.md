@@ -1,5 +1,5 @@
 ---
-title: "CivicTech WR in the news - Waterloo Chronicle - Oct 03, 2018"
+title: "CivicTechWR in the news - Waterloo Chronicle - Oct 03, 2018"
 date: 2018-10-03
 image: /images/blog/in-the-news-waterloo-chronicle-1.webp
 tags:

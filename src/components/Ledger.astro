@@ -1,0 +1,11 @@
+---
+import { ledger, money } from '../lib/opencollective';
+const data = await ledger();
+---
+{data && (
+  <dl class="ledger">
+    <div class="ct-lcd-screen"><dt class="ct-lcd-label">Balance</dt><dd class="ct-lcd-big">{money(data.balance, data.currency)}</dd></div>
+    <div class="ct-lcd-screen"><dt class="ct-lcd-label">Past year</dt><dd class="ct-lcd-big">{money(data.raised, data.currency)}</dd></div>
+    <div class="ct-lcd-screen"><dt class="ct-lcd-label">Backers</dt><dd class="ct-lcd-big">{data.backers}</dd></div>
+  </dl>
+)}

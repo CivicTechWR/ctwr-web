@@ -1,0 +1,12 @@
+---
+// Kicker, heading and optional intro at the top of a section.
+import SectionTitle from './SectionTitle.astro';
+interface Props { kicker?: string; kickerColor?: string; heading?: string; intro?: string }
+const { kicker, kickerColor, heading, intro } = Astro.props;
+---
+{(heading || intro) && (
+  <div class="sec-header">
+    {heading && <SectionTitle kicker={kicker} kickerColor={kickerColor}>{heading}</SectionTitle>}
+    {intro && <p class="sec-intro">{intro}</p>}
+  </div>
+)}

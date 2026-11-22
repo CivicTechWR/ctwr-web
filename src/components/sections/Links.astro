@@ -1,0 +1,11 @@
+---
+import Section from '../Section.astro'; import SectionHeader from '../SectionHeader.astro'; import Button from '../Button.astro'; import Shape from '../Shape.astro';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'links' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+---
+<Section bg={bg} border={rule}>
+  <SectionHeader kicker={s.kicker} kickerColor={kickerColor} heading={s.heading} />
+  <ul class="link-row">{s.links.map((l) => <li><Button href={l.url} variant="secondary" arrow>{l.label}</Button></li>)}</ul>
+  <Shape slot="deco" type="squiggle" size={0.55} at="top: 64px; right: 6%;" />
+</Section>

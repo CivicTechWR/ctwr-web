@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Window from '../../components/Window.astro';
+import Button from '../../components/Button.astro';
+import Chip from '../../components/Chip.astro';
+import Tag from '../../components/Tag.astro';
+import Photo from '../../components/Photo.astro';
+import Shape from '../../components/Shape.astro';
+import { render } from 'astro:content';
+import { allProjects, updatesFor, type Project } from '../../lib/projects';
+import { formatDate } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  return (await allProjects()).map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+interface Props { project: Project }
+const { project } = Astro.props;
+const p = project.data;
+const { Content } = await render(project);
+const updates = await Promise.all((await updatesFor(project)).map(async (u) => ({ date: u.data.date, Content: (await render(u)).Content })));
+const links = [
+  p.url && { label: 'Website', url: p.url },
+  p.github && { label: 'Code on GitHub', url: p.github },
+].filter((l): l is { label: string; url: string } => !!l);
+const chipColors = ['meadow-4', 'meadow-2', 'meadow-1', 'cream'];
+---
+<Base title={p.name} description={p.summary ?? p.description}>
+  <Section border={false}>
+    <div class="split" style="justify-content: space-between;">
+      <div class="post-head" style="flex: 1 1 520px;">
+        <a class="back" href="/projects/">← All projects</a>
+        {p.status && <Tag color="meadow-4">{p.status}</Tag>}
+        <h1 class="post-h1">{p.name}</h1>
+        {(p.summary ?? p.description) && <p class="lead">{p.summary ?? p.description}</p>}
+        {(p.year.length > 0 || p.role.length > 0) && <div class="post-meta">
+          {p.year.length > 0 && <span>{p.year.join(', ')}</span>}
+          {p.year.length > 0 && p.role.length > 0 && <span aria-hidden="true">·</span>}
+          {p.role.length > 0 && <span>Our role: {p.role.join(', ')}</span>}
+        </div>}
+      </div>
+      <div style="flex: 0 1 460px;"><Photo src={p.logo} alt="" placeholder="Team photo or project screenshot" /></div>
+    </div>
+    <Shape slot="deco" type="squiggle" size={0.8} at="bottom: 40px; left: 40%;" />
+  </Section>
+
+  <Section bg="paper">
+    <div class="split split--top" style="justify-content: space-between;">
+      <article class="prose" style="flex: 1 1 560px;"><Content /></article>
+      <aside class="project-aside">
+        <Window title="project.txt" bar="meadow-1">
+          {!p.active && p.problem && <><p class="ct-card-h">Problem</p><p>{p.problem}</p></>}
+          {!p.active && p.outcome && <><p class="ct-card-h">Outcome</p><p>{p.outcome}</p></>}
+          {p.active && p.needs.length > 0 && <>
+            <p class="ct-card-h">Help wanted</p>
+            <div class="ct-card-chips">{p.needs.map((n, i) => <Chip color={chipColors[i % 4]}>{n}</Chip>)}</div>
+          </>}
+          {links.length > 0 && <ul class="items items--bullets">{links.map((l) => <li><i aria-hidden="true"></i><a href={l.url}>{l.label}</a></li>)}</ul>}
+          {p.active && <Button href="/get-involved/#first-hacknight" arrow>Join at a hacknight</Button>}
+          {p.fund && <Button href={p.fund} variant="meadow-4" size="sm">Fund this project</Button>}
+        </Window>
+      </aside>
+    </div>
+  </Section>
+
+  <Section id="updates">
+    <SectionHeader kicker="Every week" kickerColor="meadow-2" heading="Project updates" />
+    {updates.length > 0
+      ? <ol class="ct-postlist updates">
+          {updates.map(({ date, Content }) => (
+            <li>
+              <time class="ct-post-date" datetime={date.toISOString().slice(0, 10)}>{formatDate(date)}</time>
+              <div class="prose"><Content /></div>
+            </li>
+          ))}
+        </ol>
+      : <p class="note">No updates yet. Teams post one after each hacknight.</p>}
+    <div style="margin-top: 40px;"><Button href="/projects/" variant="secondary" arrow>All projects</Button></div>
+  </Section>
+</Base>
