@@ -9,8 +9,8 @@ sections:
       - Local issues
       - Skilled volunteers
       - A better region
-    intro: Free weekly hack nights where anyone can use design and technology to
-      work on local problems. No tech skills needed.
+    intro: Join our community every Wednesday to work on local civic challenges
+      through design and technology.
     buttons:
       - label: Come to your first hack night
         url: /get-involved/#first-hack-night
