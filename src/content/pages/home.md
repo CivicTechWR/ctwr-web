@@ -39,7 +39,7 @@ sections:
     background: auto
   - type: hack_night
     kicker: Every Wednesday
-    heading: What happens at a hack night
+    heading: What happens at a hacknight?
     intro: Two relaxed hours of project work, with food before and an optional
       hangout after.
     agenda:
