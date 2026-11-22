@@ -1,0 +1,14 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Sections from '../../../components/Sections.astro';
+import { blogListing } from '../../../lib/pages';
+export async function getStaticPaths() {
+  const { pages } = await blogListing();
+  return Array.from({ length: pages - 1 }, (_, i) => ({ params: { page: String(i + 2) } }));
+}
+const page = Number(Astro.params.page);
+const { blog, size, posts, pages } = await blogListing();
+---
+<Base title={`${blog.title} · Page ${page}`} description={blog.description}>
+  <Sections sections={blog.sections} posts={{ posts: posts.slice((page - 1) * size, page * size), total: posts.length, page, pages }} />
+</Base>

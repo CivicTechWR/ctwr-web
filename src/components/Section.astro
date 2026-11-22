@@ -1,0 +1,8 @@
+---
+interface Props { bg?: 'cream' | 'paper' | 'deep'; border?: boolean; id?: string; class?: string }
+const { bg = 'cream', border = true, id, class: cls } = Astro.props;
+---
+<section id={id} class:list={['band', `band--${bg}`, border && 'band--rule', cls]}>
+  <div class="wrap"><slot /></div>
+  <slot name="deco" />
+</section>

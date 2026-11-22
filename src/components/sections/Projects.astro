@@ -1,0 +1,17 @@
+---
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Button from '../Button.astro'; import ProjectCard from '../ProjectCard.astro';
+import { projects } from '../../lib/data';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'projects' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+// Shows projects that list "Help wanted" skills in Featured projects.
+const list = projects().filter((p) => p.needs?.length).slice(0, s.limit);
+const BARS = ['meadow-1', 'meadow-2', 'meadow-4'];
+---
+<Section bg={bg} border={rule}>
+  <div class="row-between">
+    <SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle>
+    {s.button && <Button href={s.button.url} variant="secondary" arrow>{s.button.label}</Button>}
+  </div>
+  <div class="cards">{list.map((p, i) => <ProjectCard project={p} bar={BARS[i % 3]} />)}</div>
+</Section>

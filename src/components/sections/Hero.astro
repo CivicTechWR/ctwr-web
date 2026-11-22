@@ -1,0 +1,33 @@
+---
+import Section from '../Section.astro'; import Tag from '../Tag.astro'; import Button from '../Button.astro'; import Shape from '../Shape.astro';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'hero' }>; bg: string; rule: boolean }
+const { s, bg, rule } = Astro.props;
+// Design rules: line colours, tilts and the "+" / "=" shapes come from position, not content.
+const LOOK = [{ c: 'meadow-2', t: 'left' }, { c: 'meadow-4', t: 'right', shape: 'plus', sc: 'meadow-8' }, { c: 'meadow-6', t: 'left', shape: 'equals', sc: 'meadow-6' }] as const;
+---
+<Section bg={bg} border={rule}>
+  <div class="split" style="justify-content: space-between;">
+    <div class="col" style="flex: 1 1 660px;">
+      {s.kicker && <Tag>{s.kicker}</Tag>}
+      <h1 class="hero-title">
+        {s.lines.map((line, i) => {
+          const l = LOOK[i];
+          const block = <span class={`ct-hb ct-hb-l ct-hb-${l.c} ct-tilt-${l.t}`}>{line}</span>;
+          return 'shape' in l ? <span class="hero-line"><Shape type={l.shape} color={l.sc} size={0.6} />{block}</span> : block;
+        })}
+      </h1>
+      {s.intro && <p class="lead" style="margin-top: 18px;">{s.intro}</p>}
+      {s.buttons.length > 0 && <div class="actions" style="margin-top: 8px;">
+        {s.buttons.map((b, i) => <Button href={b.url} variant={b.style} size="lg" arrow={i === 0 && b.style === 'primary'}>{b.label}</Button>)}
+      </div>}
+    </div>
+    {s.image?.src && <div style="flex: 0 1 400px;"><img class="hero-photo" src={s.image.src} alt={s.image.alt} width="1200" height="900" fetchpriority="high" /></div>}
+  </div>
+  <Fragment slot="deco">
+    <Shape type="dots" color="ink" size={0.6} at="top: 0; right: 0;" />
+    <Shape type="ring" at="top: 4%; left: 50%;" />
+    <Shape type="capsule" color="meadow-4" size={0.8} at="bottom: 4%; left: 52%;" />
+    <Shape type="half" color="meadow-8" size={0.8} at="bottom: -8px; right: 4%;" />
+  </Fragment>
+</Section>

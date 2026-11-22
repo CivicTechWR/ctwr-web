@@ -1,0 +1,5 @@
+---
+interface Props { color?: string }
+const { color = 'paper' } = Astro.props;
+---
+<span class={`ct-chip ct-chip-${color}`}><slot /></span>

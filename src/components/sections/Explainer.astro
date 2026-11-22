@@ -1,0 +1,27 @@
+---
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Window from '../Window.astro'; import Chip from '../Chip.astro';
+import { rich } from '../../lib/rich';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'explainer' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+const v = s.video;
+const MARKS = ['b1', 'b2', 'b3'];
+---
+<Section bg={bg} border={rule}>
+  <div class="split">
+    {v && <div style="flex: 1 1 560px;">
+      <Window title="what_is_civictechwr.mp4" bar="meadow-2">
+        <div class="video">
+          {v.poster && <img src={v.poster} alt="" loading="lazy" />}
+          <a class="video-play" href={v.url || '#'} aria-label={`Play the video: ${v.title ?? s.heading}`} aria-disabled={v.url ? undefined : 'true'}><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="#161616"></path></svg></a>
+        </div>
+        <div class="video-meta">{v.title && <span>{v.title}</span>}{v.status && <Chip color="meadow-4">{v.status}</Chip>}</div>
+      </Window>
+    </div>}
+    <div class="col" style="flex: 1 1 420px;">
+      <SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle>
+      {s.body && <div class="rt" style="max-width: 520px;" set:html={rich(s.body)} />}
+      {s.bullets.length > 0 && <ul class="bullets">{s.bullets.map((b, i) => <li><i class={MARKS[i]}></i>{b}</li>)}</ul>}
+    </div>
+  </div>
+</Section>

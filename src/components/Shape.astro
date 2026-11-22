@@ -1,0 +1,30 @@
+---
+// Memphis decorations. `at` positions it absolutely inside the nearest Section.
+interface Props {
+  type: 'squiggle' | 'zigzag' | 'dots' | 'plus' | 'equals' | 'ring' | 'half' | 'capsule';
+  color?: string;
+  size?: number;
+  at?: string;
+}
+const { type, color = 'meadow-6', size = 1, at } = Astro.props;
+const col = `var(--${color})`;
+const ink = 'var(--ink)';
+const box: Record<string, [number, number]> = {
+  squiggle: [170, 44], zigzag: [170, 44], dots: [184, 112], plus: [64, 64],
+  equals: [64, 52], ring: [44, 44], half: [130, 70], capsule: [70, 70],
+};
+const [w, h] = box[type];
+const dots = Array.from({ length: 40 }, (_, i) => [8 + (i % 8) * 24, 8 + Math.floor(i / 8) * 24]);
+---
+<span class:list={[at && 'ct-deco']} style={at} aria-hidden="true">
+  <svg class="ct-shape" width={w * size} height={h * size} viewBox={`0 0 ${w} ${h}`} focusable="false">
+    {type === 'squiggle' && <path d="M6 30 C 26 2, 46 2, 64 22 S 102 42, 120 22 S 152 2, 164 18" fill="none" stroke={col} stroke-width="9" stroke-linecap="round" />}
+    {type === 'zigzag' && <path d="M6 36 L 36 8 L 66 36 L 96 8 L 126 36 L 156 8" fill="none" stroke={col} stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />}
+    {type === 'dots' && dots.map(([cx, cy]) => <circle cx={cx} cy={cy} r="4.5" fill={ink} />)}
+    {type === 'plus' && <path d="M24 4h16v20h20v16H40v20H24V40H4V24h20z" fill={col} stroke={ink} stroke-width="3" stroke-linejoin="round" />}
+    {type === 'equals' && <><rect x="3" y="3" width="58" height="18" rx="4" fill={col} stroke={ink} stroke-width="3" /><rect x="3" y="31" width="58" height="18" rx="4" fill={col} stroke={ink} stroke-width="3" /></>}
+    {type === 'ring' && <circle cx="22" cy="22" r="15" fill={col} stroke={ink} stroke-width="6" />}
+    {type === 'half' && <path d="M4 66 A 61 61 0 0 1 126 66 Z" fill={col} stroke={ink} stroke-width="5" stroke-linejoin="round" />}
+    {type === 'capsule' && <rect x="26" y="2" width="18" height="66" rx="3" fill={col} stroke={ink} stroke-width="4" transform="rotate(35 35 35)" />}
+  </svg>
+</span>

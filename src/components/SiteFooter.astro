@@ -1,0 +1,25 @@
+---
+import Button from './Button.astro';
+import { site } from '../lib/data';
+const { footer } = site();
+const year = new Date().getFullYear();
+---
+<footer class="ct-footer">
+  <div class="ct-footer-grid">
+    <div class="ct-footer-brand">
+      <img src="/images/logo-footer.png" alt="CivicTechWR" width="82" height="98" />
+      <p class="ct-footer-tagline">{footer.tagline}</p>
+      <Button href={footer.button.url} variant="meadow-4">{footer.button.label}</Button>
+    </div>
+    {footer.groups.map((g) => (
+      <nav class="ct-footer-group" aria-label={g.title}>
+        <h2 class="ct-footer-h">{g.title}</h2>
+        <ul>{g.links.map((l) => <li><a href={l.url}>{l.label}</a></li>)}</ul>
+      </nav>
+    ))}
+  </div>
+  <div class="ct-footer-fine">
+    <span>© {year} {footer.copyright}</span>
+    {footer.badge && <span class="px">{footer.badge}</span>}
+  </div>
+</footer>

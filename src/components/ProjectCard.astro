@@ -1,0 +1,24 @@
+---
+import Window from './Window.astro';
+import Chip from './Chip.astro';
+import Button from './Button.astro';
+import type { Project } from '../lib/data';
+interface Props { project: Project; bar?: string }
+const { project: p, bar = 'meadow-1' } = Astro.props;
+const chipColors = ['meadow-4', 'meadow-2', 'meadow-1', 'cream'];
+---
+<Window title={p.status ?? 'Project'} bar={bar} as="article" class="ct-card">
+  {p.logo
+    ? <img class="ct-card-thumb" src={p.logo} alt={`${p.name} screenshot`} loading="lazy" />
+    : <div class="ct-photo-empty ct-card-thumb" role="img" aria-label="Photo to come"><span>PHOTO</span></div>}
+  <h3 class="ct-card-name">{p.name}</h3>
+  <p class="ct-card-desc">{p.summary ?? p.description}</p>
+  {p.needs?.length ? <>
+    <p class="ct-card-h">Help wanted</p>
+    <div class="ct-card-chips">{p.needs.map((n, i) => <Chip color={chipColors[i % 4]}>{n}</Chip>)}</div>
+  </> : null}
+  <div class="ct-card-actions">
+    {(p.url ?? p.github) && <a class="ct-link" href={p.url ?? p.github}>See the project</a>}
+    {p.fund && <Button href={p.fund} variant="meadow-4" size="sm">Fund this project</Button>}
+  </div>
+</Window>

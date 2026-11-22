@@ -1,0 +1,49 @@
+---
+// Renders a page's sections from Pages CMS, in the order editors set.
+// Content comes from the CMS; colours, tilts and decorations are design rules here.
+import type { Section } from '../content.config';
+import Hero from './sections/Hero.astro';
+import PageTitle from './sections/PageTitle.astro';
+import Explainer from './sections/Explainer.astro';
+import HackNight from './sections/HackNight.astro';
+import Season from './sections/Season.astro';
+import Projects from './sections/Projects.astro';
+import Gallery from './sections/Gallery.astro';
+import Cta from './sections/Cta.astro';
+import TextCta from './sections/TextCta.astro';
+import MediaText from './sections/MediaText.astro';
+import Text from './sections/Text.astro';
+import PostList, { type PostListContext } from './sections/PostList.astro';
+
+interface Props { sections: Section[]; posts?: PostListContext; titleOverride?: string }
+const { sections, posts, titleOverride } = Astro.props;
+
+const DEFAULT_BG: Record<Section['type'], string> = {
+  hero: 'cream', page_title: 'cream', explainer: 'paper', hack_night: 'cream', season: 'paper', projects: 'cream',
+  gallery: 'paper', cta: 'deep', text_cta: 'cream', media_text: 'paper', text: 'paper', post_list: 'paper',
+};
+const BG = { cream: 'cream', white: 'paper', deep: 'deep' } as const;
+const KICKERS = ['meadow-4', 'meadow-2', 'meadow-6'];
+let k = 0;
+const items = sections.map((s, i) => {
+  const bg = s.background === 'auto' ? DEFAULT_BG[s.type] : BG[s.background];
+  const hasKicker = 'kicker' in s && s.kicker && s.type !== 'hero' && s.type !== 'page_title';
+  return { s, bg, rule: i > 0, kickerColor: hasKicker ? KICKERS[k++ % KICKERS.length] : 'ink' };
+});
+---
+{items.map(({ s, bg, rule, kickerColor }) => {
+  switch (s.type) {
+    case 'hero': return <Hero s={s} bg={bg} rule={rule} />;
+    case 'page_title': return <PageTitle s={s} bg={bg} rule={rule} heading={titleOverride} />;
+    case 'explainer': return <Explainer s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'hack_night': return <HackNight s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'season': return <Season s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'projects': return <Projects s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'gallery': return <Gallery s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'cta': return <Cta s={s} bg={bg} rule={rule} />;
+    case 'text_cta': return <TextCta s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'media_text': return <MediaText s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'text': return <Text s={s} bg={bg} rule={rule} kickerColor={kickerColor} />;
+    case 'post_list': return posts ? <PostList s={s} bg={bg} rule={rule} ctx={posts} /> : null;
+  }
+})}

@@ -1,0 +1,28 @@
+---
+import Section from '../Section.astro'; import Window from '../Window.astro'; import Button from '../Button.astro'; import PostRow from '../PostRow.astro';
+import { slugify, type Post } from '../../lib/posts';
+import type { Section as S } from '../../content.config';
+export type PostListContext = { posts: Post[]; total: number; page: number; pages: number; activeTag?: string };
+interface Props { s: Extract<S, { type: 'post_list' }>; bg: string; rule: boolean; ctx: PostListContext }
+const { s, bg, rule, ctx } = Astro.props;
+const { posts, total, page, pages, activeTag } = ctx;
+const pageHref = (n: number) => (n === 1 ? '/blog/' : `/blog/page/${n}/`);
+---
+<Section bg={bg} border={rule}>
+  {s.filters.length > 0 && <nav aria-label="Filter posts by tag">
+    <ul class="filters">
+      <li><a href="/blog/" aria-current={!activeTag ? 'page' : undefined}>All posts</a></li>
+      {s.filters.map((f) => <li><a href={`/blog/tag/${slugify(f.tag)}/`} aria-current={activeTag === f.tag ? 'page' : undefined}>{f.label}</a></li>)}
+    </ul>
+  </nav>}
+  <Window title={activeTag ? `${slugify(activeTag)}.txt` : s.window_title} bar="meadow-4">
+    <ol class="ct-postlist">{posts.map((p) => <PostRow post={p} />)}</ol>
+  </Window>
+  <div class="pager">
+    <p style="margin: 0; font-size: 15px; color: var(--ink-muted);">{pages > 1 ? `Page ${page} of ${pages} · ${total} posts` : `${total} post${total === 1 ? '' : 's'}`}</p>
+    <div class="actions">
+      {page > 1 && <Button href={pageHref(page - 1)} variant="secondary">← Newer posts</Button>}
+      {page < pages && <Button href={pageHref(page + 1)} variant="secondary" arrow>Older posts</Button>}
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,11 @@
+---
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro';
+import { rich } from '../../lib/rich';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'text' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+---
+<Section bg={bg} border={rule}>
+  <div style="margin-bottom: 32px;"><SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle></div>
+  <div class="prose" set:html={rich(s.body)} />
+</Section>

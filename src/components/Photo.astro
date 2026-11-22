@@ -1,0 +1,10 @@
+---
+// A tilted, framed photo. Pass `src` + `alt`, or `placeholder` for a photo still to come.
+interface Props { src?: string; alt?: string; placeholder?: string; caption?: string; tilt?: 'left' | 'right'; wide?: boolean }
+const { src, alt = '', placeholder, caption, tilt = 'right', wide = false } = Astro.props;
+---
+<figure class:list={['ct-photo', wide && 'ct-photo--wide', tilt && `ct-photo--tilt-${tilt}`]}>
+  {src ? <img src={src} alt={alt} loading="lazy" decoding="async" />
+       : <div class="ct-photo-empty" role="img" aria-label={`Photo to come: ${placeholder}`}><span>PHOTO</span><span>{placeholder}</span></div>}
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

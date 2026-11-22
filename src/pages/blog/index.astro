@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import Sections from '../../components/Sections.astro';
+import { blogListing } from '../../lib/pages';
+const { blog, size, posts, pages } = await blogListing();
+---
+<Base title={blog.title} description={blog.description}>
+  <Sections sections={blog.sections} posts={{ posts: posts.slice(0, size), total: posts.length, page: 1, pages }} />
+</Base>

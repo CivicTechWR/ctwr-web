@@ -1,0 +1,29 @@
+---
+import Button from './Button.astro';
+import { fmt, LUMA_CALENDAR, type HackNight } from '../lib/luma';
+interface Props { event: HackNight; focus?: string; image?: string }
+const { event, focus, image = '/images/luma-cover.jpg' } = Astro.props;
+const doors = new Date(+event.start - 15 * 60_000);
+const time = `Doors ${fmt.time(doors).replace(/ [AP]M$/, '')} · ${fmt.time(event.start).replace(/ [AP]M$/, '')} – ${event.end ? fmt.time(event.end) : '8:00 PM'}`;
+const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location + ', ON')}`;
+---
+<article class="ct-win ct-event" aria-label={`Next hack night: ${fmt.long(event.start)}`}>
+  <div class="ct-win-bar ct-bar-meadow-4">
+    <span class="ct-win-title">Next hack night</span>
+    <span class="ct-win-btns" aria-hidden="true"><i></i><i></i><i></i></span>
+  </div>
+  <div class="ct-event-body">
+    <img class="ct-event-thumb" src={image} alt="" width="120" height="120" />
+    <div class="ct-event-info">
+      <h3 class="ct-event-title">{event.title}</h3>
+      <p class="ct-event-row"><b>Date </b>{fmt.long(event.start)}</p>
+      <p class="ct-event-row"><b>Time </b>{time}</p>
+      <p class="ct-event-row"><b>Where </b><a class="ct-link" href={map}>{event.location}</a></p>
+      {focus && <p class="ct-event-row"><b>Tonight </b>{focus}</p>}
+    </div>
+  </div>
+  <div class="ct-event-actions">
+    <Button href={event.url} arrow>Register on Luma</Button>
+    <a class="ct-link" href={LUMA_CALENDAR}>All hack nights on Luma</a>
+  </div>
+</article>

@@ -1,0 +1,12 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'meadow-4' | 'meadow-2' | 'ink';
+  size?: 'sm' | 'md' | 'lg';
+  arrow?: boolean;
+  class?: string;
+}
+const { href, variant = 'primary', size = 'md', arrow = false, class: cls } = Astro.props;
+const classes = ['ct-btn', `ct-btn-${variant}`, size !== 'md' && `ct-btn-${size}`, arrow && 'ct-btn-arrow', cls].filter(Boolean).join(' ');
+---
+{href ? <a href={href} class={classes}><slot /></a> : <button type="button" class={classes}><slot /></button>}

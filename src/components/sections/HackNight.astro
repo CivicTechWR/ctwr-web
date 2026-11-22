@@ -1,0 +1,27 @@
+---
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Window from '../Window.astro'; import Shape from '../Shape.astro'; import Photo from '../Photo.astro';
+import Agenda from '../Agenda.astro'; import EventCard from '../EventCard.astro';
+import { season as loadSeason, PHASES } from '../../lib/data';
+import { upcomingHackNights, LUMA_CALENDAR } from '../../lib/luma';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'hack_night' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+const [next] = await upcomingHackNights(1);
+const season = loadSeason();
+const phase = season.weeks[season.current_week - 1];
+---
+<Section bg={bg} border={rule} id="next-hack-night">
+  <div class="split split--top">
+    <div class="col" style="flex: 1 1 520px; gap: 20px;">
+      <SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle>
+      {s.intro && <p class="lead" style="margin-bottom: 16px; max-width: 560px;">{s.intro}</p>}
+      {s.agenda.length > 0 && <Agenda stops={s.agenda} />}
+    </div>
+    <div style="flex: 1 1 440px; display: flex; flex-direction: column; gap: 56px; padding-top: 8px;">
+      {next ? <EventCard event={next} focus={phase && `${PHASES[phase]} week`} />
+            : <Window title="Next hack night"><p style="margin: 0;">Between seasons. <a class="ct-link" href={LUMA_CALENDAR}>See what's next on Luma</a></p></Window>}
+      {s.image && <Photo src={s.image.src || undefined} alt={s.image.alt} placeholder={s.image.alt} tilt="left" />}
+    </div>
+  </div>
+  <Shape slot="deco" type="zigzag" size={0.7} at="bottom: 40px; right: 3%;" />
+</Section>

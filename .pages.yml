@@ -1,0 +1,470 @@
+---
+media:
+  input: public/images
+  output: /images
+  categories: [image]
+
+components:
+  button:
+    type: object
+    label: Button
+    fields:
+      - name: label
+        label: Label
+        type: string
+        required: true
+      - name: url
+        label: Link
+        type: string
+        required: true
+      - name: style
+        label: Style
+        type: select
+        default: primary
+        options:
+          values: [primary, secondary]
+  link:
+    type: object
+    label: Link
+    fields:
+      - name: label
+        label: Label
+        type: string
+        required: true
+      - name: url
+        label: Link
+        type: string
+        required: true
+  image:
+    type: object
+    label: Image
+    fields:
+      - name: src
+        label: Image (leave empty to show a "photo to come" placeholder)
+        type: image
+      - name: alt
+        label: Alt text (describe the photo for people who can't see it)
+        type: string
+
+content:
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/content/pages
+    filename: "{primary}.md"
+    view:
+      fields: [title]
+      primary: title
+    fields:
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: description
+        label: Description (for search engines and link previews)
+        type: text
+      - name: sections
+        label: Sections
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+          - name: hero
+            label: Hero (home page)
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: lines, label: Headline lines (up to 3), type: string, list: { max: 3 } }
+              - { name: intro, label: Intro, type: text }
+              - { name: buttons, label: Buttons, component: button, list: { max: 2 } }
+              - { name: image, label: Photo, component: image }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: page_title
+            label: Page title
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: intro, label: Intro, type: text }
+              - { name: image, label: Photo (optional), component: image }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: explainer
+            label: Video and bullets
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: body, label: Text, type: rich-text }
+              - { name: bullets, label: Bullet points (up to 3), type: string, list: { max: 3 } }
+              - name: video
+                label: Video
+                type: object
+                fields:
+                  - { name: title, label: Caption, type: string }
+                  - { name: url, label: Video link, type: string }
+                  - { name: poster, label: Poster image, type: image }
+                  - { name: status, label: Status badge, type: string }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: hack_night
+            label: Hack night agenda + next event
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: intro, label: Intro, type: text }
+              - name: agenda
+                label: Agenda
+                type: object
+                list: true
+                fields:
+                  - { name: time, label: Time (PM), type: string, required: true }
+                  - { name: title, label: Title, type: string, required: true }
+                  - { name: text, label: Description, type: string }
+                  - name: icon
+                    label: Icon
+                    type: select
+                    options:
+                      values: [pizza, megaphone, list, laptop, flag, chat]
+                  - { name: optional, label: Optional, type: boolean }
+              - { name: image, label: Photo, component: image }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: season
+            label: Season tracker + upcoming nights
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: lead, label: Lead sentence, type: string }
+              - { name: body, label: Text, type: rich-text }
+              - { name: link, label: Link, component: link }
+              - { name: image, label: Photo, component: image }
+              - { name: caption, label: Photo caption, type: string }
+              - { name: upcoming_heading, label: Upcoming nights heading, type: string }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: projects
+            label: Projects that need help
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: button, label: Button, component: link }
+              - { name: limit, label: How many projects, type: number, default: 3 }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: gallery
+            label: Photo gallery
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: button, label: Button, component: link }
+              - { name: window_title, label: Window title, type: string }
+              - { name: images, label: Photos, component: image, list: { max: 8 } }
+              - { name: link, label: Photos link to, type: string }
+              - { name: note, label: Small note under the photos, type: string }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: cta
+            label: Call to action band
+            fields:
+              - { name: heading, label: Heading (Enter for a new line), type: text, required: true }
+              - { name: body, label: Text, type: rich-text }
+              - { name: buttons, label: Buttons, component: button, list: { max: 2 } }
+              - name: card
+                label: Side card
+                type: object
+                fields:
+                  - { name: title, label: Window title, type: string }
+                  - { name: heading, label: Heading, type: string }
+                  - { name: body, label: Text, type: rich-text }
+                  - { name: button, label: Button, component: button }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: text_cta
+            label: Text with a button
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: body, label: Text, type: rich-text }
+              - { name: button, label: Button, component: button }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: media_text
+            label: Photo and text
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: body, label: Text, type: rich-text }
+              - { name: image, label: Photo, component: image }
+              - name: image_side
+                label: Photo side
+                type: select
+                default: right
+                options:
+                  values: [left, right]
+              - { name: buttons, label: Buttons, component: button, list: { max: 2 } }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: text
+            label: Text
+            fields:
+              - { name: kicker, label: Kicker, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: body, label: Text, type: rich-text, required: true }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+          - name: post_list
+            label: Blog post list (blog page only)
+            fields:
+              - { name: window_title, label: Window title, type: string }
+              - { name: page_size, label: Posts per page, type: number, default: 8 }
+              - name: filters
+                label: Filter buttons
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: tag, label: Tag it filters by, type: string, required: true }
+              - name: background
+                label: Background
+                type: select
+                default: auto
+                options:
+                  values: [auto, cream, white, deep]
+
+  - name: site
+    label: Site settings
+    type: file
+    path: _data/site.yml
+    format: yaml
+    fields:
+      - { name: header_button, label: Header button, component: link }
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - { name: tagline, label: Tagline, type: text }
+          - { name: button, label: Button, component: link }
+          - name: groups
+            label: Link columns
+            type: object
+            list: { max: 4 }
+            fields:
+              - { name: title, label: Column title, type: string }
+              - { name: links, label: Links, component: link, list: true }
+          - { name: copyright, label: Copyright name, type: string }
+          - { name: badge, label: Badge text, type: string }
+      - { name: luma_calendar, label: Luma calendar link, type: string }
+
+  - name: blog
+    label: Blog posts
+    type: collection
+    path: src/content/blog
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date, tags]
+      primary: title
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: author
+        label: Author
+        type: string
+      - name: summary
+        label: Summary (1–2 sentences for the blog list; leave empty to use the first paragraph)
+        type: text
+      - name: tags
+        label: Tags
+        type: select
+        list: true
+        options:
+          creatable: true
+          values: [Recap, Guest speaker, Talk, Pitch night, Planning, Project updates, Project story, Showcase, Methods, Projects, In the news, News, Events]
+      - name: image
+        label: Cover image
+        type: image
+      - name: season
+        label: Season
+        type: number
+      - name: week
+        label: Week
+        type: number
+      - name: discourse_url
+        label: Discourse thread
+        type: string
+      - name: draft
+        label: Draft (hide from the site)
+        type: boolean
+        default: false
+      - name: body
+        label: Post
+        type: rich-text
+
+  - name: season
+    label: This season
+    type: file
+    path: _data/season.yml
+    format: yaml
+    fields:
+      - name: name
+        label: Season name
+        type: string
+        required: true
+      - name: current_week
+        label: Current week (bump each Wednesday)
+        type: number
+        required: true
+      - name: weeks
+        label: Week-by-week phases
+        type: select
+        list: true
+        options:
+          values: [pitch, ideation, planning, build, user, finish, prep, showcase]
+      - name: notes
+        label: Notes for upcoming hack nights
+        type: object
+        list: true
+        fields:
+          - name: week
+            label: Week
+            type: number
+          - name: text
+            label: Note
+            type: text
+
+
+  - name: projects
+    label: Featured projects
+    type: file
+    path: _data/projects.yml
+    format: yaml
+    list: true
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+      - name: logo
+        label: Logo
+        type: image
+      - name: url
+        label: Website
+        type: string
+      - name: github
+        label: GitHub repo
+        type: string
+      - name: year
+        label: Years
+        type: number
+        list: true
+      - name: role
+        label: Our role
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: status
+        label: Status label (shown on the card)
+        type: string
+      - name: summary
+        label: Short summary (one sentence, for cards)
+        type: text
+      - name: needs
+        label: Help wanted (shows the project under "Projects that need you")
+        type: string
+        list: true
+      - name: fund
+        label: Funding link
+        type: string
+
+  - name: partners
+    label: Partners
+    type: file
+    path: _data/partners.yml
+    format: yaml
+    list: true
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: logo
+        label: Logo
+        type: image
+        path: sponsors
+      - name: current
+        label: Current partner
+        type: boolean
+
+  - name: navigation
+    label: Navigation menu
+    type: file
+    path: _data/navigation.yml
+    format: yaml
+    list: true
+    fields:
+      - name: text
+        label: Label
+        type: string
+        required: true
+      - name: url
+        label: Link
+        type: string
+        required: true

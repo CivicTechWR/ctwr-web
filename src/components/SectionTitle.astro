@@ -1,0 +1,9 @@
+---
+import Tag from './Tag.astro';
+interface Props { kicker?: string; kickerColor?: string; as?: 'h2' | 'h3' }
+const { kicker, kickerColor = 'meadow-4', as: H = 'h2' } = Astro.props;
+---
+<div class="sec-head">
+  {kicker && <Tag color={kickerColor}>{kicker}</Tag>}
+  <H class="sec-title"><slot /></H>
+</div>

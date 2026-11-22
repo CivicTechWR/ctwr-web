@@ -1,0 +1,21 @@
+---
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Button from '../Button.astro'; import Window from '../Window.astro'; import Shape from '../Shape.astro';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'gallery' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+const isInsta = (s.button?.url ?? '').includes('instagram.com');
+---
+<Section bg={bg} border={rule}>
+  <div class="row-between">
+    <SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle>
+    {s.button && <Button href={s.button.url} variant="secondary">
+      {isInsta && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>}
+      {s.button.label}
+    </Button>}
+  </div>
+  <Window title={s.window_title ?? 'photos'} bar="meadow-2">
+    <ul class="insta">{s.images.filter((im) => im.src).map((im) => <li>{s.link ? <a href={s.link}><img src={im.src} alt={im.alt} loading="lazy" /></a> : <span class="insta-tile"><img src={im.src} alt={im.alt} loading="lazy" /></span>}</li>)}</ul>
+  </Window>
+  {s.note && <p class="note">{s.note}</p>}
+  <Shape slot="deco" type="squiggle" size={0.7} at="top: 48px; right: 30%;" />
+</Section>

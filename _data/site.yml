@@ -1,0 +1,41 @@
+# Site-wide settings, edited in Pages CMS under "Site settings".
+header_button:
+  label: Donate
+  url: /get-involved/#donate
+footer:
+  tagline: Neighbours solving local problems with design and technology since 2017.
+  button:
+    label: Donate
+    url: /get-involved/#donate
+  groups:
+    - title: Get involved
+      links:
+        - label: Come to a hack night
+          url: /get-involved/#first-hack-night
+        - label: Join a project
+          url: /projects/
+        - label: Bring us a problem
+          url: /get-involved/#bring-a-problem
+        - label: Hack nights on Luma
+          url: https://luma.com/civictechwr
+    - title: About
+      links:
+        - label: About us
+          url: /about/
+        - label: Projects
+          url: /projects/
+        - label: Resources
+          url: /resources/
+        - label: Blog
+          url: /blog/
+        - label: Partners
+          url: /about/#partners
+    - title: Contact
+      links:
+        - label: civictechwr@gmail.com
+          url: mailto:civictechwr@gmail.com
+        - label: Open Collective
+          url: https://opencollective.com/civic-tech-waterloo-region
+  copyright: CivicTech Waterloo Region
+  badge: HACK NIGHT • WED 6PM
+luma_calendar: https://luma.com/civictechwr

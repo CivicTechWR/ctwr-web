@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import Sections from '../components/Sections.astro';
+import { page } from '../lib/pages';
+const home = await page('home');
+---
+<Base title="Home" description={home.description}>
+  <Sections sections={home.sections} />
+</Base>

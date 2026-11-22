@@ -1,0 +1,27 @@
+---
+import Button from './Button.astro';
+import { navigation, site } from '../lib/data';
+const nav = navigation();
+const { header_button } = site();
+const path = Astro.url.pathname;
+const isCurrent = (url: string) => (url === '/' ? path === '/' : path.startsWith(url));
+---
+<header class="ct-header site-header" data-open="false">
+  <a class="ct-header-logo" href="/"><img src="/images/logo-header.png" alt="CivicTechWR home" width="142" height="52" /></a>
+  <nav class="ct-nav" id="site-nav" aria-label="Main">
+    {nav.map((n) => <a href={n.url} aria-current={isCurrent(n.url) ? 'page' : undefined}>{n.text}</a>)}
+  </nav>
+  <button class="ct-menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">MENU</button>
+  <Button href={header_button.url}>{header_button.label}</Button>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const btn = header?.querySelector<HTMLButtonElement>('.ct-menu-btn');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'CLOSE' : 'MENU';
+    header!.dataset.open = String(open);
+  });
+</script>

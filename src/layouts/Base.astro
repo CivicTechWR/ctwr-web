@@ -1,0 +1,30 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '@fontsource/archivo-black/400.css';
+import '@fontsource-variable/dm-sans/opsz.css';
+import '@fontsource/silkscreen/400.css';
+import '../styles/tokens.css';
+import '../styles/components.css';
+import '../styles/site.css';
+
+interface Props { title: string; description?: string }
+const { title, description = 'Free weekly hack nights where anyone can use design and technology to work on local problems in Waterloo Region.' } = Astro.props;
+const fullTitle = title === 'Home' ? 'CivicTechWR · Local issues + skilled volunteers' : `${title} · CivicTechWR`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" type="image/png" href="/images/logo-footer.png" />
+  </head>
+  <body>
+    <SiteHeader />
+    <main><slot /></main>
+    <SiteFooter />
+  </body>
+</html>

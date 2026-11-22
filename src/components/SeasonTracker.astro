@@ -1,0 +1,25 @@
+---
+import { PHASES, type Season } from '../lib/data';
+interface Props { season: Season }
+const { season } = Astro.props;
+const { weeks, current_week: now } = season;
+const order = [...new Set(weeks)];
+---
+<section class="ct-season" aria-label="Season tracker">
+  <div class="ct-win-bar ct-bar-meadow-4">
+    <span class="ct-win-title">{season.name}</span>
+    <span class="ct-win-btns" aria-hidden="true"><i></i><i></i><i></i></span>
+  </div>
+  <p class="ct-season-now">This week: Week {now} of {weeks.length} — {PHASES[weeks[now - 1]]}</p>
+  <ol class="ct-season-track" style={`--weeks: ${weeks.length}`}>
+    {weeks.map((w, i) => (
+      <li class="ct-season-wk" data-phase={w} data-done={String(i + 1 < now)} data-now={String(i + 1 === now)}>
+        <span class="ct-season-num" aria-hidden="true">{i + 1}</span>
+        <span class="ct-sr">Week {i + 1}: {PHASES[w]}{i + 1 === now ? ' (this week)' : ''}</span>
+      </li>
+    ))}
+  </ol>
+  <ul class="ct-season-legend" aria-hidden="true">
+    {order.map((k) => <li><b class="ct-season-swatch" data-phase={k}></b>{PHASES[k]}</li>)}
+  </ul>
+</section>

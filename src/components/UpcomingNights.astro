@@ -1,0 +1,31 @@
+---
+// "Coming up on Wednesdays": next Luma events, labelled with this season's week and phase.
+import { PHASES, type Season } from '../lib/data';
+import { fmt, type HackNight } from '../lib/luma';
+interface Props { events: HackNight[]; season: Season }
+const { events, season } = Astro.props;
+const BG: Record<string, string> = { pitch: 'meadow-2', ideation: 'meadow-3', planning: 'meadow-4', build: 'meadow-5', user: 'meadow-6', finish: 'meadow-7', prep: 'meadow-8', showcase: 'meadow-10' };
+const DARK = ['meadow-8', 'meadow-9', 'meadow-10'];
+const nights = events.map((e, i) => {
+  const week = season.current_week + i;
+  const phase = season.weeks[week - 1];
+  return { e, week, phase, now: i === 0, note: season.notes?.find((n) => n.week === week)?.text };
+});
+---
+<ol class="ct-nights">
+  {nights.map(({ e, week, phase, now, note }) => {
+    const bg = phase ? BG[phase] : 'meadow-1';
+    return (
+      <li class="ct-night" data-now={now ? 'true' : undefined}>
+        <div class="ct-night-top" style={`background: var(--${bg});${DARK.includes(bg) ? ' color: #fff;' : ''}`}>
+          <span>{now ? 'This week' : phase ? `Week ${week}` : 'Next season'}</span><span>{phase ? PHASES[phase] : 'Hack night'}</span>
+        </div>
+        <div class="ct-night-body">
+          <p class="ct-night-date">{fmt.short(e.start)}</p>
+          {note && <p class="ct-night-text">{note}</p>}
+          <a class="ct-link" href={e.url}>RSVP on Luma</a>
+        </div>
+      </li>
+    );
+  })}
+</ol>

@@ -1,0 +1,11 @@
+---
+interface Props { title: string; bar?: string; as?: 'section' | 'article' | 'div'; class?: string; label?: string }
+const { title, bar = 'meadow-4', as: Tag = 'section', class: cls, label } = Astro.props;
+---
+<Tag class:list={['ct-win', cls]} aria-label={label}>
+  <div class={`ct-win-bar ct-bar-${bar}`}>
+    <span class="ct-win-title">{title}</span>
+    <span class="ct-win-btns" aria-hidden="true"><i></i><i></i><i></i></span>
+  </div>
+  <div class="ct-win-body"><slot /></div>
+</Tag>

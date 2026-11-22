@@ -1,0 +1,32 @@
+---
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Shape from '../Shape.astro'; import Photo from '../Photo.astro';
+import SeasonTracker from '../SeasonTracker.astro'; import UpcomingNights from '../UpcomingNights.astro';
+import { season as loadSeason } from '../../lib/data';
+import { upcomingHackNights, LUMA_CALENDAR } from '../../lib/luma';
+import { rich } from '../../lib/rich';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'season' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+const season = loadSeason();
+const nights = await upcomingHackNights(4);
+---
+<Section bg={bg} border={rule}>
+  <div style="margin-bottom: 40px;"><SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle></div>
+  <div class="split" style="gap: 32px 56px; margin: -8px 0 48px;">
+    <div class="col" style="flex: 1 1 480px; gap: 16px;">
+      {s.lead && <p style="margin: 0; font-weight: 700; font-size: 20px;">{s.lead}</p>}
+      {s.body && <div class="rt" set:html={rich(s.body)} />}
+      {s.link && <a href={s.link.url} class="ct-link">{s.link.label}</a>}
+    </div>
+    {s.image && <div style="flex: 0 1 440px;"><Photo src={s.image.src || undefined} alt={s.image.alt} placeholder={s.image.alt} caption={s.caption} wide /></div>}
+  </div>
+  <SeasonTracker season={season} />
+  {nights.length > 0 && <>
+    <div class="row-between" style="align-items: baseline; margin: 64px 0 28px;">
+      <h3 class="sub-title">{s.upcoming_heading}</h3>
+      <a class="ct-link" href={LUMA_CALENDAR}>All hack nights on Luma</a>
+    </div>
+    <UpcomingNights events={nights} season={season} />
+  </>}
+  <Shape slot="deco" type="zigzag" size={0.8} at="top: 40px; right: 0;" />
+</Section>

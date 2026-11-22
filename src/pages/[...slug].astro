@@ -1,0 +1,13 @@
+---
+// Any page created in Pages CMS (src/content/pages/<slug>.md) gets a URL: /<slug>/
+import Base from '../layouts/Base.astro';
+import Sections from '../components/Sections.astro';
+import { otherPages } from '../lib/pages';
+export async function getStaticPaths() {
+  return (await otherPages()).map((p) => ({ params: { slug: p.id }, props: { data: p.data } }));
+}
+const { data } = Astro.props;
+---
+<Base title={data.title} description={data.description}>
+  <Sections sections={data.sections} />
+</Base>

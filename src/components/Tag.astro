@@ -1,0 +1,5 @@
+---
+interface Props { color?: string }
+const { color = 'ink' } = Astro.props;
+---
+<span class={`ct-tag ct-tag-${color}`}><slot /></span>

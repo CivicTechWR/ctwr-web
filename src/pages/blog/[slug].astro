@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import Shape from '../../components/Shape.astro';
+import PostRow from '../../components/PostRow.astro';
+import { render } from 'astro:content';
+import { allPosts, formatDate, slugify, summaryOf, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  return posts.map((post, i) => ({ params: { slug: post.id }, props: { post, newer: posts[i - 1], older: posts[i + 1] } }));
+}
+interface Props { post: Post; newer?: Post; older?: Post }
+const { post, newer, older } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+---
+<Base title={d.title} description={summaryOf(post)}>
+  <Section border={false}>
+    <div class="post-head">
+      <a class="back" href="/blog/">← All posts</a>
+      <h1 class="post-h1">{d.title}</h1>
+      <div class="post-meta">
+        <time datetime={d.date.toISOString().slice(0, 10)}>{formatDate(d.date)}</time>
+        {d.author && <><span aria-hidden="true">·</span><span>By {d.author}</span></>}
+        {d.tags.length > 0 && <><span aria-hidden="true">·</span>
+          <ul class="ct-tags" aria-label="Tags">{d.tags.map((t) => <li><a class="ct-tag-sm" href={`/blog/tag/${slugify(t)}/`}>{t}</a></li>)}</ul></>}
+      </div>
+    </div>
+    {d.image && <figure class="ct-photo ct-photo--wide ct-photo--tilt-left post-cover"><img src={d.image} alt="" /></figure>}
+    <Shape slot="deco" type="squiggle" size={0.8} at="top: 48px; right: 6%;" />
+  </Section>
+  <Section bg="paper">
+    <article class="prose"><Content /></article>
+    {d.discourse_url && <p class="note">Discuss this recap on <a href={d.discourse_url}>Discourse</a>.</p>}
+  </Section>
+  {(newer || older) && (
+    <Section>
+      <h2 class="sec-title" style="margin-bottom: 24px; font-size: 28px;">More from the blog</h2>
+      <ol class="ct-postlist">{[older, newer].filter((p): p is Post => !!p).map((p) => <PostRow post={p} />)}</ol>
+      <div style="margin-top: 32px;"><Button href="/blog/" variant="secondary" arrow>All posts</Button></div>
+    </Section>
+  )}
+</Base>

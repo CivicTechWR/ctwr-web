@@ -1,0 +1,17 @@
+---
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Button from '../Button.astro'; import Shape from '../Shape.astro';
+import { rich } from '../../lib/rich';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'text_cta' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+---
+<Section bg={bg} border={rule}>
+  <div class="split" style="gap: 32px; justify-content: space-between;">
+    <div class="col" style="flex: 1 1 520px; gap: 20px;">
+      <SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle>
+      {s.body && <div class="rt" style="max-width: 600px;" set:html={rich(s.body)} />}
+    </div>
+    {s.button && <div><Button href={s.button.url} variant={s.button.style} size="lg" arrow>{s.button.label}</Button></div>}
+  </div>
+  <Shape slot="deco" type="zigzag" size={0.7} at="top: 40px; right: 30%;" />
+</Section>

@@ -1,0 +1,18 @@
+---
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Button from '../Button.astro'; import Photo from '../Photo.astro';
+import { rich } from '../../lib/rich';
+import type { Section as S } from '../../content.config';
+interface Props { s: Extract<S, { type: 'media_text' }>; bg: string; rule: boolean; kickerColor: string }
+const { s, bg, rule, kickerColor } = Astro.props;
+const left = s.image_side === 'left';
+---
+<Section bg={bg} border={rule}>
+  <div class="split">
+    <div class="col" style={`flex: 1 1 480px; order: ${left ? 2 : 1};`}>
+      <SectionTitle kicker={s.kicker} kickerColor={kickerColor}>{s.heading}</SectionTitle>
+      {s.body && <div class="rt" style="max-width: 600px;" set:html={rich(s.body)} />}
+      {s.buttons.length > 0 && <div class="actions">{s.buttons.map((b) => <Button href={b.url} variant={b.style}>{b.label}</Button>)}</div>}
+    </div>
+    {s.image && <div style={`flex: 0 1 460px; order: ${left ? 1 : 2};`}><Photo src={s.image.src || undefined} alt={s.image.alt} placeholder={s.image.alt} tilt={left ? 'left' : 'right'} /></div>}
+  </div>
+</Section>

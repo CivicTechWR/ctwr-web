@@ -1,0 +1,32 @@
+---
+import type { Section } from '../content.config';
+type Stop = Extract<Section, { type: 'hack_night' }>['agenda'][number];
+interface Props { stops: Stop[] }
+const { stops } = Astro.props;
+// Badge colours are a design rule, not content: they cycle through the palette.
+const COLORS = ['meadow-2', 'meadow-4', 'meadow-1', 'meadow-6', 'meadow-4'];
+const ICONS: Record<string, string[]> = {
+  pizza: ['M4.5 7.5c4.6-3 10.4-3 15 0L12 21.5z', 'M6.3 10.6c3.6-2 7.8-2 11.4 0'],
+  megaphone: ['m3 11 18-5v12L3 14v-3z', 'M11.6 16.8a3 3 0 1 1-5.8-1.6'],
+  laptop: ['M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.3 2.6a1 1 0 0 1-.9 1.4H3.6a1 1 0 0 1-.9-1.4L4 16'],
+  flag: ['M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z', 'M4 22v-7'],
+  list: ['M9 6h11', 'M9 12h11', 'M9 18h11', 'M4.5 6h.01', 'M4.5 12h.01', 'M4.5 18h.01'],
+  chat: ['M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 21l2-5.6A8.4 8.4 0 1 1 21 11.5z'],
+};
+---
+<div class="ct-agenda ct-agenda--vertical">
+  <ol class="ct-agenda-stops" style={`--stops: ${stops.length}`}>
+    {stops.map((s, i) => (
+      <li class:list={['ct-agenda-stop', s.optional && 'is-optional']}>
+        <span class="ct-agenda-badge" style={`background: var(--${s.optional ? 'paper' : COLORS[i % COLORS.length]})`}>
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            {(ICONS[s.icon] ?? []).map((d) => <path d={d} />)}
+          </svg>
+        </span>
+        <span class="ct-agenda-time">{s.time}{s.optional ? ' PM – late' : ' PM'}</span>
+        <span class="ct-agenda-title">{s.title}{s.optional && <span class="ct-agenda-opt">Optional</span>}</span>
+        {s.text && <span class="ct-agenda-text">{s.text}</span>}
+      </li>
+    ))}
+  </ol>
+</div>
