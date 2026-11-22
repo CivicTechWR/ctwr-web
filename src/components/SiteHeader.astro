@@ -11,7 +11,7 @@ const isCurrent = (url: string) => (url === '/' ? path === '/' : path.startsWith
   <nav class="ct-nav" id="site-nav" aria-label="Main">
     {nav.map((n) => <a href={n.url} aria-current={isCurrent(n.url) ? 'page' : undefined}>{n.text}</a>)}
   </nav>
-  <button class="ct-menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">MENU</button>
+  <button class="ct-menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
   <Button href={header_button.url}>{header_button.label}</Button>
 </header>
 
@@ -21,7 +21,7 @@ const isCurrent = (url: string) => (url === '/' ? path === '/' : path.startsWith
   btn?.addEventListener('click', () => {
     const open = btn.getAttribute('aria-expanded') !== 'true';
     btn.setAttribute('aria-expanded', String(open));
-    btn.textContent = open ? 'CLOSE' : 'MENU';
+    btn.textContent = open ? 'Close' : 'Menu';
     header!.dataset.open = String(open);
   });
 </script>
