@@ -78,7 +78,10 @@ components:
         default: none
         options:
           values: [none, ledger, donate]
-      - { name: button, label: Button, component: button }
+      - name: button
+        label: Button
+        component: button
+        required: false
       - { name: note, label: Small note at the bottom, type: string }
 
 content:

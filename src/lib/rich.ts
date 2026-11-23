@@ -1,9 +1,13 @@
-// Rich-text fields from Pages CMS are saved as HTML. Plain text (hand-edited
-// YAML) is wrapped in a paragraph so both render the same way.
+import { marked } from 'marked';
+
+// Pages CMS rich-text is Markdown. Older notes were saved as HTML, so those
+// are left as-is. Everything else is rendered to HTML.
+const HTML_BLOCK = /^<(p|ul|ol|h\d|div|blockquote)[\s>]/i;
 export const rich = (v?: string) => {
   if (!v) return '';
   const t = v.trim();
-  return /^<(p|ul|ol|h\d|div|blockquote)[\s>]/i.test(t) ? t : t.split(/\n\s*\n/).map((p) => `<p>${p}</p>`).join('');
+  if (HTML_BLOCK.test(t)) return t;
+  return marked.parse(t, { async: false });
 };
 // One-line text (list items): escapes HTML, then allows **bold** and [links](/url).
 export const inline = (v: string) =>
