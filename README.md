@@ -36,7 +36,7 @@ All the words on the site live in Pages CMS. The code decides how things look; t
 | Hacknight agenda + next event | The timeline (editable stops) beside the next Luma event, or beside a side card |
 | Season tracker | Text and photo, a link, and the 16-week tracker |
 | Projects that need help | Cards for projects with *Help wanted* skills |
-| Photo gallery | A window of photos (used for Instagram) |
+| Photo gallery | A window of photos. On Instagram links, the latest posts (needs `INSTAGRAM_ACCESS_TOKEN` at build time; otherwise the photos in the section) |
 | Call to action band | Big heading, buttons and an optional side card |
 | Text with a button | A heading, a paragraph and one button |
 | Photo and text | General purpose: heading, big statement, list, rich text, photo left or right, buttons, and an optional side card |
@@ -65,9 +65,10 @@ Every section has a **Background** option (auto, cream, white, deep blue) and an
 | `src/components/Sections.astro` | Renders a page's sections in order and applies the design rules |
 | `src/components/` | Design-system components (Button, Window, EventCard, SeasonTracker, ProjectCard…) |
 | `src/styles/` | `tokens.css` and `components.css` from the CivicTechWR design system; `site.css` for layout |
-| `src/lib/luma.ts` | Upcoming hacknights from the Luma iCal feed at build time, with a fallback list |
+| `src/lib/luma.ts` | The next hacknight from the Luma iCal feed at build time. The card is omitted when nothing is upcoming |
 | `src/lib/projects.ts` | Projects and their updates |
 | `src/lib/opencollective.ts` | Open Collective figures at build time |
+| `src/lib/instagram.ts` | Latest Instagram posts at build time, with the section's photos as a fallback |
 | `src/pages/projects/[slug].astro` | The project page template |
 | `.pages.yml` | Pages CMS config, with reusable `button`, `link`, `image`, `card`, `background`, `anchor` and `list_style` components |
 
@@ -88,5 +89,4 @@ This demo lives on the `astro-demo` branch of `CivicTechWR/ctwr-web` and has no 
 ## Not in this demo
 
 - A weekly page listing every project's updates by date.
-- A live Instagram feed (needs an API token at build time; the home page shows sample posts).
 - The explainer video (placeholder).

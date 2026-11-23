@@ -1,9 +1,9 @@
 ---
-import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Window from '../Window.astro'; import Shape from '../Shape.astro'; import Photo from '../Photo.astro';
+import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Shape from '../Shape.astro'; import Photo from '../Photo.astro';
 import Agenda from '../Agenda.astro'; import EventCard from '../EventCard.astro'; import InfoCard from '../InfoCard.astro'; import Button from '../Button.astro';
 import { rich } from '../../lib/rich';
 import { season as loadSeason, PHASES } from '../../lib/data';
-import { upcomingHackNights, LUMA_CALENDAR } from '../../lib/luma';
+import { upcomingHackNights } from '../../lib/luma';
 import type { Section as S } from '../../content.config';
 interface Props { s: Extract<S, { type: 'hack_night' }>; bg: string; rule: boolean; kickerColor: string }
 const { s, bg, rule, kickerColor } = Astro.props;
@@ -20,8 +20,7 @@ const phase = season.weeks[season.current_week - 1];
     </div>
     <div style="flex: 1 1 440px; display: flex; flex-direction: column; gap: 32px; padding-top: 8px;">
       {s.card ? <InfoCard card={s.card} />
-        : next ? <EventCard event={next} focus={phase && `${PHASES[phase]} week`} />
-        : <Window title="Next hacknight"><p style="margin: 0;">Between seasons. <a class="ct-link" href={LUMA_CALENDAR}>See what's next on Luma</a></p></Window>}
+        : next && <EventCard event={next} focus={phase && `${PHASES[phase]} week`} />}
       {(s.details || s.button) && <div class="col" style="gap: 16px;">
         {s.details && <div class="rt" set:html={rich(s.details)} />}
         {s.button && <Button href={s.button.url} variant={s.button.style} arrow>{s.button.label}</Button>}

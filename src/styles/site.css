@@ -38,9 +38,10 @@ a:hover { color: var(--ink); }
 .video-play { position: relative; width: 96px; height: 96px; border-radius: 999px; background: var(--meadow-4); border: var(--border) solid var(--ink); box-shadow: var(--shadow-md); display: grid; place-items: center; }
 .video-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 14px; font-size: 15px; font-weight: 500; }
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: start; }
-.insta { margin: 0; padding: 4px 6px 10px 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; }
-.insta a { display: block; border: var(--border) solid var(--ink); box-shadow: var(--shadow-md); background: var(--meadow-1); }
-.insta img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.insta { margin: 0; padding: 4px 6px 10px 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; align-items: start; }
+.insta :is(a, .insta-tile) { display: flex; flex-direction: column; gap: 10px; color: var(--ink); text-decoration: none; }
+.insta img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: var(--border) solid var(--ink); box-shadow: var(--shadow-md); background: var(--meadow-1); }
+.insta-text { margin: 0; font-size: 15px; font-weight: 500; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; }
 
 .cta-title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 5vw, 60px); line-height: 1; letter-spacing: -1px; }
 .band--deep p { color: var(--on-dark); }
@@ -90,7 +91,7 @@ a.ct-tag-sm:hover { color: var(--ink); border-color: var(--ink); }
 .rt > :first-child { margin-top: 0; } .rt > :last-child { margin-bottom: 0; }
 .rt p { margin: 0 0 .8em; }
 .sub-title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.15; }
-.insta-tile { display: block; border: var(--border) solid var(--ink); box-shadow: var(--shadow-md); }
+.insta-tile { display: flex; }
 
 /* Section header: kicker, heading, intro */
 .sec-header { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 40px; }

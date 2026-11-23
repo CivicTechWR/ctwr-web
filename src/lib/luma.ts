@@ -1,6 +1,6 @@
 // Upcoming hacknights from the public Luma iCal feed, fetched once at build time.
-// Port of _plugins/fetch_luma_event.rb. If the feed can't be reached, the
-// fallback list below is used, so a build never fails because of Luma.
+// Port of _plugins/fetch_luma_event.rb. If the feed can't be reached, or it has
+// no future events, callers get an empty list and the next-hacknight card stays hidden.
 // Rebuild the site on a schedule (see .github/workflows/deploy.yml) to keep it fresh.
 
 const LUMA_ICAL_URL = 'https://api2.luma.com/ics/get?entity=calendar&id=cal-BVpgpDCgYaCqcPx';
@@ -14,13 +14,6 @@ export type HackNight = {
   location: string;
   url: string;
 };
-
-const FALLBACK: HackNight[] = [
-  { title: 'CivicTechWR Hacknight', start: new Date('2026-11-25T18:00:00-05:00'), end: new Date('2026-11-25T20:00:00-05:00'), location: '165 King St W, Kitchener', url: 'https://luma.com/1b6nuekm' },
-  { title: 'CivicTechWR Hacknight', start: new Date('2026-12-02T18:00:00-05:00'), end: new Date('2026-12-02T20:00:00-05:00'), location: '165 King St W, Kitchener', url: 'https://luma.com/831us592' },
-  { title: 'CivicTechWR Hacknight', start: new Date('2026-12-09T18:00:00-05:00'), end: new Date('2026-12-09T20:00:00-05:00'), location: '165 King St W, Kitchener', url: 'https://luma.com/t5upy7ig' },
-  { title: 'Season 9 Project Showcase', start: new Date('2026-12-16T18:00:00-05:00'), end: new Date('2026-12-16T20:00:00-05:00'), location: '165 King St W, Kitchener', url: 'https://luma.com/g2mjtlxp' },
-];
 
 function unfold(ics: string) {
   return ics.replace(/\r?\n[ \t]/g, '');
@@ -63,12 +56,10 @@ export function upcomingHackNights(count = 4, now = new Date()): Promise<HackNig
     try {
       const res = await fetch(LUMA_ICAL_URL, { signal: AbortSignal.timeout(8000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const events = parseIcal(await res.text());
-      if (!events.length) throw new Error('no events in feed');
-      return events;
+      return parseIcal(await res.text());
     } catch (e) {
-      console.warn(`[luma] Using fallback events (${(e as Error).message})`);
-      return FALLBACK;
+      console.warn(`[luma] No upcoming events (${(e as Error).message})`);
+      return [];
     }
   })();
   return cache.then((all) =>

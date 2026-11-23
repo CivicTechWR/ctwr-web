@@ -3,6 +3,11 @@ dist/
 preview/
 .astro/
 .DS_Store
+.env
+.env.*
+
+# Instagram photos saved while developing. The build writes these into dist/.
+public/instagram/
 
 # Design mockups (local reference only)
 CivicTechWR Website Mockups*/

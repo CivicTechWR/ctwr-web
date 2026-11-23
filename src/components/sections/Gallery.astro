@@ -1,9 +1,14 @@
 ---
 import Section from '../Section.astro'; import SectionTitle from '../SectionTitle.astro'; import Button from '../Button.astro'; import Window from '../Window.astro'; import Shape from '../Shape.astro';
+import { latestInstagramPosts } from '../../lib/instagram';
 import type { Section as S } from '../../content.config';
 interface Props { s: Extract<S, { type: 'gallery' }>; bg: string; rule: boolean; kickerColor: string }
 const { s, bg, rule, kickerColor } = Astro.props;
 const isInsta = (s.button?.url ?? '').includes('instagram.com');
+const live = isInsta || (s.link ?? '').includes('instagram.com') ? await latestInstagramPosts(4) : [];
+const photos = live.length
+  ? live
+  : s.images.filter((im) => im.src).map((im) => ({ src: im.src, alt: im.alt, href: s.link, text: undefined }));
 ---
 <Section bg={bg} border={rule}>
   <div class="row-between">
@@ -14,8 +19,10 @@ const isInsta = (s.button?.url ?? '').includes('instagram.com');
     </Button>}
   </div>
   <Window title={s.window_title ?? 'photos'} bar="meadow-2">
-    <ul class="insta">{s.images.filter((im) => im.src).map((im) => <li>{s.link ? <a href={s.link}><img src={im.src} alt={im.alt} loading="lazy" /></a> : <span class="insta-tile"><img src={im.src} alt={im.alt} loading="lazy" /></span>}</li>)}</ul>
+    <ul class="insta">{photos.map((im) => <li>{im.href
+      ? <a href={im.href}><img src={im.src} alt={im.text ? '' : im.alt} width="1080" height="1350" loading="lazy" decoding="async" />{im.text && <p class="insta-text">{im.text}</p>}</a>
+      : <span class="insta-tile"><img src={im.src} alt={im.alt} width="1080" height="1350" loading="lazy" decoding="async" /></span>}</li>)}</ul>
   </Window>
-  {s.note && <p class="note">{s.note}</p>}
+  {!live.length && s.note && <p class="note">{s.note}</p>}
   <Shape slot="deco" type="squiggle" size={0.7} at="top: 48px; right: 30%;" />
 </Section>
