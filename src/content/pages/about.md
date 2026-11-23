@@ -91,9 +91,7 @@ sections:
   - type: cards
     kicker: How we treat each other
     heading: Code of Conduct
-    intro: "Everyone should feel safe and welcome at CivicTechWR. If someone or
-      something has made you feel uncomfortable, please reach out to one of our
-      organizers to take action. "
+    intro: "Everyone should feel safe and welcome at CivicTechWR. "
     style: window
     columns: 3
     cards:
