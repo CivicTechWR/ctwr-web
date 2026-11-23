@@ -6,9 +6,9 @@ sections:
   - type: page_title
     kicker: About us
     heading: How we work
-    intro: CivicTechWR is a grassroots group of neighbours who use design and
-      technology to work on local issues. Nobody is in charge, so everybody can
-      lead.
+    intro: "CivicTechWR is a volunteer group of residents who use design and
+      technology to work on local issues. We partner with local nonprofits to
+      identify social and civic challenges and co-create solutions. "
     image:
       src: /images/hacknight-group.jpg
       alt: About 20 people standing together at a CivicTechWR hacknight
