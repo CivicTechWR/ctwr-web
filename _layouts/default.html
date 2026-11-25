@@ -12,21 +12,21 @@
     {% endif %}
     <link
       rel="icon"
-      href="/images/logos/civictechwr_logo_black.png"
+      href="{{ '/images/logos/civictechwr_logo_black.png' | relative_url }}"
       type="image/x-icon"
     />
     <link
       rel="shortcut icon"
-      href="/images/logos/civictechwr_logo_black.png"
+      href="{{ '/images/logos/civictechwr_logo_black.png' | relative_url }}"
       type="image/x-icon"
     />
     {% seo %} {% if jekyll.environment == "production" %} {% assign css_file =
     "/css/main.min.css" %} {% else %} {% assign css_file = "/css/main.css" %} {%
     endif %}
 
-    <link rel="preload" href="{{ css_file }}" as="style" />
+    <link rel="preload" href="{{ css_file | relative_url }}" as="style" />
     {% if page.preload_image %}
-    <link rel="preload" href="{{ page.preload_image }}" as="image" />
+    <link rel="preload" href="{{ page.preload_image | relative_url }}" as="image" />
     {% endif %} {% if page.preload_fetch %}
     <link
       rel="preload"
@@ -40,7 +40,7 @@
       content="default-src 'none'; script-src 'self' https://chimpstatic.com https://form-assets.mailchimp.com; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://api.github.com https://*.list-manage.com; form-action https://civictechwr.us11.list-manage.com; frame-src 'none'; object-src 'none'; base-uri 'self';"
     />
     <link rel="dns-prefetch" href="//lu.ma" /> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
-    <link href="{{ css_file }}" rel="stylesheet" />
+    <link href="{{ css_file | relative_url }}" rel="stylesheet" />
   </head>
   <body>
     {% include icons.svg %}
@@ -52,8 +52,8 @@
       aria-atomic="true"
     ></div>
     {% include header.html %} {{ content }}
-    <script src="/js/optimized-bundle.min.js"></script>
-    <script src="/js/nav-toggle.js"></script>
-    <script src="/js/mailchimp-embed.js"></script>
+    <script src="{{ '/js/optimized-bundle.min.js' | relative_url }}"></script>
+    <script src="{{ '/js/nav-toggle.js' | relative_url }}"></script>
+    <script src="{{ '/js/mailchimp-embed.js' | relative_url }}"></script>
   </body>
 </html>

@@ -54,21 +54,21 @@ mtg.name | default: "CivicTechWR Hacknight" %}
         <picture>
           <source
             srcset="
-              /images/hacknight-8-400w.webp   400w,
-              /images/hacknight-8-800w.webp   800w,
-              /images/hacknight-8-1200w.webp 1200w,
-              /images/hacknight-8.webp       1600w
+              {{ site.baseurl }}/images/hacknight-8-400w.webp   400w,
+              {{ site.baseurl }}/images/hacknight-8-800w.webp   800w,
+              {{ site.baseurl }}/images/hacknight-8-1200w.webp 1200w,
+              {{ site.baseurl }}/images/hacknight-8.webp       1600w
             "
             sizes="(min-width: 992px) 480px, calc(100vw - 30px)"
             type="image/webp"
           />
           <img
-            src="/images/hacknight-8.jpg"
+            src="{{ '/images/hacknight-8.jpg' | relative_url }}"
             srcset="
-              /images/hacknight-8-400w.jpg   400w,
-              /images/hacknight-8-800w.jpg   800w,
-              /images/hacknight-8-1200w.jpg 1200w,
-              /images/hacknight-8.jpg       1600w
+              {{ site.baseurl }}/images/hacknight-8-400w.jpg   400w,
+              {{ site.baseurl }}/images/hacknight-8-800w.jpg   800w,
+              {{ site.baseurl }}/images/hacknight-8-1200w.jpg 1200w,
+              {{ site.baseurl }}/images/hacknight-8.jpg       1600w
             "
             sizes="(min-width: 992px) 480px, calc(100vw - 30px)"
             class="about-image img-fluid"

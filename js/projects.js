@@ -185,7 +185,7 @@
     }
 
     function loadProjects() {
-      fetch("/js/projects.json")
+      fetch("js/projects.json")
         .then((r) => {
           if (!r.ok) throw new Error("projects.json responded " + r.status);
           return r.json();
@@ -288,7 +288,7 @@
             return r.json();
           },
         ),
-        fetch("/js/github_overrides.json")
+        fetch("js/github_overrides.json")
           .then((r) => {
             if (!r.ok) throw new Error("github_overrides.json responded " + r.status);
             return r.json();
